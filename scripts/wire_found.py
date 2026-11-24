@@ -151,9 +151,12 @@ MADE = "wire_found.py plan"
 # exact spelling (`page_addresses`), and a WIRE row names the addresses of
 # boards on file it was compared by (`leans_on`): apply leans on an address
 # only where both say it, and the look prints each (eighth blind review,
-# 2026-11-22: `record_addresses` was taken on the worklist's word). An older
-# worklist is judged by rules that are no longer the door's.
-VERSION = 5
+# 2026-11-22: `record_addresses` was taken on the worklist's word). 6: what each
+# Paylocity posting's page the plan asked named is recorded once, by the
+# posting's address (`posting_boards`), and a WIRE row found by way of a posting
+# is wired only where it agrees (owner, 2026-11-23). An older worklist is judged
+# by rules that are no longer the door's.
+VERSION = 6
 WAITING = board_proposals.WAITING
 # A READER'S DOUBT STANDS FROM THE MOMENT IT IS GIVEN. One record per doubt,
 # {"<company id>@<when>": {id, name, board, type, ref, why, by, on, at}} (the
@@ -178,6 +181,13 @@ POINTS = {"href": "links to the board", "iframe": "embeds the board",
           "frame": "embeds the board", "script": "loads the board",
           "request": "loads its jobs from the board",
           "redirect": "redirects to the board", "text": "names the board"}
+# ...and a posting on the board, where that is what their page points at
+# (resolved_by_posting): "links a posting on the board (<address>), and the
+# posting's page names that one board"
+POSTING_POINTS = {"href": "links a posting on", "iframe": "embeds a posting on",
+                  "frame": "embeds a posting on", "script": "loads a posting on",
+                  "request": "loads a posting on", "redirect": "redirects to a posting on",
+                  "text": "names a posting on"}
 # Which evidence is quoted when a board was seen more than once. An embed, a
 # request the page itself made or a redirect is the site USING the board; a
 # link is the site sending people to it; bare text is the weakest - one
@@ -250,7 +260,8 @@ SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("refused", "refused earlier"),
               ("not-waiting", "already on a board"),
               ("out-of-scope", "ruled out of scope"),
-              ("gone", "no longer on file"))
+              ("gone", "no longer on file"),
+              ("no-board", "linked only postings whose pages give no board"))
 
 # A Workable posting's short address, and the address it opens at. The second
 # carries the board's slug, which the first does not.
@@ -318,11 +329,24 @@ def many(n: int, word: str = "posting") -> str:
 
 
 def pointer(seen: dict, full: bool = True) -> str:
-    """'https://acme.com/careers embeds the board (seen 3 times)'."""
+    """'https://acme.com/careers embeds the board (seen 3 times)'.
+
+    A board found by way of a Paylocity posting (resolved_by_posting) is check
+    1 in the owner's words of 2026-11-23: 'https://acme.com/careers links a
+    posting on the board (<the posting's address>), and the posting's page
+    names that one board' - or names how many it names, where it names more."""
     page = seen.get("page") or "their site"
     how = POINTS.get(seen.get("element"), "names the board")
     times = seen.get("times") or 1
     tail = f" (seen {times} times)" if times > 1 else ""
+    posting = seen.get("posting")
+    if posting:
+        boards = seen.get("posting_boards") or []
+        how = (f"{POSTING_POINTS.get(seen.get('element'), 'names a posting on')} the board "
+               f"({posting if full else short(posting)}"
+               f"{f', seen {times} times' if times > 1 else ''}), and the posting's page names "
+               + ("that one board" if len(boards) <= 1 else many(len(boards), "board")))
+        return f"{page if full else short(page)} {how}"
     return f"{page if full else short(page)} {how}{tail}"
 
 
@@ -416,6 +440,11 @@ def boards_named(entry: dict) -> tuple[list, list]:
     unusable = []
     for cand in entry.get("candidates") or []:
         kind, ref = cand.get("type"), cand.get("ref")
+        if kind == POSTING:
+            # A POSTING IS NOT A BOARD: the board its page names is added as a
+            # candidate of its own (resolved_by_posting), and what each posting
+            # said is the company's (postings_of, consider)
+            continue
         problem = ref_problem(kind, ref)
         if problem:
             unusable.append(f"{show(kind, ref)}: {problem}")
@@ -444,7 +473,10 @@ def boards_named(entry: dict) -> tuple[list, list]:
             "unread": cand.get("unread"), "declined": cand.get("declined"),
             # set by addressed_by_page: the /All/ address a Paylocity board's
             # own page states, or what its page said when it stated none
-            "page_ref": cand.get("page_ref"), "page_said": cand.get("page_said")})
+            "page_ref": cand.get("page_ref"), "page_said": cand.get("page_said"),
+            # set by resolved_by_posting: the Paylocity posting their site
+            # links whose page named this board, and every board it named
+            "posting": cand.get("posting"), "posting_boards": cand.get("posting_boards")})
     for b in boards.values():
         b["times"] = sum(s["times"] for s in b["seen"])
         spelled = {spelling(b["type"], s["ref"]): show(b["type"], s["ref"]) for s in b["seen"]}
@@ -1509,6 +1541,293 @@ def named_by_number(results: dict, ctx: dict) -> None:
                 cand["no_address"] = how
 
 
+# ------------------------------------- a Paylocity posting, asked for its board
+#
+# OWNER, 2026-11-23. Asked "Ten companies link single Paylocity job postings on
+# their sites instead of their board. Should 'their site links a posting, and
+# that posting's page names exactly one board' count as check 1 (their own site
+# points to the board)?", he answered "Yes, count it". find_site_boards writes
+# such a link as a candidate of its own type (POSTING), its ref the posting's
+# own address; the plan asks the posting's page which board it names, and the
+# board it names is then the find, held to everything a Paylocity find is held
+# to - check 2 first of all. Check 2 is unchanged.
+
+POSTING = board_proposals.POSTING_TYPE
+POSTING_HOST = "recruiting.paylocity.com"
+# Posting pages asked for one company. A closed posting (Job Not Found, a 404
+# or a 410, a page naming no board) says nothing about the board, so the next
+# posting their site links is asked - this many at most, and then the find is
+# not a board.
+POSTING_TRIES = 3
+_POSTING_ADDRESS = re.compile(r"https://recruiting\.paylocity\.com/recruiting/jobs/details/"
+                              r"[0-9]{1,12}(?:/[A-Za-z0-9_.~%-]{1,200}){0,2}", re.I)
+# a board's address on the posting's own page written without its host - the
+# page's "View All Jobs" link is /Recruiting/Jobs/All/<uuid> - is an address on
+# that same host
+_POSTING_RELATIVE = re.compile(r"(?<![A-Za-z0-9.:/_~%-])(/recruiting/jobs/(?:all|list)/"
+                               r"[^\s\"'<>?#]{1,300})", re.I)
+_JOB_NOT_FOUND = re.compile(r"\bjob\s+not\s+found\b", re.I)
+# what check 1 quotes when it is a posting (apply asks a row that quotes one
+# for what the plan recorded of its page), and the posting's id in it
+_QUOTES_A_POSTING = re.compile(r"recruiting\.paylocity\.com/recruiting/jobs/details/", re.I)
+_POSTING_ID = re.compile(r"recruiting\.paylocity\.com/recruiting/jobs/details/([0-9]{1,12})", re.I)
+
+
+def posting_address(ref) -> str | None:
+    """`ref` when it is a Paylocity posting's own address as the finder writes
+    one - https, recruiting.paylocity.com, /recruiting/jobs/Details/<id> and at
+    most its tenant's and its title's segments, no query - else None. Nothing
+    else is ever asked as a posting."""
+    v = ref.strip() if isinstance(ref, str) else ""
+    return v if v and _POSTING_ADDRESS.fullmatch(v) else None
+
+
+def posting_boards_in(page: str) -> tuple[list, list]:
+    """(the boards a Paylocity posting's page names - ONE address each, in the
+    order the page first names them - every board address it names).
+
+    The addresses are found by the finder's own Paylocity pattern and written
+    in its spelling (find_site_boards.find_refs: one form for a board, however
+    a page wrote it), outside the page's comments, an address without its host
+    read as one on Paylocity's. One board is every address paylocity_relation
+    calls the same - the page's breadcrumb /All/<uuid>/<Tenant> and its "View
+    All Jobs" /All/<uuid> are one, as the finder folds a /List/ frame into the
+    /All/ address it lands on - and it is named by the fullest of them: an
+    /All/ id with the tenant's name, then an /All/ id, then a /List/ one. Two
+    ids of one kind that differ are two boards, whatever names follow them
+    (LeoTech's postings name "LeoTech" and "LeoTech Engineering Career Page")."""
+    import find_site_boards as fsb
+    body, scripts = fsb._apart(page or "")
+    text = fsb.soften(body + "\n" + "\n".join(scripts))
+    text = _POSTING_RELATIVE.sub(lambda m: f"https://{POSTING_HOST}{m.group(1)}", text)
+    named = list(dict.fromkeys(ref for _s, _e, kind, ref, _k in fsb.find_refs(text)[0]
+                               if kind == "paylocity" and isinstance(ref, str)))
+    groups: list[list] = []
+    for ref in named:
+        into = next((g for g in groups
+                     if board_proposals.paylocity_relation([ref], g) == "same"), None)
+        if into is None:
+            groups.append([ref])
+        else:
+            into.append(ref)
+
+    def fullest(ref):
+        all_id, _list_id, tenant = board_proposals.paylocity_ids(ref)
+        return (0 if all_id else 1, 0 if tenant else 1)
+    return [min(g, key=lambda r: (fullest(r), g.index(r))) for g in groups], named
+
+
+def posting_says(url) -> dict:
+    """What one Paylocity posting's own page says of its board:
+    {boards, named, closed, failed, transient, how}.
+
+      boards     the boards its page names, one address each (posting_boards_in)
+      named      every board address its page names
+      closed     why the page is no answer about a board, or None: Paylocity
+                 answers "Job Not Found" (it sends a closed posting there), a
+                 404 or a 410, or the page names no board
+      failed     None when the page was read; else verify_boards' word for why
+                 not (refused | gone | unreadable)
+      transient  True only for a failure of the day (verify_boards.transient)
+      how        what the page said, in words
+
+    ASKED AS EVERY BOARD'S PAGE IS (verify_boards._board_page: robots.txt at
+    every hop, never a hop off the host asked - refused before that host is
+    asked anything - and paced at the host gate), and only at a posting's own
+    address on recruiting.paylocity.com (posting_address): anything else is
+    refused here, unasked. NEVER RAISES."""
+    out = {"boards": [], "named": [], "closed": None, "failed": None, "transient": False,
+           "how": ""}
+    address = posting_address(url)
+    if not address:
+        out.update(failed="refused",
+                   how=f"{str(url)[:160]} is not a posting's own address on {POSTING_HOST}, "
+                       f"so it was not asked")
+        return out
+    import find_site_boards as fsb
+    try:
+        page = verify_boards._board_page(address)
+    except Exception as exc:                    # noqa: BLE001 - a refusal is an answer
+        kind, words = verify_boards._failure(exc)
+        out.update(failed=kind, how=privacy.redact(words), transient=verify_boards.transient(exc))
+        if kind == "gone":
+            out["closed"] = f"the posting is gone ({out['how']})"
+        return out
+    out["boards"], out["named"] = posting_boards_in(page)
+    if _JOB_NOT_FOUND.search(fsb._inside(page, "title") or ""):
+        # where Paylocity sends a posting that has closed: whatever it links
+        # is no answer about this posting's board
+        out.update(boards=[], named=[], closed='Paylocity answers "Job Not Found": the '
+                                                'posting has closed')
+    elif not out["boards"]:
+        out["closed"] = "the posting's page names no board"
+    out["how"] = out["closed"] or (
+        f"the posting's page names {many(len(out['boards']), 'board')}: "
+        + " and ".join(show("paylocity", b) for b in out["boards"][:4]))
+    return out
+
+
+def _site_names_it(entry: dict, board: str) -> bool:
+    """Does the company's own site name this Paylocity board itself - a
+    candidate of the finder's, not one a posting's page gave, whose ids agree
+    with it? Then that sighting is check 1, and the posting adds no second."""
+    refs = [board]
+    return any(isinstance(c, dict) and c.get("type") == "paylocity" and not c.get("posting")
+               and isinstance(c.get("ref"), str)
+               and board_proposals.paylocity_relation(refs, [c["ref"]]) == "same"
+               and board_proposals.paylocity_ids_agree(refs, [c["ref"]])
+               for c in entry.get("candidates") or [])
+
+
+def resolved_by_posting(results: dict, ctx: dict) -> None:
+    """Give every company whose own site links Paylocity postings the board
+    the posting's page names, BEFORE anything is keyed - as named_by_number
+    gives a Workable number its slug - so that from here on the board is a
+    Paylocity find like any other: its holders, twins, refusals, the owner's
+    holds under any id, its waiting rows, the pages the plan asks, check 2.
+
+    Each posting row the finder wrote (type POSTING) is asked in the finder's
+    order, once per address in the run (ctx["postings"], whichever company
+    linked it), at most POSTING_TRIES per company, and marked with what its
+    page said: `posting_named` (it named a board: the asking stops there),
+    `posting_none` (closed, gone, or naming no board: the next is asked),
+    `posting_failed` (a failure of the day: consider skips the company, and
+    the next plan asks again), `posting_refused` (robots.txt, a 401 or 403:
+    the asking stops - a refusal is not asked twice), `posting_unasked`, or
+    `posting_off` (not a posting's own address on recruiting.paylocity.com:
+    refused unasked). For a page naming boards, one Paylocity candidate per
+    board is ADDED, in the posting's own sighting (its page, element, saw,
+    times, hop) and marked with the posting (`posting`) and every board its
+    page named (`posting_boards`): one board is the find, two or more are
+    held (consider). A board their site names itself by an id that agrees
+    gets none: that sighting is check 1 already.
+
+    A company a person already answered about is not asked, as for a number:
+    out of scope or on a board (consider says so), or with ANY refusal on file
+    in either store - its postings are marked `declined`, and consider skips
+    it as refused: whether the posting's board is the one refused is not
+    looked at."""
+    said_of = ctx.setdefault("postings", {})
+    for cid in sorted(results):
+        entry = results[cid]
+        rows = [r for r in entry.get("candidates") or []
+                if isinstance(r, dict) and r.get("type") == POSTING]
+        if not rows:
+            continue
+        c = ctx["by_id"].get(cid)
+        if c is None or c.get("out_of_scope") \
+                or (c.get("ats") or {}).get("type") not in WAITING:
+            continue
+        if ctx["refusals"].get(cid):
+            for r in rows:
+                r["declined"] = "refused"
+            continue
+        tried, stop = [], None
+        for r in rows:
+            address = posting_address(r.get("ref"))
+            if not address:
+                r["posting_off"] = (f"not a posting's own address on {POSTING_HOST}, so it was "
+                                    f"not asked")
+                continue
+            if stop or (address not in tried and len(tried) >= POSTING_TRIES):
+                r["posting_unasked"] = stop or (f"not asked: {many(POSTING_TRIES, 'posting')} "
+                                                f"of theirs were asked first")
+                continue
+            if address not in tried:
+                tried.append(address)
+            if address not in said_of:
+                said_of[address] = posting_says(address)
+            s = said_of[address]
+            if s["boards"]:
+                r["posting_named"] = list(s["boards"])
+                for board in s["boards"]:
+                    if _site_names_it(entry, board):
+                        continue
+                    entry["candidates"].append({
+                        "type": "paylocity", "ref": board, "element": r.get("element"),
+                        "saw": r.get("saw"), "times": r.get("times"), "page": r.get("page"),
+                        "hop": r.get("hop"), "mode": r.get("mode"),
+                        "posting": address, "posting_boards": list(s["boards"])})
+                stop = "not asked: an earlier posting's page named the board"
+            elif s["transient"]:
+                r["posting_failed"] = s["how"]
+                stop = "not asked: an earlier posting's page failed on the day"
+            elif s["failed"] == "refused":
+                r["posting_refused"] = s["how"]
+                stop = "not asked: an earlier posting's page refused, and a refusal is not asked twice"
+            else:
+                r["posting_none"] = s["closed"] or f"its page could not be read ({s['how']})"
+
+
+def postings_of(entry: dict) -> list:
+    """The posting rows the finder wrote for a company (type POSTING), with
+    what resolved_by_posting marked on them."""
+    return [r for r in entry.get("candidates") or []
+            if isinstance(r, dict) and r.get("type") == POSTING]
+
+
+def _posting_list(rows: list, field: str, n: int = 3) -> str:
+    """'<posting> (<what its page said>); ...' for the rows marked `field`."""
+    picked = [r for r in rows if r.get(field)]
+    out = "; ".join(f"{str(r.get('ref'))[:160]} ({str(r[field])[:160]})" for r in picked[:n])
+    return out + (f"; and {len(picked) - n} more" if len(picked) > n else "")
+
+
+def posting_skip(base: dict, c: dict, rows: list, ctx: dict) -> dict:
+    """The SKIP for a company whose own site names no board, only Paylocity
+    postings that named none: said for what each posting's page said, and
+    never a zero - a closed posting is no answer about a board."""
+    scope = c.get("out_of_scope")
+    if scope:
+        on = scope.get("on") if isinstance(scope, dict) else None
+        return _skip(base, "out-of-scope",
+                     f"a person ruled {base['name']} out of the board"
+                     + (f" on {on}" if on else "") + "; it is not probed or proposed, and its "
+                     f"site's Paylocity postings were not asked")
+    was = c.get("ats") or {}
+    if was.get("type") not in WAITING:
+        return _skip(base, "not-waiting",
+                     f"already reads from {show(was.get('type'), was.get('ref'))}; this door "
+                     f"never overrules a board somebody already set, and its site's Paylocity "
+                     f"postings were not asked")
+    if any(r.get("declined") for r in rows):
+        return _skip(base, "refused", _declined_words(base["id"], rows, ctx))
+    if any(r.get("posting_failed") for r in rows):
+        how = next(r["posting_failed"] for r in rows if r.get("posting_failed"))
+        return _skip(base, "unreadable",
+                     f"their site links a Paylocity posting, and asking the posting's page which "
+                     f"board it names failed on the day ({_posting_list(rows, 'posting_failed')}); "
+                     f"it is asked again on the next plan, and a failure on the day is not a "
+                     f"doubt to file", error=how)
+    if any(r.get("posting_refused") for r in rows):
+        how = next(r["posting_refused"] for r in rows if r.get("posting_refused"))
+        return _skip(base, "unreadable",
+                     f"their site links a Paylocity posting, and its page refused "
+                     f"({_posting_list(rows, 'posting_refused')}); a refusal is not asked "
+                     f"again in this run, and which board the posting is on is not known",
+                     error=how)
+    if any(r.get("posting_none") for r in rows):
+        return _skip(base, "no-board",
+                     f"their site links {many(len(rows), 'Paylocity posting')} and no board, and "
+                     f"no posting's page that was asked gives one "
+                     f"({_posting_list(rows, 'posting_none')}): the find is not a board - "
+                     f"which says nothing about whether they have one")
+    return _skip(base, "unusable",
+                 f"their site links {many(len(rows), 'Paylocity posting')}, and none was asked: "
+                 + (_posting_list(rows, "posting_off") or "the plan did not reach them"))
+
+
+def _declined_words(cid: str, rows: list, ctx: dict) -> str:
+    """Why a refused company's postings were not asked, in refused_first's words."""
+    r = (ctx["refusals"].get(cid) or [{}])[0]
+    return (f"refused earlier in {r.get('store') or '?'}: {r.get('by') or '?'} on "
+            f"{r.get('on') or '?'}" + (f" - {r['why']}" if r.get("why") else "")
+            + f". Their site links {many(len(rows), 'Paylocity posting')}, and no posting's page "
+            f"was asked which board it names - a company somebody said no to is not asked of "
+            f"anybody; the board refused then was {r.get('board') or 'not recorded'} - tell the "
+            f"owner")
+
+
 # --------------------------------------- a Paylocity board known by two ids
 
 def compared(results: dict, ctx: dict):
@@ -2178,6 +2497,11 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     base = {"id": cid, "name": (c or {}).get("name") or entry.get("name") or cid}
     if c is None:
         return _skip(base, "gone", "no company with this id is on file")
+    # the Paylocity postings their site links, and what each one's page said
+    # (resolved_by_posting); a board one of them named is among `boards`
+    postings = postings_of(entry)
+    if not boards and postings:
+        return posting_skip(base, c, postings, ctx)
     if not boards:
         if unusable:
             # THEIR SITE DID NAME A BOARD, and the finder wrote it down in a
@@ -2204,6 +2528,12 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                "times": seen["times"], "hop": seen["hop"], "on_their_site": own}
     if seen.get("landed"):
         check_1["landed"] = seen["landed"]
+    if seen.get("posting"):
+        # CHECK 1 BY WAY OF A POSTING (owner, 2026-11-23): their page links a
+        # posting, and the posting's page names this board - and these are all
+        # the boards it names (apply holds the row to the plan's record of it)
+        check_1["posting"] = seen["posting"]
+        check_1["posting_boards"] = list(seen.get("posting_boards") or [])
     base["check_1"] = check_1
     account = seen.get("account") or next(
         (s["account"] for s in first["seen"] if s.get("account")), None)
@@ -2237,6 +2567,11 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     refusal = refused_first(cid, c, kind, ref, keys, first, ctx)
     if refusal["skip"]:
         return _skip(base, "refused", refusal["skip"])
+    if any(p.get("declined") for p in postings):
+        # a refused company's postings were not asked (resolved_by_posting), so
+        # whether one is on the board refused is not known: SKIP refused,
+        # whatever it refused, as a Workable number nobody followed is
+        return _skip(base, "refused", _declined_words(cid, postings, ctx))
     refused, hits, ties, loose = (refusal["refused"], refusal["hits"], refusal["ties"],
                                   refusal["loose"])
     owner_holds = ctx.get("held_boards") or {"keys": {}, "named": []}
@@ -2260,10 +2595,20 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append(f"the finder recorded a kind of reference this door does not know "
                       f"({seen['element'] or 'none'!r}), so how their site points at the "
                       f"board is not known")
-    if len(boards) > 1:
+    # the boards a Paylocity posting's page named (resolved_by_posting): one is
+    # the find; more than one is a doubt of its own, said as the posting's
+    via_posting = [s for b in boards for s in b["seen"] if s.get("posting")]
+    posting_named = list(via_posting[0].get("posting_boards") or []) if via_posting else []
+    if len(boards) > 1 and not all(all(s.get("posting") for s in b["seen"]) for b in boards):
         doubts.append("their site points to more than one board: " + " and ".join(
             f"{show(b['type'], ref if b is first else b['seen'][0]['ref'])} "
             f"(seen {many(b['times'], 'time')})" for b in boards[:4]))
+    if len(posting_named) > 1:
+        doubts.append(f"their site links a posting on Paylocity ({via_posting[0]['posting']}), "
+                      f"and the posting's page names more than one board: "
+                      + " and ".join(show("paylocity", b) for b in posting_named[:4])
+                      + (f" and {len(posting_named) - 4} more" if len(posting_named) > 4 else "")
+                      + ", so which one it is on is not settled")
     if numbered(kind, ref) and seen.get("no_address"):
         # ONLY WHEN A FOLLOW WAS MADE AND ANSWERED. A follow that failed on
         # the day is skipped below and asked again; a number nobody followed
@@ -2291,6 +2636,22 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     if unusable:
         doubts.append("their site also names a board this door cannot use ("
                       + "; ".join(unusable[:3]) + ")")
+    if postings and not any(p.get("posting_named") for p in postings):
+        # PAYLOCITY POSTINGS BESIDE ANOTHER BOARD, NONE OF WHOSE PAGES NAMED ONE:
+        # a platform their site points at, on a board nobody could name - a
+        # second place they may hire through, as a no-board form is (a failure
+        # of the day is skipped below, and asked again)
+        if any(p.get("posting_refused") for p in postings):
+            doubts.append(f"their site also links a Paylocity posting whose page refused "
+                          f"({_posting_list(postings, 'posting_refused')}), so which board it "
+                          f"is on is not known")
+        if any(p.get("posting_none") for p in postings):
+            doubts.append(f"their site also links Paylocity postings, and no posting's page "
+                          f"that was asked gives a board ({_posting_list(postings, 'posting_none')})"
+                          f", so which board they hire through today is not settled")
+        if any(p.get("posting_off") for p in postings):
+            doubts.append(f"their site also links a posting this door does not ask "
+                          f"({_posting_list(postings, 'posting_off')})")
     extra = also_seen(entry, keys, website, kind)
     if extra.get("elsewhere"):
         # A PLATFORM WE READ, in a form that names no board (a widget, a
@@ -2547,6 +2908,18 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
     # --- the network: three questions, each asked once per spelling --------
     # From here on every SKIP carries the doubts gathered above (_carry).
+    if postings and not any(p.get("posting_named") for p in postings) \
+            and any(p.get("posting_failed") for p in postings):
+        # A POSTING'S PAGE THAT FAILED ON THE DAY IS NO ANSWER: which board it is
+        # on could be this one or another, and filed on that the row would hold
+        # every later plan. Listed, and asked again by the next plan.
+        return _skip(base, "unreadable",
+                     f"their site also links a Paylocity posting, and asking the posting's page "
+                     f"which board it names failed on the day "
+                     f"({_posting_list(postings, 'posting_failed')}); it is asked again on the "
+                     f"next plan, and a failure on the day is not a doubt to file",
+                     error=next(p["posting_failed"] for p in postings if p.get("posting_failed")),
+                     **_carry(doubts))
     if seen.get("follow_failed"):
         # THE SLUG'S QUESTION DID NOT GET THROUGH, WHICH IS NOT AN ANSWER.
         # Held, the number went to the owner's queue - where a door-filed row
@@ -2770,7 +3143,7 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
-         pages: dict | None = None) -> list:
+         pages: dict | None = None, postings: dict | None = None) -> list:
     """Every company in the finder's results, decided. Network happens here.
 
     Each row is made safe to keep - an address redacted, half a character
@@ -2781,7 +3154,8 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     followed: {number: its slug, or None}. `fresh` are the companies whose
     readers' doubts keep_doubts kept in this very run. `pages`, when given,
     is filled with what each Paylocity board's own page this run asked
-    stated (page_addresses_of).
+    stated (page_addresses_of); `postings`, with the boards each Paylocity
+    posting's page this run asked named (posting_boards_of).
     """
     ctx = standing(companies, board, stores)
     ctx["reviewed"] = {cid: reader_words(words) for cid, words in (reviewed or {}).items()}
@@ -2805,6 +3179,16 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
         if numbered(a.get("type"), a.get("ref")):
             for slug in slugs.get(_number(a.get("ref"))) or []:
                 ctx["holders"][board_key("workable", slug)].append(c["id"])
+    # a Paylocity posting their site links is the board its page names (the
+    # owner, 2026-11-23), before anything is keyed: from here on that board is
+    # a Paylocity find like any other
+    resolved_by_posting(results, ctx)
+    if postings is not None:
+        postings.update(posting_boards_of(ctx))
+    if ctx.get("postings"):
+        n_named = sum(1 for s in ctx["postings"].values() if s["boards"])
+        say(f"NOTE: asked {many(len(ctx['postings']), 'Paylocity posting')} their sites link "
+            f"which board its own page names; {n_named} named one or more")
     # a Paylocity board named by its /List/ address is known by the /All/
     # address its own page states, before anything is keyed (fifth blind
     # review, 2026-11-22)
@@ -2861,6 +3245,16 @@ def page_addresses_of(ctx: dict) -> dict:
     return {k: a for k, said in sorted((ctx.get("said") or {}).items())
             if k.startswith("paylocity:")
             and (a := board_proposals.paylocity_address((said or {}).get("address")))}
+
+
+def posting_boards_of(ctx: dict) -> dict:
+    """{posting address: [the boards its page named]} for every Paylocity
+    posting's page this run asked and read (resolved_by_posting) - [] for one
+    that named none. The worklist carries it to apply (`posting_boards`): the
+    plan's own record of what each posting's page said, which a WIRE row found
+    by way of a posting must agree with to be wired at all."""
+    return {a: list(s["boards"]) for a, s in sorted((ctx.get("postings") or {}).items())
+            if not s.get("failed")}
 
 
 def leans_of(refs: list, cid: str, ctx: dict) -> dict:
@@ -3339,9 +3733,13 @@ def cmd_plan(a) -> int:
                 print(f"\nSTOPPED before the first request: {exc}. Nothing was read.")
                 return 1
             print()
-        have = sum(1 for e in results.values() if e.get("candidates"))
+        have = sum(1 for e in results.values()
+                   if any(c.get("type") != POSTING for c in e.get("candidates") or []
+                          if isinstance(c, dict)))
+        posted = sum(1 for e in results.values() if postings_of(e))
         print(f"{len(results)} companies in the finder's results, {have} with a board "
-              f"named on their own site")
+              f"named on their own site"
+              + (f", {posted} with a Paylocity posting linked there" if posted else ""))
         for f in files:
             made = _when(f.get("generated"))
             days = (dt.datetime.now().astimezone() - made).days if made else None
@@ -3354,8 +3752,9 @@ def cmd_plan(a) -> int:
         print()
         numbers: dict = {}
         pages: dict = {}
+        posted_pages: dict = {}
         rows = plan(results, companies, board, reviewed=reviewed, stores=stores,
-                    numbers=numbers, fresh=fresh, pages=pages)
+                    numbers=numbers, fresh=fresh, pages=pages, postings=posted_pages)
         n = counts(rows)
         doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
                "doubted_by_a_reader": sorted(reviewed),
@@ -3372,6 +3771,10 @@ def cmd_plan(a) -> int:
                # addresses a WIRE row leans on (leans_on) are leaned on in apply
                # only where this says them too
                "page_addresses": pages,
+               # what each Paylocity posting's page this plan asked named: a
+               # WIRE row found by way of a posting is wired in apply only where
+               # this says its posting's page named that one board
+               "posting_boards": privacy.redact_deep(_encodable(posted_pages)),
                "ruling": ("owner, 2026-11-18: wire only when the company's own website "
                           "points to the board AND the board itself names the company; "
                           "anything doubtful goes to Boards we found; giants skipped"),
@@ -3442,6 +3845,15 @@ def load_worklist(path: str) -> tuple[dict, str]:
         # apply may lean on
         raise ValueError(f"{path} does not carry what the boards' own pages stated as "
                          f"page_addresses {{board: address}}")
+    posted = doc.get("posting_boards")
+    if not isinstance(posted, dict) or not all(
+            isinstance(k, str) and isinstance(v, list) and all(isinstance(b, str) for b in v)
+            for k, v in posted.items()):
+        # what each posting's page named, which a board found by way of a
+        # posting is wired by: a file that does not say it says nothing apply
+        # may wire such a board on
+        raise ValueError(f"{path} does not carry what the Paylocity postings' own pages named "
+                         f"as posting_boards {{posting: [board]}}")
     for row in doc["rows"]:
         leans = row.get("leans_on", {})
         if not isinstance(leans, dict) or not all(
@@ -3502,6 +3914,41 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     if numbered(kind, ref):
         return "evidence", ("the board is written as a Workable account number, which "
                             "reads and does not open; a board is wired by its slug")
+    # A BOARD FOUND BY WAY OF A POSTING IS WIRED ONLY AS THE PLAN RECORDED ITS
+    # PAGE (owner, 2026-11-23). Check 1 is then "their site links a posting,
+    # and that posting's page names exactly one board" - and which board that
+    # page named is the plan's answer from the network, which reaches apply only
+    # through the worklist: the row's check_1 and the plan's own record of every
+    # posting page it asked (posting_boards). Both must say this posting's page
+    # named this one board, and nothing else, and the look prints it; a row
+    # whose check 1 quotes a posting and says nothing of its page, or a posting
+    # that is not a posting's own address on Paylocity, is left alone.
+    posting = c1.get("posting")
+    if posting is not None or c1.get("posting_boards") is not None \
+            or _QUOTES_A_POSTING.search(str(c1.get("saw") or "")):
+        named = (held_for.get("postings") or {}).get(posting) if isinstance(posting, str) else None
+        if kind != "paylocity" or not posting_address(posting) or not isinstance(named, list):
+            return "evidence", (f"check 1 says their site links a posting "
+                                f"({str(posting or c1.get('saw'))[:160]}), and the plan recorded "
+                                f"no answer from that posting's own page on {POSTING_HOST} "
+                                f"(posting_boards): a board found by way of a posting is wired "
+                                f"only on what the plan was told - plan again")
+        if named != [ref] or c1.get("posting_boards") != named:
+            return "evidence", (f"the plan recorded that the posting's page "
+                                f"({posting[:160]}) names "
+                                + (" and ".join(show("paylocity", b)[:120] for b in named[:3])
+                                   or "no board")
+                                + f", and the row is {show(kind, ref)[:120]}: a board found by "
+                                  f"way of a posting is wired only where its page named that "
+                                  f"one board - plan again")
+        # ...and the posting is the one check 1's own sighting on their page
+        # quotes: another posting the plan asked (another company's) names
+        # another board, and its record agrees with itself
+        saw_id = _POSTING_ID.search(str(c1.get("saw") or ""))
+        if not saw_id or saw_id.group(1) != _POSTING_ID.search(posting).group(1):
+            return "evidence", (f"check 1's own sighting on their page "
+                                f"({str(c1.get('saw'))[:160]}) does not quote the posting the row "
+                                f"names ({posting[:160]}) - plan again")
     # AN ADDRESS ONLY THE ROW SAYS IS NEVER LEANED ON (eighth blind review,
     # 2026-11-22): a row's page_ref clears holds and records in apply, so it is
     # leaned on only where the plan recorded that page stating it - for this
@@ -4125,6 +4572,10 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
                 # page_ref and what it leans on are leaned on only where this
                 # says them too
                 "pages": doc.get("page_addresses") or {},
+                # what the plan recorded each Paylocity posting's page naming: a
+                # board found by way of a posting is wired only where this says
+                # its page named that one board
+                "postings": doc.get("posting_boards") or {},
                 # what may tie a Workable number to a slug: a waiting row is
                 # taken for a board by the pairs said on file alone (review 10,
                 # 2026-11-23), and an account is written into a note by them,
@@ -4172,6 +4623,11 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
             # every address apply leans on for a row it wires, printed in the
             # look and covered by its code
             "leans": {r["id"]: lean_lines(r, held_for["pages"]) for r in wire},
+            # ...and, for a board found by way of a posting, the posting and the
+            # board its page named (wire_problem passed only that one board)
+            "postings": {r["id"]: [r["check_1"]["posting"],
+                                   list(held_for["postings"].get(r["check_1"]["posting"]) or [])]
+                         for r in wire if (r.get("check_1") or {}).get("posting")},
             # ...and the Workable account number each is asked for by, with
             # what ties it to the slug wired and whether that clears a row and
             # goes into the note (account_said): printed, and covered
@@ -4241,6 +4697,9 @@ def expect_code(sha: str, d: dict, by: str) -> str:
         "left": [[x["row"]["id"], x["code"]] for x in d["left"]],
         # every address apply leans on, as the look printed each
         "leans": sorted([cid, *x] for cid, xs in d["leans"].items() for x in xs),
+        # every posting a board found by way of one is wired on, and what its
+        # page named
+        "postings": sorted([cid, x[0], *x[1]] for cid, x in d["postings"].items()),
         # every Workable account number it leans on, and what ties each
         "accounts": sorted([cid, *x] for cid, x in d["accounts"].items()),
         # every row waiting on the owner that a wire takes off his queue
@@ -4269,6 +4728,11 @@ def report(doc: dict, d: dict) -> None:
         for whose, address in d["leans"].get(r["id"]) or []:
             print(f"        leans on what the plan was told: {whose} states its address is "
                   f"{address}")
+        if r["id"] in d["postings"]:
+            posting, named = d["postings"][r["id"]]
+            print(f"        leans on what the plan was told: the page of the posting their site "
+                  f"links, {posting}, names one board, "
+                  + " and ".join(show("paylocity", b) for b in named))
         if r["id"] in d["accounts"]:
             print(f"        leans on its account number: {d['accounts'][r['id']][1]}")
         for store, board in d["takes"].get(r["id"]) or []:
