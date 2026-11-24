@@ -47647,7 +47647,8 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                                 the fourth is not asked
       - a posting's page that fails on the day -> SKIP, asked again, not filed;
         one robots.txt closes -> SKIP, and no other of theirs is asked
-      - a posting off recruiting.paylocity.com -> refused, never asked
+      - a posting off recruiting.paylocity.com -> refused, never asked; a
+        posting's address written as a Paylocity board -> no board, never read
       - a company refused earlier          -> its postings are not asked: SKIP
         refused where nothing else names a board, and beside a board of its
         own (another board refused) that board is held, the posting said as
@@ -47689,7 +47690,8 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "held": D + "7651/Pp-Held-Inc/Engineer", "ref": D + "7661/Pp-Refusal-Inc/Engineer",
          "rec": D + "7671/Pp-Recorded-Inc/Engineer", "twin": D + "7681/Pp-Twin-Inc/Engineer",
          "refused": D + "7691/Pp-Refused/Engineer", "mixed": D + "7692/Pp-Mixed-Inc/Engineer",
-         "shut_door_1": D + "7693/Pp-Door/One", "shut_door_2": D + "7694/Pp-Door/Two"}
+         "shut_door_1": D + "7693/Pp-Door/One", "shut_door_2": D + "7694/Pp-Door/Two",
+         "as_board": D + "7695/Pp-As-Board/Engineer"}
     pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
                                 rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
              P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"],
@@ -47731,7 +47733,8 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                  co("holder-co", "Holder Co", ats={"type": "paylocity", "ref": B["rec"]}),
                  # refused another board in Agent proposals; its own site names a
                  # board beside a posting
-                 co("pp-mixed", "Pp Mixed"), co("pp-door", "Pp Door")]
+                 co("pp-mixed", "Pp Mixed"), co("pp-door", "Pp Door"),
+                 co("pp-as-board", "Pp As Board")]
 
     def posted(cid, *refs, times=1):
         return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
@@ -47750,6 +47753,10 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         "pp-twin-b": posted("pp-twin-b", P["twin"]),
         "pp-refused": posted("pp-refused", P["refused"]),
         "pp-door": posted("pp-door", P["shut_door_1"], P["shut_door_2"]),
+        # a posting's address written as a Paylocity BOARD (an older finder's file,
+        # or one made by hand)
+        "pp-as-board": entry("pp-as-board", [cand("paylocity", P["as_board"],
+                                                  f"{site('pp-as-board')}/careers")]),
         "pp-mixed": entry("pp-mixed", [cand("paylocity", B["mixed"], f"{site('pp-mixed')}/careers"),
                                        cand(wf.POSTING, P["mixed"], f"{site('pp-mixed')}/careers",
                                             saw=P["mixed"])])})
@@ -47865,6 +47872,14 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                 errors += fail(f"pp-door: a posting's page robots.txt closes did not stop the "
                                f"asking, or was filed: {door.get('action')} {door.get('kind')} "
                                f"{_wb_words(door)[:300]!r}, asked on {P['shut_door_2'] in asked}")
+            as_board = row("pp-as-board")
+            if as_board.get("action") != "SKIP" or as_board.get("kind") != "unusable" \
+                    or "one job, not a board" not in _wb_words(as_board) \
+                    or any(P["as_board"] in k for k in box.asked + box.probed) \
+                    or P["as_board"] in asked:
+                errors += fail(f"pp-as-board: a posting's address written as a Paylocity board "
+                               f"was read as one, or not refused in words: "
+                               f"{as_board.get('action')} {_wb_words(as_board)[:300]!r}")
             mixed = row("pp-mixed")
             if mixed.get("action") != "HOLD" or P["mixed"] in asked \
                     or "an old board of theirs" not in _wb_words(mixed) \
