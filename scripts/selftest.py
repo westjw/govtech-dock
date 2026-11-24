@@ -42897,8 +42897,10 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
         posting is kept against the board the posting's page names, and holds
         it when the company is merged away - for the survivor linking that
         posting, in the plan and in apply, for a record naming the board
-        itself, and in held_board - and one the owner settled since is not
-        raised again by its board (review of the posting change, 2026-11-23);
+        itself, and in held_board; merged away before the plan was given the
+        doubt, against the board the same posting named for the survivor -
+        and one the owner settled since is not raised again by its board
+        (review of the posting change, 2026-11-23);
       - admin.act_merge merges a company whatever the door holds for it.
     """
     import admin
@@ -45973,6 +45975,21 @@ def check_a_board_the_owner_holds_is_held_under_any_id() -> int:
             code, text, _wl, rows_z = box.plan(_wb_results({
                 "pq-z": names("pq-z", "paylocity", B_PQ)}), name="worklist-pq-4.json")
             expect(rows_z, "pq-z", "HOLD", HELD_PQ)
+        # ...and merged away BEFORE the plan is given the doubt: no posting is
+        # asked for a company not on file, and the board the same posting's
+        # page names for the survivor is the board its doubt is kept against
+        with _WiringBox([co("pq-x2", "Pq Ex")], BOARDS_PQ) as box:
+            code, text, _wl, rows_b = box.plan(_wb_results({
+                "pq-x": dict(pq_posted("pq-x", P_PQ), name="Pq Ex"),
+                "pq-x2": pq_posted("pq-x2", P_PQ)}),
+                doubts={"pq-x": WORDS_PQ}, name="worklist-pq-6.json")
+            expect(rows_b, "pq-x2", "HOLD", HELD_PQ)
+            kept_b = sorted((v["id"], v.get("ref") or "-") for v in json.loads(
+                (box.tmp / wf.DOUBTS).read_text()).values())
+            if kept_b != [("pq-x", "-"), ("pq-x", B_PQ)]:
+                errors += fail(f"a doubt about a company merged away before the plan, whose site "
+                               f"only linked a posting, was not kept against the board the same "
+                               f"posting's page names for the survivor: {kept_b}")
         # ...and a doubts file that stops reading once the posting is asked stops
         # the plan there: no board is asked and no worklist is written
         with _WiringBox([co("pq-x", "Pq Ex")], BOARDS_PQ) as box:
