@@ -47702,6 +47702,12 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         has closed, one robots.txt refuses or one off Paylocity's host -> HOLD,
         each said; beside one that fails on the day -> SKIP unreadable, not
         filed
+      - a board their site names by its /List/ address, beside a posting whose
+        page names an /All/ board under the same tenant's name (no id of one
+        kind on both, so no id agrees) -> HOLD, both boards named: the
+        posting's board is a second board, never taken for the site's own
+      - a company out of scope, or already on a board, whose site links a
+        posting -> the posting is not asked; SKIP, said as not asked
     and in apply: a worklist edited to point a posting's row at another board,
     to give it another posting, to drop what check 1 says of the posting, or
     to have the posting's page name two boards, leaves the row alone; one
@@ -47724,7 +47730,11 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "held": board(0x7605, "Pp-Held-Inc"), "ref": board(0x7606, "Pp-Refusal-Inc"),
          "rec": board(0x7607, "Pp-Recorded-Inc"), "twin": board(0x7608, "Pp-Twin-Inc"),
          "mixed": board(0x7611, "Pp-Mixed-Inc"), "spell": board(0x7803, "Pp-Spell-Inc"),
-         "spell_x": board(0x7821, "Pp-Spell-X-Inc")}
+         "spell_x": board(0x7821, "Pp-Spell-X-Inc"),
+         # a board their site names by its /List/ id, and an /All/ board under
+         # the same tenant's name that a posting's page names
+         "list_site": "https://recruiting.paylocity.com/recruiting/jobs/List/7851/Pp-List-Inc",
+         "list_all": board(0x7851, "Pp-List-Inc")}
     P = {"one": D + "7601/Pp-One-Inc/Account-Executive",
          "two": D + "7602/Pp-Two-Inc/Sales-Engineer",
          "late_1": D + "7611/Pp-Late-LLC/Closed-Role", "late_2": D + "7612/Pp-Late-LLC/Open-Role",
@@ -47753,7 +47763,10 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "beside_refused": D + "7842/Pp-Beside-Refused/Engineer",
          "beside_flaky": D + "7843/Pp-Beside-Flaky/Engineer",
          "beside_off": "https://jobs.ppbesideoff.example/recruiting/jobs/Details/7844/Pp-Beside-Off/"
-                       "Engineer"}
+                       "Engineer",
+         "list": D + "7852/Pp-List-Inc/Engineer",
+         # a company out of scope, and one already on a board
+         "oos": D + "7861/Pp-Oos-Inc/Engineer", "wired": D + "7862/Pp-Wired-Inc/Engineer"}
     pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
                                 rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
              P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"],
@@ -47786,7 +47799,11 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
              P["beside_closed"]: _PP_CLOSED,
              P["beside_refused"]: ats.RobotsRefused(f"robots.txt asks crawlers not to read "
                                                     f"{P['beside_refused']}"),
-             P["beside_flaky"]: ats.AtsError(f"HTTP 503 for {P['beside_flaky']}")}
+             P["beside_flaky"]: ats.AtsError(f"HTTP 503 for {P['beside_flaky']}"),
+             P["list"]: _pp_page("Pp List - Engineer", B["list_all"]),
+             # each would name a board, were it asked
+             P["oos"]: _pp_page("Pp Oos - Engineer", board(0x7861, "Pp-Oos-Inc")),
+             P["wired"]: _pp_page("Pp Wired - Engineer", board(0x7862, "Pp-Wired-Inc"))}
     asked: list = []
 
     def posting_page(url, head=0):
@@ -47814,7 +47831,11 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                  co("pp-unusable-flaky", "Pp Unusable Flaky"),
                  co("pp-beside-closed", "Pp Beside Closed"),
                  co("pp-beside-refused", "Pp Beside Refused"),
-                 co("pp-beside-flaky", "Pp Beside Flaky"), co("pp-beside-off", "Pp Beside Off")]
+                 co("pp-beside-flaky", "Pp Beside Flaky"), co("pp-beside-off", "Pp Beside Off"),
+                 co("pp-list", "Pp List"),
+                 co("pp-oos", "Pp Oos", out_of_scope={"on": "2026-11-01", "by": "owner",
+                                                      "why": "not a SLED vendor"}),
+                 co("pp-wired", "Pp Wired", ats={"type": "greenhouse", "ref": "ppwiredold"})]
 
     def posted(cid, *refs, times=1):
         return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
@@ -47862,7 +47883,13 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                                                   f"{site('pp-as-board')}/careers")]),
         "pp-mixed": entry("pp-mixed", [cand("paylocity", B["mixed"], f"{site('pp-mixed')}/careers"),
                                        cand(wf.POSTING, P["mixed"], f"{site('pp-mixed')}/careers",
-                                            saw=P["mixed"])])})
+                                            saw=P["mixed"])]),
+        # their site names a board by its /List/ id, and links a posting whose
+        # page names an /All/ board under the same tenant's name
+        "pp-list": entry("pp-list", [cand("paylocity", B["list_site"], f"{site('pp-list')}/careers"),
+                                     cand(wf.POSTING, P["list"], f"{site('pp-list')}/careers",
+                                          saw=P["list"])]),
+        "pp-oos": posted("pp-oos", P["oos"]), "pp-wired": posted("pp-wired", P["wired"])})
     show = lambda key: wf.show("paylocity", B[key])        # noqa: E731
     BOARDS = {show("one"): (4, ["Pp One Inc"]), show("two_a"): (3, ["Pp Two Inc"]),
               show("two_b"): (2, ["Pp Two Inc"]), show("late"): (2, ["Pp Late LLC"]),
@@ -47871,7 +47898,10 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
               show("mixed"): (2, ["Pp Mixed Inc"]), show("spell"): (2, ["Pp Spell Inc"]),
               show("spell_x"): (2, ["Pp Spell X Inc"]),
               **{f"greenhouse/ppbeside{k}": (2, [f"Pp Beside {k.title()}"])
-                 for k in ("closed", "refused", "flaky", "off")}}
+                 for k in ("closed", "refused", "flaky", "off")},
+              # each board states their name: what holds pp-list is that its
+              # site's board and its posting's are two
+              show("list_site"): (2, ["Pp List Inc"]), show("list_all"): (2, ["Pp List Inc"])}
     files = {
         # a reader's doubt about pp-held's board, kept for another company
         "board_doubts.json": {"doubt-other@2026-11-20T09:00:00-05:00": {
@@ -48061,6 +48091,30 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
             if P["beside_off"] in asked:
                 errors += fail(f"pp-beside-off: a posting off recruiting.paylocity.com was asked: "
                                f"{asked}")
+            # A BOARD THEIR SITE NAMES GIVES THE POSTING NO SECOND SIGHTING ONLY
+            # BY AN ID THAT AGREES (review of the posting change, 2026-11-23:
+            # with the ids-agree test dropped, the site's /List/ board took the
+            # posting's /All/ board for itself under the tenant's name alone,
+            # and was WIRE - the second board never seen)
+            lst = row("pp-list")
+            if lst.get("action") != "HOLD" or "more than one board" not in _wb_words(lst) \
+                    or not all(B[k] in _wb_words(lst) for k in ("list_site", "list_all")):
+                errors += fail(f"pp-list: a /List/ board their site names, beside a posting whose "
+                               f"page names an /All/ board of the same tenant, is not held as two "
+                               f"boards, both named: {lst.get('action')} {lst.get('ref')} "
+                               f"{_wb_words(lst)[:400]!r}")
+            # A COMPANY OUT OF SCOPE, OR ALREADY ON A BOARD, IS NOT ASKED ABOUT
+            # (review of the posting change, 2026-11-23: with either condition
+            # dropped their postings were asked, and the SKIP still said not)
+            for cid, kind_, posting_ in (("pp-oos", "out-of-scope", P["oos"]),
+                                         ("pp-wired", "not-waiting", P["wired"])):
+                r = row(cid)
+                if r.get("action") != "SKIP" or r.get("kind") != kind_ or posting_ in asked \
+                        or "Paylocity postings were not asked" not in _wb_words(r):
+                    errors += fail(f"{cid}: a company {kind_} had the posting its site links "
+                                   f"asked, or is not SKIP {kind_} saying it was not: "
+                                   f"{r.get('action')} {r.get('kind')} "
+                                   f"{_wb_words(r)[:300]!r}, asked {posting_ in asked}")
             spelled = [row("pp-spell-x"), row("pp-spell-y")]
             if any(r.get("action") != "HOLD" or "the same board was found for" not in _wb_words(r)
                    for r in spelled):
