@@ -439,6 +439,9 @@ def proven(company: dict, said: dict) -> dict:
 #     paylocity        window.pageData ModuleTitle
 #     icims            the meta description's own sentence  (`n` is the first
 #                                                page only: n_is_partial)
+#     trinethire       the embed's <title>, 'Open Jobs | X'  (the list the
+#                                                reader reads, never paged: the
+#                                                whole board; 2026-11-24)
 #   (lever's page is read as far as the end of its <head> and no further;
 #   ashby and jazzhr also state the employer's website, which proven() holds
 #   to the one on file)
@@ -1341,6 +1344,30 @@ def _jobvite(ref, out: dict) -> None:
                        f"and a posting names another employer")
 
 
+def _trinethire(ref, out: dict) -> None:
+    # The list the reader reads - the board's embed, one request, never
+    # paged, so the whole board - states its employer in ONE place: its
+    # <title>, 'Open Jobs | {Company}', the name the employer registered with
+    # TriNet ('SoundThinking, Inc.', 'Green River Data Group Inc.', 'Codoxo',
+    # 'Polimorphic', measured 2026-11-23 and 11-24). Exactly that prefix is
+    # taken off, the rest unescaped. Nothing else is a name: not the slug in
+    # the ref (5502-fraudscope serves Codoxo, and a made-up slug serves the
+    # same board), not og:site_name (the vendor, 'TriNet Applicant
+    # Tracking'), not a heading. A page that is neither the list nor TriNet's
+    # own 'no open jobs' (measured on two empty boards, 2026-11-24: the same
+    # title, n 0) is an error (ats.trinethire_rows), never a board that names
+    # nobody; every hop is held to the board's own list (ats._trinet_read),
+    # and a page that shows a pager raises, so the list read is the whole
+    # board. Inside the door's plan this is the answer its read had
+    # (ats.trinethire_kept): one request a plan.
+    _url, name, rows = ats.trinethire_board(ref)
+    out["n"] = len(rows)
+    out["hosts"] = {ats.TRINETHIRE_HOST}
+    if not _state(out, [name], "trinethire embed's own <title> ('Open Jobs | ...'), stated by the "
+                               "board's whole list (it is never paged)"):
+        out["how"] = "trinethire embed's <title> names no employer a person could read"
+
+
 def _jvx_said(jobs: list, field: str) -> tuple:
     """(every distinct name a feed's rows give `field`, how many rows give it
     one): a value that is blank is none."""
@@ -1783,7 +1810,8 @@ _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "hirebridge": _hirebridge, "applicantpro": _applicantpro,
            "teamtailor": _teamtailor, "pinpoint": _pinpoint,
            "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite,
-           "jobvitefeed": _jobvitefeed, "successfactors": _successfactors}
+           "jobvitefeed": _jobvitefeed, "trinethire": _trinethire,
+           "successfactors": _successfactors}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.

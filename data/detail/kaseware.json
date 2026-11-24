@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Kaseware Achieves FedRAMP\u00ae Class D Certification to Support Mission-Critical Government Investigations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kaseware.com/post/kaseware-achieves-fedramp-class-d-high-certified-status"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kaseware.com/post/beyond-the-fence-line-data-center-threats"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "Best OIG Case Management Software Compared",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kaseware.com/post/best-oig-case-management-software-compared"
   }
  ],
  "profile": {

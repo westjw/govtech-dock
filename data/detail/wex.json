@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "What's the best coolant for my truck?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.wexinc.com/resources/blog/choosing-the-right-antifreeze-coolant-in-cold-weather/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "index-text",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.wexinc.com/resources/blog/2027-fsa-limits-commuter-limits/"
-  },
-  {
-   "date": "2026-11-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "The WEX Index\u00ae gives you benchmarks to see where your fleet stands, and where you may be leaving money on the table.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.wexinc.com/resources/wex-index/"
   }
  ]
 }

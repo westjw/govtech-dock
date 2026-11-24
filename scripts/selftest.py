@@ -6309,6 +6309,21 @@ _ID_JVX_FEED = ('<?xml version="1.0" encoding="UTF-8"?><result><job><id>oAcmeAfw
                 'courts.&lt;/p&gt;</description><company_x0020_name>Tyler Technologies'
                 '</company_x0020_name><hiring_x0020_manager>Pat Example</hiring_x0020_manager>'
                 '</job></result>')
+# A TriNet Hire board's list in the shape measured on 2026-11-23 and 11-24,
+# every name, slug, title and place in it made up: the ref's slug is a stale
+# one that names nobody (as Codoxo's 5502-fraudscope does), og:site_name and
+# the heading are the vendor's and the template's, and the employer is named
+# by the <title> alone, legal form and all
+_ID_TRINET = "https://app.trinethire.com/companies/41234-old-name/jobs/embed"
+_ID_TRINET_PAGE = (
+    '<!DOCTYPE html><html><!--[if IE 8]> <html lang="en" class="lt-ie9 ie8"> <![endif]-->'
+    '<head><meta charset="UTF-8"><title>Open Jobs | Acme Gov Systems, Inc.</title>'
+    '<meta property="og:site_name" content="TriNet Applicant Tracking"></head>'
+    "<body class='career_site embed_jobs'><div id=\"jobs\" class=\"container\">"
+    '<h1>Our Current Job Openings</h1><ul id="jobs-list"><li class="form-group">\n'
+    '  <a target="_blank" href="/companies/41234-acme-gov-systems-inc/jobs/99001-account-'
+    'executive">Account Executive</a>\n  <p><strong>Location:</strong> Austin, TX - Remote - '
+    'Full-time</p>\n</li>\n</ul></div></body></html>')
 # A SuccessFactors Career Site Builder search page and one of its postings, in
 # the shapes measured on Gainwell's board (2026-11-22): the row's title link is
 # written twice, once for a desk and once for a phone
@@ -6665,6 +6680,9 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
          ["Gigamon"], 1, JV_POST),
         ("jobvitefeed", "q6NaVfwI", "Tyler Technologies", {_ID_JVX: _ID_JVX_FEED}, None,
          ["Tyler Technologies"], 1, _ID_JVX),
+        # (the list's own <title>, never the stale slug the ref carries)
+        ("trinethire", "41234-old-name", "Acme Gov Systems", {_ID_TRINET: _ID_TRINET_PAGE}, None,
+         ["Acme Gov Systems, Inc."], 1, _ID_TRINET),
         # (stated as the board's own configuration names it, LLC and all, and
         # proven for the record that is named without it)
         ("successfactors", _ID_SF, "Gainwell Technologies",
@@ -7040,6 +7058,12 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
             ("gem: a board with no team name at all", "gem", "citydetect", None,
              json.dumps([{"data": {"oatsExternalJobPostings": {"jobPostings": []},
                                    "jobBoardExternal": {"id": "1"}}}])),
+            # THE SLUG IS NEVER A NAME: it spells the company here, and the
+            # list's <title> names nobody after 'Open Jobs | '
+            ("trinethire: a title naming nobody, beside a slug that spells the company",
+             "trinethire", "41234-acme-gov-systems",
+             {"https://app.trinethire.com/companies/41234-acme-gov-systems/jobs/embed":
+              _ID_TRINET_PAGE.replace("Open Jobs | Acme Gov Systems, Inc.", "Open Jobs | ")}, None),
             # a field of 5,000 characters is not a name, whatever it is called
             ("rippling: a companyName too long to be a name", "rippling", "codehs",
              {R_PAGE: _ID_RIPPLING.replace('"companyName":"CodeHS, Inc."',
@@ -7323,7 +7347,8 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
                                     else CM if kind == "comeet"
                                     else _ID_SF if kind == "successfactors"
                                     else "gigamon" if kind == "jobvite"
-                                    else "q6NaVfwI" if kind == "jobvitefeed" else "acme")
+                                    else "q6NaVfwI" if kind == "jobvitefeed"
+                                    else "41234-acme" if kind == "trinethire" else "acme")
                 if got["stated"]:
                     errors += fail(f"{kind}: a board that did not answer stated a name")
                 # a blip is "unreadable" - asked again another day - and is
@@ -7670,7 +7695,8 @@ def check_a_stated_name_does_not_loosen_the_older_doors() -> int:
                    "applicantpro", "comeet", "hirebridge", "jobvite", "pinpoint",
                    "teamtailor", "zohorecruit",                                  # 2026-11-21
                    "successfactors",                                             # 2026-11-22
-                   "jobvitefeed"}                                                # 2026-11-23
+                   "jobvitefeed",                                                # 2026-11-23
+                   "trinethire"}                                                 # 2026-11-24
     if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or set(new) != named_since:
         errors += fail(f"the types judge() is forgiving on have changed: "
                        f"{sorted(vb._ALWAYS_NAMED)}, and the ones it is strict on are "
@@ -15630,7 +15656,7 @@ def check_the_crawler_honours_robots_txt() -> int:
     # the page readers go through _page; a raw _get in one reads past robots.txt
     for name in ("_schema_posting", "fetch_paylocity", "_page_text", "fetch_rippling",
                  "_rippling_detail", "fetch_jazzhr", "fetch_icims", "fetch_html_titles",
-                 "fetch_gusto"):
+                 "fetch_gusto", "_trinet_read"):
         src = inspect.getsource(getattr(ats, name))
         if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
             errors += fail(f"ats.{name} reads a page without asking robots.txt")
@@ -22185,6 +22211,659 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
     return errors
 
 
+def check_trinethire_reads_its_list_and_names_it_once() -> int:
+    """A TriNet Hire board (app.trinethire.com), driven through ats.requests
+    with pages written here by hand - every company, number, slug, title and
+    place in them made up - and nothing that can reach a real host.
+
+    THE READ: one request, /companies/<ref>/jobs/embed, through the repo's
+    page helpers - robots.txt asked at every hop, the crawler's own name, the
+    host gate - every hop held to the board's own list (the same number, no
+    query) and refused before it is asked; never /jobs, the career page that
+    says it has no openings, and never a posting page, FETCH_DETAILS on or
+    off (robots.txt's content signals leave reading ad text there the
+    owner's call).
+    THE ROWS: one a job id (two postings of one title stay two; one listed
+    twice is one), the title unescaped, the url its href on app.trinethire.com
+    with ?source= dropped, the location the label before the LAST ' - ' where
+    what follows is an employment type, the whole text where it is not, and
+    the label whole where the type is blank (never read as a city); a slug
+    with '_' or none after the hyphen is a posting all the same; the board's
+    number compared as a number (041234 is 41234); no jd, no comp, no
+    posted, whatever dollar figure a title carries; the id keyed on the
+    number and the job id, so a rename keeps it.
+    A ZERO ONLY WHERE TRINET SAYS SO, in the shape measured on two empty
+    boards (2026-11-24): the 'Open Jobs | ' title, no jobs-list anywhere in the
+    raw page, and <div id="jobs"> holding the heading "There are currently no
+    open jobs available." alone, no posting named anywhere in the raw page.
+    An EMPTY jobs-list (TriNet draws none for an empty board), a posting in a
+    script, a template, a noscript or escaped JSON, other words, the words in
+    another division with no div#jobs, the words beside a table, a form, a
+    list, a division or a control of their own, the career page, a challenge
+    page, a row that does not read, a posting outside the list, a pager, a
+    list cut short, a page past the cap, a 404 and a 429 raise.
+    THE PROBE: the <title> after exactly 'Open Jobs | ', unescaped, read off
+    the page as a browser shows it (never a <title> commented out or an
+    SVG's), stated over the whole board, n 0 on an empty board; never the
+    slug, og:site_name or a heading.
+    THE FINDER: the number on app.trinethire.com, in an href or a src and in
+    any form, is a board, '<n>-<slug>' as written or the bare number ('<n>-',
+    a slug left empty, recorded as the bare number, and the reader reads it
+    so), keyed on the number, leading zeros off; other hosts and other paths
+    are none.
+    THE DOOR: a company whose own page embeds the board and whose board names
+    it is wired, the list asked ONCE for the read and the probe; one whose
+    board names somebody else is held; one number under two slugs on their
+    site is one board, wired; one their page links under a slug left empty is
+    found, read at the bare number, and wired.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import board_proposals as bp
+    import build_board as bb
+    import find_site_boards as fsb
+    import verify_boards as vb
+    errors = 0
+    N = "41234"
+    REF = N + "-old-name"                    # a stale slug: it names nobody
+    LIST = f"https://app.trinethire.com/companies/{REF}/jobs/embed"
+    CAREERS = f"https://app.trinethire.com/companies/{REF}/jobs"
+
+    def li(job, title, where, slug="acme-gov-systems-inc", tail=""):
+        return (f'<li class="form-group">\n  <a target="_blank" href="/companies/{N}-{slug}/jobs/'
+                f'{job}-x{tail}">{title}</a>\n  <p><strong>Location:</strong> {where}</p>\n</li>\n')
+
+    def page(*rows, title="Open Jobs | Acme Gov Systems, Inc.", head="", body="", ul='id="jobs-list"'):
+        return (f'<!DOCTYPE html><html><!--[if IE 8]> <html class="ie8"> <![endif]--><head>'
+                f'<title>{title}</title>{head}</head><body class=\'career_site embed_jobs\'>'
+                f'<div id="jobs" class="container"><h1>Our Current Job Openings</h1>'
+                f'<ul {ul}>' + "".join(rows) + f"</ul></div>{body}</body></html>")
+
+    def posting(job, slug="acme-gov-systems-inc"):
+        return f"https://app.trinethire.com/companies/{N}-{slug}/jobs/{job}-x"
+
+    MAIN = page(
+        li(99001, "Account Executive &amp; Partner Lead", "Austin, TX - Remote - Full-time",
+           tail="?source=Our+Job+Board"),
+        li(99002, "Account Executive", "Remote- Ohio preferred - Full-time"),
+        li(99003, "Account Executive", "Acme HQ - Contractor"),       # one title, another posting
+        li(99003, "Account Executive", "Acme HQ - Contractor"),       # the same posting, listed again
+        li(99004, "Field Engineer", "Remote - Full-time", slug="a-renamed-slug"),
+        li(99005, "Account Executive ($150K OTE)", " - Full-time"))   # a label left blank
+    WANT = [("Account Executive & Partner Lead", "Austin, TX - Remote", posting(99001)),
+            ("Account Executive", "Remote- Ohio preferred", posting(99002)),
+            ("Account Executive", "Acme HQ", posting(99003)),
+            ("Field Engineer", "Remote", posting(99004, "a-renamed-slug")),
+            ("Account Executive ($150K OTE)", "", posting(99005))]
+    CAREER_PAGE = ('<title>Careers at Acme Gov Systems, Inc.</title><body class="career_site index">'
+                   '<h5 class="text-center">Careers at Acme Gov Systems, Inc.</h5><section '
+                   'class="jobs-list"><table class="table job-list"><tr class="no-job"><td>'
+                   'Currently no openings available.</td></tr></table></section></body>')
+
+    sent, asked, gated = [], [], []
+    web: dict = {}
+    refusing = {"on": False}
+
+    class Resp:
+        def __init__(self, code, text="", headers=None):
+            self.status_code, self.headers, self.url = code, dict(headers or {}), ""
+            self.text, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
+
+        def close(self):
+            pass
+
+    def get(url, **kw):
+        sent.append((url, kw))
+        v = web.get(url)
+        if isinstance(v, Exception):
+            raise v
+        if isinstance(v, Resp):
+            return v
+        return Resp(404) if v is None else Resp(200, v, {"content-type": "text/html; charset=utf-8"})
+
+    def ask(url):
+        asked.append(url)
+        if refusing["on"]:
+            raise ats.RobotsRefused(f"robots.txt asks crawlers not to read {url}")
+
+    def serve(routes):
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web.update(routes if isinstance(routes, dict) else {LIST: routes})
+
+    def read(routes, ref=REF, details=False):
+        """(rows, the error) of one read of the board `ref`."""
+        serve(routes)
+        ats.FETCH_DETAILS = details
+        try:
+            return ats.plain_rows(ats.fetch_trinethire(ref)), None
+        except Exception as exc:                            # noqa: BLE001 - said by the pin
+            return None, exc
+
+    def says(routes, ref=REF):
+        serve(routes)
+        return vb.board_says("trinethire", ref)
+
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS,
+            dict(ats._HOST_NOT_BEFORE))
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+
+        # ---- the read: one request, the list, through the helpers -----------------------
+        for details in (False, True):
+            rows, exc = read(MAIN, details=details)
+            got = [(r["title"], r["location"], r["url"]) for r in rows or []]
+            if exc or got != WANT:
+                errors += fail(f"trinethire (FETCH_DETAILS {details}): the list did not read as one row "
+                               f"a posting, its title unescaped, its url on app.trinethire.com with no "
+                               f"query, its label before the last ' - ': {exc or got}")
+            elif any(r.get("jd") or r.get("comp") is not None or r.get("posted") for r in rows):
+                errors += fail(f"trinethire: a row carries an ad, pay or a date the list never "
+                               f"states: {[(r.get('jd'), r.get('comp'), r.get('posted')) for r in rows]}")
+            if [u for u, _kw in sent] != [LIST] or asked != [LIST] or gated != [LIST] \
+                    or any((kw.get("headers") or {}).get("User-Agent") != ats.UA["User-Agent"]
+                           or kw.get("allow_redirects") is not False for _u, kw in sent):
+                errors += fail(f"trinethire (FETCH_DETAILS {details}): one read asked {[u for u, _ in sent]} "
+                               f"(robots.txt of {asked}, the gate {len(gated)} times): it is one request, "
+                               f"the list, robots.txt asked, at the gate, under the crawler's own name, "
+                               f"redirects walked by ats.follow - never /jobs or a posting page")
+
+        # (a link written relative to the list is joined to the list, as a browser joins it)
+        rows, exc = read(page('<li class="form-group"><a href="99006-x">Grants Manager</a>'
+                              '<p><strong>Location:</strong> Remote - Full-time</p></li>'))
+        if exc or [r["url"] for r in rows or []] != [f"https://app.trinethire.com/companies/{REF}/jobs/99006-x"]:
+            errors += fail(f"trinethire: a link relative to the list was not joined to it: {exc or rows}")
+
+        # ---- a zero only where TriNet says so, in the shape measured on two empty -------
+        # boards (2026-11-24): the title, no jobs-list anywhere, and its words alone
+        def empty(title="Open Jobs | Acme Gov Systems, Inc.", inner=None, head="", body="",
+                  div='id="jobs" class="container"'):
+            inner = (f"<h3>{ats.TRINETHIRE_NONE}</h3>\n    <h4>Please look again soon.</h4>"
+                     if inner is None else inner)
+            return (f'<!DOCTYPE html><html><!--[if IE 8]> <html class="ie8"> <![endif]--><head>'
+                    f'<title>{title}</title>{head}</head><body class=\'career_site embed_jobs\'>'
+                    f'<div {div}>\n    {inner}\n</div>{body}</body></html>')
+
+        for body, why in ((empty(), "TriNet's own 'no open jobs', its list drawn nowhere"),
+                          (empty(title="Open Jobs | "), "the same, its title naming nobody"),
+                          (empty(body='<script>(function(){var p={r:"a5f8"};})();</script>'),
+                           "the same beside an inline script that names no posting")):
+            rows, exc = read(body)
+            if exc or rows != [] or [u for u, _kw in sent] != [LIST]:
+                errors += fail(f"trinethire: {why} was not read as a board with nothing open: {exc or rows}")
+        said = says(empty())
+        if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"] or said["n"] != 0 \
+                or said["failed"]:
+            errors += fail(f"trinethire probe: an empty board's own title was not stated, n 0: {said}")
+        a_row = li(99001, "Account Executive", "Remote - Full-time")
+        NOT_ZERO = [
+            (page(), "an EMPTY jobs-list (TriNet draws none for a board with nothing open)"),
+            (page(title="Open Jobs | "), "an empty jobs-list, its title naming nobody"),
+            (empty(body=f'<script>var jobs = [{{"url": "/companies/{N}-acme/jobs/99001-x"}}];</script>'),
+             "'no open jobs' beside a posting in a script"),
+            (empty(body=f'<script>{{"u":"\\/companies\\/{N}-acme\\/jobs\\/99001-x"}}</script>'),
+             "'no open jobs' beside a posting in escaped JSON"),
+            (empty(body=f"<template>{a_row}</template>"), "'no open jobs' beside a posting in a template"),
+            (empty(body=f'<noscript><ul id="jobs-list">{a_row}</ul></noscript>'),
+             "'no open jobs' beside a list in a noscript"),
+            (empty(body='<script>document.write(\'<ul id="jobs-list"></ul>\')</script>'),
+             "'no open jobs' beside a jobs-list a script writes"),
+            (empty(body=f'<!-- <a href="/companies/{N}-acme/jobs/99001-x">Account Executive</a> -->'),
+             "'no open jobs' beside a posting in a comment"),
+            (empty(body=f'<div><a href="/companies/{N}-acme/jobs/99009-x">Field Engineer</a></div>'),
+             "'no open jobs' beside a posting the page links"),
+            (empty(inner=f"<h3>{ats.TRINETHIRE_NONE}</h3><ul><li>{a_row}</li></ul>"),
+             "'no open jobs' over a list of its own"),
+            (empty(inner=f"<h3>{ats.TRINETHIRE_NONE}</h3><ul><li>Benefits</li></ul>"),
+             "'no open jobs' over a list naming no posting"),
+            (empty(inner=f'<h3>{ats.TRINETHIRE_NONE}</h3><p><a href="https://www.acme.example/">Our '
+                         f'site</a></p>'), "'no open jobs' beside a link of its own"),
+            (empty(inner="<h3>No jobs right now.</h3>"), "other words"),
+            (empty(inner=""), "no words at all"),
+            (empty(inner=f"<h1>Our Current Job Openings</h1><h3>{ats.TRINETHIRE_NONE}</h3>"),
+             "the words under another heading"),
+            (empty(body='<a href="?page=2" rel="next">Next</a>'), "'no open jobs' on a page with a pager"),
+            ('<html><head><title>Open Jobs | Acme Gov Systems, Inc.</title></head><body>Checking '
+             'your browser</body></html>', "the title over a page of neither shape")]
+        # THE WORDS COUNT ONLY IN TRINET'S OWN <div id="jobs">, AND ONLY ALONE
+        # THERE (blind review 13's verifier cut the id rule, and cut the barred
+        # tags to a, ul and li, and nothing failed): another division's words
+        # with no div#jobs on the page, and the words beside each barred tag
+        # of their own - one tag a case, none of them linking a posting
+        NOT_ZERO.append((empty(div='class="notice"'),
+                         "'no open jobs' in another division, no div#jobs on the page"))
+        for markup, why in (
+                ("<table><tr><td>Account Executive</td><td>Remote - Full-time</td></tr></table>",
+                 "a table of rows that link nothing"),
+                ('<form method="get" action="/search"><label>Keyword</label></form>', "a form"),
+                ('<ol class="openings"></ol>', "an ordered list of their own"),
+                ('<div class="row">Account Executive - Remote</div>', "a division of their own"),
+                ('<button type="submit">Search</button>', "a button"),
+                ('<input type="search" name="q">', "an input"),
+                ('<select name="where"><option>Remote</option></select>', "a select")):
+            NOT_ZERO.append((empty(inner=f"<h3>{ats.TRINETHIRE_NONE}</h3>{markup}"),
+                             f"'no open jobs' beside {why}"))
+        for body, why in NOT_ZERO:
+            rows, exc = read(body)
+            if not isinstance(exc, ats.AtsError) or rows is not None:
+                errors += fail(f"trinethire: {why} was read as {rows!r}, not refused as unreadable: {exc!r}")
+
+        # ---- one page of a longer list is never the whole board ------------------------------
+        two = (a_row, li(99002, "Field Engineer", "Remote - Full-time"))
+        for body, why in (
+                (page(*two, body='<ul class="pagination"><li><a href="?page=2">2</a></li></ul>'),
+                 "a pagination list"),
+                (page(*two, head='<link rel="next" href="?page=2">'), "rel=next in its head"),
+                (page(*two, body='<a href="?page=2" rel="next">Next</a>'), "a link rel=next"),
+                # (a pager by its rel or class alone, no address that says so)
+                (page(*two, body='<nav class="pagination"><span>1</span><span>2</span></nav>'),
+                 "a pagination class, no link in it"),
+                (page(*two, head=f'<link rel="next" href="/companies/{N}-acme/jobs/embed/p/2">'),
+                 "rel=next to an address with no query"),
+                (page(*two, body='<a rel="prev" href="#top">Back</a>'), "rel=prev"),
+                (page(*two, body=f'<a href="/companies/{N}-acme/jobs/embed?page=2">2</a>'),
+                 "its own list with a query"),
+                (page(*two, body=f'<a href="/companies/{N}/jobs?page=2">2</a>'), "its career page with a query"),
+                (page(*two, body=f'<a href="/companies/{N}-acme/jobs">View all 40 jobs</a>'), "'View all'"),
+                (page(*two, body='<button type="button">Load more</button>'), "'Load more'")):
+            rows, exc = read(body)
+            if not isinstance(exc, ats.AtsError) or rows is not None:
+                errors += fail(f"trinethire: a list beside {why} was read as the whole board: {rows or exc!r}")
+        # (a posting may be titled anything, and a link home or to the career page asks for nothing)
+        rows, exc = read(page(li(99001, "View All Records Manager", "Remote - Full-time"),
+                              body=f'<a href="https://www.acme.example/">Our site</a>'
+                                   f'<a href="/companies/{N}-acme/jobs">Our career page</a>'))
+        if exc or [r["title"] for r in rows or []] != ["View All Records Manager"]:
+            errors += fail(f"trinethire: a row's own title or a plain link was taken for a pager: {exc or rows}")
+
+        # ---- a slug is what Rails' parameterize leaves: '_' too, or nothing after the hyphen ---
+        for href, why in ((f"/companies/{N}-acme/jobs/99001-sales_rep-east", "an '_' in the job's slug"),
+                          (f"/companies/{N}-acme_gov/jobs/99001-ae", "an '_' in the company's slug"),
+                          (f"/companies/{N}-acme/jobs/99001-", "a job's slug left empty"),
+                          (f"/companies/{N}-/jobs/99001-ae", "a company's slug left empty")):
+            rows, exc = read(page(f'<li class="form-group"><a href="{href}">Account Executive</a>'
+                                  f'<p><strong>Location:</strong> Remote - Full-time</p></li>'))
+            if exc or [r["url"] for r in rows or []] != ["https://app.trinethire.com" + href]:
+                errors += fail(f"trinethire: a posting with {why} did not read: {exc or rows}")
+
+        # ---- the location: the type dropped only where it IS a type ----------------------------
+        for said_, want in (("Dayton, OH - Remote - Full-time", "Dayton, OH - Remote"),
+                            ("Dayton, OH - Remote - ", "Dayton, OH - Remote"),
+                            ("Acme HQ - ", "Acme HQ"), ("Acme HQ - Part-time", "Acme HQ"),
+                            ("Acme HQ - Temporary", "Acme HQ"), ("Acme HQ - Contractor", "Acme HQ"),
+                            ("Remote - US", "Remote - US"), ("Remote", "Remote"),
+                            (" - Full-time", ""), ("-", ""), ("", "")):
+            if ats.trinethire_location(said_) != want:
+                errors += fail(f"trinethire: the location {said_!r} read as "
+                               f"{ats.trinethire_location(said_)!r}, not {want!r}")
+        rows, exc = read(page(li(99001, "Account Executive", "Dayton, OH - Remote - "),
+                              li(99002, "Field Engineer", "Remote - US")))
+        if exc or [r["location"] for r in rows or []] != ["Dayton, OH - Remote", "Remote - US"]:
+            errors += fail(f"trinethire: a blank or absent type cost a label its words: {exc or rows}")
+
+        # ---- the id: keyed on the number and the job id, so a rename keeps it -----------------
+        def pid(url):
+            return bb.posting_id("acme", "Account Executive", url, "Remote")
+        T = "https://app.trinethire.com/companies/"
+        GH = "https://job-boards.greenhouse.io/acme/jobs/123"
+        if not (pid(T + f"{N}-old-name/jobs/99001-account-executive")
+                == pid(T + f"{N}-new-name/jobs/99001-account-executive")
+                == pid(T + f"{N}/jobs/99001") == pid(T + f"0{N}-x/jobs/099001-ae/")) \
+                or pid(T + f"{N}-new-name/jobs/99002-account-executive") == pid(T + f"{N}-x/jobs/99001-ae") \
+                or pid(T + f"51234-x/jobs/99001-ae") == pid(T + f"{N}-x/jobs/99001-ae") \
+                or pid(GH) != "acme::Account Executive::" + hashlib.blake2s(
+                    f"{GH}\nRemote".encode(), digest_size=4).hexdigest():
+            errors += fail("trinethire: a posting's id moved with its company's slug, or two postings "
+                           "share one, or another board's id changed")
+        rows_ = [li(99001, "Account Executive", "Remote - Full-time")]
+        UNREAD = [
+            (CAREER_PAGE, "the career page (/jobs), which says it has no openings"),
+            (page(*rows_).replace('id="jobs-list"', 'id="job-list"'), "a page with no jobs-list"),
+            (page(*rows_, title="Careers at Acme Gov Systems, Inc."), "a page whose title is not 'Open Jobs | '"),
+            (page(*rows_, title="Open jobs | Acme Gov Systems, Inc."), "'Open jobs | ' in another case"),
+            ('<html><head><title>Just a moment...</title></head><body>Checking your browser'
+             '</body></html>', "a challenge page"),
+            ("", "an empty answer"), ("<html>", "a page that is not one"),
+            (page().replace("</ul>", ""), "a list cut short"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace("<a ", "<span "),
+                  ), "a row with no link"),
+            (page(li(99001, "", "Remote - Full-time")), "a row with no title"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace(
+                f"/companies/{N}-", "/companies/51234-")), "a row that is another board's posting"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace(
+                'href="/companies', 'href="https://evil.example/companies')), "a row whose link is off the host"),
+            (page(li(99001, "Account Executive", "Remote - Full-time").replace(
+                "/jobs/99001-x", "/jobs")), "a row linking the career page, not a posting"),
+            (page(body=f'<a href="/companies/{N}-acme/jobs/99009-x">Account Executive</a>'),
+             "an empty list beside a posting the page links"),
+            (page(*rows_, body=f'<div><a href="/companies/{N}-acme/jobs/99009-x">Field Engineer</a></div>'),
+             "a posting the page links outside its list"),
+            (page('<li><ul><li class="form-group"></li></ul></li>'), "a list inside the list"),
+            (page(*rows_) + "<!--" + " " * ats.TRINETHIRE_PAGE_MAX + "-->", "a page past the cap"),
+            (Resp(404), "a number that is gone (404)"), (Resp(403), "a refusal (403)"),
+            (Resp(503), "a server error (503)")]
+        for body, why in UNREAD:
+            rows, exc = read(body)
+            if not isinstance(exc, ats.AtsError) or rows is not None:
+                errors += fail(f"trinethire: {why} was read as {rows!r}, not refused as unreadable: {exc!r}")
+        rows, exc = read(Resp(429, headers={"Retry-After": "0"}))
+        if not isinstance(exc, ats.RateLimited):
+            errors += fail(f"trinethire: a 429 was not raised as RateLimited: {exc!r}")
+        ats._HOST_NOT_BEFORE.pop("app.trinethire.com", None)
+
+        # ---- every hop held to the board's own list, refused before it is asked ----------
+        OTHER = "https://app.trinethire.com/companies/51234-other-co/jobs/embed"
+        MOVED = f"https://app.trinethire.com/companies/{N}-acme-gov-systems-inc/jobs/embed"
+        for to, why in ((OTHER, "another employer's list on the same host"),
+                        (CAREERS, "the career page"),
+                        (LIST + "?page=2", "its own list with a query"),
+                        (f"https://app.trinethire.com/companies/{N}-x/jobs/99001-x", "a posting"),
+                        ("https://www.trinethire.example/companies/41234-x/jobs/embed", "another host"),
+                        (LIST.replace("https:", "http:"), "its own list over http")):
+            rows, exc = read({LIST: Resp(302, headers={"Location": to}), to: MAIN})
+            if rows is not None or not isinstance(exc, ats.AtsError) \
+                    or any(u == to for u, _kw in sent) or to in asked:
+                errors += fail(f"trinethire: a redirect to {why} was asked ({[u for u, _ in sent]}, "
+                               f"robots.txt of {asked}) or read: {rows or exc!r}")
+        rows, exc = read({LIST: Resp(301, headers={"Location": MOVED}), MOVED: MAIN})
+        if exc or len(rows or []) != 5 or MOVED not in asked:
+            errors += fail(f"trinethire: a board that moved to a new slug of its own number was not "
+                           f"read there, robots.txt asked at the hop: {exc or rows}")
+        # THE BOARD IS ITS NUMBER, AS A NUMBER: a ref written with a leading
+        # zero reads its list, whose rows TriNet writes without one, and may
+        # move to a slug of the same number; an '_' in a slug moves nothing
+        ZREF = "0" + REF
+        ZLIST = f"https://app.trinethire.com/companies/{ZREF}/jobs/embed"
+        UNDER = f"https://app.trinethire.com/companies/{N}-acme_gov/jobs/embed"
+        for routes, why in (({ZLIST: MAIN}, "read where it was written"),
+                            ({ZLIST: Resp(301, headers={"Location": MOVED}), MOVED: MAIN},
+                             "moved to a slug of its own number"),
+                            ({ZLIST: Resp(301, headers={"Location": UNDER}), UNDER: MAIN},
+                             "moved to a slug with an '_'")):
+            rows, exc = read(routes, ref=ZREF)
+            if exc or len(rows or []) != 5 or [u for u, _ in sent][:1] != [ZLIST]:
+                errors += fail(f"trinethire: the ref {ZREF!r} was not {why}: {exc or rows}")
+        refusing["on"] = True
+        rows, exc = read(MAIN)
+        refusing["on"] = False
+        if not isinstance(exc, ats.RobotsRefused) or sent:
+            errors += fail(f"trinethire: a list robots.txt closes was asked ({sent}) or read: {rows or exc!r}")
+
+        # ---- the ref: '<number>-<slug>' or the number, nothing else asked ----------------
+        # (a slug left empty, '<number>-', is the number alone, as the finder
+        # records it: blind review 13's verifier found it refused)
+        for ref, url in ((N, f"https://app.trinethire.com/companies/{N}/jobs/embed"),
+                         (N + "-Acme-Gov", f"https://app.trinethire.com/companies/{N}-Acme-Gov/jobs/embed"),
+                         (N + "-", f"https://app.trinethire.com/companies/{N}/jobs/embed")):
+            rows, exc = read({url: MAIN}, ref=ref)
+            if exc or len(rows or []) != 5 or [u for u, _ in sent] != [url]:
+                errors += fail(f"trinethire: the ref {ref!r} was not read at {url}: {exc or [u for u, _ in sent]}")
+        try:
+            if ats.trinethire_ref(N + "-") != (N, N) or ats.trinethire_ref(f"0{N}-") != (f"0{N}", f"0{N}"):
+                errors += fail(f"trinethire: a slug left empty is not the bare number: "
+                               f"{ats.trinethire_ref(N + '-')} {ats.trinethire_ref(f'0{N}-')}")
+        except ats.AtsError as exc:
+            errors += fail(f"trinethire: a slug left empty ({N}-) is refused as a ref: {exc}")
+        for ref in ("acme", "", None, 7.5, ["41234"], f"https://app.trinethire.com/companies/{REF}/jobs",
+                    f"{N}/../51234", f"{N}-x/jobs", f"{N}-x?y=1", f"{N}-x#y", f"-{N}", f"{N}_x",
+                    f"{N}-x.y", f"{N}-/jobs", "-", "1" * 13):
+            rows, exc = read(MAIN, ref=ref)
+            if not isinstance(exc, ats.AtsError) or sent:
+                errors += fail(f"trinethire: {ref!r} was taken as a board's ref ({sent}): {rows or exc!r}")
+
+        # ---- the probe: the list's <title>, and nothing else ------------------------------
+        said = says(MAIN)
+        if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"] or said["n"] != 5 \
+                or said["hosts"] != {"app.trinethire.com"} or said["failed"] \
+                or [u for u, _ in sent] != [LIST] or asked != [LIST]:
+            errors += fail(f"trinethire probe: the list's <title> was not read as its whole board's one "
+                           f"statement in one request: {said} (asked {[u for u, _ in sent]})")
+        if not vb.proven({"name": "Acme Gov Systems"}, said)["ok"] \
+                or vb.proven({"name": "Old Name"}, said)["ok"]:
+            errors += fail("trinethire probe: the stated name was not proven for its company, or the "
+                           "ref's slug passed for one")
+        for title, want, why in (
+                ("Open Jobs | Smith &amp; Wesson Gov", ["Smith & Wesson Gov"], "an escaped name"),
+                ("Open Jobs |   Acme   Gov  ", ["Acme Gov"], "a name with stray spaces"),
+                ("Open Jobs | Open Jobs | Acme", ["Open Jobs | Acme"], "the prefix taken off once")):
+            said = says(page(li(99001, "Account Executive", "Remote - Full-time"), title=title))
+            if said["names"] != want or not said["stated"]:
+                errors += fail(f"trinethire probe, {why}: stated {said['names']}, not {want}")
+        # THE PAGE'S OWN <title>, as a browser shows it: one commented out, or
+        # an SVG's, before it is no statement of anybody's
+        for fake, why in (("<!-- <title>Open Jobs | Other Holdings LLC</title> -->", "commented out"),
+                          ("<svg><title>Open Jobs | Other Holdings LLC</title></svg>", "an SVG's")):
+            for shape, body in (("a list", page(li(99001, "Account Executive", "Remote - Full-time"))),
+                                ("an empty board", empty())):
+                said = says(body.replace("<head>", "<head>" + fake, 1))
+                if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"]:
+                    errors += fail(f"trinethire probe: a <title> {why} before the page's own was read "
+                                   f"off {shape}: {said['names']} ({said.get('failed')})")
+        # THE SLUG IS NEVER A NAME, and nor is anything but the <title>: the
+        # vendor's og:site_name, the template's heading, a logo's alt text
+        quiet = page(li(99001, "Account Executive", "Remote - Full-time"), title="Open Jobs | ",
+                     head='<meta property="og:site_name" content="Acme Gov Systems">',
+                     body='<h5>Careers at Acme Gov Systems</h5><img alt="Acme Gov Systems">')
+        said = says({f"https://app.trinethire.com/companies/{N}-acme-gov-systems/jobs/embed": quiet},
+                    ref=f"{N}-acme-gov-systems")
+        if said["stated"] or said["names"] or said["failed"] or said["n"] != 1 \
+                or vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+            errors += fail(f"trinethire probe: a list whose title names nobody stated a name from its "
+                           f"slug, og:site_name or a heading, or was proven: {said}")
+        for body, kind_, why in ((CAREER_PAGE, "unreadable", "the career page"),
+                                 (page(title="Careers at Acme Gov Systems, Inc."), "unreadable",
+                                  "a list whose title is not 'Open Jobs | '"),
+                                 (Resp(404), "gone", "a number that is gone")):
+            said = says({LIST: body})
+            if said["failed"] != kind_ or said["names"] or said["stated"] or said["transient"]:
+                errors += fail(f"trinethire probe: {why} was not '{kind_}', naming nobody: {said}")
+
+        # ---- the public link: the list, never the career page -----------------------------
+        for ref, want in ((REF, LIST), (N, f"https://app.trinethire.com/companies/{N}/jobs/embed"),
+                          (N + "-", f"https://app.trinethire.com/companies/{N}/jobs/embed"),
+                          (CAREERS, "https://acme.example"), ("acme", "https://acme.example")):
+            if bb.board_url({"ats": {"type": "trinethire", "ref": ref},
+                             "website": "https://acme.example"}) != want:
+                errors += fail(f"trinethire: the public link for {ref!r} is not {want} (the board's own "
+                               f"list, never /jobs, which says it has no openings; else their website)")
+
+        # ---- TriNet's career page is never read, by any reader --------------------------------
+        # (three records on file are type html at it, and read it as "None found")
+        import refresh
+        HOME = "https://www.acmegov.example/careers"
+        for what, call in (("the careers-page reader", lambda: ats.fetch({"type": "html", "ref": CAREERS})),
+                           ("the titles reader", lambda: ats.fetch_html_titles(CAREERS + "/")),
+                           ("the render fallback's first step", lambda: ats.resolve(CAREERS + "?x=1"))):
+            serve({CAREERS: CAREER_PAGE, CAREERS + "/": CAREER_PAGE, CAREERS + "?x=1": CAREER_PAGE})
+            try:
+                call()
+                errors += fail(f"trinethire: {what} read TriNet's career page")
+            except ats.AtsError:
+                if sent or asked:
+                    errors += fail(f"trinethire: {what} asked TriNet's career page ({[u for u, _ in sent]}, "
+                                   f"robots.txt of {asked}) before refusing it")
+        serve({HOME: Resp(302, headers={"Location": CAREERS}), CAREERS: CAREER_PAGE})
+        try:
+            ats.fetch({"type": "html", "ref": HOME})
+            errors += fail("trinethire: a careers page that redirects to TriNet's career page was read there")
+        except ats.AtsError:
+            if CAREERS in [u for u, _ in sent] or CAREERS in asked:
+                errors += fail(f"trinethire: the hop to TriNet's career page was asked: {sent} {asked}")
+        serve({CAREERS: CAREER_PAGE})
+        got = refresh.check_company({"id": "acme-gov-systems", "name": "Acme Gov Systems",
+                                     "ats": {"type": "html", "ref": CAREERS}})
+        if got.get("status") != "Unknown" or got.get("roles") or sent:
+            errors += fail(f"trinethire: a careers page on file at TriNet's career page was not Unknown "
+                           f"(it says no openings whatever its list carries): {got}")
+        for ref, want in ((CAREERS, LIST), (CAREERS + "/?x=1", LIST), (HOME, HOME)):
+            if bb.board_url({"ats": {"type": "html", "ref": ref}, "website": "https://acme.example"}) != want:
+                errors += fail(f"trinethire: the public link of a careers page on file at {ref} is not {want}")
+
+        # ---- the door: wired on both checks, held when the board names somebody else -----
+        import add_company
+        real = (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+                ats._get, ats._page)
+        A_LIST = "https://app.trinethire.com/companies/41234-old-name/jobs/embed"
+        B_LIST = "https://app.trinethire.com/companies/51234-beta/jobs/embed"
+        # (one number their site writes under two slugs: a frame and a link)
+        D_OLD = "https://app.trinethire.com/companies/61234-old-slug/jobs/embed"
+        D_NEW = "https://app.trinethire.com/companies/61234-delta-gov/jobs/embed"
+        D_PAGE = page(li(99201, "Account Executive", "Remote - Full-time").replace(
+            f"/companies/{N}-", "/companies/61234-"), title="Open Jobs | Delta Gov")
+        # (their own page links the list under a slug left empty, '71234-': the
+        # door is handed what the finder itself records of that page - it had
+        # filed the address as naming no board, and the door then said their
+        # site named none: blind review 13's verifier, 2026-11-24)
+        E_LIST = "https://app.trinethire.com/companies/71234/jobs/embed"
+        E_PAGE = page(li(99301, "Account Executive", "Remote - Full-time", slug="").replace(
+            f"/companies/{N}-", "/companies/71234-"), title="Open Jobs | Echo Gov")
+        e_site = f"{_wb_site('echo-gov')}/careers"
+        e_found, e_rest = fsb.sightings('<a href="https://app.trinethire.com/companies/71234-/jobs">Open '
+                                        'roles</a>', e_site, _wb_site("echo-gov"))
+        e_entry = _wb_entry("echo-gov", [_wb_cand(f["type"], f["ref"], e_site, element=f["element"],
+                                                  times=f["times"]) for f in e_found],
+                            elsewhere=[{"vendor": r["vendor"], "saw": r["saw"], "page": e_site,
+                                        "element": r["element"], "times": r["times"]} for r in e_rest])
+        serve({A_LIST: MAIN, B_LIST: page(li(99101, "Account Executive", "Remote - Full-time").replace(
+            f"/companies/{N}-", "/companies/51234-"), title="Open Jobs | Gamma Holdings LLC"),
+            D_OLD: D_PAGE, D_NEW: D_PAGE, E_LIST: E_PAGE})
+        d_site = f"{_wb_site('delta-gov')}/careers"
+        with _WiringBox([_wb_co("acme-gov-systems", "Acme Gov Systems"), _wb_co("beta-co", "Beta Co"),
+                         _wb_co("delta-gov", "Delta Gov"), _wb_co("echo-gov", "Echo Gov")], {}) as box, \
+                contextlib.redirect_stderr(io.StringIO()):
+            (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+             ats._get, ats._page) = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({
+                "acme-gov-systems": _wb_one("acme-gov-systems", "trinethire", "41234-old-name",
+                                            element="iframe"),
+                "beta-co": _wb_one("beta-co", "trinethire", "51234-beta", element="iframe"),
+                "delta-gov": _wb_entry("delta-gov", [
+                    _wb_cand("trinethire", "61234-old-slug", d_site, element="iframe"),
+                    _wb_cand("trinethire", "61234-delta-gov", d_site, element="href")]),
+                "echo-gov": e_entry}))
+        a_row, b_row, d_row, e_row = ((rows_ or {}).get(c) or {} for c in (
+            "acme-gov-systems", "beta-co", "delta-gov", "echo-gov"))
+        e_got = [(f["type"], f["ref"]) for f in e_found]
+        if e_got != [("trinethire", "71234")] or e_rest or e_row.get("action") != "WIRE" \
+                or (e_row.get("type"), e_row.get("ref")) != ("trinethire", "71234"):
+            errors += fail(f"trinethire door: a board their own page links under a slug left empty, "
+                           f"naming them, was not found as the bare number and wired so: finder "
+                           f"{e_got}, elsewhere {[r['vendor'] for r in e_rest]}; door "
+                           f"{e_row.get('action')} {e_row.get('ref')!r} ({_wb_words(e_row)[:200]!r})")
+        if a_row.get("action") != "WIRE":
+            errors += fail(f"trinethire door: a board their own page embeds, naming them, was not "
+                           f"wired: {a_row.get('action')} ({_wb_words(a_row)[:200]!r})")
+        if b_row.get("action") != "HOLD" or "Gamma Holdings" not in _wb_words(b_row):
+            errors += fail(f"trinethire door: a board naming somebody else was not held for the owner "
+                           f"with both names: {b_row.get('action')} ({_wb_words(b_row)[:200]!r})")
+        # ONE NUMBER IS ONE BOARD, however their site spells it
+        if d_row.get("action") != "WIRE" or "more than one way" in _wb_words(d_row):
+            errors += fail(f"trinethire door: one number their site writes under two slugs was not "
+                           f"wired as one board: {d_row.get('action')} ({_wb_words(d_row)[:200]!r})")
+        # ONE REQUEST A LIST A PLAN: the read and the probe take one answer
+        asks = sorted(u for u, _kw in sent)
+        if asks not in (sorted([A_LIST, B_LIST, D_OLD, E_LIST]),
+                        sorted([A_LIST, B_LIST, D_NEW, E_LIST])) or sorted(asked) != asks:
+            errors += fail(f"trinethire door: the plan asked {asks} (robots.txt of {sorted(asked)}), not "
+                           f"each list once")
+        # (only a list read whole is kept, only inside the block, and outside
+        # it every read asks: a 503, then the list, then the list again is two
+        # requests; two reads after it are two more)
+        serve({LIST: Resp(503)})
+        outcomes = []
+        with ats.trinethire_kept():
+            for body in (Resp(503), MAIN, Resp(503)):
+                web[LIST] = body
+                try:
+                    outcomes.append(len(ats.fetch_trinethire(REF)))
+                except ats.AtsError:
+                    outcomes.append("error")
+            kept_asks = len(sent)
+        web[LIST] = MAIN
+        outcomes += [len(ats.fetch_trinethire(REF)), len(ats.fetch_trinethire(REF))]
+        if outcomes != ["error", 5, 5, 5, 5] or kept_asks != 2 or len(sent) != 4 \
+                or ats._TRINET_KEPT is not None:
+            errors += fail(f"trinethire: a list was kept that failed or outside a plan, or not kept "
+                           f"inside one ({outcomes}; {kept_asks} then {len(sent)} requests)")
+    finally:
+        (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS) = held[:5]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[5])
+
+    # ---- the finder: the number on app.trinethire.com, in any form -----------------------
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+    FRAME = f'<iframe src="https://app.trinethire.com/companies/{REF}/jobs/embed"></iframe>'
+    for markup, want, why in (
+            (FRAME, [("trinethire", REF, "iframe")], "the list their page frames"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">Jobs</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "a link to the career page"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs/99001-ae?source=x">AE</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "a link to a posting"),
+            (f'<a href="https://app.trinethire.com/companies/{N}/jobs">Jobs</a>',
+             [("trinethire", N, "href")], "the bare number"),
+            # (a slug left empty is the bare number, as the reader reads it -
+            # never a form of TriNet's naming no board: blind review 13's verifier)
+            (f'<a href="https://app.trinethire.com/companies/{N}-/jobs">Jobs</a>',
+             [("trinethire", N, "href")], "a link under a slug left empty"),
+            (f'<iframe src="https://app.trinethire.com/companies/{N}-/jobs/embed"></iframe>',
+             [("trinethire", N, "iframe")], "the list framed under a slug left empty"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-/jobs">a</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">b</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs/99001-ae">c</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "one number under an empty slug and a named one"),
+            (f'<script src="https://app.trinethire.com/companies/{N}-acme-gov/jobs/embed"></script>',
+             [("trinethire", f"{N}-acme-gov", "script")], "a script's src"),
+            (f'<a href="https://app.trinethire.com/companies/{REF}/jobs">a</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">b</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs/99001-ae">c</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "one number under two slugs: one board"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">a</a>'
+             f'<a href="https://app.trinethire.com/companies/51234-beta/jobs">b</a>',
+             [("trinethire", f"{N}-acme-gov", "href"), ("trinethire", "51234-beta", "href")],
+             "two numbers: two boards"),
+            # (keyed on the number with its leading zeros off: one board)
+            (f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">a</a>'
+             f'<a href="https://app.trinethire.com/companies/0{N}-acme-gov/jobs">b</a>'
+             f'<a href="https://app.trinethire.com/companies/0{N}-acme-gov/jobs/99001-ae">c</a>',
+             [("trinethire", f"0{N}-acme-gov", "href")], "one number with and without a leading zero")):
+        found, rest = fsb.sightings(markup, here, home)
+        got = sorted((f["type"], f["ref"], f["element"]) for f in found)
+        if got != sorted(want) or rest:
+            errors += fail(f"finder, {why}: {got}, not {sorted(want)}, or a board's own address was "
+                           f"filed besides as a form naming none: {[r['vendor'] for r in rest]}")
+    for markup, why in (
+            ('<a href="https://evilapp.trinethire.com/companies/41234-x/jobs">x</a>', "a host ending in it"),
+            ('<a href="https://app.trinethire.com.evil.example/companies/41234-x/jobs">x</a>', "a host under another"),
+            ('<a href="https://x.example/companies/41234-acme/jobs/embed">x</a>', "another host's same path"),
+            ('<a href="https://app.trinethire.com/assets/companies/41234-x/jobs">x</a>', "another path"),
+            ('<a href="https://app.trinethire.com/companies/41234abc/jobs">x</a>', "a number run into letters"),
+            ('<a href="https://app.trinethire.com/companies/">x</a>', "no number"),
+            ('<a href="https://app.trinethire.com/companies/1234567890123-x/jobs">x</a>', "13 digits"),
+            ('<a href="https://www.trinethire.com/">TriNet Hire</a>', "TriNet's own site")):
+        found, _rest = fsb.sightings(markup, here, home)
+        if found:
+            errors += fail(f"finder: {why} was read as a board: {[(f['type'], f['ref']) for f in found]}")
+    found, rest = fsb.sightings(FRAME + '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>',
+                                here, home)
+    alone, rest_alone = fsb.sightings('<a href="https://www.trinethire.com/">TriNet Hire</a>', here, home)
+    if [f["ref"] for f in found] != [REF] or rest or [r["vendor"] for r in rest_alone] != ["trinethire-other"] \
+            or "trinethire" in {v for v, _h, _rx in fsb.ELSEWHERE}:
+        errors += fail(f"finder: TriNet's own site beside their board is not dropped, or alone is not "
+                       f"trinethire-other (a platform we read, naming no board): {rest} {rest_alone}")
+    if bp.board_key("trinethire", REF) != bp.board_key("trinethire", f"{N}-acme-gov") \
+            or bp.board_key("trinethire", N) != bp.board_key("trinethire", REF) \
+            or bp.board_key("trinethire", f"{N}-") != bp.board_key("trinethire", REF) \
+            or bp.board_key("trinethire", f"0{N}-acme-gov") != bp.board_key("trinethire", REF) \
+            or bp.board_key("trinethire", f"00{N}") != bp.board_key("trinethire", REF) \
+            or bp.board_key("trinethire", "51234-acme-gov") == bp.board_key("trinethire", f"{N}-acme-gov") \
+            or bp.board_key("trinethire", f"{N}0-acme-gov") == bp.board_key("trinethire", REF):
+        errors += fail("board_key: one TriNet Hire number under two slugs, or with a leading zero, is "
+                       "not one board, or two numbers are")
+    dj = (ROOT / "scripts" / "discover_js.py").read_text()
+    if re.search(r"\(\s*[\"']trinet[\"']\s*,", dj) or '("trinethire", r"app\\.trinethire\\.com/companies/' not in dj:
+        errors += fail("discover_js labels TriNet Hire otherwise than 'trinethire', the type's one name")
+    return errors
+
+
 def check_successfactors_reads_its_career_site() -> int:
     """SAP SuccessFactors' Career Site Builder (2026-11-22), driven through
     ats.requests so every hop and every robots.txt ask is seen. Fixtures are
@@ -25562,7 +26241,9 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
             ("teamtailor", '<a href="https://acme.teamtailor.com/jobs">Jobs</a>',
              '<link rel="stylesheet" href="https://assets-aws.teamtailor-cdn.com/x.css">'),
             ("zohorecruit", '<a href="https://acmegov.zohorecruit.com/jobs/Careers">Jobs</a>',
-             '<a href="https://www.zohorecruit.com/">Powered by Zoho Recruit</a>')):
+             '<a href="https://www.zohorecruit.com/">Powered by Zoho Recruit</a>'),
+            ("trinethire", '<iframe src="https://app.trinethire.com/companies/41234-acme/jobs/embed"></iframe>',
+             '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>')):
         found, rest = fsb.sightings(board + furniture, here, home)
         if [f["type"] for f in found] != [kind] or rest:
             errors += fail(f"finder: {kind}'s own furniture beside its board came out as "
@@ -25660,6 +26341,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                     "rippling": "acme", "smartrecruiters": "Acme", "icims": "careers-acme",
                     "hirebridge": "7724", "applicantpro": "acme.applicantpro.com",
                     "pinpoint": "acme", "jobvite": "acme", "jobvitefeed": "qAcmefwX",
+                    "trinethire": "41234-acme-gov",
                     "teamtailor": "https://acme.teamtailor.com",
                     "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
                     "comeet": "https://www.comeet.com/jobs/acme/F7.009",
@@ -25675,6 +26357,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         "applicantpro": "https://acme.applicantpro.com/jobs/", "pinpoint": "https://acme.pinpointhq.com",
         "jobvite": "https://jobs.jobvite.com/acme/jobs", "teamtailor": "https://acme.teamtailor.com",
         "jobvitefeed": "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX",
+        "trinethire": "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009",
         "gusto": "https://jobs.gusto.com/boards/acme-c850a9b3", "gem": "https://jobs.gem.com/acme",
@@ -32520,6 +33203,26 @@ SITE_BOARD_FORMS = [
      "comeet", "38.005|0123456789ABCDEF0123456789ABCD",
      "https://www.comeet.co/careers-api/2.0/company/38.005/positions"
      "?token=0123456789ABCDEF0123456789ABCD&details=true"),
+    # A TRINET HIRE BOARD by its company number on app.trinethire.com, in any
+    # form, and its list (/jobs/embed) is what is asked whatever the form: the
+    # list a careers page frames (Codoxo's and SoundThinking's iframes), the
+    # career page (Green River's link), a posting, the bare number (seen
+    # 2026-11-23 and 11-24; the numbers and slugs here are made up)
+    ('<iframe src="https://app.trinethire.com/companies/41234-old-name/jobs/embed" '
+     'style="border:0px;height:750px;width:100%;"></iframe>',
+     "trinethire", "41234-old-name", "https://app.trinethire.com/companies/41234-old-name/jobs/embed"),
+    ('<a href="https://app.trinethire.com/companies/41234-acme-gov/jobs">Careers</a>',
+     "trinethire", "41234-acme-gov", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
+    ('<a href="https://app.trinethire.com/companies/41234-acme-gov/jobs/99001-account-executive'
+     '?source=Our+Job+Board">Account Executive</a>',
+     "trinethire", "41234-acme-gov", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
+    ('<a href="https://app.trinethire.com/companies/41234/jobs">Careers</a>',
+     "trinethire", "41234", "https://app.trinethire.com/companies/41234/jobs/embed"),
+    # (a slug left empty - what Rails' parameterize leaves of a name with no
+    # ASCII letter or digit - is the bare number: blind review 13's verifier
+    # found it filed as a form naming no board)
+    ('<iframe src="https://app.trinethire.com/companies/41234-/jobs/embed"></iframe>',
+     "trinethire", "41234", "https://app.trinethire.com/companies/41234/jobs/embed"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -32547,6 +33250,9 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://jobs.gusto.com/postings/acme-account-executive-0f3c">AE</a>',  # a posting, no board id
     '<a href="https://recruiting.paylocity.com/Recruiting/Jobs/Details/123456">AE</a>',
     '<a href="https://ats.rippling.com/">Rippling</a>',
+    '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>',   # the vendor's own site
+    '<a href="https://app.trinethire.com/companies/41234abc/jobs">x</a>',  # no company number
+    '<a href="https://app.trinethire.com/login">Sign in</a>',             # no company at all
     "We cut greenhouse gas emissions for cities and jobs.lever.co is a job site.",
     # WHAT A COMPANY TOOK DOWN BY COMMENTING IT OUT IS NOT ON ITS PAGE, and
     # that is so whatever it commented out. The first version cut a
@@ -40932,6 +41638,13 @@ def check_a_found_board_is_held_for_every_doubt() -> int:
          "ab.c12|FEDCBA9876543210FEDC", True),
         ("comeet", "AB.C12|0123456789ABCDEF0123", "AB.C13|0123456789ABCDEF0123", False),
         ("hirebridge", "612567", "612568", False),
+        # a TriNet Hire board is its company number, whatever slug follows it
+        # (5502-fraudscope and 5502-codoxo are one board, 2026-11-23)
+        ("trinethire", "41234-old-name", "41234-acme-gov", True),
+        ("trinethire", "41234", "41234-acme-gov", True),
+        ("trinethire", "041234-x", "41234-acme-gov", True),
+        ("trinethire", "41234-acme-gov", "412340-acme-gov", False),
+        ("trinethire", "41234-acme-gov", "4123-acme-gov", False),
         ("pinpoint", "acme", "ACME", True),
         ("icims", "careers-acme", "https://careers-acme.icims.com/jobs/search?ss=1", True),
         ("icims", "careers-acme", "careers-acmeco", False),
@@ -49328,7 +50041,8 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009", "jobvite": "acme",
-        "jobvitefeed": "qAcmefwX", "successfactors": "https://jobs.acme.test",
+        "jobvitefeed": "qAcmefwX", "trinethire": "41234-acme-gov",
+        "successfactors": "https://jobs.acme.test",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
     missing = [t for t in types if t not in SAMPLES]
@@ -49427,6 +50141,7 @@ console.log(JSON.stringify(out));"""
         ("comeet", "https://www.comeet.com/jobs/acme/F7.009"),
         ("jobvite", "https://jobs.jobvite.com/acme/jobs"),
         ("jobvitefeed", "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX"),
+        ("trinethire", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
         ("successfactors", "https://jobs.acme.test/search/"),
         ("successfactors with a path", "#"),
         ("paylocity", PAY),
@@ -49831,8 +50546,24 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
       - one board, named by the posting's page, the board stating their name
                           -> WIRE, check 1 in the owner's words, on the record
       - two boards on the posting's page   -> HOLD, naming both
-      - a closed posting, then an open one -> the open one's board; nothing
-                                              asked after it
+      - a closed posting, then two open ones naming one board -> that board,
+        and the third posting asked too (the asking goes on after a posting
+        names a board: blind review of the Apply change, 2026-11-24)
+      - three postings naming one board, one of them by its id alone
+                                           -> WIRE, all three asked, and the
+                                              look prints what each named
+      - four postings linked               -> exactly POSTING_TRIES asked,
+        the fourth (which would name another board) never, and the plan says so
+      - a posting naming one board, then one whose page robots.txt refuses
+                          -> HOLD, the refusal said; nothing asked after it
+      - ...then one whose page fails on the day -> SKIP unreadable, not filed
+      - ...then one whose page names that board and another -> HOLD
+      - ...then one whose page could not be read, not on the day (it leads
+        off Paylocity's host, or answers 400) -> HOLD, the page said: no
+        closed posting (blind review of the asking-on change, 2026-11-24),
+        and the posting after it is asked too
+      - a posting whose page could not be read, beside a closed one, and no
+        board -> SKIP unreadable, never "not a board"
       - every posting asked closed (Job Not Found, a 404, no board named), up
         to three             -> SKIP: not a board, listed and never a zero;
                                 the fourth is not asked
@@ -49856,9 +50587,9 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         posting -> SKIP unusable, the reference named (never "no board");
         beside a posting that fails on the day -> SKIP unreadable, naming it
       - a board of their own that passes both checks, beside a posting that
-        has closed, one robots.txt refuses or one off Paylocity's host -> HOLD,
-        each said; beside one that fails on the day -> SKIP unreadable, not
-        filed
+        has closed, one robots.txt refuses, one whose page could not be read
+        or one off Paylocity's host -> HOLD, each said; beside one that fails
+        on the day -> SKIP unreadable, not filed
       - a board their site names by its /List/ address, beside a posting whose
         page names an /All/ board under the same tenant's name (no id of one
         kind on both, so no id agrees) -> HOLD, both boards named: the
@@ -49867,9 +50598,17 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         posting -> the posting is not asked; SKIP, said as not asked
     and in apply: a worklist edited to point a posting's row at another board,
     to give it another posting, to drop what check 1 says of the posting, or
-    to have the posting's page name two boards, leaves the row alone; one
-    without the plan's record of the posting pages is refused; the look
-    prints what the posting's page named, under the row it wires.
+    to have the posting's page name two boards, leaves the row alone - and so
+    does one edited to drop which postings the plan asked, to have another
+    posting of theirs it asked name another board, or to drop the plan's
+    record of another posting's page (a page that refused or could not be
+    read has none); a closed posting's page (a 404 too) is recorded naming
+    none, and its row is wired; one without the plan's record of the posting
+    pages, or of version 6 (which stopped asking at the first posting naming
+    a board) or 7 (which wired past a page that could not be read), is
+    refused; the look prints what each posting's page named, under the row
+    it wires. CLAUDE.md says a page that could not be read is no closed
+    posting, and which worklist version the door writes.
     """
     import verify_boards
     import wire_found as wf
@@ -49891,7 +50630,17 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          # a board their site names by its /List/ id, and an /All/ board under
          # the same tenant's name that a posting's page names
          "list_site": "https://recruiting.paylocity.com/recruiting/jobs/List/7851/Pp-List-Inc",
-         "list_all": board(0x7851, "Pp-List-Inc")}
+         "list_all": board(0x7851, "Pp-List-Inc"),
+         # the asking goes on after a posting names a board
+         "same": board(0x7871, "Pp-Same-Inc"), "four": board(0x7881, "Pp-Four-Inc"),
+         "four_x": board(0x7889, "Pp-Four-Parent-Inc"),
+         "then_ref": board(0x7891, "Pp-Then-Refused-Inc"),
+         "then_flaky": board(0x78a1, "Pp-Then-Flaky-Inc"),
+         "then_two": board(0x78b1, "Pp-Then-Two-Inc"),
+         "then_two_x": board(0x78b9, "Pp-Then-Two-Parent-Inc"),
+         # ...then a page that could not be read, which is no closed posting
+         "unread_off": board(0x78c1, "Pp-Unread-Off-Inc"),
+         "unread_bad": board(0x78d1, "Pp-Unread-Bad-Inc")}
     P = {"one": D + "7601/Pp-One-Inc/Account-Executive",
          "two": D + "7602/Pp-Two-Inc/Sales-Engineer",
          "late_1": D + "7611/Pp-Late-LLC/Closed-Role", "late_2": D + "7612/Pp-Late-LLC/Open-Role",
@@ -49921,9 +50670,22 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "beside_flaky": D + "7843/Pp-Beside-Flaky/Engineer",
          "beside_off": "https://jobs.ppbesideoff.example/recruiting/jobs/Details/7844/Pp-Beside-Off/"
                        "Engineer",
+         "beside_unread": D + "7845/Pp-Beside-Unread/Engineer",
          "list": D + "7852/Pp-List-Inc/Engineer",
          # a company out of scope, and one already on a board
-         "oos": D + "7861/Pp-Oos-Inc/Engineer", "wired": D + "7862/Pp-Wired-Inc/Engineer"}
+         "oos": D + "7861/Pp-Oos-Inc/Engineer", "wired": D + "7862/Pp-Wired-Inc/Engineer",
+         # the asking goes on after a posting names a board
+         **{f"same_{i}": D + f"787{i}/Pp-Same-Inc/Role-{i}" for i in (1, 2, 3)},
+         **{f"four_{i}": D + f"788{i}/Pp-Four-Inc/Role-{i}" for i in (1, 2, 3, 4)},
+         **{f"then_{k}_{i}": D + f"789{n}{i}/Pp-Then-{k.title()}/Role-{i}"
+            for n, k in ((1, "refused"), (2, "flaky"), (3, "two")) for i in (1, 2, 3)},
+         # a posting naming a board, then one whose page could not be read
+         # (it leads off Paylocity's host / answers 400), then one naming that
+         # board; and one that could not be read beside a closed one, no board
+         **{f"unread_off_{i}": D + f"800{i}/Pp-Unread-Off/Role-{i}" for i in (1, 2, 3)},
+         **{f"unread_bad_{i}": D + f"801{i}/Pp-Unread-Bad/Role-{i}" for i in (1, 2)},
+         "unread_only": D + "8021/Pp-Unread-Only/Engineer",
+         "unread_only_shut": D + "8022/Pp-Unread-Only/Closed"}
     pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
                                 rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
              P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"],
@@ -49960,7 +50722,39 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
              P["list"]: _pp_page("Pp List - Engineer", B["list_all"]),
              # each would name a board, were it asked
              P["oos"]: _pp_page("Pp Oos - Engineer", board(0x7861, "Pp-Oos-Inc")),
-             P["wired"]: _pp_page("Pp Wired - Engineer", board(0x7862, "Pp-Wired-Inc"))}
+             P["wired"]: _pp_page("Pp Wired - Engineer", board(0x7862, "Pp-Wired-Inc")),
+             # three postings on one board (the third's page names it by its
+             # id alone, no tenant: one board all the same); four, the fourth
+             # (never to be asked) another account's
+             **{P[f"same_{i}"]: _pp_page(f"Pp Same - Role {i}", B["same"]) for i in (1, 2)},
+             P["same_3"]: _pp_page("Pp Same - Role 3", f"{_PP_BOARD}{_pp_uuid(0x7871)}"),
+             **{P[f"four_{i}"]: _pp_page(f"Pp Four - Role {i}", B["four"]) for i in (1, 2, 3)},
+             P["four_4"]: _pp_page("Pp Four Parent - Role 4", B["four_x"]),
+             # a posting naming one board, then one robots.txt refuses / one that
+             # fails on the day / one naming that board and another account's;
+             # the third would name another board, were it asked
+             P["then_refused_1"]: _pp_page("Pp Then Refused - Role 1", B["then_ref"]),
+             P["then_refused_2"]: ats.RobotsRefused(f"robots.txt asks crawlers not to read "
+                                                    f"{P['then_refused_2']}"),
+             P["then_refused_3"]: _pp_page("Pp Then Refused - Role 3", board(0x7899, "Pp-X")),
+             P["then_flaky_1"]: _pp_page("Pp Then Flaky - Role 1", B["then_flaky"]),
+             P["then_flaky_2"]: ats.AtsError(f"HTTP 503 for {P['then_flaky_2']}"),
+             P["then_flaky_3"]: _pp_page("Pp Then Flaky - Role 3", board(0x78a9, "Pp-Y")),
+             P["then_two_1"]: _pp_page("Pp Then Two - Role 1", B["then_two"]),
+             P["then_two_2"]: _pp_page("Pp Then Two - Role 2", B["then_two"], B["then_two_x"]),
+             P["then_two_3"]: _pp_page("Pp Then Two - Role 3", B["then_two"]),
+             # (what verify_boards._board_page raises for a hop off the host
+             # asked, and for a 400: neither is a failure of the day)
+             P["unread_off_1"]: _pp_page("Pp Unread Off - Role 1", B["unread_off"]),
+             P["unread_off_2"]: ats.AtsError(f"{P['unread_off_2']} leads off to "
+                                             f"login.ppunread.example, which is not the board"),
+             P["unread_off_3"]: _pp_page("Pp Unread Off - Role 3", B["unread_off"]),
+             P["unread_bad_1"]: _pp_page("Pp Unread Bad - Role 1", B["unread_bad"]),
+             P["unread_bad_2"]: ats.AtsError(f"HTTP 400 for {P['unread_bad_2']}"),
+             P["unread_only"]: ats.AtsError(f"HTTP 400 for {P['unread_only']}"),
+             P["unread_only_shut"]: _PP_CLOSED,
+             P["beside_unread"]: ats.AtsError(f"{P['beside_unread']} leads off to "
+                                              f"login.ppbeside.example, which is not the board")}
     asked: list = []
 
     def posting_page(url, head=0):
@@ -49989,10 +50783,15 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                  co("pp-beside-closed", "Pp Beside Closed"),
                  co("pp-beside-refused", "Pp Beside Refused"),
                  co("pp-beside-flaky", "Pp Beside Flaky"), co("pp-beside-off", "Pp Beside Off"),
+                 co("pp-beside-unread", "Pp Beside Unread"),
                  co("pp-list", "Pp List"),
                  co("pp-oos", "Pp Oos", out_of_scope={"on": "2026-11-01", "by": "owner",
                                                       "why": "not a SLED vendor"}),
-                 co("pp-wired", "Pp Wired", ats={"type": "greenhouse", "ref": "ppwiredold"})]
+                 co("pp-wired", "Pp Wired", ats={"type": "greenhouse", "ref": "ppwiredold"}),
+                 co("pp-same", "Pp Same"), co("pp-four", "Pp Four"),
+                 co("pp-then-refused", "Pp Then Refused"), co("pp-then-flaky", "Pp Then Flaky"),
+                 co("pp-then-two", "Pp Then Two"), co("pp-unread-off", "Pp Unread Off"),
+                 co("pp-unread-bad", "Pp Unread Bad"), co("pp-unread-only", "Pp Unread Only")]
 
     def posted(cid, *refs, times=1):
         return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
@@ -50025,11 +50824,13 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
             cand(wf.POSTING, P["unusable"], f"{site('pp-unusable')}/careers",
                  saw=P["unusable"])]),
         # a board of their own, naming them, beside a posting that has closed,
-        # one robots.txt refuses, one that fails on the day, one off the host
+        # one robots.txt refuses, one that fails on the day, one off the host,
+        # one whose page could not be read
         **{f"pp-beside-{k}": entry(f"pp-beside-{k}", [
             cand("greenhouse", f"ppbeside{k}", f"{site('pp-beside-' + k)}/careers"),
             cand(wf.POSTING, P[f"beside_{k}"], f"{site('pp-beside-' + k)}/careers",
-                 saw=P[f"beside_{k}"])]) for k in ("closed", "refused", "flaky", "off")},
+                 saw=P[f"beside_{k}"])])
+           for k in ("closed", "refused", "flaky", "off", "unread")},
         "pp-unusable-flaky": entry("pp-unusable-flaky", [
             cand("workday", ["ppuf", "notapod", "site"], f"{site('pp-unusable-flaky')}/careers"),
             cand(wf.POSTING, P["unusable_flaky"], f"{site('pp-unusable-flaky')}/careers",
@@ -50046,7 +50847,14 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         "pp-list": entry("pp-list", [cand("paylocity", B["list_site"], f"{site('pp-list')}/careers"),
                                      cand(wf.POSTING, P["list"], f"{site('pp-list')}/careers",
                                           saw=P["list"])]),
-        "pp-oos": posted("pp-oos", P["oos"]), "pp-wired": posted("pp-wired", P["wired"])})
+        "pp-oos": posted("pp-oos", P["oos"]), "pp-wired": posted("pp-wired", P["wired"]),
+        "pp-same": posted("pp-same", *(P[f"same_{i}"] for i in (1, 2, 3))),
+        "pp-four": posted("pp-four", *(P[f"four_{i}"] for i in (1, 2, 3, 4))),
+        **{f"pp-then-{k}": posted(f"pp-then-{k}", *(P[f"then_{k}_{i}"] for i in (1, 2, 3)))
+           for k in ("refused", "flaky", "two")},
+        "pp-unread-off": posted("pp-unread-off", *(P[f"unread_off_{i}"] for i in (1, 2, 3))),
+        "pp-unread-bad": posted("pp-unread-bad", P["unread_bad_1"], P["unread_bad_2"]),
+        "pp-unread-only": posted("pp-unread-only", P["unread_only"], P["unread_only_shut"])})
     show = lambda key: wf.show("paylocity", B[key])        # noqa: E731
     BOARDS = {show("one"): (4, ["Pp One Inc"]), show("two_a"): (3, ["Pp Two Inc"]),
               show("two_b"): (2, ["Pp Two Inc"]), show("late"): (2, ["Pp Late LLC"]),
@@ -50055,10 +50863,18 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
               show("mixed"): (2, ["Pp Mixed Inc"]), show("spell"): (2, ["Pp Spell Inc"]),
               show("spell_x"): (2, ["Pp Spell X Inc"]),
               **{f"greenhouse/ppbeside{k}": (2, [f"Pp Beside {k.title()}"])
-                 for k in ("closed", "refused", "flaky", "off")},
+                 for k in ("closed", "refused", "flaky", "off", "unread")},
               # each board states their name: what holds pp-list is that its
               # site's board and its posting's are two
-              show("list_site"): (2, ["Pp List Inc"]), show("list_all"): (2, ["Pp List Inc"])}
+              show("list_site"): (2, ["Pp List Inc"]), show("list_all"): (2, ["Pp List Inc"]),
+              # ...and so does each of these: what holds a pp-then-* board is
+              # the posting asked after the one that named it
+              show("same"): (3, ["Pp Same Inc"]), show("four"): (3, ["Pp Four Inc"]),
+              show("then_ref"): (2, ["Pp Then Refused Inc"]),
+              show("then_flaky"): (2, ["Pp Then Flaky Inc"]),
+              show("then_two"): (2, ["Pp Then Two Inc"]),
+              show("unread_off"): (2, ["Pp Unread Off Inc"]),
+              show("unread_bad"): (2, ["Pp Unread Bad Inc"])}
     files = {
         # a reader's doubt about pp-held's board, kept for another company
         "board_doubts.json": {"doubt-other@2026-11-20T09:00:00-05:00": {
@@ -50112,10 +50928,102 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
             late = row("pp-late")
             if late.get("action") != "WIRE" or late.get("ref") != B["late"] \
                     or (late.get("check_1") or {}).get("posting") != P["late_2"] \
-                    or P["late_3"] in asked:
-                errors += fail(f"pp-late: a closed posting, then an open one, did not make the open "
-                               f"one's board the find, or asked on after it: {late.get('action')} "
-                               f"{late.get('ref')} {late.get('check_1')}, asked {asked}")
+                    or [u for u in asked if "Pp-Late" in u] != [P["late_1"], P["late_2"],
+                                                                P["late_3"]] \
+                    or (late.get("check_1") or {}).get("postings_asked") != [
+                        P["late_1"], P["late_2"], P["late_3"]] \
+                    or late.get("posting_asks") != ("3 Paylocity postings their site links were "
+                                                    "asked which board its page names"):
+                errors += fail(f"pp-late: a closed posting, then two open ones on one board, did "
+                               f"not make that board the find with all three asked, each once "
+                               f"(the asking goes on after a posting names a board): "
+                               f"{late.get('action')} {late.get('ref')} {late.get('check_1')} "
+                               f"{late.get('posting_asks')!r}, asked {asked}")
+            # THE ASKING GOES ON AFTER A POSTING NAMES A BOARD (blind review of
+            # the Apply change, 2026-11-24: it stopped there, so a second
+            # account's posting beside their own was never asked)
+            same = row("pp-same")
+            if same.get("action") != "WIRE" or same.get("ref") != B["same"] \
+                    or (same.get("check_1") or {}).get("posting") != P["same_1"] \
+                    or [u for u in asked if "Pp-Same" in u] != [P[f"same_{i}"] for i in (1, 2, 3)] \
+                    or same.get("doubts") or same.get("also_seen") \
+                    or "3 Paylocity postings their site links were asked which board its page " \
+                       "names, and each one whose page named a board named this one" \
+                    not in text:
+                errors += fail(f"pp-same: three postings whose pages name one board are not WIRE "
+                               f"with all three asked, said in the plan: {same.get('action')} "
+                               f"{same.get('ref')} {_wb_words(same)[:300]!r}, asked "
+                               f"{[u for u in asked if 'Pp-Same' in u]}")
+            four = row("pp-four")
+            fw = [ln for ln in text.splitlines() if "Pp Four" in ln]
+            tries = [P[f"four_{i}"] for i in range(1, wf.POSTING_TRIES + 1)]
+            if four.get("action") != "WIRE" or four.get("ref") != B["four"] \
+                    or [u for u in asked if "Pp-Four" in u] != tries \
+                    or P["four_4"] in asked or wf.POSTING_TRIES != 3 \
+                    or not any(f"3 Paylocity postings their site links were asked which board its "
+                               f"page names, and 1 more of theirs were not asked (at most "
+                               f"{wf.POSTING_TRIES} are)" in ln for ln in fw):
+                errors += fail(f"pp-four: four postings linked did not have exactly "
+                               f"{wf.POSTING_TRIES} asked, the fourth never, and the plan say so: "
+                               f"{four.get('action')} {four.get('ref')}, asked "
+                               f"{[u for u in asked if 'Pp-Four' in u]}, said {fw}")
+            for cid, must, kind_, never in (
+                    ("pp-then-refused", "their site also links a Paylocity posting whose page "
+                                        "refused", "HOLD", P["then_refused_3"]),
+                    ("pp-then-flaky", "failed on the day", "SKIP", P["then_flaky_3"]),
+                    ("pp-then-two", "and the posting's page names more than one board", "HOLD",
+                     None)):
+                r = row(cid)
+                if r.get("action") != kind_ or must not in _wb_words(r) or (never in asked) \
+                        or (kind_ == "SKIP" and (r.get("kind") != "unreadable"
+                                                 or r.get("queue_row"))) \
+                        or P[f"then_{cid.rsplit('-', 1)[1]}_2"] not in asked:
+                    errors += fail(f"{cid}: a posting naming one board, then one whose page "
+                                   f"{must.split(' ', 1)[-1][:40]}..., is not {kind_} saying so "
+                                   f"({must!r}), or was asked on after a refusal or a failure: "
+                                   f"{r.get('action')} {r.get('kind')} {_wb_words(r)[:400]!r}, "
+                                   f"asked {[u for u in asked if 'Pp-Then' in u]}")
+            two_later = row("pp-then-two")
+            if not all(B[k] in _wb_words(two_later) for k in ("then_two", "then_two_x")) \
+                    or P["then_two_2"] not in _wb_words(two_later):
+                errors += fail(f"pp-then-two: a later posting whose page names their board and "
+                               f"another is not held naming both and that posting: "
+                               f"{_wb_words(two_later)[:400]!r}")
+            # A PAGE THAT COULD NOT BE READ IS NO CLOSED POSTING (blind review of
+            # the asking-on change, 2026-11-24): beside a posting naming a board,
+            # one whose page led off Paylocity's host or answered 400 counted
+            # against nothing and the board was wired, while a refusal in the
+            # same place was held. The asking goes on after it, as before
+            for cid, bad, how_, after in (
+                    ("pp-unread-off", P["unread_off_2"], "leads off to login.ppunread.example",
+                     P["unread_off_3"]),
+                    ("pp-unread-bad", P["unread_bad_2"], f"HTTP 400 for {P['unread_bad_2']}",
+                     None)):
+                r = row(cid)
+                w = _wb_words(r)
+                if r.get("action") != "HOLD" or "whose page could not be read" not in w \
+                        or bad not in w or how_ not in w or not r.get("queue_row") \
+                        or bad not in ((r.get("check_1") or {}).get("postings_asked") or []) \
+                        or (after and after not in asked):
+                    errors += fail(f"{cid}: a posting naming one board, then one whose page could "
+                                   f"not be read ({how_}), is not HOLD for the owner saying so, "
+                                   f"or the asking stopped there: {r.get('action')} {w[:400]!r}, "
+                                   f"asked {[u for u in asked if 'Pp-Unread' in u]}")
+            if row("pp-unread-off").get("posting_asks") != (
+                    "3 Paylocity postings their site links were asked which board its page names"):
+                errors += fail(f"pp-unread-off: the plan does not say all three postings were "
+                               f"asked, the one whose page could not be read among them: "
+                               f"{row('pp-unread-off').get('posting_asks')!r}")
+            only = row("pp-unread-only")
+            ow = _wb_words(only)
+            if only.get("action") != "SKIP" or only.get("kind") != "unreadable" \
+                    or "and its page could not be read" not in ow or P["unread_only"] not in ow \
+                    or "no closed posting" not in ow or "Job Not Found" not in ow \
+                    or "the find is not a board" in ow or only.get("queue_row"):
+                errors += fail(f"pp-unread-only: a posting whose page could not be read, beside a "
+                               f"closed one and no board, is not SKIP unreadable saying so (never "
+                               f"'not a board'): {only.get('action')} {only.get('kind')} "
+                               f"{ow[:400]!r}")
             shut = row("pp-shut")
             sw = _wb_words(shut)
             if shut.get("action") != "SKIP" or shut.get("kind") != "no-board" \
@@ -50230,7 +51138,9 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                     ("refused", "robots.txt refuses", "their site also links a Paylocity posting "
                                                       "whose page refused"),
                     ("off", "is off Paylocity's host", "their site also links a posting this door "
-                                                       "does not ask")):
+                                                       "does not ask"),
+                    ("unread", "could not be read", "their site also links a Paylocity posting "
+                                                    "whose page could not be read")):
                 r = row(f"pp-beside-{k}")
                 if r.get("action") != "HOLD" or must not in _wb_words(r) \
                         or (r.get("queue_row") or {}).get("found", {}).get("ref") \
@@ -50282,28 +51192,45 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
             if doc.get("posting_boards", {}).get(P["one"]) != [B["one"]] \
                     or doc.get("posting_boards", {}).get(P["late_1"]) != [] \
                     or P["flaky"] in doc.get("posting_boards", {}) \
+                    or doc.get("posting_boards", {}).get(P["spell_2"]) != [] \
+                    or any(P[k] in doc.get("posting_boards", {})
+                           for k in ("unread_off_2", "unread_bad_2", "then_refused_2")) \
                     or any(doc.get("posting_boards", {}).get(P[k]) != [B["spell_x"]]
                            for k in ("spell_x", "spell_y")):
                 errors += fail(f"the worklist does not carry what each posting's page named "
-                               f"(posting_boards): {doc.get('posting_boards')}")
+                               f"(posting_boards) - a closed posting's (a 404's too) as none, and "
+                               f"nothing for a page that refused, could not be read or failed: "
+                               f"{doc.get('posting_boards')}")
 
             # --- apply -----------------------------------------------------
             code, look, expect = box.look(wl)
             lean = (f"leans on what the plan was told: the page of the posting their site links, "
                     f"{P['one']}, names one board, {show('one')}")
-            if lean not in look or "WIRE 3" not in look:
+            if lean not in look or "WIRE 5" not in look:
                 errors += fail(f"the look does not print what the posting's page named, under the "
                                f"row it wires: {look[:900]}")
+            # ...and what every other posting of theirs the plan asked named
+            for k, said_k in (("same_2", f"names that board too, {show('same')}"),
+                              ("same_3", f"names that board too, paylocity/{_PP_BOARD}"
+                                         f"{_pp_uuid(0x7871)}"),
+                              ("late_1", "names no board"),
+                              # a 404's page: closed, recorded as naming none
+                              ("spell_2", "names no board (it has closed, or names none)")):
+                lean_k = (f"leans on what the plan was told: the page of another posting their "
+                          f"site links, {P[k]}, {said_k}")
+                if lean_k not in look:
+                    errors += fail(f"the look does not print what another posting the plan asked "
+                                   f"({k}) named, under the row it wires: {look[:1200]}")
 
-            def left_alone(name, change, why):
+            def left_alone(name, change, why, who="Pp One"):
                 nonlocal errors
                 bad = box.edited(wl, name, change)
                 _c, text_, _x = box.look(bad)
                 wire_part = text_.split("\nHOLD ", 1)[0]
                 wire_part, _, left_part = wire_part.partition("\nLEFT ALONE")
-                if "Pp One" in wire_part or "Pp One" not in left_part \
+                if who in wire_part or who not in left_part \
                         or "posting" not in left_part:
-                    errors += fail(f"apply would wire pp-one from a worklist {why}: "
+                    errors += fail(f"apply would wire {who} from a worklist {why}: "
                                    f"{text_[:900]}")
 
             left_alone("pp-other-board.json",
@@ -50328,23 +51255,89 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                        lambda rs, doc: doc["posting_boards"].update({P["one"]: [B["one"],
                                                                                  B["two_a"]]}),
                        "edited to have the posting's page name two boards")
+            # EVERY POSTING OF THEIRS THE PLAN ASKED (blind review of the Apply
+            # change, 2026-11-24): a row that does not say which were asked, or
+            # one another of whose postings the plan recorded naming another
+            # board, is left alone
+            left_alone("pp-no-asked.json",
+                       lambda rs, doc: rs["pp-same"]["check_1"].pop("postings_asked"),
+                       "edited to drop which postings the plan asked", who="Pp Same")
+            left_alone("pp-asked-without.json",
+                       lambda rs, doc: rs["pp-same"]["check_1"].update(
+                           postings_asked=[P["same_2"], P["same_3"]]),
+                       "edited to leave the posting check 1 quotes out of those asked",
+                       who="Pp Same")
+            left_alone("pp-other-names-another.json",
+                       lambda rs, doc: doc["posting_boards"].update({P["same_3"]: [B["four_x"]]}),
+                       "edited to have another posting of theirs name another board",
+                       who="Pp Same")
+            # ...or one of whose other postings asked the plan recorded nothing:
+            # a page that refused or could not be read (blind review of the
+            # asking-on change, 2026-11-24; a closed one is recorded naming none)
+            left_alone("pp-other-unrecorded.json",
+                       lambda rs, doc: doc["posting_boards"].pop(P["same_3"]),
+                       "edited to drop the plan's record of another posting's page it asked",
+                       who="Pp Same")
             bare = box.edited(wl, "pp-no-record.json",
                               lambda rs, doc: doc.pop("posting_boards"))
             code_b, text_b, _x = box.look(bare)
             if code_b == 0 or "posting_boards" not in text_b:
                 errors += fail(f"a worklist without the plan's record of the posting pages is not "
                                f"refused: {text_b[:300]}")
+            # A VERSION-6 PLAN STOPPED ASKING AT THE FIRST POSTING NAMING A BOARD
+            older = box.edited(wl, "pp-version-6.json", lambda rs, doc: doc.update(version=6))
+            code_o, text_o, _x = box.look(older)
+            if code_o == 0 or "could not read the worklist" not in text_o:
+                errors += fail(f"a version-6 worklist, whose plan stopped asking at the first "
+                               f"posting naming a board, is not refused: {text_o[:300]}")
+            # ...AND A VERSION-7 ONE WIRED PAST A PAGE THAT COULD NOT BE READ, and
+            # recorded no 404's page (blind review of the asking-on change)
+            older = box.edited(wl, "pp-version-7.json", lambda rs, doc: doc.update(version=7))
+            code_7, text_7, _x = box.look(older)
+            if wf.VERSION < 8 or code_7 == 0 or "could not read the worklist" not in text_7:
+                errors += fail(f"a version-7 worklist, whose plan wired past a posting whose page "
+                               f"could not be read, is not refused: {text_7[:300]}")
             code, said = box.write(wl, expect)
             rec = box.record("pp-one")
             note_ = str(rec.get("ats_note") or "")
             if code != 0 or rec.get("ats") != {"type": "paylocity", "ref": B["one"]} \
                     or f"links a posting on the board ({wf.short(P['one'])}" not in note_ \
                     or "the posting's page names that one board" not in note_ \
-                    or box.record("pp-late").get("ats", {}).get("ref") != B["late"]:
+                    or box.record("pp-late").get("ats", {}).get("ref") != B["late"] \
+                    or box.record("pp-same").get("ats", {}).get("ref") != B["same"] \
+                    or box.record("pp-spell").get("ats", {}).get("ref") != B["spell"] \
+                    or any(box.record(cid).get("ats", {}).get("type") != "html"
+                           for cid in ("pp-then-two", "pp-unread-off", "pp-unread-bad")):
                 errors += fail(f"the write did not wire the boards the postings' pages named, with "
                                f"check 1 in the note: {code} {rec.get('ats')} {note_!r} {said[-400:]}")
         finally:
             verify_boards._board_page = keep
+    # ...and CLAUDE.md says so: it listed only "Job Not Found", a 404 or 410 and
+    # a page naming no board as closed, and never that a page which could not
+    # be read was wired past (blind review of the asking-on change, 2026-11-24)
+    said_md = " ".join((ROOT / "CLAUDE.md").read_text().split()).lower()
+    for words_ in ("a posting whose page could not be read, not on the day",
+                   "is no closed posting", f"the worklist (version {wf.VERSION}) records"):
+        if words_ not in said_md:
+            errors += fail(f"CLAUDE.md does not say what the posting door does with a page that "
+                           f"could not be read, or which worklist it writes ({words_!r})")
+
+    # --- a company nothing was asked for sees every posting's answer -------
+    # (keep_posted_doubts' view, _posted_view: the asking goes on after a
+    # posting names a board, so the first posting's board is not the only
+    # one; a board an earlier posting named by an id that agrees adds none)
+    gone_rows = entry("pp-gone", [cand(wf.POSTING, D + f"79{i}1/Pp-Gone/Role-{i}",
+                                       f"{site('pp-gone')}/careers", saw=f"posting {i}")
+                                  for i in (1, 2, 3)])
+    gone_a, gone_b = board(0x7911, "Pp-Gone-Inc"), board(0x7919, "Pp-Gone-Parent-Inc")
+    view = wf._posted_view(gone_rows, {"7911": {"boards": [gone_a]},
+                                       "7921": {"boards": [f"{_PP_BOARD}{_pp_uuid(0x7911)}"]},
+                                       "7931": {"boards": [gone_b]}}) or {}
+    viewed = [(c.get("ref"), c.get("posting")) for c in view.get("candidates") or []
+              if c.get("type") == "paylocity"]
+    if viewed != [(gone_a, D + "7911/Pp-Gone/Role-1"), (gone_b, D + "7931/Pp-Gone/Role-3")]:
+        errors += fail(f"the view of a company nothing was asked for does not carry every board "
+                       f"its postings' pages named, each once: {viewed}")
 
     # --- the posting's page is asked as a board's page is ----------------
     sent, robots_asked, gated = [], [], []
@@ -50400,6 +51393,375 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                            f"sent {sent}, robots {robots_asked}")
     finally:
         ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held
+    return errors
+
+
+def check_a_postings_own_apply_link_is_no_other_form() -> int:
+    """A Paylocity Apply link whose posting id their own site also links as a
+    posting is that posting's own form: not paylocity-other, no doubt, no note.
+
+    On 2026-11-23 the door held BS&A Software for the owner because "their own
+    site also loads paylocity in a form that names no board (paylocity-other)".
+    Beside each posting its careers page links (.../recruiting/jobs/Details/
+    <id>/<Tenant>/<Title>) sits that posting's Apply link (.../recruiting/jobs/
+    Apply/<the same id>/...), and the finder's catch-all for Paylocity's host
+    filed every one as a form that names no board. It is decided in the
+    finder, where every address is in hand (a row of its file keeps one
+    address and a count), so every door and count that reads `elsewhere`
+    agrees. Driven from the page - find_site_boards.look, the web stubbed -
+    through the run's summary, the platform catalogue's sweep count and the
+    wiring door's plan, look and write (synthetic pages, no network):
+      - every Apply link's id linked as a posting, on the same page or another
+        of theirs, in upper and lower case, with the rest of its path or
+        without              -> nothing under elsewhere; WIRE on both checks
+                                (the posting's page names one board, the board
+                                names them), with no doubt and no note
+      - one Apply link whose id their site does not link as a posting
+                             -> paylocity-other, naming that link: HOLD, the
+                                doubt as before
+      - matching Apply links beside another address on recruiting.paylocity.com
+                             -> paylocity-other, naming that address: HOLD, the
+                                doubt as before
+      - a posting's id in an Apply path on another host's label
+        (x.recruiting.paylocity.com)
+                             -> paylocity-other: HOLD, as before
+      - their own address redirecting to the Apply page of a posting their
+        site links           -> nothing under elsewhere; WIRE, no doubt
+      - an Apply link on their page whose posting is linked only on a page
+        that is not theirs (off_site)
+                             -> paylocity-other, naming that link: HOLD
+      - their own posting and another account's, each with its Apply link
+                             -> HOLD, naming both boards and both postings
+                                (both asked: the door asks on after a posting
+                                names a board), planned as the same page
+                                without the Apply links; CLAUDE.md no longer
+                                calls it a gap
+      - and what each row was kept with never reaches the file, from a look
+        stopped from outside too.
+    """
+    import find_site_boards as fsb
+    import platform_catalog
+    import verify_boards
+    import wire_found as wf
+    errors = 0
+    co, D = _wb_co, _PP_DETAILS
+    apply_at = "https://recruiting.paylocity.com/recruiting/jobs/Apply/"
+
+    def board(n, tenant):
+        return f"{_PP_BOARD}{_pp_uuid(n)}/{tenant}"
+    B = {"match": board(0x7901, "Pa-Match-Inc"), "stray": board(0x7911, "Pa-Stray-Inc"),
+         "mixed": board(0x7921, "Pa-Mixed-Inc"), "host": board(0x7931, "Pa-Host-Inc")}
+    P = {"match_1": D + "7901/Pa-Match-Inc/Engineer",
+         "match_2": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7902",
+         "stray": D + "7911/Pa-Stray-Inc/Engineer",
+         "mixed_1": D + "7921/Pa-Mixed-Inc/Engineer", "mixed_2": D + "7922/Pa-Mixed-Inc/Analyst",
+         "host": D + "7931/Pa-Host-Inc/Engineer"}
+    stray = apply_at + "7919/Pa-Stray-Inc/Analyst"       # no posting of theirs has this id
+    other = "https://recruiting.paylocity.com/recruiting/jobs/Search/Pa-Mixed-Inc"
+    # (a posting's id in an Apply path on another host's label: not Paylocity's)
+    mirror = "x.recruiting.paylocity.com/recruiting/jobs/Apply/7931"
+    names = {"pa-match": "Pa Match", "pa-stray": "Pa Stray", "pa-mixed": "Pa Mixed",
+             "pa-host": "Pa Host"}
+    careers = {
+        "pa-match": (f'<a href="{P["match_1"]}">Engineer</a> '
+                     f'<a href="{apply_at}7901/Pa-Match-Inc/Engineer">Apply</a> '
+                     f'<a href="{P["match_2"]}">Analyst</a> <a href="https://recruiting.'
+                     f'paylocity.com/RECRUITING/JOBS/APPLY/7902">Apply</a>'),
+        "pa-stray": (f'<a href="{P["stray"]}">Engineer</a> '
+                     f'<a href="{apply_at}7911/Pa-Stray-Inc/Engineer">Apply</a> '
+                     f'<a href="{stray}">Apply</a>'),
+        "pa-mixed": (f'<a href="{P["mixed_1"]}">Engineer</a> <a href="https://recruiting.paylocity.'
+                     f'com/Recruiting/Jobs/Apply/7921/Pa-Mixed-Inc/Engineer">Apply</a> '
+                     f'<a href="{P["mixed_2"]}">Analyst</a> <a href="{apply_at}7922">Apply</a> '
+                     f'<a href="{other}">Search our jobs</a>'),
+        "pa-host": f'<a href="{P["host"]}">Engineer</a> <p>Apply at {mirror}</p>'}
+    web = {}
+    for cid, name in names.items():
+        home = _wb_site(cid)
+        front = '<a href="/careers">Careers</a>'
+        if cid == "pa-match":
+            # an Apply link on their home page, of a posting only /careers links
+            front += (' <a href="https://recruiting.paylocity.com/recruiting/jobs/apply/7901">'
+                      'Apply now</a>')
+        web[home] = _site_boards_page(name, front)
+        web[home + "/careers"] = _site_boards_page(f"Careers at {name}", careers[cid])
+    with _SiteBoardsWeb(fsb, web) as w:
+        recs = {cid: asyncio.run(fsb.look(co(cid, name), "static", fsb.read_plain))
+                for cid, name in names.items()}
+    if any("paylocity.com" in u for u in w.reads):
+        errors += fail(f"the finder asked a Paylocity address: "
+                       f"{[u for u in w.reads if 'paylocity.com' in u]}")
+
+    def forms(rec):
+        return [(e.get("vendor"), e.get("saw"), e.get("times")) for e in rec.get("elsewhere") or []]
+    want = {"pa-match": [], "pa-stray": [("paylocity-other", stray, 1)],
+            "pa-mixed": [("paylocity-other", other, 1)],
+            "pa-host": [("paylocity-other", mirror, 1)]}
+    posted = {"pa-match": {P["match_1"], P["match_2"]}, "pa-stray": {P["stray"]},
+              "pa-mixed": {P["mixed_1"], P["mixed_2"]}, "pa-host": {P["host"]}}
+    for cid in names:
+        got = {c["ref"] for c in recs[cid]["candidates"] if c["type"] == fsb.POSTING}
+        if got != posted[cid] or forms(recs[cid]) != want[cid]:
+            errors += fail(f"{cid}: the Apply links beside the postings their site links are not "
+                           f"filed as each posting's own form (nothing under elsewhere where "
+                           f"every Apply id is a posting of theirs, paylocity-other naming what "
+                           f"is left where one is not): postings {sorted(got)}, elsewhere "
+                           f"{forms(recs[cid])}")
+    if "_each" in json.dumps(recs):
+        errors += fail("a finder record carries the addresses its rows were kept with: the file "
+                       "holds {vendor, saw, page, element, times} and no more")
+    said = "\n".join(fsb.summary(recs))
+    swept = platform_catalog.swept({"generated": "x", "mode": "static", "companies": recs})
+    if swept["forms"].get("paylocity-other") != 3 or "paylocity-other 3" not in said:
+        errors += fail(f"the run's summary or the platform catalogue counts a site whose Apply "
+                       f"links are each its postings' own as one loading Paylocity in a form that "
+                       f"names no board: {swept['forms']}\n{said}")
+
+    pages = {P["match_1"]: _pp_page("Pa Match Inc - Engineer", B["match"]),
+             P["match_2"]: _pp_page("Pa Match Inc - Analyst", B["match"]),
+             P["stray"]: _pp_page("Pa Stray Inc - Engineer", B["stray"]),
+             P["mixed_1"]: _pp_page("Pa Mixed Inc - Engineer", B["mixed"]),
+             P["mixed_2"]: _pp_page("Pa Mixed Inc - Analyst", B["mixed"]),
+             P["host"]: _pp_page("Pa Host Inc - Engineer", B["host"])}
+    asked: list = []
+
+    def posting_page(url, head=0):
+        asked.append(url)
+        if url not in pages:
+            raise AssertionError(f"the door asked {url}, which nothing here serves")
+        return pages[url]
+    BOARDS = {wf.show("paylocity", B[k]): (3, [f"Pa {k.title()} Inc"]) for k in B}
+    form_doubt = "in a form that names no board (paylocity-other)"
+    with _WiringBox([co(cid, name) for cid, name in names.items()], BOARDS) as box:
+        keep = verify_boards._board_page
+        verify_boards._board_page = posting_page
+        try:
+            code, text, wl, rows = box.plan(_wb_results(recs))
+            rows = rows or {}
+            match = rows.get("pa-match") or {}
+            c1 = match.get("check_1") or {}
+            if code != 0 or match.get("action") != "WIRE" or match.get("ref") != B["match"] \
+                    or c1.get("posting") not in posted["pa-match"] \
+                    or c1.get("posting_boards") != [B["match"]] or match.get("doubts") \
+                    or match.get("also_seen"):
+                errors += fail(f"pa-match: their site links each posting's Apply link beside it, "
+                               f"and the board the posting's page names, which names them, is "
+                               f"not WIRE with no doubt and no note: {code} {match.get('action')} "
+                               f"{match.get('ref')} {c1} {match.get('also_seen')} "
+                               f"{_wb_words(match)[:400]!r}")
+            for cid, key in (("pa-stray", "stray"), ("pa-mixed", "mixed"), ("pa-host", "host")):
+                r = rows.get(cid) or {}
+                if r.get("action") != "HOLD" or form_doubt not in _wb_words(r) \
+                        or (r.get("queue_row") or {}).get("found", {}).get("ref") != B[key]:
+                    errors += fail(f"{cid}: an address on Paylocity's host that is no posting's "
+                                   f"own Apply link, beside the board its posting names, is not "
+                                   f"held as before ({form_doubt!r}): {r.get('action')} "
+                                   f"{_wb_words(r)[:400]!r}")
+            _c, _look, expect = box.look(wl)
+            code_w, said_w = box.write(wl, expect)
+            if code_w != 0 or box.record("pa-match").get("ats") != {"type": "paylocity",
+                                                                     "ref": B["match"]} \
+                    or any(box.record(cid).get("ats", {}).get("type") != "html"
+                           for cid in ("pa-stray", "pa-mixed", "pa-host")):
+                errors += fail(f"the write did not wire pa-match's board alone: {code_w} "
+                               f"{box.record('pa-match').get('ats')} {said_w[-400:]}")
+        finally:
+            verify_boards._board_page = keep
+
+    # --- two edges of the rule (blind review of this change, 2026-11-24) -----
+    # (a) their own address redirecting to the Apply page of a posting their
+    # site links is that posting's own form too: the landing's row is decided
+    # with the rest (_with_forms); (b) an Apply link whose posting is linked
+    # only on a page that is not theirs stays paylocity-other: "their own
+    # site" is the candidates, never off_site (widening that is his call)
+    edge_names = {"pa-lands": "Pa Lands", "pa-offsite": "Pa Offsite"}
+    edge_site = {"pa-lands": _wb_site("pa-lands"),
+                 # a website that is one part of its host: a page outside it is
+                 # the larger site's, read once and filed under off_site
+                 "pa-offsite": "https://www.paoffsite.test/govtech"}
+    edge_board = {"pa-lands": board(0x7971, "Pa-Lands-Inc"),
+                  "pa-offsite": board(0x7981, "Pa-Offsite-Inc")}
+    lands_post, lands_apply = (D + "7971/Pa-Lands-Inc/Engineer",
+                               apply_at + "7971/Pa-Lands-Inc/Engineer")
+    off_post, off_away = D + "7981/Pa-Offsite-Inc/Engineer", D + "7982/Pa-Offsite-Inc/Analyst"
+    off_apply = apply_at + "7982/Pa-Offsite-Inc/Analyst"     # its posting: off_site only
+    web_edge = {
+        edge_site["pa-lands"]: _site_boards_page(
+            "Pa Lands", f'<a href="/careers">Careers</a> <a href="{lands_post}">Engineer</a>'),
+        # their careers address answers with the Apply page of that posting
+        edge_site["pa-lands"] + "/careers": (302, lands_apply),
+        lands_apply: _site_boards_page("Apply - Engineer", "<form>Apply for this job</form>"),
+        edge_site["pa-offsite"]: _site_boards_page(
+            "Pa Offsite", '<a href="/govtech/careers">Careers</a> '
+                          '<a href="/global/careers">Careers everywhere</a>'),
+        edge_site["pa-offsite"] + "/careers": _site_boards_page(
+            "Careers at Pa Offsite",
+            f'<a href="{off_post}">Engineer</a> <a href="{apply_at}7981/Pa-Offsite-Inc/Engineer">'
+            f'Apply</a> <a href="{off_apply}">Apply</a>'),
+        "https://www.paoffsite.test/global/careers": _site_boards_page(
+            "Careers everywhere", f'<a href="{off_away}">Analyst</a>')}
+    edge_cos = {cid: co(cid, name, website=edge_site[cid]) for cid, name in edge_names.items()}
+    with _SiteBoardsWeb(fsb, web_edge):
+        recs_edge = {cid: asyncio.run(fsb.look(edge_cos[cid], "static", fsb.read_plain))
+                     for cid in edge_names}
+    lands, offsite = recs_edge["pa-lands"], recs_edge["pa-offsite"]
+    if forms(lands) or {c["ref"] for c in lands["candidates"]
+                        if c["type"] == fsb.POSTING} != {lands_post} \
+            or not any(p.get("asked") == edge_site["pa-lands"] + "/careers"
+                       and p.get("status") == "left-site" for p in lands["pages"]):
+        errors += fail(f"pa-lands: their own careers address, redirecting to the Apply page of the "
+                       f"posting their site links, is not that posting's own form (nothing under "
+                       f"elsewhere): elsewhere {forms(lands)}, pages "
+                       f"{[(p.get('asked'), p.get('status')) for p in lands['pages']]}")
+    if forms(offsite) != [("paylocity-other", off_apply, 1)] \
+            or {c["ref"] for c in offsite["candidates"] if c["type"] == fsb.POSTING} != {off_post} \
+            or not any(o.get("ref") == off_away for o in offsite["off_site"]):
+        errors += fail(f"pa-offsite: an Apply link whose posting is linked only on a page that is "
+                       f"not theirs is not paylocity-other, naming that link: elsewhere "
+                       f"{forms(offsite)}, off_site {[o.get('ref') for o in offsite['off_site']]}")
+    pages.update({lands_post: _pp_page("Pa Lands Inc - Engineer", edge_board["pa-lands"]),
+                  off_post: _pp_page("Pa Offsite Inc - Engineer", edge_board["pa-offsite"])})
+    asked.clear()
+    with _WiringBox(list(edge_cos.values()),
+                    {wf.show("paylocity", edge_board[cid]): (3, [f"{name} Inc"])
+                     for cid, name in edge_names.items()}) as box:
+        keep = verify_boards._board_page
+        verify_boards._board_page = posting_page
+        try:
+            code_e, _said_e, _wl_e, rows_e = box.plan(_wb_results(recs_edge))
+        finally:
+            verify_boards._board_page = keep
+    rows_e = rows_e or {}
+    lr, orow = rows_e.get("pa-lands") or {}, rows_e.get("pa-offsite") or {}
+    if code_e != 0 or lr.get("action") != "WIRE" or lr.get("ref") != edge_board["pa-lands"] \
+            or lr.get("doubts") or lr.get("also_seen"):
+        errors += fail(f"pa-lands: their own address landing on the Apply page of the posting "
+                       f"their site links is not WIRE with no doubt and no note: {code_e} "
+                       f"{lr.get('action')} {lr.get('ref')} {lr.get('also_seen')} "
+                       f"{_wb_words(lr)[:300]!r}")
+    filed_as = ((orow.get("queue_row") or {}).get("found") or {}).get("ref")
+    if orow.get("action") != "HOLD" or form_doubt not in _wb_words(orow) \
+            or filed_as != edge_board["pa-offsite"] or off_away in asked:
+        errors += fail(f"pa-offsite: an Apply link whose posting is linked only off their site is "
+                       f"not held on the paylocity-other doubt ({form_doubt!r}), or the door asked "
+                       f"the posting off their site: {orow.get('action')} "
+                       f"{_wb_words(orow)[:400]!r}, asked {asked}")
+
+    # --- their own posting and another account's: two boards, held ---------
+    # (blind review of this change, 2026-11-24). The door asked a company's
+    # postings only until one named a board, so a careers page linking another
+    # account's posting beside its own was wired on its own board, the second
+    # never asked; before this change the paylocity-other doubt held such a
+    # page where it linked each posting's Apply link, by accident. The door
+    # now asks each posting their site links, up to POSTING_TRIES, and two
+    # whose pages name different boards are held, both named with the
+    # postings that named them - with each posting's Apply link beside it or
+    # without - and CLAUDE.md no longer calls it a gap
+    pair = {"pa-two": "Pa Two", "pa-twin": "Pa Twin"}
+    own = {"pa-two": board(0x7941, "Pa-Two-Inc"), "pa-twin": board(0x7951, "Pa-Twin-Inc")}
+    parent = board(0x7999, "Parent-Holdings-Inc")
+    linked = {"pa-two": (D + "7941/Pa-Two-Inc/Engineer", D + "7942/Parent-Holdings-Inc/Analyst"),
+              "pa-twin": (D + "7951/Pa-Twin-Inc/Engineer", D + "7952/Parent-Holdings-Inc/Analyst")}
+    web_pair = {}
+    for cid, name in pair.items():
+        links = [f'<a href="{u}">{u.rsplit("/", 1)[-1]}</a>' for u in linked[cid]]
+        if cid == "pa-two":
+            # each posting's own Apply link beside it
+            links = [f'{a} <a href="{apply_at}{u.split("/Details/", 1)[1]}">Apply</a>'
+                     for a, u in zip(links, linked[cid])]
+        home = _wb_site(cid)
+        web_pair[home] = _site_boards_page(name, '<a href="/careers">Careers</a>')
+        web_pair[home + "/careers"] = _site_boards_page(f"Careers at {name}", " ".join(links))
+    with _SiteBoardsWeb(fsb, web_pair):
+        recs_pair = {cid: asyncio.run(fsb.look(co(cid, name), "static", fsb.read_plain))
+                     for cid, name in pair.items()}
+    for cid in pair:
+        got = {c["ref"] for c in recs_pair[cid]["candidates"] if c["type"] == fsb.POSTING}
+        if got != set(linked[cid]) or forms(recs_pair[cid]):
+            errors += fail(f"{cid}: a page linking its own posting and another account's"
+                           f"{', each with its Apply link,' if cid == 'pa-two' else ''} is not "
+                           f"filed as two postings and nothing under elsewhere: postings "
+                           f"{sorted(got)}, elsewhere {forms(recs_pair[cid])}")
+    pages.update({linked["pa-two"][0]: _pp_page("Pa Two Inc - Engineer", own["pa-two"]),
+                  linked["pa-twin"][0]: _pp_page("Pa Twin Inc - Engineer", own["pa-twin"]),
+                  linked["pa-two"][1]: _pp_page("Parent Holdings Inc - Analyst", parent),
+                  linked["pa-twin"][1]: _pp_page("Parent Holdings Inc - Analyst", parent)})
+    asked.clear()
+    with _WiringBox([co(cid, name) for cid, name in pair.items()],
+                    {wf.show("paylocity", own["pa-two"]): (3, ["Pa Two Inc"]),
+                     wf.show("paylocity", own["pa-twin"]): (3, ["Pa Twin Inc"]),
+                     wf.show("paylocity", parent): (5, ["Parent Holdings Inc"])}) as box:
+        keep = verify_boards._board_page
+        verify_boards._board_page = posting_page
+        try:
+            code_p, _said_p, _wl_p, rows_p = box.plan(_wb_results(recs_pair))
+        finally:
+            verify_boards._board_page = keep
+    rows_p = rows_p or {}
+
+    def planned(cid):
+        # (what the plan did with the page: its action, whether on their own
+        # board, how many doubts, its notes, and which of the two postings it
+        # asked - a doubt's words name the company's own board and postings)
+        r = rows_p.get(cid) or {}
+        return (r.get("action"), r.get("ref") == own[cid], len(r.get("doubts") or ()),
+                r.get("also_seen") or None, [u in asked for u in linked[cid]])
+    if code_p != 0 or planned("pa-two") != planned("pa-twin"):
+        errors += fail(f"a page linking its own posting and another account's, each with its "
+                       f"Apply link, is not planned as the same page without them (action, "
+                       f"their own board, doubts, notes, the postings asked): "
+                       f"{code_p} {planned('pa-two')} against {planned('pa-twin')} "
+                       f"{_wb_words(rows_p.get('pa-two') or {})[:300]!r}")
+    for cid in pair:
+        r = rows_p.get(cid) or {}
+        w = _wb_words(r)
+        if r.get("action") != "HOLD" or "name different boards" not in w \
+                or not all(x in w for x in (own[cid], parent, *linked[cid])) \
+                or not all(u in asked for u in linked[cid]) or not r.get("queue_row"):
+            errors += fail(f"{cid}: a page linking its own posting and another account's"
+                           f"{', each with its Apply link,' if cid == 'pa-two' else ''} is not "
+                           f"HOLD for the owner naming both boards and both postings, each asked: "
+                           f"{r.get('action')} {w[:500]!r}, asked "
+                           f"{[u in asked for u in linked[cid]]}")
+    said_md = " ".join((ROOT / "CLAUDE.md").read_text().split()).lower()
+    gone = ("the gap now reaches pages linking each posting's apply link too",
+            "another posting a page links is not asked once one has named the board")
+    now = "two postings whose pages name different boards are held"
+    if any(g in said_md for g in gone) or now not in said_md:
+        errors += fail(f"CLAUDE.md still calls the posting door's asking a known gap "
+                       f"({[g for g in gone if g in said_md]}), or does not say that {now}, "
+                       f"which the door does")
+
+    # --- a look stopped from outside is sealed with the same say ------------
+    # (it read pa-stray's careers page and stuck: the run keeps what it had)
+    import types
+
+    async def _stuck(c, mode, read, rec=None, on_file=None):
+        pr = await read(c["website"] + "/careers", c["website"])
+        fsb.absorb(rec, pr, 1, fsb.Whose(c))
+        await asyncio.sleep(60)
+    keep_look, keep_secs = fsb.look, dict(fsb.COMPANY_SECONDS)
+    kept: dict = {}
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-apply-forms-"))
+    try:
+        fsb.look = _stuck
+        fsb.COMPANY_SECONDS["static"] = -28.0          # (thirty more than this is the outer clock)
+        with _SiteBoardsWeb(fsb, web):
+            asyncio.run(fsb.sweep([co("pa-stray", names["pa-stray"])],
+                                  types.SimpleNamespace(render=False, budget=0, show=False,
+                                                        pause=0),
+                                  tmp / "boards.json", kept))
+    finally:
+        fsb.look = keep_look
+        fsb.COMPANY_SECONDS.clear()
+        fsb.COMPANY_SECONDS.update(keep_secs)
+        shutil.rmtree(tmp, ignore_errors=True)
+    stuck = kept.get("pa-stray") or {}
+    if stuck.get("error") != fsb.TIMED_OUT or "_each" in json.dumps(kept) \
+            or forms(stuck) != want["pa-stray"]:
+        errors += fail(f"a look stopped from outside was kept with the addresses its rows were "
+                       f"kept with, or without the say on each Apply link a finished look has: "
+                       f"{stuck.get('error')!r} {stuck.get('elsewhere')}")
     return errors
 
 
@@ -63680,6 +65042,7 @@ def main() -> int:
     errors += check_comeet_reads_the_board_its_company_page_hands_out()
     errors += check_jobvite_reads_its_list_page_and_names_it_twice()
     errors += check_jobvite_feed_reads_one_row_a_job_and_no_person()
+    errors += check_trinethire_reads_its_list_and_names_it_once()
     errors += check_successfactors_reads_its_career_site()
     errors += check_successfactors_unify_reads_its_sitemap()
     errors += check_what_the_second_review_of_the_new_readers_found_stays_fixed()
@@ -63714,6 +65077,7 @@ def main() -> int:
     errors += check_a_finder_cannot_replace_the_owners_queue()
     errors += check_a_posting_their_site_links_is_a_candidate_not_a_board()
     errors += check_a_board_a_posting_names_is_wired_only_on_both_checks()
+    errors += check_a_postings_own_apply_link_is_no_other_form()
     errors += check_capture_parity()
     errors += check_extension_icons()
     errors += check_open_actions_never_write_the_map()

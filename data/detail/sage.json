@@ -1,8 +1,26 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "2027 physician fee schedule: what changes in a primary care group\u2019s forecast",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/2027-physician-fee-schedule-primary-care-revenue-forecast/"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Performance Improvement Plan (PIP): How to write one that works, with a free template",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/performance-improvement-plan/"
+  },
+  {
    "date": "2026-11-20",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-21",
    "headline": "Community Health Center Fund through 31 December 2026: a cash runway plan",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/sage-intacct-2026-release-4/"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "card-date",
-   "first_seen": "2026-11-10",
-   "headline": "Behavioral health cost reporting by program and level of care",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/behavioral-health-cost-reporting-program-level-of-care/"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "card-date",
-   "first_seen": "2026-11-10",
-   "headline": "Building the confidence to grow at Sage Future for Partners North America FY27",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/building-the-confidence-to-grow-at-sage-future-for-partners-north-america-fy27/"
   }
  ]
 }

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "Why Pflugerville Chose Rec for Its Next Era of Recreation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://partner.rec.us/blog/why-pflugerville-chose-rec"
+  },
+  {
    "date": "2026-11-06",
    "date_source": "near-h1",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://partner.rec.us/blog/we-built-events-ticketing-because-communities-deserve-better-than-workarounds"
-  },
-  {
-   "date": "2026-07-06",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "We Earned SOC 2 Type II Because the Families You Serve Deserve It",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://partner.rec.us/blog/we-earned-soc-2-type-ii-because-the-families-you-serve-deserve-it-2"
   }
  ],
  "profile": {

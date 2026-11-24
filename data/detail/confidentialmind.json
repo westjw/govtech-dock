@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "og:published",
+   "first_seen": "2026-11-23",
+   "headline": "Vivicta and ConfidentialMind Partner to Accelerate Sovereign AI Adoption in the Nordics",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/vivicta-confidentialmind-sovereign-ai"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "og:published",
+   "first_seen": "2026-11-23",
+   "headline": "Solita and ConfidentialMind Partner to Advance Sovereign and Hybrid AI for European Organisations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://confidentialmind.com/blog/solita-confidentialmind-sovereign-hybrid-ai"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "og:published",
    "first_seen": "2026-11-16",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://confidentialmind.com/blog/generative-ai-in-education-and-research"
-  },
-  {
-   "date": "2024-12-10",
-   "date_source": "og:published",
-   "first_seen": "2026-10-21",
-   "headline": "RAIN.Global: Generative AI for telecommunications",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://confidentialmind.com/blog/generative-ai-for-telecommunications"
-  },
-  {
-   "date": "2024-09-13",
-   "date_source": "og:published",
-   "first_seen": "2026-11-16",
-   "headline": "Embedding Models Explained: The Reason AI Can \u2018Read\u2019 and \u2018Listen\u2019",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://confidentialmind.com/blog/embeddings-and-llms"
   }
  ]
 }

@@ -10,7 +10,7 @@ How a platform is met. find_site_boards.py reads a company's own website: an add
 
 measured_on lists the days the code or the research records a live measurement; a window (day..day) is a day within it that the research does not narrow down; unknown is none recorded. A form is a finder vendor id that belongs to the platform and names no board the wiring door can use.
 
-50 platforms: 28 read, 1 build, 3 skip, 18 seen.
+50 platforms: 29 read, 1 build, 3 skip, 17 seen.
 
 | Status | Means |
 |---|---|
@@ -49,6 +49,7 @@ measured_on lists the days the code or the research records a live measurement; 
 | [SAP SuccessFactors (Career Site Builder)](#sap-successfactors-career-site-builder) | `successfactors` | read | `fetch_successfactors` | `_successfactors` | 2026-11-19..2026-11-23 |
 | [SmartRecruiters](#smartrecruiters) | `smartrecruiters` | read | `fetch_smartrecruiters` | `_smartrecruiters` | 2026-08-23, 2026-09-01 |
 | [Teamtailor](#teamtailor) | `teamtailor` | read | `fetch_teamtailor` | `_teamtailor` | 2026-11-19, 2026-11-21, 2026-11-22 |
+| [TriNet Hire](#trinet-hire) | `trinethire` | read | `fetch_trinethire` | `_trinethire` | 2026-11-23, 2026-11-24 |
 | [Workable](#workable) | `workable` | read | `fetch_workable` | `board_says` | 2026-08-23, 2026-11-01, 2026-11-19 |
 | [Workday](#workday) | `workday` | read | `fetch_workday` | - | 2026-08-23, 2026-09-01, 2026-11-16, 2026-11-18 |
 | [Zoho Recruit](#zoho-recruit) | `zohorecruit` | read | `fetch_zohorecruit` | `_zohorecruit` | 2026-11-19, 2026-11-21 |
@@ -71,7 +72,6 @@ measured_on lists the days the code or the research records a live measurement; 
 | [Oracle Taleo](#oracle-taleo) | `taleo` | seen | - | - | unknown |
 | [Personio](#personio) | `personio` | seen | - | - | unknown |
 | [Phenom](#phenom) | `phenom` | seen | - | - | unknown |
-| [TriNet Hire](#trinet-hire) | `trinethire` | seen | - | - | unknown |
 | [Wellfound (formerly AngelList Talent)](#wellfound-formerly-angellist-talent) | `wellfound` | seen | - | - | unknown |
 | [Y Combinator (Work at a Startup)](#y-combinator-work-at-a-startup) | `ycombinator` | seen | - | - | unknown |
 
@@ -83,14 +83,14 @@ From data/companies.json as last refreshed 2026-11-23. **On file** is how many c
 
 | Type | On file | With roles |
 |---|---:|---:|
-| [`html`](#a-careers-page-html) | 963 | 131 |
+| [`html`](#a-careers-page-html) | 958 | 129 |
 | `unknown` (no board on file) | 930 | 0 |
 | [`greenhouse`](#greenhouse) | 116 | 64 |
 | [`ashby`](#ashby) | 91 | 50 |
 | [`bamboohr`](#bamboohr) | 53 | 19 |
+| [`paylocity`](#paylocity) | 45 | 12 |
 | [`lever`](#lever) | 42 | 21 |
 | [`workday`](#workday) | 42 | 32 |
-| [`paylocity`](#paylocity) | 41 | 11 |
 | [`rippling`](#rippling) | 38 | 16 |
 | [`workable`](#workable) | 31 | 13 |
 | [`jazzhr`](#jazzhr) | 21 | 4 |
@@ -109,6 +109,7 @@ From data/companies.json as last refreshed 2026-11-23. **On file** is how many c
 | [`jobvite`](#jobvite) | 3 | 2 |
 | [`zohorecruit`](#zoho-recruit) | 3 | 0 |
 | [`applicantpro`](#applicantpro-isolved) | 2 | 2 |
+| [`jobvitefeed`](#jobvite-an-accounts-xml-feed) | 1 | 1 |
 
 **The last sweep**: a `find_site_boards.py` results file generated 2026-11-22T04:00:53+00:00 in static mode, over 59 companies (a sweep covers the companies it was given, not the whole map). 42 companies had a board we read named on their own site.
 
@@ -145,7 +146,7 @@ From data/companies.json as last refreshed 2026-11-23. **On file** is how many c
 
 <!-- live -->
 
-On file today: 963 companies, 131 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 958 companies, 129 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -599,7 +600,7 @@ On file today: 3 companies (Gigamon, Ookla, Uplight), 2 of them with roles. The 
 
 <!-- live -->
 
-On file today: no company. The last sweep (2026-11-22): did not meet it.
+On file today: 1 company (Tyler Technologies), 1 with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -688,7 +689,7 @@ On file today: no company. The last sweep (2026-11-22): did not meet it.
 
 <!-- live -->
 
-On file today: 41 companies, 11 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 45 companies, 12 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -880,6 +881,44 @@ On file today: 4 companies (Dimonoff, IFS (Ultimo), Skyward, Xplor Recreation), 
 <!-- live -->
 
 On file today: 6 companies (AM, Fonroche Lighting America, iLOQ, Powerfleet, Transit, VODA.ai), 5 of them with roles. The last sweep (2026-11-22): 11 companies' own sites pointed to a board on it; 4 sites named it as `teamtailor-other`.
+
+<!-- /live -->
+
+### TriNet Hire
+
+`trinethire` · **read** · researched as build · reader `ats.fetch_trinethire` · identity probe `verify_boards._trinethire` · measured 2026-11-23, 2026-11-24
+
+**How to spot it.** Any address on app.trinethire.com that names a company number, /companies/\<number>[-\<slug>]/..., in an href or a src and in any form: the list a careers page frames (/jobs/embed, Codoxo's and SoundThinking's iframes), the career page (/jobs), or a posting (/jobs/\<job id>-\<slug>) (find_site_boards). The ref is '\<number>-\<slug>' as the page wrote it, or the number alone, which answers as the board itself (measured 2026-11-24); one board is one number (5502-fraudscope and 5502-codoxo are Codoxo's), and the finder and the wiring door's board_key key it so. discover_js labels the same address 'trinethire'. Hint: trinethire.com.
+
+**Forms the finder tallies apart** (`find_site_boards.ELSEWHERE`):
+
+- `trinethire-other`: Any other trinethire.com address (TriNet's own site, a sign-in, a page naming no company number): a platform we read, naming no board.
+
+**How it publishes.** One GET of https://app.trinethire.com/companies/\<ref>/jobs/embed: server-rendered HTML, every opening in one answer, unpaged as measured (?page=2 answered the same 16 rows), no JSON form (embed.json answered 406); a page that shows a pager (rel=next or prev, a pagination class, a link to this board's list or career page with a query, 'View all' or 'Load more' outside its rows) raises, so page one of a longer list is never read as the whole board. \<title>Open Jobs | {Company}\</title>, then \<ul id="jobs-list"> with one \<li class="form-group"> a posting: an \<a> whose text is the title and whose href is the posting, /companies/\<number>-\<slug>/jobs/\<job id>-\<slug>, and \<p>\<strong>Location:\</strong> {label} - {type}\</p>. The title is unescaped; the url is the href on app.trinethire.com with its query (?source=...) dropped; the location is the text less the employment type after its LAST ' - ' (labels hold dashes: 'Atlanta, GA - Remote - Full-time'), dropped only where it is a type (Full-time, Contractor, Part-time, Temporary, Intern...): 'Remote - US' stays whole, and a type left blank leaves the label whole. A slug is what Rails' parameterize leaves ('\_' too, or nothing after the hyphen), and the board's number is compared as a number (041234 is 41234). Rows are one a job id, so two postings with one title stay two, and build_board.posting_id hashes a posting as its number and job id (ats.trinethire_posting_key): the list's links carry the company's current slug, which a rename changes, and a posting keeps its id across one. No pay field and no date exist anywhere on the board, so a row has neither (the board keeps its first-seen day).
+
+**Public link** (`build_board.board_url`). The board's list, https://app.trinethire.com/companies/\<ref>/jobs/embed (build_board.board_url and the desk's card): every opening on one page, each linking its posting and its form. Never /jobs, TriNet's career page, which said 'Currently no openings available.' on all four boards read while the list carried 30. A ref that is no board links the company's website. A careers page on file (type html) at TriNet's career page links the same number's list.
+
+**robots.txt.** Asked at every hop (ats.\_page), and every hop held to the board's own list: app.trinethire.com, /companies/\<the same number>[-\<slug>]/jobs/embed, no query, refused before it is asked anything (TriNet's employers share one host and differ by path). Measured 2026-11-23 and 11-24: 'User-agent: \*' with 'Allow: /', which is the group this crawler falls under. The same Cloudflare-managed file states content signals (search=yes, ai-train=no, ai-input not set) and disallows named AI crawlers, so the reader reads the list only and never asks a posting page, flag or no flag. Whether TriNet-hosted ad text is read at all is the owner's call, still pending.
+
+**Where it names its employer.** Stated by the list the reader reads, in one place: its \<title>, 'Open Jobs | {Company}', exactly that prefix taken off and the rest unescaped (verify_boards.\_trinethire), read off the page as a browser shows it (never a \<title> commented out or an SVG's); the list is the whole board, so the name is the whole board's, and an empty board states it with no rows. Inside the wiring door's plan the probe takes the answer the read had (ats.trinethire_kept): one request a list a plan. Never the slug (5502-fraudscope serves Codoxo, and a made-up slug serves the same board), never og:site_name (the vendor's, 'TriNet Applicant Tracking'). It is the name the employer registered with TriNet, legal form and all: measured 'SoundThinking, Inc.', 'Codoxo', 'Green River Data Group Inc.' and 'Polimorphic' (2026-11-23, 2026-11-24). No website is stated.
+
+**Quirks.**
+
+- The career page is a false zero: /companies/\<number>-\<slug>/jobs answered 'Currently no openings available.' on all four boards read (2026-11-23) while their lists carried 6, 7, 1 and 16. It is never read and never evidence of zero.
+- TriNet's career page is never read, by any reader: ats.follow refuses app.trinethire.com/companies/\<number>[-\<slug>]/jobs at every hop before anything is sent (the careers-page readers and the render fallbacks), so the three records on file as type html at it read Unknown, not 'None found', and link the same number's list until the wiring door rewires them.
+- A zero only where TriNet says so, in the shape measured on two empty boards (2026-11-24): the 'Open Jobs | ' title, no \<ul id="jobs-list"> anywhere in the raw page (TriNet draws the list only when it has rows), a \<div id="jobs"> whose first heading reads 'There are currently no open jobs available.' with no link, list, table or form inside it, and no posting of the board named anywhere in the raw page (scripts, templates, noscript and comments too). An empty jobs-list raises, as do a page without the title (the career page, a challenge page), a titled page of neither shape, a row that does not read as a posting of this board, a posting the page names outside its list, a pager, a page over 2,000,000 characters and any answer but a 200 (a number that is gone answers 404): errors, never a zero.
+- The location is the name the employer gave a location record, not always a place ('Codoxo Headquarters', 'Polimorphic-HQ', 'Remote Telecommuting'): it is published as given and never read as a city.
+- Two names on file differ from the registered names their boards state ('SoundThinking (ShotSpotter)' and 'SoundThinking, Inc.'; 'Green River' and 'Green River Data Group Inc.'), so proven() refuses both until the owner rules an also_known_as.
+
+**Notes.**
+
+- The research of 2026-11-23 found four SLED vendors on TriNet Hire (SoundThinking, Polimorphic, Green River, Codoxo), three of them wired as html pages at the career page and shown as 'None found', about 30 openings in all.
+- This reader asks the list only and never a posting page, because app.trinethire.com's robots.txt leaves the ai-input content signal unset while saying no to AI training. Reading the ads there (FETCH_DETAILS) waits on the owner's ruling.
+- Blind review 13 (2026-11-24) read two empty boards: the title, and 'There are currently no open jobs available.' with no jobs-list at all. The zero is that shape; an empty jobs-list, which TriNet does not serve, raises.
+
+<!-- live -->
+
+On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -1364,24 +1403,6 @@ On file today: no company. The last sweep (2026-11-22): did not meet it.
 `phenom` · **seen** · no reader · no identity probe · measured unknown
 
 **How to spot it.** Any phenompeople.com address: find_site_boards tallies it as 'phenom'. Nothing else in the code names it.
-
-**How it publishes.** Unknown: not researched.
-
-**robots.txt.** Unknown: not measured.
-
-**Where it names its employer.** Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.
-
-<!-- live -->
-
-On file today: no company. The last sweep (2026-11-22): did not meet it.
-
-<!-- /live -->
-
-### TriNet Hire
-
-`trinethire` · **seen** · no reader · no identity probe · measured unknown
-
-**How to spot it.** Any trinethire.com address: find_site_boards tallies it as 'trinethire'. discover_js reads app.trinethire.com/companies/\<number>-\<name> (as 'trinet').
 
 **How it publishes.** Unknown: not researched.
 

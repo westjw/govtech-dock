@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Can AI Fix Itself? The Work Behind Reliable Data Centers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/reliability-centered-maintenance-data-centers"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
-   "headline": "How To Stop Alarm Fatigue from Killing Predictive Maintenance",
+   "headline": "How to Stop Alarm Fatigue from Killing Your Predictive Maintenance Program",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/stop-alarm-fatigue-from-killing-your-predictive-maintenance-program"
@@ -13,7 +22,7 @@
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
-   "headline": "10 Ways to Get Operators Involved in Maintenance: A guide to operator-led and operator-assisted maintenance",
+   "headline": "10 Ways To Get Operators Involved In Maintenance",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/how-to-involve-operators-involved-in-maintenance"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/whats-new-at-maintainx-october-2026"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "The 6 Best Hotel Maintenance Software Platforms: Comparing CMMS Options",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/best-maintenance-software-for-hotels"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "Why AI Makes Identity Security Urgent",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paloaltonetworks.com/blog/2026/11/why-ai-makes-identity-security-urgent/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "index-text",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paloaltonetworks.com/blog/2026/10/advancing-agentic-ai-security-with-palo-alto-networks-and-nvidia/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "index-text",
-   "first_seen": "2026-10-19",
-   "headline": "Reinventing Endpoint Security with Cortex XDR One",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.paloaltonetworks.com/blog/2026/10/reinventing-endpoint-security-with-cortex-xdr-one/"
   }
  ],
  "profile": {

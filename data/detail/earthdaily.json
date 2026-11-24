@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Tracking Dark Vessels: SynMax Advances Maritime Intelligence with EarthDaily Imagery",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://earthdaily.com/blog/tracking-dark-vessels-synmax-advances-maritime-intelligence-with-earthdaily-imagery"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://earthdaily.com/blog/synmax-expands-earthdaily-constellation-subscription-to-support-energy-analytics"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "The Ground-Truth Ceiling: Why Agricultural AI Cannot Scale Without Trusted Measurement Infrastructure",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://earthdaily.com/blog/the-ground-truth-ceiling-why-agricultural-ai-cannot-scale-without-trusted-measurement-infrastructure"
   }
  ],
  "profile": {

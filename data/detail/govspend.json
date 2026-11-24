@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-23",
+   "headline": "Government Buying Signals: What to Investigate Before the RFP",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://govspend.com/blog/government-buying-signals-what-to-investigate-before-the-rfp/"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://govspend.com/blog/far-part-12-vs-far-part-15-definitions-and-differences/"
-  },
-  {
-   "date": "2026-10-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-15",
-   "headline": "GovSpend + Clay: Build Public-Sector GTM Workflows",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://govspend.com/blog/govspend-clay-build-public-sector-gtm-workflows/"
   }
  ],
  "profile": {

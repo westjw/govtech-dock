@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-19",
+   "date_source": "index-text",
+   "first_seen": "2026-11-23",
+   "headline": "How One San Diego Neighborhood Broke a 10-Year Streak of Hate Crimes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.flocksafety.com/blog/how-one-san-diego-neighborhood-broke-a-10-year-streak-of-hate-crimes"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-11-16",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "Retail Crime Is a Worker Safety Issue: What Security Teams Need to Know",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.flocksafety.com/blog/flock-security-testing-2026-what-the-bishop-fox-penetration-test-found"
-  },
-  {
-   "date": "2026-09-05",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "What Is Traffic Analytics?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.flocksafety.com/blog/what-is-traffic-analytics"
   }
  ],
  "profile": {

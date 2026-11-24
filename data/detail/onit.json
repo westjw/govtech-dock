@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-16",
-   "date_source": "json-ld",
+   "date_source": "og:published",
    "first_seen": "2026-11-16",
    "headline": "Why a Lower Hourly Rate Doesn\u2019t Always Mean Lower Legal Spend",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "og:published",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "How Should In-House Legal Teams Prepare for Rising Consumer Protection Litigation?",
    "kind": "press",
