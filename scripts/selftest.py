@@ -47746,7 +47746,13 @@ def check_a_posting_their_site_links_is_a_candidate_not_a_board() -> int:
         redirecting to one (it read the board off the posting's page and
         wrote it on the tenant's name in its address alone), wire_embedded
         leaves a row naming one in no pile, and the queue's own door files
-        none.
+        none;
+      - the older embedded finder (find_embedded_ats.py) reads no page its
+        fetch landed on, or passed through, that is a posting's, nor one whose
+        fetch cannot say where it landed, and says it left it to the wiring
+        door (a careers address answering 301 to a posting had its breadcrumb
+        board lifted, one or the first of two, for wire_embedded to wire on
+        the tenant's name alone: review of the posting change, 2026-11-23).
     """
     sys.path.insert(0, str(ROOT / "scripts"))
     import board_proposals as bp
@@ -47858,6 +47864,86 @@ def check_a_posting_their_site_links_is_a_candidate_not_a_board() -> int:
                                f"{dasked}")
     finally:
         discover_ats.get, discover_ats.ats.fetch = real_dget, real_fetch
+
+    # --- the older embedded finder does not read a posting it landed on ------
+    # A careers address answering 301 to a posting, one that goes on through a
+    # posting to a board's page, a record whose careers address IS a posting,
+    # and a page whose fetch cannot say where it landed: none is read, so the
+    # board a posting's breadcrumb names (one, or the first of two) never
+    # becomes an embedded row for wire_embedded to wire on the tenant's name
+    # alone (review of the posting change, 2026-11-23). An ordinary careers
+    # page is still read. Driven through main(), at the transport.
+    import add_company
+    import find_embedded_ats as fe
+    import verify_boards
+    eb = {n: f"{_PP_BOARD}{_pp_uuid(0x7400 + n)}/Pe-Co" for n in range(1, 6)}
+    ep = {n: _PP_DETAILS + f"{7400 + n}/Pe-Co/Engineer" for n in range(1, 5)}
+    pad = " " * 600
+    eweb = {"https://www.peredir.test/careers": (301, ep[1]),
+            ep[1]: (200, _pp_page("Pe Co - Engineer", eb[1]) + pad),
+            "https://www.petwo.test/careers": (301, ep[2]),
+            ep[2]: (200, _pp_page("Pe Co - Engineer", eb[2], eb[3]) + pad),
+            "https://www.pevia.test/careers": (301, ep[3]),
+            ep[3]: (302, eb[4]),
+            eb[4]: (200, f"<html><a href='{eb[4]}'>All Jobs</a>{pad}</html>"),
+            ep[4]: (200, _pp_page("Pe Co - Engineer", eb[1]) + pad),
+            "https://www.pereal.test/careers": (200, f"<html><a href='{eb[5]}'>Jobs</a>{pad}</html>")}
+    easked = []
+
+    class EResp:
+        def __init__(self, url, code, body):
+            self.url, self.status_code, self.encoding = url, code, "utf-8"
+            self.headers = ({"Location": body} if code in (301, 302)
+                            else {"content-type": "text/html; charset=utf-8"})
+            self.text = body if code == 200 else ""
+            self.content = self.text.encode()
+
+        def close(self):
+            pass
+
+    def eget(u, **kw):
+        easked.append(u)
+        code, body = eweb.get(u.rstrip("/"), eweb.get(u, (404, "")))
+        return EResp(u, code, body)
+    etmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-embedded-posting-"))
+    (etmp / "companies.json").write_text(json.dumps(
+        [_wb_co(cid, cid.title()) for cid in ("pe-redir", "pe-two", "pe-via", "pe-real")]
+        + [_wb_co("pe-ref", "Pe Ref", ats={"type": "html", "ref": ep[4]})]))
+    ekeep = (fe.DATA, fe.OUT, bp.RULED, sys.argv, ats.requests.get, ats.ask_robots,
+             add_company.verify, verify_boards.board_says, add_company.fetch)
+    try:
+        fe.DATA, fe.OUT, bp.RULED = etmp, etmp / "embedded_ats.json", etmp / bp.RULED.name
+        ats.requests.get, ats.ask_robots = eget, (lambda u: None)
+        add_company.verify = lambda block: (True, "3 posting(s) readable")
+        verify_boards.board_says = lambda kind, ref: {
+            "name": None, "n": 3, "names": [], "stated": False, "hosts": set(),
+            "how": "this board states no name"}
+        for label, fetch_ in (("at the transport", ekeep[-1]),
+                              ("by a fetch that says nothing of where it landed",
+                               lambda url, hops=None: (eweb.get(
+                                   "https://www.pereal.test/careers")[1], ""))):
+            add_company.fetch = fetch_
+            sweep = etmp / f"sweep-{len(label)}.json"
+            sys.argv = ["find_embedded_ats.py", "--pause", "0", "--all", "--out", str(sweep)]
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                code = fe.main()
+            got = {r["id"]: r["found"]["ref"] for r in json.loads(sweep.read_text())} \
+                if sweep.exists() else None
+            want = {"pe-real": eb[5]} if fetch_ is ekeep[-1] else {}
+            if code != 0 or got != want or "left to the wiring door" not in out.getvalue():
+                errors += fail(f"the older embedded finder ({label}) read a page its fetch "
+                               f"landed on that is a Paylocity posting, or one reached through "
+                               f"a posting, or whose fetch could not say where it landed - or "
+                               f"did not read an ordinary careers page, or did not say it left "
+                               f"the posting to the wiring door: exit {code}, hits {got}; "
+                               f"{out.getvalue()[-400:]!r}")
+        if ep[1] not in easked or "https://www.pereal.test/careers" not in easked:
+            errors += fail(f"the embedded finder's pin did not reach the transport: {easked}")
+    finally:
+        (fe.DATA, fe.OUT, bp.RULED, sys.argv, ats.requests.get, ats.ask_robots,
+         add_company.verify, verify_boards.board_says, add_company.fetch) = ekeep
+        shutil.rmtree(etmp, ignore_errors=True)
 
     # --- wire_embedded and the queue's door leave a posting alone -----------
     def found_row(cid, kind, ref):
