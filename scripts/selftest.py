@@ -2561,6 +2561,9 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
             errors += fail(f"with {k}, a door signs or redirects instead of saying it is not set up: {c}")
     if len(ns) < 13:
         errors += fail("the harness drove too few unconfigured doors")
+    # the floor is 32 characters (31 is off, above): exactly 32 is enough
+    if o.get("secret_32") != 200:
+        errors += fail(f"a client secret of exactly 32 characters is refused ({o.get('secret_32')}); the floor is 32")
     ov = o.get("override") or {}
     if (ov.get("exact") != 200 or ov.get("dest") != "https://*.cloudflareaccess.com/cdn-cgi/access/callback"
             or ov.get("default_refused") != 400 or ov.get("pattern_refused") != 400):
@@ -2592,6 +2595,11 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
         errors += fail("a code 120 seconds old is refused; it is good that long")
     if (T.get("race") or {}).get("statuses") != [200, 400]:
         errors += fail(f"two redemptions of one code at once did not give exactly one token: {T.get('race')}")
+    # all three reach the spend before any reads the row: only the atomic
+    # `used = 0` keeps it to one (the row's deletion afterwards does not)
+    if (T.get("race_interleaved") or {}).get("statuses") != [200, 400, 400]:
+        errors += fail(f"three redemptions that all reach the spend at once gave more than one token: "
+                       f"{T.get('race_interleaved')}")
 
     # A GUESSER, SLOWED
     rl = o.get("rate") or {}

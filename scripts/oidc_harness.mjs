@@ -83,17 +83,30 @@ globalThis.fetch = async (url, init = {}) => {
   return new Response("nope", { status: 404 });
 };
 
-/* D1 that IS SQLite. `down` makes every call throw, as a D1 outage would. */
+/* D1 that IS SQLite. `down` makes every call throw, as a D1 outage would.
+ * holdSpends(n): the next n spends of a code each wait until all n have been
+ * asked, then run in order, so two redemptions both reach the UPDATE before
+ * either reads or deletes the row - the interleaving the atomic `used = 0`
+ * is there for (a mutation run found the plain race never produced it). */
 function d1() {
   const db = new DatabaseSync(":memory:");
-  const box = { down: false };
+  const box = { down: false, hold: null };
+  box.holdSpends = (n) => { let release; const p = new Promise((r) => { release = r; }); box.hold = { n, count: 0, p, release }; };
   const run1 = (sql, p) => {
     if (/^\s*SELECT/i.test(sql)) return { results: db.prepare(sql).all(...p), success: true };
     const r = db.prepare(sql).run(...p);
     return { success: true, meta: { changes: Number(r.changes) } };
   };
   const stmt = (sql, p = []) => ({ _sql: sql, _p: p, bind: (...a) => stmt(sql, a),
-    async run() { if (box.down) throw new Error("D1_ERROR: down"); return run1(sql, p); },
+    async run() {
+      if (box.down) throw new Error("D1_ERROR: down");
+      if (box.hold && /^\s*UPDATE oidc_codes/i.test(sql)) {
+        const g = box.hold;
+        g.count++;
+        if (g.count >= g.n) { box.hold = null; g.release(); } else await g.p;
+      }
+      return run1(sql, p);
+    },
     async first() { if (box.down) throw new Error("D1_ERROR: down"); return db.prepare(sql).get(...p) ?? null; },
     async all() { if (box.down) throw new Error("D1_ERROR: down"); return run1(sql, p); } });
   return Object.assign(box, { raw: db, prepare: (s) => stmt(s),
@@ -439,7 +452,8 @@ const STATE = "st8 a+b/c=d&e%f?g#h~i";
 {
   const offs = {
     no_client_id: { OIDC_CLIENT_ID: undefined }, odd_client_id: { OIDC_CLIENT_ID: "has space" },
-    short_secret: { OIDC_CLIENT_SECRET: "s".repeat(O.MIN_SECRET - 1) }, no_secret: { OIDC_CLIENT_SECRET: undefined },
+    // 31: the spec's floor is 32 characters, written here, not read off the module
+    short_secret: { OIDC_CLIENT_SECRET: "s".repeat(31) }, no_secret: { OIDC_CLIENT_SECRET: undefined },
     no_key: { OIDC_SIGNING_JWK: undefined }, garbled_key: { OIDC_SIGNING_JWK: "{" },
     mismatched_key: { OIDC_SIGNING_JWK: JSON.stringify({ ...CUR, d: OTHER.d }) },
     no_db: { DB: undefined },
@@ -457,6 +471,12 @@ const STATE = "st8 a+b/c=d&e%f?g#h~i";
   }
   const noSession = envOf({ SESSION_SECRET: undefined });
   out.not_set_up.no_session_secret = { authorize: (await authz(noSession, ask())).status };
+  // and a secret of exactly 32 characters is enough
+  {
+    const s32 = "t".repeat(32), env = envOf({ OIDC_CLIENT_SECRET: s32 });
+    const c = await codeFor(env);
+    out.secret_32 = (await tok(env, goodForm(c.code, c.verifier, { client_secret: s32 }))).status;
+  }
   // A GOOD OVERRIDE REPLACES the callback and widens nothing
   const OVR = "https://*.cloudflareaccess.com/cdn-cgi/access/callback";
   const env = envOf({ OIDC_REDIRECT_URI: OVR });
@@ -512,11 +532,16 @@ const STATE = "st8 a+b/c=d&e%f?g#h~i";
     const env2 = { ...env, OIDC_CLIENT_ID: "jh-another-client", OIDC_CLIENT_SECRET: "q".repeat(40) };
     return pick(await tok(env2, goodForm(c.code, c.verifier, { client_id: "jh-another-client", client_secret: "q".repeat(40) })));
   });
-  // TWO REDEMPTIONS AT ONCE: exactly one ID token
+  // TWO REDEMPTIONS AT ONCE: exactly one ID token, as they come, and with
+  // both made to reach the UPDATE before either reads the row
   {
     const c = await codeFor(env);
     const both = await Promise.all([tok(env, goodForm(c.code, c.verifier)), tok(env, goodForm(c.code, c.verifier))]);
     T.race = { statuses: both.map((r) => r.status).sort() };
+    const c2 = await codeFor(env);
+    env.DB.holdSpends(3);
+    const three = await Promise.all([1, 2, 3].map(() => tok(env, goodForm(c2.code, c2.verifier))));
+    T.race_interleaved = { statuses: three.map((r) => r.status).sort() };
   }
   // EXPIRY: a code is good 120 seconds, and not 121
   {

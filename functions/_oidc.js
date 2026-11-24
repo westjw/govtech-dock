@@ -131,7 +131,10 @@ function parseJwk(raw, needPrivate) {
 /* The signing key, imported once per isolate (per value of the secret).
  * THE PAIR MUST BE ONE PAIR: a probe signed with `d` has to verify under the
  * published x and y, or every token this signs would be refused by the very
- * keys /oidc/jwks hands out. */
+ * keys /oidc/jwks hands out. A second line only: Node's importKey already
+ * refuses a `d` that is not x and y's (mutation-tested 2026-11-23, removing
+ * the probe changes no outcome the harness can reach), and the probe keeps
+ * that true on a runtime that imports without checking. */
 let SIGNING = { raw: undefined, key: null };
 async function importSigning(raw) {
   const j = parseJwk(raw, true);
