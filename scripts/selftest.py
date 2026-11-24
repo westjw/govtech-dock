@@ -2417,7 +2417,14 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
         twenty-five requests that were not it, from its /64, in the middle
         of a burst, it gets its token, and its own failures are OAuth's
         words, never 429;
+      - every not-configured /oidc/jwks answer is exactly 503
+        {"error": "not_configured"}, no-store, which Job Hunter's key cache
+        reads as "no keys" (its review, 2026-11-24);
       - the gate's OPEN set is exactly the sign-in's paths and these four;
+      - DEPLOY.md §3f has every Access application stop accepting all
+        identity providers before SLED JOBS is added, the admin's Allow
+        policies require the one-time PIN, and SLED JOBS is ticked on "Job
+        Hunter beta" alone (review, 2026-11-24);
       - nothing logs anything.
     """
     import shutil
@@ -2789,7 +2796,11 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
         words (never the address), "not_let_in" for any other 401 of its
         own (nothing of the person's is sent, so that is Job Hunter not
         taking the board's way in), and "unreachable" for everything else;
-      - nothing secret in any answer, and nothing logged.
+      - nothing secret in any answer, and nothing logged;
+      - DEPLOY.md §3f's panel check says where each answer points, and its
+        steps for taking someone out of the beta come in their true order,
+        Job Hunter's unlink (the one step at once) first (review,
+        2026-11-24).
     """
     import shutil
     import subprocess
