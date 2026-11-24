@@ -3271,8 +3271,9 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     is filled with what each Paylocity board's own page this run asked
     stated (page_addresses_of); `postings`, with the boards each Paylocity
     posting's page this run asked named (posting_boards_of).
-    `after_postings(results)`, when given, is called once the postings are
-    asked and before any board is read: cmd_plan keeps the readers' doubts against
+    `after_postings(results, answers)`, when given, is called once the
+    postings are asked (`answers`: what each posting's page said, by its id)
+    and before any board is read: cmd_plan keeps the readers' doubts against
     the board a posting named there (keep_posted_doubts), and gets back the
     doubts on file as that left them and the companies it kept them for (or
     None when it wrote nothing), or raises Stopped.
@@ -3316,7 +3317,7 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
         # asked (keep_posted_doubts), and from here on the plan holds that
         # board under the company's id for every other company, as every
         # door after does (review of the posting change, 2026-11-23)
-        got = after_postings(results)
+        got = after_postings(results, ctx.get("posting_ids") or {})
         if got:
             on_file, kept = got
             ctx["stores"] = dict(ctx["stores"], doubts=on_file)
@@ -3768,13 +3769,33 @@ def _site_own(entry: dict | None) -> dict:
         if not (isinstance(x, dict) and x.get("posting"))]}
 
 
+def _posted_view(entry: dict, answers: dict | None) -> dict | None:
+    """The finder's entry with the boards its postings' pages named, as
+    resolved_by_posting adds them, where this run asked those pages for
+    ANOTHER company (`answers`: {posting id: what its page said}) - or None.
+    A company that is not on file (merged away), or that nothing was asked
+    for, still has its posting's board known when another company linked the
+    same posting."""
+    for r in postings_of(entry):
+        said = (answers or {}).get(posting_id(r.get("ref")))
+        if said and said.get("boards"):
+            return dict(entry, candidates=list(entry.get("candidates") or []) + [
+                {"type": "paylocity", "ref": b, "element": r.get("element"),
+                 "saw": r.get("saw"), "times": r.get("times"), "page": r.get("page"),
+                 "hop": r.get("hop"), "mode": r.get("mode"),
+                 "posting": posting_address(r.get("ref")),
+                 "posting_boards": list(said["boards"])} for b in said["boards"]])
+    return None
+
+
 def keep_posted_doubts(reviewed: dict, results: dict, by: str, worklist: str,
-                       say=print) -> tuple:
+                       say=print, answers: dict | None = None) -> tuple:
     """Keep each reader's doubt about a company whose own site names no board
     and links a Paylocity posting AGAIN, in the same words, against the board
     the posting's page named - once the plan has asked that page
-    (resolved_by_posting; `results` as it left them) and before it reads any
-    board.
+    (resolved_by_posting; `results` as it left them, `answers` what each
+    posting's page said by its id, asked for whichever company) and before
+    it reads any board.
 
     A POSTING IS NOT A BOARD, so keep_doubts, before the first request, kept
     such a doubt about no board: it held the company by its id and the board
@@ -3786,6 +3807,9 @@ def keep_posted_doubts(reviewed: dict, results: dict, by: str, worklist: str,
     owner has settled since: kept now, with a stamp later than his ruling, it
     would stand again. Under the desk lock. Returns (why it stopped or None,
     the files written, the companies whose doubts it kept)."""
+    view = {cid: v for cid in reviewed if not board_named(results.get(cid), None)[1]
+            and (v := _posted_view(results.get(cid) or {}, answers))}
+    results = {**results, **view}
     posted = {cid: words for cid, words in sorted(reviewed.items())
               if not board_named(_site_own(results.get(cid)), None)[1]
               and board_named(results.get(cid), None)[1]}
@@ -3985,12 +4009,13 @@ def cmd_plan(a) -> int:
         posted_pages: dict = {}
         kept_posted = []
 
-        def after_postings(resolved):
+        def after_postings(resolved, answers):
             # the readers' doubts against the board a posting's page named,
             # once the plan has asked it (keep_posted_doubts)
             said: list = []
             stop_p, wrote_p, kept_p = keep_posted_doubts(
-                reviewed, resolved, by, out.name, say=lambda s: (said.append(s), print(s)))
+                reviewed, resolved, by, out.name, say=lambda s: (said.append(s), print(s)),
+                answers=answers)
             if wrote_p:
                 kept_posted.extend(sorted(kept_p))
                 print(f"written by {by}: {', '.join(wrote_p)} and the journal "

@@ -3012,7 +3012,10 @@ round.
   the same words and under the same label, against the board the posting's
   page names once the plan has asked that page and before it reads any board
   (`keep_posted_doubts`, a second journalled addition; never one the owner
-  settled since, which would stand again by its later stamp). Kept about no
+  settled since, which would stand again by its later stamp). A company
+  asked nothing for - merged away before the plan, refused - has its doubt
+  kept against the board that posting's page named for another company
+  linking it in the same run. Kept about no
   board alone it held the company by its id and that board under no other,
   and after a desk merge the survivor was wired to it (review of the posting
   change, 2026-11-23). KNOWN, AND LEFT AS FOUND: a posting whose page fails
