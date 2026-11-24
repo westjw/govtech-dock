@@ -2295,6 +2295,354 @@ console.log(JSON.stringify(out));"""
     return errors
 
 
+# --- ES256, checked again in Python, with nothing installed ------------------
+#
+# The board signs Job Hunter's ID tokens and the popout's assertions with
+# ES256 (functions/_oidc.js) and Access and Job Hunter verify them. The
+# harnesses verify with Node's crypto, which is the OpenSSL WebCrypto signs
+# with, so a mistake both share (a DER signature where JWS wants the raw 64
+# bytes r||s, a hash over the wrong bytes) could pass there. These check each
+# signature again by the curve's own arithmetic, the way a Python verifier
+# such as Job Hunter's reads it. Test tokens only: speed is no matter.
+_P256_P = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff
+_P256_N = 0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551
+_P256_B = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b
+_P256_G = (0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296,
+           0x4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5)
+
+
+def _p256_add(a, b):
+    p = _P256_P
+    if a is None:
+        return b
+    if b is None:
+        return a
+    (x1, y1), (x2, y2) = a, b
+    if x1 == x2 and (y1 + y2) % p == 0:
+        return None
+    if a == b:
+        lam = (3 * x1 * x1 - 3) * pow(2 * y1, -1, p) % p
+    else:
+        lam = (y2 - y1) * pow(x2 - x1, -1, p) % p
+    x3 = (lam * lam - x1 - x2) % p
+    return (x3, (lam * (x1 - x3) - y1) % p)
+
+
+def _p256_mul(k, pt):
+    out = None
+    while k:
+        if k & 1:
+            out = _p256_add(out, pt)
+        pt = _p256_add(pt, pt)
+        k >>= 1
+    return out
+
+
+def _b64u_bytes(s: str) -> bytes:
+    import base64
+    return base64.urlsafe_b64decode(s + "=" * (-len(s) % 4))
+
+
+def _p256_on_curve(x: int, y: int) -> bool:
+    return 0 <= x < _P256_P and 0 <= y < _P256_P and (y * y - (x * x * x - 3 * x + _P256_B)) % _P256_P == 0
+
+
+def _es256_verify(jwk: dict, jwt: str) -> bool:
+    """Whether `jwt` is an ES256 JWS that `jwk` (a public P-256 JWK) signed."""
+    try:
+        head, body, sig = jwt.split(".")
+        hdr = json.loads(_b64u_bytes(head))
+        raw = _b64u_bytes(sig)
+        if hdr.get("alg") != "ES256" or len(raw) != 64 or jwk.get("kty") != "EC" or jwk.get("crv") != "P-256":
+            return False
+        r, s = int.from_bytes(raw[:32], "big"), int.from_bytes(raw[32:], "big")
+        if not (0 < r < _P256_N and 0 < s < _P256_N):
+            return False
+        x, y = int.from_bytes(_b64u_bytes(jwk["x"]), "big"), int.from_bytes(_b64u_bytes(jwk["y"]), "big")
+        if not _p256_on_curve(x, y):
+            return False
+        e = int.from_bytes(hashlib.sha256(f"{head}.{body}".encode()).digest(), "big")
+        w = pow(s, -1, _P256_N)
+        pt = _p256_add(_p256_mul(e * w % _P256_N, _P256_G), _p256_mul(r * w % _P256_N, (x, y)))
+        return pt is not None and pt[0] % _P256_N == r
+    except (ValueError, KeyError, TypeError, AttributeError):
+        return False
+
+
+def _jwt_claims(jwt: str) -> dict:
+    try:
+        return json.loads(_b64u_bytes(jwt.split(".")[1]))
+    except (ValueError, IndexError, AttributeError):
+        return {}
+
+
+def _strip_js_comments(src: str) -> str:
+    src = re.sub(r"/\*[\s\S]*?\*/", "", src)
+    return "\n".join(re.sub(r"(^|[^:])//.*$", r"\1", ln) for ln in src.splitlines())
+
+
+def check_job_hunter_signs_in_with_sled_jobs() -> int:
+    """"Sign in with SLED JOBS" for Job Hunter (owner, 2026-11-23, design C:
+    "Cloudflare Access stays in front of Job Hunter, but its only button
+    becomes 'Sign in with SLED JOBS'. If you're already signed in on the
+    board, you go straight through.").
+
+    The board is an OpenID Connect provider with one client, the existing
+    "Job Hunter beta" Access application (functions/_oidc.js,
+    functions/oidc/, the discovery document). Driven through
+    scripts/oidc_harness.mjs, which imports the real modules and runs the
+    whole round trip with a key it made: authorize, the code, the token, the
+    ID token verified with the published keys (here AGAIN in Python, by the
+    curve's arithmetic). Then:
+      - authorize refuses every request that is not the one client, Access's
+        callback exactly, a code with PKCE S256, with a page here and never
+        a redirect, and mints nothing;
+      - signed out, a person goes to the sign-in with a `to` of 40
+        characters (the request rides in a sealed __Host- cookie, whatever
+        Access's state weighs), signs in by the emailed code for real and
+        comes back to the code; a way back that is not this browser's own,
+        or ten minutes late, is refused;
+      - signed in with no `hunter` or `owner` role: the closed-beta page, no
+        code; not set up: every door says so;
+      - the token door takes either client method, compares in constant
+        time, spends a code once (two at once: one token), 120 seconds and
+        not 121, holds the verifier, the redirect_uri and the client, and a
+        failed try spends the code; every failure is OAuth's word alone;
+      - twenty failures an hour from one network and it is slowed, with
+        nothing written by a working sign-in;
+      - the gate's OPEN set is exactly the sign-in's paths and these four;
+      - nothing logs anything.
+    """
+    import shutil
+    import subprocess
+    errors = 0
+    if not shutil.which("node"):
+        print("  note: node is not installed; Job Hunter's sign-in was not driven")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "oidc_harness.mjs")],
+                       capture_output=True, text=True, timeout=180)
+    try:
+        o = json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError) as exc:
+        return fail(f"oidc_harness.mjs printed no JSON ({exc}): {r.stderr[-400:]}")
+    if o.get("skip"):
+        print(f"  note: {o['skip']}; Job Hunter's sign-in was not driven")
+        return 0
+    brand = json.loads((DATA / "brand.json").read_text())
+    issuer = f"https://{brand['domain']}"
+    callback = "https://solesource-c6g-pages.cloudflareaccess.com/cdn-cgi/access/callback"
+
+    # THE DOCUMENT AND THE KEYS
+    d = o.get("discovery") or {}
+    want = {"issuer": issuer, "authorization_endpoint": f"{issuer}/oidc/authorize",
+            "token_endpoint": f"{issuer}/oidc/token", "jwks_uri": f"{issuer}/oidc/jwks",
+            "response_types_supported": ["code"], "subject_types_supported": ["public"],
+            "id_token_signing_alg_values_supported": ["ES256"], "code_challenge_methods_supported": ["S256"],
+            "token_endpoint_auth_methods_supported": ["client_secret_basic", "client_secret_post"],
+            "scopes_supported": ["openid", "email"]}
+    body = d.get("body") or {}
+    if d.get("status") != 200 or any(body.get(k) != v for k, v in want.items()):
+        errors += fail(f"the discovery document does not say what the board offers: "
+                       f"{ {k: body.get(k) for k, v in want.items() if body.get(k) != v} }")
+    if (o.get("discovery_www") or {}).get("location") != f"{issuer}/.well-known/openid-configuration":
+        errors += fail(f"the discovery document answers off the site's own address: {o.get('discovery_www')}")
+    j = o.get("jwks") or {}
+    keys = j.get("keys") or []
+    if (j.get("status") != 200 or j.get("cache") != "public, max-age=300" or len(keys) != 1 or j.get("has_d")
+            or set(keys[0]) != {"kty", "crv", "x", "y", "kid", "alg", "use"}
+            or (keys[0].get("kty"), keys[0].get("crv"), keys[0].get("alg"), keys[0].get("use"), keys[0].get("kid"))
+            != ("EC", "P-256", "ES256", "sig", j.get("kid"))):
+        errors += fail(f"/oidc/jwks does not publish the public half of the one key, cached five minutes: "
+                       f"{j.get('status')} {j.get('cache')} {keys}")
+    if (o.get("jwks_old") or {}).get("kids") != ["test-key-now", "test-key-before"] or (o.get("jwks_old") or {}).get("has_d"):
+        errors += fail(f"the earlier key is not published beside the current one, public half only: {o.get('jwks_old')}")
+    if (o.get("jwks_same_old") or {}).get("kids") != ["test-key-now"]:
+        errors += fail("an earlier key with the current key's kid is published twice")
+    off = o.get("jwks_off") or {}
+    if len(off) < 8 or any(c.get("status") != 503 or c.get("keys") or c.get("cache") != "no-store" for c in off.values()):
+        errors += fail(f"a missing, malformed or mismatched key still publishes something, or is cached: {off}")
+
+    # THE ROUND TRIP
+    rt = o.get("round") or {}
+    if (rt.get("status") != 200 or rt.get("location") or rt.get("cache") != "no-store" or rt.get("xfo") != "DENY"
+            or rt.get("referrer") != "no-referrer" or rt.get("script") or rt.get("form")
+            or not rt.get("refresh") or rt.get("refresh") != rt.get("link")):
+        errors += fail(f"authorize does not go on by a page (meta refresh and a link, no script, no form, "
+                       f"no-store, not framable): {({k: rt.get(k) for k in ('status', 'location', 'cache', 'xfo', 'script', 'form')})}")
+    if (rt.get("dest") != callback or rt.get("keys") != ["code", "state"] or rt.get("state") != "st8 a+b/c=d&e%f?g#h~i"
+            or rt.get("code_len") != 43):
+        errors += fail(f"the code does not go to Access's callback alone, with the state untouched: "
+                       f"{rt.get('dest')} {rt.get('keys')} {rt.get('state')!r}")
+    if rt.get("stored") != 1 or not rt.get("stored_hash_ok") or rt.get("stored_raw_code"):
+        errors += fail("the code is kept as itself, or not as its SHA-256")
+    tk = rt.get("token") or {}
+    if (tk.get("status") != 200 or tk.get("cache") != "no-store" or tk.get("keys") != ["access_token", "expires_in", "id_token", "token_type"]
+            or tk.get("token_type") != "Bearer" or tk.get("expires_in") != 300 or tk.get("access_len") != 43):
+        errors += fail(f"the token answer is not the one the spec names: {tk}")
+    idt = rt.get("id") or {}
+    cl = idt.get("claims") or {}
+    want_claims = {"iss": issuer, "aud": "jh-harness-client", "sub": idt.get("sub_want"), "email": "hunter@example.org",
+                   "email_verified": True, "iat": idt.get("now"), "exp": (idt.get("now") or 0) + 300,
+                   "auth_time": idt.get("session_iat"), "nonce": "n-0S6_WzA2Mj"}
+    if cl != want_claims:
+        errors += fail(f"the ID token's claims are not the interface's: {cl} (want {want_claims})")
+    if idt.get("head") != {"alg": "ES256", "typ": "JWT", "kid": "test-key-now"} or idt.get("sig_bytes") != 64:
+        errors += fail(f"the ID token is not ES256 with the key's kid and a raw 64-byte signature: {idt.get('head')} {idt.get('sig_bytes')}")
+    rkeys = {k.get("kid"): k for k in rt.get("jwks") or []}
+    token_jwt = rt.get("id_token") or ""
+    if not idt.get("ok") or not _es256_verify(rkeys.get("test-key-now") or {}, token_jwt):
+        errors += fail("the ID token does not verify with the published key (Node and Python both must)")
+    # one character mid-signature (the last ones may be base64 padding bits)
+    h_, b_, s_ = (token_jwt.split(".") + ["", "", ""])[:3]
+    mid = len(s_) // 2
+    flipped = f"{h_}.{b_}.{s_[:mid]}{'A' if s_[mid:mid + 1] != 'A' else 'B'}{s_[mid + 1:]}"
+    if idt.get("tampered_ok") or _es256_verify(rkeys.get("test-key-now") or {}, flipped) \
+            or _es256_verify(rkeys.get("test-key-now") or {}, token_jwt.replace(token_jwt.split(".")[1], token_jwt.split(".")[1] + "x")):
+        errors += fail("a tampered ID token verifies; the check proves nothing")
+    if rt.get("rows_after") != 0 or (rt.get("reused") or {}).get("json") != {"error": "invalid_grant"}:
+        errors += fail(f"a code is kept after it is spent, or works twice: {rt.get('rows_after')} {rt.get('reused')}")
+    if (o.get("basic") or {}).get("status") != 200 or not (o.get("basic") or {}).get("ok") or o.get("basic_with_id") != 200:
+        errors += fail(f"client_secret_basic does not trade a code: {o.get('basic')} {o.get('basic_with_id')}")
+    ao = o.get("access_owner") or {}
+    if (ao.get("status") != 200 or ao.get("token") != 200 or not ao.get("ok") or ao.get("email") != "owner@example.org"
+            or ao.get("auth_time") != ao.get("want_auth_time")):
+        errors += fail(f"the owner signed in through Access alone does not go straight through: {ao}")
+    if (o.get("session_owner") or {}).get("code") != 43:
+        errors += fail("the owner's role does not open Job Hunter's sign-in")
+
+    # AUTHORIZE REFUSES, AND NEVER SENDS ANYBODY ANYWHERE
+    ref = o.get("refused") or {}
+    if len(ref) < 30:
+        errors += fail(f"the harness drove too few refused requests to trust ({len(ref)})")
+    for k, c in ref.items():
+        if (c.get("status") != 400 or c.get("location") or c.get("refresh") or c.get("callback") or c.get("evil")
+                or c.get("code") or c.get("set") or c.get("cache") != "no-store" or c.get("xfo") != "DENY"):
+            errors += fail(f"authorize took, redirected or minted for a bad request ({k}): {c}")
+    if (o.get("refused_control") or {}).get("code") != 43 or (o.get("no_state") or {}).get("keys") != ["code"] \
+            or (o.get("mode_query") or {}).get("status") != 200:
+        errors += fail("the refusals prove nothing: the right request (with or without state) does not mint")
+    if not str((o.get("authorize_www") or {}).get("location", "")).startswith(f"{issuer}/oidc/authorize?"):
+        errors += fail("authorize answers off the site's own address, where the sign-in's cookie is not")
+
+    # SIGNED OUT: THE SIGN-IN, AND BACK
+    dt = o.get("detour") or {}
+    if (dt.get("status") != 302 or dt.get("path") != "/signin" or not re.fullmatch(r"/oidc/authorize\?r=[A-Za-z0-9_-]{22}", dt.get("to") or "")
+            or dt.get("code") or dt.get("set") != ["__Host-sj_oidc=<value>; Path=/; Max-Age=600; HttpOnly; Secure; SameSite=Lax"]):
+        errors += fail(f"signed out, authorize does not send the person to the sign-in with a short `to` and the "
+                       f"request held in a sealed cookie for ten minutes: {dt}")
+    if (dt.get("to_len") or 2000) > 1024 or dt.get("page_to") != dt.get("to"):
+        errors += fail(f"the `to` is too long for the sign-in to keep, or the sign-in page lost it: {dt.get('to_len')}")
+    if (dt.get("mailed") != 303 or (dt.get("after_code") or {}).get("location") != dt.get("to")
+            or (dt.get("back") or {}).get("status") != 200 or (dt.get("back") or {}).get("dest") != callback
+            or not (dt.get("back") or {}).get("state_kept") or not (dt.get("back") or {}).get("dropped") or dt.get("token") != 200):
+        errors += fail(f"signing in by the emailed code does not come back to Access with the code and the long state: {dt}")
+    rr = o.get("resume_refused") or {}
+    if len(rr) < 8 or any(c.get("status") != 400 or c.get("location") or c.get("refresh") or c.get("evil") or c.get("code")
+                          for c in rr.values()):
+        errors += fail(f"a way back that is not this browser's own (or ten minutes late) is taken: {rr}")
+    if (o.get("detour_too_big") or {}).get("status") != 400 or (o.get("detour_too_big") or {}).get("set"):
+        errors += fail("a request too big to hold in a cookie is half-held instead of refused")
+
+    # SIGNED IN, NO PLACE IN THE BETA
+    nr = o.get("no_role") or {}
+    for k in ("not_on_board", "admin_only", "revoked"):
+        c = nr.get(k) or {}
+        if (c.get("status") != 403 or c.get("location") or c.get("refresh") or not c.get("beta") or not c.get("names")
+                or not c.get("to_beta") or c.get("code")):
+            errors += fail(f"a sign-in without the hunter or owner role ({k}) is given a code, or not told it is a closed beta: {c}")
+    if (nr.get("users_down") or {}).get("status") != 403 or (nr.get("users_down") or {}).get("code"):
+        errors += fail("with the Users board unreadable, authorize grants a code")
+
+    # NOT SET UP
+    ns = o.get("not_set_up") or {}
+    for k, c in ns.items():
+        if c.get("authorize") != 503 or c.get("refresh") or (k != "no_session_secret" and (c.get("token") != 503
+                                                                                            or c.get("error") != "temporarily_unavailable")):
+            errors += fail(f"with {k}, a door signs or redirects instead of saying it is not set up: {c}")
+    if len(ns) < 13:
+        errors += fail("the harness drove too few unconfigured doors")
+    ov = o.get("override") or {}
+    if (ov.get("exact") != 200 or ov.get("dest") != "https://*.cloudflareaccess.com/cdn-cgi/access/callback"
+            or ov.get("default_refused") != 400 or ov.get("pattern_refused") != 400):
+        errors += fail(f"OIDC_REDIRECT_URI widens the one address instead of replacing it: {ov}")
+
+    # THE TOKEN DOOR
+    T = o.get("token_refused") or {}
+    want_t = {"wrong_secret_post": (401, "invalid_client"), "wrong_secret_basic": (401, "invalid_client"),
+              "wrong_client_id": (401, "invalid_client"), "no_credentials": (401, "invalid_client"),
+              "both_methods": (400, "invalid_request"), "basic_garbled": (401, "invalid_client"),
+              "bearer_header": (401, "invalid_client"), "basic_other_body_id": (401, "invalid_client"),
+              "grant_password": (400, "unsupported_grant_type"), "wrong_verifier": (400, "invalid_grant"),
+              "no_verifier": (400, "invalid_grant"), "verifier_bad_chars": (400, "invalid_grant"),
+              "verifier_is_challenge": (400, "invalid_grant"), "wrong_redirect": (400, "invalid_grant"),
+              "no_redirect": (400, "invalid_grant"), "unknown_code": (400, "invalid_grant"),
+              "malformed_code": (400, "invalid_grant"), "no_code": (400, "invalid_grant"),
+              "not_form": (400, "invalid_request"), "code_twice": (400, "invalid_request"),
+              "big_body": (400, "invalid_request"), "get": (405, "invalid_request"),
+              "off_site": (400, "invalid_request"), "spent_by_a_wrong_try": (400, "invalid_grant"),
+              "client_changed": (400, "invalid_grant"), "at_121": (400, "invalid_grant"),
+              "db_down": (503, "temporarily_unavailable")}
+    for k, (status, word) in want_t.items():
+        c = T.get(k) or {}
+        if c.get("status") != status or c.get("json") != {"error": word} or c.get("cache") != "no-store":
+            errors += fail(f"the token door's {k} answer is {c.get('status')} {c.get('json')}, not {status} {{'error': {word!r}}}")
+        if status == 401 and "Basic" not in c.get("www", ""):
+            errors += fail(f"the token door's {k} 401 names no WWW-Authenticate scheme")
+    if (T.get("at_120") or {}).get("status") != 200:
+        errors += fail("a code 120 seconds old is refused; it is good that long")
+    if (T.get("race") or {}).get("statuses") != [200, 400]:
+        errors += fail(f"two redemptions of one code at once did not give exactly one token: {T.get('race')}")
+
+    # A GUESSER, SLOWED
+    rl = o.get("rate") or {}
+    cap = rl.get("cap")
+    if (cap != 20 or rl.get("statuses") != [401] * 20 or (rl.get("capped") or {}).get("status") != 429
+            or (rl.get("capped") or {}).get("json") != {"error": "temporarily_unavailable"}
+            or (rl.get("capped") or {}).get("retry") != "3600" or rl.get("again") != 429
+            or rl.get("fails_at_cap") != [20] or rl.get("fails_after_refusal") != [20]):
+        errors += fail(f"the token door does not slow a network after {cap} failures an hour, or a refusal writes: {rl}")
+    if (rl.get("other_network") != 200 or rl.get("good") != 200 or rl.get("good_wrote")
+            or rl.get("v6_neighbour") != 429 or rl.get("v6_other") != 200 or rl.get("next_hour") != 200):
+        errors += fail(f"the slowing reaches another network, the next hour, or a working sign-in writes a count: {rl}")
+
+    # THE GATE: these four pass signed out, and nothing beside them
+    open_now = sorted(["/admin/api/whoami", "/admin/api/login", "/api/whoami", "/signin", "/signin/email",
+                       "/signin/check", "/signin/code", "/signin/link", "/signin/out", "/signin/theme",
+                       "/signin/google", "/signin/google/callback",
+                       "/oidc/authorize", "/oidc/token", "/oidc/jwks", "/.well-known/openid-configuration"])
+    if o.get("open_set") != open_now:
+        errors += fail(f"the gate's OPEN set is not the sign-in's paths and Job Hunter's four: {o.get('open_set')}")
+    for p, c in (o.get("gate_open") or {}).items():
+        if not c.get("reached"):
+            errors += fail(f"the gate shut {p}; Access calls it with no sign-in of ours")
+    if o.get("gated"):
+        for p, c in (o.get("gate_shut") or {}).items():
+            if c.get("reached") or c.get("status") != 403:
+                errors += fail(f"the gate let {p} through signed out; only the four exact paths are open")
+        if ((o.get("gate_shut") or {}).get("/api/jh/board-role?id=a::b") or {}).get("error") != "not_signed_in":
+            errors += fail("the gate's refusal of the panel's route is not the JSON the panel words")
+    mw = o.get("mw_authorize") or {}
+    if mw.get("status") != 200 or mw.get("xfo") != "DENY" or "frame-ancestors 'none'" not in mw.get("csp", ""):
+        errors += fail(f"through the middleware, authorize's page can be framed: {mw}")
+
+    # NOTHING LOGGED, NOTHING FETCHED BUT THE SIGN-IN'S OWN
+    if o.get("logged"):
+        errors += fail(f"the sign-in logged something (a code, a secret or an address could be in it): {o['logged'][:3]}")
+    if set(o.get("fetched") or []) - {"api.resend.com", "solesource-c6g-pages.cloudflareaccess.com"}:
+        errors += fail(f"the sign-in fetched somewhere it has no reason to: {o.get('fetched')}")
+    for f in ("functions/_oidc.js", "functions/oidc/authorize.js", "functions/oidc/token.js", "functions/oidc/jwks.js",
+              "functions/.well-known/openid-configuration.js"):
+        src = _strip_js_comments((ROOT / f).read_text())
+        if "console." in src:
+            errors += fail(f"{f} logs; nothing in Job Hunter's sign-in may")
+    gate_src = (ROOT / "functions" / "_gate.js").read_text()
+    m = re.search(r"export const OPEN = new Set\(\[([^\]]*)\]\)", gate_src)
+    if not m or not all(f'"{p}"' in m.group(1) for p in ("/oidc/authorize", "/oidc/token", "/oidc/jwks",
+                                                          "/.well-known/openid-configuration")):
+        errors += fail("functions/_gate.js's OPEN set no longer names the sign-in's four paths")
+    return errors
+
+
 def check_the_site_is_signed_in_only_until_launch() -> int:
     """The front door is public; nothing else is served without a sign-in.
 
@@ -60913,6 +61261,7 @@ def main() -> int:
     errors += check_the_front_page_is_whole_and_public()
     errors += check_continue_with_google_waits_for_its_own_door()
     errors += check_our_own_sign_in_proves_the_address_and_opens_only_the_boards()
+    errors += check_job_hunter_signs_in_with_sled_jobs()
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()

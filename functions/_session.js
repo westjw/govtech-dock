@@ -128,13 +128,14 @@ export function ours(request, name) {
   return found;
 }
 
-/* {email, method} for this request's sign-in, or null. Never throws. */
+/* {email, method, iat} for this request's sign-in, or null. Never throws.
+ * `iat` is when it was made (Job Hunter's sign-in reports it as auth_time). */
 export async function sessionOf(request, env) {
   try {
     const p = await unseal(env, "session", ours(request, SESSION));
     if (!p || p.v !== 1 || (p.m !== "email" && p.m !== "google")) return null;
     const email = validEmail(p.e);
-    return email ? { email, method: p.m } : null;
+    return email ? { email, method: p.m, iat: Number.isInteger(p.iat) ? p.iat : null } : null;
   } catch { return null; }
 }
 

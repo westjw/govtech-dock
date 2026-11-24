@@ -15,7 +15,9 @@
 import { verify, tokenOf } from "./_access.js";
 import { sessionOf } from "./_session.js";
 
-/* {email, via: "access" | "email" | "google"} or null */
+/* {email, via: "access" | "email" | "google", iat} or null. `iat` is when
+ * the sign-in was made, or null: Job Hunter's sign-in reports it as
+ * auth_time (functions/oidc/authorize.js). */
 export async function signedIn(request, env) {
   const token = tokenOf(request);
   if (token) {
@@ -24,9 +26,9 @@ export async function signedIn(request, env) {
       // Access's own address, verified by its signature: trimmed and
       // lower-cased, as the Users board hashes it
       const email = claims && typeof claims.email === "string" ? claims.email.trim().toLowerCase() : "";
-      if (email) return { email, via: "access" };
+      if (email) return { email, via: "access", iat: Number.isInteger(claims.iat) ? claims.iat : null };
     } catch (e) { /* the keys did not answer: fall back to ours */ }
   }
   const ours = await sessionOf(request, env);
-  return ours ? { email: ours.email, via: ours.method } : null;
+  return ours ? { email: ours.email, via: ours.method, iat: ours.iat } : null;
 }

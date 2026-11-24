@@ -42,8 +42,9 @@ export const CSP_MODE = "enforce";
 export const NO_FRAME = new Set(["/alerts", "/alerts.html", "/claim", "/claim.html"]);
 const FRAME = "frame-ancestors 'none'";
 /* The sign-in pages too (2026-11-13): their cookies are Lax, so a framed
- * one sets nothing, but a sign-in form is no page to put inside another. */
-export const framed = (path) => NO_FRAME.has(path) || /^\/(admin|signin)(\/|$)/.test(path);
+ * one sets nothing, but a sign-in form is no page to put inside another.
+ * And Job Hunter's sign-in (2026-11-23): its pages carry a one-time code. */
+export const framed = (path) => NO_FRAME.has(path) || /^\/(admin|signin|oidc)(\/|$)/.test(path);
 
 let MANIFEST = null;            // per isolate; a failure is retried next time
 
