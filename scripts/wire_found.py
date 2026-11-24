@@ -1756,7 +1756,8 @@ def resolved_by_posting(results: dict, ctx: dict) -> None:
                 stop = "not asked: an earlier posting's page failed on the day"
             elif s["failed"] == "refused":
                 r["posting_refused"] = s["how"]
-                stop = "not asked: an earlier posting's page refused, and a refusal is not asked twice"
+                stop = ("not asked: an earlier posting's page refused, and a refusal is not "
+                        "asked twice")
             else:
                 r["posting_none"] = s["closed"] or f"its page could not be read ({s['how']})"
 
@@ -1768,9 +1769,16 @@ def postings_of(entry: dict) -> list:
             if isinstance(r, dict) and r.get("type") == POSTING]
 
 
+def _postings_linked(rows: list) -> int:
+    """How many postings these rows are: one posting seen twice (a page the
+    finder read twice, or one link in two elements) is one."""
+    return len({str(r.get("ref")) for r in rows})
+
+
 def _posting_list(rows: list, field: str, n: int = 3) -> str:
-    """'<posting> (<what its page said>); ...' for the rows marked `field`."""
-    picked = [r for r in rows if r.get(field)]
+    """'<posting> (<what its page said>); ...' for the rows marked `field`,
+    each posting once."""
+    picked = list({str(r.get("ref")): r for r in rows if r.get(field)}.values())
     out = "; ".join(f"{str(r.get('ref'))[:160]} ({str(r[field])[:160]})" for r in picked[:n])
     return out + (f"; and {len(picked) - n} more" if len(picked) > n else "")
 
@@ -1809,17 +1817,18 @@ def posting_skip(base: dict, c: dict, rows: list, ctx: dict) -> dict:
                      f"again in this run, and which board the posting is on is not known",
                      error=how)
     if any(r.get("posting_none") for r in rows):
-        unasked = sum(1 for r in rows if r.get("posting_unasked"))
+        unasked = _postings_linked([r for r in rows if r.get("posting_unasked")])
         return _skip(base, "no-board",
-                     f"their site links {many(len(rows), 'Paylocity posting')} and no board, and "
-                     f"no posting's page that was asked gives one "
+                     f"their site links {many(_postings_linked(rows), 'Paylocity posting')} "
+                     f"and no board, and no posting's page that was asked gives one "
                      f"({_posting_list(rows, 'posting_none')})"
                      + (f", and {unasked} more of theirs were not asked (at most "
                         f"{POSTING_TRIES} are)" if unasked else "")
                      + ": the find is not a board - which says nothing about whether they have "
                        "one")
     return _skip(base, "unusable",
-                 f"their site links {many(len(rows), 'Paylocity posting')}, and none was asked: "
+                 f"their site links {many(_postings_linked(rows), 'Paylocity posting')}, and "
+                 f"none was asked: "
                  + (_posting_list(rows, "posting_off") or "the plan did not reach them"))
 
 
@@ -1828,10 +1837,10 @@ def _declined_words(cid: str, rows: list, ctx: dict) -> str:
     r = (ctx["refusals"].get(cid) or [{}])[0]
     return (f"refused earlier in {r.get('store') or '?'}: {r.get('by') or '?'} on "
             f"{r.get('on') or '?'}" + (f" - {r['why']}" if r.get("why") else "")
-            + f". Their site links {many(len(rows), 'Paylocity posting')}, and no posting's page "
-            f"was asked which board it names - a company somebody said no to is not asked of "
-            f"anybody; the board refused then was {r.get('board') or 'not recorded'} - tell the "
-            f"owner")
+            + f". Their site links {many(_postings_linked(rows), 'Paylocity posting')}, and no "
+            f"posting's page was asked which board it names - a company somebody said no to is "
+            f"not asked of anybody; the board refused then was {r.get('board') or 'not recorded'} "
+            f"- tell the owner")
 
 
 # --------------------------------------- a Paylocity board known by two ids
@@ -2648,8 +2657,9 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         # skips it as refused)
         if any(p.get("declined") for p in postings):
             doubts.append(f"their site also links "
-                          f"{many(len(postings), 'Paylocity posting')}, and no posting's page "
-                          f"was asked which board it names - a company somebody said no to is "
+                          f"{many(_postings_linked(postings), 'Paylocity posting')}, and no "
+                          f"posting's page was asked which board it names - a company somebody "
+                          f"said no to is "
                           f"not asked of anybody")
         if any(p.get("posting_refused") for p in postings):
             doubts.append(f"their site also links a Paylocity posting whose page refused "
@@ -2657,8 +2667,9 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                           f"is on is not known")
         if any(p.get("posting_none") for p in postings):
             doubts.append(f"their site also links Paylocity postings, and no posting's page "
-                          f"that was asked gives a board ({_posting_list(postings, 'posting_none')})"
-                          f", so which board they hire through today is not settled")
+                          f"that was asked gives a board "
+                          f"({_posting_list(postings, 'posting_none')}), so which board they "
+                          f"hire through today is not settled")
         if any(p.get("posting_off") for p in postings):
             doubts.append(f"their site also links a posting this door does not ask "
                           f"({_posting_list(postings, 'posting_off')})")

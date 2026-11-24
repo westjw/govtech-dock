@@ -647,8 +647,8 @@ def paylocity_tenants(refs) -> set:
 # held it to a tenant's name alone), wire_embedded leaves a row of one in no
 # pile, and the queue's own door files none.
 POSTING_TYPE = "paylocity-posting"
-_PAYLOCITY_POSTING = re.compile(r"(?<![a-z0-9.-])recruiting\.paylocity\.com/recruiting/jobs/details/",
-                                re.I)
+_PAYLOCITY_POSTING = re.compile(
+    r"(?<![a-z0-9.-])recruiting\.paylocity\.com/recruiting/jobs/details/", re.I)
 
 
 def paylocity_posting(kind, ref) -> bool:

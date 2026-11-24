@@ -952,7 +952,8 @@ def find_refs(text: str) -> tuple[list[tuple], list[tuple]]:
     """Every board, and every platform nothing reads, that `text` names.
 
     Boards come back as (start, end, kind, ref, key) - a Paylocity posting
-    among them, of kind POSTING; the rest as (start, end, vendor). WHERE TWO PATTERNS OF ONE KIND OVERLAP, THE ONE THAT STARTS FIRST
+    among them, of kind POSTING; the rest as (start, end, vendor). WHERE TWO
+    PATTERNS OF ONE KIND OVERLAP, THE ONE THAT STARTS FIRST
     AND RUNS LONGEST STANDS: "jobs.ashbyhq.com/flock%20safety" is one board
     called "flock safety", not also one called "flock", and a page that names
     a board once is counted once however many tables know its form.
