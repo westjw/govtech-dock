@@ -3430,8 +3430,10 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
     Pages never shows the old private key) from a key that may have leaked
     (no earlier key, the service token's secret rotated with Revoke
     immediately, ALWAYS, disabling the token first an extra step and never
-    instead of it, Job Hunter restarted), and --secret makes a client secret
-    alone, as DEPLOY.md §3f says.
+    instead of it, a disabled token turned back on only once that rotation
+    is done and the new secret deployed, then the panel checked, Job Hunter
+    restarted), and --secret makes a client secret alone, as DEPLOY.md §3f
+    says.
     """
     import shutil
     import subprocess
@@ -3518,7 +3520,14 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
                        # period could let the leaked secret in again)
                        '"Keep the current secret valid for", ALWAYS choose Revoke immediately',
                        "Disabling the token first is an extra step, not a replacement",
-                       "Never a grace period after a leak"):
+                       "Never a grace period after a leak",
+                       # and WHEN a disabled token comes back on (review, 2026-11-24: the steps
+                       # offered Disable token and never said): once the rotation with Revoke
+                       # immediately is done and the new secret deployed, and the panel check after,
+                       # since with the token off the panel cannot answer
+                       "If you disabled the token, turn it back on (Enable token) only once the rotation with "
+                       "Revoke immediately is done and the new secret is in the Pages secret "
+                       "JH_SERVICE_TOKEN_SECRET and deployed; then DEPLOY.md 3f's panel check must pass"):
             if needle not in kt:
                 errors += fail(f"--key does not tell a routine rotation from a leaked key: no {needle!r}")
         if "or Disable token first" in kt:
@@ -3547,6 +3556,11 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
                             ("Never a grace period after a leak", "rule out a grace period after a leak"),
                             ("Disabling the token first (**Disable token**) is an extra step, not a replacement",
                              "say disabling the token is an extra step, never instead of Revoke immediately"),
+                            ("If you disabled the token, turn it back on (**Enable token**) only once the rotation "
+                             "with Revoke immediately is done and the new secret is in `JH_SERVICE_TOKEN_SECRET` "
+                             "and deployed; then the panel check under **Check it afterwards** must pass (it "
+                             "cannot while the token is off)", "say when a disabled token is turned back on: after "
+                             "the rotation and the deploy, the panel check once it is on"),
                             ("may keep the current secret valid for a short grace period", "allow a grace period "
                              "only for a routine new secret"),
                             ("Restart Job Hunter's server", "restart Job Hunter after a leak"),

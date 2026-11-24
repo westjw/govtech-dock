@@ -407,7 +407,11 @@ is NOT the routine rotation: the old key is never published again.
    period runs could let the old secret in again. (While the token is
    disabled, the panel is off.) Put the new secret in the Pages secret
    `JH_SERVICE_TOKEN_SECRET`, and a new deployment; until it is live the
-   panel says Job Hunter did not answer. (A new token instead works too:
+   panel says Job Hunter did not answer. If you disabled the token, turn it
+   back on (**Enable token**) only once the rotation with Revoke immediately
+   is done and the new secret is in `JH_SERVICE_TOKEN_SECRET` and deployed;
+   then the panel check under **Check it afterwards** must pass (it cannot
+   while the token is off). (A new token instead works too:
    delete the old one and create one as in step 4 above; a new token has a
    new Client ID, so `JH_SERVICE_TOKEN_ID`, the Service Auth policy and Job
    Hunter's `JH_BOARD_SERVICE_TOKEN` all take the new one.)

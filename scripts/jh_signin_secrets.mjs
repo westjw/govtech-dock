@@ -74,8 +74,11 @@ if (args.includes("--key")) {
   say("OIDC_SIGNING_JWK_OLD (delete it if it is there), replace OIDC_SIGNING_JWK with the key below,");
   say("redeploy, and give the \"board popout\" service token a new secret: Rotate secret, and where it");
   say("asks \"Keep the current secret valid for\", ALWAYS choose Revoke immediately. Disabling the token");
-  say("first is an extra step, not a replacement. Never a grace period after a leak. Once /oidc/jwks");
-  say("shows the new key, restart Job Hunter's server. DEPLOY.md 3f has each step.");
+  say("first is an extra step, not a replacement. Never a grace period after a leak. If you disabled the");
+  say("token, turn it back on (Enable token) only once the rotation with Revoke immediately is done and");
+  say("the new secret is in the Pages secret JH_SERVICE_TOKEN_SECRET and deployed; then DEPLOY.md 3f's");
+  say("panel check must pass. Once /oidc/jwks shows the new key, restart Job Hunter's server.");
+  say("DEPLOY.md 3f has each step.");
   say();
   value("OIDC_SIGNING_JWK", signingKey(), "a Pages secret on the board's project, replacing the current one");
 } else if (args.includes("--secret")) {

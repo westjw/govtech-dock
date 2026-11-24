@@ -536,7 +536,9 @@ the popout's assertion: change it on one side only and the popout stops.
   secret with **Revoke immediately**, always (Cloudflare's Rotate secret
   otherwise keeps the old one valid for a grace period of an hour to 30
   days, on every path of hunter.<domain>; review, 2026-11-24; disabling the
-  token first is an extra step, not a replacement), and once `/oidc/jwks`
+  token first is an extra step, not a replacement, and a disabled token is
+  turned back on only once that rotation is done and the new secret
+  deployed, the panel checked after), and once `/oidc/jwks`
   shows the new key restarts Job Hunter's server, which holds the board's
   keys from its last read. A routine new service-token secret may keep a
   short grace period. `--secret` makes a client secret alone: a plain run,
@@ -578,7 +580,8 @@ the popout's assertion: change it on one side only and the popout stops.
   `check_the_sign_in_secrets_are_made_and_shown_once` (a working pair, d·G
   checked, nothing written, nothing printed into a pipe, the rotation's
   words: after a leak ALWAYS Revoke immediately, disabling the token an
-  extra step and never instead), and the panel's words above.
+  extra step and never instead, and on again only after that rotation and
+  the deploy), and the panel's words above.
 
 ## The job list is cards (owner, 2026-09-27)
 
