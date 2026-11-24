@@ -243,7 +243,10 @@ VENDOR_AS = frozenset({"href"})
 OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-other"},
              "pinpoint": {"pinpoint-other"}, "zohorecruit": {"zohorecruit-other"},
              "comeet": {"comeet-other"}, "jobvite": {"jobvite-other"},
-             # (a Jobvite account's feed is Jobvite's board too: 2026-11-23)
+             # (a Jobvite account's feed is Jobvite's board too: 2026-11-23.
+             # An address naming an account, in any path, the finder files as
+             # jobvite-tenant, never jobvite-other, so no link to another
+             # account is this note: review 12's verifier, 2026-11-23)
              "jobvitefeed": {"jobvite-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),

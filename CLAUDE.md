@@ -3992,19 +3992,36 @@ through the door.
   (`jobvite_account_forms`) or another (`jobvite_account_board`), the career
   site stays the candidate and the account is `jobvite-tenant`, a doubt, as
   before: a slug names a career site and an id an account, and nothing on a
-  page ties one to the other. Beside the account's board, Jobvite's no-board
-  addresses on app.jobvite.com, the widget's own host, on the same page
-  (`jobvite-other`: the widget's own assets, which a browser sees it load)
-  are its furniture, and nothing else is: a jobs.jobvite.com career site's
-  loader or frame there names no slug and loads a board nothing ties to the
-  account, so it stays a doubt, as any no-board Jobvite address on another
-  page does (blind review 12, 2026-11-23: a loader beside the widget was
-  dropped, and the door wired the feed with no doubt; the finder tallies
-  these by host, so the widget's assets never stand for one). hire.jobvite.com stays a tenant
-  form: no site measured names an account there. The person scrub is
-  Jobvite's own (sd=, __jvsd= go; the id is not a person).
+  page ties one to the other. AN ACCOUNT NAMED ANYWHERE ELSE on
+  app.jobvite.com or hire.jobvite.com - a path those three shapes are not
+  (CompanyJobs/Apply.aspx?c=, an __assets__ page's ci=), or an id not in the
+  feed's shape - is `jobvite-tenant`, a doubt, and never `jobvite-other`
+  (review 12's verifier, 2026-11-23: "any other jobvite.com address" names
+  no board, so beside the widget another account there was its furniture
+  and as a link a note, and the door wired the widget's account). Beside
+  the account's board, on the same page, its furniture is only what the
+  widget loads beside itself (`find_site_boards.jobvite_widget_asset`, left
+  out as the page is read, in `sightings`): an address on app.jobvite.com,
+  the widget's own host, that names no account or job (c=, ci=, j=, cj=)
+  and holds no other Jobvite address, read off the WHOLE address from where
+  it begins (`_whole_address`; one not known whole, more than 4,000
+  characters off, is not furniture), and nothing else is: a
+  jobs.jobvite.com career site's loader or frame names no slug and loads a
+  board nothing ties to the account, and so does any address it sits in, so
+  each stays a doubt, as any no-board Jobvite address on another page does
+  (blind review 12, 2026-11-23: a loader beside the widget was dropped; its
+  verifier: one written near the start of an app.jobvite.com address was
+  read 60 characters back as on app.jobvite.com, and dropped; each time the
+  door wired the feed with no doubt). The finder tallies these by the whole
+  address's host and by whether it is furniture, so the widget's assets
+  never stand for one. A Jobvite address a redirect lands on is never
+  furniture. hire.jobvite.com stays a tenant form: no site measured names
+  an account there. The person scrub is Jobvite's own (sd=, __jvsd= go; the
+  id is not a person).
 - **The door** needed one hook (`OWN_FORMS`: a link to Jobvite beside such a
-  board is a note); keys, holds and the giants rule are every type's. The
+  board is a note - a link or a mention that names no board in any part; an
+  address naming an account, in any path, is `jobvite-tenant` and holds,
+  however it is seen); keys, holds and the giants rule are every type's. The
   public link (`build_board.board_url`, the desk's `boardUrlFor`) is
   Jobvite's own careers page for the account,
   app.jobvite.com/CompanyJobs/Careers.aspx?c=<id>, which robots.txt allows
@@ -4031,7 +4048,14 @@ through the door.
   'Monthly' read as a year and 'Weekly' as a month, the first of two
   currency codes taken, a figure with thousands commas not read, a job with
   no title read, and the account's furniture dropped on every page - and
-  each is pinned since (Daily and Yearly with them), each caught alone.
+  each is pinned since (Daily and Yearly with them), each caught alone. Its
+  verifier (2026-11-23) found the widget's furniture still took another
+  account named at a path the account forms did not list, and a career
+  site's loader inside an app.jobvite.com address: pinned through the finder
+  and the door (as a script, a frame and a link, on the widget's page and on
+  another, and among the addresses a browser asks), with Tyler's three shapes
+  and the widget's own assets beside them still wired; ten one-line
+  breakages of that fix, each alone, each caught.
 
 ## Build order (owner, 2026-08-23)
 

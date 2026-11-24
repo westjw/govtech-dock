@@ -20458,8 +20458,10 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
     THE FINDER: an account named by its company id on their own site is a
     candidate (the widget's ci=, CompanyJobs' c=; one character more is
     none); beside a jobs.jobvite.com career site, on the page or the site,
-    it is jobvite-tenant, as before; only app.jobvite.com's no-board
-    addresses on its own page are its furniture.
+    it is jobvite-tenant, as before; an account named in any other path or
+    shape is jobvite-tenant too; only app.jobvite.com's addresses that name
+    no account or job and hold no other Jobvite address, on its own page,
+    are its furniture, read off the whole address.
     THE DOOR: wires it on both checks, skips a giant, and takes Jobvite's
     own link beside it for a note; one plan asks the feed once.
     """
@@ -20995,6 +20997,16 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
              f'&amp;ci={A}&amp;sd=Sam%20Sample&amp;v=2"></iframe>')
     APPLY = f'<a href="https://app.jobvite.com/CompanyJobs/Careers.aspx?k=Apply&amp;j=oAbCdfwL&amp;c={A}">Apply</a>'
     SITE = '<a href="https://jobs.jobvite.com/acmegov/jobs">All jobs</a>'
+    B = "qBetafwY"                       # another account's id in Jobvite's shape, made up
+    # AN ACCOUNT NAMED IN ANY PATH, or in no shape the feed reads, is an
+    # account form - jobvite-tenant, a doubt - and never "any other
+    # jobvite.com address", which names no board: another account's id at a
+    # CompanyJobs path the feed's forms do not list, or on an __assets__ page
+    # that is not a script, was that, and beside the widget it was dropped
+    # as its furniture (review 12's verifier, 2026-11-23)
+    OTHER_SCRIPT = f'<script src="https://app.jobvite.com/CompanyJobs/Apply.aspx?c={B}"></script>'
+    OTHER_FRAME = f'<iframe src="https://app.jobvite.com/__assets__/careersite/embed.html?ci={B}"></iframe>'
+    OTHER_LINK = f'<a href="https://app.jobvite.com/CompanyJobs/Apply.aspx?c={B}&amp;j=oAbCdfwL">Apply</a>'
     for markup, want, tenant, why in (
             (WIDGET, [("jobvitefeed", A, "script")], False, "the widget's script (ci=)"),
             (FRAME, [("jobvitefeed", A, "iframe")], False, "the widget's frame (ci=)"),
@@ -21003,10 +21015,15 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
              "a jobs.jobvite.com career site beside the widget"),
             (APPLY.replace(A, "qOthr9fw"), [], True, "an id that is not in Jobvite's shape"),
             # (one character more is no account, never another one cut from it:
-            # blind review 12)
+            # blind review 12 - and a doubt: its verifier)
             (APPLY.replace(A, A + "X"), [], True, "a company id with a character more (c=)"),
-            (WIDGET.replace(A, A + "X"), [], False, "the widget's id with a character more (ci=)"),
-            (APPLY.replace("app.jobvite", "hire.jobvite"), [], True, "hire.jobvite.com")):
+            (WIDGET.replace(A, A + "X"), [], True, "the widget's id with a character more (ci=)"),
+            (APPLY.replace("app.jobvite", "hire.jobvite"), [], True, "hire.jobvite.com"),
+            (OTHER_SCRIPT, [], True, "an account's id (c=) at a CompanyJobs path the feed's forms do not list"),
+            (OTHER_SCRIPT.replace("Apply.aspx", "Widget.aspx"), [], True,
+             "an account's id (c=) in another such path"),
+            (OTHER_FRAME, [], True, "an account's id (ci=) on an __assets__ page that is not a script"),
+            (OTHER_LINK, [], True, "a link to an account's page at such a path")):
         found, rest = fsb.sightings(markup, here, home)
         if [(f["type"], f["ref"], f["element"]) for f in found] != want \
                 or ("jobvite-tenant" in {r["vendor"] for r in rest}) is not tenant:
@@ -21032,8 +21049,43 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
     loader = '<script src="https://jobs.jobvite.com/__assets__/scripts/careersite/public/iframe.js"></script>'
     site_frame = '<iframe src="https://jobs.jobvite.com/__assets__/careersite/embed.html"></iframe>'
     to_careers = '<a href="/careers">Careers</a>'
+    # ...AND WHAT IS FURNITURE IS READ OFF THE WHOLE ADDRESS (review 12's
+    # verifier, 2026-11-23): a career site's loader written inside an
+    # app.jobvite.com address, near its start, was read as on app.jobvite.com
+    # (60 characters back) and dropped; one in the same element as the
+    # widget's own script was one row with it; and an address naming a job
+    # but no account names one
+    loader_at = "https://jobs.jobvite.com/__assets__/scripts/careersite/public/iframe.js"
+    held_frame = f'<iframe src="https://app.jobvite.com/TalentNetwork/frame.html?src={loader_at}"></iframe>'
+    held_script = f'<script src="https://app.jobvite.com/x.js?u={loader_at}"></script>'
+    job_frame = '<iframe src="https://app.jobvite.com/CompanyJobs/Careers.aspx?k=Job&amp;j=oAbCdfwL"></iframe>'
+    long_js = ('<script src="https://app.jobvite.com/__assets__/scripts/source/widgets/' + "a" * 300
+               + '.js?v=1&amp;sd=Pat%20Example"></script>')
     co = _wb_co("acme-gov", "Acme Gov")
     for at_home, at_careers, want, gone, why in (
+            (to_careers, WIDGET + OTHER_SCRIPT, {("jobvitefeed", A)}, {"jobvite-tenant"},
+             "the widget and another account's script at a CompanyJobs path the feed's forms do not list"),
+            (OTHER_SCRIPT + to_careers, WIDGET, {("jobvitefeed", A)}, {"jobvite-tenant"},
+             "another account's script at that path, on another page"),
+            (to_careers, WIDGET + OTHER_LINK, {("jobvitefeed", A)}, {"jobvite-tenant"},
+             "the widget and a link to another account's page at that path"),
+            (OTHER_LINK + to_careers, WIDGET, {("jobvitefeed", A)}, {"jobvite-tenant"},
+             "a link to another account's page at that path, on another page"),
+            (to_careers, WIDGET + OTHER_FRAME, {("jobvitefeed", A)}, {"jobvite-tenant"},
+             "the widget and another account's frame on an __assets__ page"),
+            (to_careers, WIDGET + WIDGET.replace(A, A + "X"), {("jobvitefeed", A)}, {"jobvite-tenant"},
+             "the widget and a second whose id has a character more"),
+            (to_careers, WIDGET + held_frame, {("jobvitefeed", A)}, {"jobvite-other"},
+             "the widget and a career site's loader inside an app.jobvite.com frame's address"),
+            (to_careers, own_js + WIDGET + held_script, {("jobvitefeed", A)}, {"jobvite-other"},
+             "the widget's own script and an app.jobvite.com script holding a career site's loader"),
+            (to_careers, WIDGET + job_frame, {("jobvitefeed", A)}, {"jobvite-other"},
+             "the widget and a CompanyJobs frame naming a job but no account"),
+            (to_careers, WIDGET + f'<script src="https://app.jobvite.com/x.js?pad={"a" * 4100}"></script>',
+             {("jobvitefeed", A)}, {"jobvite-other"},
+             "the widget and an app.jobvite.com address too long to be read whole"),
+            (to_careers, WIDGET + FRAME + APPLY + css + own_js + long_js, {("jobvitefeed", A)}, set(),
+             "Tyler's three shapes for one account, with the widget's own stylesheet and scripts"),
             (SITE + to_careers, WIDGET, {("jobvite", "acmegov")}, {"jobvite-tenant"},
              "a career site on one page, the widget on another"),
             (to_careers, WIDGET + css, {("jobvitefeed", A)}, set(), "the widget and its own stylesheet"),
@@ -21068,9 +21120,24 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
                 _code, _text, _wl, rows_ = box.plan(_wb_results({"acme-gov": entry}))
             row = (rows_ or {}).get("acme-gov") or {}
             if row.get("action") != ("HOLD" if gone else "WIRE") \
-                    or (gone and "jobvite-other" not in _wb_words(row)):
+                    or any(v not in _wb_words(row) for v in gone):
                 errors += fail(f"door, {why}: the account's feed planned {row.get('action')} saying "
                                f"{_wb_words(row)[:200]!r}, not {'HOLD on the doubt' if gone else 'WIRE'}")
+    # (the same among the addresses a browser saw asked, one a line as sightings
+    # is handed them)
+    asked_widget = f"https://app.jobvite.com/__assets__/scripts/source/widgets/JV.getTPWidget.js?ty=0&ci={A}"
+    for asked_, gone, why in (
+            ([asked_widget, "https://app.jobvite.com/__assets__/css/jv-widget.css"], set(),
+             "the widget's own stylesheet"),
+            ([asked_widget, f"https://app.jobvite.com/TalentNetwork/frame.html?src={loader_at}"],
+             {"jobvite-other"}, "an app.jobvite.com address holding a career site's loader"),
+            ([asked_widget, f"https://app.jobvite.com/api/jobs?c={B}"], {"jobvite-tenant"},
+             "another account's id at an API path")):
+        found, rest = fsb.sightings("", here, home, requests_seen=asked_)
+        vendors = {r["vendor"] for r in rest} & {"jobvite-tenant", "jobvite-other"}
+        if [(f["type"], f["ref"]) for f in found] != [("jobvitefeed", A)] or vendors != gone:
+            errors += fail(f"finder, the widget asked beside {why}: {[(f['type'], f['ref']) for f in found]} "
+                           f"and {sorted(vendors)}, not {sorted(gone)}")
 
     # ---- the door: both checks, the giants, Jobvite's own link --------------------------------
     for n, link, want, words, why in (

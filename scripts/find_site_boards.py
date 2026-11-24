@@ -750,9 +750,13 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         # app./hire.jobvite.com: its CompanyJobs pages and talent network) or a
         # job of one (j?cj=) but no career site this door can read: another
         # account beside their board, and a doubt (blind review, 2026-11-22).
+        # IN ANY PATH there (review 12's verifier, 2026-11-23): one the account
+        # forms do not list - CompanyJobs/Apply.aspx?c=, an __assets__ page's
+        # ci= - was "any other jobvite.com address", which names no board, so
+        # beside the widget it was its furniture and as a link a note, and
+        # the door wired the widget's account with another named beside it.
         ("jobvite-tenant", "jobvite.com",
-         r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/(?:CompanyJobs/(?:Careers|Job|Xml)\.aspx"
-         r"|TalentNetwork/[^\s\"'<>?]{0,200})\?[^\s\"'<>]{0,300}?\b(?:c|ci)=[A-Za-z0-9]{5,12}"),
+         r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/[^\s\"'<>]{0,500}?\b(?:c|ci)=[A-Za-z0-9]{5,12}"),
         # a link to ONE job (j?cj=), whose account the link does not show
         ("jobvite-joblink", "jobvite.com",
          r"(?<![a-z0-9.-])(?:app|hire)\.jobvite\.com/j/?\?[^\s\"'<>]{0,300}?\bcj=[A-Za-z0-9]{5,12}"),
@@ -1241,6 +1245,48 @@ def _address(text: str, start: int, end: int) -> str:
     return text[a:b]
 
 
+_WHOLE = 4000       # an address running further than this off a match is not known whole
+
+
+def _whole_address(text: str, start: int, end: int) -> str:
+    """The whole address a match sits in, from where that address BEGINS to
+    where it ends, as the page wrote it - or "" where either end lies more
+    than _WHOLE characters off, so it is not known whole. (_address looks 60
+    characters back, which is less than the address a match sits in: a
+    jobs.jobvite.com loader written near the start of an app.jobvite.com
+    address was read as on app.jobvite.com - review 12's verifier,
+    2026-11-23.)"""
+    lo, hi = max(0, start - _WHOLE), min(len(text), end + _WHOLE)
+    a = max(text.rfind(c, lo, start) for c in _STOP) + 1
+    if a == 0 and lo > 0:
+        return ""
+    ends = [i for i in (text.find(c, end, hi) for c in _STOP) if i >= 0]
+    if not ends and hi < len(text):
+        return ""
+    return text[a:min(ends) if ends else hi]
+
+
+# Jobvite's own keys for an account (c=, ci=) and a job (j=, cj=), with a
+# value in the shape the tenant forms read
+_JV_NAMES_ONE = re.compile(r"\b(?:c|ci|j|cj)=[A-Za-z0-9]{5,12}", re.I)
+_JV_MENTION = re.compile(_B + r"jobvite\.com", re.I)       # (jobvite-other's own pattern)
+
+
+def jobvite_widget_asset(address: str) -> bool:
+    """Is this WHOLE address (_whole_address) one the account widget loads
+    beside itself: on app.jobvite.com, the widget's own host, naming no
+    account and no job, and holding no other Jobvite address? Only these
+    are the widget's furniture on its page (sightings). One that names another
+    account in a path the account forms do not list is jobvite-tenant
+    before it gets here (ELSEWHERE); a jobs.jobvite.com career site's
+    loader is not on the widget's host; and one inside an app.jobvite.com
+    address makes that address no furniture either (review 12's verifier,
+    2026-11-23: each was dropped beside the widget, and the door wired its
+    feed with no doubt)."""
+    return (bool(address) and _host(address) == ats.JOBVITE_FEED_HOST
+            and len(_JV_MENTION.findall(address)) == 1 and not _JV_NAMES_ONE.search(address))
+
+
 def _saw(text: str, start: int, end: int) -> str:
     """The matched text widened to the whole address as the page wrote it,
     at most 160 characters, with any person's e-mail address taken out (the
@@ -1301,13 +1347,16 @@ def _tally(text: str, element: str, page_url: str, website: str,
         for start, end, vendor in oth:
             # (a legacy portal is kept apart by the tenant its whole address
             # names, which a 160-character `saw` can cut off; and a Jobvite
-            # address naming no board by the host it is on, so the account
-            # widget's own assets on app.jobvite.com are never one row with
-            # a career site's loader on jobs.jobvite.com: jobvite_account_board)
+            # address naming no board by its WHOLE address's host and by
+            # whether it is the account widget's own asset - the key's last
+            # part, which sightings reads - so the widget's assets are never
+            # one row with a career site's loader, or with an app.jobvite.com
+            # address holding one: jobvite_widget_asset)
             if vendor in _ON_ITS_OWN_BOARD:
                 key = (vendor, element, legacy_tenant(_address(text, start, end)))
             elif vendor == "jobvite-other":
-                key = (vendor, element, _host(_address(text, start, end)))
+                whole = _whole_address(text, start, end)
+                key = (vendor, element, _host(whole) if whole else "", jobvite_widget_asset(whole))
             else:
                 key = (vendor, element)
             row = others.setdefault(key, {
@@ -1560,6 +1609,15 @@ def sightings(page: str, page_url: str, website: str, *,
     # of them, beside the frame that loaded them)
     kinds = {kind for kind, _key, _el in boards}
     others = {k: v for k, v in others.items() if _NO_BOARD_IN_IT.get(k[0]) not in kinds}
+    # ...and beside a Jobvite ACCOUNT (a jobvitefeed board), what its widget
+    # loads beside itself, and nothing else Jobvite on the page: an address on
+    # app.jobvite.com naming no account or job and holding no other Jobvite
+    # address, read off the whole address (jobvite_widget_asset, the key's
+    # last part). A career site's loader is a board nothing ties to the
+    # account, and so is any address it sits in (blind review 12 and its
+    # verifier, 2026-11-23).
+    if "jobvitefeed" in kinds:
+        others = {k: v for k, v in others.items() if not (k[0] == "jobvite-other" and k[-1] is True)}
     named = [{"type": kind, "ref": json.loads(row["_spelt"].most_common(1)[0][0])}
              for (kind, _key, _el), row in boards.items() if row["_spelt"]]
     others = {k: v for k, v in others.items() if not same_tenant(v, named)}
@@ -2924,15 +2982,15 @@ def jobvite_account_board(rec: dict) -> None:
     is the candidate, and every account form is filed as it was before the
     feed had a reader: jobvite-tenant, a doubt (the page-level rule is
     jobvite_account_forms; this is the same across pages). Otherwise the
-    account is the board, and Jobvite's addresses that name none ON
-    app.jobvite.com, THE WIDGET'S OWN HOST, on a page where it was seen
-    (jobvite-other: the widget's own assets, which a browser sees it load)
-    are its furniture, as a platform's no-board forms are beside its board
-    on one page (sightings). Any other Jobvite address there stays a doubt:
-    a jobs.jobvite.com career site's loader or frame names no slug, and
-    loads a board nothing ties to this account (blind review 12,
-    2026-11-23: one beside the widget was dropped, and the door wired the
-    account's feed with no doubt), and so does any address it sits in."""
+    account is the board.
+
+    ITS FURNITURE IS NOT SORTED HERE: the widget's own assets beside it were
+    left out as its page was read (sightings, jobvite_widget_asset), off the
+    whole address. Here only `saw` was left, cut to 160 characters and its
+    people taken out, and a page's other Jobvite address - a jobs.jobvite.com
+    career site's loader, written near the start of an app.jobvite.com
+    address - read as the widget's own and was dropped, and the door wired
+    the feed with no doubt (review 12's verifier, 2026-11-23)."""
     feeds = [c for c in rec["candidates"] if c.get("type") == "jobvitefeed"]
     if not feeds:
         return
@@ -2941,11 +2999,6 @@ def jobvite_account_board(rec: dict) -> None:
         rec["elsewhere"].extend({"vendor": "jobvite-tenant", "saw": c.get("saw"),
                                  "page": c.get("page"), "element": c.get("element"),
                                  "times": c.get("times") or 1} for c in feeds)
-        return
-    pages = {c.get("page") for c in feeds}
-    rec["elsewhere"] = [e for e in rec["elsewhere"]
-                        if not (e.get("vendor") == "jobvite-other" and e.get("page") in pages
-                                and _host(str(e.get("saw") or "")) == ats.JOBVITE_FEED_HOST)]
 
 
 def _board_host(kind: str, ref) -> str:
