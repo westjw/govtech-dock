@@ -3001,7 +3001,18 @@ round.
   nothing the run follows can. Any number beside any slug was once taken
   for one account: a doubt about another account in the words of one he
   had settled was not kept, the plan said it was settled on his word, and
-  the next plan wired the board; blind review, 2026-11-21). Where the company has a row
+  the next plan wired the board; blind review, 2026-11-21). A POSTING IS NOT
+  A BOARD, so a doubt about a company whose own site names no board and
+  links a Paylocity posting is kept then about no board, and kept again, in
+  the same words and under the same label, against the board the posting's
+  page names once the plan has asked that page and before it asks any board
+  (`keep_posted_doubts`, a second journalled addition; never one the owner
+  settled since, which would stand again by its later stamp). Kept about no
+  board alone it held the company by its id and that board under no other,
+  and after a desk merge the survivor was wired to it (review of the posting
+  change, 2026-11-23). KNOWN, AND LEFT AS FOUND: a posting whose page fails
+  on the day gives no board, so that doubt holds the company alone until it
+  is given again. Where the company has a row
   waiting in Boards we found, the words go onto it (`board_proposals.add_doubt`,
   stamped `updated`, which makes the card print `identity_why`), naming the
   board - "a reader's doubt about greenhouse/xco, not the board on this card
@@ -3426,7 +3437,9 @@ round.
   on file, or a reader, argues with it"). The readers' doubts are the
   plan's write, not apply's: one journalled addition to
   data/board_doubts.json (and entries to data/embedded_ats.json where a
-  doubt went onto a waiting row), made before the plan's first request - the
+  doubt went onto a waiting row), made before the plan's first request, and
+  one more to data/board_doubts.json for a doubt about a company whose site
+  only links a posting, once the posting's page is asked (above) - the
   plan prints "Commit them together" for those at once; `settle` is one
   journalled addition to data/board_doubts.json. The worklist is redacted
   as it is read, whoever wrote it. Commit data/companies.json,

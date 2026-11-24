@@ -3257,7 +3257,8 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
-         pages: dict | None = None, postings: dict | None = None) -> list:
+         pages: dict | None = None, postings: dict | None = None,
+         after_postings=None) -> list:
     """Every company in the finder's results, decided. Network happens here.
 
     Each row is made safe to keep - an address redacted, half a character
@@ -3270,6 +3271,11 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
     is filled with what each Paylocity board's own page this run asked
     stated (page_addresses_of); `postings`, with the boards each Paylocity
     posting's page this run asked named (posting_boards_of).
+    `after_postings(results)`, when given, is called once the postings are
+    asked and before any board is: cmd_plan keeps the readers' doubts against
+    the board a posting named there (keep_posted_doubts), and gets back the
+    doubts on file as that left them and the companies it kept them for (or
+    None when it wrote nothing), or raises Stopped.
     """
     ctx = standing(companies, board, stores)
     ctx["reviewed"] = {cid: reader_words(words) for cid, words in (reviewed or {}).items()}
@@ -3304,6 +3310,21 @@ def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
         n_named = sum(1 for s in asked.values() if s["boards"])
         say(f"NOTE: asked {many(len(asked), 'Paylocity posting')} their sites link "
             f"which board its own page names; {n_named} named one or more")
+    if after_postings is not None:
+        # A READER'S DOUBT ABOUT A COMPANY WHOSE SITE ONLY LINKS A POSTING is
+        # kept against the board the posting's page named, now that it was
+        # asked (keep_posted_doubts), and from here on the plan holds that
+        # board under the company's id for every other company, as every
+        # door after does (review of the posting change, 2026-11-23)
+        got = after_postings(results)
+        if got:
+            on_file, kept = got
+            ctx["stores"] = dict(ctx["stores"], doubts=on_file)
+            ctx["on_file"] = on_file
+            ctx["doubts"] = standing_doubts(on_file, ctx["stores"])
+            ctx["fresh"] |= set(kept)
+            ctx["held_boards"] = held_boards(ctx["doubts"], ctx["stores"], ctx["by_id"],
+                                             ctx["slugs"], companies, ctx["refusals"])
     # a Paylocity board named by its /List/ address is known by the /All/
     # address its own page states, before anything is keyed (fifth blind
     # review, 2026-11-22)
@@ -3739,6 +3760,98 @@ def keep_doubts(reviewed: dict, results: dict, by: str, worklist: str, say=print
     return None, wrote, fresh
 
 
+def _site_own(entry: dict | None) -> dict:
+    """The finder's entry with only what their own site named: none of the
+    candidates resolved_by_posting added for a posting's page."""
+    return {**(entry or {}), "candidates": [
+        x for x in (entry or {}).get("candidates") or []
+        if not (isinstance(x, dict) and x.get("posting"))]}
+
+
+def keep_posted_doubts(reviewed: dict, results: dict, by: str, worklist: str,
+                       say=print) -> tuple:
+    """Keep each reader's doubt about a company whose own site names no board
+    and links a Paylocity posting AGAIN, in the same words, against the board
+    the posting's page named - once the plan has asked that page
+    (resolved_by_posting; `results` as it left them) and before it asks any
+    board.
+
+    A POSTING IS NOT A BOARD, so keep_doubts, before the first request, kept
+    such a doubt about no board: it held the company by its id and the board
+    the readers doubted under no other - in this door, discovery or
+    wire_embedded - so after a desk merge, or for any other record naming
+    that board, the board was wired (review of the posting change,
+    2026-11-23). One journalled ADDITION, under the same label; never the same
+    words about the same board twice (new_doubts), and never a doubt the
+    owner has settled since: kept now, with a stamp later than his ruling, it
+    would stand again. Under the desk lock. Returns (why it stopped or None,
+    the files written, the companies whose doubts it kept)."""
+    posted = {cid: words for cid, words in sorted(reviewed.items())
+              if not board_named(_site_own(results.get(cid)), None)[1]
+              and board_named(results.get(cid), None)[1]}
+    wrote, new, settled = [], {}, {}
+    if not posted:
+        return None, wrote, set()
+    with admin.desk_lock():
+        try:
+            raw = board_proposals.strict(DOUBTS, admin.DATA)
+            s = read_stores()
+            companies = read_companies()
+        except board_proposals.Unreadable as exc:
+            return (f"{exc}; no reader's doubt was kept against the board a posting's page "
+                    f"names"), wrote, set()
+        by_id = {c["id"]: c for c in companies}
+        standing_now = standing_doubts(s["doubts"], s)
+        for cid, words in posted.items():
+            mine = [d for d in s["doubts"].get(cid) or []
+                    if str(d.get("why") or "").strip() == words]
+            if mine and not any(d in (standing_now.get(cid) or []) for d in mine):
+                settled[cid] = mine
+        pairs = board_proposals.workable_pairs(companies, s["found"])
+        new = new_doubts({c: w for c, w in posted.items() if c not in settled}, results,
+                         by_id, s["doubts"], raw, by, pairs)
+        if new:
+            if len(new) > journal.BLAST:
+                say(f"{len(new)} reader doubts in one journal entry is over its "
+                    f"{journal.BLAST}-record limit. The count and every company, before the "
+                    f"write: {', '.join(sorted(r['id'] for r in new.values()))}. So the write "
+                    f"is confirmed.")
+            bad = admin.save_decisions(
+                DOUBTS, dict(raw, **new), DOUBT_ACTION, by=by, force=len(new) > journal.BLAST,
+                why=(f"{many(len(new), 'reader doubt')} kept against the board a Paylocity "
+                     f"posting's page names, about companies whose own site names no board and "
+                     f"links the posting: kept about the company before the wiring door's plan "
+                     f"asked anything, and against the board once the plan had asked the "
+                     f"posting's page, before it asked any board (worklist {worklist})"))
+            if bad:
+                return (f"the doubts file would refuse the readers' doubts against the board a "
+                        f"posting's page names: {_without_tail(bad)}; they stand about the "
+                        f"company alone"), wrote, set()
+            wrote.append(f"data/{DOUBTS}")
+    fresh = {r["id"] for r in new.values()}
+    say(f"READERS' DOUBTS ABOUT A BOARD A POSTING NAMES {len(posted)} - their site names no "
+        f"board and links a Paylocity posting, so each doubt is kept against the board the "
+        f"posting's page named, before any board is asked ({len(fresh)} new, "
+        f"{len(posted) - len(fresh)} already on file or settled):")
+    for cid in sorted(posted):
+        name = (by_id.get(cid) or {}).get("name") or (results.get(cid) or {}).get("name") or cid
+        board, _kind, _ref = board_named(results.get(cid), by_id.get(cid))
+        if cid in settled:
+            words = settled_words(settled[cid], s["ruled"].get(cid))
+        elif cid in fresh:
+            words = "it holds this board for any company whose site names it, while it stands"
+        else:
+            words = "already on file in the same words about this board"
+        say(f"  {'KEPT' if cid in fresh else 'HAD':<5} {str(name)[:28]:<30} "
+            f"{str(board or '-')[:44]:<46} {words}")
+    return None, wrote, fresh
+
+
+class Stopped(Exception):
+    """The plan stopped after its first request, before any board was asked:
+    its words say why."""
+
+
 def cmd_plan(a) -> int:
     if not callable(getattr(verify_boards, "proven", None)):
         print("verify_boards.proven is not in this checkout, so CHECK 2 (the board "
@@ -3870,8 +3983,39 @@ def cmd_plan(a) -> int:
         numbers: dict = {}
         pages: dict = {}
         posted_pages: dict = {}
-        rows = plan(results, companies, board, reviewed=reviewed, stores=stores,
-                    numbers=numbers, fresh=fresh, pages=pages, postings=posted_pages)
+        kept_posted = []
+
+        def after_postings(resolved):
+            # the readers' doubts against the board a posting's page named,
+            # once the plan has asked it (keep_posted_doubts)
+            said: list = []
+            stop_p, wrote_p, kept_p = keep_posted_doubts(
+                reviewed, resolved, by, out.name, say=lambda s: (said.append(s), print(s)))
+            if wrote_p:
+                kept_posted.extend(sorted(kept_p))
+                print(f"written by {by}: {', '.join(wrote_p)} and the journal "
+                      f"(data/admin_journal.jsonl, with data/admin_journal.archive.jsonl "
+                      f"when it rolls). Commit them together: these doubts hold the board a "
+                      f"posting names from now, whatever becomes of this plan.")
+            if stop_p:
+                raise Stopped(stop_p)
+            if said:
+                print()
+            if not wrote_p:
+                return None
+            try:
+                return read_stores()["doubts"], kept_p
+            except board_proposals.Unreadable as exc:
+                raise Stopped(f"{exc}, after the readers' doubts were kept against the board a "
+                              f"posting's page names") from None
+        try:
+            rows = plan(results, companies, board, reviewed=reviewed, stores=stores,
+                        numbers=numbers, fresh=fresh, pages=pages, postings=posted_pages,
+                        after_postings=after_postings if reviewed else None)
+        except Stopped as exc:
+            print(f"\nSTOPPED once the postings their sites link were asked, before any board "
+                  f"was: {exc}. No worklist was written.")
+            return 1
         n = counts(rows)
         doc = {"made": MADE, "version": VERSION, "generated": admin.now(),
                "doubted_by_a_reader": sorted(reviewed),
@@ -3920,7 +4064,11 @@ def cmd_plan(a) -> int:
           + ("; the readers' new doubts were kept before the first request, and stand "
              "whatever becomes of it" if kept_new else
              "; no reader's doubt was new - each was already on file in the same words, as "
-             "READERS' DOUBTS says" if reviewed else ""))
+             "READERS' DOUBTS says" if reviewed else "")
+          + (f"; and {many(len(kept_posted), 'doubt')} about a company whose site only links a "
+             f"Paylocity posting {'was' if len(kept_posted) == 1 else 'were'} kept against the "
+             f"board the posting's page names, before any board was asked" if kept_posted
+             else ""))
     print(f"next: python3 scripts/wire_found.py apply {out} --by agent:<label>")
     return 0
 
