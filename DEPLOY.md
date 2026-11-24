@@ -261,10 +261,9 @@ gets a sign-in, everybody else is told it is a closed beta, and the "Beta
 users" policy stays as the second lock on the sign-in. (Not on the panel:
 the board's server reaches Job Hunter on the service token, so there the
 second lock is Job Hunter's own link of the address to an account.) How it
-works is in CLAUDE.md ("Job
-Hunter signs in with SLED JOBS"). Two rules hold throughout: **never a new
-Access application** (the existing "Job Hunter beta" is the one you change)
-and **no `*.sledjobs.com` wildcard**.
+works is in CLAUDE.md ("Job Hunter signs in with SLED JOBS"). Two rules hold
+throughout: **never a new Access application** (the existing "Job Hunter
+beta" is the one you change) and **no `*.sledjobs.com` wildcard**.
 
 **Before you start:** the board's D1 database is bound as `DB` (§3e; the
 one-time codes live there) and `SESSION_SECRET` is set (§3a).
