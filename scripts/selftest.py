@@ -20431,6 +20431,493 @@ def check_jobvite_reads_its_list_page_and_names_it_twice() -> int:
     return errors
 
 
+def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
+    """A Jobvite account's XML feed (owner, 2026-11-23: "Yes, build it"),
+    driven through ats.requests with feeds written here by hand - every name
+    in them made up - and nothing that can reach a real host.
+
+    THE READ: one request to app.jobvite.com/CompanyJobs/Xml.aspx?c=<id>, as a
+    stream, robots.txt asked, at the host's gate - paced 30 seconds, never
+    cached - and every hop held to the feed's own address.
+    THE ROWS: one a job, a parent's per-location copies joined to it in any
+    order; title, places, posted, the job's own page as https, category, and
+    pay only from the row's own salary fields; the ad in jd behind
+    FETCH_DETAILS only.
+    NO PERSON: hiring_x0020_manager (a person on every row of Tyler's feed),
+    an attribute or a field nobody named is in no row, no parsed job, no note,
+    stderr or the probe's answer.
+    REFUSED, NEVER A ZERO OR PART OF A BOARD: a DOCTYPE or ENTITY, a feed over
+    the cap, an empty, cut-short or robots-closed one, one that is not a feed,
+    a redirect anywhere, rows that do not read past the slack. A 429, a 5xx
+    and the network are raised as every reader raises them.
+    THE PROBE: <company> on every row, else company_x0020_name on every row;
+    a field missing on one row states nothing; rows that disagree are two
+    names, refused by proven(). n is the jobs.
+    THE FINDER: an account named by its company id on their own site is a
+    candidate (the widget's ci=, CompanyJobs' c=); beside a jobs.jobvite.com
+    career site, on the page or the site, it is jobvite-tenant, as before.
+    THE DOOR: wires it on both checks, skips a giant, and takes Jobvite's
+    own link beside it for a note.
+    """
+    import types
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import build_board as bb
+    import find_site_boards as fsb
+    import verify_boards as vb
+    import wire_found as wf
+    errors = 0
+    A = "qAcmefwX"                       # an account id in Jobvite's shape, made up
+    FEED = f"https://app.jobvite.com/CompanyJobs/Xml.aspx?c={A}"
+    PEOPLE = ("Pat Example", "Sam Sample", "Lee Placeholder", "Jo Fictional")
+
+    def job(jid, title="Account Executive - Courts", parent=None, where="Plano, TX, United States",
+            date="8/26/2026", detail=None, pay=None, company=None, custom="Acme Gov Systems",
+            manager=PEOPLE[0], category="Sales", more=""):
+        detail = detail if detail is not None else (
+            f"<![CDATA[http://app.jobvite.com/CompanyJobs/Job.aspx?c={A}&j={parent or jid}]]>")
+        pay_xml = "" if pay is None else (
+            f"<salarycurrency><![CDATA[{pay[2]}]]></salarycurrency><salaryfrequency>{pay[3]}"
+            f"</salaryfrequency><salarymin>{pay[0]}</salarymin><salarymax>{pay[1]}</salarymax>")
+        return ("<job>" + (f"<parentId>{parent}</parentId>" if parent else "")
+                + f"<id>{jid}</id><externalJobPostingId>{jid}-Xx</externalJobPostingId>"
+                f"<title>{title}</title><requisitionid>2026-0001</requisitionid>"
+                f"<category>{category}</category><jobtype></jobtype><location>{where}</location>"
+                f"<date>{date}</date><detail-url>{detail}</detail-url><apply-url><![CDATA[http://"
+                f"app.jobvite.com/CompanyJobs/Careers.aspx?c={A}&j={parent or jid}&k=Apply]]>"
+                "</apply-url><description>&lt;p&gt;Sell to counties &amp;amp; cities.&lt;/p&gt;"
+                "</description><briefdescription></briefdescription>"
+                + (f"<company>{company}</company>" if company is not None else "")
+                + (f"<company_x0020_name>{custom}</company_x0020_name>" if custom is not None else "")
+                + (f"<hiring_x0020_manager>{manager}</hiring_x0020_manager>" if manager else "")
+                + f"<agency_x0020_access></agency_x0020_access>{pay_xml}{more}</job>")
+
+    def feed(*jobs):
+        return '<?xml version="1.0" encoding="UTF-8"?><result>' + "".join(jobs) + "</result>"
+
+    P1 = "oAaaaAfw1"
+    USD_YEAR = ("76000.00", "110000.00", "US Dollar (USD US$)", "Annually")
+    MAIN = feed(
+        # a copy BEFORE its parent: the group is the parent's however they come
+        job(P1 + "-CZzzzZfw0", parent=P1, where="Austin, TX, United States", pay=USD_YEAR,
+            manager=PEOPLE[1]),
+        job(P1, pay=USD_YEAR),
+        job(P1 + "-CBbbbBfw2", parent=P1, where="Lubbock, TX, United States", pay=USD_YEAR,
+            manager=PEOPLE[2], more=f'<recruiter_x0020_name>{PEOPLE[3]}</recruiter_x0020_name>'),
+        job(P1 + "-CCcccCfw3", parent=P1, pay=USD_YEAR, manager=PEOPLE[3]),     # a place again
+        job("oDdddDfw4", title="Implementation Consultant", where="Vancouver, BC, Canada",
+            date="11/3/2026", category="Professional Services"),
+        job("oEeeeEfw5", title="Customer Support Specialist", where="United States",
+            date="12/1/2026", pay=("20.00", "22.50", "US Dollar (USD US$)", "Hourly")),
+        job("oFfffFfw6", title="Account Manager", where="Bonifacio Global City, Philippines",
+            date="10/29/2026", pay=("873703.80", "1116045.00", "Philippine Piso (PHP ₱)",
+                                    "Annually")))
+    page_of = lambda j: f"https://app.jobvite.com/CompanyJobs/Job.aspx?c={A}&j={j}"   # noqa: E731
+    WANT = [
+        ("Account Executive - Courts",
+         "Plano, TX, United States; Austin, TX, United States; Lubbock, TX, United States",
+         page_of(P1), "2026-08-26", "Sales",
+         {"min": 76000, "max": 110000, "currency": "USD", "period": "year", "source": "ats",
+          "raw": "76000.00-110000.00 USD per year"}),
+        ("Implementation Consultant", "Vancouver, BC, Canada", page_of("oDdddDfw4"), "2026-11-03",
+         "Professional Services", None),
+        ("Customer Support Specialist", "United States", page_of("oEeeeEfw5"), "2026-12-01", "Sales",
+         {"min": 20, "max": 22.5, "currency": "USD", "period": "hour", "source": "ats",
+          "raw": "20.00-22.50 USD per hour"}),
+        ("Account Manager", "Bonifacio Global City, Philippines", page_of("oFfffFfw6"), "2026-10-29",
+         "Sales", {"min": 873703.8, "max": 1116045, "currency": "PHP", "period": "year",
+                   "source": "ats", "raw": "873703.80-1116045.00 PHP per year"}),
+    ]
+
+    sent, asked, gated = [], [], []
+    web: dict = {}
+    refusing = {"on": False}
+
+    class Resp:
+        def __init__(self, code, body=b"", headers=None, chunk=None, cut_at=None):
+            self.status_code, self.headers, self.url = code, dict(headers or {}), ""
+            self._body = body.encode("utf-8") if isinstance(body, str) else body
+            self._chunk, self._cut_at, self.taken = chunk, cut_at, 0
+
+        def iter_content(self, chunk_size=1):
+            step = self._chunk or chunk_size
+            for i in range(0, len(self._body), step):
+                if self._cut_at is not None and i >= self._cut_at:
+                    raise ats.requests.exceptions.ChunkedEncodingError("the connection was cut")
+                self.taken += len(self._body[i:i + step])
+                yield self._body[i:i + step]
+
+        def close(self):
+            pass
+
+    def get(url, **kw):
+        sent.append((url, kw))
+        v = web.get(url)
+        if isinstance(v, Exception):
+            raise v
+        if isinstance(v, Resp):
+            return v
+        return Resp(404) if v is None else Resp(200, v)
+
+    def ask(url):
+        asked.append(url)
+        if refusing["on"]:
+            raise ats.RobotsRefused(f"robots.txt asks crawlers not to read {url}")
+
+    def read(body, ref=A, details=False):
+        """(rows, the error, stderr) of one read of `body` served as the feed."""
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web[FEED] = body
+        ats.FETCH_DETAILS = details
+        err = io.StringIO()
+        try:
+            with contextlib.redirect_stderr(err):
+                return ats.plain_rows(ats.fetch_jobvitefeed(ref)), None, err.getvalue()
+        except Exception as exc:                            # noqa: BLE001 - said by the pin
+            return None, exc, err.getvalue()
+
+    def says(body):
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web[FEED] = body
+        return vb.board_says("jobvitefeed", A)
+
+    def nobody(what, *things):
+        nonlocal errors
+        blob = json.dumps(things, default=lambda o: sorted(o) if isinstance(o, set) else str(o))
+        named = [p for p in PEOPLE if p in blob or p.split()[1] in blob]
+        if named:
+            errors += fail(f"jobvitefeed: {what} carries a person's name ({named[0]!r})")
+
+    real_gate = ats._host_gate
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS,
+            ats.JOBVITE_FEED_MAX, dict(ats._HOST_NOT_BEFORE))
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+
+        # ---- the read: one request, its manners, every field -----------------------------
+        rows, exc, err = read(MAIN)
+        got = [(r["title"], r["location"], r["url"], r.get("posted"), r.get("category"), r["comp"])
+               for r in rows or []]
+        if exc or got != WANT:
+            errors += fail(f"jobvitefeed: the feed did not read as one row a job with its fields "
+                           f"({exc}): {got}")
+        if [u for u, _kw in sent] != [FEED] or asked != [FEED] or gated != [FEED]:
+            errors += fail(f"jobvitefeed: one read asked {[u for u, _kw in sent]}, robots.txt of "
+                           f"{asked} and the gate for {gated}, not the feed once each")
+        kw = sent[0][1] if sent else {}
+        if kw.get("stream") is not True or kw.get("allow_redirects") is not False \
+                or (kw.get("headers") or {}).get("User-Agent") != ats.UA["User-Agent"]:
+            errors += fail(f"jobvitefeed: the feed was not asked as a stream, redirects off, under "
+                           f"the crawler's own name: {kw}")
+        if any(r.get("jd") for r in rows or []):
+            errors += fail("jobvitefeed: with FETCH_DETAILS off a row carries the ad")
+        nobody("a row", rows)
+        nobody("stderr", err)
+        rows_d, exc, _err = read(MAIN, details=True)
+        if exc or [r.get("jd") for r in rows_d or []] != ["Sell to counties & cities."] * 4 \
+                or len(sent) != 1:
+            errors += fail(f"jobvitefeed: with FETCH_DETAILS on the ad is not each row's jd, or it "
+                           f"cost a request more ({len(sent)} asked): {exc or rows_d}")
+        nobody("a row read with its ad", rows_d)
+        jobs = ats.jobvitefeed_jobs(MAIN.encode("utf-8"))
+        if len(jobs) != 7 or any(set(j) - ats._JVX_FIELDS for j in jobs) \
+                or any("hiring_x0020_manager" in j for j in jobs):
+            errors += fail(f"jobvitefeed: the parsed feed kept a field nobody named: "
+                           f"{sorted({k for j in jobs for k in j})}")
+        nobody("the parsed feed", jobs)
+        # (an attribute is never read either, nor CDATA or markup in a field nobody named)
+        odd = feed(job(P1, more="").replace(
+            "<job>", f'<job manager="{PEOPLE[0]}">').replace(
+            f"<hiring_x0020_manager>{PEOPLE[0]}</hiring_x0020_manager>",
+            f"<hiring_x0020_manager><![CDATA[{PEOPLE[1]}]]><b>{PEOPLE[2]}</b>"
+            "</hiring_x0020_manager>"))
+        nobody("a feed whose person sits in CDATA, markup or an attribute",
+               ats.jobvitefeed_jobs(odd.encode("utf-8")), read(odd)[0])
+
+        # ---- pay only where the row states it -------------------------------------------
+        for pay, want, why in (
+                (("", "", "", ""), None, "no figure"),
+                (("about 50k", "70000", "US Dollar (USD US$)", "Annually"), None, "a figure that does not read"),
+                (("0", "0.00", "US Dollar (USD US$)", "Annually"), None, "zero"),
+                (("", "90000", "US Dollar (USD US$)", "Annually"),
+                 {"min": None, "max": 90000, "currency": "USD", "period": "year", "source": "ats",
+                  "raw": "90000 USD per year"}, "a ceiling alone"),
+                (("110000", "90000", "Canadian Dollar (CAD $)", "Annually"),
+                 {"min": 90000, "max": 110000, "currency": "CAD", "period": "year", "source": "ats",
+                  "raw": "90000-110000 CAD per year"}, "a range written backwards"),
+                (("90000", "110000", "Dollars", "Annually"),
+                 {"min": 90000, "max": 110000, "currency": None, "period": "year", "source": "ats",
+                  "raw": "90000-110000 per year"}, "a currency named by no code")):
+            r_, e_, _ = read(feed(job(P1, pay=pay)))
+            if e_ or (r_ or [{}])[0].get("comp") != want:
+                errors += fail(f"jobvitefeed: {why} reads as pay {(r_ or [{}])[0].get('comp')} ({e_}), "
+                               f"not {want}")
+        for freq in ("Bi-Weekly", "Semi-Monthly", "Per Diem"):
+            r_, e_, _ = read(feed(job(P1, pay=("2000", "2500", "US Dollar (USD US$)", freq))))
+            comp = (r_ or [{}])[0].get("comp") or {}
+            if e_ or comp.get("period") is not None or bb.derived(r_[0])["comp"] is not None:
+                errors += fail(f"jobvitefeed: a salary paid {freq} reads as a period "
+                               f"{comp.get('period')!r}, or is published")
+        for date in ("8/26/26", "2026-08-26", "26/8/2026", "8/26/2026 10:00"):
+            r_, e_, _ = read(feed(job(P1, date=date)))
+            if e_ or (r_ or [{}])[0].get("posted") is not None:
+                errors += fail(f"jobvitefeed: the date {date!r} was read as "
+                               f"{(r_ or [{}])[0].get('posted')!r}, not as no date")
+        keep_giant = ats.JOBVITE_FEED_GIANT
+        ats.JOBVITE_FEED_GIANT = 4
+        r_, e_, err_ = read(MAIN)
+        ats.JOBVITE_FEED_GIANT = keep_giant
+        if e_ or len(r_ or []) != 4 or "4 openings: a giant" not in err_:
+            errors += fail(f"jobvitefeed: a feed at the giants' line was not read whole with its "
+                           f"count said ({e_}): {err_!r}")
+        r_, e_, _ = read(feed(job(P1).replace("&lt;/p&gt;", " Deals run to $1,000,000.&lt;/p&gt;")))
+        if e_ or (r_ or [{}])[0].get("comp") is not None:
+            errors += fail(f"jobvitefeed: a figure the row never stated as pay was published: "
+                           f"{(r_ or [{}])[0].get('comp')}")
+
+        # ---- refused: never a zero, never part of a board --------------------------------
+        cases = [
+            ('<?xml version="1.0"?><!DOCTYPE result [<!ENTITY who "Pat Example">]><result>'
+             + job(P1, title="&who;") + "</result>", "DOCTYPE", "a DOCTYPE declaring an ENTITY"),
+            ('<!DOCTYPE result SYSTEM "https://evil.example/x.dtd">' + feed(job(P1))[38:],
+             "DOCTYPE", "a DOCTYPE naming an outside file"),
+            (feed(), "lists no job", "a feed with no job"),
+            ('<?xml version="1.0" encoding="UTF-8"?><result/>', "lists no job", "an empty <result/>"),
+            ("", "does not read as XML", "an empty answer"),
+            (MAIN[:len(MAIN) // 2], "does not read as XML", "a feed cut short"),
+            (MAIN[:-len("</result>")], "does not read as XML", "a feed cut before its last tag"),
+            (MAIN + "<job>", "does not read as XML", "a feed with more after it"),
+            ("<html><body><p>Careers</p></body></html>", "not a Jobvite feed", "a web page"),
+            ("<jobs>" + job(P1) + "</jobs>", "not a Jobvite feed", "another root"),
+            (feed(job(P1)).replace("Sell to", "Sell &nbsp; to"), "does not read as XML",
+             "an entity XML does not define"),
+            (feed(job("x"), job("y"), job("z"), job(P1)), "did not read as a job",
+             "three rows with no id that reads"),
+        ]
+        for body, words, why in cases:
+            r_, e_, err_ = read(body)
+            if r_ is not None or words not in str(e_):
+                errors += fail(f"jobvitefeed: {why} was read ({r_}) or refused in other words: {e_}")
+            nobody(f"the refusal of {why}", str(e_), err_)
+        r_, e_, err_ = read(feed(job("x"), job("y"), job(P1)))
+        if e_ or len(r_ or []) != 1 or "2 of its 3 rows did not read" not in err_:
+            errors += fail(f"jobvitefeed: two rows that do not read beside one that does were not "
+                           f"left out and said ({e_}): {err_!r}")
+        for detail, why in ((f"<![CDATA[http://app.jobvite.com/CompanyJobs/Job.aspx?c=qOthersfw&j={P1}]]>",
+                             "another account's job page"),
+                            (f"<![CDATA[http://evil.example/CompanyJobs/Job.aspx?c={A}&j={P1}]]>",
+                             "a job page on another host"),
+                            (f"<![CDATA[http://app.jobvite.com/CompanyJobs/Job.aspx?c={A}&j=oOtherAfw9]]>",
+                             "another job's page")):
+            r_, e_, err_ = read(feed(job(P1, detail=detail), job("oDdddDfw4")))
+            if e_ or [r["url"] for r in r_ or []] != [page_of("oDdddDfw4")]:
+                errors += fail(f"jobvitefeed: a row whose page is {why} was read: {r_ or e_}")
+        ats.JOBVITE_FEED_MAX = 400
+        big = Resp(200, MAIN, chunk=50)
+        r_, e_, _ = read(big)
+        ats.JOBVITE_FEED_MAX = held[5]
+        if r_ is not None or "more than 400 bytes" not in str(e_) or big.taken > 450:
+            errors += fail(f"jobvitefeed: a feed over the cap was read, or read past it "
+                           f"({big.taken} bytes taken): {r_ or e_}")
+        refusing["on"] = True
+        r_, e_, _ = read(MAIN)
+        refusing["on"] = False
+        if r_ is not None or not isinstance(e_, ats.RobotsRefused) or sent:
+            errors += fail(f"jobvitefeed: a feed robots.txt closes was asked ({sent}) or read: {r_ or e_}")
+        for to in ("https://app.jobvite.com/Recruiting/Home.aspx", "https://www.jobvite.com/",
+                   FEED + "&x=1"):
+            r_, e_, _ = read(Resp(302, headers={"Location": to}))
+            if r_ is not None or "leads off" not in str(e_) or [u for u, _kw in sent] != [FEED] \
+                    or asked != [FEED]:
+                errors += fail(f"jobvitefeed: a redirect to {to} was asked ({sent}, robots {asked}) "
+                               f"or read: {r_ or e_}")
+
+        # ---- a failure of the day is raised as every reader raises it -----------------------
+        keep_hold = dict(ats._HOST_NOT_BEFORE)
+        r_, e_, _ = read(Resp(429, headers={"Retry-After": "30"}))
+        if not isinstance(e_, ats.RateLimited) or "app.jobvite.com" not in ats._HOST_NOT_BEFORE:
+            errors += fail(f"jobvitefeed: a 429 was not raised as RateLimited and honoured at the "
+                           f"gate: {e_!r}")
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(keep_hold)
+        r_, e_, _ = read(Resp(503))
+        if not isinstance(e_, ats.AtsError) or not str(e_).startswith("HTTP 503") \
+                or not vb.said_transient(str(e_)):
+            errors += fail(f"jobvitefeed: a 503 was not raised as a failure of the day: {e_!r}")
+        for v, why in ((ats.requests.ConnectionError("no route to host"), "at the request"),
+                       (Resp(200, MAIN, chunk=50, cut_at=200), "in the middle of the feed")):
+            r_, e_, _ = read(v)
+            if r_ is not None or not str(e_).startswith("network error"):
+                errors += fail(f"jobvitefeed: the network failing {why} was not a network error: "
+                               f"{r_ or e_!r}")
+        web[FEED] = Resp(429, headers={"Retry-After": "30"})
+        said = vb.board_says("jobvitefeed", A)
+        if said["failed"] != "refused" or said["transient"] is not True or said["names"]:
+            errors += fail(f"jobvitefeed probe: a 429 is not a refusal of the day: {said}")
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(keep_hold)
+        for ref in ("", None, "acme", "odUyAfwZ", "q6NaVfwI/../x", "Q6NAVFWI", "qAcmefwXX"):
+            r_, e_, _ = read(MAIN, ref=ref)
+            if r_ is not None or sent:
+                errors += fail(f"jobvitefeed: {ref!r} was taken as a company id ({sent})")
+
+        # ---- the probe: a name on every row, or nothing ----------------------------------
+        said = says(MAIN)
+        if said["names"] != ["Acme Gov Systems"] or not said["stated"] or said["n"] != 4 \
+                or said["n_is_partial"] or said["hosts"] != {"app.jobvite.com"} \
+                or "company_x0020_name" not in str(said["how"]) or len(sent) != 1:
+            errors += fail(f"jobvitefeed probe: Tyler's shape (the company-name field on every row) "
+                           f"was not stated whole, its jobs counted, in one request: {said}")
+        if not vb.proven({"name": "Acme Gov Systems"}, said)["ok"] \
+                or vb.proven({"name": "Somebody Else"}, said)["ok"]:
+            errors += fail("jobvitefeed probe: the stated name was not proven for its company, or "
+                           "was for another")
+        nobody("the probe's answer", said)
+        for body, want_names, stated, why in (
+                (feed(job(P1, company="Acme Gov", custom=None), job("oDdddDfw4", company="Acme Gov",
+                                                                    custom=None)),
+                 ["Acme Gov"], True, "<company> on every row"),
+                (feed(job(P1, company="", custom="Acme Gov"), job("oDdddDfw4", company="",
+                                                                  custom="Acme Gov")),
+                 ["Acme Gov"], True, "<company> empty on every row, the company-name field on every row"),
+                (feed(job(P1, company="", custom=None), job("oDdddDfw4", company="", custom=None)),
+                 [], False, "<company> empty on every row and no company-name field"),
+                (feed(job(P1), job(P1 + "-CBbbbBfw2", parent=P1, custom=None)),
+                 ["Acme Gov Systems"], False, "the company-name field missing on one copy"),
+                (feed(job(P1, custom=" "), job("oDdddDfw4")),
+                 ["Acme Gov Systems"], False, "the company-name field blank on one row"),
+                (feed(job(P1, company="Acme Gov", custom=None), job("oDdddDfw4", custom=None)),
+                 ["Acme Gov"], False, "<company> on one row of two"),
+                (feed(job(P1, company="Acme Gov", custom=None), job("oDdddDfw4", company="Parent Co",
+                                                                    custom=None)),
+                 ["Acme Gov", "Parent Co"], True, "rows that name two employers"),
+                (feed(job(P1, company="Acme Gov", custom="Parent Co"),
+                      job("oDdddDfw4", company="Acme Gov", custom="Parent Co")),
+                 ["Acme Gov", "Parent Co"], True, "a company-name field naming another")):
+            said = says(body)
+            if said["names"] != want_names or said["stated"] is not stated:
+                errors += fail(f"jobvitefeed probe, {why}: names {said['names']} stated "
+                               f"{said['stated']}, not {want_names} stated {stated} ({said['how']})")
+            elif want_names and vb.proven({"name": "Acme Gov"}, said)["ok"] is not (
+                    stated and len(want_names) == 1):
+                errors += fail(f"jobvitefeed probe, {why}: proven() said "
+                               f"{vb.proven({'name': 'Acme Gov'}, said)}")
+            if not said["stated"] and vb.proven({"name": want_names[0] if want_names else "Acme Gov"},
+                                                said)["ok"]:
+                errors += fail(f"jobvitefeed probe, {why}: a name not stated whole was proven")
+        said = says(feed())
+        if said["failed"] != "unreadable" or said["names"] or said["transient"]:
+            errors += fail(f"jobvitefeed probe: a feed listing no job is not unreadable: {said}")
+
+        # ---- the gate: 30 seconds a request, never cached ---------------------------------
+        clock, slept = {"t": 1000.0}, []
+
+        def nap(s):
+            slept.append(round(s, 3))
+            clock["t"] += s
+        keep_time = (ats.time, ats.HOST_PAUSE, dict(ats._HOST_LAST))
+        try:
+            ats.time = types.SimpleNamespace(monotonic=lambda: clock["t"], sleep=nap)
+            ats.HOST_PAUSE = 0.5
+            for k in ("app.jobvite.com", "other.example"):
+                ats._HOST_LAST.pop(k, None)
+            for u in (FEED, "https://app.jobvite.com:443/CompanyJobs/Xml.aspx?c=qBbbbbfwB",
+                      "https://other.example/a", "https://other.example/b"):
+                real_gate(u)
+        finally:
+            ats.time, ats.HOST_PAUSE = keep_time[:2]
+            ats._HOST_LAST.clear()
+            ats._HOST_LAST.update(keep_time[2])
+        if slept != [ats.JOBVITE_FEED_PAUSE, 0.5] or ats.JOBVITE_FEED_PAUSE < 30:
+            errors += fail(f"jobvitefeed: two requests to app.jobvite.com (one with its port "
+                           f"written) were held {slept[:1]}s apart, not {ats.JOBVITE_FEED_PAUSE}s "
+                           f"(30 or more), or another host waited as long: {slept}")
+        if not ats.never_cached(FEED) or ats._gate_key("https://x:@app.jobvite.com/") != "app.jobvite.com":
+            errors += fail("jobvitefeed: app.jobvite.com is cached, or its gate can be stepped round")
+        for ref, want in ((A, f"https://app.jobvite.com/CompanyJobs/Careers.aspx?c={A}"),
+                          ("q6NaVfwI/x", "https://acme.example")):
+            if bb.board_url({"ats": {"type": "jobvitefeed", "ref": ref},
+                             "website": "https://acme.example"}) != want:
+                errors += fail(f"jobvitefeed: the public link for {ref!r} is not {want} (Jobvite's "
+                               f"careers page for the account, never the feed; else their website)")
+    finally:
+        (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS,
+         ats.JOBVITE_FEED_MAX) = held[:6]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[6])
+
+    # ---- the finder: an account their own site names is a board ----------------------------
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+    WIDGET = ('<script src="https://app.jobvite.com/__assets__/scripts/source/widgets/JV.getTPWidget.js'
+              f'?ty=0&amp;ci={A}&amp;ui=uAbCdfw1&amp;sd=Pat%20Example&amp;width=auto"></script>')
+    FRAME = ('<iframe src="https://app.jobvite.com/TalentNetwork/widget/widgetContainerV2.html?ty=0'
+             f'&amp;ci={A}&amp;sd=Sam%20Sample&amp;v=2"></iframe>')
+    APPLY = f'<a href="https://app.jobvite.com/CompanyJobs/Careers.aspx?k=Apply&amp;j=oAbCdfwL&amp;c={A}">Apply</a>'
+    SITE = '<a href="https://jobs.jobvite.com/acmegov/jobs">All jobs</a>'
+    for markup, want, tenant, why in (
+            (WIDGET, [("jobvitefeed", A, "script")], False, "the widget's script (ci=)"),
+            (FRAME, [("jobvitefeed", A, "iframe")], False, "the widget's frame (ci=)"),
+            (APPLY, [("jobvitefeed", A, "href")], False, "a CompanyJobs page (c=)"),
+            (SITE + WIDGET, [("jobvite", "acmegov", "href")], True,
+             "a jobs.jobvite.com career site beside the widget"),
+            (APPLY.replace(A, "qOthr9fw"), [], True, "an id that is not in Jobvite's shape"),
+            (APPLY.replace("app.jobvite", "hire.jobvite"), [], True, "hire.jobvite.com")):
+        found, rest = fsb.sightings(markup, here, home)
+        if [(f["type"], f["ref"], f["element"]) for f in found] != want \
+                or ("jobvite-tenant" in {r["vendor"] for r in rest}) is not tenant:
+            errors += fail(f"finder, {why}: {[(f['type'], f['ref'], f['element']) for f in found]} "
+                           f"and {[r['vendor'] for r in rest]}")
+        nobody(f"the finder's sighting of {why}", found, rest)
+    rec = {"candidates": [{"type": "jobvite", "ref": "acmegov", "element": "href", "saw": "x",
+                           "times": 1, "page": home, "hop": 0},
+                          {"type": "jobvitefeed", "ref": A, "element": "script", "saw": "y",
+                           "times": 2, "page": here, "hop": 1}], "elsewhere": []}
+    fsb.jobvite_account_board(rec)
+    if [c["type"] for c in rec["candidates"]] != ["jobvite"] \
+            or [(e["vendor"], e["page"], e["times"]) for e in rec["elsewhere"]] != [("jobvite-tenant", here, 2)]:
+        errors += fail(f"finder: an account beside a career site named on another page is not "
+                       f"jobvite-tenant: {rec}")
+    css = '<link rel="stylesheet" href="https://app.jobvite.com/__assets__/css/jv-widget.css">'
+    for web_, want, gone, why in (
+            ({home: _site_boards_page("Acme Gov", SITE + '<a href="/careers">Careers</a>'),
+              here: _site_boards_page("Careers", WIDGET)},
+             {("jobvite", "acmegov")}, {"jobvite-tenant"}, "a career site on one page, the widget on another"),
+            ({home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+              here: _site_boards_page("Careers", WIDGET + css)},
+             {("jobvitefeed", A)}, set(), "the widget and its own stylesheet")):
+        with _SiteBoardsWeb(fsb, web_):
+            rec = asyncio.run(fsb.look(_site_boards_co("acme-gov", "Acme Gov", home), "static",
+                                       fsb.read_plain))
+        vendors = {e["vendor"] for e in rec["elsewhere"]} & {"jobvite-tenant", "jobvite-other"}
+        if {(c["type"], c["ref"]) for c in rec["candidates"]} != want or vendors != gone:
+            errors += fail(f"finder, {why}: candidates {[(c['type'], c['ref']) for c in rec['candidates']]}, "
+                           f"elsewhere {sorted(vendors)}")
+        nobody(f"the finder's record of {why}", rec)
+
+    # ---- the door: both checks, the giants, Jobvite's own link --------------------------------
+    co = _wb_co("acme-gov", "Acme Gov")
+    for n, link, want, words, why in (
+            (3, False, "WIRE", "", "both checks agree"),
+            (3, True, "WIRE", "", "Jobvite's own link beside it"),
+            (600, False, "SKIP", "600", "a giant")):
+        entry = _wb_one("acme-gov", "jobvitefeed", A, element="script")
+        if link:
+            entry["elsewhere"] = [{"vendor": "jobvite-other", "saw": "https://www.jobvite.com/",
+                                   "page": f"{_wb_site('acme-gov')}/careers", "element": "href",
+                                   "times": 1}]
+        with _WiringBox([co], {f"jobvitefeed/{A}": (n, ["Acme Gov"])}) as box:
+            _code, text, _wl, rows_ = box.plan(_wb_results({"acme-gov": entry}))
+        row = (rows_ or {}).get("acme-gov") or {}
+        if row.get("action") != want or words not in _wb_words(row):
+            errors += fail(f"door, {why}: a jobvitefeed board planned {row.get('action')} saying "
+                           f"{_wb_words(row)[:200]!r}, not {want}")
+    if not wf.advertising("jobvite-other", "jobvitefeed", "href") \
+            or wf.advertising("jobvite-other", "jobvitefeed", "script"):
+        errors += fail("door: Jobvite's own link beside an account's feed is a doubt, or its "
+                       "script is a note")
+    return errors
+
+
 def check_successfactors_reads_its_career_site() -> int:
     """SAP SuccessFactors' Career Site Builder (2026-11-22), driven through
     ats.requests so every hop and every robots.txt ask is seen. Fixtures are
@@ -60748,6 +61235,7 @@ def main() -> int:
     errors += check_zoho_recruit_reads_only_the_open_jobs_its_page_carries()
     errors += check_comeet_reads_the_board_its_company_page_hands_out()
     errors += check_jobvite_reads_its_list_page_and_names_it_twice()
+    errors += check_jobvite_feed_reads_one_row_a_job_and_no_person()
     errors += check_successfactors_reads_its_career_site()
     errors += check_successfactors_unify_reads_its_sitemap()
     errors += check_what_the_second_review_of_the_new_readers_found_stays_fixed()
