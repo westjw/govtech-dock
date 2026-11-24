@@ -10,7 +10,7 @@ How a platform is met. find_site_boards.py reads a company's own website: an add
 
 measured_on lists the days the code or the research records a live measurement; a window (day..day) is a day within it that the research does not narrow down; unknown is none recorded. A form is a finder vendor id that belongs to the platform and names no board the wiring door can use.
 
-50 platforms: 29 read, 1 build, 3 skip, 17 seen.
+50 platforms: 30 read, 1 build, 3 skip, 16 seen.
 
 | Status | Means |
 |---|---|
@@ -30,6 +30,7 @@ measured_on lists the days the code or the research records a live measurement; 
 | [Ashby](#ashby) | `ashby` | read | `fetch_ashby` | `board_says` | 2026-08-23 |
 | [BambooHR](#bamboohr) | `bamboohr` | read | `fetch_bamboohr` | `_bamboohr` | 2026-08-23 |
 | [Breezy HR](#breezy-hr) | `breezy` | read | `fetch_breezy` | `_breezy` | 2026-08-23 |
+| [ClearCompany](#clearcompany) | `clearcompany` | read | `fetch_clearcompany` | `_clearcompany` | 2026-11-23 |
 | [Comeet (Spark Hire Recruit)](#comeet-spark-hire-recruit) | `comeet` | read | `fetch_comeet` | `_comeet` | 2026-11-19, 2026-11-21 |
 | [Gem](#gem) | `gem` | read | `fetch_gem` | `_gem` | unknown |
 | [Greenhouse](#greenhouse) | `greenhouse` | read | `fetch_greenhouse` | `board_says` | 2026-08-23 |
@@ -59,7 +60,6 @@ measured_on lists the days the code or the research records a live measurement; 
 | [UKG Pro Recruiting (UltiPro)](#ukg-pro-recruiting-ultipro) | `ukg` | skip | - | - | 2026-11-19..2026-11-21 |
 | [Avature](#avature) | `avature` | seen | - | - | unknown |
 | [CareerPlug](#careerplug) | `careerplug` | seen | - | - | unknown |
-| [ClearCompany](#clearcompany) | `clearcompany` | seen | - | - | unknown |
 | [Cornerstone OnDemand](#cornerstone-ondemand) | `csod` | seen | - | - | unknown |
 | [Dayforce](#dayforce) | `dayforce` | seen | - | - | unknown |
 | [Eightfold](#eightfold) | `eightfold` | seen | - | - | unknown |
@@ -79,19 +79,19 @@ measured_on lists the days the code or the research records a live measurement; 
 
 <!-- live -->
 
-From data/companies.json as last refreshed 2026-11-23. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
+From data/companies.json as last refreshed 2026-11-24. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
 
 | Type | On file | With roles |
 |---|---:|---:|
-| [`html`](#a-careers-page-html) | 958 | 129 |
+| [`html`](#a-careers-page-html) | 957 | 128 |
 | `unknown` (no board on file) | 930 | 0 |
-| [`greenhouse`](#greenhouse) | 116 | 64 |
+| [`greenhouse`](#greenhouse) | 116 | 65 |
 | [`ashby`](#ashby) | 91 | 50 |
 | [`bamboohr`](#bamboohr) | 53 | 19 |
-| [`paylocity`](#paylocity) | 45 | 12 |
+| [`paylocity`](#paylocity) | 45 | 11 |
 | [`lever`](#lever) | 42 | 21 |
 | [`workday`](#workday) | 42 | 32 |
-| [`rippling`](#rippling) | 38 | 16 |
+| [`rippling`](#rippling) | 38 | 17 |
 | [`workable`](#workable) | 31 | 13 |
 | [`jazzhr`](#jazzhr) | 21 | 4 |
 | [`breezy`](#breezy-hr) | 13 | 2 |
@@ -103,13 +103,14 @@ From data/companies.json as last refreshed 2026-11-23. **On file** is how many c
 | [`recruitee`](#recruitee) | 5 | 4 |
 | [`pinpoint`](#pinpoint) | 4 | 2 |
 | [`smartrecruiters`](#smartrecruiters) | 4 | 1 |
-| [`successfactors`](#sap-successfactors-career-site-builder) | 4 | 3 |
+| [`successfactors`](#sap-successfactors-career-site-builder) | 4 | 4 |
 | [`gem`](#gem) | 3 | 1 |
 | [`hirebridge`](#hirebridge) | 3 | 3 |
 | [`jobvite`](#jobvite) | 3 | 2 |
 | [`zohorecruit`](#zoho-recruit) | 3 | 0 |
 | [`applicantpro`](#applicantpro-isolved) | 2 | 2 |
 | [`jobvitefeed`](#jobvite-an-accounts-xml-feed) | 1 | 1 |
+| [`trinethire`](#trinet-hire) | 1 | 0 |
 
 **The last sweep**: a `find_site_boards.py` results file generated 2026-11-22T04:00:53+00:00 in static mode, over 59 companies (a sweep covers the companies it was given, not the whole map). 42 companies had a board we read named on their own site.
 
@@ -146,7 +147,7 @@ From data/companies.json as last refreshed 2026-11-23. **On file** is how many c
 
 <!-- live -->
 
-On file today: 958 companies, 129 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 957 companies, 128 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -291,6 +292,44 @@ On file today: 13 companies, 2 of them with roles. The last sweep (2026-11-22): 
 
 <!-- /live -->
 
+### ClearCompany
+
+`clearcompany` · **read** · researched as build · reader `ats.fetch_clearcompany` · identity probe `verify_boards._clearcompany` · measured 2026-11-23
+
+**How to spot it.** A link, frame or script naming the hosted site, apply.clearcompany.com/\<slug> (Rehrig Pacific's careers page links it; a posting's ?jobId= and /\<slug>/redirect are the same board), the slug's own path segment whole, never 'internal' (find_site_boards). A legacy HRM Direct board (\<label>.hrmdirect.com/employment/..., ClearCompany owns HRM Direct; Clearfield's careers page frames one) names no board by itself: the finder asks it, robots.txt first at every hop and on its own host only, and the slug ClearCompany's redirect names is the board (measured 2026-11-23: it answers 302 to apply.clearcompany.com/\<slug>/redirect). The tenant label is never taken for the slug. Hint: clearcompany.com.
+
+**Forms the finder tallies apart** (`find_site_boards.ELSEWHERE`):
+
+- `clearcompany-legacy`: A legacy HRM Direct board, \<label>.hrmdirect.com/employment/..., whose redirect has not been asked or did not name a hosted site: a tenant form, and a doubt.
+- `clearcompany-other`: Any other clearcompany.com address: careers-content's dynamic-embed height helper beside a legacy frame, cc-client-cdn's logos, the tenant host \<label>.clearcompany.com (robots.txt: Disallow: /), ClearCompany's own site. A platform we read, naming no board.
+- `clearcompany-site`: The widget drawn straight into a page by careers-content.clearcompany.com/js/v1/career-site.js, naming its site by id alone (data-site-id or ?siteId=): a ClearCompany site whose slug the page does not show, never guessed. A tenant form, and a doubt.
+
+**How it publishes.** Three requests a board, every one through ats.\_page. (1) The hosted page, https://apply.clearcompany.com/\<slug>, a server-drawn shell of about 5 KB with no posting in it: its widget's \<script src="https://careers-content.clearcompany.com/js/v1/career-site.js?hosted=true" data-site-id=GUID> gives the site id, its \<title> is '\<brand> – Careers' and its footer's a.cc-home link is the employer's website. (2) GET https://careers-api.clearcompany.com/v1/settings/\<site id>: brandFullName, the brand filter. (3) GET https://careers-api.clearcompany.com/v1/\<site id>?pageIndex=0&pageSize=1000&source=CJB-0: {results, totalCount, currentPageIndex, currentPageCount}, each posting's whole ad in it; pageSize 1000 was honoured (115 rows in one answer). The order is not stable between requests, so the list is whole only when its rows number its own totalCount; fewer, and the next pages are asked at the same size, deduplicated by id, and the read raises unless they make up exactly totalCount. A row: positionTitle stripped; the place from locations[] (city, subdivision, country; a nationwide one 'Remote (US)', the row remote when every place is), never the server's location string, whose whitespace is mangled; the url https://apply.clearcompany.com/\<slug>?jobId=\<id lower-cased>, never applyLink or jobPortalUrl; the ad from description; postedDate only where the row carries it. salaryRangeLow, salaryRangeHigh and salaryType are on no measured row and are not read: pay comes from the ad's text through the board's one text parser (96 of 120 measured ads carry an hourly $ figure).
+
+**Public link** (`build_board.board_url`). The hosted site, https://apply.clearcompany.com/\<slug> (build_board.board_url and the desk's card): every opening, each linking its posting and its form. Never the tenant host, which robots.txt closes. A ref that is no slug links the company's website.
+
+**robots.txt.** Asked at every hop (ats.\_page), and every hop held to the board's own addresses: the hosted page to apply.clearcompany.com/\<the same slug>[/redirect], any query, over https; the API to the very address asked, with no redirect followed. Measured 2026-11-23: apply.clearcompany.com and careers-api.clearcompany.com disallow /internal/ only; the tenant host \<label>.clearcompany.com (behind applyLink, jobPortalUrl and the classic career site) says Disallow: / and is never asked; a legacy \<label>.hrmdirect.com has no rules and is asked only by the finder, for where it redirects. careers-api.clearcompany.com is in ats.NEVER_CACHED: an e-mail-to-apply posting's applyLink there is an e-mail address, and the same host serves a posting's hiring team (/v1/insights/team/\<id>), which nothing asks.
+
+**Where it names its employer.** Stated twice and believed only where the two agree (verify_boards.\_clearcompany): the settings' brandFullName, and the hosted page's \<title> before ' – Careers' (measured 'Clearfield, Inc' and 'Rehrig Pacific Company', 2026-11-23). The footer's a.cc-home link is the employer's website, held to the one on file as ashby's and jazzhr's are. A site whose brand filter (filterOptions.brand) lists brands states each of them beside its name, so one listing more than one names several companies and is held. Never settings.name (the site's internal label, 'Public - \<brand> - Career Site'), the slug, orgId or a tenant label; never a posting page.
+
+**Quirks.**
+
+- A closed posting's address still answers 200, titled plain 'Careers', so no posting page is ever read for whether it is open; the list is the board.
+- No empty board has been measured, so an empty list raises (Unknown, never 'None found'), as an empty Jobvite feed does. A gone slug answers 404 on the hosted page and a gone site id 404 on both API calls: neither is ever a zero.
+- Moved from type html, a board's postings keep their first-seen days: build_board keys a hosted-site posting address on its slug and job id (ats.clearcompany_posting_key) and carry_first_seen matches the company's earlier posting on that key whatever its place reads now (Rehrig's html rows had ?noheader=False&jobId= and no place).
+- discover_ats.MARKERS still files \<label>.clearcompany.com as type html; robots.txt refuses every one of those, so such a record reads Unknown, never a zero.
+
+**Notes.**
+
+- Research of 2026-11-23: two companies on file use ClearCompany or its legacy HRM Direct. Rehrig Pacific showed 9 rows (the widget's first page of 10) of 115, two of them 'Territory Sales Manager - Environmental' roles selling to municipalities; Clearfield showed none of 5.
+- The API is the site widget's own backend: unauthenticated, robots-allowed for /v1/, and not documented as public; ClearCompany's terms of service were not read.
+
+<!-- live -->
+
+On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+
+<!-- /live -->
+
 ### Comeet (Spark Hire Recruit)
 
 `comeet` · **read** · researched as build · reader `ats.fetch_comeet` · identity probe `verify_boards._comeet` · measured 2026-11-19, 2026-11-21
@@ -381,7 +420,7 @@ On file today: 3 companies (City Detect, Nutrislice, Token Transit), 1 of them w
 
 <!-- live -->
 
-On file today: 116 companies, 64 of them with roles. The last sweep (2026-11-22): 1 company's own site pointed to a board on it.
+On file today: 116 companies, 65 of them with roles. The last sweep (2026-11-22): 1 company's own site pointed to a board on it.
 
 <!-- /live -->
 
@@ -689,7 +728,7 @@ On file today: no company. The last sweep (2026-11-22): did not meet it.
 
 <!-- live -->
 
-On file today: 45 companies, 12 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 45 companies, 11 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -778,7 +817,7 @@ On file today: 5 companies (Amilia, Cyclomedia, Greyparrot, Sensys Gatso Group, 
 
 <!-- live -->
 
-On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 38 companies, 17 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -818,7 +857,7 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 
 <!-- live -->
 
-On file today: 4 companies (Aurigo Software, Esri Canada, Gainwell Technologies, Octave), 3 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 4 companies (Aurigo Software, Esri Canada, Gainwell Technologies, Octave), 4 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -918,7 +957,7 @@ On file today: 6 companies (AM, Fonroche Lighting America, iLOQ, Powerfleet, Tra
 
 <!-- live -->
 
-On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 1 company (Codoxo), 0 with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -1157,24 +1196,6 @@ On file today: no company. The last sweep (2026-11-22): did not meet it.
 `careerplug` · **seen** · no reader · no identity probe · measured unknown
 
 **How to spot it.** Any careerplug.com address: find_site_boards tallies it as 'careerplug'. Nothing else in the code names it.
-
-**How it publishes.** Unknown: not researched.
-
-**robots.txt.** Unknown: not measured.
-
-**Where it names its employer.** Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.
-
-<!-- live -->
-
-On file today: no company. The last sweep (2026-11-22): did not meet it.
-
-<!-- /live -->
-
-### ClearCompany
-
-`clearcompany` · **seen** · no reader · no identity probe · measured unknown
-
-**How to spot it.** Any clearcompany.com address: find_site_boards tallies it as 'clearcompany'. discover_ats.MARKERS files \<label>.clearcompany.com as type html, and discover_js has a pattern for it.
 
 **How it publishes.** Unknown: not researched.
 

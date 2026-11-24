@@ -707,15 +707,31 @@
     },
     "clearcompany": {
       "name": "ClearCompany",
-      "status": "seen",
-      "spot": "Any clearcompany.com address: find_site_boards tallies it as 'clearcompany'. discover_ats.MARKERS files <label>.clearcompany.com as type html, and discover_js has a pattern for it.",
-      "publishes": "Unknown: not researched.",
-      "robots": "Unknown: not measured.",
-      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
-      "quirks": [],
-      "reader": null,
-      "probe": null,
-      "measured_on": "unknown"
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "A link, frame or script naming the hosted site, apply.clearcompany.com/<slug> (Rehrig Pacific's careers page links it; a posting's ?jobId= and /<slug>/redirect are the same board), the slug's own path segment whole, never 'internal' (find_site_boards). A legacy HRM Direct board (<label>.hrmdirect.com/employment/..., ClearCompany owns HRM Direct; Clearfield's careers page frames one) names no board by itself: the finder asks it, robots.txt first at every hop and on its own host only, and the slug ClearCompany's redirect names is the board (measured 2026-11-23: it answers 302 to apply.clearcompany.com/<slug>/redirect). The tenant label is never taken for the slug. Hint: clearcompany.com.",
+      "forms": {
+        "clearcompany-site": "The widget drawn straight into a page by careers-content.clearcompany.com/js/v1/career-site.js, naming its site by id alone (data-site-id or ?siteId=): a ClearCompany site whose slug the page does not show, never guessed. A tenant form, and a doubt.",
+        "clearcompany-legacy": "A legacy HRM Direct board, <label>.hrmdirect.com/employment/..., whose redirect has not been asked or did not name a hosted site: a tenant form, and a doubt.",
+        "clearcompany-other": "Any other clearcompany.com address: careers-content's dynamic-embed height helper beside a legacy frame, cc-client-cdn's logos, the tenant host <label>.clearcompany.com (robots.txt: Disallow: /), ClearCompany's own site. A platform we read, naming no board."
+      },
+      "publishes": "Three requests a board, every one through ats._page. (1) The hosted page, https://apply.clearcompany.com/<slug>, a server-drawn shell of about 5 KB with no posting in it: its widget's <script src=\"https://careers-content.clearcompany.com/js/v1/career-site.js?hosted=true\" data-site-id=GUID> gives the site id, its <title> is '<brand> – Careers' and its footer's a.cc-home link is the employer's website. (2) GET https://careers-api.clearcompany.com/v1/settings/<site id>: brandFullName, the brand filter. (3) GET https://careers-api.clearcompany.com/v1/<site id>?pageIndex=0&pageSize=1000&source=CJB-0: {results, totalCount, currentPageIndex, currentPageCount}, each posting's whole ad in it; pageSize 1000 was honoured (115 rows in one answer). The order is not stable between requests, so the list is whole only when its rows number its own totalCount; fewer, and the next pages are asked at the same size, deduplicated by id, and the read raises unless they make up exactly totalCount. A row: positionTitle stripped; the place from locations[] (city, subdivision, country; a nationwide one 'Remote (US)', the row remote when every place is), never the server's location string, whose whitespace is mangled; the url https://apply.clearcompany.com/<slug>?jobId=<id lower-cased>, never applyLink or jobPortalUrl; the ad from description; postedDate only where the row carries it. salaryRangeLow, salaryRangeHigh and salaryType are on no measured row and are not read: pay comes from the ad's text through the board's one text parser (96 of 120 measured ads carry an hourly $ figure).",
+      "link": "The hosted site, https://apply.clearcompany.com/<slug> (build_board.board_url and the desk's card): every opening, each linking its posting and its form. Never the tenant host, which robots.txt closes. A ref that is no slug links the company's website.",
+      "robots": "Asked at every hop (ats._page), and every hop held to the board's own addresses: the hosted page to apply.clearcompany.com/<the same slug>[/redirect], any query, over https; the API to the very address asked, with no redirect followed. Measured 2026-11-23: apply.clearcompany.com and careers-api.clearcompany.com disallow /internal/ only; the tenant host <label>.clearcompany.com (behind applyLink, jobPortalUrl and the classic career site) says Disallow: / and is never asked; a legacy <label>.hrmdirect.com has no rules and is asked only by the finder, for where it redirects. careers-api.clearcompany.com is in ats.NEVER_CACHED: an e-mail-to-apply posting's applyLink there is an e-mail address, and the same host serves a posting's hiring team (/v1/insights/team/<id>), which nothing asks.",
+      "employer": "Stated twice and believed only where the two agree (verify_boards._clearcompany): the settings' brandFullName, and the hosted page's <title> before ' – Careers' (measured 'Clearfield, Inc' and 'Rehrig Pacific Company', 2026-11-23). The footer's a.cc-home link is the employer's website, held to the one on file as ashby's and jazzhr's are. A site whose brand filter (filterOptions.brand) lists brands states each of them beside its name, so one listing more than one names several companies and is held. Never settings.name (the site's internal label, 'Public - <brand> - Career Site'), the slug, orgId or a tenant label; never a posting page.",
+      "quirks": [
+        "A closed posting's address still answers 200, titled plain 'Careers', so no posting page is ever read for whether it is open; the list is the board.",
+        "No empty board has been measured, so an empty list raises (Unknown, never 'None found'), as an empty Jobvite feed does. A gone slug answers 404 on the hosted page and a gone site id 404 on both API calls: neither is ever a zero.",
+        "Moved from type html, a board's postings keep their first-seen days: build_board keys a hosted-site posting address on its slug and job id (ats.clearcompany_posting_key) and carry_first_seen matches the company's earlier posting on that key whatever its place reads now (Rehrig's html rows had ?noheader=False&jobId= and no place).",
+        "discover_ats.MARKERS still files <label>.clearcompany.com as type html; robots.txt refuses every one of those, so such a record reads Unknown, never a zero."
+      ],
+      "notes": [
+        "Research of 2026-11-23: two companies on file use ClearCompany or its legacy HRM Direct. Rehrig Pacific showed 9 rows (the widget's first page of 10) of 115, two of them 'Territory Sales Manager - Environmental' roles selling to municipalities; Clearfield showed none of 5.",
+        "The API is the site widget's own backend: unauthenticated, robots-allowed for /v1/, and not documented as public; ClearCompany's terms of service were not read."
+      ],
+      "reader": "fetch_clearcompany",
+      "probe": "_clearcompany",
+      "measured_on": "2026-11-23"
     },
     "csod": {
       "name": "Cornerstone OnDemand",

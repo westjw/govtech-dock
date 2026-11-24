@@ -409,8 +409,11 @@ HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cac
 # sends no ETag today, and if it ever starts to, or answers from another of
 # its hosts, that is still not a reason to keep a copy of it. A Jobvite
 # account's XML feed names each job's hiring manager, a person, on every row
-# (fetch_jobvitefeed): its host is here for the same reason.
-NEVER_CACHED = frozenset({"hirebridge.com", "app.jobvite.com"})
+# (fetch_jobvitefeed): its host is here for the same reason. So is
+# ClearCompany's career-site API (fetch_clearcompany): an e-mail-to-apply
+# posting's applyLink there is an e-mail address, often a person's, and the
+# same host serves each posting's hiring team, names and photos.
+NEVER_CACHED = frozenset({"hirebridge.com", "app.jobvite.com", "careers-api.clearcompany.com"})
 
 
 def never_cached(url: str) -> bool:
@@ -4733,6 +4736,419 @@ def trinethire_posting_key(url) -> str | None:
 def fetch_trinethire(ref) -> list[dict]:
     return trinethire_board(ref)[2]
 
+# ---- clearcompany: ClearCompany career sites, apply.clearcompany.com/<slug>
+#
+# Two companies on file hire through ClearCompany (research of 2026-11-23):
+# Rehrig Pacific links its hosted site; Clearfield frames a legacy HRM Direct
+# board (<label>.hrmdirect.com/employment/, which ClearCompany owns), and that
+# address redirects to the hosted site. Both were type html: Rehrig showed 9
+# rows, the widget's first page of 10, of 115; Clearfield showed none of 5.
+#
+# THREE REQUESTS A BOARD, every one through _page (robots.txt asked at every
+# hop, the crawler's own name, the host gate):
+#   1. the hosted page, https://apply.clearcompany.com/<slug>: a server-drawn
+#      shell of about 5 KB with no posting in it, read for its widget's site id
+#      (<script src=".../js/v1/career-site.js?hosted=true" data-site-id=GUID>),
+#      its <title> ('<brand> - Careers', an en dash) and its footer's
+#      a.cc-home link, the employer's own website;
+#   2. https://careers-api.clearcompany.com/v1/settings/<site id>: the site's
+#      settings, brandFullName among them;
+#   3. https://careers-api.clearcompany.com/v1/<site id>?pageIndex=0&
+#      pageSize=1000&source=CJB-0: the list, {results, totalCount, ...}, each
+#      posting's whole ad in it. pageSize=1000 was honoured (Rehrig's 115 in one
+#      answer); the order is NOT stable between two requests, so the list is
+#      read whole only when its rows number its own totalCount. Fewer, and the
+#      next pages are asked at the same size, deduplicated by id, and the read
+#      raises unless they make up exactly totalCount: a partial board is never
+#      published as whole.
+# Measured 2026-11-23 on both boards (Clearfield 5, Rehrig 115).
+#
+# THE REF IS THE HOSTED SITE'S SLUG ('rehrig', 'clearfield'), as an address on
+# apply.clearcompany.com names it: the finder takes it from a link there or
+# from the address a legacy HRM Direct board's redirect lands on, never from
+# a guess (the tenant label matched the slug on 2 of 2 sites, which proves
+# nothing). Never 'internal', which robots.txt closes. The site id is lifted
+# from the hosted page each read and never stored.
+#
+# NEVER THE TENANT HOST. applyLink and jobPortalUrl point at
+# <tenant>.clearcompany.com, whose robots.txt says Disallow: / to everybody: it
+# is never asked, never a ref, and never a row's url. A row's url is the
+# hosted site's own posting address, https://apply.clearcompany.com/<slug>?
+# jobId=<id>, which robots.txt allows. An e-mail-to-apply posting's applyLink
+# is an e-mail address, often a person's: it is never read, and nothing from
+# careers-api.clearcompany.com is ever written to the HTTP cache (NEVER_CACHED;
+# the same host serves a posting's hiring team, names and photos, at
+# /v1/insights/team/<id>, which no reader asks - every hop of a read is held
+# to the very address it asked).
+#
+# A ROW: positionTitle (the server leaves stray spaces on it), the place from
+# locations[] - city, subdivision, country, a nationwide one 'Remote (<country>)'
+# and the row remote when every place is - never the server's `location`
+# string, whose whitespace is mangled ('Erie  PA', 'Hope Mills\t NC'); the ad
+# from the list's own description (no second request); a date only where the
+# row carries postedDate (both measured sites switch it off, and the feed
+# leaves out what a site does not show). No pay field is read: salaryRangeLow,
+# salaryRangeHigh and salaryType were on no measured row and the widget prints
+# USD and CAD both as '$', so pay comes from the ad's own text through
+# plain_rows, as for every reader whose feed states none. departmentName (cost
+# centres: '101004 Kenosha Production'), customFieldAnswers and the
+# requisition number are not read.
+#
+# A ZERO HAS NOT BEEN SEEN. Neither board was empty, so an empty list raises,
+# kept Unknown and never "None found", as an empty Jobvite feed does. Every
+# other failure raises too: a slug that is gone (404 on the hosted page), a
+# site id that is gone (404 on both API calls), a hosted page with no site id
+# or with two, a list in another shape, a count the rows do not make up, a
+# redirect off the board's own addresses. A closed posting's address still
+# answers 200, titled plain 'Careers', so no posting page is ever read for
+# whether it is open.
+#
+# ONE PLAN ASKS EACH BOARD ONCE: inside clearcompany_kept() - wire_found.plan,
+# and nothing else - a board read whole is kept in memory under its hosted
+# address, so the wiring door's read and its probe (verify_boards) take one
+# answer, as trinethire_kept and jobvitefeed_kept keep theirs.
+CLEARCOMPANY_HOST = "apply.clearcompany.com"
+CLEARCOMPANY_API_HOST = "careers-api.clearcompany.com"
+CLEARCOMPANY_PAGE_SIZE = 1000
+# pages of CLEARCOMPANY_PAGE_SIZE asked when the first answer falls short of
+# its own count (none was needed on either board measured)
+CLEARCOMPANY_MAX_PAGES = 10
+CLEARCOMPANY_PAGE_MAX = 2_000_000        # characters of a hosted page read; more is refused
+CLEARCOMPANY_TITLE_TAIL = " – Careers"   # an en dash, as the hosted page writes it
+CLEARCOMPANY_BOOTSTRAP = "careers-content.clearcompany.com/js/v1/career-site.js"
+_CC_SLUG = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,80})")
+_CC_CLOSED = frozenset({"internal"})      # robots.txt: Disallow: /internal/
+_CC_GUID = r"[0-9A-Fa-f]{8}-(?:[0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}"
+_CC_GUID_RX = re.compile(_CC_GUID)
+_CC_SCRIPT = re.compile(r"<script\b([^<>]{0,4000})>", re.I)
+_CC_A = re.compile(r"<a\b([^<>]{0,4000})>", re.I)
+_CC_SITE_ATTR = re.compile(r"""(?:^|\s)data-site-id\s*=\s*(?:"(""" + _CC_GUID + r""")"|'("""
+                           + _CC_GUID + r""")'|(""" + _CC_GUID + r""")(?=[\s>/]|$))""", re.I)
+_CC_SRC = re.compile(r"""(?:^|\s)src\s*=\s*(?:"([^"<>]{0,2000})"|'([^'<>]{0,2000})'|([^\s"'<>]{1,2000}))""",
+                     re.I)
+_CC_HREF = re.compile(r"""(?:^|\s)href\s*=\s*(?:"([^"<>]{0,2000})"|'([^'<>]{0,2000})'|([^\s"'<>]{1,2000}))""",
+                      re.I)
+_CC_CLASS = re.compile(r"""(?:^|\s)class\s*=\s*(?:"([^"<>]{0,400})"|'([^'<>]{0,400})'|([^\s"'<>]{1,400}))""",
+                       re.I)
+
+
+def clearcompany_slug(ref) -> str:
+    """The hosted site's slug a ref names, or AtsError: one label of letters,
+    digits and hyphens, never 'internal' (robots.txt closes it), never an
+    address."""
+    s = _text(ref) if isinstance(ref, str) else ""
+    if not _CC_SLUG.fullmatch(s) or s.lower() in _CC_CLOSED:
+        raise AtsError(f"not a clearcompany board: {ref!r} (a ClearCompany board is the slug "
+                       f"of its hosted site, apply.clearcompany.com/<slug>)")
+    return s
+
+
+def clearcompany_url(ref) -> str:
+    """The hosted site: what is read first, and what a person is sent to
+    (build_board.board_url). Never the tenant host, which robots.txt closes."""
+    return f"https://{CLEARCOMPANY_HOST}/{clearcompany_slug(ref)}"
+
+
+def clearcompany_posting_url(slug: str, job_id: str) -> str:
+    """A posting's own address on the hosted site, the id lower-cased: the
+    address the server itself gives a posting (its canonical link). Never
+    applyLink or jobPortalUrl, which are on the tenant host robots.txt closes."""
+    return f"https://{CLEARCOMPANY_HOST}/{slug}?jobId={job_id.lower()}"
+
+
+def clearcompany_hosted_slug(url) -> str | None:
+    """The slug of a hosted site's address - apply.clearcompany.com/<slug>,
+    /<slug>/redirect, any query - or None (another host, another path,
+    'internal')."""
+    try:
+        parts = urllib.parse.urlsplit(url if isinstance(url, str) else "")
+    except ValueError:
+        return None
+    m = re.fullmatch(r"/([A-Za-z0-9](?:[A-Za-z0-9-]{0,80}))(?:/redirect)?/?", parts.path or "")
+    if (parts.scheme not in ("http", "https") or (parts.hostname or "").lower() != CLEARCOMPANY_HOST
+            or not m or m.group(1).lower() in _CC_CLOSED):
+        return None
+    return m.group(1)
+
+
+def clearcompany_posting_key(url) -> str | None:
+    """The posting a ClearCompany hosted-site address names, as the board
+    knows it - https://apply.clearcompany.com/<slug>?jobId=<id>, both lower-
+    cased, every other query left out - or None for any other address. The
+    html reader that read these boards before (Rehrig's) wrote the same
+    posting as ?noheader=False&jobId=<id>; build_board keys the posting on
+    this, so a posting keeps its id and its first-seen day whichever way its
+    address was written. A key, never an address anybody is sent to."""
+    slug = clearcompany_hosted_slug(url)
+    if slug is None:
+        return None
+    try:
+        query = urllib.parse.parse_qs(urllib.parse.urlsplit(url).query, keep_blank_values=True)
+    except ValueError:
+        return None
+    ids = {v.lower() for k, vs in query.items() if k.lower() == "jobid" for v in vs}
+    if len(ids) != 1 or not _CC_GUID_RX.fullmatch(next(iter(ids))):
+        return None
+    return f"https://{CLEARCOMPANY_HOST}/{slug.lower()}?jobId={ids.pop()}"
+
+
+def _cc_attr(rx, attrs: str) -> str:
+    m = rx.search(attrs or "")
+    return html_lib.unescape(next((g for g in m.groups() if g is not None), "")).strip() if m else ""
+
+
+def clearcompany_site_id(page: str, url: str = "the hosted page") -> str:
+    """The site id the hosted page's widget is drawn for, lower-cased - the
+    data-site-id (or ?siteId=) of its career-site.js script - or AtsError for
+    a page with none (an offline site, another page) or naming two. Read off
+    the page as a browser runs it: a script inside a comment is none."""
+    ids = set()
+    for m in _CC_SCRIPT.finditer(_COMMENT.sub(" ", page or "")):
+        attrs = m.group(1)
+        src = _cc_attr(_CC_SRC, attrs)
+        try:
+            parts = urllib.parse.urlsplit(urllib.parse.urljoin(f"https://{CLEARCOMPANY_HOST}/", src))
+            query = urllib.parse.parse_qs(parts.query)
+        except ValueError:
+            continue
+        if f"{(parts.hostname or '').lower()}{parts.path.lower()}" != CLEARCOMPANY_BOOTSTRAP:
+            continue                       # (the widget's own bootstrap, and nothing else)
+        said = _CC_SITE_ATTR.search(attrs)
+        if said:
+            ids.add(next(g for g in said.groups() if g is not None).lower())
+        ids |= {v.lower() for k, vs in query.items() if k.lower() == "siteid"
+                for v in vs if _CC_GUID_RX.fullmatch(v.strip())}
+    if len(ids) != 1:
+        raise AtsError(f"{url} " + ("draws no ClearCompany career site (no career-site.js with a "
+                                    "site id): an offline site or another page, never a board "
+                                    "with nothing open" if not ids else
+                                    f"names {len(ids)} ClearCompany sites, so which is the board "
+                                    f"is not known"))
+    return ids.pop()
+
+
+def clearcompany_page_name(page: str) -> str:
+    """The name the hosted page's <title> states before ' - Careers' (an en
+    dash), unescaped, one line - or "" for any other title (a closed posting's
+    and an unknown one's are the bare word 'Careers')."""
+    body = _COMMENT.sub(" ", page or "")
+    low = lower_same(body)
+    t0 = _tag_at(low, "title", 0)
+    gt = low.find(">", t0) if t0 >= 0 else -1
+    t1 = low.find("</title", gt) if gt >= 0 else -1
+    title = _text(html_lib.unescape(body[gt + 1:t1])) if 0 <= gt < t1 else ""
+    if not title.endswith(CLEARCOMPANY_TITLE_TAIL):
+        return ""
+    return title[:-len(CLEARCOMPANY_TITLE_TAIL)].strip()
+
+
+def clearcompany_home(page: str) -> str | None:
+    """The employer's website the hosted page's footer links ('Visit our home
+    page', a.cc-home), or None. An address, never a name."""
+    for m in _CC_A.finditer(_COMMENT.sub(" ", page or "")):
+        attrs = m.group(1)
+        if "cc-home" not in _cc_attr(_CC_CLASS, attrs).lower().split():
+            continue
+        href = _cc_attr(_CC_HREF, attrs)
+        try:
+            parts = urllib.parse.urlsplit(href)
+        except ValueError:
+            return None
+        return href if parts.scheme in ("http", "https") and parts.hostname else None
+    return None
+
+
+def _cc_hosted(slug: str) -> tuple[str, str]:
+    """(the hosted page, where it landed). Every hop held to this site's own
+    addresses - apply.clearcompany.com, /<slug> or /<slug>/redirect, this very
+    slug in any case - and refused before it is asked anything."""
+    url = f"https://{CLEARCOMPANY_HOST}/{slug}"
+
+    def stay(u: str):
+        there = clearcompany_hosted_slug(u)
+        if there is None or there.lower() != slug.lower() or not u.startswith("https://"):
+            raise AtsError(f"{url} leads off to {str(u)[:160]}, which is not this site's own page, "
+                           f"so it is not read as a board with nothing open")
+    resp = _page(url, same_host=True, may=stay)
+    page = resp.text or ""
+    if len(page) > CLEARCOMPANY_PAGE_MAX:
+        raise AtsError(f"{url} is more than {CLEARCOMPANY_PAGE_MAX:,} characters: not read, and "
+                       f"never read in part")
+    return page, str(getattr(resp, "url", "") or url)
+
+
+def _cc_api(url: str):
+    """One answer of ClearCompany's career-site API, read in place: robots.txt
+    asked (_page), and any redirect refused before it is asked - the API
+    answers where it is asked, and its host also serves a posting's hiring
+    team, which nothing here asks."""
+    def stay(u: str):
+        if u != url:
+            raise AtsError(f"{url} leads off to {str(u)[:160]}: the API answers in place, so a "
+                           f"redirect is never followed, and it is not read as a board with "
+                           f"nothing open")
+    return _json(_page(url, same_host=True, may=stay))
+
+
+def clearcompany_settings(site_id: str) -> dict:
+    d = _cc_api(f"https://{CLEARCOMPANY_API_HOST}/v1/settings/{site_id}")
+    if not isinstance(d, dict):
+        raise AtsError(f"the settings of ClearCompany site {site_id} are not an object")
+    return d
+
+
+def _cc_list_url(site_id: str, index: int) -> str:
+    return (f"https://{CLEARCOMPANY_API_HOST}/v1/{site_id}?pageIndex={index}"
+            f"&pageSize={CLEARCOMPANY_PAGE_SIZE}&source=CJB-0")
+
+
+def _cc_page_of(site_id: str, index: int) -> tuple[list, int]:
+    url = _cc_list_url(site_id, index)
+    d = _cc_api(url)
+    results = d.get("results") if isinstance(d, dict) else None
+    total = d.get("totalCount") if isinstance(d, dict) else None
+    if (not isinstance(results, list) or not all(isinstance(j, dict) for j in results)
+            or not isinstance(total, int) or isinstance(total, bool) or total < 0
+            or d.get("currentPageIndex") not in (index, None)):
+        raise AtsError(f"{url} is not a ClearCompany job list (results, totalCount, its page "
+                       f"index), so it is not read")
+    return results, total
+
+
+def clearcompany_jobs(site_id: str) -> list[dict]:
+    """Every posting of the site, once each, or AtsError: the first page at
+    CLEARCOMPANY_PAGE_SIZE, and where it falls short of its own totalCount
+    the next pages at the same size, deduplicated by id. The union must be
+    exactly totalCount; anything else is a board that did not read whole."""
+    results, total = _cc_page_of(site_id, 0)
+    if total == 0 and not results:
+        raise AtsError(f"ClearCompany site {site_id} lists no job: an empty ClearCompany board has "
+                       f"not been measured, so it is kept Unknown and never read as a zero")
+    by_id: dict = {}
+    for j in results:
+        by_id.setdefault(_text(j.get("id")).lower(), j)
+    index = 1
+    while len(by_id) < total and index < CLEARCOMPANY_MAX_PAGES \
+            and index * CLEARCOMPANY_PAGE_SIZE < total:
+        more, again = _cc_page_of(site_id, index)
+        if again != total:
+            raise AtsError(f"ClearCompany site {site_id} counted {total} and then {again} between "
+                           f"two pages, so it is not read in part")
+        if not more:
+            break
+        for j in more:
+            by_id.setdefault(_text(j.get("id")).lower(), j)
+        index += 1
+    if len(by_id) != total:
+        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and {len(by_id)} "
+                       f"distinct ones were read: the order is not stable between requests, and a "
+                       f"partial board is never published as whole")
+    return list(by_id.values())
+
+
+def clearcompany_place(loc) -> tuple[str, bool, tuple | None]:
+    """(a place as the board shows it, whether it is nationwide, the office it
+    names as (city, subdivision, country) or None) for one of a posting's
+    locations[]: 'Kenosha, WI, US', 'Remote (US)', 'Statewide (MN), US'."""
+    if not isinstance(loc, dict):
+        return "", False, None
+    city, sub, country = (_text(loc.get(k)) for k in ("city", "subdivision", "country"))
+    if loc.get("isNationwide") is True:
+        return (f"Remote ({country})" if country else "Remote"), True, None
+    if loc.get("isStatewide") is True and sub:
+        return ", ".join(p for p in (f"Statewide ({sub})", country) if p), False, (None, sub, country or None)
+    place = ", ".join(p for p in (city, sub, country) if p)
+    return place, False, ((city or None, sub or None, country or None) if (city or sub) else None)
+
+
+def clearcompany_rows(jobs: list[dict], slug: str, url: str = "the list") -> list[dict]:
+    """One row a posting, or AtsError for a row that does not read as one (no
+    id in the site's own form, no title): the list is the board, so a row it
+    cannot read is never left out of a board published as whole."""
+    rows = []
+    for j in jobs:
+        jid, title = _text(j.get("id")).lower(), _text(j.get("positionTitle"))
+        if not _CC_GUID_RX.fullmatch(jid) or not title:
+            raise AtsError(f"{url}: a row does not read as a posting (its id or its title), so the "
+                           f"board is not read in part")
+        places, nationwide, office = [], [], None
+        for loc in j.get("locations") if isinstance(j.get("locations"), list) else ():
+            place, remote, where = clearcompany_place(loc)
+            if place:
+                places.append(place)
+                nationwide.append(remote)
+            if office is None and where is not None:
+                office = where
+        desc = j.get("description")
+        rows.append({"title": title,
+                     "location": "; ".join(dict.fromkeys(places)),
+                     "url": clearcompany_posting_url(slug, jid),
+                     "posted": posted_date(j.get("postedDate")) if j.get("postedDate") else None,
+                     "mode": "remote" if nationwide and all(nationwide) else None,
+                     "office_hint": office_hint(*office) if office else None,
+                     # (the ad is in the answer already downloaded: always read)
+                     "jd": plain_html(desc) if isinstance(desc, str) else ""})
+    return rows
+
+
+def clearcompany_brands(settings: dict) -> list[str]:
+    """The brands the site's own brand filter lists (filterOptions.brand),
+    one each, blanks (the 'All Brands' default) left out. A site listing more
+    than one names several companies, and verify_boards says so."""
+    opts = settings.get("requisitionList") if isinstance(settings, dict) else None
+    opts = opts.get("search") if isinstance(opts, dict) else None
+    opts = opts.get("filterOptions") if isinstance(opts, dict) else None
+    brand = opts.get("brand") if isinstance(opts, dict) else None
+    return list(dict.fromkeys(_text(o.get("text")) for o in brand or ()
+                              if isinstance(o, dict) and _text(o.get("text")))) \
+        if isinstance(brand, list) else []
+
+
+_CC_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def clearcompany_kept():
+    """Each board read whole is the answer to every later ask of it in the
+    block (see ONE PLAN ASKS EACH BOARD ONCE above). Also a decorator."""
+    global _CC_KEPT
+    outer = _CC_KEPT
+    _CC_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _CC_KEPT = outer
+
+
+def clearcompany_board(ref) -> dict:
+    """{slug, url, landed, site_id, page_name, home, brand, brands, rows}: the
+    hosted page, the settings and the list, three requests - none inside
+    clearcompany_kept() where the board was read whole already - or AtsError.
+    `page_name` is what the hosted page's <title> names, `brand` the settings'
+    brandFullName, `home` the footer's website: verify_boards weighs them;
+    nothing here reads a name for anything else."""
+    slug = clearcompany_slug(ref)
+    url = f"https://{CLEARCOMPANY_HOST}/{slug}"
+    kept = _CC_KEPT
+    if kept is not None and url.lower() in kept:
+        got = kept[url.lower()]
+        return dict(got, rows=[dict(r) for r in got["rows"]])
+    page, landed = _cc_hosted(slug)
+    site = clearcompany_site_id(page, url)
+    settings = clearcompany_settings(site)
+    rows = clearcompany_rows(clearcompany_jobs(site), slug, url)
+    got = {"slug": slug, "url": url, "landed": landed, "site_id": site,
+           "page_name": clearcompany_page_name(page), "home": clearcompany_home(page),
+           "brand": _text(settings.get("brandFullName")) if isinstance(settings.get("brandFullName"), str) else "",
+           "brands": clearcompany_brands(settings), "rows": rows}
+    if kept is not None:
+        kept[url.lower()] = dict(got, rows=[dict(r) for r in rows])
+    return got
+
+
+def fetch_clearcompany(ref) -> list[dict]:
+    return clearcompany_board(ref)["rows"]
+
 # ---- successfactors: SAP SuccessFactors' Career Site Builder (CSB), a career
 # site on the employer's own careers host (jobs.gainwelltechnologies.com,
 # careers.landisgyr.com)
@@ -6153,6 +6569,7 @@ FETCHERS = {
     "jobvite": fetch_jobvite,
     "jobvitefeed": fetch_jobvitefeed,
     "trinethire": fetch_trinethire,
+    "clearcompany": fetch_clearcompany,
     "successfactors": fetch_successfactors,
 }
 

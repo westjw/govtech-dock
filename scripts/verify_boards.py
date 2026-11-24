@@ -442,9 +442,13 @@ def proven(company: dict, said: dict) -> dict:
 #     trinethire       the embed's <title>, 'Open Jobs | X'  (the list the
 #                                                reader reads, never paged: the
 #                                                whole board; 2026-11-24)
+#     clearcompany     settings brandFullName, agreeing with the hosted
+#                                                page's <title> 'X - Careers'
+#                                                (and its brand filter's brands,
+#                                                each stated; 2026-11-24)
 #   (lever's page is read as far as the end of its <head> and no further;
-#   ashby and jazzhr also state the employer's website, which proven() holds
-#   to the one on file)
+#   ashby, jazzhr and clearcompany also state the employer's website, which
+#   proven() holds to the one on file)
 #
 #   nowhere, so no probe and no pass
 #     adp              the cid is opaque and every name-shaped field comes back
@@ -1368,6 +1372,50 @@ def _trinethire(ref, out: dict) -> None:
         out["how"] = "trinethire embed's <title> names no employer a person could read"
 
 
+def _clearcompany(ref, out: dict) -> None:
+    # The site states its employer in two places of its own and is believed
+    # only where the two agree, as gusto's title and heading and pinpoint's
+    # feed and page are: the settings' brandFullName, and the hosted page's
+    # <title>, '<brand> - Careers' (an en dash) - 'Clearfield, Inc' and
+    # 'Rehrig Pacific Company', measured 2026-11-23. The hosted page's footer
+    # links the employer's own website (a.cc-home), which proven() holds to
+    # the one on file, as ashby's and jazzhr's. A site whose brand filter
+    # (filterOptions.brand) lists brands states each of them beside its name,
+    # and proven() holds a board to every name it states; one listing more
+    # than one names several companies, which the list does not tell apart (a
+    # row names no brand), so its names are not the whole board's statement
+    # and it is never proven - the door holds it. Never settings.name (the
+    # site's internal label, 'Public - Clearfield, Inc - Career Site'), the
+    # slug, orgId or a tenant label; and never a posting page, which answers
+    # 200 titled 'Careers' for a posting that is gone. The list is read too,
+    # whole (ats.clearcompany_jobs), for `n`. Three requests, every hop held
+    # to the site's own addresses; inside the door's plan this is the answer
+    # its read had (ats.clearcompany_kept).
+    b = ats.clearcompany_board(ref)
+    out["n"] = len(b["rows"])
+    out["hosts"] = {ats.CLEARCOMPANY_HOST}
+    brand, titled = _clean(b["brand"]), _clean(b["page_name"])
+    if not brand or not titled:
+        out["how"] = ("clearcompany site names nobody: no brandFullName in its settings, or a hosted "
+                      "page not titled '<brand> - Careers'")
+        return
+    if brand != titled:
+        out["how"] = ("clearcompany settings (brandFullName) and the hosted page's title do not "
+                      "agree on a name")
+        return
+    brands = list(dict.fromkeys(_clean(x) for x in b["brands"] if _clean(x)))
+    how = "clearcompany brandFullName and the hosted page's <title>, stated by the career site"
+    if len(brands) > 1:
+        how += (f" - and its brand filter lists {len(brands)} brands: one site naming several "
+                f"companies, whose rows name no brand, so no name is the whole board's")
+    elif brands:
+        how += " - and its brand filter lists a brand, stated beside it"
+    if _state(out, [brand] + brands, how, whole=len(brands) <= 1):
+        out["site"] = b["home"]
+    else:
+        out["how"] = "clearcompany site names its employer in no form a person could read"
+
+
 def _jvx_said(jobs: list, field: str) -> tuple:
     """(every distinct name a feed's rows give `field`, how many rows give it
     one): a value that is blank is none."""
@@ -1811,7 +1859,7 @@ _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "teamtailor": _teamtailor, "pinpoint": _pinpoint,
            "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite,
            "jobvitefeed": _jobvitefeed, "trinethire": _trinethire,
-           "successfactors": _successfactors}
+           "clearcompany": _clearcompany, "successfactors": _successfactors}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.
