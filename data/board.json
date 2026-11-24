@@ -4281,7 +4281,7 @@
    "approx_count": 180,
    "companies": 35,
    "hiring": 17,
-   "open_roles": 500
+   "open_roles": 498
   },
   {
    "tag": "ASBO School Business 2026",
@@ -4303,7 +4303,7 @@
    "approx_count": null,
    "companies": 50,
    "hiring": 19,
-   "open_roles": 390
+   "open_roles": 388
   },
   {
    "tag": "Ohio ASBO 2026",
@@ -4789,7 +4789,7 @@
    "approx_count": null,
    "companies": 72,
    "hiring": 28,
-   "open_roles": 522
+   "open_roles": 520
   },
   {
    "tag": "NACo Legislative 2026",
@@ -5275,7 +5275,7 @@
    "approx_count": 221,
    "companies": 80,
    "hiring": 28,
-   "open_roles": 762
+   "open_roles": 760
   },
   {
    "tag": "NASFAA 2026",
@@ -5674,7 +5674,7 @@
    "approx_count": null,
    "companies": 25,
    "hiring": 14,
-   "open_roles": 575
+   "open_roles": 574
   },
   {
    "tag": "NAHRO 2026",
@@ -5718,7 +5718,7 @@
    "approx_count": 37,
    "companies": 11,
    "hiring": 7,
-   "open_roles": 272
+   "open_roles": 270
   },
   {
    "tag": "NPELRA 2026",
@@ -5784,7 +5784,7 @@
    "approx_count": null,
    "companies": 146,
    "hiring": 45,
-   "open_roles": 1293
+   "open_roles": 1289
   },
   {
    "tag": "GMIS International 2026",
@@ -5850,7 +5850,7 @@
    "approx_count": 80,
    "companies": 27,
    "hiring": 15,
-   "open_roles": 948
+   "open_roles": 945
   },
   {
    "tag": "AJA 2027",
@@ -5982,7 +5982,7 @@
    "approx_count": null,
    "companies": 18,
    "hiring": 5,
-   "open_roles": 54
+   "open_roles": 53
   },
   {
    "tag": "IMLA 2026",
@@ -8436,7 +8436,7 @@
    "approx_count": null,
    "companies": 136,
    "hiring": 31,
-   "open_roles": 1147
+   "open_roles": 1145
   },
   {
    "tag": "NAST 2026",
@@ -8690,7 +8690,7 @@
    "approx_count": 20,
    "companies": 29,
    "hiring": 11,
-   "open_roles": 201
+   "open_roles": 200
   },
   {
    "tag": "NAYS 2026",
@@ -8722,15 +8722,15 @@
  "manual_postings": 125,
  "manual_already_fetched": 0,
  "totals": {
-  "postings": 12182,
-  "quota_carrying_postings": 1218,
-  "openings": 10580,
-  "quota_carrying": 1028,
-  "us": 4708,
-  "non_us": 3750,
+  "postings": 12172,
+  "quota_carrying_postings": 1208,
+  "openings": 10571,
+  "quota_carrying": 1019,
+  "us": 4704,
+  "non_us": 3749,
   "families": {
    "engineering": 2842,
-   "gtm": 3025,
+   "gtm": 3016,
    "ops": 413,
    "ga": 889,
    "product": 485,
@@ -8745,24 +8745,24 @@
    "Public Safety": 2117,
    "Public Works": 1408,
    "Transit & Parking": 631,
-   "General Gov": 2732,
+   "General Gov": 2727,
    "Parks & Rec": 227,
    "K-12 Schools": 391,
    "Utilities & Energy": 566,
    "Health & Human Services": 734,
    "Courts & Justice": 143,
-   "Airports & Aviation": 796,
-   "Higher Education": 785,
+   "Airports & Aviation": 793,
+   "Higher Education": 784,
    "Housing & Community Dev": 50
   },
-  "pay_stated": 2469,
-  "pay_stated_postings": 2863,
+  "pay_stated": 2468,
+  "pay_stated_postings": 2862,
   "pay_source": {
-   "ats": 1006,
+   "ats": 1005,
    "text": 1857
   },
-  "jd_read_postings": 7134,
-  "jd_unread_postings": 5048
+  "jd_read_postings": 7132,
+  "jd_unread_postings": 5040
  },
  "claim_at": null,
  "hq_post_at": "https://hq.sledjobs.com/recruit",
@@ -66395,12 +66395,12 @@
     "ASBO School Business 2026"
    ],
    "conference": "APTA 2026",
-   "open_roles": 132,
-   "open_postings": 145,
-   "quota_roles": 29,
-   "quota_postings": 30,
+   "open_roles": 130,
+   "open_postings": 143,
+   "quota_roles": 27,
+   "quota_postings": 28,
    "families": {
-    "gtm": 65,
+    "gtm": 63,
     "other": 9,
     "field": 11,
     "engineering": 24,
@@ -66414,7 +66414,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 24,
+   "offtopic_dropped": 26,
    "federal_dropped": 2,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -103968,14 +103968,14 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
    "conference": null,
-   "open_roles": 149,
-   "open_postings": 163,
-   "quota_roles": 11,
-   "quota_postings": 11,
+   "open_roles": 148,
+   "open_postings": 162,
+   "quota_roles": 10,
+   "quota_postings": 10,
    "families": {
     "cs": 9,
     "other": 32,
-    "gtm": 33,
+    "gtm": 32,
     "ga": 21,
     "engineering": 29,
     "ops": 7,
@@ -103988,7 +103988,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 6,
+   "offtopic_dropped": 7,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -104207,12 +104207,12 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
    "conference": null,
-   "open_roles": 340,
-   "open_postings": 366,
-   "quota_roles": 26,
-   "quota_postings": 26,
+   "open_roles": 339,
+   "open_postings": 365,
+   "quota_roles": 25,
+   "quota_postings": 25,
    "families": {
-    "gtm": 106,
+    "gtm": 105,
     "ga": 51,
     "other": 36,
     "field": 29,
@@ -104227,7 +104227,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 24,
+   "offtopic_dropped": 25,
    "federal_dropped": 1,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -115271,19 +115271,19 @@
    "competitors_checked_on": "2026-10-22",
    "conferences": [],
    "conference": null,
-   "open_roles": 5,
-   "open_postings": 5,
-   "quota_roles": 1,
-   "quota_postings": 1,
+   "open_roles": 4,
+   "open_postings": 4,
+   "quota_roles": 0,
+   "quota_postings": 0,
    "families": {
     "other": 3,
-    "gtm": 2
+    "gtm": 1
    },
    "phase": "selling: a go-to-market push",
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 1,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -147774,12 +147774,12 @@
     "EDUCAUSE 2026"
    ],
    "conference": "EDUCAUSE 2026",
-   "open_roles": 10,
-   "open_postings": 12,
-   "quota_roles": 1,
-   "quota_postings": 1,
+   "open_roles": 9,
+   "open_postings": 11,
+   "quota_roles": 0,
+   "quota_postings": 0,
    "families": {
-    "gtm": 2,
+    "gtm": 1,
     "data": 1,
     "ga": 1,
     "cs": 2,
@@ -147790,7 +147790,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 1,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -160367,12 +160367,12 @@
     "MESC 2026"
    ],
    "conference": "NASCIO 2026",
-   "open_roles": 27,
-   "open_postings": 29,
-   "quota_roles": 9,
-   "quota_postings": 10,
+   "open_roles": 26,
+   "open_postings": 27,
+   "quota_roles": 8,
+   "quota_postings": 8,
    "families": {
-    "gtm": 18,
+    "gtm": 17,
     "engineering": 5,
     "data": 2,
     "product": 2
@@ -160381,7 +160381,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 3,
+   "offtopic_dropped": 5,
    "federal_dropped": 2,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -160443,19 +160443,19 @@
     "EDUCAUSE 2026"
    ],
    "conference": "EDUCAUSE 2026",
-   "open_roles": 4,
-   "open_postings": 4,
-   "quota_roles": 1,
-   "quota_postings": 1,
+   "open_roles": 3,
+   "open_postings": 3,
+   "quota_roles": 0,
+   "quota_postings": 0,
    "families": {
     "engineering": 1,
-    "gtm": 3
+    "gtm": 2
    },
-   "phase": "selling: a go-to-market push",
+   "phase": "too few openings to read",
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": null,
+   "offtopic_dropped": 1,
    "federal_dropped": null,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -166992,12 +166992,12 @@
     "Healthcare IT Connect 2026"
    ],
    "conference": "NASWA 2025",
-   "open_roles": 75,
-   "open_postings": 77,
-   "quota_roles": 2,
-   "quota_postings": 2,
+   "open_roles": 74,
+   "open_postings": 76,
+   "quota_roles": 1,
+   "quota_postings": 1,
    "families": {
-    "gtm": 25,
+    "gtm": 24,
     "engineering": 19,
     "ga": 5,
     "data": 12,
@@ -167011,7 +167011,7 @@
    "unreadable": null,
    "roles_from_storage": null,
    "sled_only": null,
-   "offtopic_dropped": 4,
+   "offtopic_dropped": 5,
    "federal_dropped": 2,
    "shares_board_with": null,
    "board_owner_unverified": null,
@@ -372287,37 +372287,6 @@
    "opening_locations": 1
   },
   {
-   "id": "workday::Account Executive - Large Enterprise::698135c9",
-   "opening_id": "workday::Account Executive - Large Enterprise",
-   "company": "Workday",
-   "company_id": "workday",
-   "title": "Account Executive - Large Enterprise",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "2 Locations",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/Poland-Warsaw/Account-Executive---Large-Enterprise_JR-0111747",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "also": null,
-   "first_seen": "2026-11-24",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "workday::Senior Account Executive - Philippines::be86edd6",
    "opening_id": "workday::Senior Account Executive - Philippines",
    "company": "Workday",
@@ -372623,40 +372592,6 @@
    "category": "Finance & ERP",
    "also": null,
    "first_seen": "2026-11-04",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "workday::Medium Enterprise | Customer Base | Account Executive - Manufacturing::02a6fe3d",
-   "opening_id": "workday::Medium Enterprise | Customer Base | Account Executive - Manufacturing",
-   "company": "Workday",
-   "company_id": "workday",
-   "title": "Medium Enterprise | Customer Base | Account Executive - Manufacturing",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": "Usa",
-    "state": "CO"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "USA, CO, Denver",
-   "is_us": true,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://workday.wd5.myworkdayjobs.com/en-US/Workday/job/USA-CO-Denver/Medium-Enterprise---Customer-Base---Account-Executive---Manufacturing_JR-0111715",
-   "sector": "General Gov",
-   "category": "Finance & ERP",
-   "also": null,
-   "first_seen": "2026-11-24",
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
@@ -436330,37 +436265,6 @@
    "opening_locations": 1
   },
   {
-   "id": "teledyne-flir::Sales Account Manager::bb91d90d",
-   "opening_id": "teledyne-flir::Sales Account Manager",
-   "company": "Teledyne FLIR",
-   "company_id": "teledyne-flir",
-   "title": "Sales Account Manager",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "2 Locations",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://flir.wd1.myworkdayjobs.com/en-US/flircareers/job/UK---Shipley/Sales-Account-Manager_REQ37977",
-   "sector": "Airports & Aviation",
-   "category": "Security & Screening",
-   "also": null,
-   "first_seen": "2026-11-24",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "teledyne-flir::Customer Service - Technical Sales::747fe4c3",
    "opening_id": "teledyne-flir::Customer Service - Technical Sales",
    "company": "Teledyne FLIR",
@@ -445406,37 +445310,6 @@
    "category": "Security & Screening",
    "also": null,
    "first_seen": "2026-11-19",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "thales::Sales Manager Defense & Naval Systems (w/m/d)::4a653455",
-   "opening_id": "thales::Sales Manager Defense & Naval Systems (w/m/d)",
-   "company": "Thales",
-   "company_id": "thales",
-   "title": "Sales Manager Defense & Naval Systems (w/m/d)",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Kiel",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://thales.wd3.myworkdayjobs.com/en-US/Careers/job/Kiel/Sales-Manager--m-w-d-_R0336948",
-   "sector": "Airports & Aviation",
-   "category": "Security & Screening",
-   "also": null,
-   "first_seen": "2026-11-24",
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
@@ -459830,37 +459703,6 @@
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
-  },
-  {
-   "id": "grab::Merchant Sales Executive, GrabMart & GrabPay::001e6026",
-   "opening_id": "grab::Merchant Sales Executive, GrabMart & GrabPay",
-   "company": "Grab (Servy)",
-   "company_id": "grab",
-   "title": "Merchant Sales Executive, GrabMart & GrabPay",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://www.grab.careers/en/jobs/744000163419170/merchant-sales-executive-grabmart-grabpay/",
-   "sector": "Airports & Aviation",
-   "category": "Terminal & Passenger Experience",
-   "also": null,
-   "first_seen": "2026-11-24",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 0
   },
   {
    "id": "grab::Assistant Manager, Business Development & Partnership::2c90b465",
@@ -497364,38 +497206,6 @@
    "opening_locations": 1
   },
   {
-   "id": "starrez::Enterprise Account Executive::61abc250",
-   "opening_id": "starrez::Enterprise Account Executive",
-   "company": "StarRez",
-   "company_id": "starrez",
-   "title": "Enterprise Account Executive",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "remote",
-   "location": "US - Remote",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": null,
-   "posted": "2026-11-24",
-   "url": "https://job-boards.greenhouse.io/starrez/jobs/5479466008",
-   "sector": "Higher Education",
-   "category": "IT & Administration",
-   "also": null,
-   "first_seen": "2026-11-24",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
    "id": "starrez::Product Designer::395a75ae",
    "opening_id": "starrez::Product Designer",
    "company": "StarRez",
@@ -513299,68 +513109,6 @@
    "opening_locations": 1
   },
   {
-   "id": "cloudera::Inside Sales Representative::a1ee348a",
-   "opening_id": "cloudera::Inside Sales Representative",
-   "company": "Cloudera",
-   "company_id": "cloudera",
-   "title": "Inside Sales Representative",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "Japan>Tokyo",
-   "is_us": false,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/JapanTokyo/Business-Development-Representative_261505",
-   "sector": "General Gov",
-   "category": "IT & AI Platforms",
-   "also": null,
-   "first_seen": "2026-11-18",
-   "source": "ats",
-   "opening_postings": 2,
-   "opening_locations": 2
-  },
-  {
-   "id": "cloudera::Inside Sales Representative::2fc77554",
-   "opening_id": "cloudera::Inside Sales Representative",
-   "company": "Cloudera",
-   "company_id": "cloudera",
-   "title": "Inside Sales Representative",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "mid",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": null,
-   "states": [],
-   "region": null,
-   "work_mode": "not stated",
-   "location": "2 Locations",
-   "is_us": null,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://cloudera.wd5.myworkdayjobs.com/en-US/External_Career/job/Ireland-Cork/Inside-Sales-Representative_261504-1",
-   "sector": "General Gov",
-   "category": "IT & AI Platforms",
-   "also": null,
-   "first_seen": "2026-11-24",
-   "source": "ats",
-   "opening_postings": 2,
-   "opening_locations": 2
-  },
-  {
    "id": "cloudera::Senior Manager, Analyst Relations::a28b7f1e",
    "opening_id": "cloudera::Senior Manager, Analyst Relations",
    "company": "Cloudera",
@@ -513948,41 +513696,6 @@
    "jd_seen": false,
    "comp": null,
    "url": "https://boards.greenhouse.io/cloudflare/jobs/8410750?gh_jid=8410750",
-   "sector": "General Gov",
-   "category": "IT & AI Platforms",
-   "also": null,
-   "first_seen": "2026-11-24",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "cloudflare::Senior Majors Account Executive - Nashville (opens in a new tab) Sales \u00b7 , Nashville, TN Yesterday Date posted:::5fa8288b",
-   "opening_id": "cloudflare::Senior Majors Account Executive - Nashville (opens in a new tab) Sales \u00b7 , Nashville, TN Yesterday Date posted:",
-   "company": "Cloudflare",
-   "company_id": "cloudflare",
-   "title": "Senior Majors Account Executive - Nashville (opens in a new tab) Sales \u00b7 , Nashville, TN Yesterday Date posted:",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [
-     "TN"
-    ],
-    "region": "Southeast",
-    "stated": true
-   },
-   "office": null,
-   "states": [
-    "TN"
-   ],
-   "region": "Southeast",
-   "work_mode": "not stated",
-   "location": "November 23, 2026",
-   "is_us": true,
-   "jd_seen": false,
-   "comp": null,
-   "url": "https://boards.greenhouse.io/cloudflare/jobs/8402703?gh_jid=8402703",
    "sector": "General Gov",
    "category": "IT & AI Platforms",
    "also": null,
@@ -547627,50 +547340,6 @@
    "category": "Citizen Services",
    "also": null,
    "first_seen": "2026-11-20",
-   "source": "ats",
-   "opening_postings": 1,
-   "opening_locations": 1
-  },
-  {
-   "id": "socure::Account Executive Director::87d41b07",
-   "opening_id": "socure::Account Executive Director",
-   "company": "Socure",
-   "company_id": "socure",
-   "title": "Account Executive Director",
-   "family": "gtm",
-   "quota_carrying": true,
-   "seniority": "senior",
-   "territory": {
-    "states": [],
-    "region": null,
-    "stated": false
-   },
-   "office": {
-    "city": null,
-    "state": "NY"
-   },
-   "states": [],
-   "region": null,
-   "work_mode": "hybrid",
-   "location": "Hub - New York",
-   "is_us": true,
-   "jd_seen": true,
-   "comp": {
-    "min": 160000,
-    "max": 195000,
-    "currency": "USD",
-    "period": "year",
-    "source": "ats",
-    "raw": "$160K \u2013 $195K \u2022 Offers Equity \u2022 Offers Commission \u2022 Multiple Ranges"
-   },
-   "comp_floor": 160000,
-   "comp_period": "year",
-   "posted": "2026-11-23",
-   "url": "https://jobs.ashbyhq.com/socure/e7f57399-7955-49e2-aef5-b355202a3a8f",
-   "sector": "General Gov",
-   "category": "Citizen Services",
-   "also": null,
-   "first_seen": "2026-11-24",
    "source": "ats",
    "opening_postings": 1,
    "opening_locations": 1
@@ -619681,5 +619350,9 @@
   "absent": 663,
   "blocked": 197,
   "unchecked": 64
+ },
+ "redrawn": {
+  "at": "2026-11-24T17:27:59Z",
+  "inputs": "35a2e14ad43573da4ee94057e26ef4c1130beda7cd1802f17fe751fec674ab76"
  }
 }

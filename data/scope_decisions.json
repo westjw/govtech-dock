@@ -6178,5 +6178,113 @@
    "company": "Octave",
    "description": "focused on our computer-aided design software products ... including target industries, companies, and market trends ... Enterprise selling experience in the AEC, EPC and/or Manufacturing sectors."
   }
+ },
+ "cloudera::Inside Sales Representative": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. The quote is word for word in the ad. The ad names enterprises as the buyers twice: once for Cloudera Sales as a whole and once for this seat, which partners with the regional enterprise sales teams and asks for Enterprise Software Sales experience. It never mentions government, public sector, education or any public buyer. The URL puts the seat in Cork, Ireland, so it is not a US SLED job on any reading. I added the seat-level line to the quote.",
+  "saw": {
+   "title": "Inside Sales Representative",
+   "company": "Cloudera",
+   "description": "Cloudera Sales empowers the world's largest enterprises across every industry ... Partner with the enterprise sales teams in the assigned region"
+  }
+ },
+ "cloudflare::Senior Majors Account Executive - Nashville (opens in a new tab) Sales \u00b7 , Nashville, TN Yesterday Date posted:": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. I read the posting (Nashville, Tennessee; the first 6,000 of 14,106 characters). The seat is on the Enterprise/Field Sales team, manages customer engagements 'across multiple business units' and maps Cloudflare to customers' complex business models. No government, public sector, education or other public buyer appears in what I read. The 'B2B enterprise sales' line describes the candidate's record, not the buyers, so I added the business-models line, which describes this seat's customers. All three parts of the quote are word for word on the page.",
+  "saw": {
+   "title": "Senior Majors Account Executive - Nashville (opens in a new tab) Sales \u00b7 , Nashville, TN Yesterday Date posted:",
+   "company": "Cloudflare",
+   "description": "join our Enterprise/Field Sales team ... track record of success in B2B enterprise sales ... mapping Cloudflare solutions to complex business models"
+  }
+ },
+ "grab::Merchant Sales Executive, GrabMart & GrabPay": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. I read the posting (the page title names Singapore). It is a role on Grab Holdings' Grab Commercial Singapore team that signs up merchants, which are private businesses, onto GrabMart and GrabPay for consumers in Singapore. It is not the US airport-ordering business (Servy) this opening is filed under. Both parts of the quote are word for word on the page.",
+  "saw": {
+   "title": "Merchant Sales Executive, GrabMart & GrabPay",
+   "company": "Grab (Servy)",
+   "description": "grows the merchant business in Grab Singapore ... lead negotiations with assigned/prospective merchant leads to acquire and onboard them to Grab"
+  }
+ },
+ "socure::Account Executive Director": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. I looked for public buyers and found one government mention, in the company-wide mission line ('businesses, governments, and millions of people'). The role's own text names only private markets (tier 1 banks, fintech, crypto, insurance, lending, enterprise technology) and asks for B2B SaaS enterprise selling. It has no agency, procurement or RFP language. I read the Ashby posting page, but it is drawn by script and returned no text, so the ad is the only evidence.",
+  "saw": {
+   "title": "Account Executive Director",
+   "company": "Socure",
+   "description": "Strong knowledge of the market you sell into, such as tier 1 banks, fintech, crypto, insurance, lending, or enterprise technology"
+  }
+ },
+ "starrez::Enterprise Account Executive": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. The role is on the College Pads team and sells to the off-campus landlords: large property management companies, ownership groups and real estate organizations. The ad describes College Pads' work with universities, but universities are not this role's buyers, and no public buyer is named.",
+  "saw": {
+   "title": "Enterprise Account Executive",
+   "company": "StarRez",
+   "description": "enterprise-level property management groups, ownership groups, and real estate organizations"
+  }
+ },
+ "teledyne-flir::Sales Account Manager": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. This is a UK role (Shipley or Lincoln) at Teledyne Microwave UK selling RF/microwave defence electronics. The ad's only clue to its customers is major Defence Prime contractors, and it names no US state or local buyer. If some sales went to the UK government it would be FEDERAL instead; either way it is outside this board.",
+  "saw": {
+   "title": "Sales Account Manager",
+   "company": "Teledyne FLIR",
+   "description": "Teledyne Microwave UK ... Experience working with or for major Defence Prime contractors"
+  }
+ },
+ "thales::Sales Manager Defense & Naval Systems (w/m/d)": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "out of scope (federal or another country's government): Agree. The role is in Kiel, Germany and sells naval communication and command/weapon systems for warships to existing and new customers, including international ones. It ideally goes to a former navy officer who knows that market. The buyer is a foreign defense/navy customer, not US state or local.",
+  "saw": {
+   "title": "Sales Manager Defense & Naval Systems (w/m/d)",
+   "company": "Thales",
+   "description": "Standort: Kiel, Germany ... Sales Manager Defense & Naval Systems ... Idealerweise abgeschlossene Offizierslaufbahn in der Marine und sehr gute Kenntnisse des relevanten Marktes"
+  }
+ },
+ "workday::Account Executive - Large Enterprise": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. Poland-based role (pay in PLN) on the Enterprise Sales team, selling Workday, mainly core financials, to new Large Enterprise prospects. No public-sector buyer appears anywhere in the ad, and the role is outside the US.",
+  "saw": {
+   "title": "Account Executive - Large Enterprise",
+   "company": "Workday",
+   "description": "Initiate and support sales of Workday solutions within Large Enterprise prospects"
+  }
+ },
+ "workday::Medium Enterprise | Customer Base | Account Executive - Manufacturing": {
+  "in_scope": false,
+  "on": "2026-11-24",
+  "at": "2026-11-24T12:27:49-05:00",
+  "by": "agent:scope-review-2026-11-24",
+  "why": "B2B: Agree. This Denver Customer Base role sells add-ons and renewals to existing Medium Enterprise customers, and the title sets the industry as Manufacturing. No government or education buyer is named.",
+  "saw": {
+   "title": "Medium Enterprise | Customer Base | Account Executive - Manufacturing",
+   "company": "Workday",
+   "description": "Account Executive - Manufacturing ... within Medium Enterprise customers"
+  }
  }
 }
