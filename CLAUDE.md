@@ -3769,7 +3769,10 @@ review and the owner's word, through the wiring door.
   page stating its own address as no address at all - a canonical
   'https://[...', which crashed the whole read until blind review 11) is
   left out and said up to `SF_SLACK` (2) postings, and more is the board
-  unreadable; every posting closed is an error, and
+  unreadable (refused as the read goes, it counts the sitemap's addresses,
+  as no total of postings is known yet; after it, the postings with their
+  addresses beside them - one board's shape gave two counts before review
+  11's verifier, 2026-11-23); every posting closed is an error, and
   so is more than a quarter of the sitemap closed in one read
   (`SF_CLOSED_SHARE`, never fewer than `SF_SLACK`), each posting counted
   once on both sides of it: not a day's postings

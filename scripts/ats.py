@@ -5631,9 +5631,15 @@ def successfactors_unify(origin: str) -> list[dict]:
         else:
             unread.append(got[0])
         if len(unread) > SF_SLACK:
-            raise AtsError(f"{origin}: {len(unread)} of the {len(urls)} postings its sitemap lists "
-                           f"did not read as postings ({unread[0]} the first): read in part, so "
-                           f"not read")
+            # (no total of postings is known yet - an address still to come
+            # may land on a requisition another had, and be that posting
+            # again - so the sitemap is counted in addresses, as the refusal
+            # after the loop says them beside its postings: one board's shape
+            # was '3 of the 5 postings' here and '3 of the 4 postings (5
+            # addresses ...)' there, review 11's verifier, 2026-11-23)
+            raise AtsError(f"{origin}: {len(unread)} of the postings its sitemap lists ({len(urls)} "
+                           f"addresses) did not read as postings ({unread[0]} the first): read in "
+                           f"part, so not read")
     # ONE POSTING COUNTS ONCE, closed or open: what is counted below is of the
     # postings the sitemap lists once each, an address landing on a
     # requisition another had being that posting again (blind review 11,

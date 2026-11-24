@@ -23538,10 +23538,25 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         routes = site([plain(81, posting("Role 81"))] + unreadable[:3] + [plain(88, posting("Role 88"))],
                       more={tspd: blocked})
         rows, exc, err = go(routes)
-        if exc is None or rows is not None or "3 of the 5 postings its sitemap lists did not read" \
-                not in str(exc) or loc(88) in sent:
+        if exc is None or rows is not None or "3 of the postings its sitemap lists (5 addresses) did not " \
+                "read" not in str(exc) or loc(88) in sent:
             errors += fail(f"successfactors unify: {ats.SF_SLACK + 1} postings that did not read were not "
                            f"the board unreadable, at once: {rows!r} {exc} (asked {sent})")
+        # ONE BOARD'S SHAPE, ONE COUNT, whichever refusal it meets: the one
+        # raised as the read goes knows no total of postings yet (an address
+        # still to come may land on a requisition another had), so both count
+        # the sitemap's addresses, and neither calls them postings (review
+        # 11's verifier, 2026-11-23: '3 of the 5 postings' as the read went,
+        # '3 of the 4 postings (5 addresses ...)' after it, of one shape)
+        listed_twice = [plain(1, posting("Role 1")), (hop(1), None, posting("Role 1"))]
+        for tail, why in (([plain(n, blocked) for n in (2, 3, 4)], "met as the read goes"),
+                          ([plain(n, blocked) for n in (2, 3)] + [plain(4, blocked, "fr_CA")],
+                           "weighed after the read, a French copy last")):
+            rows, exc, err = go(site(listed_twice + tail))
+            if exc is None or rows is not None or "5 addresses" not in str(exc) \
+                    or "of the 5 postings" in str(exc) or "3 of the" not in str(exc):
+                errors += fail(f"successfactors unify: three postings that did not read, {why}, on a "
+                               f"sitemap listing one posting twice, were counted in other units: {exc}")
         # A PAGE STATING ITS OWN ADDRESS AS NO ADDRESS AT ALL - a canonical
         # 'https://[...', which the page's own markup can say - is a posting
         # that does not read: left out and said, never a crash of the whole
