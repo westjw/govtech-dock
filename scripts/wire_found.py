@@ -242,7 +242,9 @@ VENDOR_AS = frozenset({"href"})
 # names no board either.
 OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-other"},
              "pinpoint": {"pinpoint-other"}, "zohorecruit": {"zohorecruit-other"},
-             "comeet": {"comeet-other"}, "jobvite": {"jobvite-other"}}
+             "comeet": {"comeet-other"}, "jobvite": {"jobvite-other"},
+             # (a Jobvite account's feed is Jobvite's board too: 2026-11-23)
+             "jobvitefeed": {"jobvite-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
