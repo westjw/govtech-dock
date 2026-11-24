@@ -19,6 +19,19 @@ still marked unknown, because nothing prompts anyone to look again.
 POLITE. Concurrency is bounded and each host sees a handful of requests. The
 point is to find a public job board, not to hammer anyone's marketing site.
 
+FIVE PLATFORMS ARE THE WIRING DOOR'S, NOT THIS FILE'S (2026-11-22). Jobvite,
+Teamtailor, ApplicantPro (isolved), Pinpoint and ADP were filed here as type
+"html" - the vendor's careers address, read as a page - long after ats.py had
+a reader for each. They are now named off a page the way find_site_boards.py
+names them (its sightings(), its patterns, its refs: FINDER_KINDS), and a
+board found that way is not written on a slug that looks like the name.
+Once the sweep is over the finder reads the company's site its own way, and
+its record goes to scripts/wire_found.py's own judgement - the owner's rule
+of 2026-11-18, two checks that must agree: the company's own site points to
+the board, and the board itself names the company. WIRE is written; HOLD is
+filed in his "Boards we found" queue; SKIP says why in the log. See
+read_their_sites() and through_the_door().
+
   python scripts/discover_ats.py [--limit 300] [--workers 8] [--write]
   python scripts/discover_ats.py --stats
 """
@@ -92,15 +105,12 @@ MARKERS: list[tuple[str, str]] = [
                 r"([a-z0-9-]+)/([A-Za-z0-9_-]+)"),
     ("paylocity", r"(recruiting\.paylocity\.com/recruiting/jobs/All/[0-9a-f-]{36}/[^\s\"'<>]*)"),
     ("oracle", r"((?<![a-z0-9])[a-z0-9]{1,63}\.fa\.[a-z0-9]{1,63}\.oraclecloud\.com)"),
-    ("html", r"(workforcenow\.adp\.com/mascsr/default/mdf/recruitment/"
-             r"recruitment\.html\?cid=[0-9a-f-]{36}[^\s\"'<>]*)"),
+    # (Jobvite, Teamtailor, ApplicantPro and isolved, Pinpoint and ADP stood
+    # here as "html" - see FINDER_KINDS, which read_marker asks between the
+    # entries above and the careers pages below)
     ("html", rf"({L}\.paycomonline\.net/v4/ats/web\.php/jobs\?clientkey=[0-9A-F]{{32}})"),
-    ("html", r"(jobs\.jobvite\.com/[a-z0-9-]+)"),
-    ("html", rf"({L}\.teamtailor\.com)"),
-    ("html", rf"({L}\.applicantpro\.com|{L}\.clearcompany\.com|"
-             rf"{L}\.isolvedhire\.com|{L}\.dayforcehcm\.com|"
+    ("html", rf"({L}\.clearcompany\.com|{L}\.dayforcehcm\.com|"
              r"recruiting\d*\.ultipro\.com/[A-Z0-9_]+|"
-             rf"{L}\.pinpointhq\.com|"
              rf"{L}\.taleo\.net|{L}\.avature\.net|{L}\.csod\.com)"),
     # HiBob is deliberately last and deliberately never slug-probed: every
     # subdomain returns a byte-identical 1342-byte shell, so a probe proves
@@ -124,6 +134,36 @@ VENDOR_HOSTS = {
     "clearcompany", "isolvedhire", "dayforcehcm", "ultipro", "pinpointhq",
     "taleo", "avature", "csod", "workforcenow",
 }
+
+# PLATFORMS ATS.PY READS AND THIS FILE NEVER LEARNT TO NAME. Each was a
+# careers page here ("html": the vendor's address, read as a page - ADP's and
+# isolved's are JavaScript shells, so "found but unreadable" every week),
+# while ats.FETCHERS read each one as a board and find_site_boards.py named
+# each one's ref. NOT ANOTHER TABLE: they are read off a page by the finder's
+# own sightings(), patterns and refs, so a board found here is spelt exactly
+# as the wiring door, the owner's holds and the queue spell it (a hold under
+# teamtailor/<host> never met this file's html/<the same address>). And a
+# board found here is the wiring door's to judge, on the finder's own record
+# of the site, not slug_matches' (read_their_sites, through_the_door): five
+# platforms, and the first boards this file hands over rather than writes.
+FINDER_KINDS = ("adp", "applicantpro", "teamtailor", "pinpoint", "jobvite")
+# who files what discovery holds for the owner (board_proposals.file_found
+# takes an agent's handle, never a person's)
+FILED_BY = "agent:discovery"
+# Companies one run hands the door. The door asks each board two or three
+# questions, one at a time, after the sweep; and what it holds is filed in one
+# journal entry, which over journal.BLAST (25) records must be confirmed by a
+# person - nobody is watching this run. The rest are asked again in
+# RETRY_SOON_DAYS.
+DOOR_AT_ONCE = 25
+# Seconds the finder may spend reading the sites of the companies handed to
+# the door, after the sweep: each is one company's own site walked the
+# finder's way (at most four pages, and find_site_boards.COMPANY_SECONDS).
+# The eight weekly runs to 2026-11-22 used 7 to 16 of the job's 90 minutes.
+# A company the time does not reach is asked again in RETRY_SOON_DAYS.
+DOOR_SECONDS = 20 * 60
+# Between two companies' sites, the finder's own courtesy (its --pause).
+FINDER_PAUSE = 0.3
 
 
 def _norm(s: str) -> str:
@@ -475,43 +515,309 @@ def identity_of(kind: str, groups: list, ref) -> str:
     return label
 
 
-def read_marker(html: str, company: dict) -> tuple[dict | None, str]:
+def _marker(kind: str, pat: str, html: str) -> tuple[dict, str] | None:
+    """One MARKERS entry over the page: (block, tenant name), or None."""
+    m = re.search(pat, html, re.I)
+    if not m:
+        return None
+    groups = [g for g in m.groups() if g]
+    if not groups:
+        return None
+    if kind == "workday":
+        if len(groups) < 3:
+            return None
+        block = {"type": kind, "ref": list(groups[:3])}
+        return block, identity_of(kind, groups, block["ref"])
+    ref = groups[0]
+    if kind in URL_MARKERS or "/" in ref or "." in ref:
+        if not ref.startswith("http"):
+            ref = "https://" + ref
+        ident = identity_of(kind, groups, ref)
+        if ident.lower() in RESERVED or ident.lower() in VENDOR_HOSTS:
+            return None           # the vendor's own app host, not a tenant
+        if not ident:
+            # No tenant name anywhere. That is fine when the reference still
+            # pins one employer - Paycom's ?clientkey= does - and meaningless
+            # for a bare vendor host that identifies nobody and should not
+            # reach the review queue.
+            rest = ref.split("//", 1)[-1]
+            if "?" not in rest and len(rest.split("/", 1)) < 2:
+                return None
+            if "?" not in rest and not rest.split("/", 1)[1].strip("/"):
+                return None
+        return {"type": kind, "ref": ref}, ident
+    if ref.lower() in RESERVED:
+        return None
+    return {"type": kind, "ref": ref}, identity_of(kind, groups, ref)
+
+
+def finder_board(html: str, page_url: str = "", website: str = "") -> dict | None:
+    """The first board of FINDER_KINDS the page names, as find_site_boards.py
+    reads it: its sightings() over the page (comments are not the page, the
+    escapes a link wraps an address in are undone, an element is told from
+    plain text), its patterns, and the ref each of its makers spells - the
+    one ats.FETCHERS takes and the owner's holds are keyed by. None when the
+    page names none, or only a vendor's furniture (app.teamtailor.com, a
+    Jobvite __assets__ path). Asked only of a page that holds one of the
+    finder's own hints for these platforms, so most pages cost one scan."""
+    import find_site_boards as fsb      # here: it imports this module
+    low = (html or "").lower()
+    if not any(h in low for k in FINDER_KINDS for h in fsb.HINTS[k]):
+        return None
+    rows, _others = fsb.sightings(html or "", page_url or "", website or "")
+    for row in rows:
+        if row["type"] in FINDER_KINDS:
+            return {"type": row["type"], "ref": row["ref"]}
+    return None
+
+
+def read_their_sites(todo: list[dict], on_file: dict, seconds: float,
+                     pages: dict | None = None) -> tuple[dict, list[str]]:
+    """Each company's own site read by find_site_boards.look - the finder's
+    own walk, in its static mode with its plain reader: the website, its
+    careers links, the careers pages after a board has turned up, a redirect
+    stopped where it points, where every page landed, and every reference
+    with the element it sat in. ({id: the finder's record}, [ids the time
+    did not reach]).
+
+    THE DOOR IS SHOWN WHAT THE FINDER SHOWS IT, AND NOTHING DISCOVERY MADE.
+    A record rebuilt from the pages this probe happened to read (blind
+    review, 2026-11-22) stopped at the first page naming a board, so it never
+    saw the Paycom frame on their /careers or the careers link leaving for
+    their parent's site, and the door wired what the finder's own record
+    would have held. `on_file` is find_site_boards.site_index of every
+    record; the finder's courtesy pause is kept between companies.
+
+    THE PAGE THE PROBE FOUND THE BOARD ON is where the finder starts, beside
+    the website, as it starts at a careers address on file - and, as with
+    that address, only when the page is on their own site (look() asks):
+    the finder's four pages and its one guess at /careers do not reach a
+    careers page linked from /about, which the probe's one hop does (live,
+    2026-11-22: Copenhagen Optimization's Teamtailor board). The finder
+    still reads the page itself and says whose it is; the door asks again.
+    `pages` is {company id: that page}.
+    """
+    import asyncio
+
+    import find_site_boards as fsb
+    started = time.monotonic()
+    out: dict = {}
+    later: list[str] = []
+
+    async def walk() -> None:
+        for c in todo:
+            if time.monotonic() - started > seconds:
+                later.append(c["id"])
+                continue
+            rec = fsb._blank(c)
+            page = (pages or {}).get(c["id"])
+            mine = (c.get("ats") or {}).get("ref")
+            # (a careers address of their own already on file is the one
+            # the finder starts at, as it always does)
+            theirs = isinstance(mine, str) and mine.startswith("http") \
+                and fsb.own_site(mine, str(c.get("website") or ""))
+            walk = dict(c, ats={"type": "html", "ref": page}) \
+                if isinstance(page, str) and page.startswith("http") and not theirs else c
+            try:
+                await asyncio.wait_for(
+                    fsb.look(walk, "static", fsb.read_plain, plain=fsb.read_plain, rec=rec,
+                             on_file=on_file),
+                    timeout=fsb.COMPANY_SECONDS["static"] + 30)
+            except asyncio.TimeoutError:
+                rec["error"] = fsb.TIMED_OUT
+            except Exception as exc:                    # noqa: BLE001 - one site, not the run
+                rec = {**fsb._blank(c), "error": f"{fsb.CRASHED}: {type(exc).__name__}"}
+            out[c["id"]] = fsb._no_addresses(rec)
+            await asyncio.sleep(FINDER_PAUSE)
+    asyncio.run(walk())
+    return out, later
+
+
+def through_the_door(records: dict, companies: list, by_id: dict, *, write: bool,
+                     today: str, stopped_at: dict | None = None
+                     ) -> tuple[dict, collections.Counter]:
+    """The finder's records of the companies whose sites named a board on
+    FINDER_KINDS, judged by the wiring door and by nothing else: ({company
+    id: the probe's result as it now stands}, counts). `records` are
+    read_their_sites' records of companies nobody holds; `stopped_at` is the
+    board each probe stopped at, for the words.
+
+    THE OWNER'S RULE OF 2026-11-18, UNCHANGED BECAUSE IT IS THE SAME CODE. A
+    found board is wired only when two separate checks agree - the company's
+    own site points to the board, and the board itself names the company -
+    and nothing on file argues with it; a parent's board, a name mismatch and
+    anything doubtful go to his "Boards we found" queue. That judgement is
+    scripts/wire_found.py's, on a finder results file, which is what it
+    reads (load_results): plan() reads each board, asks it whose it is and
+    weighs what the site showed; decide() asks again, at the write, what has
+    moved. This writes what they decide, and only of FINDER_KINDS:
+
+      WIRE  the record takes the board as the door's apply writes it
+            (wire_found.wire_record: the board, and both checks on ats_note)
+      HOLD  filed in Boards we found by board_proposals.file_found, the
+            queue's one append door, as FILED_BY - never forced
+      SKIP  said in the log; a failure of the day (`unreadable`) is asked
+            again in RETRY_SOON_DAYS
+
+    A board of another platform the door settles on - their site's own
+    Gusto board, beside a Jobvite one a parent's page named - is not this
+    sweep's to wire or file (blind review, 2026-11-22: discovery had wired
+    platforms it never wrote before): it is said, and left for the board
+    sweep. A dry run wires and files nothing, and asks everything again
+    soon: a look is not an answer. Nothing it decides names a board or a
+    company in what it prints - the workflow's log is public.
+    """
+    import shutil
+    import tempfile
+
+    import admin
+    import board_proposals
+    import find_site_boards as fsb
+    import wire_found as wf
+    out: dict = {}
+    n = collections.Counter()
+    stopped_at = stopped_at or {}
+    if not records:
+        return out, n
+
+    def about(cid: str) -> str:
+        b = stopped_at.get(cid) if isinstance(stopped_at.get(cid), dict) else {}
+        return board_proposals.show(b.get("type"), b.get("ref")) if b.get("type") else "a board"
+
+    def unasked(why: str):
+        for cid in records:
+            out[cid] = {"id": cid, "found": None, "retry_soon": True,
+                        "note": f"{about(cid)} was found and the wiring door could not be "
+                                f"asked ({why[:120]}); asked again in {RETRY_SOON_DAYS} days"}
+        n["unasked"] += len(records)
+        return out, n
+
+    # THE DOOR JUDGES THE DIRECTORY THIS RUN WRITES, OR NOTHING. wire_found
+    # and board_proposals read admin.DATA; were it another directory, the
+    # holds, the queue and the records would be somebody else's.
+    if admin.DATA.resolve() != DATA.resolve() or board_proposals.FOUND.resolve() \
+            != (DATA / board_proposals.FOUND.name).resolve():
+        return unasked(f"the wiring door reads {admin.DATA}, and this run writes {DATA}")
+    if not callable(getattr(wf.verify_boards, "proven", None)):
+        return unasked("verify_boards.proven is not in this checkout, so check 2 cannot run")
+    quiet = lambda *_a, **_k: None          # noqa: E731 - the door's lines name names
+    try:
+        # the results file, as the finder writes it and the door reads it,
+        # outside data/ and gone when the door has read it
+        scratch = pathlib.Path(tempfile.mkdtemp(prefix="discovery-door-"))
+        try:
+            fsb._save(scratch / "site_boards.json", "static", records)
+            results, _files = wf.load_results([scratch / "site_boards.json"])
+        finally:
+            shutil.rmtree(scratch, ignore_errors=True)
+        rows = wf.plan(results, companies, wf.read_board(), say=quiet,
+                       stores=wf.read_stores())
+        # what the door settles on on another platform is not this sweep's
+        rows = [r if r["action"] == "SKIP" or r.get("type") in FINDER_KINDS else
+                {**r, "action": "SKIP", "kind": "elsewhere",
+                 "why": (f"the wiring door settled on {wf.show(r.get('type'), r.get('ref'))}, "
+                         f"a board on a platform this sweep does not hand over: the board "
+                         f"sweep's")}
+                for r in rows]
+        with admin.desk_lock():
+            # read again under the lock, as the door's apply reads them
+            stores, board = wf.read_stores(), wf.read_board()
+            d = wf.decide({"rows": rows}, companies, FILED_BY,
+                          dt.datetime.now().astimezone(), stores=stores, board=board)
+            rep = board_proposals.file_found(
+                d["queued"], FILED_BY, write=write, force=False, companies=companies,
+                why=(f"{len(d['queued'])} board(s) the weekly discovery sweep found on a "
+                     f"platform it reads the finder's way, held for the owner: the wiring "
+                     f"door's two checks did not agree, or something on file argues; each "
+                     f"row says which"))
+    except board_proposals.Unreadable as exc:
+        return unasked(str(exc))
+    except Exception as exc:                            # noqa: BLE001
+        # AN UNATTENDED SWEEP IS NOT LOST TO THE DOOR. Whatever else this run
+        # found is still written; these are asked again in a week.
+        print(f"  (the wiring door failed: {type(exc).__name__})", file=sys.stderr)
+        return unasked(f"the door failed: {type(exc).__name__}")
+    if write:
+        # the board on the record as the door's apply writes it, once nothing
+        # is left to fail before the queue has answered
+        for row in d["wire"]:
+            wf.wire_record(by_id[row["id"]], row, today, noted=row["id"] in d["noted"])
+    wired = {r["id"] for r in d["wire"]}
+    left = {x["row"]["id"]: x for x in d["left"]}
+    added = set(rep["added"])
+    not_taken = {s.get("id"): s.get("why") for s in rep["skipped"] if isinstance(s, dict)}
+    would = "" if write else "would be "        # a dry run says what a write would do
+    for row in rows:
+        cid = row["id"]
+        b = (wf.show(row["type"], row["ref"]) if row.get("type") and row.get("ref") is not None
+             else about(cid))
+        res = {"id": cid, "found": None}
+        if cid in wired:
+            res.update(found={"type": row["type"], "ref": row["ref"]},
+                       postings=row.get("postings"),
+                       note=f"{b} {would}wired: {row.get('postings')} posting(s) readable; "
+                            f"their own site points to it and it names them (the wiring "
+                            f"door's two checks)")
+            n["wired"] += 1
+        elif cid in left:
+            res.update(retry_soon=True,
+                       note=f"{b} passed the wiring door's checks and was left alone at the "
+                            f"write ({str(left[cid]['why'])[:120]}); asked again in "
+                            f"{RETRY_SOON_DAYS} days")
+            n["left"] += 1
+        elif row["action"] == "HOLD":
+            first = str((row.get("doubts") or [""])[0])[:120]
+            if rep["error"]:
+                res.update(retry_soon=True,
+                           note=f"{b} is held for the owner, and filing it failed "
+                                f"({str(rep['error'])[:100]}); asked again in "
+                                f"{RETRY_SOON_DAYS} days")
+                n["unfiled"] += 1
+            elif cid in added:
+                res["note"] = (f"{b} reads ({row.get('postings')} posting(s)) and {would or 'is '}"
+                               f"held for the owner in Boards we found: {first}")
+                n["held"] += 1
+            else:
+                res["note"] = (f"{b} is held for the owner; the queue did not take it "
+                               f"({str(not_taken.get(cid) or 'no row')[:100]})")
+                n["not_taken"] += 1
+        else:
+            kind = row.get("kind") or "?"
+            res["note"] = f"{b}: {str(row.get('why') or kind)[:160]}"
+            if kind == "unreadable":
+                res["retry_soon"] = True
+                n["again"] += 1
+            n["elsewhere" if kind == "elsewhere" else "skipped"] += 1
+        if not write:
+            # a look is not an answer: nothing was written or filed
+            res["retry_soon"] = True
+        out[cid] = res
+    return out, n
+
+
+def read_marker(html: str, company: dict, page_url: str = "") -> tuple[dict | None, str]:
     """First ATS marker in the page, as a fetchable block, plus the tenant name
     to check it against. Body only, never headers - WordPress.com stamps an ad
-    for join.a8c.com on every response it serves."""
+    for join.a8c.com on every response it serves.
+
+    In MARKERS' order - a structured API beats a generic careers page - with
+    the finder's platforms (FINDER_KINDS) between the two: after every board
+    MARKERS names, before every careers page. A FINDER_KINDS board carries no
+    tenant name to check: it is not this file's to check (through_the_door).
+    """
     for kind, pat in MARKERS:
-        m = re.search(pat, html, re.I)
-        if not m:
-            continue
-        groups = [g for g in m.groups() if g]
-        if not groups:
-            continue
-        if kind == "workday":
-            if len(groups) < 3:
-                continue
-            block = {"type": kind, "ref": list(groups[:3])}
-            return block, identity_of(kind, groups, block["ref"])
-        ref = groups[0]
-        if kind in URL_MARKERS or "/" in ref or "." in ref:
-            if not ref.startswith("http"):
-                ref = "https://" + ref
-            ident = identity_of(kind, groups, ref)
-            if ident.lower() in RESERVED or ident.lower() in VENDOR_HOSTS:
-                continue          # the vendor's own app host, not a tenant
-            if not ident:
-                # No tenant name anywhere. That is fine when the reference still
-                # pins one employer - ADP's ?cid= and Paycom's ?clientkey= do -
-                # and meaningless for a bare vendor host like app.teamtailor.com,
-                # which identifies nobody and should not reach the review queue.
-                rest = ref.split("//", 1)[-1]
-                if "?" not in rest and len(rest.split("/", 1)) < 2:
-                    continue
-                if "?" not in rest and not rest.split("/", 1)[1].strip("/"):
-                    continue
-            return {"type": kind, "ref": ref}, ident
-        if ref.lower() in RESERVED:
-            continue
-        return {"type": kind, "ref": ref}, identity_of(kind, groups, ref)
+        if kind != "html":
+            hit = _marker(kind, pat, html)
+            if hit:
+                return hit
+    block = finder_board(html, page_url, company.get("website") or "")
+    if block:
+        return block, ""
+    for kind, pat in MARKERS:
+        if kind == "html":
+            hit = _marker(kind, pat, html)
+            if hit:
+                return hit
     return None, ""
 
 
@@ -565,7 +871,8 @@ def probe(company: dict) -> dict:
             seen.add(t)
             targets.append(t)
 
-    block, slug = read_marker(home.text, company)
+    block, slug = read_marker(home.text, company, home.url)
+    where = home.url                # the page the board was named on
     pages = [(site, home.text)]
     careers_url, careers_empty = None, False
     hopped = False
@@ -588,8 +895,9 @@ def probe(company: dict) -> dict:
                 if fingerprint(r.text) in bad:
                     continue          # soft 404: the homepage wearing a new URL
                 pages.append((r.url, r.text))
-                block, slug = read_marker(r.text, company)
+                block, slug = read_marker(r.text, company, r.url)
                 if block is not None:
+                    where = r.url
                     break
                 if careers_url is None and _is_careers(r.url, r.text):
                     careers_url = r.url
@@ -608,8 +916,9 @@ def probe(company: dict) -> dict:
             r = get(site + hp)
             if r.outcome != "ok" or fingerprint(r.text) in bad:
                 continue
-            block, slug = read_marker(r.text, company)
+            block, slug = read_marker(r.text, company, r.url)
             if block is not None:
+                where = r.url
                 break
             more += [u for u in career_links(r.text, r.url)
                      if u.rstrip("/") not in seen]
@@ -623,6 +932,17 @@ def probe(company: dict) -> dict:
                 targets.append(k)
         if not targets:
             break
+
+    if block is not None and block["type"] in FINDER_KINDS:
+        # NOT READ, AND NOT NAME-CHECKED, HERE. Once the sweep is over, the
+        # finder reads their site its own way and the wiring door judges what
+        # it found (main, through_the_door). Until it has, a crash or a
+        # timeout between here and there must not leave this company asleep
+        # for RETRY_DAYS.
+        return {"id": company["id"], "found": None, "retry_soon": True,
+                "door": {"board": block, "page": where},
+                "note": f"{block['type']}:{str(block['ref'])[:40]} named on a page read, for "
+                        f"the wiring door's two checks"}
 
     if block is not None:
         ref = block["ref"]
@@ -942,6 +1262,96 @@ def main() -> int:
                 print(f"  {i}/{len(todo)}, {hits} board(s) found so far", flush=True)
                 checkpoint()
     checkpoint()
+
+    # THE FINDER'S PLATFORMS GO THROUGH THE WIRING DOOR, once the sweep is
+    # over: twins, holders and the owner's queue are only known then. The
+    # board the probe stopped at - wherever it was seen, as every board found
+    # here is - goes to the screen above first, unchanged; then the finder
+    # reads their site its own way (read_their_sites), and every board its
+    # record names on their own site goes to the same screen. A company any
+    # of them is held for under another record is left alone, and its log
+    # names no board. (Live, 2026-11-22: OPEXUS's and Baseline's sites led to
+    # ADP boards held for Casepoint and HydroPoint, named on pages not their
+    # own.) What is left, the door judges (through_the_door).
+    door_said = collections.Counter()
+    door = {r["id"]: i for i, r in enumerate(results) if r.get("door")}
+    if door:
+        import find_site_boards as fsb
+        settled, stopped_at = {}, {}
+
+        def again(cid: str, words: str, count: str) -> None:
+            settled[cid] = {"id": cid, "found": None, "retry_soon": True,
+                            "note": f"{board_proposals.show(**stopped_at[cid])}: {words}; asked "
+                                    f"again in {RETRY_SOON_DAYS} days"}
+            door_said[count] += 1
+
+        # oldest probe first, as the sweep is; a board found for two companies
+        # is handed over with both or with neither, so the door sees them as
+        # twins (a cap that split them would let the first be wired)
+        rank = {c["id"]: k for k, c in enumerate(todo)}
+        groups: dict = {}
+        for cid in sorted(door, key=lambda x: rank.get(x, len(rank))):
+            r = results[door[cid]]
+            b = r["door"]["board"]
+            stopped_at[cid] = {"kind": b["type"], "ref": b["ref"]}
+            got = unless_held({"id": cid, "found": b})
+            if got.get("found") is None:
+                results[door[cid]] = got
+                continue
+            groups.setdefault(board_proposals.board_key(b["type"], b["ref"]), []).append(cid)
+        handed: list = []
+        for ids in groups.values():
+            if len(handed) + len(ids) <= DOOR_AT_ONCE:
+                handed += ids
+            else:
+                for cid in ids:
+                    again(cid, f"one of more than {DOOR_AT_ONCE} boards for the wiring door this "
+                               f"run", "later")
+        records, unread = read_their_sites(
+            [by_id_all[cid] for cid in handed], fsb.site_index(companies), DOOR_SECONDS,
+            pages={cid: results[door[cid]]["door"].get("page") for cid in handed})
+        for cid in unread:
+            again(cid, "the finder's reading of their site did not fit in this run's time",
+                  "later")
+        ready = {}
+        for cid, rec in records.items():
+            if fsb.unfinished(rec):
+                # our side's failure, not their site's answer
+                again(cid, f"the finder's reading of their site did not finish "
+                           f"({str(rec.get('error') or '')[:60]})", "unasked")
+                continue
+            for cand in rec.get("candidates") or []:
+                got = unless_held({"id": cid, "found": {"type": cand.get("type"),
+                                                       "ref": cand.get("ref")}})
+                if got.get("found") is None:
+                    results[door[cid]] = got
+                    break
+            else:
+                ready[cid] = rec
+        said, counts = through_the_door(
+            ready, companies, by_id_all, write=a.write, today=today,
+            stopped_at={cid: {"type": b["kind"], "ref": b["ref"]}
+                        for cid, b in stopped_at.items()})
+        settled.update(said)
+        door_said.update(counts)
+        for cid, res in settled.items():
+            results[door[cid]] = dict(res, door_said=True)
+        checkpoint()
+    if door_said:
+        # counts only: the workflow's log is public
+        words = (("wired", "wired on its two checks"),
+                 ("held", "held for the owner in Boards we found"),
+                 ("not_taken", "held, and already waiting or ruled on in that queue"),
+                 ("unfiled", "held, and not filed"), ("left", "left alone at the write"),
+                 ("skipped", "skipped"),
+                 ("elsewhere", "settled on another platform's board, left for the board sweep"),
+                 ("later", "over this run's share"), ("unasked", "not asked"))
+        said = [f"{door_said[k]} {w}" for k, w in words if door_said[k]]
+        again_n = sum(door_said[k] for k in ("unfiled", "left", "again", "later", "unasked"))
+        print(f"  ({sum(door_said[k] for k, _w in words)} board(s) on "
+              f"{', '.join(FINDER_KINDS)} went to the wiring door: {'; '.join(said)}"
+              + (f"; {again_n} asked again in {RETRY_SOON_DAYS} days" if again_n else "")
+              + (" - a dry run wires and files nothing" if not a.write else "") + ")")
     if left_alone:
         # counts only: the workflow's log is public
         print(f"  ({len(left_alone)} board(s) found {'is' if len(left_alone) == 1 else 'are'} "
@@ -973,7 +1383,8 @@ def main() -> int:
     found = [r for r in results if r.get("found")]
     strong = [r for r in found if not r.get("weak")]
     weak = [r for r in found if r.get("weak")]
-    blocked = [r for r in results if r.get("retry_soon")]
+    # (what the wiring door asks again is counted on its own line, above)
+    blocked = [r for r in results if r.get("retry_soon") and not r.get("door_said")]
     by_kind = collections.Counter(r["found"]["type"] for r in strong)
     # Structured boards and careers pages are not the same finding, and adding
     # them together is how a discovery sweep reports a number nobody can use.

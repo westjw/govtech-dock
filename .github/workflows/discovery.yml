@@ -81,7 +81,14 @@ jobs:
           # other two, and `git pull --rebase` refused with "You have
           # unstaged changes". 195 lines of probe results died in the
           # runner. selftest holds this list against the script's writes.
-          git add data/companies.json data/discovery_log.json data/ats_suspects.json
+          # The last three are the owner's queue and the journal: a board on
+          # a platform discovery reads the finder's way that the wiring
+          # door's two checks did not settle is filed in Boards we found
+          # (data/embedded_ats.json, one journalled append; the journal rolls
+          # into its archive past 500 entries).
+          git add data/companies.json data/discovery_log.json data/ats_suspects.json \
+                  data/embedded_ats.json data/admin_journal.jsonl \
+                  data/admin_journal.archive.jsonl
           if git diff --cached --quiet; then
             echo "nothing new to commit"
             exit 0

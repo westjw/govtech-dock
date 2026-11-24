@@ -3383,6 +3383,47 @@ round.
   it starts: read as empty it would hold nobody. The second blind review
   (2026-11-19) had the unattended discovery sweep write a doubted company's
   board. Guard: `check_no_door_wires_a_company_the_owner_holds`.
+- **Discovery hands five platforms to this door (2026-11-22).** The platform
+  catalogue found the weekly sweep still filing Jobvite, Teamtailor,
+  ApplicantPro (and isolved), Pinpoint and ADP addresses as type `html`,
+  every one with a reader in `ats.FETCHERS`. `discover_ats.FINDER_KINDS`
+  are now named off a page by `find_site_boards.sightings()` - its patterns
+  and its refs, so the board is spelt as the door, the holds and the queue
+  spell it - after every board `MARKERS` names and before every careers
+  page; `MARKERS` has no pattern of its own for them, and such a board is
+  never checked on its slug. Once the sweep is over, the board each probe
+  stopped at goes to `unless_held` (unchanged), then the FINDER reads the
+  company's site its own way (`read_their_sites`: `find_site_boards.look`,
+  static, its plain reader; it starts at the page the probe found the board
+  on as well as the website, as at a careers address on file, when the
+  record has none of its own: live, the finder's walk from the front door
+  did not reach Copenhagen Optimization's careers page, linked from /about)
+  and every board in its record goes to
+  `unless_held` too; the door is handed that results file, as the finder
+  writes it and `wire_found.load_results` reads it, and its own `plan()`
+  and `decide()` judge it. WIRE is written as apply writes it
+  (`wire_found.wire_record`, ats_note included), HOLD is filed in Boards we
+  found by `agent:discovery` (one journal entry, never forced), SKIP is
+  logged, a failure of the day or of our own side asked again in a week.
+  Only FINDER_KINDS are acted on: a board of another platform the door
+  settles on is said and left for the board sweep. At most `DOOR_AT_ONCE`
+  (25) companies a run, oldest probe first, two sharing a board handed
+  over together, and `DOOR_SECONDS` (20 minutes) of the finder's reading.
+  The door is not asked - and those companies come back in a week - when
+  it would read another directory than the run writes, or a store or
+  board.json does not read. A dry run wires and files nothing and says
+  "would be" (its log is written, as every dry run's is). Unlike apply, the
+  record is written by discovery's own direct write (indent 2; the journal's
+  write is indent 1 and would rewrite the whole file), and no reader reads
+  the plan first: the two checks are the bar. `discovery.yml` stages
+  `data/embedded_ats.json` and the journal. Blind review of the first
+  version (2026-11-22): a record rebuilt from discovery's own pages stopped
+  at the first board and never saw the Paycom frame on /careers or the
+  careers link to a parent's site, so it wired what the finder's record
+  holds; and it acted on other platforms' boards. Guard:
+  `check_discovery_hands_the_finders_platforms_to_the_wiring_door` (23 of 23
+  breakages caught); the eight companies already on file as `html` on these
+  platforms are the board sweep's, or a `--only` run's.
 - **`find_embedded_ats.py` needs `--out`.** It replaces its output file with
   one run's hits and its default is that queue file, so while the file holds
   anything a bare run is refused before the first request.
