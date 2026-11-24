@@ -84,8 +84,11 @@ jobs:
           # data/site_pages/ is gitignored on purpose - other people's page
           # text must never enter a repository that is about to be public.
           # The index carries shas and counts and no characters of the bodies.
+          # AND THE ARCHIVE: every ingest prunes the oldest journal entry into
+          # data/journal_archive/, and committing the live journal without it
+          # drops that entry from main - it is in neither file there.
           git add data/agent_proposals.json data/site_pages_index.json \
-                  data/llm_log.jsonl data/admin_journal.jsonl
+                  data/llm_log.jsonl data/admin_journal.jsonl data/journal_archive
           # NOT `git diff --cached --quiet && ... && exit 0`. Actions runs
           # bash with -e, and when there IS something staged that diff exits
           # 1, the && list evaluates to 1, and the step aborts BEFORE the

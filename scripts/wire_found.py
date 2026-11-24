@@ -4160,7 +4160,7 @@ def cmd_plan(a) -> int:
             kept_new = f"data/{DOUBTS}" in wrote
             if wrote:
                 print(f"written by {by}: {', '.join(wrote)} and the journal "
-                      f"(data/admin_journal.jsonl, with data/admin_journal.archive.jsonl "
+                      f"(data/admin_journal.jsonl, with data/journal_archive/ "
                       f"when it rolls). Commit them together: the doubts stand from now, "
                       f"whatever becomes of this plan.")
             if stop:
@@ -4206,7 +4206,7 @@ def cmd_plan(a) -> int:
             if wrote_p:
                 kept_posted.extend(sorted(kept_p))
                 print(f"written by {by}: {', '.join(wrote_p)} and the journal "
-                      f"(data/admin_journal.jsonl, with data/admin_journal.archive.jsonl "
+                      f"(data/admin_journal.jsonl, with data/journal_archive/ "
                       f"when it rolls). Commit them together: these doubts hold the board a "
                       f"posting names from now, whatever becomes of this plan.")
             if stop_p:
@@ -5497,7 +5497,7 @@ def cmd_apply(a) -> int:
     print(f"\nwired {n_wire}, held {n_hold}, {tail}")
     changed = ["data/companies.json"] * bool(n_wire) + ["data/embedded_ats.json"] * bool(n_hold)
     print(f"written by {by}: {', '.join(changed)} and the journal (data/admin_journal.jsonl, "
-          f"with data/admin_journal.archive.jsonl when it rolls). Commit them together"
+          f"with data/journal_archive/ when it rolls). Commit them together"
           f"{kept_by_plan}.")
     print("Postings appear after the nightly crawl reads the new boards, not before.")
     return 0
@@ -5684,7 +5684,7 @@ def cmd_settle(a) -> int:
     print(f"SETTLED {many(len(standing), 'reader doubt')} about {cid} ({named}), on the owner's "
           f"word: {words}")
     print(f"written by {by}: data/{DOUBTS} and the journal (data/admin_journal.jsonl, with "
-          f"data/admin_journal.archive.jsonl when it rolls). Commit them together; "
+          f"data/journal_archive/ when it rolls). Commit them together; "
           f"admin_undo.py takes it back.")
     return 0
 

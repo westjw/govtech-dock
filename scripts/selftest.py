@@ -1263,23 +1263,27 @@ def check_six_small_things_the_audit_named() -> int:
     import admin
     import journal
 
-    # journal: pruned rows land in the archive
+    # journal: pruned rows land in the archive (data/journal_archive/, beside
+    # the live file wherever it is)
     tmp = pathlib.Path(tempfile.mkdtemp())
-    keep = (journal.DATA, journal.LOG, journal.ARCHIVE, journal.KEEP)
+    keep = (journal.DATA, journal.LOG, journal.KEEP)
     try:
-        journal.DATA, journal.LOG, journal.ARCHIVE, journal.KEEP = tmp, tmp / "j.jsonl", tmp / "a.jsonl", 3
-        rows = [{"id": f"2026-09-25#{i}", "action": "x"} for i in range(5)]
+        journal.DATA, journal.LOG, journal.KEEP = tmp, tmp / "j.jsonl", 3
+        today = dt.date.today().isoformat()
+        rows = [{"id": f"{today}#{i}", "at": f"{today}T09:00:0{i}-04:00", "action": "x"}
+                for i in range(5)]
         journal._write_entries(rows)
         live = (tmp / "j.jsonl").read_text().splitlines()
-        arch = (tmp / "a.jsonl").read_text().splitlines() if (tmp / "a.jsonl").exists() else []
+        arch = list(journal.archived_lines(tmp))
         if len(live) != 3 or len(arch) != 2:
             errors += fail(f"journal prune kept {len(live)} and archived {len(arch)}; want 3 and 2")
-        journal._write_entries(rows[-3:] + [{"id": "2026-09-25#5", "action": "y"}])
-        arch = (tmp / "a.jsonl").read_text().splitlines()
+        journal._write_entries(rows[-3:] + [{"id": f"{today}#5", "at": f"{today}T09:00:05-04:00",
+                                             "action": "y"}])
+        arch = list(journal.archived_lines(tmp))
         if len(arch) != 3:
             errors += fail(f"a second prune did not append to the archive: {len(arch)} rows")
     finally:
-        journal.DATA, journal.LOG, journal.ARCHIVE, journal.KEEP = keep
+        journal.DATA, journal.LOG, journal.KEEP = keep
         journal._CACHE = None
 
     # act_scope: by and saw on the record
@@ -2861,6 +2865,23 @@ def check_web_ruling_stores_a_handle_not_a_person() -> int:
     return errors
 
 
+def _tracked_text(rel: str, blob: bytes) -> str | None:
+    """The text check_no_person_in_the_repo reads in one tracked file, or None
+    for a binary file or one with no @ in it. A SEALED MONTH OF THE JOURNAL
+    ARCHIVE (data/journal_archive/*.jsonl.gz) is read decompressed: it is
+    gzip, so the binary test passes it over, and every row in it was a plain
+    line the day before it was sealed - a scan that skipped it would stop
+    reading the journal one month at a time."""
+    if rel.endswith(".jsonl.gz") and rel.startswith("data/journal_archive/"):
+        try:
+            blob = gzip.decompress(blob)
+        except Exception:                                       # noqa: BLE001
+            return None                    # check_the_journal_archive_keeps_its_rules names it
+    if b"\0" in blob[:8192] or b"@" not in blob:
+        return None
+    return blob.decode("utf-8", "ignore")
+
+
 def check_no_person_in_the_repo() -> int:
     """No private individual's address in a file git actually tracks.
 
@@ -2937,6 +2958,12 @@ def check_no_person_in_the_repo() -> int:
     if privacy.redact_deep({"a": [other, {"b": someone}], "n": 1}) != \
             {"a": ["[address removed]", {"b": "[address removed]"}], "n": 1}:
         return fail("privacy.redact_deep does not reach every string")
+    # A SEALED MONTH OF THE JOURNAL ARCHIVE IS READ, decompressed - not
+    # passed over as binary the day its rows are sealed
+    sealed = gzip.compress(json.dumps({"by": "owner", "why": f"mail {someone}"}).encode() + b"\n")
+    if someone not in (_tracked_text("data/journal_archive/2026-01.jsonl.gz", sealed) or ""):
+        return fail("check_no_person_in_the_repo passes a sealed month of the journal archive "
+                    "over as binary; its rows leave the scan the day they are sealed")
 
     try:
         tracked = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT,
@@ -2963,9 +2990,9 @@ def check_no_person_in_the_repo() -> int:
             blob = f.read_bytes()
         except Exception:                                       # noqa: BLE001
             continue
-        if b"\0" in blob[:8192] or b"@" not in blob:
+        text = _tracked_text(rel, blob)
+        if text is None:
             continue                       # binary, or nothing to look at
-        text = blob.decode("utf-8", "ignore")
         if rel not in FIXTURES:
             for addr in privacy.addresses(text):
                 if addr.split("@")[-1] in FREEMAIL:
@@ -16549,11 +16576,14 @@ def check_the_repo_keeps_no_job_ads() -> int:
             for v in o:
                 yield from texts(v)
     held = [("data/manual.json", json.loads((DATA / "manual.json").read_text()))]
-    for name in ("admin_journal.jsonl", "admin_journal.archive.jsonl"):
-        p = DATA / name
-        if p.exists():
-            held += [(f"data/{name}", json.loads(line))
-                     for line in p.read_text().splitlines() if line.strip()]
+    p = DATA / "admin_journal.jsonl"
+    if p.exists():
+        held += [("data/admin_journal.jsonl", json.loads(line))
+                 for line in p.read_text().splitlines() if line.strip()]
+    # AND THE ARCHIVE, every part: a sealed month is gzip, and a scan that
+    # read only plain files would stop reading a month the day it is sealed
+    import journal
+    held += [("data/journal_archive/", row) for row in journal.archived_rows(DATA)]
     for where, obj in held:
         for k, v in texts(obj):
             if k != "pay_text" or not salary.stored_excerpt_ok(v):
@@ -26877,16 +26907,15 @@ def _sandbox_admin(files: dict):
         tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-"))
         for name, payload in files.items():
             (tmp / name).write_text(json.dumps(payload))
-        # AND THE ARCHIVE. journal.ARCHIVE is computed from DATA at import,
-        # so moving DATA does not move it: a sandboxed write that prunes -
-        # any fixture journal past KEEP - appends the pruned rows to the
-        # owner's real archive. Found 2026-09-26 as a duplicate of a real
-        # 09-08 ruling arriving in data/admin_journal.archive.jsonl on every
-        # suite run.
-        keep = (admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE)
-        admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE = (
-            tmp, tmp, tmp / "admin_journal.jsonl",
-            tmp / "admin_journal.archive.jsonl")
+        # AND THE ARCHIVE. The old single archive file had its own path,
+        # fixed at import, so moving DATA did not move it: a sandboxed write
+        # that pruned - any fixture journal past KEEP - appended the pruned
+        # rows to the owner's real archive (found 2026-09-26 as a duplicate
+        # of a real 09-08 ruling arriving on every suite run). The archive
+        # now lives beside LOG wherever LOG points (journal.archive_dir), so
+        # moving LOG moves it.
+        keep = (admin.DATA, journal.DATA, journal.LOG)
+        admin.DATA, journal.DATA, journal.LOG = tmp, tmp, tmp / "admin_journal.jsonl"
         # AND board_proposals, whose paths are fixed at import: a mutation
         # that put its direct writer back wrote a test ruling into the
         # owner's board_proposal_rulings.json from inside this sandbox
@@ -26897,7 +26926,7 @@ def _sandbox_admin(files: dict):
         try:
             yield tmp
         finally:
-            admin.DATA, journal.DATA, journal.LOG, journal.ARCHIVE = keep
+            admin.DATA, journal.DATA, journal.LOG = keep
             bp.DATA, bp.FOUND, bp.RULED = keep_bp
     return swap()
 
@@ -29920,12 +29949,14 @@ def _data_fingerprint() -> dict:
 
 def _archive_fingerprint() -> tuple:
     """(archive rows, the journal's newest line). Together they tell a leaked
-    prune from a person's ruling; see _archive_leaked."""
-    a = DATA / "admin_journal.archive.jsonl"
+    prune from a person's ruling; see _archive_leaked. The rows are counted
+    over every part of data/journal_archive/ (and an old single file still
+    waiting to be folded): a seal moves rows between files, never adds any."""
+    import journal
     j = DATA / "admin_journal.jsonl"
     try:
-        rows = a.read_bytes().count(b"\n")
-    except OSError:
+        rows = sum(1 for _ in journal.archived_lines(DATA))
+    except Exception:              # noqa: BLE001 - a torn part is the guard's to name
         rows = 0
     try:
         raw = j.read_bytes().rstrip(b"\n")
@@ -58506,24 +58537,51 @@ def check_a_pruned_row_cannot_leak_into_the_archive() -> int:
     data fingerprint watches *.json, not *.jsonl. Nothing noticed for as long
     as the check existed.
 
-    Three things hold now: the sandbox moves journal.ARCHIVE with LOG and
-    DATA; main() compares the archive before and after the run and can tell
-    a leaked prune (archive grew, journal's newest line unchanged) from a
-    person ruling mid-run (archive grew, newest line is theirs); and the
-    check that did it runs inside the sandbox.
+    Three things hold now: the archive lives beside the live journal
+    wherever LOG points (journal.archive_dir, 2026-11-24 - so every sandbox
+    that moves LOG moves it, merge_families.use_data_dir's included, which
+    moved LOG alone); main() compares the archive before and after the run
+    and can tell a leaked prune (archive grew, journal's newest line
+    unchanged) from a person ruling mid-run (archive grew, newest line is
+    theirs); and the check that did it runs inside the sandbox.
     """
     import journal
+    import merge_families
     errors = 0
-    real = (journal.LOG, journal.ARCHIVE)
+    real = (journal.LOG, journal.archive_dir(), journal.legacy_archive())
     with _sandbox_admin({"companies.json": []}) as tmp:
-        if journal.ARCHIVE == real[1] or tmp not in journal.ARCHIVE.parents:
-            errors += fail("_sandbox_admin leaves journal.ARCHIVE pointing at "
-                           "the real archive; a sandboxed write that prunes "
-                           "lands the pruned rows in the owner's real file")
+        for where in (journal.archive_dir(), journal.legacy_archive()):
+            if where in real[1:] or tmp not in where.parents:
+                errors += fail(f"inside _sandbox_admin the archive is {where}, not in the "
+                               f"sandbox; a sandboxed write that prunes lands the pruned "
+                               f"rows in the owner's real archive")
         if journal.LOG == real[0] or tmp not in journal.LOG.parents:
             errors += fail("_sandbox_admin leaves journal.LOG on the real journal")
-    if (journal.LOG, journal.ARCHIVE) != real:
+    if (journal.LOG, journal.archive_dir(), journal.legacy_archive()) != real:
         errors += fail("_sandbox_admin did not put the journal paths back")
+    # a prune inside the sandbox lands in the sandbox, and nowhere else
+    with _sandbox_admin({"companies.json": []}) as tmp:
+        keep_n = journal.KEEP
+        try:
+            journal.KEEP = 1
+            day = dt.date.today().isoformat()
+            journal._write_entries([{"id": f"{day}#{i}", "at": f"{day}T08:00:0{i}-04:00"}
+                                    for i in (1, 2)])
+            if not list(journal.archived_lines(tmp)):
+                errors += fail("a prune inside _sandbox_admin did not reach the sandbox's archive")
+        finally:
+            journal.KEEP = keep_n
+            journal._CACHE = None
+    box = pathlib.Path(tempfile.mkdtemp(prefix="gtd-usedir-"))
+    keep_mf = (merge_families.admin.DATA, journal.DATA, journal.LOG)
+    try:
+        (box / "companies.json").write_text("[]\n")
+        merge_families.use_data_dir(str(box))
+        if box.resolve() not in journal.archive_dir().resolve().parents:
+            errors += fail("merge_families.use_data_dir moves the journal and not its archive")
+    finally:
+        merge_families.admin.DATA, journal.DATA, journal.LOG = keep_mf
+        shutil.rmtree(box, ignore_errors=True)
 
     if not _archive_leaked((10, b"row"), (11, b"row")):
         errors += fail("a row reaching the archive while the journal's newest "
@@ -58545,6 +58603,803 @@ def check_a_pruned_row_cannot_leak_into_the_archive() -> int:
         errors += fail("check_the_owner_can_argue_with_the_logic writes "
                        "against the live data directory again; every suite "
                        "run will append a duplicate row to the owner's archive")
+    return errors
+
+
+def _month_add(month: str, k: int) -> str:
+    """"YYYY-MM" k months from `month`."""
+    y, m = int(month[:4]), int(month[5:7]) + k
+    while m < 1:
+        y, m = y - 1, m + 12
+    while m > 12:
+        y, m = y + 1, m - 12
+    return f"{y:04d}-{m:02d}"
+
+
+def _jrow(month: str, day: int, i: int, **kw) -> dict:
+    """A synthetic journal entry stamped in `month`, the shape record() writes."""
+    d = f"{month}-{day:02d}"
+    return dict({"id": f"{d}#{i}", "at": f"{d}T10:00:{i % 60:02d}-05:00",
+                 "file": "selftest_rulings.json", "action": "selftest", "by": "selftest",
+                 "why": "a synthetic row", "n": 1, "changes": {}}, **kw)
+
+
+def _jline(row: dict) -> bytes:
+    return json.dumps(row).encode()
+
+
+@contextlib.contextmanager
+def _journal_box(keep: int = 3):
+    """journal.LOG - and so its archive, which lives beside it - in a temp
+    folder, with KEEP small. Never the real data/."""
+    import journal
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-archive-"))
+    saved = (journal.DATA, journal.LOG, journal.KEEP, journal.CAP)
+    journal.DATA, journal.LOG, journal.KEEP = tmp, tmp / "admin_journal.jsonl", keep
+    journal._CACHE = None
+    try:
+        yield tmp
+    finally:
+        journal.DATA, journal.LOG, journal.KEEP, journal.CAP = saved
+        journal._CACHE = None
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def check_a_pruned_row_lands_in_its_months_file() -> int:
+    """A row the live journal prunes is archived under ITS OWN month - its
+    "at" - in that month's open file, and a workflow that commits the live
+    journal commits the archive with it.
+
+    The old single file took every pruned row; data/journal_archive/ files
+    each in its month (journal.py, 2026-11-24). Not the month it is pruned
+    in: last month's final week is pruned this month, and filed by prune
+    date it would scatter one month over two files, and two copies of the
+    journal pruning one entry on different days would file it twice under
+    different names. Driven through _write_entries on a temp journal: while
+    an entry of last month is still live, last month stays open, so a row of
+    it pruned today lands in last month's plain file; a row whose id says
+    this month and whose at says last month goes by its at.
+    """
+    import journal
+    errors = 0
+    cur = dt.date.today().isoformat()[:7]
+    prev = _month_add(cur, -1)
+    with _journal_box(keep=3) as tmp:
+        d = journal.archive_dir(tmp)
+        p1, p2 = _jrow(prev, 27, 1), _jrow(prev, 28, 2)
+        odd = dict(_jrow(prev, 28, 5), id=f"{cur}-01#9")     # at: last month; id: this month
+        c1, c2, c3 = _jrow(cur, 1, 3), _jrow(cur, 1, 4), _jrow(cur, 2, 6)
+        journal._write_entries([p1, odd, c1, p2, c2])
+        got = {p.name: journal.lines_of(p.name, p.read_bytes())
+               for _m, _n, _s, p in journal.archive_parts(tmp)}
+        if got != {f"{prev}.jsonl": [_jline(p1), _jline(odd)]}:
+            errors += fail(f"two rows of last month pruned today were filed as {sorted(got)} "
+                           f"({sum(map(len, got.values()))} row(s)); each belongs in "
+                           f"{prev}.jsonl, the month of its own 'at', in the order pruned")
+        if len(journal._entries()) != 3:
+            errors += fail("the live journal does not keep KEEP entries after a prune")
+        journal._write_entries(journal._entries() + [c3])
+        if journal.lines_of("x", (d / f"{cur}.jsonl").read_bytes()
+                            if (d / f"{cur}.jsonl").exists() else b"") != [_jline(c1)]:
+            errors += fail(f"a row of this month pruned today did not land in {cur}.jsonl")
+        if not (d / f"{prev}.jsonl").exists():
+            errors += fail("last month's open file went while one of its entries is still live")
+    # AND IT REACHES MAIN: a workflow committing the live journal without the
+    # archive drops every row its writes pruned - in neither file on main
+    for wf in sorted((ROOT / ".github" / "workflows").glob("*.yml")):
+        y = "\n".join(ln for ln in wf.read_text().splitlines() if not ln.lstrip().startswith("#"))
+        for add in re.findall(r"git add ((?:[^\n\\]|\\\n)+)", y):
+            words = add.replace("\\\n", " ").split()
+            if "data/admin_journal.jsonl" in words and \
+                    not any(w.rstrip("/") == "data/journal_archive" for w in words):
+                errors += fail(f"{wf.name} commits data/admin_journal.jsonl without "
+                               f"data/journal_archive: every journal write there prunes a row "
+                               f"into the archive, and that row is then on main in neither file")
+    return errors
+
+
+def check_every_archived_row_reads_back_in_order() -> int:
+    """Reading the archive gives every row back once, in order: by month, then
+    by part number - a NUMBER, so part 10 follows part 9 - with a sealed part
+    read through gzip. A name the archive never writes is not a part."""
+    import journal
+    errors = 0
+    with _journal_box() as tmp:
+        d = journal.archive_dir(tmp)
+        d.mkdir()
+        want = []
+
+        def put(name: str, month: str, ids: list) -> None:
+            rows = [_jrow(month, 1, i) for i in ids]
+            raw = b"".join(_jline(r) + b"\n" for r in rows)
+            (d / name).write_bytes(journal.gz(raw) if name.endswith(".gz") else raw)
+        layout = [("2026-01.jsonl.gz", "2026-01", [1, 2]), ("2026-01.2.jsonl", "2026-01", [3]),
+                  ("2026-02.jsonl", "2026-02", [4, 5]), ("2026-02.2.jsonl.gz", "2026-02", [6]),
+                  ("2026-02.9.jsonl", "2026-02", [7]), ("2026-02.10.jsonl", "2026-02", [8])]
+        for name, month, ids in reversed(layout):
+            put(name, month, ids)
+        for _name, month, ids in layout:
+            want += [_jrow(month, 1, i)["id"] for i in ids]
+        (d / "2026-02.1.jsonl").write_bytes(_jline(_jrow("2026-02", 1, 99)) + b"\n")
+        (d / "notes.txt").write_text("not a part\n")
+        got = [json.loads(x)["id"] for x in journal.archived_lines(tmp)]
+        if got != want:
+            errors += fail(f"the archive read back {got}; want {want} - by month, then by part "
+                           f"number, each row once, and no file the archive does not write")
+        if [r["id"] for r in journal.archived_rows(tmp)] != want:
+            errors += fail("archived_rows does not read what archived_lines reads")
+    return errors
+
+
+def check_a_finished_month_is_sealed_once_and_never_appended() -> int:
+    """A month is SEALED - gzip, written once - at the write where the
+    calendar is past it and no entry of it, or of any earlier month, is left
+    in the live journal; never before, and never again after.
+
+    Before: an entry still live will be pruned, and a month sealed under it
+    sends that row to a second part for nothing. Never again: a row that
+    arrives for a sealed month (a checkout that was behind, a merge) starts
+    a part of its own, and the sealed file keeps its bytes - the same rows
+    always give the same bytes (mtime 0, no file name, OS byte 255), so git
+    never sees a change that is not one. And a row already sealed is not
+    filed twice. Driven through journal.normalize with the date given.
+    """
+    import journal
+    errors = 0
+    today = dt.date(2026, 3, 15)
+    jan, feb, mar = "2026-01", "2026-02", "2026-03"
+    a, b = _jrow(jan, 30, 1), _jrow(jan, 31, 2)
+    f1, m1 = _jrow(feb, 1, 3), _jrow(mar, 1, 4)
+    with _journal_box() as tmp:
+        d = journal.archive_dir(tmp)
+        journal.normalize(tmp, live=[b, f1, m1], rows=[a], today=today)
+        if (d / f"{jan}.jsonl.gz").exists() or not (d / f"{jan}.jsonl").exists():
+            errors += fail("a month was sealed while one of its entries was still in the live "
+                           "journal; that entry's prune would have needed a second part")
+        journal.normalize(tmp, live=[f1, m1], rows=[b], today=today)
+        sealed_p = d / f"{jan}.jsonl.gz"
+        if not sealed_p.exists() or (d / f"{jan}.jsonl").exists():
+            return errors + fail("the write that pruned a month's last live entry did not seal "
+                                 "the month into its gzip and remove the open file")
+        sealed = sealed_p.read_bytes()
+        if sealed != journal.gz(_jline(a) + b"\n" + _jline(b) + b"\n"):
+            errors += fail("a sealed month is not the deterministic gzip of its rows in order")
+        if sealed[:4] != b"\x1f\x8b\x08\x00" or sealed[4:8] != b"\0\0\0\0" or sealed[9] != 255:
+            errors += fail(f"a sealed month's gzip header carries a file name, a time or the "
+                           f"platform's OS code ({sealed[:10].hex()}); the same rows would "
+                           f"not give the same bytes")
+        journal.normalize(tmp, live=[], rows=[m1], today=today)
+        if (d / f"{mar}.jsonl.gz").exists() or not (d / f"{mar}.jsonl").exists():
+            errors += fail("the current month was sealed; it still gets rows")
+        late = _jrow(jan, 31, 7)
+        journal.normalize(tmp, live=[m1], rows=[late], today=today)
+        if sealed_p.read_bytes() != sealed:
+            errors += fail("a row for a sealed month was put INTO its gzip; a sealed file is "
+                           "written once")
+        p2 = d / f"{jan}.2.jsonl.gz"
+        if not p2.exists() or journal.lines_of(p2.name, p2.read_bytes()) != [_jline(late)]:
+            errors += fail(f"a late row for a sealed month did not start a part of its own: "
+                           f"{sorted(x.name for x in d.iterdir())}")
+        did = journal.normalize(tmp, live=[m1], rows=[a], today=today)
+        if did["filed"] or did["known"] != 1 or any(d.glob(f"{jan}.3.*")):
+            errors += fail(f"a row a sealed part already holds was filed again: {did}")
+    with _journal_box() as tmp2:
+        journal.normalize(tmp2, live=[f1, m1], rows=[a, b], today=today)
+        again = journal.archive_dir(tmp2) / f"{jan}.jsonl.gz"
+        if not again.exists() or again.read_bytes() != sealed:
+            errors += fail("the same rows sealed in another folder gave other bytes")
+    return errors
+
+
+def check_the_old_archive_file_folds_in_whole_and_once() -> int:
+    """data/admin_journal.archive.jsonl - the old single file - folds into the
+    month files with nothing lost, nothing twice, in order, and is removed:
+    the migration, a desk on the old code that kept appending to its copy
+    after the migration, and the file the old code makes anew once that
+    desk's checkout has followed main.
+
+    A row is recognised as archived by its whole line, so a desk's copy of
+    the old file - every migrated row plus what it pruned since - files only
+    what it pruned since; an exact copy of a line (the 09-26 selftest leak
+    left five of one 09-08 ruling) is kept once. The new code's first write
+    folds it, even a write that prunes nothing."""
+    import journal
+    errors = 0
+    today = dt.date(2026, 3, 15)
+    rows = [_jrow("2026-01", 5, 1), _jrow("2026-01", 6, 2), _jrow("2026-02", 1, 3)]
+    lines = [_jline(r) for r in rows]
+    live = [_jrow("2026-03", 1, 9)]
+    old_text = b"".join(x + b"\n" for x in [lines[0], lines[0]] + lines[1:])
+    with _journal_box() as tmp:
+        old = journal.legacy_archive(tmp)
+        old.write_bytes(old_text)
+        journal.normalize(tmp, live=live, today=today)
+        if old.exists():
+            errors += fail("the old archive file is still there after its fold")
+        if list(journal.archived_lines(tmp)) != lines:
+            errors += fail(f"the migration lost, doubled or reordered a row: "
+                           f"{[json.loads(x)['id'] for x in journal.archived_lines(tmp)]}")
+        since = [_jrow("2026-03", 2, 4), _jrow("2026-03", 3, 5)]
+        old.write_bytes(old_text + b"".join(_jline(r) + b"\n" for r in since))
+        did = journal.normalize(tmp, live=live, today=today)
+        want = lines + [_jline(r) for r in since]
+        if list(journal.archived_lines(tmp)) != want or did["folded"] != 2 or did["known"] != 4:
+            errors += fail(f"a desk's copy of the old file - every migrated row and two it "
+                           f"pruned since - did not file exactly the two: {did}")
+        newer = _jrow("2026-03", 4, 6)
+        old.write_bytes(_jline(newer) + b"\n")
+        journal.normalize(tmp, live=live, today=today)
+        if list(journal.archived_lines(tmp)) != want + [_jline(newer)] or old.exists():
+            errors += fail("the old file the old code made anew was not folded in")
+    with _journal_box(keep=500) as tmp:
+        day = dt.date.today()
+        first = _jrow(day.isoformat()[:7], day.day, 1)
+        journal.legacy_archive(tmp).write_bytes(_jline(first) + b"\n")
+        journal._write_entries([_jrow(day.isoformat()[:7], day.day, 2)])
+        if journal.legacy_archive(tmp).exists() or \
+                list(journal.archived_lines(tmp)) != [_jline(first)]:
+            errors += fail("a journal write that pruned nothing left the old archive file "
+                           "beside the new one unfolded")
+    return errors
+
+
+def check_a_row_in_another_months_file_goes_home() -> int:
+    """A row sitting in ANOTHER month's open file goes to its own month, once,
+    at the next `journal.py --fold`, desk publish or resolve - and a seal
+    never seals it into the wrong month's gzip.
+
+    Git puts one there: a branch from before the migration, merging main,
+    follows the old single file into the month file it judges a rename of it
+    and adds the branch's rows to that file, whatever their month. The
+    everyday write does not read a month to find them; the full pass does,
+    and a seal reads its month anyway."""
+    import journal
+    errors = 0
+    today = dt.date(2026, 3, 15)
+    j1, j2, f1 = _jrow("2026-01", 3, 1), _jrow("2026-01", 4, 2), _jrow("2026-02", 1, 3)
+    m1 = _jrow("2026-03", 1, 4)
+    with _journal_box() as tmp:
+        d = journal.archive_dir(tmp)
+        d.mkdir()
+        (d / "2026-02.jsonl").write_bytes(_jline(f1) + b"\n")
+        f2 = _jrow("2026-02", 2, 5)
+        # a merge left two February rows in January's file, one of them a copy
+        (d / "2026-01.jsonl").write_bytes(b"".join(_jline(x) + b"\n" for x in (j1, f1, f2, j2)))
+        did = journal.normalize(tmp, live=[j2, m1], today=today, full=True)
+
+        def ids(name):
+            p = d / name
+            return [json.loads(x)["id"] for x in journal.lines_of(name, p.read_bytes())] \
+                if p.exists() else None
+        if ids("2026-01.jsonl") != [j1["id"], j2["id"]] or \
+                ids("2026-02.jsonl") != [f1["id"], f2["id"]] or did["refiled"] != 2:
+            errors += fail(f"rows a merge left in another month's file did not go to their own "
+                           f"month once each: January {ids('2026-01.jsonl')}, February "
+                           f"{ids('2026-02.jsonl')}, {did}")
+        # a seal finds one too, and files it in its own month instead
+        (d / "2026-01.jsonl").write_bytes(b"".join(_jline(x) + b"\n" for x in (j1, m1, j2)))
+        journal.normalize(tmp, live=[_jrow("2026-03", 2, 9)], today=today)
+        if ids("2026-01.jsonl.gz") != [j1["id"], j2["id"]] or \
+                m1["id"] not in (ids("2026-03.jsonl") or []):
+            errors += fail(f"a seal put another month's row into the gzip, or lost it: January "
+                           f"{ids('2026-01.jsonl.gz')}, March {ids('2026-03.jsonl')}")
+        bad, look = journal.archive_problems(tmp)
+        if bad or any("another month" in x for x in look):
+            errors += fail(f"the archive after the moves still breaks its rules: {bad + look}")
+    return errors
+
+
+def check_no_archive_file_passes_the_cap() -> int:
+    """No archive file passes journal.CAP (40 MB; GitHub warns at 50 and
+    refuses a push over 100). An open month continues in the next numbered
+    part, a seal splits the same way, one row bigger than the cap sits alone,
+    and an open part a union merge pushed over is re-split at the next
+    write - every row once, in order. Driven with the cap at a few hundred
+    bytes."""
+    import journal
+    errors = 0
+    today = dt.date(2026, 3, 15)
+    with _journal_box() as tmp:
+        journal.CAP = 600
+        rows = [_jrow("2026-03", 1, i, why="w" * 150) for i in range(1, 11)]
+        did = journal.normalize(tmp, live=[], rows=rows, today=today)
+        if did["split"]:
+            errors += fail(f"ordinary appends carried an open part past the cap and the write "
+                           f"re-split it after - at 40 MB that is a month rewritten per click: {did}")
+
+        def sizes():
+            return {p.name: (p.stat().st_size, len(journal.lines_of(p.name, p.read_bytes())))
+                    for _m, _n, _s, p in journal.archive_parts(tmp)}
+        over = {k: v for k, v in sizes().items() if v[0] > journal.CAP and v[1] > 1}
+        if len(sizes()) < 3 or over:
+            errors += fail(f"ten rows of 330 bytes under a 600-byte cap: {sizes()}")
+        if [json.loads(x)["id"] for x in journal.archived_lines(tmp)] != [r["id"] for r in rows]:
+            errors += fail("a month continued in numbered parts reads back out of order")
+        big, small = _jrow("2026-03", 2, 20, why="x" * 900), _jrow("2026-03", 2, 21)
+        journal.normalize(tmp, live=[], rows=[big, small], today=today)
+        alone = [k for k, v in sizes().items() if v[1] == 1 and v[0] > journal.CAP]
+        if len(alone) != 1:
+            errors += fail(f"a row bigger than the cap does not sit alone in its part: {sizes()}")
+        last = journal.archive_parts(tmp)[-1][3]
+        extra = [_jrow("2026-03", 3, i, why="u" * 150) for i in (30, 31, 32)]
+        with open(last, "ab") as fh:                      # what a union merge leaves
+            fh.write(b"".join(_jline(r) + b"\n" for r in extra))
+        journal.normalize(tmp, live=[], today=today)
+        over = {k: v for k, v in sizes().items() if v[0] > journal.CAP and v[1] > 1}
+        want = [r["id"] for r in rows + [big, small] + extra]
+        if over or [json.loads(x)["id"] for x in journal.archived_lines(tmp)] != want:
+            errors += fail(f"an open part a merge pushed past the cap was not re-split, or the "
+                           f"re-split lost its order: {sizes()}")
+        rnd = [_jrow("2026-01", 2, i, why="".join(hashlib.sha256(f"{i}.{k}".encode()).hexdigest()
+                                                   for k in range(4)))
+               for i in range(1, 13)]
+        journal.normalize(tmp, live=[], rows=rnd, today=today)
+        sealed = [p for m, _n, s, p in journal.archive_parts(tmp) if m == "2026-01" and s]
+        if len(sealed) < 2 or any(p.stat().st_size > journal.CAP for p in sealed) \
+                or any(m == "2026-01" and not s for m, _n, s, _p in journal.archive_parts(tmp)):
+            errors += fail(f"a seal past the cap did not split into gzip parts each within it: "
+                           f"{[(p.name, p.stat().st_size) for p in sealed]}")
+        if [json.loads(x)["id"] for x in journal.archived_lines(tmp)][:12] != [r["id"] for r in rnd]:
+            errors += fail("a month sealed in several parts reads back out of order")
+        bad, _look = journal.archive_problems(tmp)
+        if bad:
+            errors += fail(f"the archive the cap built breaks its own rules: {bad[:3]}")
+    return errors
+
+
+def check_the_journal_archive_keeps_its_rules() -> int:
+    """The real archive, read only: the old single file is not tracked again
+    (a merge that kept it would put 71.6 MB back on main), and every part is
+    a name the archive writes, within the cap, readable, never open beside a
+    sealed part of the same number, and holding only its own month's rows.
+    The rule is first held against a folder built to break each one."""
+    import journal
+    errors = 0
+    with _journal_box() as tmp:
+        d = journal.archive_dir(tmp)
+        d.mkdir()
+        (d / "2026-01.jsonl.gz").write_bytes(journal.gz(_jline(_jrow("2026-01", 1, 1)) + b"\n"))
+        (d / "2026-01.jsonl").write_bytes(_jline(_jrow("2026-01", 2, 2)) + b"\n")
+        (d / "2026-02.jsonl").write_bytes(_jline(_jrow("2026-03", 1, 3)) + b"\n")
+        (d / "2026-02.01.jsonl").write_bytes(b"")
+        (d / "2026-04.jsonl.gz").write_bytes(b"not gzip at all")
+        (d / "2026-05.jsonl.gz").write_bytes(journal.gz(_jline(_jrow("2026-06", 1, 4)) + b"\n"))
+        bad, look = journal.archive_problems(tmp)
+        # what needs a person fails; what the next write, publish or --fold
+        # puts right is said, and must not stop the nightly
+        for needle, where in (("2026-02.01.jsonl is not a part name", bad),
+                              ("2026-04.jsonl.gz does not decompress", bad),
+                              ("2026-05.jsonl.gz is sealed with 1 row(s) of another month", bad),
+                              ("2026-01.jsonl is open beside", look),
+                              ("2026-02.jsonl holds 1 row(s) of another month", look)):
+            if not any(needle in x for x in where):
+                errors += fail(f"journal.archive_problems does not say '{needle}' "
+                               f"{'as a failure' if where is bad else 'as a note'}: {bad} {look}")
+    tracked = subprocess.run(["git", "ls-files", "--", f"data/{journal.LEGACY_ARCHIVE}"],
+                             cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    if tracked:
+        errors += fail(f"data/{journal.LEGACY_ARCHIVE} is tracked again - a merge kept the old "
+                       f"single file. Fold it: `python3 scripts/journal.py --fold`, then "
+                       f"`git add -A data/journal_archive data/{journal.LEGACY_ARCHIVE}`")
+    bad, look = journal.archive_problems(DATA)
+    for x in bad:
+        errors += fail(f"data/journal_archive: {x}")
+    for x in look:
+        note(f"data/journal_archive: {x}")
+    return errors
+
+
+def check_the_publisher_carries_the_archive_by_row() -> int:
+    """scripts/publish.py publishes the journal's archive - every new or
+    changed part under data/journal_archive/ - carried onto main's archive
+    row by row, driven through whole cycles against throwaway repositories:
+
+      - rows the desk pruned since main reach main's month file, once, after
+        rows main got meanwhile; a data file named only by an entry already
+        pruned into the archive is published with them;
+      - a desk still running the OLD code makes data/admin_journal.archive
+        .jsonl anew beside the new layout once its checkout followed main:
+        its rows reach main filed into the month files - never as that file,
+        never twice - and the sync removes it;
+      - a month the desk sealed while main appended to it is no conflict;
+      - a desk whose checkout is still BEFORE the migration (the old file
+        tracked, rows appended to it, its edits unpublished), with main's
+        scripts fetched by hand: its rows reach the layout and the checkout
+        comes up to main, the hand-fetched file not in the way.
+    """
+    import admin as _a
+    import journal
+    import publish as P
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-publish-archive-"))
+    keep = (P.ROOT, _a.DATA)
+    cur = dt.date.today().isoformat()[:7]
+    prev = _month_add(cur, -1)
+    ignore = ("/data/publish_state.json\n/data/publish_state.tmp\n/data/.admin.lock\n"
+              "/data/claude_inbox.jsonl\n/data/.publish_base/\n*.tmp\n")
+
+    def text(rows):
+        return "".join(json.dumps(r) + "\n" for r in rows)
+
+    def clone(name, url):
+        d = tmp / name
+        _git(tmp, "clone", "-q", str(url), str(d))
+        for k, v in (("user.name", name), ("user.email", f"{name}@localhost"),
+                     ("commit.gpgsign", "false")):
+            _git(d, "config", k, v)
+        return d
+
+    def age(where, t0, seconds=600):
+        for p in (where / "data").rglob("*"):
+            if p.is_file():
+                os.utime(p, (t0 - seconds, t0 - seconds))
+
+    def redraw(wt):
+        (wt / "data" / "board.json").write_text('{"generated": "x", "organizations": []}\n')
+        return None
+    kw = dict(busy=lambda: [], run_checks=lambda wt, staged: None, drift=lambda wt: 0,
+              redraw=redraw, pages=lambda sha: None)
+
+    def main_lines(origin, path):
+        raw = subprocess.run(["git", "show", f"main:{path}"], cwd=origin,
+                             capture_output=True).stdout
+        return [json.loads(x)["id"] for x in journal.lines_of(path, raw)] if raw else None
+
+    def cycle(desk, now):
+        P.ROOT, _a.DATA = desk, desk / "data"
+        try:
+            with contextlib.redirect_stdout(io.StringIO()):
+                return P.cycle(now=now, **kw)
+        except Exception as exc:                                # noqa: BLE001
+            return {"outcome": f"crashed: {type(exc).__name__}: {exc}"[:300]}
+    try:
+        # ---- 1-3: a desk on the new code
+        origin = tmp / "origin.git"
+        _git(tmp, "init", "-q", "--bare", "-b", "main", str(origin))
+        seed = _git_repo(tmp / "seed")
+        (seed / "data" / "journal_archive").mkdir(parents=True)
+        shutil.copy(ROOT / ".gitattributes", seed / ".gitattributes")
+        (seed / ".gitignore").write_text(ignore)
+        (seed / "data" / "companies.json").write_text('[{"id": "a", "name": "A"}]\n')
+        (seed / "data" / "board.json").write_text('{"generated": "x"}\n')
+        r1, r2 = _jrow(cur, 1, 1), _jrow(cur, 1, 2)
+        old1 = _jrow(prev, 27, 50)
+        # last month stays open while one of its entries (lp) is still live
+        lp = _jrow(prev, 28, 51)
+        live = [_jrow(cur, 2, i) for i in (3, 4, 5)]
+        (seed / "data" / "admin_journal.jsonl").write_text(text([lp] + live))
+        part = f"data/journal_archive/{cur}.jsonl"
+        (seed / part).write_text(text([r1, r2]))
+        (seed / f"data/journal_archive/{prev}.jsonl").write_text(text([old1]))
+        _git(seed, "add", "-A"); _git(seed, "commit", "-q", "-m", "seed")
+        _git(seed, "remote", "add", "origin", str(origin)); _git(seed, "push", "-q", "origin", "main")
+        desk, bot = clone("desk", origin), clone("bot", origin)
+        # a session's write lands on main meanwhile: one row pruned into the same month
+        s1 = _jrow(cur, 1, 6)
+        with open(bot / part, "a") as fh:
+            fh.write(json.dumps(s1) + "\n")
+        _git(bot, "commit", "-qam", "a session's write"); _git(bot, "push", "-q", "origin", "main")
+        # the desk: a ruling on scrub.json, journalled, then pruned before the cycle
+        ruling = _jrow(cur, 3, 7, file="scrub.json")
+        (desk / "data" / "scrub.json").write_text('{"x": {"on": 1}}\n')
+        with open(desk / part, "a") as fh:
+            fh.write(json.dumps(live[0]) + "\n" + json.dumps(ruling) + "\n")
+        later = [_jrow(cur, 4, i) for i in (8, 9)]
+        (desk / "data" / "admin_journal.jsonl").write_text(text([lp] + live[1:] + later))
+        t0 = time.time()
+        age(desk, t0)
+        r = cycle(desk, t0)
+        got = main_lines(origin, part)
+        files = _git(origin, "ls-tree", "-r", "--name-only", "main").split()
+        if r.get("outcome") != "pushed":
+            errors += fail(f"a desk with rows pruned into the archive did not publish: {r}")
+        elif got != [r1["id"], r2["id"], s1["id"], live[0]["id"], ruling["id"]]:
+            errors += fail(f"main's month file after the publish holds {got}: want main's rows, "
+                           f"then the desk's two, each once")
+        if "data/scrub.json" not in files:
+            errors += fail("a file named only by an entry already pruned into the archive was "
+                           "not published")
+        if part not in (r.get("files") or []):
+            errors += fail(f"the publish does not list the archive part it changed: {r.get('files')}")
+        if _git(desk, "rev-parse", "HEAD").strip() != _git(origin, "rev-parse", "main").strip():
+            errors += fail(f"the checkout was not brought up to main: {r.get('sync')}")
+        # ---- 2. the old code, still running, makes the old file anew
+        z1 = _jrow(cur, 5, 10)
+        legacy = desk / "data" / journal.LEGACY_ARCHIVE
+        legacy.write_text(text([ruling, z1]))
+        with open(desk / "data" / "admin_journal.jsonl", "a") as fh:
+            fh.write(json.dumps(_jrow(cur, 6, 11)) + "\n")
+        age(desk, t0 + 4000)
+        r = cycle(desk, t0 + 4000)
+        got = main_lines(origin, part)
+        files = _git(origin, "ls-tree", "-r", "--name-only", "main").split()
+        if r.get("outcome") != "pushed" or got is None or got.count(z1["id"]) != 1 \
+                or got.count(ruling["id"]) != 1:
+            errors += fail(f"rows the old code wrote to the old file did not reach main's month "
+                           f"file once each: {r.get('outcome')} {got}")
+        if f"data/{journal.LEGACY_ARCHIVE}" in files:
+            errors += fail("the old single file was published to main again")
+        if legacy.exists() or _git(desk, "rev-parse", "HEAD").strip() != \
+                _git(origin, "rev-parse", "main").strip():
+            errors += fail(f"after the publish the desk still has the old file, or its checkout "
+                           f"did not follow main: {r.get('sync')}")
+        # ---- 3. the desk pruned last month's live entry and sealed the
+        # month, while a session appended another row of it on main
+        old3 = _jrow(prev, 28, 52)
+        _git(bot, "pull", "-q", "--rebase", "origin", "main")
+        with open(bot / f"data/journal_archive/{prev}.jsonl", "a") as fh:
+            fh.write(json.dumps(old3) + "\n")
+        _git(bot, "commit", "-qam", "a session pruned last month too"); _git(bot, "push", "-q", "origin", "main")
+        d_arch = desk / "data" / "journal_archive"
+        (d_arch / f"{prev}.jsonl.gz").write_bytes(journal.gz(
+            (json.dumps(old1) + "\n" + json.dumps(lp) + "\n").encode()))
+        (d_arch / f"{prev}.jsonl").unlink()
+        rows_now = [json.loads(x) for x in (desk / "data" / "admin_journal.jsonl").read_text().splitlines()]
+        (desk / "data" / "admin_journal.jsonl").write_text(text([x for x in rows_now if x["id"] != lp["id"]]))
+        age(desk, t0 + 8000)
+        r = cycle(desk, t0 + 8000)
+        got = main_lines(origin, f"data/journal_archive/{prev}.jsonl.gz")
+        files = _git(origin, "ls-tree", "-r", "--name-only", "main").split()
+        if r.get("outcome") != "pushed":
+            errors += fail(f"a month the desk sealed while main appended to it did not publish: "
+                           f"{r.get('outcome')} {r.get('conflicts') or r.get('why')}")
+        elif sorted(got or []) != sorted([old1["id"], lp["id"], old3["id"]]) \
+                or f"data/journal_archive/{prev}.jsonl" in files:
+            errors += fail(f"main's sealed month after the publish holds {got}; want both "
+                           f"sides' rows once, and no open file beside it")
+        # ---- 4. a desk still on the checkout from BEFORE the migration
+        origin2 = tmp / "origin2.git"
+        _git(tmp, "init", "-q", "--bare", "-b", "main", str(origin2))
+        seed2 = _git_repo(tmp / "seed2")
+        (seed2 / "data").mkdir()
+        (seed2 / "scripts").mkdir()
+        (seed2 / ".gitignore").write_text(ignore)
+        (seed2 / "data" / "companies.json").write_text('[{"id": "a", "name": "A"}]\n')
+        (seed2 / "data" / "board.json").write_text('{"generated": "x"}\n')
+        (seed2 / "scripts" / "tool.py").write_text("version = 1\n")
+        o1, o2 = _jrow(prev, 20, 60), _jrow(cur, 1, 61)
+        live2 = [_jrow(cur, 2, i) for i in (62, 63)]
+        (seed2 / "data" / journal.LEGACY_ARCHIVE).write_text(text([o1, o2]))
+        (seed2 / "data" / "admin_journal.jsonl").write_text(text(live2))
+        _git(seed2, "add", "-A"); _git(seed2, "commit", "-q", "-m", "before the migration")
+        _git(seed2, "remote", "add", "origin", str(origin2)); _git(seed2, "push", "-q", "origin", "main")
+        desk2 = clone("desk2", origin2)
+        # main: the migration (the same fold the code does) and new code
+        shutil.copy(ROOT / ".gitattributes", seed2 / ".gitattributes")
+        journal.normalize(seed2 / "data", live=live2)
+        (seed2 / "scripts" / "tool.py").write_text("version = 2\n")
+        _git(seed2, "add", "-A"); _git(seed2, "commit", "-q", "-m", "the migration")
+        _git(seed2, "push", "-q", "origin", "main")
+        # the desk, unpublished: a row pruned into ITS old file, its live journal moved on
+        o3 = _jrow(cur, 3, 64, file="scrub.json")
+        with open(desk2 / "data" / journal.LEGACY_ARCHIVE, "a") as fh:
+            fh.write(json.dumps(o3) + "\n")
+        (desk2 / "data" / "scrub.json").write_text('{"y": {"on": 2}}\n')
+        (desk2 / "data" / "admin_journal.jsonl").write_text(text(live2 + [_jrow(cur, 4, 65)]))
+        # the owner's step: main's scripts, fetched by hand
+        _git(desk2, "fetch", "-q", "origin", "main")
+        _git(desk2, "checkout", "origin/main", "--", "scripts")
+        age(desk2, t0 + 12000)
+        r = cycle(desk2, t0 + 12000)
+        rows_main = []
+        for name in _git(origin2, "ls-tree", "-r", "--name-only", "main").split():
+            if name.startswith("data/journal_archive/"):
+                rows_main += main_lines(origin2, name) or []
+        files2 = _git(origin2, "ls-tree", "-r", "--name-only", "main").split()
+        if r.get("outcome") != "pushed":
+            errors += fail(f"a desk still before the migration did not publish: "
+                           f"{r.get('outcome')} {r.get('conflicts') or r.get('why')}")
+        if sorted(rows_main) != sorted([o1["id"], o2["id"], o3["id"]]):
+            errors += fail(f"main's archive after a pre-migration desk published holds "
+                           f"{rows_main}; want the migrated rows and the desk's one, once each")
+        if f"data/{journal.LEGACY_ARCHIVE}" in files2 or "data/scrub.json" not in files2:
+            errors += fail("the pre-migration desk's publish put the old file back on main, or "
+                           "lost the file its pruned ruling named")
+        if _git(desk2, "rev-parse", "HEAD").strip() != _git(origin2, "rev-parse", "main").strip() \
+                or (desk2 / "data" / journal.LEGACY_ARCHIVE).exists() \
+                or _git(desk2, "status", "--porcelain").strip():
+            errors += fail(f"the pre-migration desk did not come up to main, clean: "
+                           f"{r.get('sync')} {_git(desk2, 'status', '--porcelain').strip()[:200]}")
+    except RuntimeError as exc:
+        errors += fail(f"the publisher fixture could not be built: {exc}")
+    finally:
+        P.ROOT, _a.DATA = keep
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_a_rebase_settles_the_archive_by_row() -> int:
+    """The workflows' push step rebases the bot's commit onto main. A month
+    sealed on main while the bot pruned a row of it is "deleted by them,
+    modified by us" file by file - and merge_decisions --resolve read every
+    conflicted data file as text, which a gzip part is not. It settles the
+    archive by row now (journal.resolve): main's sealed file stands, the
+    bot's row is filed into a part of its own, nothing twice; two sides
+    appending to one open month are settled the same way. A session's
+    branch from before the migration, merging main, comes out whole by
+    CLAUDE.md's steps (`journal.py --resolve` where git stops, then
+    `--fold`) - git follows the old file into a month file it judges a
+    rename of it, which is why the plain parts carry NO union merge: it
+    would append other months' rows there without stopping. Driven through
+    real rebases and a real merge."""
+    import journal
+    import merge_decisions as MD
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-archive-rebase-"))
+    keep_root = MD.ROOT
+    cur = dt.date.today().isoformat()[:7]
+    prev = _month_add(cur, -1)
+
+    def text(rows):
+        return "".join(json.dumps(r) + "\n" for r in rows)
+    try:
+        r = _git_repo(tmp / "r")
+        arch = r / "data" / "journal_archive"
+        arch.mkdir(parents=True)
+        shutil.copy(ROOT / ".gitattributes", r / ".gitattributes")
+        live = [_jrow(cur, 2, i) for i in (1, 2)]
+        p1, p2, p3 = _jrow(prev, 27, 3), _jrow(prev, 28, 4), _jrow(prev, 28, 5)
+        c0, c1, c2 = _jrow(cur, 1, 6), _jrow(cur, 1, 7), _jrow(cur, 1, 8)
+        (r / "data" / "admin_journal.jsonl").write_text(text(live))
+        (arch / f"{prev}.jsonl").write_text(text([p1]))
+        (arch / f"{cur}.jsonl").write_text(text([c0]))
+        _git(r, "add", "-A"); _git(r, "commit", "-q", "-m", "base")
+        _git(r, "branch", "bot")
+        # main: both appended to this month (below), and last month sealed
+        with open(arch / f"{cur}.jsonl", "a") as fh:
+            fh.write(json.dumps(c1) + "\n")
+        _git(r, "commit", "-qam", "main appends")
+        _git(r, "branch", "bot2")
+        sealed = journal.gz(text([p1, p2]).encode())
+        (arch / f"{prev}.jsonl.gz").write_bytes(sealed)
+        (arch / f"{prev}.jsonl").unlink()
+        _git(r, "add", "-A"); _git(r, "commit", "-q", "-m", "main seals last month")
+        # two appends to one open month: the rebase stops, the resolver
+        # settles it by row
+        _git(r, "checkout", "-q", "bot")
+        with open(arch / f"{cur}.jsonl", "a") as fh:
+            fh.write(json.dumps(c2) + "\n")
+        _git(r, "commit", "-qam", "the bot appends")
+        rb = subprocess.run(["git", "rebase", "-q", "bot2"], cwd=r, capture_output=True, text=True)
+        MD.ROOT = r
+        if rb.returncode != 0:
+            with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                rc = MD.resolve()
+            cont = subprocess.run(["git", "rebase", "--continue"], cwd=r, capture_output=True,
+                                  text=True, env=dict(os.environ, GIT_EDITOR="true"))
+            if rc != 0 or cont.returncode != 0:
+                errors += fail("two sides appending to one open month were left for a person")
+        if [json.loads(x)["id"] for x in journal.lines_of("x", (arch / f"{cur}.jsonl").read_bytes())] \
+                != [c0["id"], c1["id"], c2["id"]]:
+            errors += fail("two sides' appends to one open month lost, doubled or reordered a row")
+        # the seal: the bot pruned a row of last month into its open file
+        with open(arch / f"{prev}.jsonl", "a") as fh:
+            fh.write(json.dumps(p3) + "\n")
+        _git(r, "commit", "-qam", "the bot prunes last month")
+        rb = subprocess.run(["git", "rebase", "main"], cwd=r, capture_output=True, text=True)
+        if rb.returncode == 0:
+            errors += fail("the fixture did not produce the conflict a seal makes")
+        MD.ROOT = r
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            rc = MD.resolve()
+        if rc != 0:
+            errors += fail("a month sealed on main while the bot pruned a row of it was left for "
+                           "a person; the night's push would stop")
+        else:
+            env = dict(os.environ, GIT_EDITOR="true")
+            cont = subprocess.run(["git", "rebase", "--continue"], cwd=r, capture_output=True,
+                                  text=True, env=env)
+            got = [json.loads(x)["id"] for x in journal.archived_lines(r / "data")]
+            if cont.returncode != 0:
+                errors += fail(f"the rebase did not go on after the archive was settled: "
+                               f"{cont.stderr[-200:]}")
+            if (arch / f"{prev}.jsonl.gz").read_bytes() != sealed:
+                errors += fail("main's sealed month was replaced by the bot's side")
+            if (arch / f"{prev}.jsonl").exists() or sorted(got) != sorted(
+                    x["id"] for x in (p1, p2, p3, c0, c1, c2)):
+                errors += fail(f"the settled archive holds {got}; want every row of both sides "
+                               f"once, and no open file beside the sealed one")
+        subprocess.run(["git", "rebase", "--abort"], cwd=r, capture_output=True)
+        # A SESSION'S BRANCH FROM BEFORE THE MIGRATION merges main: it appended
+        # to the old single file, which main folded and removed. CLAUDE.md
+        # says `journal.py --resolve`; in a merge main is stage 3.
+        m = _git_repo(tmp / "m")
+        (m / "data").mkdir()
+        shutil.copy(ROOT / ".gitattributes", m / ".gitattributes")
+        o1, o2 = _jrow(prev, 20, 20), _jrow(cur, 1, 21)
+        (m / "data" / journal.LEGACY_ARCHIVE).write_text(text([o1, o2]))
+        (m / "data" / "admin_journal.jsonl").write_text(text(live))
+        _git(m, "add", "-A"); _git(m, "commit", "-q", "-m", "before the migration")
+        _git(m, "branch", "session")
+        journal.normalize(m / "data", live=live)
+        _git(m, "add", "-A"); _git(m, "commit", "-q", "-m", "the migration")
+        _git(m, "checkout", "-q", "session")
+        o3 = _jrow(cur, 3, 22)
+        with open(m / "data" / journal.LEGACY_ARCHIVE, "a") as fh:
+            fh.write(json.dumps(o3) + "\n")
+        _git(m, "commit", "-qam", "the session prunes into the old file")
+        mg = subprocess.run(["git", "merge", "-q", "main"], cwd=m, capture_output=True, text=True)
+        keep_log = journal.LOG
+        rc = 0
+        try:
+            journal.LOG = m / "data" / "admin_journal.jsonl"
+            with contextlib.redirect_stdout(io.StringIO()):
+                if mg.returncode != 0:                   # where git stops
+                    rc = journal.main(["--resolve"])
+                    subprocess.run(["git", "commit", "-q", "--no-edit"], cwd=m,
+                                   capture_output=True)
+                rc = rc or journal.main(["--fold"])
+        finally:
+            journal.LOG = keep_log
+            journal._CACHE = None
+        got = [json.loads(x)["id"] for x in journal.archived_lines(m / "data")]
+        bad, look = journal.archive_problems(m / "data")
+        tracked = _git(m, "ls-files").split()
+        if rc != 0 or subprocess.run(["git", "diff", "--name-only", "--diff-filter=U"], cwd=m,
+                                     capture_output=True, text=True).stdout.strip():
+            errors += fail(f"a pre-migration branch merging main was not settled by "
+                           f"`journal.py --resolve` and `--fold`: merge {mg.returncode}, rc {rc}")
+        elif sorted(got) != sorted(x["id"] for x in (o1, o2, o3)) or bad \
+                or any("another month" in x for x in look) \
+                or f"data/{journal.LEGACY_ARCHIVE}" in tracked:
+            errors += fail(f"after the merge the archive holds {got} ({bad + look}); want the "
+                           f"migrated rows and the session's one, once each, each in its own "
+                           f"month, and the old file gone")
+        # THE OTHER DIRECTION: the migration's own branch merges a main that
+        # appended to the old file meanwhile - October's real shape, one month
+        # over two parts, the first of which git judges a rename of the old
+        # file. `--resolve` must keep the branch's part: standing main's old
+        # file under its name would hold the second part's rows twice.
+        g = _git_repo(tmp / "g")
+        (g / "data").mkdir()
+        shutil.copy(ROOT / ".gitattributes", g / ".gitattributes")
+        cs = [_jrow(cur, 1, i, why="w" * 150) for i in range(30, 36)]
+        q1 = _jrow(prev, 27, 36)
+        (g / "data" / journal.LEGACY_ARCHIVE).write_text(text(cs + [q1]))
+        (g / "data" / "admin_journal.jsonl").write_text(text(live))
+        _git(g, "add", "-A"); _git(g, "commit", "-q", "-m", "before the migration")
+        _git(g, "branch", "migration")
+        c4 = _jrow(cur, 2, 37)
+        with open(g / "data" / journal.LEGACY_ARCHIVE, "a") as fh:
+            fh.write(json.dumps(c4) + "\n")
+        _git(g, "commit", "-qam", "main prunes into the old file")
+        _git(g, "checkout", "-q", "migration")
+        keep_log, keep_cap = journal.LOG, journal.CAP
+        try:
+            journal.CAP = 1500                          # the month over two parts
+            journal.normalize(g / "data", live=live)
+            _git(g, "add", "-A"); _git(g, "commit", "-q", "-m", "the migration")
+            mg = subprocess.run(["git", "merge", "-q", "main"], cwd=g, capture_output=True,
+                                text=True)
+            journal.LOG = g / "data" / "admin_journal.jsonl"
+            with contextlib.redirect_stdout(io.StringIO()):
+                rc = journal.main(["--resolve"]) if mg.returncode != 0 else 0
+            got = [json.loads(x)["id"] for x in journal.archived_lines(g / "data")]
+            bad, look = journal.archive_problems(g / "data")
+        finally:
+            journal.LOG, journal.CAP = keep_log, keep_cap
+            journal._CACHE = None
+        if mg.returncode == 0:
+            note("the migration's branch merged main's old-file append without a stop; "
+                 "the --resolve side choice was not exercised on this git")
+        elif rc != 0 or sorted(got) != sorted(x["id"] for x in cs + [q1, c4]) or bad \
+                or any("another month" in x for x in look):
+            errors += fail(f"merging main's old-file append into the migration's branch, "
+                           f"`--resolve` left {got} ({bad + look}); the branch's parts must "
+                           f"stand and main's new row be filed once, in its own month")
+    except RuntimeError as exc:
+        errors += fail(f"the resolver fixture could not be built: {exc}")
+    finally:
+        MD.ROOT = keep_root
+        shutil.rmtree(tmp, ignore_errors=True)
+    for name in (f"data/journal_archive/2026-01.jsonl.gz", "data/journal_archive/2026-01.jsonl"):
+        attrs = subprocess.run(["git", "check-attr", "binary", "merge", "--", name], cwd=ROOT,
+                               capture_output=True, text=True).stdout
+        if name.endswith(".gz") and "binary: set" not in attrs:
+            errors += fail(f".gitattributes does not mark {name} binary: {attrs.strip()}")
+        if name.endswith(".jsonl") and "merge: union" in attrs:
+            errors += fail(f".gitattributes gives {name} the union merge: a merge that follows "
+                           f"the old file into a month file appends other months' rows there")
     return errors
 
 
@@ -64195,6 +65050,15 @@ def main() -> int:
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()
+    errors += check_a_pruned_row_lands_in_its_months_file()
+    errors += check_every_archived_row_reads_back_in_order()
+    errors += check_a_finished_month_is_sealed_once_and_never_appended()
+    errors += check_the_old_archive_file_folds_in_whole_and_once()
+    errors += check_no_archive_file_passes_the_cap()
+    errors += check_a_row_in_another_months_file_goes_home()
+    errors += check_the_journal_archive_keeps_its_rules()
+    errors += check_the_publisher_carries_the_archive_by_row()
+    errors += check_a_rebase_settles_the_archive_by_row()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()
@@ -64430,14 +65294,15 @@ def main() -> int:
     arch_after = _archive_fingerprint()
     if _archive_leaked(_archive_before, arch_after):
         errors += fail(
-            f"data/admin_journal.archive.jsonl grew by "
+            f"data/journal_archive/ grew by "
             f"{arch_after[0] - _archive_before[0]} row(s) during this run while "
             f"the journal's newest entry did not change. A check wrote through "
             f"the real journal - the write pruned the oldest row into the "
             f"archive - and then put the journal back from a backup; the "
             f"archive kept the pruned row, which the journal still holds. Run "
-            f"that check inside _sandbox_admin (it moves the archive too) and "
-            f"`git checkout -- data/admin_journal.archive.jsonl`.")
+            f"that check inside _sandbox_admin (moving LOG moves the archive) and "
+            f"`git checkout -- data/journal_archive/` (with `git clean` for a part "
+            f"it created).")
     elif arch_after[0] > _archive_before[0]:
         print("note: the archive grew during this run and the journal's newest "
               "entry changed with it, so somebody was ruling in the admin. "

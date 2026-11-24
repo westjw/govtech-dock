@@ -1,0 +1,13 @@
+# THE JOURNAL ARCHIVE (scripts/journal.py, data/journal_archive/): one file per
+# month of what the live journal pruned.
+# A sealed month is gzip, written once and never changed: never diffed, never
+# merged as text, never touched by line-ending conversion. Two seals of one
+# month that came out differently, or a month sealed on one side and appended
+# to on the other, are settled by row (journal.py --resolve; merge_decisions.py
+# --resolve in the workflows), never by picking a side's bytes.
+data/journal_archive/*.gz binary
+# The open months are plain JSON lines, deliberately WITHOUT merge=union: a
+# merge from a branch older than the migration follows the old single file
+# into a month file git judges a rename of it, and a union there would append
+# other months' rows - and the old file's tail - to it without a word. Two
+# appends to one month stop instead, and are settled by row as above.

@@ -35,9 +35,10 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 # merge_data.merge_text - the same rule the desk publisher uses: companies.json
 # field by field (the desk changes posts_at, names and parents while the bot
 # changes hiring; since 2026-09-28 both write it), crawl records by the later
-# read, journals by line. Files a build draws (board.json, data/detail/...)
-# take the bot's freshly built copy; the publisher redraws them from the
-# merged inputs on its next cycle.
+# read, journals by line, the journal's archive by row (journal.resolve).
+# Files a build draws (board.json, data/detail/...) take the bot's freshly
+# built copy; the publisher redraws them from the merged inputs on its next
+# cycle.
 DECISION_FILES = {
     "data/placement_rulings.json", "data/vendor_scope_decisions.json",
     "data/web_merge_rulings.json", "data/web_founded_rulings.json",
@@ -104,7 +105,18 @@ def resolve() -> int:
         print("nothing is conflicted")
         return 0
     rc = 0
+    import journal
+    # THE JOURNAL ARCHIVE (data/journal_archive/, one file per month) is
+    # settled by row, after everything else - the live journal included,
+    # which decides what is sealed. A sealed part is gzip, which _text()
+    # cannot decode, and the conflicts a seal makes (a month sealed on one
+    # side and appended to on the other; two seals of one month) are no
+    # conflict at all row by row: upstream's files stand, and every row the
+    # bot's commit had that they lack is filed by journal.py's own rules.
+    archive = [p for p in conflicted if journal.is_archive_path(p)]
     for path in conflicted:
+        if path in archive:
+            continue
         if path in DECISION_FILES:
             base, ours, theirs = _show(1, path), _show(2, path), _show(3, path)
             if ours is None or theirs is None:
@@ -181,6 +193,13 @@ def resolve() -> int:
             (ROOT / path).write_text(text)
             subprocess.run(["git", "add", path], cwd=ROOT, check=True)
         print(f"  {path}: merged record by record")
+    if archive:
+        try:
+            print("  " + journal.resolve(ROOT, archive, upstream=2))
+        except Exception as exc:                                # noqa: BLE001
+            print(f"  the journal archive could not be settled ({exc}); left for a "
+                  f"person: python3 scripts/journal.py --resolve", file=sys.stderr)
+            rc = 1
     return rc
 
 

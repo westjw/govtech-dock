@@ -12,10 +12,11 @@ find nothing to do, and exit in well under a second.
 
 WHAT A CYCLE PUBLISHES is DERIVED, never typed: the data files named by
 admin journal entries that are not yet on main (every admin write goes
-through save_decisions/save_companies, which journal the file name), the two
-journal files themselves, and the three files the desk writes as a crawl
-does (news.json and site_pages_index.json from "check their news now",
-identity_labels.jsonl). Anything else modified in the checkout - a research
+through save_decisions/save_companies, which journal the file name), the
+journal itself - the live file and every new or changed part of its archive,
+data/journal_archive/, carried onto main's row by row - and the three files
+the desk writes as a crawl does (news.json and site_pages_index.json from
+"check their news now", identity_labels.jsonl). Anything else modified in the checkout - a research
 session's exhibitors file, a board.json a local build drew - is left out and
 named in the status. board.json and data/detail/ are never taken from the
 desk: the quick rebuild redraws them on top of main.
@@ -78,10 +79,12 @@ import subprocess
 import sys
 import tempfile
 import time
+import zlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import journal  # noqa: E402
 import merge_data  # noqa: E402
 
 QUIET_S = 5 * 60                 # the desk has been idle this long
@@ -96,8 +99,46 @@ BUSY = ("queued", "in_progress", "waiting", "pending", "requested")
 # Written by the desk the way a crawl writes, so not journalled.
 CRAWL_WRITES = ("data/news.json", "data/site_pages_index.json",
                 "data/identity_labels.jsonl")
-JOURNALS = ("data/admin_journal.jsonl", "data/admin_journal.archive.jsonl")
+# THE JOURNAL: the live file, and the archive of what it pruned - one file
+# per month under data/journal_archive/ (journal.py, 2026-11-24), every new
+# or changed part published. The old single file is named only to be folded:
+# a desk still running the old code appends to it until it is restarted, and
+# its rows reach main filed into the month files, never as that file.
+LIVE_JOURNAL = "data/admin_journal.jsonl"
+ARCHIVE_DIR = f"data/{journal.ARCHIVE_DIR}"
+LEGACY_ARCHIVE = f"data/{journal.LEGACY_ARCHIVE}"
+JOURNALS = (LIVE_JOURNAL, ARCHIVE_DIR + "/", LEGACY_ARCHIVE)
 LABEL = "com.sledjobs.publish"
+
+
+def is_archive(path: str) -> bool:
+    return journal.is_archive_path(path)
+
+
+def _read(p: str):
+    """A checkout file as the cycle snapshots it: bytes for the archive (a
+    sealed part is gzip), text for everything else; None when absent."""
+    f = ROOT / p
+    if not f.is_file():
+        return None
+    return f.read_bytes() if is_archive(p) else f.read_text()
+
+
+def _write(f: pathlib.Path, v) -> None:
+    f.parent.mkdir(parents=True, exist_ok=True)
+    if isinstance(v, bytes):
+        f.write_bytes(v)
+    else:
+        f.write_text(v)
+
+
+def _archive_order(p: str) -> tuple:
+    """The old single file first (a desk on the old code wrote it before any
+    month file), then the parts in reading order."""
+    if p == LEGACY_ARCHIVE:
+        return (0, "", 0, False)
+    k = journal.parse_part(p.rsplit("/", 1)[-1])
+    return (1, *k) if k else (2, p, 0, False)
 
 
 def state_path() -> pathlib.Path:
@@ -168,6 +209,16 @@ def show(rev: str, path: str, cwd: pathlib.Path | None = None) -> str | None:
     return r.stdout if r.returncode == 0 else None
 
 
+def show_bytes(rev: str, path: str, cwd: pathlib.Path | None = None) -> bytes | None:
+    """show(), undecoded: a sealed archive part is gzip."""
+    r = git("show", f"{rev}:{path}", cwd=cwd, check=False, text=False)
+    return r.stdout if r.returncode == 0 else None
+
+
+def _at(rev: str, path: str) -> bool:
+    return git("cat-file", "-e", f"{rev}:{path}", check=False).returncode == 0
+
+
 def inbox(kind: str, text: str, st: dict, detail: dict | None = None) -> None:
     """Tell the owner's end-of-day inbox, once per distinct problem."""
     key = hashlib.sha1(f"{kind}|{text}".encode()).hexdigest()[:12]
@@ -187,23 +238,38 @@ def inbox(kind: str, text: str, st: dict, detail: dict | None = None) -> None:
 
 # ------------------------------------------------------------------ what
 
-def _journal_lines(text: str | None) -> set:
-    return {ln.strip() for ln in (text or "").splitlines() if ln.strip()}
+def _journal_lines(path: str, raw: bytes | None) -> set:
+    try:
+        return set(journal.lines_of(path, raw))
+    except (OSError, EOFError, ValueError, zlib.error) as exc:   # a torn gzip names nothing
+        print(f"note: {path} could not be read: {exc}", file=sys.stderr)
+        return set()
 
 
-def journal_files(head: str = "HEAD") -> set:
-    """Data files named by journal entries the desk wrote since `head`."""
+def journal_files(head: str = "HEAD", dirty: dict | None = None) -> set:
+    """Data files named by journal entries the desk wrote since `head`.
+
+    An entry is new when its line is in none of the journal files at `head`:
+    the live file, and every archive path that changed (a row moves from the
+    live file into the archive, from an open part into a sealed one, and
+    from the old single file into the month files, and a moved row is not a
+    new one). An archive part the checkout did not touch holds the same rows
+    on both sides, so it is not read."""
+    dirty = dirty_paths() if dirty is None else dirty
+    paths = [LIVE_JOURNAL] + sorted(p for p in dirty if is_archive(p))
+    local, past = set(), set()
+    for j in paths:
+        f = ROOT / j
+        local |= _journal_lines(j, f.read_bytes() if f.is_file() else None)
+        past |= _journal_lines(j, show_bytes(head, j))
     names = set()
-    for j in JOURNALS:
-        local = (ROOT / j).read_text() if (ROOT / j).exists() else ""
-        new = _journal_lines(local) - _journal_lines(show(head, j))
-        for ln in new:
-            try:
-                f = json.loads(ln).get("file")
-            except ValueError:
-                continue
-            if isinstance(f, str) and f and "/" not in f and not f.startswith("."):
-                names.add(f"data/{f}")
+    for ln in local - past:
+        try:
+            f = json.loads(ln).get("file")
+        except (ValueError, AttributeError):
+            continue
+        if isinstance(f, str) and f and "/" not in f and not f.startswith("."):
+            names.add(f"data/{f}")
     return names
 
 
@@ -218,10 +284,13 @@ def dirty_paths() -> dict:
 
 
 def publishable() -> tuple[list, list]:
-    """(what the desk changed and a cycle publishes, what is left out)."""
+    """(what the desk changed and a cycle publishes, what is left out).
+    Every changed archive path is taken - a new part, an appended one, a
+    month sealed (its open parts gone), the old single file."""
     dirty = dirty_paths()
-    named = journal_files() | set(JOURNALS) | set(CRAWL_WRITES)
-    take = sorted(p for p in dirty if p in named and not merge_data.is_generated(p))
+    named = journal_files(dirty=dirty) | {LIVE_JOURNAL} | set(CRAWL_WRITES)
+    take = sorted(p for p in dirty if (p in named or is_archive(p))
+                  and not merge_data.is_generated(p))
     left = sorted(p for p in dirty if p not in take and p.startswith("data/")
                   and not merge_data.is_generated(p) and p != "data/publish_state.json")
     return take, left
@@ -278,16 +347,19 @@ def checks(wt: pathlib.Path, staged: list) -> str | None:
         return "the redrawn board does not match its inputs:\n" + r.stdout[-800:]
     for p in staged:
         f = wt / p
-        if not f.exists() or not p.endswith((".json", ".jsonl")):
+        if not f.exists() or not p.endswith((".json", ".jsonl", ".jsonl.gz")):
             continue
         try:
-            if p.endswith(".jsonl"):
+            if p.endswith(".jsonl.gz"):
+                for ln in journal.lines_of(p, f.read_bytes()):
+                    json.loads(ln)
+            elif p.endswith(".jsonl"):
                 for ln in f.read_text().splitlines():
                     if ln.strip():
                         json.loads(ln)
             else:
                 json.loads(f.read_text())
-        except ValueError as exc:
+        except (ValueError, EOFError, OSError, zlib.error) as exc:     # a torn gzip too
             return f"{p} does not parse: {exc}"
     r = run_py(["scripts/selftest.py"], wt, 1200)
     if r.returncode != 0 or "all checks passed" not in r.stdout:
@@ -431,7 +503,7 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
 
     # ---- snapshot, merge
     with admin_lock():
-        snap = {p: ((ROOT / p).read_text() if (ROOT / p).exists() else None) for p in take}
+        snap = {p: _read(p) for p in take}
     head_sha = git("rev-parse", "HEAD").stdout.strip()
     held = st.get("base_files") if st.get("base_head") == head_sha else None
 
@@ -441,7 +513,13 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             return f.read_text() if held[p] and f.exists() else None
         return show("HEAD", p)
     merged, conflicts = {}, []
+    # THE ARCHIVE IS MERGED BY ROW, NOT BY FILE (below, in the worktree): a
+    # month the desk sealed while main appended to it is "deleted on one side
+    # and changed on the other" file by file, and is no conflict row by row.
+    arch = [p for p in take if is_archive(p)]
     for p in take:
+        if p in arch:
+            continue
         text, c = merge_data.merge_text(p, base_of(p), snap[p], show(theirs_rev, p))
         merged[p] = text
         conflicts += c
@@ -460,6 +538,8 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             else:
                 f.parent.mkdir(parents=True, exist_ok=True)
                 f.write_text(text)
+        if arch or LIVE_JOURNAL in merged:
+            _file_archive(wt, arch, snap)
         why = redraw(wt)
         if why:
             inbox("rebuild", "The quick rebuild failed; nothing was published:\n" + why, st)
@@ -470,6 +550,7 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
                  if (wt / p).exists() or p in tracked
                  or any(t.startswith(p + "/") for t in tracked)]
         git("add", "--", *paths, cwd=wt)
+        _stage_archive(wt)
         staged = git("diff", "--cached", "--name-only", cwd=wt).stdout.split()
         if not staged:
             st["drift_checked"] = main_sha
@@ -481,7 +562,7 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             inbox("checks", "A publish was refused by its checks; nothing was "
                             "pushed:\n" + bad, st, {"files": take})
             return done("refused", why=bad[:1500])
-        n_desk = len([p for p in staged if p in merged])
+        n_desk = len([p for p in staged if p in merged or is_archive(p)])
         msg = (f"desk: publish {n_desk} file(s) the admin changed"
                if not repair else "desk: redraw the board from main's own inputs")
         body = "\n".join(f"  {p}" for p in staged[:40]) + (
@@ -504,18 +585,46 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
     return done("pushed", sha=sha, files=staged[:60], repair=repair)
 
 
+def _file_archive(wt: pathlib.Path, arch: list, snap: dict) -> None:
+    """Carry the desk's archive onto main's, row by row, in the worktree.
+
+    Every line of every archive path the desk changed - the old single file
+    first - that main's archive lacks is filed by journal.py's own rules
+    (its month; a new part after a sealed one; the cap), and main's archive
+    is then brought to those rules as any write would (the old file folded,
+    a row a merge left in another month's file moved home, a finished month
+    sealed by main's merged live journal). Main's layout
+    stands: a sealed file main has is never replaced, so two seals that came
+    out differently cannot conflict - the second one's rows are recognised
+    by line and nothing is filed twice."""
+    lines = []
+    for p in sorted(arch, key=_archive_order):
+        if snap.get(p) is not None:
+            lines += journal.lines_of(p, snap[p])
+    journal.normalize(wt / "data", lines=lines, full=True)
+
+
+def _stage_archive(wt: pathlib.Path) -> None:
+    """Stage the archive as it now stands in the worktree: new parts, parts
+    appended to, open parts a seal removed, and the old single file gone."""
+    for p in (ARCHIVE_DIR, LEGACY_ARCHIVE):
+        if (wt / p).exists() or git("ls-files", "--", p, cwd=wt).stdout.strip():
+            git("add", "-A", "--", p, cwd=wt)
+
+
 def _hold_base(snap: dict, st: dict) -> None:
     """Keep what was published as the next cycle's base (see base_dir)."""
     d = base_dir()
     held = dict(st.get("base_files") or {}) if st.get("base_head") == \
         git("rev-parse", "HEAD").stdout.strip() else {}
     for p, text in snap.items():
+        if is_archive(p):
+            continue        # merged by row, never against a base (_file_archive)
         f = d / p
         if text is None:
             f.unlink(missing_ok=True)
         else:
-            f.parent.mkdir(parents=True, exist_ok=True)
-            f.write_text(text)
+            _write(f, text)
         held[p] = text is not None
     st["base_head"] = git("rev-parse", "HEAD").stdout.strip()
     st["base_files"] = held
@@ -539,32 +648,51 @@ def _sync(snap: dict, rev: str, st: dict, out: dict) -> None:
         _hold_base(snap, st)
 
 
+def _matches(rev: str, p: str) -> bool:
+    """Is the checkout's file already exactly what `rev` holds (both absent
+    counts)? Such a file is not in a fast-forward's way: the owner fetched
+    main's scripts by hand to bring this publisher up (CLAUDE.md, "The
+    journal archive"), and the fast-forward writes the same bytes."""
+    f = ROOT / p
+    return (f.read_bytes() if f.is_file() else None) == show_bytes(rev, p)
+
+
 def _sync_inner(snap: dict, rev: str, st: dict, out: dict) -> bool:
     with admin_lock():
         for p, text in snap.items():
-            cur = (ROOT / p).read_text() if (ROOT / p).exists() else None
-            if cur != text:
+            if _read(p) != text:
                 out["sync"] = f"skipped: {p} changed since the snapshot; the next cycle carries it"
                 return False
         moving = set(git("diff", "--name-only", "HEAD", rev).stdout.split())
         dirty = dirty_paths()
-        blocking = sorted(p for p in dirty if p in moving and p not in snap)
+        others = [p for p in dirty if p in moving and p not in snap]
+        same = sorted(p for p in others if _matches(rev, p))
+        blocking = sorted(p for p in others if p not in same)
         if blocking:
             out["sync"] = "skipped: would overwrite " + ", ".join(blocking[:6])
             inbox("sync", "Published, but the checkout could not be brought up to "
                           "main without overwriting: " + ", ".join(blocking[:12]), st)
             return False
-        tracked = [p for p in snap if show("HEAD", p) is not None]
+        kept_same = {p: ((ROOT / p).read_bytes() if (ROOT / p).is_file() else None)
+                     for p in same}
+        restore = list(snap) + same
+        tracked = [p for p in restore if _at("HEAD", p)]
         if tracked:
             git("checkout", "HEAD", "--", *tracked)
-        for p in snap:
+        for p in restore:
             if p not in tracked:
+                git("rm", "-q", "-f", "--cached", "--ignore-unmatch", "--", p, check=False)
                 (ROOT / p).unlink(missing_ok=True)
         r = git("merge", "--ff-only", "-q", rev, check=False)
         if r.returncode != 0:
             for p, text in snap.items():           # put the desk's files back
                 if text is not None:
-                    (ROOT / p).write_text(text)
+                    _write(ROOT / p, text)
+                elif _at("HEAD", p):
+                    (ROOT / p).unlink(missing_ok=True)
+            for p, raw in kept_same.items():
+                if raw is not None:
+                    _write(ROOT / p, raw)
             out["sync"] = "failed: " + (r.stderr or r.stdout).strip()[-300:]
             inbox("sync", "Published, but the checkout's fast-forward failed; the "
                           "desk's files were put back as they were.\n" + out["sync"], st)

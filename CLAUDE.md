@@ -503,14 +503,18 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
 30 minutes of the last push, and only after 5 quiet minutes on the desk.
 
 - **What it publishes is derived, not typed**: data files named by admin
-  journal entries not yet on main, the two journals, and news.json /
+  journal entries not yet on main (an entry already pruned into the archive
+  counts), the journal itself - the live file and every new or changed part
+  of `data/journal_archive/` - and news.json /
   site_pages_index.json / identity_labels.jsonl (written by the desk the way a
   crawl writes). Anything else modified in the checkout is left out and named
   in the status. board.json and data/detail/ are never taken from the desk.
 - **Merged on parsed JSON, three ways** (`merge_data.merge_text`, base = the
   checkout's HEAD, ours = the desk, theirs = main): companies.json field by
   field, a record the desk merged away is deleted when main changed only
-  hiring/ats, news records by the later read, journals by line, decision
+  hiring/ats, news records by the later read, the live journal by line, its
+  archive BY ROW (every archived line main lacks is filed into main's month
+  files by journal.py's rules; main's sealed files stand), decision
   files by key. A field both sides changed differently is a CONFLICT: nothing
   is pushed and Claude's inbox says which.
 - **Built and checked in a throwaway worktree at main** (main's code runs,
@@ -1072,6 +1076,126 @@ re-asked, which is right for a correct answer and permanent for a wrong one.
 Reopening deletes the ruling instead of reversing it, so the company returns to
 the queue with fresh eyes. Use it when you are not sure you were right, which
 is a different thing from being sure you were wrong.
+
+### The journal archive: one file per month (owner, 2026-11-24)
+
+The live journal keeps its last 500 entries (`journal.KEEP`); what it prunes
+is the only record of the older rulings and before-images, so it is archived,
+never dropped. It was one append-only file, `data/admin_journal.archive.jsonl`,
+71.6 MB on 2026-11-24 and growing about 1 MB a day; GitHub warns at 50 MB and
+refuses a push carrying a file over 100 MB. The owner's ruling ("Build it"):
+one archive file per month, finished months compressed, the current month in
+plain text. `scripts/journal.py` (the comment above `ARCHIVE_DIR`) is the
+authority; in short:
+
+- **`data/journal_archive/`**: `2026-09.jsonl.gz` is a SEALED month (gzip,
+  written once, never appended to or rewritten); `2026-11.jsonl` an OPEN one
+  (plain JSON lines, appended to); `2026-10.2.jsonl(.gz)` the same month
+  continued in a numbered part. It lives beside the live journal wherever
+  `journal.LOG` points, so a sandbox that moves LOG moves the archive.
+- **A row's month is its own `at`**, not the month it was pruned in: a row is
+  filed under the same name whoever prunes it and whenever.
+- **A month is FINISHED, and sealed, at the write where the calendar is past
+  it and no entry of it, or of an earlier month, is left in the live
+  journal** - from then on that journal can never hand it another row. So a
+  month seals about a week after it ends, when its last entry is pruned; until
+  then it is the second plain month beside the current one. (October 2026 was
+  left open by the migration for that reason: 15 of its entries were still in
+  the live journal.)
+- **A row for a sealed month** (a checkout that was behind, a merge) starts a
+  new numbered part after it, sealed in its turn. **A row already archived is
+  not archived again**: it is recognised by its whole line (the rule
+  `merge_data.merge_lines` uses), checked wherever its month is read anyway -
+  sealing keeps the first copy of a line; folding, a desk publish and a merge
+  file only lines the archive lacks. The everyday prune into an open month
+  only appends. **A row in another month's file** (a merge put it there) is
+  moved to its own month by the full pass - `--fold`, `--resolve`, every desk
+  publish - and a seal never seals it into the wrong month.
+- **No file passes `journal.CAP`** (40 MB): an open month continues in the
+  next numbered part, a seal splits the same way, and a part a merge pushed
+  over is re-split at the next write.
+- **Deterministic bytes**: gzip level 9, mtime 0, no file name, OS byte 255
+  (the container is written by journal.gz, because zlib's own header carries
+  the platform's OS code). `.gitattributes` marks `*.gz` there `binary`. The
+  plain parts deliberately have NO `merge=union`: git follows the old single
+  file into the month file it judges a rename of it (the migration commit
+  shows it as a rename into `2026-10.jsonl`), and a union there would append a
+  pre-migration branch's rows - other months', and the old file's tail - to
+  October without stopping. Two appends to one month stop a merge instead and
+  are settled by row.
+- **The old single file is folded wherever it is found**: by the next journal
+  write of the new code, by `python3 scripts/journal.py --fold`, and by the
+  desk publisher, which files its rows into main's month files and never
+  publishes the file itself. The migration (2026-11-24) was that same fold:
+  1,847 rows in, 1,842 distinct - five exact copies of one 2026-09-08 ruling,
+  left by the 09-26 selftest leak, kept once - September sealed, October open
+  in two parts.
+- **Merging main into a branch**: where it stops on an archive path (both
+  appended to one month, the branch appended to the old file or to a month
+  main has since sealed), run `python3 scripts/journal.py --resolve` - main's
+  files stand, every row of the branch's they lack is filed by the rules, the
+  archive is staged, nothing is sealed - then commit. After any merge that
+  touched `data/journal_archive/` or the old file, run
+  `python3 scripts/journal.py --fold` and commit what it changed: it moves a
+  row git put in another month's file, folds strays, seals what is finished.
+  Never `git add` the old file back: the selftest fails while
+  `data/admin_journal.archive.jsonl` is tracked. The workflows' rebase
+  resolver (`merge_decisions.py --resolve`) settles by row the same way.
+  `check_the_journal_archive_keeps_its_rules` fails on what needs a person (a
+  part that does not decompress, a name nothing reads, a sealed month with
+  another month's row, a file past GitHub's 50 MB) and only notes what the
+  next write, publish or `--fold` puts right.
+- Commit `data/admin_journal.jsonl` and `data/journal_archive/` together
+  (`git add data/journal_archive` takes a new sealed part and the plain parts
+  it replaced). A workflow that commits the live journal names the archive too
+  (`check_a_pruned_row_lands_in_its_months_file`); write-profiles.yml did not,
+  so the rows its ingests pruned reached main in neither file.
+- Guards: `check_a_pruned_row_lands_in_its_months_file`,
+  `check_every_archived_row_reads_back_in_order`,
+  `check_a_finished_month_is_sealed_once_and_never_appended`,
+  `check_the_old_archive_file_folds_in_whole_and_once`,
+  `check_no_archive_file_passes_the_cap`,
+  `check_a_row_in_another_months_file_goes_home`,
+  `check_the_journal_archive_keeps_its_rules` (the real archive, read only),
+  `check_the_publisher_carries_the_archive_by_row`,
+  `check_a_rebase_settles_the_archive_by_row`, and
+  `check_a_pruned_row_cannot_leak_into_the_archive`.
+
+**THE OWNER'S STEPS, ONCE, after this lands on main.** His desk runs from
+`~/govtech-dock-launch`; the running admin keeps the old code until it is
+restarted, and the old code appends what it prunes to the old file name.
+
+1. Stop the desk on port 8787 (Ctrl-C in its terminal), so nothing writes
+   while the code changes under it.
+2. In `~/govtech-dock-launch`:
+   `git fetch origin main && git checkout origin/main -- scripts`
+   This puts main's scripts in place and touches no data file. (A plain
+   `git pull` is fine when the desk has nothing unpublished; when it has, git
+   refuses it - "Your local changes ... would be overwritten" - and changes
+   nothing. Use this step instead, and not `git stash` / `pull` /
+   `stash pop`: the pop stops on the old file and on the live journal, which
+   is the hand merge the publisher exists to do.)
+3. Let the publisher run - it does every 5 minutes, and publishes after 5
+   quiet minutes and at most once per 30 (`python3 scripts/publish.py
+   --status` shows the outcome). It publishes whatever the desk had not
+   published, the rows the old code appended to the old file filed into the
+   month files, then brings the checkout up to main and removes the old file.
+4. Start the desk again on 8787.
+
+**What happens to unpublished desk work.** Nothing is lost on any path. If
+the desk had nothing unpublished when this landed, the old publisher already
+brought the checkout up to main and the old file disappeared with it; the old
+code then makes it anew with only what it prunes since, and the new publisher
+folds that in - step 2 changes nothing and step 4 stops the file coming back.
+If the desk HAD unpublished work - any ruling since its last publish, and
+every write prunes a row into the old file - the old publisher publishes
+nothing ("data/admin_journal.archive.jsonl: deleted on one side and changed
+on the other", once, in Claude's inbox) and the desk keeps working on its own
+copy; step 2 brings the publisher that knows the new layout, and its
+sync no longer stands aside for files that already match main (the scripts
+step 2 put there). Restarting before step 3 has finished loses nothing either:
+the new code folds the old file into a local `data/journal_archive/`, and the
+publisher files those rows by line onto main's.
 
 ## Facts that no dropdown could hold
 
@@ -3558,8 +3682,8 @@ round.
   plan prints "Commit them together" for those at once; `settle` is one
   journalled addition to data/board_doubts.json. The worklist is redacted
   as it is read, whoever wrote it. Commit data/companies.json,
-  data/embedded_ats.json, data/board_doubts.json and both journal files
-  together. Postings appear after the nightly crawl, not before.
+  data/embedded_ats.json, data/board_doubts.json and the journal
+  (data/admin_journal.jsonl and data/journal_archive/) together. Postings appear after the nightly crawl, not before.
 - **The queue's own door is `board_proposals.file_found`.** It appends and
   never replaces; takes `agent:<label>` only; never files `matches` (that
   word in this file is leave for `wire_embedded.py` to wire), a company
