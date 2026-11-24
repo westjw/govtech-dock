@@ -2,11 +2,18 @@
 /* THE SECRETS JOB HUNTER'S SIGN-IN NEEDS, made on the owner's own machine
  * and shown ONCE (owner, 2026-11-23, design C; DEPLOY.md §3f step 1).
  *
- *   node scripts/jh_signin_secrets.mjs         the signing key, the client
- *                                              id and the client secret
- *   node scripts/jh_signin_secrets.mjs --key   a new signing key only, for a
- *                                              rotation (DEPLOY.md §3f says
- *                                              how)
+ *   node scripts/jh_signin_secrets.mjs           the signing key, the client
+ *                                                id and the client secret:
+ *                                                the first setup
+ *   node scripts/jh_signin_secrets.mjs --key     a new signing key only, for
+ *                                                a rotation or a key that
+ *                                                may have leaked (DEPLOY.md
+ *                                                §3f: the two are different)
+ *   node scripts/jh_signin_secrets.mjs --secret  a new client secret only
+ *
+ * A plain run after the first setup would make a new key and a new client
+ * id too, so changing only the secret is --secret (review, 2026-11-23: the
+ * steps once said a plain run, under a screen saying "paste each").
  *
  * THE OWNER RUNS IT, HIMSELF, IN THE macOS TERMINAL APP. Never Claude, in
  * any way (its own shell, a pseudo-terminal, the Claude app's terminal
@@ -26,12 +33,14 @@
  * crypto (OpenSSL), nothing installed.
  */
 import { generateKeyPairSync, randomBytes, createHash } from "node:crypto";
+import { SITE } from "../functions/_brand.js";
 
 const args = process.argv.slice(2);
-const KNOWN = new Set(["--key"]);
+const KNOWN = new Set(["--key", "--secret"]);
 const unknown = args.filter((a) => !KNOWN.has(a));
-if (unknown.length) {
-  process.stderr.write(`Unknown option ${unknown[0]}. Use --key for a new signing key only.\n`);
+if (unknown.length || (args.includes("--key") && args.includes("--secret"))) {
+  process.stderr.write(`${unknown.length ? `Unknown option ${unknown[0]}` : "One at a time"}. Use --key for a new signing key `
+    + "only, or --secret for a new client secret only.\n");
   process.exit(2);
 }
 // the refusal names no way past it: an agent reading it must stop here
@@ -56,12 +65,29 @@ const value = (name, v, where) => { say(name); say(v); say(`  (${where})`); say(
 if (args.includes("--key")) {
   say("A NEW SIGNING KEY for SLED JOBS' Job Hunter sign-in. Shown once; nothing is saved.");
   say();
-  say("First copy the CURRENT OIDC_SIGNING_JWK into a new secret OIDC_SIGNING_JWK_OLD (so tokens");
-  say("signed a moment ago still verify), then replace OIDC_SIGNING_JWK with this, then redeploy.");
+  say(`A ROUTINE ROTATION (once a year): first run  curl -s ${SITE}/oidc/jwks  and paste what it`);
+  say("prints, the key in use now (its public half only), as a new Pages secret OIDC_SIGNING_JWK_OLD,");
+  say("so tokens signed a moment ago still verify. Then replace OIDC_SIGNING_JWK with the key below and");
+  say("redeploy. Delete OIDC_SIGNING_JWK_OLD a day later, and redeploy again.");
+  say();
+  say("IF THE KEY IN USE MAY HAVE LEAKED, the old key must stop being trusted at once: set NO");
+  say("OIDC_SIGNING_JWK_OLD (delete it if it is there), replace OIDC_SIGNING_JWK with the key below,");
+  say("redeploy, give the \"board popout\" service token a new secret, and restart Job Hunter's server.");
+  say("DEPLOY.md 3f has each step.");
   say();
   value("OIDC_SIGNING_JWK", signingKey(), "a Pages secret on the board's project, replacing the current one");
+} else if (args.includes("--secret")) {
+  say("A NEW CLIENT SECRET for SLED JOBS' Job Hunter sign-in. Shown once; nothing is saved.");
+  say();
+  say("Paste it in BOTH places, one straight after the other: the Pages secret OIDC_CLIENT_SECRET, and");
+  say("the Client secret of the SLED JOBS identity provider in Zero Trust. Leave OIDC_CLIENT_ID and");
+  say("OIDC_SIGNING_JWK as they are. Then a new deployment (DEPLOY.md 3f).");
+  say();
+  value("OIDC_CLIENT_SECRET", randomBytes(32).toString("base64url"),
+    "a Pages secret, and the Client secret of the SLED JOBS identity provider in Zero Trust");
 } else {
   say("THE THREE SECRETS for SLED JOBS' Job Hunter sign-in. Shown once; nothing is saved.");
+  say("This is the FIRST SETUP. Later, a new key alone is --key, a new client secret alone --secret.");
   say("Paste each into Workers & Pages > the board's project > Settings > Variables and secrets,");
   say("Type Secret, Production. Never paste them anywhere else, and never into a file in the repo.");
   say();

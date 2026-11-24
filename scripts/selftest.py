@@ -2875,6 +2875,12 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
     prints signs, in the board's own _oidc.js, a token its published half
     verifies. CLAUDE.md says Claude never runs it; DEPLOY.md sends the owner
     to the macOS Terminal app, not the Claude app's panel.
+
+    The rotations it is for (review, 2026-11-23): --key tells a routine
+    rotation (copy the public half /oidc/jwks prints as the earlier key;
+    Pages never shows the old private key) from a key that may have leaked
+    (no earlier key, the service token renewed, Job Hunter restarted), and
+    --secret makes a client secret alone, as DEPLOY.md §3f says.
     """
     import shutil
     import subprocess
@@ -2918,6 +2924,7 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
     try:
         # INTO A PIPE IT PRINTS NOTHING, AND NO SWITCH SAYS OTHERWISE
         for args, why in (((), "its output is piped"), (("--key",), "--key's output is piped"),
+                          (("--secret",), "--secret's output is piped"),
                           (("--to-pipe",), "told --to-pipe, the switch it no longer has"),
                           (("--key", "--to-pipe"), "told --key --to-pipe"), (("--bogus",), "given an unknown option")):
             r = run(*args)
@@ -2935,14 +2942,51 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
         gone = term("--to-pipe")
         if gone.returncode == 0 or values(gone.stdout):
             errors += fail("the secrets script still takes --to-pipe")
-        r2, rk = term(), term("--key")
-        v1, v2, vk = values(r1.stdout), values(r2.stdout), values(rk.stdout)
+        r2, rk, rs = term(), term("--key"), term("--secret")
+        v1, v2, vk, vs = values(r1.stdout), values(r2.stdout), values(rk.stdout), values(rs.stdout)
         if r1.returncode or set(v1) != {"OIDC_SIGNING_JWK", "OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET"}:
             return errors + fail(f"the secrets script did not print the three secrets: {r1.returncode} {sorted(v1)}")
         if any(v1[k] == v2.get(k) for k in v1):
             errors += fail("two runs of the secrets script printed the same value")
-        if set(vk) != {"OIDC_SIGNING_JWK"} or "OIDC_SIGNING_JWK_OLD" not in rk.stdout:
-            errors += fail("--key does not print a signing key alone, with the rotation's first step")
+        # --key: A ROUTINE ROTATION AND A LEAK ARE TWO THINGS (review,
+        # 2026-11-23): the routine one copies the PUBLIC half /oidc/jwks
+        # prints (Pages never shows the old private key), a leaked key is
+        # never published again, and its sitting renews the service token and
+        # restarts Job Hunter
+        kt = re.sub(r"\s+", " ", rk.stdout)
+        if set(vk) != {"OIDC_SIGNING_JWK"} or rk.returncode:
+            errors += fail("--key does not print a signing key alone")
+        for needle in ("/oidc/jwks", "public half only", "as a new Pages secret OIDC_SIGNING_JWK_OLD",
+                       "MAY HAVE LEAKED", "set NO OIDC_SIGNING_JWK_OLD", "service token a new secret",
+                       "restart Job Hunter's server"):
+            if needle not in kt:
+                errors += fail(f"--key does not tell a routine rotation from a leaked key: no {needle!r}")
+        if "copy the CURRENT OIDC_SIGNING_JWK" in kt:
+            errors += fail("--key still asks for the current private key, which Pages never shows again")
+        # --secret: the client secret alone (a plain run would make a new key
+        # and a new client id too)
+        if (rs.returncode or set(vs) != {"OIDC_CLIENT_SECRET"} or '"d"' in rs.stdout
+                or not re.fullmatch(r"[A-Za-z0-9_-]{43}", vs.get("OIDC_CLIENT_SECRET", ""))
+                or vs.get("OIDC_CLIENT_SECRET") in (v1["OIDC_CLIENT_SECRET"], v2.get("OIDC_CLIENT_SECRET"))
+                or "BOTH places" not in rs.stdout):
+            errors += fail("--secret does not print a fresh client secret alone, to paste in both places")
+        both = term("--key", "--secret")
+        if both.returncode == 0 or values(both.stdout):
+            errors += fail("the secrets script printed something when told --key and --secret at once")
+        if "--secret" not in r1.stdout or "FIRST SETUP" not in r1.stdout:
+            errors += fail("a plain run does not say it is the first setup, and --secret the way to a new secret")
+        for needle, why in (("`curl -s https://sledjobs.com/oidc/jwks` and copy what it prints, whole", "copy the public half"),
+                            ("Add a Pages secret `OIDC_SIGNING_JWK_OLD` and paste that in", "paste it as the earlier key"),
+                            ("If the signing key may have leaked", "split off a leaked key"),
+                            ("Set no `OIDC_SIGNING_JWK_OLD`; delete it if it is there", "keep a leaked key unpublished"),
+                            ("`board popout` → rotate its secret", "renew the service token after a leak"),
+                            ("Restart Job Hunter's server", "restart Job Hunter after a leak"),
+                            ("`node scripts/jh_signin_secrets.mjs --secret` (not a plain run", "change the client secret alone")):
+            if needle not in flat3f:
+                errors += fail(f"DEPLOY.md §3f does not {why}: no {needle!r}")
+        if "first copy the current `OIDC_SIGNING_JWK`" in flat3f or "a run of the script without `--key`" in flat3f:
+            errors += fail("DEPLOY.md §3f still asks for a copy of a secret Pages never shows, or a plain run "
+                           "for a new client secret")
         for name, raw in (("full run", v1["OIDC_SIGNING_JWK"]), ("--key", vk.get("OIDC_SIGNING_JWK", "{}"))):
             k = json.loads(raw)
             b64 = r"[A-Za-z0-9_-]{43}"

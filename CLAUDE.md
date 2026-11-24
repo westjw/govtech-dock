@@ -467,8 +467,17 @@ the popout's assertion: change it on one side only and the popout stops.
   signed one verify, for that one route.
 - The owner's steps are DEPLOY.md §3f. `scripts/jh_signin_secrets.mjs` makes
   the key (kid = its RFC 7638 thumbprint), the client id and the secret and
-  prints them once, on a terminal only, and writes nothing. `--key` makes a
-  key alone, for a rotation. Into a pipe or a file it prints nothing and NO
+  prints them once, on a terminal only, and writes nothing: the first setup.
+  `--key` makes a key alone, and its words tell the two reasons apart
+  (review, 2026-11-23): a ROUTINE rotation copies what `/oidc/jwks` prints,
+  the old key's public half, into `OIDC_SIGNING_JWK_OLD` for a day (the
+  steps once said to copy the old private key, which Pages never shows
+  again); a key that MAY HAVE LEAKED is never published again, so no
+  `_OLD`, and the same sitting renews the `board popout` service token's
+  secret and restarts Job Hunter's server, which holds the board's keys from
+  its last fetch. `--secret` makes a client secret alone: a plain run, which
+  the steps once named for that, makes a new key and client id too. Into a
+  pipe or a file it prints nothing and NO
   SWITCH SAYS OTHERWISE: it had one, `--to-pipe`, and its refusal named it,
   which handed an agent (whose shell is a pipe) the way to put the private
   key in a transcript (review, 2026-11-23). The owner runs it in the macOS

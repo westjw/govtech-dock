@@ -323,13 +323,52 @@ one-time codes live there) and `SESSION_SECRET` is set (§3a).
   4's Pages secrets; "did not answer" means Job Hunter is asleep or its
   plist variable is missing.
 
-**A new signing key** (once a year, or if one may have leaked): first copy
-the current `OIDC_SIGNING_JWK` into a new secret `OIDC_SIGNING_JWK_OLD`, then
-`node scripts/jh_signin_secrets.mjs --key` and replace `OIDC_SIGNING_JWK`
-with what it prints, then a new deployment. Both keys are published, so
-nothing signed a minute ago fails; delete `OIDC_SIGNING_JWK_OLD` a day later.
-A new client secret is a run of the script without `--key`, pasted in both
-places (Pages and the identity provider) at once.
+**A new signing key, once a year (a routine rotation).** Pages never shows a
+secret again, so the key in use cannot be copied, and is not needed: its
+public half is what `/oidc/jwks` prints.
+1. `curl -s https://sledjobs.com/oidc/jwks` and copy what it prints, whole.
+   It should hold ONE key; two means the last rotation's
+   `OIDC_SIGNING_JWK_OLD` is still set: delete it, redeploy, start again.
+2. Add a Pages secret `OIDC_SIGNING_JWK_OLD` and paste that in.
+3. In the macOS Terminal app, `node scripts/jh_signin_secrets.mjs --key`, and
+   replace `OIDC_SIGNING_JWK` with the key it prints. A new deployment.
+4. Check: `curl -s https://sledjobs.com/oidc/jwks` shows two keys, the new
+   one first. Both are published, so nothing signed a minute ago fails.
+5. A day later, delete `OIDC_SIGNING_JWK_OLD` and redeploy.
+
+**If the signing key may have leaked** (pasted somewhere, shown to someone,
+or the Pages secrets exposed), it must stop being trusted at once, so this
+is NOT the routine rotation: the old key is never published again.
+1. Set no `OIDC_SIGNING_JWK_OLD`; delete it if it is there.
+2. In the macOS Terminal app, `node scripts/jh_signin_secrets.mjs --key`;
+   replace `OIDC_SIGNING_JWK` with what it prints, and a new deployment, at
+   once. A sign-in under way in those minutes may fail once; trying again
+   works.
+3. The popout's service token sits in the same Pages secrets, and whoever
+   holds it and the leaked key can ask Job Hunter's panel as anybody: give
+   it a new secret in the same sitting. Access → Service credentials →
+   Service Tokens → `board popout` → rotate its secret; put the new one in
+   the Pages secret `JH_SERVICE_TOKEN_SECRET`, and a new deployment. (If
+   the dashboard offers no rotation, delete the token and create it again
+   as in step 4 above: a new token has a new Client ID, so
+   `JH_SERVICE_TOKEN_ID`, the Service Auth policy and Job Hunter's
+   `JH_BOARD_SERVICE_TOKEN` all take the new one.)
+4. Restart Job Hunter's server (its deploy/README.md says how). It holds
+   the board's keys from its last fetch and may go on believing the old one
+   for an hour or more; the restart is what makes it forget it.
+5. Check: `curl -s https://sledjobs.com/oidc/jwks` shows ONE key, and its
+   `kid` is not the old one.
+
+If the Pages secrets as a whole were exposed, so was every one of them: a new
+client secret (below) in the same sitting, and a new `SESSION_SECRET` (§3a
+step 2; it signs everybody out).
+
+**A new client secret**: in the macOS Terminal app,
+`node scripts/jh_signin_secrets.mjs --secret` (not a plain run, which makes a
+new key and a new client id too), and paste it into the Pages secret
+`OIDC_CLIENT_SECRET` and the `SLED JOBS` identity provider's Client secret,
+one straight after the other, then a new deployment. `OIDC_CLIENT_ID` and
+`OIDC_SIGNING_JWK` stay as they are.
 
 **Taking someone out of the beta** is the "Beta users" policy (at once) and
 the `hunter` role on the Users board (after the next deploy). The service
