@@ -388,7 +388,13 @@ the popout's assertion: change it on one side only and the popout stops.
   (a probe signature must verify under the published point) and nothing is
   signed or published, the earlier key included (it was published alone
   until the 2026-11-23 review): every door says it is not set up.
-  `/oidc/jwks` is `public, max-age=300`; a 503 is never cached.
+  `/oidc/jwks` is `public, max-age=300`; a 503 is never cached. **That 503
+  is part of the interface**: exactly `{"error":"not_configured"}`,
+  `no-store`, for every way the key can be missing or wrong, an earlier key
+  set or not. Job Hunter's key cache (`core/board_assertion.py` `_fetch`)
+  reads it as "the board lists no keys" and stops believing every key it
+  held; any other error it reads as an outage and keeps them an hour (its
+  review, 2026-11-24). The check pins status, body and Cache-Control.
 - **authorize** holds the request to the one client: `OIDC_CLIENT_ID`,
   Access's callback EXACTLY (`https://<team>/cdn-cgi/access/callback`, from
   `_access.TEAM`; `OIDC_REDIRECT_URI` may replace it, as one printed https

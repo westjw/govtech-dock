@@ -2473,6 +2473,22 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     wo = o.get("jwks_off_with_old") or {}
     if len(wo) < 4 or any(c.get("status") != 503 or c.get("keys") or c.get("cache") != "no-store" for c in wo.values()):
         errors += fail(f"with the signing key missing, malformed or half a pair, the earlier key is published alone: {wo}")
+    # THE ANSWER JOB HUNTER'S KEY CACHE READS (its review, 2026-11-24): its
+    # core/board_assertion.py _fetch takes exactly 503 {"error":
+    # "not_configured"} as "the board lists no keys" and drops every key it
+    # held, and takes any other error as an outage, keeping them an hour. So
+    # every not-configured case, earlier key set or not, answers that status,
+    # that body and no-store, and nothing else: change one and Job Hunter
+    # goes on believing a key the board no longer signs with
+    for name, cases in (("no earlier key", off), ("an earlier key set", wo)):
+        for k in ("none", "garbled", "public_only", "mismatched_pair"):
+            if k not in cases:
+                errors += fail(f"the harness no longer drives /oidc/jwks with the signing key {k} and {name}")
+        for k, c in cases.items():
+            if (c.get("status"), c.get("body"), c.get("cache")) != (503, {"error": "not_configured"}, "no-store"):
+                errors += fail(f"/oidc/jwks with the signing key {k} and {name} answers {c.get('status')} "
+                               f"{c.get('body')} {c.get('cache')!r}, not the 503 {{'error': 'not_configured'}} "
+                               f"no-store Job Hunter's key cache reads as 'no keys'")
     # a routine rotation's earlier key is what /oidc/jwks printed (Pages never
     # shows the old private key again), whole or its one entry
     of = o.get("jwks_old_forms") or {}

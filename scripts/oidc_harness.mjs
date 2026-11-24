@@ -257,7 +257,8 @@ const out = { gated: G.GATED };
   out.jwks_off = {};
   for (const [k, v] of Object.entries(cases)) {
     const r = await see(await jwksMod.onRequestGet({ request: req("/oidc/jwks"), env: envOf({ OIDC_SIGNING_JWK: v }) }));
-    out.jwks_off[k] = { status: r.status, cache: r.headers["cache-control"] || "", keys: r.json && r.json.keys ? r.json.keys.length : 0 };
+    out.jwks_off[k] = { status: r.status, cache: r.headers["cache-control"] || "", keys: r.json && r.json.keys ? r.json.keys.length : 0,
+      body: r.json };
   }
   // AN EARLIER KEY NEVER STANDS ALONE (review, 2026-11-23): the signing key
   // missing, garbled, half a pair or public only, with OIDC_SIGNING_JWK_OLD
@@ -268,7 +269,7 @@ const out = { gated: G.GATED };
     const r = await see(await jwksMod.onRequestGet({ request: req("/oidc/jwks"),
       env: envOf({ OIDC_SIGNING_JWK: v, OIDC_SIGNING_JWK_OLD: JSON.stringify(OLDK) }) }));
     out.jwks_off_with_old[k] = { status: r.status, cache: r.headers["cache-control"] || "",
-      keys: r.json && r.json.keys ? r.json.keys.length : 0 };
+      keys: r.json && r.json.keys ? r.json.keys.length : 0, body: r.json };
   }
   // THE EARLIER KEY AS THE OWNER CAN HAVE IT: /oidc/jwks's own answer from
   // before the rotation, pasted whole or its one entry (Pages never shows a

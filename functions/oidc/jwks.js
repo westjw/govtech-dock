@@ -8,6 +8,13 @@
  * functions/_gate.js: the readers carry no sign-in. Cached five minutes by
  * anyone, so a new key is seen within five minutes of a deploy. No key that
  * signs: 503, and nothing cached - an earlier key is never published alone.
+ *
+ * THAT ANSWER IS PART OF THE INTERFACE: exactly 503 {"error":
+ * "not_configured"}, no-store. Job Hunter's key cache (core/board_assertion.py
+ * _fetch) reads it as "the board lists no keys" and stops believing every
+ * key it held; any other error it reads as an outage and keeps them an hour.
+ * check_job_hunter_signs_in_with_sled_jobs pins it for every way the key can
+ * be missing or wrong, an earlier key set or not.
  */
 import { onSite } from "../_session.js";
 import { publicKeys } from "../_oidc.js";
