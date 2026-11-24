@@ -20647,7 +20647,11 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
                   "raw": "90000-110000 CAD per year"}, "a range written backwards"),
                 (("90000", "110000", "Dollars", "Annually"),
                  {"min": 90000, "max": 110000, "currency": None, "period": "year", "source": "ats",
-                  "raw": "90000-110000 per year"}, "a currency named by no code")):
+                  "raw": "90000-110000 per year"}, "a currency named by no code"),
+                # (the code is the one in the parentheses, never a word of the name)
+                (("90000", "110000", "CFA Franc BEAC (XAF FCFA)", "Annually"),
+                 {"min": 90000, "max": 110000, "currency": "XAF", "period": "year", "source": "ats",
+                  "raw": "90000-110000 XAF per year"}, "a currency whose name has capitals in it")):
             r_, e_, _ = read(feed(job(P1, pay=pay)))
             if e_ or (r_ or [{}])[0].get("comp") != want:
                 errors += fail(f"jobvitefeed: {why} reads as pay {(r_ or [{}])[0].get('comp')} ({e_}), "
