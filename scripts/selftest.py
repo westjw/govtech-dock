@@ -23742,12 +23742,21 @@ def check_successfactors_unify_reads_its_sitemap() -> int:
         # ...and one that no copy of its requisition asked answered closed for,
         # or with no requisition to know it by, is the board not read - in
         # words that do not call it a block or error page it may not be
+        long_slug = "Sp%C3%A9cialiste-principal-des-ventes-%E2%80%93-Municipalit%C3%A9s-et-comt%C3%A9s"
         for postings_, why, words_ in (
                 (pair(1, fr_answer=gone_fr) + [c for n in (2, 3, 4) for c in pair(n)], "whose English copy is open",
                  "no copy of its requisition asked answered as closed"),
                 ([(f"{SF}/job/Gestionnaire/61000001/", None, gone_fr)] + pair(1, shut_=True)[:1]
                  + [c for n in (2, 3, 4) for c in pair(n)], "with no requisition to know it by",
-                 "it names no requisition")):
+                 "it names no requisition"),
+                # (the reason whole however long the address: a person reads
+                # the first 200 characters, and a percent-encoded French slug
+                # put first cut it to 'and no copy of its re' - review 11's
+                # verifier, 2026-11-23)
+                ([plain(1, posting("Role 1")), plain(5, posting("Role 5")),
+                  (f"{SF}/job/{long_slug}/70000005/", f"{SF}/job/{long_slug}/5-fr_CA/", gone_fr)],
+                 "at an address of 127 characters",
+                 "no copy of its requisition asked answered as closed, so the board is not stated")):
             got = said(site(postings_))
             if got["stated"] or got["names"] or got["failed"] != "unreadable" or got["transient"] \
                     or words_ not in str(got["how"]) or "block or error page" in str(got["how"]):

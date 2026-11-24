@@ -1606,10 +1606,12 @@ def _unify_languages_unpaired(copies: list, shown: list) -> list:
 def _unify_unsaid(url: str, why: str) -> str:
     """Why a Unify copy not said to be in English, showing no posting, is
     the board not read: its words are not ones this reader reads, so it is
-    never called a block or error page it may not be. The reason first: a
-    person reads the first 200 characters (_failure)."""
-    return (f"successfactors posting {url}, not said to be in English, shows no posting, and {why}, "
-            f"so the board is not stated (this reader knows a closed posting's words in English "
+    never called a block or error page it may not be. The reason first and
+    the address after it: a person reads the first 200 characters
+    (_failure), and a percent-encoded French address of about 110 cut the
+    reason off when it came first (review 11's verifier, 2026-11-23)."""
+    return (f"successfactors posting not said to be in English shows no posting, and {why}, so the "
+            f"board is not stated: {url} (this reader knows a closed posting's words in English "
             f"only)")
 
 

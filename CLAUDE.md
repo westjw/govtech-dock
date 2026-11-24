@@ -3800,7 +3800,9 @@ review and the owner's word, through the wiring door.
   was read whole by the reader and held here "unreadable", its French copy
   called a block or error page); one with no closed copy asked, or no
   requisition to know it by, is the board not read, in words that do not
-  call it a block page it may not be; an English
+  call it a block page it may not be, the reason before the address (a
+  person reads the first 200 characters, and a percent-encoded French
+  address put first cut the reason off: review 11's verifier, 2026-11-23); an English
   block page or any other failure is the board not read. **Copies in more
   than one language** are the classic probe's language rule, asked of what
   the reader would publish (blind review 10, 2026-11-23: it was not asked,
