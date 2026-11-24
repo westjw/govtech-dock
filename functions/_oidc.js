@@ -278,9 +278,8 @@ export function checkAuthorize(q, setup) {
  * client lives here too: each is a write, and KV's 1,000 writes a day are
  * the sign-in's and the alerts', which a sender of junk spending one per
  * request could empty for the whole site; D1's 100,000 a day are beyond a
- * free plan's requests. The
- * panel's per-person count (jh_asks) is here for the same reason: an ask is
- * a write. */
+ * free plan's requests. The panel's per-person count (jh_asks) is here for
+ * the same reason: an ask is a write. */
 const SCHEMA = [
   `CREATE TABLE IF NOT EXISTS oidc_codes (
      code_hash TEXT PRIMARY KEY,
