@@ -869,15 +869,29 @@
     },
     "trinethire": {
       "name": "TriNet Hire",
-      "status": "seen",
-      "spot": "Any trinethire.com address: find_site_boards tallies it as 'trinethire'. discover_js reads app.trinethire.com/companies/<number>-<name> (as 'trinet').",
-      "publishes": "Unknown: not researched.",
-      "robots": "Unknown: not measured.",
-      "employer": "Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.",
-      "quirks": [],
-      "reader": null,
-      "probe": null,
-      "measured_on": "unknown"
+      "status": "read",
+      "research_verdict": "build",
+      "spot": "Any address on app.trinethire.com that names a company number, /companies/<number>[-<slug>]/..., in an href or a src and in any form: the list a careers page frames (/jobs/embed, Codoxo's and SoundThinking's iframes), the career page (/jobs), or a posting (/jobs/<job id>-<slug>) (find_site_boards). The ref is '<number>-<slug>' as the page wrote it, or the number alone, which answers as the board itself (measured 2026-11-24); one board is one number (5502-fraudscope and 5502-codoxo are Codoxo's), and the finder and the wiring door's board_key key it so. discover_js labels the same address 'trinethire'. Hint: trinethire.com.",
+      "forms": {
+        "trinethire-other": "Any other trinethire.com address (TriNet's own site, a sign-in, a page naming no company number): a platform we read, naming no board."
+      },
+      "publishes": "One GET of https://app.trinethire.com/companies/<ref>/jobs/embed: server-rendered HTML, every opening in one answer, never paged (?page=2 answered the same 16 rows), no JSON form (embed.json answered 406). <title>Open Jobs | {Company}</title>, then <ul id=\"jobs-list\"> with one <li class=\"form-group\"> a posting: an <a> whose text is the title and whose href is the posting, /companies/<number>-<slug>/jobs/<job id>-<slug>, and <p><strong>Location:</strong> {label} - {type}</p>. The title is unescaped; the url is the href on app.trinethire.com with its query (?source=...) dropped; the location is the label before the LAST ' - ' (labels hold dashes: 'Atlanta, GA - Remote - Full-time'), the employment type after it no field of a row. Rows are one a job id, so two postings with one title stay two. No pay field and no date exist anywhere on the board, so a row has neither (the board keeps its first-seen day).",
+      "link": "The board's list, https://app.trinethire.com/companies/<ref>/jobs/embed (build_board.board_url and the desk's card): every opening on one page, each linking its posting and its form. Never /jobs, TriNet's career page, which said 'Currently no openings available.' on all four boards read while the list carried 30. A ref that is no board links the company's website.",
+      "robots": "Asked at every hop (ats._page), and every hop held to the board's own list: app.trinethire.com, /companies/<the same number>[-<slug>]/jobs/embed, no query, refused before it is asked anything (TriNet's employers share one host and differ by path). Measured 2026-11-23 and 11-24: 'User-agent: *' with 'Allow: /', which is the group this crawler falls under. The same Cloudflare-managed file states content signals (search=yes, ai-train=no, ai-input not set) and disallows named AI crawlers, so the reader reads the list only and never asks a posting page, flag or no flag. Whether TriNet-hosted ad text is read at all is the owner's call, still pending.",
+      "employer": "Stated by the list the reader reads, in one place: its <title>, 'Open Jobs | {Company}', exactly that prefix taken off and the rest unescaped (verify_boards._trinethire); the list is the whole board, so the name is the whole board's. Never the slug (5502-fraudscope serves Codoxo, and a made-up slug serves the same board), never og:site_name (the vendor's, 'TriNet Applicant Tracking'). It is the name the employer registered with TriNet, legal form and all: measured 'SoundThinking, Inc.', 'Codoxo', 'Green River Data Group Inc.' and 'Polimorphic' (2026-11-23, 2026-11-24). No website is stated.",
+      "quirks": [
+        "The career page is a false zero: /companies/<number>-<slug>/jobs answered 'Currently no openings available.' on all four boards read (2026-11-23) while their lists carried 6, 7, 1 and 16. It is never read and never evidence of zero.",
+        "A zero only where the list says so: the template ('Open Jobs | ' title and <ul id=\"jobs-list\">) with no <li> in it and no posting of the board linked anywhere on the page. No empty list has been seen yet. A page without the template (the career page, a challenge page), a row that does not read as a posting of this board, a posting the page links outside its list, a page over 2,000,000 characters and any answer but a 200 (a number that is gone answers 404) are errors, never a zero.",
+        "The location is the name the employer gave a location record, not always a place ('Codoxo Headquarters', 'Polimorphic-HQ', 'Remote Telecommuting'): it is published as given and never read as a city.",
+        "Two names on file differ from the registered names their boards state ('SoundThinking (ShotSpotter)' and 'SoundThinking, Inc.'; 'Green River' and 'Green River Data Group Inc.'), so proven() refuses both until the owner rules an also_known_as."
+      ],
+      "notes": [
+        "The research of 2026-11-23 found four SLED vendors on TriNet Hire (SoundThinking, Polimorphic, Green River, Codoxo), three of them wired as html pages at the career page and shown as 'None found', about 30 openings in all.",
+        "This reader asks the list only and never a posting page, because app.trinethire.com's robots.txt leaves the ai-input content signal unset while saying no to AI training. Reading the ads there (FETCH_DETAILS) waits on the owner's ruling."
+      ],
+      "reader": "fetch_trinethire",
+      "probe": "_trinethire",
+      "measured_on": "2026-11-23, 2026-11-24"
     },
     "wellfound": {
       "name": "Wellfound (formerly AngelList Talent)",

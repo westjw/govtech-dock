@@ -427,6 +427,16 @@ def board_url(c: dict) -> str | None:
             return ats.jobvitefeed_page(ref)
         except ats.AtsError:
             return c.get("website")
+    if kind == "trinethire":
+        # the board's own list, its embed - the page the reader reads, every
+        # opening on it, each linking its posting and its form - and never
+        # /jobs, TriNet's career page, which tells a person "Currently no
+        # openings available." while the list carries them (2026-11-23); a
+        # ref that is no board: their website
+        try:
+            return ats.trinethire_url(ref)
+        except ats.AtsError:
+            return c.get("website")
     if isinstance(ref, str) and ref.startswith("http"):
         return ref
     pat = {"greenhouse": "https://job-boards.greenhouse.io/{r}",

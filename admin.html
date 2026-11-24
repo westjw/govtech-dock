@@ -5150,6 +5150,12 @@ function boardUrlFor(f, c){
   if (f.type === 'jobvitefeed')
     return (typeof r === 'string' && /^q[A-Za-z0-9]{4}fw[A-Za-z0-9]$/.test(r.trim()))
       ? 'https://app.jobvite.com/CompanyJobs/Careers.aspx?c=' + r.trim() : '#';
+  // a TriNet Hire board is '<number>-<slug>' (or the number alone); a person
+  // opens its list, the embed (as build_board.board_url links it), never
+  // /jobs, the career page that says it has no openings while the list has them
+  if (f.type === 'trinethire')
+    return (typeof r === 'string' && /^[0-9]{1,12}(?:-[A-Za-z0-9-]{1,200})?$/.test(r.trim()))
+      ? 'https://app.trinethire.com/companies/' + r.trim() + '/jobs/embed' : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
     // the list [tenant, pod, site], or [pod, tenant, site] on Workday's other
