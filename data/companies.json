@@ -158240,8 +158240,8 @@
   },
   {
     "id": "grab",
-    "name": "Grab (Servy)",
-    "website": "https://www.grab.com",
+    "name": "Servy (Grab)",
+    "website": "https://www.servy.us",
     "location": "Atlanta, Georgia",
     "year_founded": 2013,
     "sector": "Airports & Aviation",
@@ -158265,7 +158265,10 @@
     "competitors_checked_on": "2026-10-22",
     "competitors_none_found": true,
     "ats_note": "unwired 2026-11-24: the html board 'https://www.grab.careers/en/' is Grab Holdings' (the Singapore company), not this airport-ordering company's; the two only share a name. Taken off on the owner's word",
-    "board_owner": "Grab Holdings"
+    "board_owner": "Grab Holdings",
+    "also_known_as": [
+      "Grab (Servy)"
+    ]
   },
   {
     "id": "zensors",
