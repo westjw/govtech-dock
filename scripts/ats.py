@@ -38,6 +38,8 @@ Where the description lives, per board (measured, 2026-08-23):
                  read because the page is already downloaded, but rare: none of
                  ten careers indexes sampled carried one. Ten is not 887, so
                  this is "not seen yet", not "does not happen".
+    jobvitefeed  description, every job's whole ad, in the account's one feed:
+                 always each row's jd, flag or no flag (2026-11-23)
 
   one extra request per posting (behind FETCH_DETAILS, off by default)
     bamboohr     /careers/<id>/detail  -> description + a compensation field
@@ -49,8 +51,6 @@ Where the description lives, per board (measured, 2026-08-23):
     rippling     the posting page      -> __NEXT_DATA__ apiData.jobPost
     successfactors  the posting page   -> its itemprop="description" element
                     (a Unify site's costs nothing more: its row is read from that page)
-    jobvitefeed  nothing more: the account's feed carries every job's ad, and it
-                 goes into jd only behind the flag (asked so, 2026-11-23)
 
   nothing published
     oracle       no company on file uses it; unverified either way
@@ -4252,8 +4252,9 @@ def jobvitefeed_rows(jobs: list[dict], account: str) -> tuple[list[dict], int]:
         # THE AD IS ALWAYS READ: it is in the answer already downloaded, so it
         # costs no request, and "the boards that hand the description over in
         # the list response we already make are always read, flag or no flag"
-        # (FETCH_DETAILS above). Behind the flag, the nightly published 41 of
-        # Tyler's jobs as "We could not read this posting" with the ad in hand.
+        # (FETCH_DETAILS above). Behind the flag, as first built, the nightly
+        # would have published 41 of Tyler's jobs as "We could not read this
+        # posting" with the ad in hand.
         row["jd"] = plain_html(next((v for v in base.get("description") or () if v.strip()), ""))
         rows.append(row)
     return rows, unread

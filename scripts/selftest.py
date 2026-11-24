@@ -20437,12 +20437,14 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
     in them made up - and nothing that can reach a real host.
 
     THE READ: one request to app.jobvite.com/CompanyJobs/Xml.aspx?c=<id>, as a
-    stream, robots.txt asked, at the host's gate - paced 30 seconds, never
-    cached - and every hop held to the feed's own address.
+    stream, robots.txt asked, at the host's gate - paced 30 seconds whatever
+    HOST_PAUSE is, never cached - and no redirect followed, back to the feed
+    included.
     THE ROWS: one a job, a parent's per-location copies joined to it in any
     order; title, places, posted, the job's own page as https, category, and
-    pay only from the row's own salary fields; the ad in jd behind
-    FETCH_DETAILS only.
+    pay only from the row's own salary fields (each period its own, one code
+    or none, and none published abroad without one); the ad always in jd,
+    flag or no flag - it is in the one answer.
     NO PERSON: hiring_x0020_manager (a person on every row of Tyler's feed),
     an attribute or a field nobody named is in no row, no parsed job, no note,
     stderr or the probe's answer.
@@ -20454,10 +20456,12 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
     a field missing on one row states nothing; rows that disagree are two
     names, refused by proven(). n is the jobs.
     THE FINDER: an account named by its company id on their own site is a
-    candidate (the widget's ci=, CompanyJobs' c=); beside a jobs.jobvite.com
-    career site, on the page or the site, it is jobvite-tenant, as before.
+    candidate (the widget's ci=, CompanyJobs' c=; one character more is
+    none); beside a jobs.jobvite.com career site, on the page or the site,
+    it is jobvite-tenant, as before; only app.jobvite.com's no-board
+    addresses on its own page are its furniture.
     THE DOOR: wires it on both checks, skips a giant, and takes Jobvite's
-    own link beside it for a note.
+    own link beside it for a note; one plan asks the feed once.
     """
     import types
     sys.path.insert(0, str(ROOT / "scripts"))
@@ -20615,6 +20619,16 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
         if [r.get("jd") for r in rows or []] != ["Sell to counties & cities."] * 4:
             errors += fail(f"jobvitefeed: with FETCH_DETAILS off a row does not carry the ad its feed "
                            f"gave: {[r.get('jd') for r in rows or []]}")
+        # ...and the public catalogue and ats' own table say so (blind review
+        # 12: both said "only behind the flag", "asked so", a day after it was
+        # read with or without it)
+        import platform_catalog as pc
+        quirks = " ".join(pc.load()["platforms"]["jobvitefeed"].get("quirks") or [])
+        table = (ats.__doc__ or "").split("one extra request per posting")
+        if "flag or no flag" not in quirks or "only behind" in quirks or "asked so" in quirks \
+                or "jobvitefeed" not in table[0] or "jobvitefeed" in "".join(table[1:]):
+            errors += fail("jobvitefeed: data/platforms.json or ats.py's table says the ad is read only "
+                           "behind FETCH_DETAILS, which it is not")
         nobody("a row", rows)
         nobody("stderr", err)
         rows_d, exc, _err = read(MAIN, details=True)

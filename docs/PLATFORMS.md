@@ -589,7 +589,7 @@ On file today: 3 companies (Gigamon, Ookla, Uplight), 2 of them with roles. The 
 - A company id nobody holds is sent 302 to app.jobvite.com/Recruiting/Home.aspx and on to Jobvite's own site (research, 2026-11-20): every hop off the feed's address is refused before it is asked, so it is an error, never a zero.
 - posted is the row's \<date>, M/D/YYYY. The research found it is not always the posting's own datePosted (Absolute's oFV3AfwX: 11/4/2026 in its feed, 2026-11-02 on its posting, and 11 of its 18 rows share 10/19/2026).
 - Pay only from the row's own salary fields: the ISO code out of 'US Dollar (USD US$)', a period only from Annually, Annual, Yearly, Monthly, Weekly, Daily or Hourly (Bi-Weekly is not a week), cents kept (20.00-22.50 is not 20-22), and a figure that does not read publishes no pay. On a row listed outside the US, a currency naming no code publishes no pay either: the site reads a block with none as US dollars (blind review 12, 2026-11-23).
-- The ad goes into jd only behind FETCH_DETAILS, though it costs no request more (asked so, 2026-11-23).
+- The ad (description, in the same answer) is always each row's jd, flag or no flag: it costs no request, and a board that hands the description over in its list response is always read (ats.FETCH_DETAILS). Behind the flag, as first built on 2026-11-23, the nightly would have published 41 of Tyler's jobs as 'We could not read this posting' with the ad in hand.
 
 **Notes.**
 
