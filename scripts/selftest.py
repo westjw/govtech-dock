@@ -47698,6 +47698,10 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
       - a board their site names in a shape no reader takes, beside a closed
         posting -> SKIP unusable, the reference named (never "no board");
         beside a posting that fails on the day -> SKIP unreadable, naming it
+      - a board of their own that passes both checks, beside a posting that
+        has closed, one robots.txt refuses or one off Paylocity's host -> HOLD,
+        each said; beside one that fails on the day -> SKIP unreadable, not
+        filed
     and in apply: a worklist edited to point a posting's row at another board,
     to give it another posting, to drop what check 1 says of the posting, or
     to have the posting's page name two boards, leaves the row alone; one
@@ -47743,7 +47747,13 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "spell_x": D + "7821/Pp-Spell-X-Inc/Engineer",
          "spell_y": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7821",
          "unusable": D + "7831/Pp-Unusable/Engineer",
-         "unusable_flaky": D + "7832/Pp-Unusable-Flaky/Engineer"}
+         "unusable_flaky": D + "7832/Pp-Unusable-Flaky/Engineer",
+         # beside a board of their own
+         "beside_closed": D + "7841/Pp-Beside-Closed/Engineer",
+         "beside_refused": D + "7842/Pp-Beside-Refused/Engineer",
+         "beside_flaky": D + "7843/Pp-Beside-Flaky/Engineer",
+         "beside_off": "https://jobs.ppbesideoff.example/recruiting/jobs/Details/7844/Pp-Beside-Off/"
+                       "Engineer"}
     pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
                                 rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
              P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"],
@@ -47772,7 +47782,11 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
              P["spell_x"]: _pp_page("Pp Spell X - Engineer", B["spell_x"]),
              P["spell_y"]: _pp_page("Pp Spell X - Engineer", B["spell_x"]),
              P["unusable"]: _PP_CLOSED,
-             P["unusable_flaky"]: ats.AtsError(f"HTTP 503 for {P['unusable_flaky']}")}
+             P["unusable_flaky"]: ats.AtsError(f"HTTP 503 for {P['unusable_flaky']}"),
+             P["beside_closed"]: _PP_CLOSED,
+             P["beside_refused"]: ats.RobotsRefused(f"robots.txt asks crawlers not to read "
+                                                    f"{P['beside_refused']}"),
+             P["beside_flaky"]: ats.AtsError(f"HTTP 503 for {P['beside_flaky']}")}
     asked: list = []
 
     def posting_page(url, head=0):
@@ -47797,7 +47811,10 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                  co("pp-as-board", "Pp As Board"), co("pp-spell", "Pp Spell"),
                  co("pp-spell-shut", "Pp Spell Shut"), co("pp-spell-x", "Pp Spell X"),
                  co("pp-spell-y", "Pp Spell Y"), co("pp-unusable", "Pp Unusable"),
-                 co("pp-unusable-flaky", "Pp Unusable Flaky")]
+                 co("pp-unusable-flaky", "Pp Unusable Flaky"),
+                 co("pp-beside-closed", "Pp Beside Closed"),
+                 co("pp-beside-refused", "Pp Beside Refused"),
+                 co("pp-beside-flaky", "Pp Beside Flaky"), co("pp-beside-off", "Pp Beside Off")]
 
     def posted(cid, *refs, times=1):
         return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
@@ -47829,6 +47846,12 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
             cand("workday", ["ppun", "notapod", "site"], f"{site('pp-unusable')}/careers"),
             cand(wf.POSTING, P["unusable"], f"{site('pp-unusable')}/careers",
                  saw=P["unusable"])]),
+        # a board of their own, naming them, beside a posting that has closed,
+        # one robots.txt refuses, one that fails on the day, one off the host
+        **{f"pp-beside-{k}": entry(f"pp-beside-{k}", [
+            cand("greenhouse", f"ppbeside{k}", f"{site('pp-beside-' + k)}/careers"),
+            cand(wf.POSTING, P[f"beside_{k}"], f"{site('pp-beside-' + k)}/careers",
+                 saw=P[f"beside_{k}"])]) for k in ("closed", "refused", "flaky", "off")},
         "pp-unusable-flaky": entry("pp-unusable-flaky", [
             cand("workday", ["ppuf", "notapod", "site"], f"{site('pp-unusable-flaky')}/careers"),
             cand(wf.POSTING, P["unusable_flaky"], f"{site('pp-unusable-flaky')}/careers",
@@ -47846,7 +47869,9 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
               show("held"): (2, ["Pp Held Inc"]), show("ref"): (2, ["Pp Refusal Inc"]),
               show("rec"): (2, ["Pp Recorded Inc"]), show("twin"): (2, ["Pp Twin Inc"]),
               show("mixed"): (2, ["Pp Mixed Inc"]), show("spell"): (2, ["Pp Spell Inc"]),
-              show("spell_x"): (2, ["Pp Spell X Inc"])}
+              show("spell_x"): (2, ["Pp Spell X Inc"]),
+              **{f"greenhouse/ppbeside{k}": (2, [f"Pp Beside {k.title()}"])
+                 for k in ("closed", "refused", "flaky", "off")}}
     files = {
         # a reader's doubt about pp-held's board, kept for another company
         "board_doubts.json": {"doubt-other@2026-11-20T09:00:00-05:00": {
@@ -48009,6 +48034,33 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                                f"board their site names in a shape no reader takes, is not SKIP "
                                f"unreadable naming the reference: {unf.get('action')} "
                                f"{unf.get('kind')} {_wb_words(unf)[:400]!r}")
+            # POSTINGS BESIDE A BOARD OF THEIR OWN (review of the posting
+            # change, 2026-11-23: with any one of these rules broken, the board
+            # beside the posting was WIRE and no check failed)
+            for k, posting_, must in (
+                    ("closed", "has closed", "their site also links Paylocity postings, and no "
+                                             "posting's page that was asked gives a board"),
+                    ("refused", "robots.txt refuses", "their site also links a Paylocity posting "
+                                                      "whose page refused"),
+                    ("off", "is off Paylocity's host", "their site also links a posting this door "
+                                                       "does not ask")):
+                r = row(f"pp-beside-{k}")
+                if r.get("action") != "HOLD" or must not in _wb_words(r) \
+                        or (r.get("queue_row") or {}).get("found", {}).get("ref") \
+                        != f"ppbeside{k}":
+                    errors += fail(f"pp-beside-{k}: a board of their own beside a posting that "
+                                   f"{posting_} is not held, saying so ({must!r}): "
+                                   f"{r.get('action')} {_wb_words(r)[:400]!r}")
+            flaky_b = row("pp-beside-flaky")
+            if flaky_b.get("action") != "SKIP" or flaky_b.get("kind") != "unreadable" \
+                    or "failed on the day" not in _wb_words(flaky_b) or flaky_b.get("queue_row"):
+                errors += fail(f"pp-beside-flaky: a board of their own beside a posting whose page "
+                               f"failed on the day is not SKIP unreadable, unfiled: "
+                               f"{flaky_b.get('action')} {flaky_b.get('kind')} "
+                               f"{_wb_words(flaky_b)[:400]!r}")
+            if P["beside_off"] in asked:
+                errors += fail(f"pp-beside-off: a posting off recruiting.paylocity.com was asked: "
+                               f"{asked}")
             spelled = [row("pp-spell-x"), row("pp-spell-y")]
             if any(r.get("action") != "HOLD" or "the same board was found for" not in _wb_words(r)
                    for r in spelled):
