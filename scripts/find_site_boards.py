@@ -126,7 +126,9 @@ a platform it does read that name no board (gusto-posting, paylocity-other,
 adp-other, workday-no-site, workday-myworkdaysite, greenhouse-shortlink) or
 that sit where its reader does not ask (greenhouse-eu, lever-eu); where a
 company posts instead (linkedin, indeed ...); and `other:<site>` for a job
-frame or a careers link that leaves for a host nothing here knows.
+frame or a careers link that leaves for a host nothing here knows. A
+Paylocity Apply address whose posting id their own site also links as a
+posting is that posting's own form, and in no row (posting_forms).
 """
 from __future__ import annotations
 
@@ -773,6 +775,77 @@ POSTINGS: list[_Pat] = [
           _paylocity_posting),
 ]
 
+# A POSTING'S OWN APPLY FORM IS NO OTHER FORM (2026-11-24). Beside each posting
+# BS&A Software's careers page links, it links that posting's Apply form -
+# recruiting.paylocity.com/recruiting/jobs/Apply/<the same id>/<Tenant>/<Title>
+# - and the catch-all under ELSEWHERE filed every one as paylocity-other, a
+# form that names no board, which the wiring door read as a second place they
+# hire through and held the board their postings name (2026-11-23). An Apply
+# address (in any case, with its path's rest or without) whose posting id
+# their own site ALSO links as a posting (POSTINGS, a candidate) is that
+# posting's own form: not paylocity-other, so no doubt and no note for any
+# door or count that reads `elsewhere`. Decided HERE, where every address is
+# still in hand: _tally keeps each paylocity-other address's posting id
+# beside its row (_EACH), and posting_forms decides once the whole site is
+# read - a row of the file keeps one address and a count, and nobody reading
+# it could tell thirteen Apply forms from twelve and an address of something
+# else. One whose id their site does not link as a posting is paylocity-other
+# as before.
+_APPLY = re.compile(r"(?<![a-z0-9.-])recruiting\.paylocity\.com/recruiting/jobs/apply/"
+                    r"([0-9]{1,12})(?:/[A-Za-z0-9_.~%-]{1,200}){0,2}(?![A-Za-z0-9_.~%-])", re.I)
+_EACH = "_each"     # a paylocity-other row's addresses, [(posting id or None, saw)]; never written
+
+
+def apply_id(text: str, at: int) -> str | None:
+    """The posting id of the Paylocity Apply address that begins at `at` in
+    `text` - where ELSEWHERE's paylocity-other matched, at its host - or None
+    for any other address on that host."""
+    m = _APPLY.match(text, at)
+    return m.group(1) if m else None
+
+
+def _apply_of(address: str) -> str | None:
+    """The posting id when every paylocity-other address in one address (a
+    redirect's, a landing's) is the Apply form of that one posting, or None:
+    such a row stands for the whole address, kept whole or left out whole."""
+    text = soften(address or "")
+    ids = {apply_id(text, s) for s, _e, v in find_refs(text)[1] if v == "paylocity-other"}
+    return ids.pop() if len(ids) == 1 and None not in ids else None
+
+
+def _with_forms(row: dict, vendor: str, address: str) -> dict:
+    """A one-address `elsewhere` row (a redirect's, a landing's), carrying
+    that address's Apply posting id where it is paylocity-other."""
+    if vendor == "paylocity-other":
+        row[_EACH] = [(_apply_of(address), row["saw"])]
+    return row
+
+
+def posting_forms(rec: dict) -> dict:
+    """The whole site's say on each Paylocity Apply form it links, filled in
+    place: one whose posting id a paylocity-posting candidate of theirs names
+    leaves `elsewhere` - a row of nothing else goes, and a row with other
+    addresses beside keeps those, its `saw` the first of them and its `times`
+    their count - and every other row is left exactly as it is. Every row's
+    _EACH is taken off here, finished look or not (keep): it never reaches
+    the file."""
+    linked = set()
+    for c in rec.get("candidates") or []:
+        m = POSTINGS[0].rx.search(str(c.get("ref") or "")) if c.get("type") == POSTING else None
+        if m:
+            linked.add(m.group(2))
+    kept = []
+    for e in rec.get("elsewhere") or []:
+        each = e.pop(_EACH, None) if isinstance(e, dict) else None
+        left = [(pid, saw) for pid, saw in each or () if pid not in linked]
+        if not each or len(left) == len(each):
+            kept.append(e)
+        elif left:
+            kept.append({**e, "saw": left[0][1], "times": len(left)})
+    if "elsewhere" in rec:
+        rec["elsewhere"] = kept
+    return rec
+
 # Job platforms nothing here can read. Kept as a TALLY, because which reader
 # is worth writing next is a question the repo could not answer: no tool
 # recorded what a careers page actually loads. Also here: forms of platforms
@@ -1397,10 +1470,14 @@ def _tally(text: str, element: str, page_url: str, website: str,
                 key = (vendor, element, _host(whole) if whole else "", jobvite_widget_asset(whole))
             else:
                 key = (vendor, element)
+            saw = _saw(text, start, end)
             row = others.setdefault(key, {
-                "vendor": vendor, "element": element,
-                "saw": _saw(text, start, end), "times": 0})
+                "vendor": vendor, "element": element, "saw": saw, "times": 0})
             row["times"] += 1
+            if vendor == "paylocity-other":
+                # (each address, and the posting id where it is one's Apply
+                # form: posting_forms decides once the site is read)
+                row.setdefault(_EACH, []).append((apply_id(text, start), saw))
         at = text.lower().find(JIBE_MARK)
         if at >= 0 and _host(page_url):
             host = urllib.parse.urlsplit(page_url).netloc.lower()
@@ -2692,8 +2769,9 @@ def absorb(rec: dict, pr: dict, hop: int, who: "Whose | str", guessed: bool = Fa
                 "type": bkind, "ref": ref, "element": "redirect", "saw": _short(to),
                 "times": 1, "page": seen_on, "hop": hop})
         for vendor in dict.fromkeys(v for _s, _e, v in others):
-            rec["elsewhere"].append({"vendor": vendor, "saw": _short(to), "page": seen_on,
-                                     "element": "redirect", "times": 1})
+            rec["elsewhere"].append(_with_forms({"vendor": vendor, "saw": _short(to),
+                                                 "page": seen_on, "element": "redirect",
+                                                 "times": 1}, vendor, to))
         page["status"], page["same_site"] = "left-site", False
         doubt = ""
         if boards and not straight:
@@ -2739,7 +2817,8 @@ def absorb(rec: dict, pr: dict, hop: int, who: "Whose | str", guessed: bool = Fa
             for row in others:
                 rec["elsewhere"].append({"vendor": row["vendor"], "saw": row["saw"],
                                          "page": final, "element": row["element"],
-                                         "times": row["times"]})
+                                         "times": row["times"],
+                                         **({_EACH: row[_EACH]} if _EACH in row else {})})
             links = pr.get("links") or []
             n = job_like(links)
             rec["job_like_links"] = max(rec["job_like_links"] or 0, n)
@@ -2770,8 +2849,9 @@ def absorb(rec: dict, pr: dict, hop: int, who: "Whose | str", guessed: bool = Fa
         # where it landed may itself be a platform's address (a Gusto posting,
         # a Workday tenant with no site): that much is known without reading it
         for vendor in dict.fromkeys(v for _s, _e, v in refs_in_address(final)[1]):
-            rec["elsewhere"].append({"vendor": vendor, "saw": _short(final),
-                                     "page": pr["asked"], "element": "redirect", "times": 1})
+            rec["elsewhere"].append(_with_forms({"vendor": vendor, "saw": _short(final),
+                                                 "page": pr["asked"], "element": "redirect",
+                                                 "times": 1}, vendor, final))
     if guessed and "guessed path" not in page["note"]:
         # the site was never seen to link this address; we typed it
         page["note"] = (page["note"] + " (a guessed path)").strip()
@@ -3006,6 +3086,7 @@ async def look(company: dict, mode: str, read, plain=read_plain,
                                  "saw": _short(url), "page": on_page,
                                  "element": "href", "times": 1})
     jobvite_account_board(rec)
+    posting_forms(rec)
     rec["elsewhere"] = [e for e in rec["elsewhere"] if not _board_furniture(e, rec["candidates"])
                         and not same_tenant(e, rec["candidates"])]
     rec.update(_no_addresses(rec))
@@ -3315,7 +3396,7 @@ async def sweep(todo: list[dict], a, out: pathlib.Path, results: dict,
     def keep(c: dict, rec: dict) -> None:
         # (again here: a look that was stopped from outside never reached
         # its own last line)
-        rec = results[c["id"]] = _no_addresses(rec)
+        rec = results[c["id"]] = _no_addresses(posting_forms(rec))
         fresh[0] += 1
         if a.show:
             print(_line(c["id"], rec), flush=True)
