@@ -2902,6 +2902,15 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
             # 11, 2026-11-23: on the file's slug alone the company's own
             # unruled row was waived)
             split = number_split(r, keys, owner_holds.get("slugs"))
+            if split and not ({board_key("workable", s) for s in split}
+                              | waiting_keys(r, owner_holds.get("pairs"))) & set(keys):
+                # ...said so only of a row that could be this board under one
+                # of them: under every slug it is known by it is another board,
+                # and "which board the row is cannot be told" is not true of it
+                # (review 11's low, 2026-11-23: said of a greenhouse find, and
+                # on his card when the row was a pending proposal). Words only:
+                # it is held as "a different board" either way
+                split = None
             same_board = not split and bool(waiting_keys(r, owner_holds.get("pairs"))
                                             & set(keys))
         q = r.get("proposed") if isinstance(r.get("proposed"), dict) else None

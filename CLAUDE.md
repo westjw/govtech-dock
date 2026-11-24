@@ -2807,7 +2807,12 @@ round.
   under such a number is taken for NEITHER board: the find is held, both
   slugs said ("... the file opens Workable account N under
   apply.workable.com/<a>, and this run followed that number to
-  apply.workable.com/<b>, so which board the row is cannot be told"), and
+  apply.workable.com/<b>, so which board the row is cannot be told") where
+  the find could be it - one of the two slugs, or that very number; a find
+  that is neither (another platform's board, a third slug) is held as "a
+  different board", which under either slug it is (review 11's low,
+  2026-11-23: the split words were said of a greenhouse find, and reached
+  his card where the row was a pending proposal) - and
   apply leaves a row flipped to WIRE beside it alone, naming both too ("...
   and the worklist says the plan followed that number to ..."), wherever the
   worklist's `workable_numbers` opens the number under another slug than the

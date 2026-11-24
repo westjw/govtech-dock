@@ -45871,7 +45871,9 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         under one slug and the run under another (in apply: the worklist's
         workable_numbers) is neither board: the find is held with both slugs
         said, and a row flipped to WIRE beside it is left alone (review 11,
-        2026-11-23).
+        2026-11-23); a find that is neither slug (another platform's board, a
+        third slug) is held beside it as "a different board", never as a row
+        that "cannot be told" (review 11's low, 2026-11-23).
     """
     import board_proposals as bp
     import wire_found as wf
@@ -46576,6 +46578,30 @@ def check_a_workable_account_is_held_under_either_key() -> int:
                            f"the file opens under another slug than the run followed it to, was "
                            f"taken for this board: x-co {rx.get('action')} {rx.get('ref')} "
                            f"{_wb_words(rx)[:400]!r}")
+    # ...but a find that is neither slug - another platform's board, or a
+    # third Workable slug - beside such a row is "a different board": under
+    # either slug the row is another board, and "which board the row is cannot
+    # be told" is not true of it (review 11's low, 2026-11-23: so it was said,
+    # and onto his card where the row was a pending proposal)
+    for find_kind, find_ref in (("greenhouse", "aco"), ("workable", "other")):
+        a_older = dict(older, id="a-co", name="A Co")
+        with _WiringBox([co("a-co", "A Co"), co("x-co", "X Co")],
+                        dict(SPLIT, **{f"{find_kind}/{find_ref}": (3, ["A Co"])}),
+                        files={bp.FOUND.name: [a_older]}, urls=SPLIT_URLS,
+                        lands=SPLIT_LANDS) as box:
+            code, text, _wl, rows_o = box.plan(_wb_results({
+                "a-co": _wb_one("a-co", find_kind, find_ref, element="iframe"),
+                "x-co": asks("x-co", "730730")}), name=f"worklist-split-{find_kind}.json")
+            ro = (rows_o or {}).get("a-co") or {}
+            if ro.get("action") != "HOLD" \
+                    or "a different board, workable/730730, is already waiting in Boards we " \
+                       "found for this company" not in _wb_words(ro) \
+                    or "cannot be told" in _wb_words(ro):
+                errors += fail(f"a {find_kind}/{find_ref} find beside a row waiting under a "
+                               f"Workable number the file and the run open under two other "
+                               f"slugs is not held as a different board, or is said to be a "
+                               f"row that cannot be told: a-co {ro.get('action')} "
+                               f"{_wb_words(ro)[:400]!r}")
     # ...and asked directly
     split_of = getattr(wf, "number_split", None)
     k_wk = [bp.board_key("workable", "wkco")]
