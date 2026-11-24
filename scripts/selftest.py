@@ -2943,6 +2943,28 @@ def check_the_panel_asks_job_hunter_through_the_board() -> int:
         errors += fail("DEPLOY.md §3f's panel check does not say that \"did not let the board in\" is Job Hunter's "
                        "JH_BOARD_SERVICE_TOKEN (or its check of the board's signature), or still files a missing "
                        "plist variable under \"did not answer\"")
+    # TAKING SOMEONE OUT OF THE BETA, AS IT REALLY WORKS (review, 2026-11-24):
+    # the panel comes in on the service token, so "Beta users" never sees it,
+    # and an Access session already granted lasts until it expires. Job
+    # Hunter's own unlink is the one step that acts at once, so it comes
+    # first; then Access (the policy, and Revoke session); then the role,
+    # after the nightly and deploy. No "at once" anywhere else
+    out_ = s3f[s3f.find("**Taking someone out of the beta**"):s3f.find("Switching the panel off for everybody")]
+    steps = [out_.find(n) for n in ("1. **In Job Hunter, unlink their address.**",
+                                   "2. **At Access**: take their address off the \"Beta users\" policy",
+                                   "3. **On the Users board**: take `hunter` off them")]
+    if (min(steps) < 0 or steps != sorted(steps)
+            or "`python3 scripts/accounts_cli.py --unlink-email <their address> --why \"left the beta\"`" not in out_
+            or "This stops Job Hunter and the panel at once" not in out_
+            or "Zero Trust → Users → the person → **Revoke session**" not in out_
+            or "after the next nightly and deploy" not in out_
+            or "Switching the panel off for everybody" not in s3f):
+        errors += fail("DEPLOY.md §3f does not take someone out of the beta in its three true steps, in order: "
+                       "unlink in Job Hunter (at once), the Beta users policy and Revoke session, the hunter role "
+                       "after the next nightly and deploy")
+    elif ("at once" in out_[:steps[0]] or "at once" in out_[steps[1]:]
+            or '"Beta users" policy (at once)' in s3f):
+        errors += fail("DEPLOY.md §3f says a step of taking someone out of the beta acts at once when it does not")
     return errors
 
 

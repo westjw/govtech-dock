@@ -258,7 +258,10 @@ already, you go straight through. The board's own server asks Job Hunter for
 a role's panel with a service token, so the panel never asks you to sign in.
 Job Hunter stays a closed beta: the Users board's `hunter` role (or `owner`)
 gets a sign-in, everybody else is told it is a closed beta, and the "Beta
-users" policy stays as the second lock. How it works is in CLAUDE.md ("Job
+users" policy stays as the second lock on the sign-in. (Not on the panel:
+the board's server reaches Job Hunter on the service token, so there the
+second lock is Job Hunter's own link of the address to an account.) How it
+works is in CLAUDE.md ("Job
 Hunter signs in with SLED JOBS"). Two rules hold throughout: **never a new
 Access application** (the existing "Job Hunter beta" is the one you change)
 and **no `*.sledjobs.com` wildcard**.
@@ -430,10 +433,30 @@ plenty), so the panel keeps working while the new secret goes into
 `JH_SERVICE_TOKEN_SECRET` and a new deployment. After a leak, never: Revoke
 immediately, as above.
 
-**Taking someone out of the beta** is the "Beta users" policy (at once) and
-the `hunter` role on the Users board (after the next deploy). The service
-token is revoked in Zero Trust → Service Tokens; the panel then says Job
-Hunter did not answer, and nothing else changes.
+**Taking someone out of the beta**, in this order. The panel reaches Job
+Hunter on the service token, never on the person's own Access sign-in, so
+"Beta users" does not stop it, and an Access session already granted lasts
+until it expires.
+1. **In Job Hunter, unlink their address.** On the Mac, in Job Hunter's
+   folder: `python3 scripts/accounts_cli.py --unlink-email <their address>
+   --why "left the beta"`. If they were ever given a Job Hunter token, revoke
+   that too (`python3 scripts/accounts_cli.py --list` shows it by its label,
+   then `--revoke <its hash> --why "left the beta"`), or it still opens
+   their account. This stops Job Hunter and the panel at once: Job Hunter
+   maps the address, Access's or the one the board signs for the panel, to
+   an account on every request, and an unlinked address opens none.
+2. **At Access**: take their address off the "Beta users" policy, so they
+   cannot sign in again, and end the session they already have: Zero Trust
+   → Users → the person → **Revoke session**.
+3. **On the Users board**: take `hunter` off them. That stops the board
+   giving them a sign-in code for Job Hunter, or a panel, after the next
+   nightly and deploy; until then their board sign-in (30 days, and not
+   ended one person at a time) still asks, and step 1 is what makes Job
+   Hunter say no.
+
+Switching the panel off for everybody is deleting the `board popout` service
+token (Zero Trust → Service Tokens): the panel then says Job Hunter did not
+answer, and nothing else changes.
 
 ## 3. Signed-in only until launch (decided 2026-10-05)
 **Read §3a first. Since 2026-11-13 Access covers `/admin` ONLY, for good.**

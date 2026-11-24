@@ -512,6 +512,15 @@ the popout's assertion: change it on one side only and the popout stops.
   that is why everything about the call is fixed here, and why Job Hunter
   believes a person only when the token's Access assertion AND the board's
   signed one verify, for that one route.
+- **Taking someone out of the beta starts in Job Hunter** (DEPLOY.md §3f;
+  review, 2026-11-24, where the doc had said the "Beta users" policy did it
+  "at once"): the panel comes in on the service token, so "Beta users" never
+  sees it, and an Access session already granted lasts until it expires.
+  Unlinking the address in Job Hunter (`accounts_cli.py --unlink-email`, and
+  `--revoke` for any token of theirs) is the one step that acts at once, for
+  Job Hunter and the panel; then the policy and Revoke session at Access;
+  then the `hunter` role, which reaches the board after the nightly and a
+  deploy.
 - The owner's steps are DEPLOY.md §3f. `scripts/jh_signin_secrets.mjs` makes
   the key (kid = its RFC 7638 thumbprint), the client id and the secret and
   prints them once, on a terminal only, and writes nothing: the first setup.
