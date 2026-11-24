@@ -4351,22 +4351,28 @@ def fetch_jobvitefeed(ref) -> list[dict]:
 # made-up one served the same list. Nothing is read from the slug, a name
 # least of all, and every hop is held to this board's own list - the same
 # number, on app.trinethire.com, at /companies/<n>[-<slug>]/jobs/embed - as
-# its tenants share one host and differ by path (as Jobvite's do).
+# its tenants share one host and differ by path (as Jobvite's do). A slug
+# left empty ('<n>-': what parameterize leaves of a name with no ASCII letter
+# or digit in it) is the number alone, as the finder records it (blind
+# review 13's verifier, 2026-11-24: it had been refused, and its address
+# filed as one naming no board).
 #
 # A ZERO ONLY WHERE TRINET SAYS SO, in the shape it was measured in on two
 # empty boards (2026-11-24): the 'Open Jobs | ' title, NO <ul id="jobs-list">
 # anywhere (TriNet draws the list only when it has rows), and a <div
 # id="jobs"> whose heading reads "There are currently no open jobs
-# available." with no link, list, table or form inside it - and no posting of
-# the board named anywhere in the RAW page (its scripts, templates, noscript
-# and comments too, a JSON '\/' read as '/'). An empty jobs-list is a shape
-# TriNet does not serve - an empty mount point a script, a template or inline
-# JSON would fill - and raises. A page without the title (the career page, a
-# challenge page, anything else), a titled page with neither shape, a row
-# that does not read as a posting of this board, a posting the page names
-# outside its list, a pager (rel=next, a pagination class, a link to this
-# board's list or career page with a query, 'View all' or 'Load more'), and
-# any answer but a 200 are errors, never a zero and never part of a board.
+# available." with no link, list, table, form, division or control (button,
+# input, select) inside it - the words in any other division are no zero -
+# and no posting of the board named anywhere in the RAW page (its scripts,
+# templates, noscript and comments too, a JSON '\/' read as '/'). An empty
+# jobs-list is a shape TriNet does not serve - an empty mount point a script,
+# a template or inline JSON would fill - and raises. A page without the
+# title (the career page, a challenge page, anything else), a titled page
+# with neither shape, a row that does not read as a posting of this board, a
+# posting the page names outside its list, a pager (rel=next, a pagination
+# class, a link to this board's list or career page with a query, 'View all'
+# or 'Load more'), and any answer but a 200 are errors, never a zero and
+# never part of a board.
 #
 # THE BOARD IS ITS NUMBER, compared as a number (a ref written 041234-x is
 # board 41234, whose rows TriNet writes 41234), and a slug is anything Rails'
@@ -4393,7 +4399,7 @@ TRINETHIRE_HOST = "app.trinethire.com"
 TRINETHIRE_TITLE = "Open Jobs | "
 TRINETHIRE_PAGE_MAX = 2_000_000      # characters of a page read; more is refused, never cut
 TRINETHIRE_NONE = "There are currently no open jobs available."   # TriNet's own words, measured
-_TRINET_REF = re.compile(r"([0-9]{1,12})(?:-[A-Za-z0-9-]{1,200})?")
+_TRINET_REF = re.compile(r"([0-9]{1,12})(?:-([A-Za-z0-9-]{0,200}))?")
 # (a slug: what Rails' parameterize leaves - letters, digits, '-' and '_' -
 # or nothing at all after the hyphen; none of it changes the path)
 _TRINET_EMBED_PATH = re.compile(r"/companies/([0-9]{1,12})(?:-[A-Za-z0-9_-]{0,200})?/jobs/embed/?")
@@ -4460,13 +4466,15 @@ def trinethire_not_career(url) -> None:
 def trinethire_ref(ref) -> tuple[str, str]:
     """(the ref as found, the board's number), or AtsError. '<number>' or
     '<number>-<slug>', the slug letters, digits and hyphens: never an
-    address, and never anything that changes the path it is put in."""
+    address, and never anything that changes the path it is put in. A slug
+    left empty, '<number>-', is the number alone ('41234-' is '41234', read
+    at /companies/41234/jobs/embed), as find_site_boards records it."""
     s = _text(ref)
     m = _TRINET_REF.fullmatch(s)
     if not m:
         raise AtsError(f"not a trinethire board: {ref!r} (a TriNet Hire board is "
                        f"'<number>-<name>', as app.trinethire.com/companies/<number>-<name> names it)")
-    return s, m.group(1)
+    return (s if m.group(2) else m.group(1)), m.group(1)
 
 
 def trinethire_url(ref) -> str:
@@ -4534,7 +4542,10 @@ def _trinet_none_open(body: str, low: str) -> bool:
     """True where the cut page is TriNet's own word that the board has nothing
     open, as measured on two empty boards (2026-11-24): a <div id="jobs">
     whose first heading reads exactly TRINETHIRE_NONE, holding no link, list,
-    table, form or division of its own."""
+    table, form, division or control (button, input, select) of its own.
+    The words in any other division are not it. Each of these rules is
+    pinned by a case of its own (blind review 13's verifier cut the id rule,
+    and the barred tags to a, ul and li, and nothing had failed)."""
     m = _TRINET_JOBS_DIV.search(body)
     close = low.find("</div", m.end()) if m else -1
     if close < 0:

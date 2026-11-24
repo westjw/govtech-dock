@@ -21214,21 +21214,25 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
     raw page, and <div id="jobs"> holding the heading "There are currently no
     open jobs available." alone, no posting named anywhere in the raw page.
     An EMPTY jobs-list (TriNet draws none for an empty board), a posting in a
-    script, a template, a noscript or escaped JSON, other words, the career
-    page, a challenge page, a row that does not read, a posting outside the
-    list, a pager, a list cut short, a page past the cap, a 404 and a 429
-    raise.
+    script, a template, a noscript or escaped JSON, other words, the words in
+    another division with no div#jobs, the words beside a table, a form, a
+    list, a division or a control of their own, the career page, a challenge
+    page, a row that does not read, a posting outside the list, a pager, a
+    list cut short, a page past the cap, a 404 and a 429 raise.
     THE PROBE: the <title> after exactly 'Open Jobs | ', unescaped, read off
     the page as a browser shows it (never a <title> commented out or an
     SVG's), stated over the whole board, n 0 on an empty board; never the
     slug, og:site_name or a heading.
     THE FINDER: the number on app.trinethire.com, in an href or a src and in
-    any form, is a board, '<n>-<slug>' as written or the bare number, keyed
-    on the number, leading zeros off; other hosts and other paths are none.
+    any form, is a board, '<n>-<slug>' as written or the bare number ('<n>-',
+    a slug left empty, recorded as the bare number, and the reader reads it
+    so), keyed on the number, leading zeros off; other hosts and other paths
+    are none.
     THE DOOR: a company whose own page embeds the board and whose board names
     it is wired, the list asked ONCE for the read and the probe; one whose
     board names somebody else is held; one number under two slugs on their
-    site is one board, wired.
+    site is one board, wired; one their page links under a slug left empty is
+    found, read at the bare number, and wired.
     """
     sys.path.insert(0, str(ROOT / "scripts"))
     import ats
@@ -21348,12 +21352,13 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
 
         # ---- a zero only where TriNet says so, in the shape measured on two empty -------
         # boards (2026-11-24): the title, no jobs-list anywhere, and its words alone
-        def empty(title="Open Jobs | Acme Gov Systems, Inc.", inner=None, head="", body=""):
+        def empty(title="Open Jobs | Acme Gov Systems, Inc.", inner=None, head="", body="",
+                  div='id="jobs" class="container"'):
             inner = (f"<h3>{ats.TRINETHIRE_NONE}</h3>\n    <h4>Please look again soon.</h4>"
                      if inner is None else inner)
             return (f'<!DOCTYPE html><html><!--[if IE 8]> <html class="ie8"> <![endif]--><head>'
                     f'<title>{title}</title>{head}</head><body class=\'career_site embed_jobs\'>'
-                    f'<div id="jobs" class="container">\n    {inner}\n</div>{body}</body></html>')
+                    f'<div {div}>\n    {inner}\n</div>{body}</body></html>')
 
         for body, why in ((empty(), "TriNet's own 'no open jobs', its list drawn nowhere"),
                           (empty(title="Open Jobs | "), "the same, its title naming nobody"),
@@ -21396,6 +21401,24 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
             (empty(body='<a href="?page=2" rel="next">Next</a>'), "'no open jobs' on a page with a pager"),
             ('<html><head><title>Open Jobs | Acme Gov Systems, Inc.</title></head><body>Checking '
              'your browser</body></html>', "the title over a page of neither shape")]
+        # THE WORDS COUNT ONLY IN TRINET'S OWN <div id="jobs">, AND ONLY ALONE
+        # THERE (blind review 13's verifier cut the id rule, and cut the barred
+        # tags to a, ul and li, and nothing failed): another division's words
+        # with no div#jobs on the page, and the words beside each barred tag
+        # of their own - one tag a case, none of them linking a posting
+        NOT_ZERO.append((empty(div='class="notice"'),
+                         "'no open jobs' in another division, no div#jobs on the page"))
+        for markup, why in (
+                ("<table><tr><td>Account Executive</td><td>Remote - Full-time</td></tr></table>",
+                 "a table of rows that link nothing"),
+                ('<form method="get" action="/search"><label>Keyword</label></form>', "a form"),
+                ('<ol class="openings"></ol>', "an ordered list of their own"),
+                ('<div class="row">Account Executive - Remote</div>', "a division of their own"),
+                ('<button type="submit">Search</button>', "a button"),
+                ('<input type="search" name="q">', "an input"),
+                ('<select name="where"><option>Remote</option></select>', "a select")):
+            NOT_ZERO.append((empty(inner=f"<h3>{ats.TRINETHIRE_NONE}</h3>{markup}"),
+                             f"'no open jobs' beside {why}"))
         for body, why in NOT_ZERO:
             rows, exc = read(body)
             if not isinstance(exc, ats.AtsError) or rows is not None:
@@ -21543,14 +21566,23 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
             errors += fail(f"trinethire: a list robots.txt closes was asked ({sent}) or read: {rows or exc!r}")
 
         # ---- the ref: '<number>-<slug>' or the number, nothing else asked ----------------
+        # (a slug left empty, '<number>-', is the number alone, as the finder
+        # records it: blind review 13's verifier found it refused)
         for ref, url in ((N, f"https://app.trinethire.com/companies/{N}/jobs/embed"),
-                         (N + "-Acme-Gov", f"https://app.trinethire.com/companies/{N}-Acme-Gov/jobs/embed")):
+                         (N + "-Acme-Gov", f"https://app.trinethire.com/companies/{N}-Acme-Gov/jobs/embed"),
+                         (N + "-", f"https://app.trinethire.com/companies/{N}/jobs/embed")):
             rows, exc = read({url: MAIN}, ref=ref)
             if exc or len(rows or []) != 5 or [u for u, _ in sent] != [url]:
                 errors += fail(f"trinethire: the ref {ref!r} was not read at {url}: {exc or [u for u, _ in sent]}")
+        try:
+            if ats.trinethire_ref(N + "-") != (N, N) or ats.trinethire_ref(f"0{N}-") != (f"0{N}", f"0{N}"):
+                errors += fail(f"trinethire: a slug left empty is not the bare number: "
+                               f"{ats.trinethire_ref(N + '-')} {ats.trinethire_ref(f'0{N}-')}")
+        except ats.AtsError as exc:
+            errors += fail(f"trinethire: a slug left empty ({N}-) is refused as a ref: {exc}")
         for ref in ("acme", "", None, 7.5, ["41234"], f"https://app.trinethire.com/companies/{REF}/jobs",
-                    f"{N}/../51234", f"{N}-x/jobs", f"{N}-x?y=1", f"{N}-x#y", f"{N}-", f"-{N}", f"{N}_x",
-                    f"{N}-x.y", "1" * 13):
+                    f"{N}/../51234", f"{N}-x/jobs", f"{N}-x?y=1", f"{N}-x#y", f"-{N}", f"{N}_x",
+                    f"{N}-x.y", f"{N}-/jobs", "-", "1" * 13):
             rows, exc = read(MAIN, ref=ref)
             if not isinstance(exc, ats.AtsError) or sent:
                 errors += fail(f"trinethire: {ref!r} was taken as a board's ref ({sent}): {rows or exc!r}")
@@ -21604,6 +21636,7 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
 
         # ---- the public link: the list, never the career page -----------------------------
         for ref, want in ((REF, LIST), (N, f"https://app.trinethire.com/companies/{N}/jobs/embed"),
+                          (N + "-", f"https://app.trinethire.com/companies/{N}/jobs/embed"),
                           (CAREERS, "https://acme.example"), ("acme", "https://acme.example")):
             if bb.board_url({"ats": {"type": "trinethire", "ref": ref},
                              "website": "https://acme.example"}) != want:
@@ -21653,12 +21686,26 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
         D_NEW = "https://app.trinethire.com/companies/61234-delta-gov/jobs/embed"
         D_PAGE = page(li(99201, "Account Executive", "Remote - Full-time").replace(
             f"/companies/{N}-", "/companies/61234-"), title="Open Jobs | Delta Gov")
+        # (their own page links the list under a slug left empty, '71234-': the
+        # door is handed what the finder itself records of that page - it had
+        # filed the address as naming no board, and the door then said their
+        # site named none: blind review 13's verifier, 2026-11-24)
+        E_LIST = "https://app.trinethire.com/companies/71234/jobs/embed"
+        E_PAGE = page(li(99301, "Account Executive", "Remote - Full-time", slug="").replace(
+            f"/companies/{N}-", "/companies/71234-"), title="Open Jobs | Echo Gov")
+        e_site = f"{_wb_site('echo-gov')}/careers"
+        e_found, e_rest = fsb.sightings('<a href="https://app.trinethire.com/companies/71234-/jobs">Open '
+                                        'roles</a>', e_site, _wb_site("echo-gov"))
+        e_entry = _wb_entry("echo-gov", [_wb_cand(f["type"], f["ref"], e_site, element=f["element"],
+                                                  times=f["times"]) for f in e_found],
+                            elsewhere=[{"vendor": r["vendor"], "saw": r["saw"], "page": e_site,
+                                        "element": r["element"], "times": r["times"]} for r in e_rest])
         serve({A_LIST: MAIN, B_LIST: page(li(99101, "Account Executive", "Remote - Full-time").replace(
             f"/companies/{N}-", "/companies/51234-"), title="Open Jobs | Gamma Holdings LLC"),
-            D_OLD: D_PAGE, D_NEW: D_PAGE})
+            D_OLD: D_PAGE, D_NEW: D_PAGE, E_LIST: E_PAGE})
         d_site = f"{_wb_site('delta-gov')}/careers"
         with _WiringBox([_wb_co("acme-gov-systems", "Acme Gov Systems"), _wb_co("beta-co", "Beta Co"),
-                         _wb_co("delta-gov", "Delta Gov")], {}) as box, \
+                         _wb_co("delta-gov", "Delta Gov"), _wb_co("echo-gov", "Echo Gov")], {}) as box, \
                 contextlib.redirect_stderr(io.StringIO()):
             (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
              ats._get, ats._page) = real
@@ -21668,9 +21715,17 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
                 "beta-co": _wb_one("beta-co", "trinethire", "51234-beta", element="iframe"),
                 "delta-gov": _wb_entry("delta-gov", [
                     _wb_cand("trinethire", "61234-old-slug", d_site, element="iframe"),
-                    _wb_cand("trinethire", "61234-delta-gov", d_site, element="href")])}))
-        a_row, b_row, d_row = ((rows_ or {}).get(c) or {} for c in ("acme-gov-systems", "beta-co",
-                                                                     "delta-gov"))
+                    _wb_cand("trinethire", "61234-delta-gov", d_site, element="href")]),
+                "echo-gov": e_entry}))
+        a_row, b_row, d_row, e_row = ((rows_ or {}).get(c) or {} for c in (
+            "acme-gov-systems", "beta-co", "delta-gov", "echo-gov"))
+        e_got = [(f["type"], f["ref"]) for f in e_found]
+        if e_got != [("trinethire", "71234")] or e_rest or e_row.get("action") != "WIRE" \
+                or (e_row.get("type"), e_row.get("ref")) != ("trinethire", "71234"):
+            errors += fail(f"trinethire door: a board their own page links under a slug left empty, "
+                           f"naming them, was not found as the bare number and wired so: finder "
+                           f"{e_got}, elsewhere {[r['vendor'] for r in e_rest]}; door "
+                           f"{e_row.get('action')} {e_row.get('ref')!r} ({_wb_words(e_row)[:200]!r})")
         if a_row.get("action") != "WIRE":
             errors += fail(f"trinethire door: a board their own page embeds, naming them, was not "
                            f"wired: {a_row.get('action')} ({_wb_words(a_row)[:200]!r})")
@@ -21683,8 +21738,8 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
                            f"wired as one board: {d_row.get('action')} ({_wb_words(d_row)[:200]!r})")
         # ONE REQUEST A LIST A PLAN: the read and the probe take one answer
         asks = sorted(u for u, _kw in sent)
-        if asks not in (sorted([A_LIST, B_LIST, D_OLD]), sorted([A_LIST, B_LIST, D_NEW])) \
-                or sorted(asked) != asks:
+        if asks not in (sorted([A_LIST, B_LIST, D_OLD, E_LIST]),
+                        sorted([A_LIST, B_LIST, D_NEW, E_LIST])) or sorted(asked) != asks:
             errors += fail(f"trinethire door: the plan asked {asks} (robots.txt of {sorted(asked)}), not "
                            f"each list once")
         # (only a list read whole is kept, only inside the block, and outside
@@ -21722,6 +21777,16 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
              [("trinethire", f"{N}-acme-gov", "href")], "a link to a posting"),
             (f'<a href="https://app.trinethire.com/companies/{N}/jobs">Jobs</a>',
              [("trinethire", N, "href")], "the bare number"),
+            # (a slug left empty is the bare number, as the reader reads it -
+            # never a form of TriNet's naming no board: blind review 13's verifier)
+            (f'<a href="https://app.trinethire.com/companies/{N}-/jobs">Jobs</a>',
+             [("trinethire", N, "href")], "a link under a slug left empty"),
+            (f'<iframe src="https://app.trinethire.com/companies/{N}-/jobs/embed"></iframe>',
+             [("trinethire", N, "iframe")], "the list framed under a slug left empty"),
+            (f'<a href="https://app.trinethire.com/companies/{N}-/jobs">a</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs">b</a>'
+             f'<a href="https://app.trinethire.com/companies/{N}-acme-gov/jobs/99001-ae">c</a>',
+             [("trinethire", f"{N}-acme-gov", "href")], "one number under an empty slug and a named one"),
             (f'<script src="https://app.trinethire.com/companies/{N}-acme-gov/jobs/embed"></script>',
              [("trinethire", f"{N}-acme-gov", "script")], "a script's src"),
             (f'<a href="https://app.trinethire.com/companies/{REF}/jobs">a</a>'
@@ -21737,10 +21802,11 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
              f'<a href="https://app.trinethire.com/companies/0{N}-acme-gov/jobs">b</a>'
              f'<a href="https://app.trinethire.com/companies/0{N}-acme-gov/jobs/99001-ae">c</a>',
              [("trinethire", f"0{N}-acme-gov", "href")], "one number with and without a leading zero")):
-        found, _rest = fsb.sightings(markup, here, home)
+        found, rest = fsb.sightings(markup, here, home)
         got = sorted((f["type"], f["ref"], f["element"]) for f in found)
-        if got != sorted(want):
-            errors += fail(f"finder, {why}: {got}, not {sorted(want)}")
+        if got != sorted(want) or rest:
+            errors += fail(f"finder, {why}: {got}, not {sorted(want)}, or a board's own address was "
+                           f"filed besides as a form naming none: {[r['vendor'] for r in rest]}")
     for markup, why in (
             ('<a href="https://evilapp.trinethire.com/companies/41234-x/jobs">x</a>', "a host ending in it"),
             ('<a href="https://app.trinethire.com.evil.example/companies/41234-x/jobs">x</a>', "a host under another"),
@@ -21762,6 +21828,7 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
                        f"trinethire-other (a platform we read, naming no board): {rest} {rest_alone}")
     if bp.board_key("trinethire", REF) != bp.board_key("trinethire", f"{N}-acme-gov") \
             or bp.board_key("trinethire", N) != bp.board_key("trinethire", REF) \
+            or bp.board_key("trinethire", f"{N}-") != bp.board_key("trinethire", REF) \
             or bp.board_key("trinethire", f"0{N}-acme-gov") != bp.board_key("trinethire", REF) \
             or bp.board_key("trinethire", f"00{N}") != bp.board_key("trinethire", REF) \
             or bp.board_key("trinethire", "51234-acme-gov") == bp.board_key("trinethire", f"{N}-acme-gov") \
@@ -32127,6 +32194,11 @@ SITE_BOARD_FORMS = [
      '?source=Our+Job+Board">Account Executive</a>',
      "trinethire", "41234-acme-gov", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
     ('<a href="https://app.trinethire.com/companies/41234/jobs">Careers</a>',
+     "trinethire", "41234", "https://app.trinethire.com/companies/41234/jobs/embed"),
+    # (a slug left empty - what Rails' parameterize leaves of a name with no
+    # ASCII letter or digit - is the bare number: blind review 13's verifier
+    # found it filed as a form naming no board)
+    ('<iframe src="https://app.trinethire.com/companies/41234-/jobs/embed"></iframe>',
      "trinethire", "41234", "https://app.trinethire.com/companies/41234/jobs/embed"),
 ]
 

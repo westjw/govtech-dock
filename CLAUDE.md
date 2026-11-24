@@ -4313,7 +4313,13 @@ wired or rewired by this work: that is the door's, after review.
   nothing is ever read from the slug, a name least of all; the finder keys a
   board on the number (find_site_boards, any leading zero off) and so does
   the door (`board_proposals.board_key`: 5502-fraudscope, 5502-codoxo and
-  5502 are one board).
+  5502 are one board). A slug left empty ('<n>-', what Rails' parameterize
+  leaves of a name with no ASCII letter or digit) is the number alone: the
+  finder records /companies/41234-/jobs as '41234', and `ats.trinethire_ref`
+  reads '41234-' as '41234', at /companies/41234/jobs/embed. (Blind review
+  13's verifier, 2026-11-24: the ref refused it, and the finder filed the
+  address as trinethire-other, so the door said their site named no board
+  and a board their own site points to was neither wired nor held.)
 - **One request is the whole board, and only the list is read.** GET
   /companies/<ref>/jobs/embed through `ats._page` (robots.txt at every hop,
   the crawler's own name), every hop held to the board's own list - the same
@@ -4346,14 +4352,16 @@ wired or rewired by this work: that is the door's, after review.
   boards on 2026-11-24: the 'Open Jobs | ' title, NO <ul id="jobs-list">
   anywhere in the raw page (TriNet draws the list only when it has rows), a
   <div id="jobs"> whose first heading reads "There are currently no open jobs
-  available." with no link, list, table or form inside it, and no posting of
-  the board named anywhere in the RAW page (scripts, templates, noscript and
-  comments too, a JSON '\/' read as '/'). An empty jobs-list is a mount point
-  something else would fill, and raises; so do a page without the title (the
-  career page, a challenge page), a titled page of neither shape, a row that
-  does not read as a posting of this board, a posting named outside the list,
-  a pager, a page over 2,000,000 characters and any answer but a 200 (a
-  number that is gone answers 404): Unknown, never "None found".
+  available." with no link, list, table, form, division or control (button,
+  input, select) inside it - TriNet's words in any other division are no
+  zero - and no posting of the board named anywhere in the RAW page
+  (scripts, templates, noscript and comments too, a JSON '\/' read as '/').
+  An empty jobs-list is a mount point something else would fill, and
+  raises; so do a page without the title (the career page, a challenge
+  page), a titled page of neither shape, a row that does not read as a
+  posting of this board, a posting named outside the list, a pager, a page
+  over 2,000,000 characters and any answer but a 200 (a number that is gone
+  answers 404): Unknown, never "None found".
 - **TriNet's career page is never read, by any reader.** `ats.follow` asks
   `ats.trinethire_not_career` of every hop before anything is sent, so
   app.trinethire.com/companies/<n>[-<slug>]/jobs is refused by the careers-page
@@ -4391,7 +4399,8 @@ wired or rewired by this work: that is the door's, after review.
   Never /jobs, which tells a person there are no openings. A ref that is no
   board links the company's website.
 - **The finder**: app.trinethire.com/companies/<n>[-<slug>] in an href or a
-  src, in any form (/jobs/embed, /jobs, a posting), and only on that host and
+  src, in any form (/jobs/embed, /jobs, a posting), its slug left empty too
+  ('<n>-', recorded as '<n>'), and only on that host and
   only the number's own path segment; every other trinethire.com address is
   `trinethire-other`, a form of a platform we read that names no board (the
   door's own-form note beside a board). discover_js labels the address
@@ -4408,13 +4417,15 @@ wired or rewired by this work: that is the door's, after review.
   rename, the hops, robots.txt, the ref, the probe and its <title>, the
   career page refused by every reader, the public links, the finder, and the
   door wiring a board their own page embeds and that names them - one
-  request a list - holding one that names somebody else, and wiring one
-  number under two slugs), beside a row in
+  request a list - holding one that names somebody else, wiring one
+  number under two slugs, and wiring one their page links under a slug left
+  empty, as the finder itself records that page), beside a row in
   `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS (and a quiet
   one: a slug that spells the company beside a title naming nobody), the
-  type in `check_a_stated_name_does_not_loosen_the_older_doors`, four forms
-  in SITE_BOARD_FORMS, board_key rows (one number under two slugs, the bare
-  number, a leading zero, two numbers) in
+  type in `check_a_stated_name_does_not_loosen_the_older_doors`, five forms
+  in SITE_BOARD_FORMS (the fifth a slug left empty), board_key rows (one
+  number under two slugs, the bare number, a slug left empty, a leading
+  zero, two numbers) in
   `check_a_found_board_is_held_for_every_doubt` and in the check above,
   `ats._trinet_read` among the page readers of
   `check_the_crawler_honours_robots_txt`, and TriNet's own site as the
@@ -4423,7 +4434,12 @@ wired or rewired by this work: that is the door's, after review.
   one-line breakages at the build and 28 more after blind review 13 (each
   fix of the review undone: the zero's shape, the raw page, the pager, the
   slugs, the number, the location, the id, the kept list, the spellings, the
-  title, the career page), each alone in a private copy, each caught.
+  title, the career page), each alone in a private copy, each caught. Its
+  verifier cut two rules of the zero's shape with every check still green -
+  the id="jobs" rule, and the barred tags down to a, ul and li - and found a
+  slug left empty refused; 12 more breakages since (the id rule, the barred
+  tags cut so and each of seven alone, the finder's empty slug, the ref's
+  refusal and its normalising), each caught.
 
 ## Build order (owner, 2026-08-23)
 
