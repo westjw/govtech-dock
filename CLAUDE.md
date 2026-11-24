@@ -3911,7 +3911,10 @@ through the door.
   a second feed asked a second after the first, so its gate holds requests
   `JOBVITE_FEED_PAUSE` (30s) apart (`ats._GATE_PAUSES`, beside HOST_PAUSE;
   `_SHARED_GATES` makes it one gate however an address writes the host), and
-  it is in `NEVER_CACHED`. A 429 is raised as `RateLimited`, a 5xx and the
+  it is in `NEVER_CACHED`. HOST_PAUSE at 0 turns off only the general pace:
+  a host's own pace and a 429's hold are kept whatever it is (blind review
+  12, 2026-11-23: GOVTECH_DOCK_HOST_PAUSE=0 sent two feeds back to back).
+  A 429 is raised as `RateLimited`, a 5xx and the
   network failing (mid-body too) as every reader's are: refresh asks once
   more on a 429, build_board on a 429 or the network, and a board that will
   not read is Unknown, never "None found". A night asks the feed twice (the

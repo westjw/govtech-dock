@@ -551,11 +551,17 @@ def _gate_key(url: str) -> str:
 
 def _host_gate(url: str) -> None:
     host = _gate_key(url)
-    if not host or HOST_PAUSE <= 0:
+    if not host:
         return
-    with _HOST_TABLE:                       # only guards the dicts, never a sleep
-        lock = _HOST_LOCKS.setdefault(host, threading.Lock())
+    # A HOST'S OWN PACE AND A 429'S HOLD ARE KEPT WHATEVER HOST_PAUSE IS: the
+    # gate is off only where all three are nothing (blind review 12,
+    # 2026-11-23: GOVTECH_DOCK_HOST_PAUSE=0 returned before either was read,
+    # and two feed requests went to app.jobvite.com back to back)
     pause = max(HOST_PAUSE, _GATE_PAUSES.get(host, 0.0))
+    with _HOST_TABLE:                       # only guards the dicts, never a sleep
+        if pause <= 0 and _HOST_NOT_BEFORE.get(host, 0.0) <= time.monotonic():
+            return
+        lock = _HOST_LOCKS.setdefault(host, threading.Lock())
     with lock:
         now = time.monotonic()
         last = _HOST_LAST.get(host)

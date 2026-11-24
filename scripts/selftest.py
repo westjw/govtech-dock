@@ -20863,6 +20863,32 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
             errors += fail(f"jobvitefeed: two requests to app.jobvite.com (one with its port "
                            f"written) were held {slept[:1]}s apart, not {ats.JOBVITE_FEED_PAUSE}s "
                            f"(30 or more), or another host waited as long: {slept}")
+        # ...and with HOST_PAUSE at nothing, the host's own pace and a 429's
+        # hold are kept all the same, and only another host goes at once
+        # (blind review 12, 2026-11-23: GOVTECH_DOCK_HOST_PAUSE=0 returned
+        # before either was read, and two feeds went out back to back)
+        slept.clear()
+        keep_time = (ats.time, ats.HOST_PAUSE, dict(ats._HOST_LAST), dict(ats._HOST_NOT_BEFORE))
+        try:
+            ats.time = types.SimpleNamespace(monotonic=lambda: clock["t"], sleep=nap)
+            ats.HOST_PAUSE = 0.0
+            for k in ("app.jobvite.com", "other.example", "held.example"):
+                ats._HOST_LAST.pop(k, None)
+                ats._HOST_NOT_BEFORE.pop(k, None)
+            for u in (FEED, FEED, "https://other.example/a", "https://other.example/b"):
+                real_gate(u)
+            ats._HOST_NOT_BEFORE["held.example"] = clock["t"] + 7.0      # a 429 said 7s
+            real_gate("https://held.example/a")
+        finally:
+            ats.time, ats.HOST_PAUSE = keep_time[:2]
+            ats._HOST_LAST.clear()
+            ats._HOST_LAST.update(keep_time[2])
+            ats._HOST_NOT_BEFORE.clear()
+            ats._HOST_NOT_BEFORE.update(keep_time[3])
+        if slept != [ats.JOBVITE_FEED_PAUSE, 7.0]:
+            errors += fail(f"jobvitefeed: with HOST_PAUSE 0, two feed requests and a host a 429 holds "
+                           f"7s slept {slept}, not [{ats.JOBVITE_FEED_PAUSE}, 7.0] (and another host "
+                           f"none)")
         if not ats.never_cached(FEED) or ats._gate_key("https://x:@app.jobvite.com/") != "app.jobvite.com":
             errors += fail("jobvitefeed: app.jobvite.com is cached, or its gate can be stepped round")
         for ref, want in ((A, f"https://app.jobvite.com/CompanyJobs/Careers.aspx?c={A}"),
