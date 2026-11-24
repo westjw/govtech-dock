@@ -521,8 +521,12 @@ the popout's assertion: change it on one side only and the popout stops.
   steps once said to copy the old private key, which Pages never shows
   again); a key that MAY HAVE LEAKED is never published again, so no
   `_OLD`, and the same sitting renews the `board popout` service token's
-  secret and restarts Job Hunter's server, which holds the board's keys from
-  its last fetch. `--secret` makes a client secret alone: a plain run, which
+  secret with **Revoke immediately** (Cloudflare's Rotate secret otherwise
+  keeps the old one valid for a grace period of an hour to 30 days, on every
+  path of hunter.<domain>; review, 2026-11-24), and once `/oidc/jwks` shows
+  the new key restarts Job Hunter's server, which holds the board's keys
+  from its last read. A routine new service-token secret may keep a short
+  grace period. `--secret` makes a client secret alone: a plain run, which
   the steps once named for that, makes a new key and client id too. Into a
   pipe or a file it prints nothing and NO
   SWITCH SAYS OTHERWISE: it had one, `--to-pipe`, and its refusal named it,

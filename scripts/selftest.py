@@ -3092,7 +3092,10 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
             errors += fail("--key does not print a signing key alone")
         for needle in ("/oidc/jwks", "public half only", "as a new Pages secret OIDC_SIGNING_JWK_OLD",
                        "MAY HAVE LEAKED", "set NO OIDC_SIGNING_JWK_OLD", "service token a new secret",
-                       "restart Job Hunter's server"):
+                       "restart Job Hunter's server",
+                       # the old secret ends AT ONCE after a leak (review, 2026-11-24): Cloudflare's
+                       # Rotate secret offers a grace of an hour to 30 days, or Revoke immediately
+                       '"Keep the current secret valid for", choose Revoke immediately', "Never a grace period after a leak"):
             if needle not in kt:
                 errors += fail(f"--key does not tell a routine rotation from a leaked key: no {needle!r}")
         if "copy the CURRENT OIDC_SIGNING_JWK" in kt:
@@ -3113,7 +3116,12 @@ def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
                             ("Add a Pages secret `OIDC_SIGNING_JWK_OLD` and paste that in", "paste it as the earlier key"),
                             ("If the signing key may have leaked", "split off a leaked key"),
                             ("Set no `OIDC_SIGNING_JWK_OLD`; delete it if it is there", "keep a leaked key unpublished"),
-                            ("`board popout` → rotate its secret", "renew the service token after a leak"),
+                            ("`board popout` → **Rotate secret**, and where it asks \"Keep the current secret valid "
+                             "for\", choose **Revoke immediately**", "end the leaked service-token secret at once"),
+                            ("Never a grace period after a leak", "rule out a grace period after a leak"),
+                            ("**Disable token** first", "name Disable token as the other way to stop it at once"),
+                            ("may keep the current secret valid for a short grace period", "allow a grace period "
+                             "only for a routine new secret"),
                             ("Restart Job Hunter's server", "restart Job Hunter after a leak"),
                             ("`node scripts/jh_signin_secrets.mjs --secret` (not a plain run", "change the client secret alone")):
             if needle not in flat3f:

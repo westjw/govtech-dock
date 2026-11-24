@@ -391,18 +391,26 @@ is NOT the routine rotation: the old key is never published again.
    works.
 3. The popout's service token sits in the same Pages secrets, and whoever
    holds it and the leaked key can ask Job Hunter's panel as anybody: give
-   it a new secret in the same sitting. Access → Service credentials →
-   Service Tokens → `board popout` → rotate its secret; put the new one in
-   the Pages secret `JH_SERVICE_TOKEN_SECRET`, and a new deployment. (If
-   the dashboard offers no rotation, delete the token and create it again
-   as in step 4 above: a new token has a new Client ID, so
-   `JH_SERVICE_TOKEN_ID`, the Service Auth policy and Job Hunter's
-   `JH_BOARD_SERVICE_TOKEN` all take the new one.)
-4. Restart Job Hunter's server (its deploy/README.md says how). It holds
-   the board's keys from its last fetch and may go on believing the old one
-   for an hour or more; the restart is what makes it forget it.
-5. Check: `curl -s https://sledjobs.com/oidc/jwks` shows ONE key, and its
-   `kid` is not the old one.
+   it a new secret in the same sitting, and end the old one AT ONCE.
+   Access → Service credentials → Service Tokens → `board popout` →
+   **Rotate secret**, and where it asks "Keep the current secret valid
+   for", choose **Revoke immediately**. Never a grace period after a leak:
+   for as long as one runs, the old secret still passes Access on every
+   path of hunter.sledjobs.com. (Or **Disable token** first, which stops
+   the token, and any old secret still in a grace period, at once; the
+   panel is off until the token is on again.) Put the new secret in the
+   Pages secret `JH_SERVICE_TOKEN_SECRET`, and a new deployment; until it is
+   live the panel says Job Hunter did not answer. (A new token instead
+   works too: delete the old one and create one as in step 4 above; a new
+   token has a new Client ID, so `JH_SERVICE_TOKEN_ID`, the Service Auth
+   policy and Job Hunter's `JH_BOARD_SERVICE_TOKEN` all take the new one.)
+4. Check: `curl -s https://sledjobs.com/oidc/jwks` shows ONE key, and its
+   `kid` is not the old one. Only then go on: before the new deployment is
+   live, Job Hunter would read the old key again.
+5. Restart Job Hunter's server (its deploy/README.md says how). It holds
+   the board's keys from its last read and may go on believing the old one
+   for a while after the new key is published; the restart makes it forget
+   the old one at once.
 
 If the Pages secrets as a whole were exposed, so was every one of them: a new
 client secret (below) in the same sitting, and a new `SESSION_SECRET` (§3a
@@ -414,6 +422,13 @@ new key and a new client id too), and paste it into the Pages secret
 `OIDC_CLIENT_SECRET` and the `SLED JOBS` identity provider's Client secret,
 one straight after the other, then a new deployment. `OIDC_CLIENT_ID` and
 `OIDC_SIGNING_JWK` stay as they are.
+
+**A new secret for the service token, routinely** (nothing leaked): Access →
+Service credentials → Service Tokens → `board popout` → **Rotate secret**
+may keep the current secret valid for a short grace period (an hour is
+plenty), so the panel keeps working while the new secret goes into
+`JH_SERVICE_TOKEN_SECRET` and a new deployment. After a leak, never: Revoke
+immediately, as above.
 
 **Taking someone out of the beta** is the "Beta users" policy (at once) and
 the `hunter` role on the Users board (after the next deploy). The service

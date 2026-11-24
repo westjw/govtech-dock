@@ -72,7 +72,9 @@ if (args.includes("--key")) {
   say();
   say("IF THE KEY IN USE MAY HAVE LEAKED, the old key must stop being trusted at once: set NO");
   say("OIDC_SIGNING_JWK_OLD (delete it if it is there), replace OIDC_SIGNING_JWK with the key below,");
-  say("redeploy, give the \"board popout\" service token a new secret, and restart Job Hunter's server.");
+  say("redeploy, and give the \"board popout\" service token a new secret: Rotate secret, and where it");
+  say("asks \"Keep the current secret valid for\", choose Revoke immediately (or Disable token first).");
+  say("Never a grace period after a leak. Once /oidc/jwks shows the new key, restart Job Hunter's server.");
   say("DEPLOY.md 3f has each step.");
   say();
   value("OIDC_SIGNING_JWK", signingKey(), "a Pages secret on the board's project, replacing the current one");
