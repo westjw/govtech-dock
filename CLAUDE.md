@@ -3962,7 +3962,12 @@ through the door.
   published 41 of Tyler's jobs as "We could not read this posting" with the ad
   in hand.
 - **The probe** (`verify_boards._jobvitefeed`, one request, the reader's own
-  path): the feed is the whole board in one answer, so a name it states on
+  path - and none inside a door's plan, which reads the feed and then asks it
+  whose it is: `wire_found.plan` runs in `ats.jobvitefeed_kept()`, where a
+  feed read whole is the answer to every later ask of it, in memory for that
+  plan only, a failed read never kept; blind review 12, 2026-11-23: one plan
+  asked the same feed twice, 30 seconds apart): the feed is the whole board
+  in one answer, so a name it states on
   EVERY row is the board's statement - `<company>` where any row fills it
   (and then on every row), else the account's custom company-name field,
   `company_x0020_name`, on every row - and nothing less is: a field empty or

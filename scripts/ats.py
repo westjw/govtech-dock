@@ -57,6 +57,7 @@ Where the description lives, per board (measured, 2026-08-23):
 """
 from __future__ import annotations
 
+import contextlib
 import html as html_lib
 import json
 import gzip
@@ -4258,13 +4259,42 @@ def jobvitefeed_rows(jobs: list[dict], account: str) -> tuple[list[dict], int]:
     return rows, unread
 
 
+# ONE PLAN ASKS THE FEED ONCE (blind review 12, 2026-11-23). The wiring door
+# reads a board (add_company.read_board) and then asks it whose it is
+# (verify_boards.board_says), and for this type both are this one feed: one
+# plan asked the same address twice, 30 seconds apart, though one answer
+# serves both. Inside jobvitefeed_kept() - wire_found.plan, and nothing else
+# - a feed read whole is kept in memory under the address it was asked at,
+# for as long as the plan runs, and asked again it is that answer. Nothing
+# is written anywhere; a read that failed raised, and is not kept; outside
+# the block every call asks.
+_JVX_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def jobvitefeed_kept():
+    """Each feed read whole is the answer to every later ask of it in the
+    block (see above). Also a decorator: each call is a block of its own."""
+    global _JVX_KEPT
+    outer = _JVX_KEPT
+    _JVX_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _JVX_KEPT = outer
+
+
 def jobvitefeed_read(ref) -> tuple[str, list[dict], list[dict], list[str]]:
     """(the account, the feed's <job>s by field, one row per job, what was
-    noticed in words) - one request - or AtsError: more than
+    noticed in words) - one request, or none inside jobvitefeed_kept() where
+    the feed was read whole already - or AtsError: more than
     JOBVITE_FEED_SLACK rows that do not read, or none that does, is a feed
     this reader does not understand, never part of a board or a zero."""
     account = jobvitefeed_account(ref)
     url = JOBVITE_FEED.format(account=account)
+    kept = _JVX_KEPT
+    if kept is not None and url in kept:
+        return kept[url]
     jobs = jobvitefeed_jobs(_jvx_body(url), url)
     rows, unread = jobvitefeed_rows(jobs, account)
     if unread > JOBVITE_FEED_SLACK or not rows:
@@ -4278,6 +4308,8 @@ def jobvitefeed_read(ref) -> tuple[str, list[dict], list[dict], list[str]]:
     if len(rows) >= JOBVITE_FEED_GIANT:
         notes.append(f"{len(rows)} openings: a giant by the owner's line (about "
                      f"{JOBVITE_FEED_GIANT})")
+    if kept is not None:
+        kept[url] = (account, jobs, rows, notes)
     return account, jobs, rows, notes
 
 

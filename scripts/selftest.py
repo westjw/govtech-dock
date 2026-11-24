@@ -20840,6 +20840,46 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
         if said["failed"] != "unreadable" or said["names"] or said["transient"]:
             errors += fail(f"jobvitefeed probe: a feed listing no job is not unreadable: {said}")
 
+        # ---- one plan of the door asks the feed ONCE ---------------------------------------
+        # The door reads a board and then asks it whose it is, and for this
+        # type both are this one feed: a plan asked it twice, 30 seconds apart
+        # (blind review 12, 2026-11-23). Through the real reader and probe in
+        # the door's sandbox: one request, and the board wired on it.
+        import add_company
+        real = (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch)
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web[FEED] = feed(job(P1, custom="Acme Gov"), job("oDdddDfw4", custom="Acme Gov"))
+        with _WiringBox([_wb_co("acme-gov", "Acme Gov")], {}) as box, \
+                contextlib.redirect_stderr(io.StringIO()):
+            add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({"acme-gov": _wb_one(
+                "acme-gov", "jobvitefeed", A, element="script")}))
+        row = (rows_ or {}).get("acme-gov") or {}
+        if row.get("action") != "WIRE" or [u for u, _kw in sent] != [FEED]:
+            errors += fail(f"jobvitefeed door: one plan asked the feed {len(sent)} times, not once, "
+                           f"and planned {row.get('action')} ({_wb_words(row)[:160]!r})")
+        nobody("the door's row", row)
+        # (only a feed read whole is kept, only inside the block, and outside
+        # it every read asks: a 503, then the feed, then the feed again is
+        # two requests; two reads after it are two more)
+        sent.clear()
+        outcomes = []
+        with contextlib.redirect_stderr(io.StringIO()):
+            with ats.jobvitefeed_kept():
+                for body in (Resp(503), MAIN, Resp(503)):
+                    web[FEED] = body
+                    try:
+                        outcomes.append(len(ats.fetch_jobvitefeed(A)))
+                    except ats.AtsError as exc:
+                        outcomes.append(str(exc)[:8])
+            kept_asks = len(sent)
+            web[FEED] = MAIN
+            outcomes += [len(ats.fetch_jobvitefeed(A)), len(ats.fetch_jobvitefeed(A))]
+        if outcomes != ["HTTP 503", 4, 4, 4, 4] or kept_asks != 2 or len(sent) != 4 \
+                or ats._JVX_KEPT is not None:
+            errors += fail(f"jobvitefeed: a feed was kept that failed or outside a plan, or not kept "
+                           f"inside one ({outcomes}; {kept_asks} then {len(sent)} requests)")
+
         # ---- the gate: 30 seconds a request, never cached ---------------------------------
         clock, slept = {"t": 1000.0}, []
 

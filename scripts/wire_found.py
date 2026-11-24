@@ -2770,6 +2770,10 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                           "page": seen["page"]}}
 
 
+# (a Jobvite account's feed is read and asked whose it is in ONE request a
+# plan: the probe takes the answer the read had - ats.jobvitefeed_kept, blind
+# review 12, 2026-11-23)
+@ats.jobvitefeed_kept()
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
          pages: dict | None = None) -> list:
