@@ -45869,7 +45869,9 @@ def check_a_workable_account_is_held_under_either_key() -> int:
         settled (blind review, 2026-11-21);
       - a row waiting for a company under a Workable number the file opens
         under one slug and the run under another (in apply: the worklist's
-        workable_numbers) is neither board: the find is held with both slugs
+        workable_numbers, or any of its rows by its own account - an edit
+        dropping the number from workable_numbers leaves the row held) is
+        neither board: the find is held with both slugs
         said, and a row flipped to WIRE beside it is left alone (review 11,
         2026-11-23); a find that is neither slug (another platform's board, a
         third slug) is held beside it as "a different board", never as a row
@@ -46561,6 +46563,42 @@ def check_a_workable_account_is_held_under_either_key() -> int:
                     (box.tmp / bp.FOUND.name).read_text())):
             errors += fail("the write wired Wk Co past its own unruled row under a Workable "
                            "number the file and the plan open under two slugs")
+    # ...and so is one whose edit drops the number from workable_numbers too:
+    # X Co's own row in the same worklist (account 730730 under zzz) still
+    # says the number opens under another slug, and apply reads every row's
+    # own account beside workable_numbers - to hold, never to clear (review
+    # 11's low, 2026-11-23: the two edits together had the look print "takes
+    # workable/730730 ... as this very board" and the write wire Wk Co, while
+    # X Co's row was left alone because the number was missing)
+    with _WiringBox([co("wk-co", "Wk Co"), co("x-co", "X Co")], SPLIT,
+                    files={bp.FOUND.name: [dict(older)]}, urls=SPLIT_URLS,
+                    lands=SPLIT_LANDS) as box:
+        code, text, wl_d, rows_d = box.plan(_wb_results({"wk-co": links("wk-co", "wkco"),
+                                                         "x-co": asks("x-co", "730730")}),
+                                            name="worklist-split-dropped.json")
+        if ((rows_d or {}).get("x-co") or {}).get("account") != "730730" \
+                or ((rows_d or {}).get("x-co") or {}).get("ref") != "zzz":
+            errors += fail(f"the fixture's X Co row does not carry account 730730 under zzz: "
+                           f"{(rows_d or {}).get('x-co')}")
+
+        def split_flip_dropped(by_id, doc):
+            split_flip(by_id, doc)
+            doc["workable_numbers"] = {}
+        wl_d2 = box.edited(wl_d, "worklist-split-dropped-2.json", split_flip_dropped)
+        code, text, look_d = box.look(wl_d2)
+        line = next((ln for ln in text[text.find("LEFT ALONE"):].splitlines()
+                     if ln.strip().startswith("Wk Co ")), "") if "LEFT ALONE" in text else ""
+        if "takes workable/730730" in text or both_a not in line:
+            errors += fail(f"apply took a row waiting under a Workable number for this board on "
+                           f"the pair on file, with the number dropped from workable_numbers "
+                           f"while another row of the worklist opens it under another slug: "
+                           f"{line[:300]!r} {text[:600]!r}")
+        box.write(wl_d2, look_d)
+        if (box.record("wk-co").get("ats") or {}).get("type") != "html" \
+                or not any(r_.get("id") == "wk-co" for r_ in json.loads(
+                    (box.tmp / bp.FOUND.name).read_text())):
+            errors += fail("the write wired Wk Co past its own unruled row under a Workable "
+                           "number another row of the worklist opens under another slug")
     # ...and a row waiting under the very number the find's own site asks by:
     # X Co's older row under 730730, whose words open it under wkco, beside X
     # Co's find of the number followed to zzz (it met the find's own number key
@@ -46615,6 +46653,18 @@ def check_a_workable_account_is_held_under_either_key() -> int:
     if got_s != [["wkco", "zzz"], None, None, None]:
         errors += fail(f"wire_found.number_split does not name the two slugs of a waiting row's "
                        f"number the file and a run disagree on, and nothing else: {got_s}")
+    # ...and the slugs apply's hold reads from the worklist's own rows: a
+    # Workable row's own account in digits beside its own slug, and nothing else
+    rows_of = getattr(wf, "row_numbers", None)
+    got_rn = rows_of([{"type": "workable", "account": "730730", "ref": "zzz"},
+                      {"type": "greenhouse", "account": "730730", "ref": "ghboard"},
+                      {"type": "workable", "account": "73a730", "ref": "notdigits"},
+                      {"type": "workable", "account": "740740", "ref": "740740/"},
+                      {"type": "workable", "account": "730730", "ref": "zzz"}]) \
+        if rows_of else None
+    if got_rn != {"730730": ["zzz"]}:
+        errors += fail(f"wire_found.row_numbers does not read a Workable row's own account in "
+                       f"digits beside its own slug, and nothing else: {got_rn}")
     return errors
 
 

@@ -879,6 +879,38 @@ def waiting_keys(w: dict, pairs: dict | None = None) -> set:
             for k in board_proposals.found_keys(w.get("type"), x, pairs)} | {w.get("key")}
 
 
+def row_numbers(rows) -> dict:
+    """{Workable account number: [slugs]} that a worklist's own rows open a
+    number under: each Workable row's `account` (a number in digits, as
+    account_words writes one) beside its own ref. A worklist's word, so it
+    HOLDS (worklist_slugs) and never clears."""
+    out: dict = {}
+    for r in rows or []:
+        if isinstance(r, dict) and account_words(r) and isinstance(r.get("ref"), str) \
+                and r["ref"].strip() and not numbered("workable", r["ref"]):
+            slug = r["ref"].strip()
+            if slug not in out.setdefault(r["account"], []):
+                out[r["account"]].append(slug)
+    return out
+
+
+def worklist_slugs(held_for: dict) -> dict:
+    """{number: [every slug it is known to open under]} for apply's hold of a
+    row waiting under a Workable number (number_split): the pair on file
+    first, then the worklist's workable_numbers, then the slug any of the
+    worklist's rows opens it under by its own account (row_numbers). The
+    worklist's words are ADDED and only ever hold: an edit dropping a number
+    from workable_numbers while another row still says it (X Co's row: account
+    730730 under zzz) waived the company's own unruled row under the number on
+    the pair on file alone (review 11's low, 2026-11-23)."""
+    known = board_proposals.number_slugs(held_for.get("pairs_on_file"), held_for.get("numbers"))
+    for n, slugs in (held_for.get("row_numbers") or {}).items():
+        for s in slugs:
+            if s not in known.setdefault(n, []):
+                known[n].append(s)
+    return known
+
+
 def number_split(w: dict, keys, slugs: dict | None) -> list | None:
     """The slugs a row waiting under a Workable account NUMBER is known by -
     the pair on file first, the slug a run followed the number to beside it
@@ -4383,13 +4415,15 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
                    f"the two meet under no key apply may know either by (its own, or a "
                    f"Workable number's slug a pair on file says); a board waiting on a person "
                    f"is his to settle - plan again"))
-        elif split := number_split(w, clearing, board_proposals.number_slugs(
-                held_for.get("pairs_on_file"), held_for.get("numbers"))):
+        elif split := number_split(w, clearing, worklist_slugs(held_for)):
             # ...AND NOT WHERE THE WORKLIST'S WORD FOR THE NUMBER IS ANOTHER SLUG
             # (review 11, 2026-11-23): the pair on file ties the number to this
             # board and the plan followed it to another, so the row is neither
             # (number_split, as consider holds it). The worklist's word holds
-            # here; it never clears.
+            # here - its workable_numbers, and any row's own account (review
+            # 11's low: an edit dropping the number from workable_numbers left
+            # another row saying it, unread, and the row was waived); it never
+            # clears.
             return "waiting", (
                 f"{w['board']} is waiting in {w['store']} for it, and it is not shown to be "
                 f"{show(kind, ref)}: the file opens Workable account {_number(w.get('ref'))} "
@@ -4668,7 +4702,11 @@ def decide(doc: dict, companies: list, by: str, now: dt.datetime,
                 # row's own account that check 1's own sighting asks by - never
                 # the worklist's record alone (account_noted; review 9,
                 # 2026-11-23, and its repair)
-                "numbers": resolved, "pairs_on_file": pairs}
+                "numbers": resolved, "pairs_on_file": pairs,
+                # ...and the slug each of its rows opens a number under by its
+                # own account: it holds a row waiting under that number beside
+                # another slug (worklist_slugs), and clears nothing
+                "row_numbers": row_numbers(doc["rows"])}
 
     wire, left = [], []
     for row in wires:

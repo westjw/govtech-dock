@@ -2815,13 +2815,18 @@ round.
   his card where the row was a pending proposal) - and
   apply leaves a row flipped to WIRE beside it alone, naming both too ("...
   and the worklist says the plan followed that number to ..."), wherever the
-  worklist's `workable_numbers` opens the number under another slug than the
-  pair on file - that word holds, and never clears
+  worklist's `workable_numbers` - or any row of it, by its own account
+  beside its own slug (`wire_found.row_numbers`, `worklist_slugs`) - opens
+  the number under another slug than the pair on file - that word holds,
+  and never clears
   (`wire_found.number_split`; review 11, 2026-11-23: the
   waiting-row test took the file's slug alone, so an older finder's row
   under 730730, whose words open it under wkco, was taken for wkco's very
   board while the run followed 730730 to zzz for another company, and the
-  company's own unruled row was waived and left his queue). Where the run did
+  company's own unruled row was waived and left his queue; and its low: an
+  edit that also dropped 730730 from `workable_numbers` wired past the row
+  on the pair on file alone, while X Co's row in the same worklist still
+  opened the number under zzz). Where the run did
   not resolve the number - and for a record on file holding a number nobody in the run
   followed - a Workable board is held when it STATES one of the names that
   account goes by (the held row's `board_calls_itself` or company, the
