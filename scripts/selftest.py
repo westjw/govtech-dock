@@ -49575,6 +49575,11 @@ def check_a_postings_own_apply_link_is_no_other_form() -> int:
       - a posting's id in an Apply path on another host's label
         (x.recruiting.paylocity.com)
                              -> paylocity-other: HOLD, as before
+      - their own address redirecting to the Apply page of a posting their
+        site links           -> nothing under elsewhere; WIRE, no doubt
+      - an Apply link on their page whose posting is linked only on a page
+        that is not theirs (off_site)
+                             -> paylocity-other, naming that link: HOLD
       - their own posting and another account's, each with its Apply link
                              -> HOLD, naming both boards and both postings
                                 (both asked: the door asks on after a posting
@@ -49712,6 +49717,85 @@ def check_a_postings_own_apply_link_is_no_other_form() -> int:
                                f"{box.record('pa-match').get('ats')} {said_w[-400:]}")
         finally:
             verify_boards._board_page = keep
+
+    # --- two edges of the rule (blind review of this change, 2026-11-24) -----
+    # (a) their own address redirecting to the Apply page of a posting their
+    # site links is that posting's own form too: the landing's row is decided
+    # with the rest (_with_forms); (b) an Apply link whose posting is linked
+    # only on a page that is not theirs stays paylocity-other: "their own
+    # site" is the candidates, never off_site (widening that is his call)
+    edge_names = {"pa-lands": "Pa Lands", "pa-offsite": "Pa Offsite"}
+    edge_site = {"pa-lands": _wb_site("pa-lands"),
+                 # a website that is one part of its host: a page outside it is
+                 # the larger site's, read once and filed under off_site
+                 "pa-offsite": "https://www.paoffsite.test/govtech"}
+    edge_board = {"pa-lands": board(0x7971, "Pa-Lands-Inc"),
+                  "pa-offsite": board(0x7981, "Pa-Offsite-Inc")}
+    lands_post, lands_apply = (D + "7971/Pa-Lands-Inc/Engineer",
+                               apply_at + "7971/Pa-Lands-Inc/Engineer")
+    off_post, off_away = D + "7981/Pa-Offsite-Inc/Engineer", D + "7982/Pa-Offsite-Inc/Analyst"
+    off_apply = apply_at + "7982/Pa-Offsite-Inc/Analyst"     # its posting: off_site only
+    web_edge = {
+        edge_site["pa-lands"]: _site_boards_page(
+            "Pa Lands", f'<a href="/careers">Careers</a> <a href="{lands_post}">Engineer</a>'),
+        # their careers address answers with the Apply page of that posting
+        edge_site["pa-lands"] + "/careers": (302, lands_apply),
+        lands_apply: _site_boards_page("Apply - Engineer", "<form>Apply for this job</form>"),
+        edge_site["pa-offsite"]: _site_boards_page(
+            "Pa Offsite", '<a href="/govtech/careers">Careers</a> '
+                          '<a href="/global/careers">Careers everywhere</a>'),
+        edge_site["pa-offsite"] + "/careers": _site_boards_page(
+            "Careers at Pa Offsite",
+            f'<a href="{off_post}">Engineer</a> <a href="{apply_at}7981/Pa-Offsite-Inc/Engineer">'
+            f'Apply</a> <a href="{off_apply}">Apply</a>'),
+        "https://www.paoffsite.test/global/careers": _site_boards_page(
+            "Careers everywhere", f'<a href="{off_away}">Analyst</a>')}
+    edge_cos = {cid: co(cid, name, website=edge_site[cid]) for cid, name in edge_names.items()}
+    with _SiteBoardsWeb(fsb, web_edge):
+        recs_edge = {cid: asyncio.run(fsb.look(edge_cos[cid], "static", fsb.read_plain))
+                     for cid in edge_names}
+    lands, offsite = recs_edge["pa-lands"], recs_edge["pa-offsite"]
+    if forms(lands) or {c["ref"] for c in lands["candidates"]
+                        if c["type"] == fsb.POSTING} != {lands_post} \
+            or not any(p.get("asked") == edge_site["pa-lands"] + "/careers"
+                       and p.get("status") == "left-site" for p in lands["pages"]):
+        errors += fail(f"pa-lands: their own careers address, redirecting to the Apply page of the "
+                       f"posting their site links, is not that posting's own form (nothing under "
+                       f"elsewhere): elsewhere {forms(lands)}, pages "
+                       f"{[(p.get('asked'), p.get('status')) for p in lands['pages']]}")
+    if forms(offsite) != [("paylocity-other", off_apply, 1)] \
+            or {c["ref"] for c in offsite["candidates"] if c["type"] == fsb.POSTING} != {off_post} \
+            or not any(o.get("ref") == off_away for o in offsite["off_site"]):
+        errors += fail(f"pa-offsite: an Apply link whose posting is linked only on a page that is "
+                       f"not theirs is not paylocity-other, naming that link: elsewhere "
+                       f"{forms(offsite)}, off_site {[o.get('ref') for o in offsite['off_site']]}")
+    pages.update({lands_post: _pp_page("Pa Lands Inc - Engineer", edge_board["pa-lands"]),
+                  off_post: _pp_page("Pa Offsite Inc - Engineer", edge_board["pa-offsite"])})
+    asked.clear()
+    with _WiringBox(list(edge_cos.values()),
+                    {wf.show("paylocity", edge_board[cid]): (3, [f"{name} Inc"])
+                     for cid, name in edge_names.items()}) as box:
+        keep = verify_boards._board_page
+        verify_boards._board_page = posting_page
+        try:
+            code_e, _said_e, _wl_e, rows_e = box.plan(_wb_results(recs_edge))
+        finally:
+            verify_boards._board_page = keep
+    rows_e = rows_e or {}
+    lr, orow = rows_e.get("pa-lands") or {}, rows_e.get("pa-offsite") or {}
+    if code_e != 0 or lr.get("action") != "WIRE" or lr.get("ref") != edge_board["pa-lands"] \
+            or lr.get("doubts") or lr.get("also_seen"):
+        errors += fail(f"pa-lands: their own address landing on the Apply page of the posting "
+                       f"their site links is not WIRE with no doubt and no note: {code_e} "
+                       f"{lr.get('action')} {lr.get('ref')} {lr.get('also_seen')} "
+                       f"{_wb_words(lr)[:300]!r}")
+    filed_as = ((orow.get("queue_row") or {}).get("found") or {}).get("ref")
+    if orow.get("action") != "HOLD" or form_doubt not in _wb_words(orow) \
+            or filed_as != edge_board["pa-offsite"] or off_away in asked:
+        errors += fail(f"pa-offsite: an Apply link whose posting is linked only off their site is "
+                       f"not held on the paylocity-other doubt ({form_doubt!r}), or the door asked "
+                       f"the posting off their site: {orow.get('action')} "
+                       f"{_wb_words(orow)[:400]!r}, asked {asked}")
 
     # --- their own posting and another account's: two boards, held ---------
     # (blind review of this change, 2026-11-24). The door asked a company's

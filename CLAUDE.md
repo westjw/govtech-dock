@@ -2551,8 +2551,20 @@ and never said where in a page a reference sat.
   address of something else. A row with other addresses beside them keeps
   those, its `saw` the first of them and its `times` their count. An Apply
   link whose id their site does not link as a posting stays `paylocity-other`,
-  a doubt; widening that is the owner's call. A results file written before
-  this still carries the row: the company needs a fresh read. With the doubt gone,
+  a doubt, even where a page that is not theirs (`off_site`) links that
+  posting; widening that is the owner's call. Their own address redirecting
+  to the Apply page of a posting their site links is that posting's form
+  too. A results file written before this still carries the row: the company
+  needs a fresh read, and A FRESH READ MEANS A NEW `--out`: the finder picks
+  an old results file up again without re-reading a record it holds whole
+  (`unfinished`: only a look that crashed or ran out of time, or a record
+  not in the file's shape, is read again), and a door
+  given the old file beside the new one pools its row back in. And a fresh
+  read does not wire BS&A Software: its row in Boards we found, filed by the
+  door on 2026-11-23, carries the `paylocity-other` doubt that is now known
+  to be false, and a doubt a door filed there is his to settle - the door
+  never wires past such a row - so it stays the owner's to rule on at the
+  desk, and the session tells him the doubt was false. With the doubt gone,
   a page linking its own posting and another account's is held by the
   posting door as two boards, with each one's Apply link beside it or
   without (below).
