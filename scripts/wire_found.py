@@ -4065,6 +4065,22 @@ def note_apart(row: dict, noted: bool) -> bool:
                for rx in (board_proposals.ACCOUNT_WORDS, board_proposals.PAGE_WORDS))
 
 
+def wire_record(c: dict, row: dict, today: str, noted: bool = False) -> None:
+    """What wiring a WIRE row writes on its company's record - here and in
+    discover_ats.through_the_door, one definition: the board, both checks in
+    one line on ats_note, and the name the board uses where it spells the
+    company another way. `noted` is decide()'s word (its "noted") that the
+    note says the row's Workable account number (account_noted)."""
+    c["ats"] = {"type": row["type"], "ref": row["ref"]}
+    c["ats_note"] = note_for(row, today, noted=noted)
+    # as act_board_proposal does: the same company under its legal form
+    # ("Acme, Inc.") is recorded, so the name the board really uses is on
+    # file and is not doubted a second time
+    stated = str(row["check_2"].get("name") or "").strip()
+    if stated and stated.lower() != str(c.get("name") or "").lower():
+        c["board_owner"] = stated
+
+
 def decide(doc: dict, companies: list, by: str, now: dt.datetime,
            stores: dict | None = None, board: dict | None = None) -> dict:
     """What applying this worklist would do against the data as it is now.
@@ -4396,15 +4412,7 @@ def cmd_apply(a) -> int:
         today = dt.date.today().isoformat()
         by_id = {c["id"]: c for c in companies}
         for row in d["wire"]:
-            c = by_id[row["id"]]
-            c["ats"] = {"type": row["type"], "ref": row["ref"]}
-            c["ats_note"] = note_for(row, today, noted=row["id"] in d["noted"])
-            # as act_board_proposal does: the same company under its legal
-            # form ("Acme, Inc.") is recorded, so the name the board really
-            # uses is on file and is not doubted a second time
-            stated = str(row["check_2"].get("name") or "").strip()
-            if stated and stated.lower() != str(c.get("name") or "").lower():
-                c["board_owner"] = stated
+            wire_record(by_id[row["id"]], row, today, noted=row["id"] in d["noted"])
         force = n_wire > journal.BLAST
         stop = None
         if n_wire:

@@ -53770,6 +53770,13 @@ def check_a_careers_page_cannot_stall_discovery() -> int:
         "t=time.time()\n"
         "for k,p in d.MARKERS: re.search(p,page,re.I)\n"
         "print(round(time.time()-t,2))\n"
+        # and the finder's reader, which read_marker asks of a page holding a
+        # hint of the five platforms it reads the finder's way (FINDER_KINDS)
+        "hint=' jobs.jobvite.com/x teamtailor-cdn.com teamtailor.com applicantpro.com "
+        "isolvedhire.com pinpointhq.com workforcenow.adp.com '\n"
+        "t=time.time()\n"
+        "d.read_marker(page+hint+page,{'website':''},'')\n"
+        "print('read_marker', round(time.time()-t,2))\n"
         "hits={k:(re.search(p,s,re.I) or [None]).__class__.__name__ for k,p in d.MARKERS for s in []}\n"
         "real={'bamboohr':'href=\"https://acmegov.bamboohr.com/careers\"',"
         "'recruitee':'//civic-co.recruitee.com/o/ae','workday':'x.wd5.myworkdayjobs.com/en-US/Careers',"
@@ -53791,6 +53798,9 @@ def check_a_careers_page_cannot_stall_discovery() -> int:
         errors += fail(f"the ATS marker patterns took {lines[0]}s on 600,000 letters; they must be linear")
     want = {"bamboohr": "acmegov", "recruitee": "civic-co", "workday": "x", "oracle": "ecqb.fa.us2.oraclecloud.com"}
     got = dict(x.split(" ", 1) for x in lines[1:] if x.strip())
+    if float(got.get("read_marker") or 99) > 5:
+        errors += fail(f"read_marker took {got.get('read_marker')}s on 1.2 million letters with the "
+                       f"finder's hints in them; the finder's reader must be linear too")
     for k, v in want.items():
         if got.get(k) != v:
             errors += fail(f"the {k} marker no longer reads its tenant off a real address: {got.get(k)!r}")
@@ -53809,9 +53819,16 @@ def check_discovery_stages_every_file_it_writes() -> int:
     suspect turned up that day.
 
     Read off the code, not the prose: every `(DATA / "x").write_text` and
-    every `NAME.write_text` where NAME is a `DATA / "x"` constant.
+    every `NAME.write_text` where NAME is a `DATA / "x"` constant - and, once
+    the sweep files what the wiring door holds for the owner
+    (board_proposals.file_found, 2026-11-22), the queue file and the journal
+    that one journalled append writes. A `git add` is read whole, over the
+    lines a trailing backslash continues it on.
     """
     import re as _re
+
+    import board_proposals as _bp
+    import journal as _journal
     errors = 0
     src = _code_only(ROOT / "scripts" / "discover_ats.py")
     consts = dict(_re.findall(r'^([A-Z_]+)\s*=\s*DATA\s*/\s*"([^"]+)"', src,
@@ -53823,8 +53840,11 @@ def check_discovery_stages_every_file_it_writes() -> int:
     if len(written) < 3:
         return fail(f"found only {sorted(written)} as files discover_ats.py "
                     f"writes; the scan is measuring nothing")
+    if _re.search(r"\bboard_proposals\.file_found\(", src):
+        written |= {_bp.FOUND.name, _journal.LOG.name, _journal.ARCHIVE.name}
     yml = (ROOT / ".github" / "workflows" / "discovery.yml").read_text()
     yml_code = "\n".join(l for l in yml.splitlines() if not l.strip().startswith("#"))
+    yml_code = _re.sub(r"\\\n", " ", yml_code)
     adds = _re.findall(r"^\s*git add ([^\n]+)", yml_code, flags=_re.M)
     staged = set(" ".join(adds).split())
     for fn in sorted(written):
@@ -53833,6 +53853,529 @@ def check_discovery_stages_every_file_it_writes() -> int:
                            f"never stages it, so a run that touches it dies at "
                            f"`git pull --rebase` with unstaged changes and the "
                            f"sweep is lost")
+    return errors
+
+
+def check_discovery_hands_the_finders_platforms_to_the_wiring_door() -> int:
+    """Discovery reads Jobvite, Teamtailor, ApplicantPro, Pinpoint and ADP the finder's way, and the door decides them.
+
+    The platform catalogue (2026-11-22) found the weekly sweep still filing
+    these five platforms' addresses as type "html" - jobs.jobvite.com/<slug>,
+    <label>.teamtailor.com, <label>.applicantpro.com and .isolvedhire.com,
+    <label>.pinpointhq.com, ADP's recruitment.html?cid= - while ats.FETCHERS
+    reads each one as a board and find_site_boards.py names each one's ref.
+    Filed as html, ADP's and isolved's JavaScript shells read as "found but
+    unreadable" every week, the rest were written on a slug that looked like
+    the name, and none was ever spelt the way the owner's holds are keyed, so
+    a hold on teamtailor/<host> never met html/<the same address>.
+
+    So, held here, each with the network shut:
+      - each platform is read off a page by the finder's own sightings(),
+        and the ref is the one the finder's maker spells (the Teamtailor
+        region kept, isolved's host, ADP's career centre); no pattern of
+        discovery's own reads those addresses, as a board or as a careers
+        page; furniture, an address in a comment and a Teamtailor site on
+        their own domain read as the finder reads them; and MARKERS' order
+        holds (a board it names first, a careers page last);
+      - driven through discover_ats.main with the workflow's --write, inside
+        the wiring door's own sandbox, with one set of pages read both by
+        discovery's probe and by the finder's own walk
+        (find_site_boards.look, its reader stubbed as land() answers): a
+        board whose own site points to it and which names the company is
+        wired, under its real type, with both checks on ats_note; a board
+        that names somebody else, one that names nobody (ADP), one found for
+        two companies, and one whose site the finder read on to find more -
+        an old footer link beside a Paycom frame on /careers, a careers link
+        leaving for a parent's site (the blind review's two) - are filed in
+        Boards we found by agent:discovery, in one journal entry; a careers
+        address of theirs that redirects to the board is check 1, one that
+        goes by way of a parent's site is not; a board named only on another
+        site's page, and one on a website two records share, are neither; a
+        board of another platform the door settles on (Gusto) is left for
+        the board sweep; an identity probe that failed on the day, and a
+        finder's reading that crashed, file nothing and are asked again in a
+        week; a board the owner holds under another record - the one the
+        probe stopped at, or one the finder found on their site - is
+        neither read nor written nor filed; and a board MARKERS names is
+        still written by the sweep as before;
+      - what the run prints names no company and no board (the log is
+        public); a dry run wires and files nothing, says "would be", and
+        asks everything again; the cap keeps a board found for two together;
+        the finder's reading stops when its time is spent; and a board.json
+        that does not read leaves every board for the door unasked, asked
+        again in a week, and the rest of the sweep written.
+    """
+    import admin
+    import board_proposals as bp
+    import discover_ats as da
+    import find_site_boards as fsb
+    errors = 0
+    co = {"id": "acme-gov", "name": "Acme Gov", "website": "https://www.acmegov.test"}
+    page = "https://www.acmegov.test/careers"
+    U = "0f2b3c4d-1111-2222-3333-444455556666"
+    adp = ("https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html"
+           f"?cid={U}")
+
+    # --- 1. read the finder's way, spelt the finder's way, never html ---------
+    forms = [
+        ("jobvite", '<a href="https://jobs.jobvite.com/AcmeGov/jobs">Careers</a>', "AcmeGov"),
+        ("teamtailor", '<iframe src="https://acmegov.na.teamtailor.com/jobs"></iframe>',
+         "https://acmegov.na.teamtailor.com"),
+        ("teamtailor", '<a href="https://acmegov.teamtailor.com/jobs">x</a>',
+         "https://acmegov.teamtailor.com"),
+        ("applicantpro", '<a href="https://acmegov.isolvedhire.com/jobs/">x</a>',
+         "acmegov.isolvedhire.com"),
+        ("applicantpro", '<a href="https://AcmeGov.applicantpro.com/jobs/">x</a>',
+         "acmegov.applicantpro.com"),
+        ("pinpoint", '<a href="https://AcmeGov.pinpointhq.com/">x</a>', "acmegov"),
+        ("adp", f'<a href="{adp}&amp;ccId=9200365399883_2&amp;lang=en_US">x</a>',
+         f"{U}|9200365399883_2"),
+        ("adp", f'<a href="{adp}&ccId=19000101_000001">x</a>', U),
+    ]
+    if set(da.FINDER_KINDS) != {k for k, _h, _r in forms} \
+            or not set(da.FINDER_KINDS) <= set(ats.FETCHERS):
+        errors += fail(f"discover_ats.FINDER_KINDS is {da.FINDER_KINDS}: the five platforms "
+                       f"the sweep filed as html, each with a reader in ats.FETCHERS")
+    for kind, html, ref in forms:
+        got, _tenant = da.read_marker(html, co, page)
+        rows, _others = fsb.sightings(html, page, co["website"])
+        finder = next(({"type": r["type"], "ref": r["ref"]} for r in rows
+                       if r["type"] in da.FINDER_KINDS), None)
+        if got != {"type": kind, "ref": ref} or got != finder:
+            errors += fail(f"discovery reads {html[:70]!r} as {got}; the finder reads it as "
+                           f"{finder}, and the board is {kind}/{ref}")
+        for k, pat in da.MARKERS:
+            if re.search(pat, html, re.I):
+                errors += fail(f"discover_ats.MARKERS reads {kind}'s address with a pattern of "
+                               f"its own ({k}: {pat[:60]}): the finder's are the ones")
+    for html, url in (('<a href="https://app.teamtailor.com/login">x</a>', page),
+                      ('<script src="https://jobs.jobvite.com/__assets__/x.js"></script>', page),
+                      ('<!-- <a href="https://jobs.jobvite.com/oldco">x</a> -->', page)):
+        got = da.read_marker(html, co, url)[0]
+        if got is not None:
+            errors += fail(f"discovery names a board in {html[:60]!r}, which the finder reads as "
+                           f"none (a vendor's furniture, or an address in a comment): {got}")
+    own_tt = ('<link rel="alternate" type="application/rss+xml" '
+              'href="https://careers.acmegov.test/jobs.rss">'
+              '<script src="https://scripts.teamtailor-cdn.com/x.js"></script>')
+    if da.read_marker(own_tt, co, "https://careers.acmegov.test/")[0] != {
+            "type": "teamtailor", "ref": "https://careers.acmegov.test"}:
+        errors += fail("discovery does not read a Teamtailor career site on the company's own "
+                       "domain the way the finder does")
+    both = ('<a href="https://boards.greenhouse.io/acmegov">a</a>'
+            '<a href="https://jobs.jobvite.com/acmegov">b</a>')
+    paycom = ('<a href="https://www.paycomonline.net/v4/ats/web.php/jobs?clientkey='
+              '0123456789ABCDEF0123456789ABCDEF">a</a><a href="https://jobs.jobvite.com/acmegov">b</a>')
+    if da.read_marker(both, co, page)[0] != {"type": "greenhouse", "ref": "acmegov"} \
+            or da.read_marker(paycom, co, page)[0] != {"type": "jobvite", "ref": "acmegov"}:
+        errors += fail("discovery's order moved: a board MARKERS names comes first, then the "
+                       "finder's platforms, then a careers page (paycom is one)")
+
+    # --- 2. the sweep, end to end, in the wiring door's own sandbox ----------
+    # ONE SET OF PAGES, READ BY BOTH: discovery's own probe (da.get, which
+    # follows a redirect and reads where it lands) and the finder's walk
+    # (find_site_boards.read_plain, whose redirect to a job platform stops
+    # where it points, as land() does). Every other way out is shut.
+    names = {"jv-co": "JV Co", "tt-co": "TT Co", "adp-co": "ADP Co", "pin-co": "Pin Co",
+             "pro-co": "Pro Co", "held-co": "Held Co", "sub-co": "Sub Co", "gh-co": "GH Co",
+             "twin-a": "Twin A", "twin-b": "Twin B", "via-co": "Via Co", "two-co": "Two Co",
+             "far-co": "Far Co", "old-co": "Old Co", "stray-co": "Stray Co", "gus-co": "Gus Co",
+             "share-a": "Share A", "share-b": "Share B", "crash-co": "Crash Co",
+             "cand-co": "Cand Co", "hop-co": "Hop Co"}
+    GUSTO = "twoco-11111111-2222-3333-4444-555555555555"
+    GUS = "gusco-11111111-2222-3333-4444-666666666666"
+    site = {cid: _wb_site(cid) for cid in names}
+    site["share-a"] = site["share-b"] = "https://www.sharedsite.test"
+    pad = " " * 600
+    pages = {
+        site["jv-co"]: '<a href="https://jobs.jobvite.com/jvco">Careers</a>',
+        site["tt-co"]: '<a href="/careers">Careers</a>',
+        # (its own words: a page that reads like the homepage is a soft 404)
+        site["tt-co"] + "/careers": "<h1>Join TT Co</h1><iframe "
+                                    'src="https://ttgroup.na.teamtailor.com/jobs"></iframe>',
+        site["adp-co"]: f'<a href="{adp}&ccId=19000101_000001">Careers</a>',
+        site["pin-co"]: '<a href="/careers">Careers</a>',
+        "https://pinco.pinpointhq.com": '<a href="https://pinco.pinpointhq.com/en/postings/1">'
+                                        "Account Executive</a>",
+        site["pro-co"]: '<a href="https://proco.applicantpro.com/jobs/">Careers</a>',
+        site["held-co"]: '<a href="https://jobs.jobvite.com/heldboard">Careers</a>',
+        site["sub-co"]: '<a href="https://careers.subparent.test/">Careers</a>',
+        "https://careers.subparent.test": '<iframe src="https://jobs.jobvite.com/subparent/jobs">'
+                                          "</iframe>",
+        site["gh-co"]: '<a href="https://boards.greenhouse.io/ghco">Careers</a>',
+        site["twin-a"]: '<a href="https://jobs.jobvite.com/twinboard">Careers</a>',
+        site["twin-b"]: '<a href="https://jobs.jobvite.com/twinboard">Careers</a>',
+        site["via-co"]: '<a href="/careers">Careers</a>',
+        "https://jobs.jobvite.com/viaparent": '<a href="https://jobs.jobvite.com/viaparent/job/'
+                                              'o1">Account Executive</a>',
+        # their own page names a second board, of a platform discovery has
+        # no marker for: the door is shown it, and holds the pair
+        site["two-co"]: ('<a href="https://jobs.jobvite.com/twoco">Careers</a>'
+                         '<a href="https://jobs.jobvite.com/twoco/jobs">b</a>'
+                         f'<a href="https://jobs.gusto.com/boards/{GUSTO}">c</a>'),
+        # a board the owner holds for another record, named only on another
+        # site's page (OPEXUS's shape, live 2026-11-22: Casepoint's ADP board)
+        site["far-co"]: '<a href="https://careers.farparent.test/">Careers</a>',
+        "https://careers.farparent.test": '<iframe src="https://jobs.jobvite.com/farheld/jobs">'
+                                          "</iframe>",
+        # THE REVIEW'S THREE (blind review, 2026-11-22). Old Co: an old board
+        # still linked from the footer, and their careers page embeds a
+        # platform nothing reads - the finder reads on, and the door holds
+        site["old-co"]: ('<a href="/careers">Careers</a><footer><a href="https://jobs.jobvite.com/'
+                         'oldco">Jobs</a></footer>'),
+        site["old-co"] + "/careers": ("<h1>Careers at Old Co</h1><iframe src=\"https://www."
+                                      "paycomonline.net/v4/ats/web.php/jobs?clientkey="
+                                      "0123456789ABCDEF0123456789ABCDEF\"></iframe>"),
+        # Stray Co: their Careers link leaves for their parent's careers site
+        site["stray-co"]: ('<a href="https://careers.strayparent.test/stray">Careers</a>'
+                           '<a href="/join-us">Join us</a>'),
+        "https://careers.strayparent.test/stray": "<h1>Parent Group careers</h1><p>all our "
+                                                  "brands hire here</p>",
+        site["stray-co"] + "/join-us": ('<h1>Join Stray Co</h1><iframe src="https://jobs.'
+                                        'jobvite.com/strayco/jobs"></iframe>'),
+        # Gus Co: their own page links a Gusto board that names them, and
+        # their careers address goes by way of a parent's site to Jobvite
+        site["gus-co"]: (f'<a href="https://jobs.gusto.com/boards/{GUS}">Openings</a>'
+                         '<a href="/careers">Careers</a>'),
+        "https://jobs.jobvite.com/gusparent": '<a href="https://jobs.jobvite.com/gusparent/job/'
+                                              'o2">Account Executive</a>',
+        # one website on file for two records: the site cannot say whose board
+        site["share-a"]: '<a href="https://jobs.jobvite.com/sharedboard">Careers</a>',
+        # the finder's own reading of this one crashes: our side, not theirs
+        site["crash-co"]: '<a href="https://jobs.jobvite.com/crashco">Careers</a>',
+        # the board the probe stopped at is nobody's, and the finder, reading
+        # on, finds one on their careers page that the owner holds for
+        # another record
+        site["cand-co"]: ('<a href="https://jobs.jobvite.com/candco">Jobs</a>'
+                          '<a href="/careers">Careers</a>'),
+        site["cand-co"] + "/careers": ('<h1>Careers at Cand Co</h1><iframe '
+                                       'src="https://candheld.teamtailor.com/jobs"></iframe>'),
+        # a careers page only their /about links to: the probe's one hop
+        # reaches it, the finder's walk from the front door does not - so the
+        # finder starts there too, as at a careers address on file
+        site["hop-co"]: '<a href="/products">Products</a><a href="/about">About</a>',
+        site["hop-co"] + "/about": ('<h1>About Hop Co</h1>'
+                                    '<a href="/about/work-with-us">Work with us</a>'),
+        site["hop-co"] + "/about/work-with-us": ('<h1>Work with Hop Co</h1><iframe '
+                                                 'src="https://jobs.jobvite.com/hopco/jobs">'
+                                                 '</iframe>'),
+        # (an --only run, below) a careers page of their own on file, linked
+        # from nowhere, naming today's board; the front page's footer still
+        # links an old one
+        "https://www.fileco.test": '<footer><a href="https://jobs.jobvite.com/filecoold">Jobs</a></footer>',
+        "https://www.fileco.test/our-openings": ('<h1>Openings at File Co</h1><iframe '
+                                                 'src="https://fileco.teamtailor.com/jobs">'
+                                                 '</iframe>'),
+    }
+    # where an address redirects to a job platform: (where it points, the
+    # addresses asked on the way)
+    redirects = {
+        site["pin-co"] + "/careers": ("https://pinco.pinpointhq.com",
+                                      [site["pin-co"] + "/careers"]),
+        site["via-co"] + "/careers": ("https://jobs.jobvite.com/viaparent",
+                                      [site["via-co"] + "/careers",
+                                       "https://www.viaparent.test/careers"]),
+        site["gus-co"] + "/careers": ("https://jobs.jobvite.com/gusparent",
+                                      [site["gus-co"] + "/careers",
+                                       "https://www.gusparent.test/careers"]),
+    }
+    finder_asked: list = []
+
+    def get(u):
+        u = u.rstrip("/")
+        if u in redirects:
+            to = redirects[u][0]
+            return da.Fetch(text=pages[to] + pad, status=200, url=to, outcome="ok")
+        if u in pages:
+            return da.Fetch(text=pages[u] + pad, status=200, url=u, outcome="ok")
+        return da.Fetch(url=u, outcome="notfound", status=404)
+
+    async def finder_read(url, website, deadline=None, landed=None):
+        u = url.rstrip("/")
+        finder_asked.append(u)
+        if u == site["crash-co"]:
+            raise RuntimeError("the finder's reader blew up")
+        if u in redirects:
+            to, hops = redirects[u]
+            return {"asked": url, "final": to, "status": "pointer", "html": "",
+                    "note": "redirects to a job platform's address; the platform was not asked",
+                    "pointer": {"to": to, "from": hops[-1], "hops": list(hops)},
+                    "hops": list(hops)}
+        if u not in pages:
+            return {"asked": url, "final": url, "status": "error", "note": "HTTP 404",
+                    "html": "", "pointer": None, "hops": [url]}
+        html = pages[u] + pad
+        return {"asked": url, "final": url, "status": "ok", "note": "", "html": html,
+                "pointer": None, "hops": [url], "links": fsb._anchors(html, url),
+                "words": fsb.visible(html)}
+
+    boards = {"jobvite/jvco": (4, ["JV Co"]),
+              "teamtailor/https://ttgroup.na.teamtailor.com": (3, ["TT Group"]),
+              f"adp/{U}": (2, None),
+              "pinpoint/pinco": (5, ["Pin Co"]),
+              "applicantpro/proco.applicantpro.com": (3, ["Pro Co"]),
+              "jobvite/heldboard": (6, ["Held Co"]),
+              "jobvite/subparent": (9, ["Sub Parent"]),
+              "jobvite/twinboard": (3, ["Twin A"]),
+              "jobvite/viaparent": (7, ["Via Parent"]),
+              "jobvite/twoco": (4, ["Two Co"]),
+              f"gusto/{GUSTO}": (2, ["Two Co"]),
+              "jobvite/farheld": (5, ["Far Parent"]),
+              "jobvite/oldco": (2, ["Old Co"]),
+              "jobvite/strayco": (3, ["Stray Co"]),
+              f"gusto/{GUS}": (4, ["Gus Co"]),
+              "jobvite/gusparent": (8, ["Gus Parent"]),
+              "jobvite/sharedboard": (3, ["Share A"]),
+              "jobvite/crashco": (3, ["Crash Co"]),
+              "jobvite/candco": (3, ["Cand Co"]),
+              "teamtailor/https://candheld.teamtailor.com": (4, ["Cand Co"]),
+              "jobvite/hopco": (3, ["Hop Co"]),
+              "jobvite/filecoold": (2, ["File Co"]),
+              "teamtailor/https://fileco.teamtailor.com": (5, ["File Co"])}
+    says = {"applicantpro/proco.applicantpro.com": {
+        "transient": True, "failed": "unreadable", "stated": False, "names": [], "name": None,
+        "how": "HTTP 503 from proco.applicantpro.com"}}
+    held_row = {"id": "gone-held", "name": "Gone Held Co", "was": "unknown",
+                "found": {"type": "jobvite", "ref": "heldboard"}, "saw": "jobvite board heldboard",
+                "times": 1, "verified": "6 posting(s) readable", "board_calls_itself": None,
+                "identity": "unknown", "identity_why": "a reader: the group's board",
+                "postings": 6, "titles": [],
+                "filed": {"by": "agent:earlier-batch", "on": "2026-11-19"}}
+    far_row = dict(held_row, id="gone-far", name="Gone Far Co",
+                   found={"type": "jobvite", "ref": "farheld"}, saw="jobvite board farheld")
+    cand_row = dict(held_row, id="gone-cand", name="Gone Cand Co",
+                    found={"type": "teamtailor", "ref": "https://candheld.teamtailor.com"},
+                    saw="https://candheld.teamtailor.com/jobs")
+    companies = [_wb_co(cid, n, kind="unknown", website=site[cid]) for cid, n in names.items()]
+    companies.append(_wb_co("file-co", "File Co", website="https://www.fileco.test",
+                            ats={"type": "html", "ref": "https://www.fileco.test/our-openings"}))
+    keep = (da.DATA, da.LOG, da.SUSPECTS, da.get, fsb.read_plain, sys.argv, da.FINDER_PAUSE)
+
+    def run(tmp, argv):
+        da.DATA, da.LOG, da.SUSPECTS = tmp, tmp / "discovery_log.json", tmp / "ats_suspects.json"
+        sys.argv = argv
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+            code = da.main()
+        recs = {c["id"]: c for c in json.loads((tmp / "companies.json").read_text())}
+        queue = {r["id"]: r for r in json.loads((tmp / bp.FOUND.name).read_text())}
+        log = json.loads((tmp / "discovery_log.json").read_text())
+        return code, out.getvalue(), recs, queue, log
+
+    def fresh(box, pristine):
+        for n_, b_ in pristine.items():
+            (box.tmp / n_).write_bytes(b_)
+        for p_ in (box.tmp / "discovery_log.json", box.tmp / "ats_suspects.json"):
+            p_.unlink(missing_ok=True)
+        del box.asked[:]
+        del finder_asked[:]
+
+    sweep = ["discover_ats.py", "--limit", "300", "--workers", "1", "--write"]
+    door_ids = [cid for cid in names if cid not in ("gh-co", "held-co", "far-co", "cand-co")]
+    secret = list(names) + list(names.values()) + [
+        "jvco", "ttgroup", "heldboard", "farheld", "subparent", "twinboard", "viaparent",
+        "twoco", "pinco", "proco", "oldco", "strayco", "gusco", "gusparent", "sharedboard",
+        "crashco", "candco", "candheld", "hopco", U]
+    try:
+        da.get, fsb.read_plain, da.FINDER_PAUSE = get, finder_read, 0
+        with _WiringBox(companies, boards,
+                        files={bp.FOUND.name: [held_row, far_row, cand_row]},
+                        says=says) as box:
+            # the boards MARKERS names are still read by the sweep itself
+            ats.fetch = lambda block: ([{"title": "Account Executive"}]
+                                       if block == {"type": "greenhouse", "ref": "ghco"} else [])
+            pristine = {n_: (box.tmp / n_).read_bytes()
+                        for n_ in ("companies.json", bp.FOUND.name, "board.json")}
+            code, said, recs, queue, log = run(box.tmp, sweep)
+            ats_of = {cid: recs[cid].get("ats") for cid in names}
+            want = {"jv-co": {"type": "jobvite", "ref": "jvco"},
+                    "pin-co": {"type": "pinpoint", "ref": "pinco"},
+                    "hop-co": {"type": "jobvite", "ref": "hopco"},
+                    "gh-co": {"type": "greenhouse", "ref": "ghco"}}
+            if code not in (0, None) or any(ats_of[cid] != want.get(cid, {"type": "unknown",
+                                                                         "ref": None})
+                                            for cid in names):
+                errors += fail(f"the sweep wrote {ats_of} (exit {code}): only a board whose own "
+                               f"site points to it and which names the company is wired, under "
+                               f"its real type and only on the five platforms; a board MARKERS "
+                               f"names is written as before")
+            for cid in ("jv-co", "pin-co", "hop-co"):
+                note = str(recs[cid].get("ats_note") or "")
+                if not note.startswith("wired ") or names[cid] not in note:
+                    errors += fail(f"{cid} was wired without both checks on its record "
+                                   f"(ats_note {note!r}): it is written as the door's apply "
+                                   f"writes it")
+            filed = sorted(set(queue) - {"gone-held", "gone-far", "gone-cand"})
+            rows_want = {"tt-co": ("teamtailor", "https://ttgroup.na.teamtailor.com", "MISMATCH"),
+                         "adp-co": ("adp", U, "unknown"), "twin-a": ("jobvite", "twinboard", None),
+                         "twin-b": ("jobvite", "twinboard", "MISMATCH"),
+                         "two-co": ("jobvite", "twoco", "unknown"),
+                         "old-co": ("jobvite", "oldco", "unknown"),
+                         "stray-co": ("jobvite", "strayco", "unknown")}
+            if filed != sorted(rows_want):
+                errors += fail(f"the sweep filed {filed} in Boards we found; a board that names "
+                               f"somebody else or nobody, one found for two companies, and one "
+                               f"whose site the finder found more on go there, and nothing else")
+            for cid, (kind, ref, ident) in rows_want.items():
+                r = queue.get(cid) or {}
+                if r.get("found") != {"type": kind, "ref": ref} \
+                        or (ident and r.get("identity") != ident) \
+                        or (r.get("filed") or {}).get("by") != da.FILED_BY \
+                        or not str(r.get("identity_why") or "").strip():
+                    errors += fail(f"the row filed for {cid} is {r}: the board under its real "
+                                   f"type, its doubt in words, filed by {da.FILED_BY}")
+            for cid, words in (("twin-a", "the same board was found for"),
+                               ("two-co", "more than one board"),
+                               ("old-co", "paycom"), ("stray-co", "strayparent")):
+                if words not in str((queue.get(cid) or {}).get("identity_why")):
+                    errors += fail(f"{cid}'s row does not carry the doubt the finder's own record "
+                                   f"gives the door ({words!r}): "
+                                   f"{(queue.get(cid) or {}).get('identity_why')!r}")
+            entries = [json.loads(ln) for ln in (box.tmp / "admin_journal.jsonl").read_text()
+                       .splitlines() if ln.strip()] if (box.tmp / "admin_journal.jsonl").exists() \
+                else []
+            filings = [e for e in entries if e.get("action") == bp.FILE_ACTION]
+            if len(filings) != 1 or filings[0].get("by") != da.FILED_BY:
+                errors += fail(f"the filing is not one journal entry by {da.FILED_BY}: "
+                               f"{[(e.get('action'), e.get('by')) for e in entries]}")
+            asked = set(box.asked)
+            if {"jobvite/heldboard", "jobvite/farheld", "jobvite/subparent",
+                    "jobvite/viaparent", "jobvite/sharedboard", "jobvite/crashco",
+                    "jobvite/candco", "teamtailor/https://candheld.teamtailor.com"} & asked \
+                    or not {"jobvite/jvco", "pinpoint/pinco", f"adp/{U}",
+                            "teamtailor/https://ttgroup.na.teamtailor.com",
+                            "applicantpro/proco.applicantpro.com", "jobvite/twinboard",
+                            "jobvite/oldco", "jobvite/strayco"} <= asked:
+                errors += fail(f"the door read {sorted(asked)}: a board the owner holds, one "
+                               f"named only off their own site, or one on a website two records "
+                               f"share, is not read for anybody")
+            if {site["held-co"], site["far-co"]} & set(finder_asked) \
+                    or site["old-co"] + "/careers" not in finder_asked:
+                errors += fail(f"the finder read {sorted(set(finder_asked))}: a company whose "
+                               f"board the owner holds is not read again, and every other "
+                               f"company's site is read the finder's own way")
+            notes = {cid: log.get(cid) or {} for cid in names}
+            if not notes["pro-co"].get("retry_soon") or "pro-co" in queue \
+                    or notes["tt-co"].get("retry_soon") or notes["jv-co"].get("found") is not True \
+                    or any("held for the owner under another record" not in
+                           str(notes[cid].get("note")) for cid in ("held-co", "far-co", "cand-co")) \
+                    or "candheld" in str(notes["cand-co"]) \
+                    or "farheld" in str(notes["far-co"]) or "heldboard" in str(notes["held-co"]) \
+                    or any(notes[cid].get("found") or notes[cid].get("retry_soon")
+                           for cid in ("sub-co", "via-co", "gus-co", "share-a", "share-b")) \
+                    or "board sweep" not in str(notes["gus-co"].get("note")) \
+                    or not notes["crash-co"].get("retry_soon") \
+                    or "did not finish" not in str(notes["crash-co"].get("note")):
+                errors += fail(f"the discovery log says {notes}: an identity probe that failed on "
+                               f"the day is asked again in a week, a held board says so in words "
+                               f"that name none, another platform's board is left for the board "
+                               f"sweep, and the door's answers are answers")
+            if any(s_ in said for s_ in secret) \
+                    or not re.search(r"board\(s\) on adp, applicantpro, teamtailor, pinpoint, "
+                                     r"jobvite went to the wiring door: 3 wired", said) \
+                    or "1 settled on another platform's board" not in said \
+                    or "(3 board(s) found are held for the owner under another record" not in said:
+                errors += fail(f"the run printed a company or a board, or did not count what the "
+                               f"door did and what it left for the owner (the log is public): "
+                               f"{said[-600:]!r}")
+
+            # --- a dry run wires and files nothing, and asks everything again
+            fresh(box, pristine)
+            journal_before = (box.tmp / "admin_journal.jsonl").read_bytes()
+            code, said, recs, queue, log = run(box.tmp, sweep[:-1])
+            if (box.tmp / "companies.json").read_bytes() != pristine["companies.json"] \
+                    or (box.tmp / bp.FOUND.name).read_bytes() != pristine[bp.FOUND.name] \
+                    or (box.tmp / "admin_journal.jsonl").read_bytes() != journal_before \
+                    or not all((log.get(cid) or {}).get("retry_soon") for cid in door_ids) \
+                    or "would be wired" not in str((log.get("jv-co") or {}).get("note")) \
+                    or "would be held" not in str((log.get("tt-co") or {}).get("note")):
+                errors += fail(f"a dry run wired, filed or journalled something, said it had, or "
+                               f"left a company the door looked at asleep for {da.RETRY_DAYS} "
+                               f"days: { {c: log.get(c) for c in ('jv-co', 'tt-co')} }")
+
+            # --- what one run hands the door is capped; twins go together ---
+            # (seven: the cap falls between Twin A and Twin B, oldest probe
+            # first, so a cap that split a board found for two would show)
+            fresh(box, pristine)
+            cap = da.DOOR_AT_ONCE
+            try:
+                da.DOOR_AT_ONCE = 7
+                code, said, recs, queue, log = run(box.tmp, sweep)
+            finally:
+                da.DOOR_AT_ONCE = cap
+            proposed = door_ids + ["cand-co"]
+            over = [cid for cid in proposed if "one of more than 7 boards" in
+                    str((log.get(cid) or {}).get("note"))]
+            if len(proposed) - len(over) != 7 \
+                    or not all((log.get(cid) or {}).get("retry_soon") for cid in over) \
+                    or ("twin-a" in over) != ("twin-b" in over) \
+                    or ("share-a" in over) != ("share-b" in over) \
+                    or f"{len(over)} over this run's share" not in said:
+                errors += fail(f"over its share, the door took other than 7 companies, split a "
+                               f"board found for two, or left the rest asleep: over {over}; "
+                               f"{said[-300:]!r}")
+
+            # --- the finder's reading has a clock of its own ------------------
+            fresh(box, pristine)
+            clock = da.DOOR_SECONDS
+            try:
+                da.DOOR_SECONDS = -1
+                code, said, recs, queue, log = run(box.tmp, sweep)
+            finally:
+                da.DOOR_SECONDS = clock
+            if finder_asked or (box.tmp / bp.FOUND.name).read_bytes() != pristine[bp.FOUND.name] \
+                    or any((recs[cid].get("ats") or {}).get("type") != "unknown"
+                           for cid in door_ids) \
+                    or not all((log.get(cid) or {}).get("retry_soon") for cid in door_ids) \
+                    or recs["gh-co"].get("ats") != {"type": "greenhouse", "ref": "ghco"}:
+                errors += fail(f"with the door's time spent, the finder still read a site, the "
+                               f"door wired or filed, or a company was left asleep: "
+                               f"{sorted(set(finder_asked))[:4]}")
+
+            # --- the door judges the directory the run writes, or nothing ----
+            fresh(box, pristine)
+            try:
+                da.DATA = box.scratch
+                got, said_n = da.through_the_door(
+                    {"jv-co": {"name": "JV Co", "candidates": [], "pages": []}},
+                    companies, {c["id"]: c for c in companies}, write=True, today="2026-11-22")
+            finally:
+                da.DATA = keep[0]
+            if not (got.get("jv-co") or {}).get("retry_soon") or said_n.get("unasked") != 1 \
+                    or (box.tmp / bp.FOUND.name).read_bytes() != pristine[bp.FOUND.name]:
+                errors += fail(f"the door was asked while it read another directory than the "
+                               f"one the run writes: {got}")
+
+            # --- an --only run: a careers address of their own on file is
+            # where the finder starts, as always; the probe's page does not
+            # displace it
+            fresh(box, pristine)
+            (box.tmp / "only.txt").write_text("file-co\n")
+            code, said, recs, queue, log = run(box.tmp, ["discover_ats.py", "--write", "--workers",
+                                                         "1", "--only", str(box.tmp / "only.txt")])
+            if recs["file-co"].get("ats") != {"type": "html",
+                                               "ref": "https://www.fileco.test/our-openings"} \
+                    or "more than one board" not in str((queue.get("file-co") or {})
+                                                        .get("identity_why")):
+                errors += fail(f"the careers address on file was not where the finder started, so "
+                               f"the door saw one board where their site names two: "
+                               f"{recs['file-co'].get('ats')}, {queue.get('file-co')}")
+
+            # --- a board.json that does not read: the door is not asked -------
+            fresh(box, pristine)
+            (box.tmp / "board.json").write_text("<<<<<<< HEAD\n")
+            code, said, recs, queue, log = run(box.tmp, sweep)
+            if recs["gh-co"].get("ats") != {"type": "greenhouse", "ref": "ghco"} \
+                    or any((recs[cid].get("ats") or {}).get("type") != "unknown"
+                           for cid in door_ids) \
+                    or (box.tmp / bp.FOUND.name).read_bytes() != pristine[bp.FOUND.name] \
+                    or not all((log.get(cid) or {}).get("retry_soon") for cid in door_ids) \
+                    or not re.search(r"\d+ not asked", said):
+                errors += fail(f"with board.json unreadable the sweep wired or filed for the door, "
+                               f"lost the rest of its work, or left those companies asleep: "
+                               f"{said[-400:]!r}")
+    finally:
+        (da.DATA, da.LOG, da.SUSPECTS, da.get, fsb.read_plain, sys.argv, da.FINDER_PAUSE) = keep
     return errors
 
 
@@ -60730,6 +61273,7 @@ def main() -> int:
     errors += check_the_crawler_paces_itself()
     errors += check_embedded_wiring()
     errors += check_no_door_wires_a_company_the_owner_holds()
+    errors += check_discovery_hands_the_finders_platforms_to_the_wiring_door()
     errors += check_a_board_named_in_a_page_is_read_as_its_reader_reads_it()
     errors += check_a_found_board_is_wired_only_on_two_checks()
     errors += check_a_found_board_is_held_for_every_doubt()
