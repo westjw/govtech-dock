@@ -47691,6 +47691,10 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         id, refused for another company, on file as another company's, or
         found for two companies by one posting (asked ONCE) -> HOLD, as any
         Paylocity find is
+      - one posting id under two spellings of its address (Paylocity serves a
+        posting by its id alone), in one company's links or in two companies'
+                          -> asked ONCE, said as one posting, and it spends
+                             one try: the open posting after it is asked
     and in apply: a worklist edited to point a posting's row at another board,
     to give it another posting, to drop what check 1 says of the posting, or
     to have the posting's page name two boards, leaves the row alone; one
@@ -47712,7 +47716,8 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "two_b": f"{_PP_BOARD}{_pp_uuid(0x7603)}", "late": board(0x7604, "Pp-Late-LLC"),
          "held": board(0x7605, "Pp-Held-Inc"), "ref": board(0x7606, "Pp-Refusal-Inc"),
          "rec": board(0x7607, "Pp-Recorded-Inc"), "twin": board(0x7608, "Pp-Twin-Inc"),
-         "mixed": board(0x7611, "Pp-Mixed-Inc")}
+         "mixed": board(0x7611, "Pp-Mixed-Inc"), "spell": board(0x7803, "Pp-Spell-Inc"),
+         "spell_x": board(0x7821, "Pp-Spell-X-Inc")}
     P = {"one": D + "7601/Pp-One-Inc/Account-Executive",
          "two": D + "7602/Pp-Two-Inc/Sales-Engineer",
          "late_1": D + "7611/Pp-Late-LLC/Closed-Role", "late_2": D + "7612/Pp-Late-LLC/Open-Role",
@@ -47725,7 +47730,15 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
          "rec": D + "7671/Pp-Recorded-Inc/Engineer", "twin": D + "7681/Pp-Twin-Inc/Engineer",
          "refused": D + "7691/Pp-Refused/Engineer", "mixed": D + "7692/Pp-Mixed-Inc/Engineer",
          "shut_door_1": D + "7693/Pp-Door/One", "shut_door_2": D + "7694/Pp-Door/Two",
-         "as_board": D + "7695/Pp-As-Board/Engineer"}
+         "as_board": D + "7695/Pp-As-Board/Engineer",
+         # one posting id under two spellings of its address
+         "spell_1": D + "7801/Pp-Spell-Inc/Engineer",
+         "spell_1_bare": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7801",
+         "spell_2": D + "7802/Pp-Spell-Inc/Analyst", "spell_3": D + "7803/Pp-Spell-Inc/Manager",
+         "spell_shut": D + "7811/Pp-Spell-Shut/Engineer",
+         "spell_shut_bare": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7811",
+         "spell_x": D + "7821/Pp-Spell-X-Inc/Engineer",
+         "spell_y": "https://recruiting.paylocity.com/Recruiting/Jobs/Details/7821"}
     pages = {P["one"]: _pp_page("Pp One Inc - Account Executive", B["one"],
                                 rel=f"/Recruiting/Jobs/All/{_pp_uuid(0x7601)}"),
              P["two"]: _pp_page("Pp Two Inc - Sales Engineer", B["two_a"],
@@ -47746,7 +47759,13 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
              P["mixed"]: _pp_page("Pp Mixed - Engineer", board(0x7612, "Pp-Mixed-Other")),
              P["shut_door_1"]: ats.RobotsRefused(f"robots.txt asks crawlers not to read "
                                                  f"{P['shut_door_1']}"),
-             P["shut_door_2"]: _pp_page("Pp Door - Two", board(0x7613, "Pp-Door"))}
+             P["shut_door_2"]: _pp_page("Pp Door - Two", board(0x7613, "Pp-Door")),
+             P["spell_1"]: _PP_CLOSED, P["spell_1_bare"]: _PP_CLOSED,
+             P["spell_2"]: ats.AtsError(f"HTTP 404 for {P['spell_2']}"),
+             P["spell_3"]: _pp_page("Pp Spell - Manager", B["spell"]),
+             P["spell_shut"]: _PP_CLOSED, P["spell_shut_bare"]: _PP_CLOSED,
+             P["spell_x"]: _pp_page("Pp Spell X - Engineer", B["spell_x"]),
+             P["spell_y"]: _pp_page("Pp Spell X - Engineer", B["spell_x"])}
     asked: list = []
 
     def posting_page(url, head=0):
@@ -47768,7 +47787,9 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                  # refused another board in Agent proposals; its own site names a
                  # board beside a posting
                  co("pp-mixed", "Pp Mixed"), co("pp-door", "Pp Door"),
-                 co("pp-as-board", "Pp As Board")]
+                 co("pp-as-board", "Pp As Board"), co("pp-spell", "Pp Spell"),
+                 co("pp-spell-shut", "Pp Spell Shut"), co("pp-spell-x", "Pp Spell X"),
+                 co("pp-spell-y", "Pp Spell Y")]
 
     def posted(cid, *refs, times=1):
         return entry(cid, [cand(wf.POSTING, r, f"{site(cid)}/careers", times=times, saw=r)
@@ -47787,6 +47808,13 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
         "pp-twin-b": posted("pp-twin-b", P["twin"]),
         "pp-refused": posted("pp-refused", P["refused"]),
         "pp-door": posted("pp-door", P["shut_door_1"], P["shut_door_2"]),
+        # one posting id under two spellings: in one company's links, before two
+        # more postings; in one company's alone; and one spelling in each of two
+        "pp-spell": posted("pp-spell", P["spell_1"], P["spell_1_bare"], P["spell_2"],
+                           P["spell_3"]),
+        "pp-spell-shut": posted("pp-spell-shut", P["spell_shut"], P["spell_shut_bare"]),
+        "pp-spell-x": posted("pp-spell-x", P["spell_x"]),
+        "pp-spell-y": posted("pp-spell-y", P["spell_y"]),
         # a posting's address written as a Paylocity BOARD (an older finder's file,
         # or one made by hand)
         "pp-as-board": entry("pp-as-board", [cand("paylocity", P["as_board"],
@@ -47799,7 +47827,8 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
               show("two_b"): (2, ["Pp Two Inc"]), show("late"): (2, ["Pp Late LLC"]),
               show("held"): (2, ["Pp Held Inc"]), show("ref"): (2, ["Pp Refusal Inc"]),
               show("rec"): (2, ["Pp Recorded Inc"]), show("twin"): (2, ["Pp Twin Inc"]),
-              show("mixed"): (2, ["Pp Mixed Inc"])}
+              show("mixed"): (2, ["Pp Mixed Inc"]), show("spell"): (2, ["Pp Spell Inc"]),
+              show("spell_x"): (2, ["Pp Spell X Inc"])}
     files = {
         # a reader's doubt about pp-held's board, kept for another company
         "board_doubts.json": {"doubt-other@2026-11-20T09:00:00-05:00": {
@@ -47922,12 +47951,39 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
                                f"board of its own beside a posting, had the posting asked, or "
                                f"is not held with the refusal and the posting said as not "
                                f"asked: {mixed.get('action')} {_wb_words(mixed)[:400]!r}")
-            if len(asked) != len(set(asked)):
-                errors += fail(f"a posting's page was asked more than once in one plan: {asked}")
+            # ONE POSTING ID IS ONE POSTING, however its address is spelled
+            # (review of the posting change, 2026-11-23: two spellings were
+            # asked twice, spent two tries and were said as two postings)
+            ids_asked = [re.search(r"details/([0-9]+)", u, re.I).group(1) for u in asked]
+            if len(ids_asked) != len(set(ids_asked)):
+                errors += fail(f"a posting's page was asked more than once in one plan, under one "
+                               f"address or two spellings of it: {asked}")
+            spell = row("pp-spell")
+            if spell.get("action") != "WIRE" or spell.get("ref") != B["spell"] \
+                    or (spell.get("check_1") or {}).get("posting") != P["spell_3"]:
+                errors += fail(f"pp-spell: one posting id linked under two spellings spent two of "
+                               f"the company's {wf.POSTING_TRIES} tries, and the open posting after "
+                               f"it was not the find: {spell.get('action')} {spell.get('ref')} "
+                               f"{_wb_words(spell)[:300]!r}")
+            spell_shut = row("pp-spell-shut")
+            ssw = _wb_words(spell_shut)
+            if spell_shut.get("kind") != "no-board" \
+                    or "their site links 1 Paylocity posting and no board" not in ssw \
+                    or P["spell_shut_bare"] in ssw or P["spell_shut"] not in ssw:
+                errors += fail(f"pp-spell-shut: one posting under two spellings of its address is "
+                               f"said as two postings, or listed twice: {ssw[:400]!r}")
+            spelled = [row("pp-spell-x"), row("pp-spell-y")]
+            if any(r.get("action") != "HOLD" or "the same board was found for" not in _wb_words(r)
+                   for r in spelled):
+                errors += fail(f"one posting linked by two companies under two spellings is not one "
+                               f"board found twice (both held): "
+                               f"{[(r.get('action'), _wb_words(r)[:160]) for r in spelled]}")
             doc = json.loads(wl.read_text()) if wl.exists() else {}
             if doc.get("posting_boards", {}).get(P["one"]) != [B["one"]] \
                     or doc.get("posting_boards", {}).get(P["late_1"]) != [] \
-                    or P["flaky"] in doc.get("posting_boards", {}):
+                    or P["flaky"] in doc.get("posting_boards", {}) \
+                    or any(doc.get("posting_boards", {}).get(P[k]) != [B["spell_x"]]
+                           for k in ("spell_x", "spell_y")):
                 errors += fail(f"the worklist does not carry what each posting's page named "
                                f"(posting_boards): {doc.get('posting_boards')}")
 
@@ -47935,7 +47991,7 @@ def check_a_board_a_posting_names_is_wired_only_on_both_checks() -> int:
             code, look, expect = box.look(wl)
             lean = (f"leans on what the plan was told: the page of the posting their site links, "
                     f"{P['one']}, names one board, {show('one')}")
-            if lean not in look or "WIRE 2" not in look:
+            if lean not in look or "WIRE 3" not in look:
                 errors += fail(f"the look does not print what the posting's page named, under the "
                                f"row it wires: {look[:900]}")
 
