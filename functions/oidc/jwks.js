@@ -3,10 +3,11 @@
  *
  * Access reads it to check the ID tokens /oidc/token hands it; Job Hunter
  * reads it to check the popout's assertion. Public halves only - kty, crv,
- * x, y, kid, alg, use, never `d` - the signing key's and, during a rotation,
- * the earlier one's (OIDC_SIGNING_JWK_OLD). OPEN in functions/_gate.js: the
- * readers carry no sign-in. Cached five minutes by anyone, so a new key is
- * seen within five minutes of a deploy. No key: 503, and nothing cached.
+ * x, y, kid, alg, use, never `d` - the signing key's and, during a routine
+ * rotation, the earlier one's (OIDC_SIGNING_JWK_OLD). OPEN in
+ * functions/_gate.js: the readers carry no sign-in. Cached five minutes by
+ * anyone, so a new key is seen within five minutes of a deploy. No key that
+ * signs: 503, and nothing cached - an earlier key is never published alone.
  */
 import { onSite } from "../_session.js";
 import { publicKeys } from "../_oidc.js";

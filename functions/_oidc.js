@@ -27,15 +27,18 @@
  * SECRETS, all Pages secrets, none ever in this public repository
  * (scripts/jh_signin_secrets.mjs makes the first three and prints them once):
  *   OIDC_SIGNING_JWK        the private P-256 key as a JWK carrying its kid
- *   OIDC_SIGNING_JWK_OLD    optional: an earlier key, PUBLISHED only, so a
- *                           token signed just before a rotation still verifies
+ *   OIDC_SIGNING_JWK_OLD    optional, routine rotations only: the earlier
+ *                           key's public half as /oidc/jwks printed it,
+ *                           PUBLISHED only, so a token signed just before the
+ *                           rotation still verifies (never after a leak)
  *   OIDC_CLIENT_ID          the one client
  *   OIDC_CLIENT_SECRET      at least 32 characters, or the token door is off
  *   OIDC_REDIRECT_URI       optional: REPLACES Access's callback, never widens
  *   JH_SERVICE_TOKEN_ID / JH_SERVICE_TOKEN_SECRET   the popout's way past Access
  *
  * FAILS CLOSED. A missing or malformed key signs nothing and publishes
- * nothing; every door says it is not set up rather than guessing.
+ * nothing, not even an earlier key beside it; every door says it is not
+ * set up rather than guessing.
  */
 import { SITE, DOMAIN } from "./_brand.js";
 import { TEAM } from "./_access.js";
@@ -117,6 +120,9 @@ function publicOf(j) {
 function parseJwk(raw, needPrivate) {
   let j = null;
   try { j = typeof raw === "string" ? JSON.parse(raw) : null; } catch { return null; }
+  return checkJwk(j, needPrivate);
+}
+function checkJwk(j, needPrivate) {
   if (!j || typeof j !== "object" || Array.isArray(j)) return null;
   if (j.kty !== "EC" || j.crv !== "P-256") return null;
   if (j.alg !== undefined && j.alg !== "ES256") return null;
@@ -158,11 +164,21 @@ export async function signingKey(env) {
   return SIGNING.key;
 }
 
-/* The earlier key, public half only. A private one is accepted (the owner
- * moves the old secret across as it was) and its `d` is never read. */
+/* The earlier key, public half only, for a routine rotation (DEPLOY.md
+ * §3f): what /oidc/jwks printed before it, pasted whole - {"keys":[ that one
+ * key ]} - or that one key alone. The old PRIVATE key cannot be copied
+ * across (Pages never shows a secret again) and is never needed; one
+ * pasted anyway is accepted and its `d` never read. A document of more or
+ * fewer than one key publishes no earlier key. */
 let OLD = { raw: undefined, jwk: null };
 async function importOld(raw) {
-  const j = parseJwk(raw, false);
+  let j = null;
+  try { j = JSON.parse(raw); } catch { return null; }
+  if (j && typeof j === "object" && !Array.isArray(j) && Object.prototype.hasOwnProperty.call(j, "keys")) {
+    if (!Array.isArray(j.keys) || j.keys.length !== 1) return null;
+    j = j.keys[0];
+  }
+  j = checkJwk(j, false);
   if (!j) return null;
   try {
     await crypto.subtle.importKey("jwk", { kty: "EC", crv: "P-256", x: j.x, y: j.y }, ECDSA, false, ["verify"]);
@@ -171,15 +187,19 @@ async function importOld(raw) {
 }
 
 /* What /oidc/jwks publishes: the signing key's public half, and the earlier
- * key's when there is one with another kid. */
+ * key's when there is one with another kid. NOTHING when the signing key
+ * itself is missing, malformed or not one pair, even with an earlier key
+ * set: nothing here can sign then, and a page holding the earlier key alone
+ * would only keep it trusted (review, 2026-11-23: a bad paste during a
+ * rotation published the old key alone, cached five minutes). */
 export async function publicKeys(env) {
-  const out = [];
   const cur = await signingKey(env);
-  if (cur) out.push(cur.jwk);
+  if (!cur) return [];
+  const out = [cur.jwk];
   const raw = env && env.OIDC_SIGNING_JWK_OLD;
   if (typeof raw === "string" && raw) {
     if (OLD.raw !== raw) OLD = { raw, jwk: await importOld(raw) };
-    if (OLD.jwk && !out.some((k) => k.kid === OLD.jwk.kid)) out.push(OLD.jwk);
+    if (OLD.jwk && OLD.jwk.kid !== cur.kid) out.push(OLD.jwk);
   }
   return out;
 }

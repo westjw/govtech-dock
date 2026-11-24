@@ -2463,6 +2463,22 @@ def check_job_hunter_signs_in_with_sled_jobs() -> int:
     off = o.get("jwks_off") or {}
     if len(off) < 8 or any(c.get("status") != 503 or c.get("keys") or c.get("cache") != "no-store" for c in off.values()):
         errors += fail(f"a missing, malformed or mismatched key still publishes something, or is cached: {off}")
+    # nothing signs, so nothing is published, earlier key or not (review,
+    # 2026-11-23: a bad paste during a rotation published the old key alone)
+    wo = o.get("jwks_off_with_old") or {}
+    if len(wo) < 4 or any(c.get("status") != 503 or c.get("keys") or c.get("cache") != "no-store" for c in wo.values()):
+        errors += fail(f"with the signing key missing, malformed or half a pair, the earlier key is published alone: {wo}")
+    # a routine rotation's earlier key is what /oidc/jwks printed (Pages never
+    # shows the old private key again), whole or its one entry
+    of = o.get("jwks_old_forms") or {}
+    for k in ("document", "entry", "private"):
+        c = of.get(k) or {}
+        if c.get("status") != 200 or c.get("kids") != ["test-key-now", "test-key-before"] or c.get("has_d"):
+            errors += fail(f"the earlier key pasted as {k} is not published beside the current one, public half only: {c}")
+    for k in ("two_keys", "no_keys", "keys_not_list"):
+        c = of.get(k) or {}
+        if c.get("status") != 200 or c.get("kids") != ["test-key-now"]:
+            errors += fail(f"an earlier-key secret that is not one key ({k}) publishes something beside the current key: {c}")
 
     # THE ROUND TRIP
     rt = o.get("round") or {}

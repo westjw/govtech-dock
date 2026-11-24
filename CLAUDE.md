@@ -377,10 +377,16 @@ the popout's assertion: change it on one side only and the popout stops.
   like any other; wrangler's file routing skips nothing). Issuer
   `https://sledjobs.com`, ES256 only, the private P-256 JWK (with its kid) in
   the Pages secret `OIDC_SIGNING_JWK`; `OIDC_SIGNING_JWK_OLD` is published
-  beside it during a rotation, public half only. No key, a malformed one, or
-  halves that do not match (a probe signature must verify under the
-  published point) and nothing is signed or published: every door says it is
-  not set up. `/oidc/jwks` is `public, max-age=300`; a 503 is never cached.
+  beside it during a ROUTINE rotation, public half only. It holds what
+  `/oidc/jwks` printed before the rotation, pasted whole or its one entry:
+  Pages never shows a secret again, so the old private key cannot be copied
+  across (and is never needed; one pasted anyway is read for its public half
+  alone). After a key may have leaked it is never set: the leaked key goes at
+  once (DEPLOY.md §3f). No key, a malformed one, or halves that do not match
+  (a probe signature must verify under the published point) and nothing is
+  signed or published, the earlier key included (it was published alone
+  until the 2026-11-23 review): every door says it is not set up.
+  `/oidc/jwks` is `public, max-age=300`; a 503 is never cached.
 - **authorize** holds the request to the one client: `OIDC_CLIENT_ID`,
   Access's callback EXACTLY (`https://<team>/cdn-cgi/access/callback`, from
   `_access.TEAM`; `OIDC_REDIRECT_URI` may replace it, as one printed https

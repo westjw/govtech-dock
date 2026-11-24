@@ -254,6 +254,31 @@ const out = { gated: G.GATED };
     const r = await see(await jwksMod.onRequestGet({ request: req("/oidc/jwks"), env: envOf({ OIDC_SIGNING_JWK: v }) }));
     out.jwks_off[k] = { status: r.status, cache: r.headers["cache-control"] || "", keys: r.json && r.json.keys ? r.json.keys.length : 0 };
   }
+  // AN EARLIER KEY NEVER STANDS ALONE (review, 2026-11-23): the signing key
+  // missing, garbled, half a pair or public only, with OIDC_SIGNING_JWK_OLD
+  // set, publishes nothing at all
+  out.jwks_off_with_old = {};
+  for (const [k, v] of Object.entries({ none: undefined, garbled: "{not json", mismatched_pair: JSON.stringify(pairBad),
+    public_only: JSON.stringify(noD) })) {
+    const r = await see(await jwksMod.onRequestGet({ request: req("/oidc/jwks"),
+      env: envOf({ OIDC_SIGNING_JWK: v, OIDC_SIGNING_JWK_OLD: JSON.stringify(OLDK) }) }));
+    out.jwks_off_with_old[k] = { status: r.status, cache: r.headers["cache-control"] || "",
+      keys: r.json && r.json.keys ? r.json.keys.length : 0 };
+  }
+  // THE EARLIER KEY AS THE OWNER CAN HAVE IT: /oidc/jwks's own answer from
+  // before the rotation, pasted whole or its one entry (Pages never shows a
+  // secret again, so the old private half cannot be copied across); a
+  // private one pasted anyway still publishes only its public half
+  const printed = (await see(await jwksMod.onRequestGet({ request: req("/oidc/jwks"),
+    env: envOf({ OIDC_SIGNING_JWK: JSON.stringify(OLDK) }) }))).body;
+  const entry = JSON.parse(printed).keys[0];
+  out.jwks_old_forms = {};
+  for (const [k, v] of Object.entries({ document: printed, entry: JSON.stringify(entry), private: JSON.stringify(OLDK),
+    two_keys: JSON.stringify({ keys: [entry, { ...entry, kid: "test-key-twin" }] }), no_keys: '{"keys":[]}',
+    keys_not_list: JSON.stringify({ keys: entry }) })) {
+    const r = await see(await jwksMod.onRequestGet({ request: req("/oidc/jwks"), env: envOf({ OIDC_SIGNING_JWK_OLD: v }) }));
+    out.jwks_old_forms[k] = { status: r.status, kids: (r.json && r.json.keys || []).map((x) => x.kid), has_d: /"d"\s*:/.test(r.body) };
+  }
 }
 
 /* --- the round trip, signed in by the site's own sign-in ------------------- */
