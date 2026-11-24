@@ -20655,7 +20655,15 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
                 # (the code is the one in the parentheses, never a word of the name)
                 (("90000", "110000", "CFA Franc BEAC (XAF FCFA)", "Annually"),
                  {"min": 90000, "max": 110000, "currency": "XAF", "period": "year", "source": "ats",
-                  "raw": "90000-110000 XAF per year"}, "a currency whose name has capitals in it")):
+                  "raw": "90000-110000 XAF per year"}, "a currency whose name has capitals in it"),
+                # (two codes name no one currency, and the first is not taken;
+                # a figure written with thousands commas reads - blind review 12)
+                (("90000", "110000", "US Dollar (USD US$) or Canadian Dollar (CAD $)", "Annually"),
+                 {"min": 90000, "max": 110000, "currency": None, "period": "year", "source": "ats",
+                  "raw": "90000-110000 per year"}, "two currency codes"),
+                (("76,000.00", "110,000.00", "US Dollar (USD US$)", "Annually"),
+                 {"min": 76000, "max": 110000, "currency": "USD", "period": "year", "source": "ats",
+                  "raw": "76,000.00-110,000.00 USD per year"}, "figures written with thousands commas")):
             r_, e_, _ = read(feed(job(P1, pay=pay)))
             if e_ or (r_ or [{}])[0].get("comp") != want:
                 errors += fail(f"jobvitefeed: {why} reads as pay {(r_ or [{}])[0].get('comp')} ({e_}), "
@@ -20678,6 +20686,17 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
             if e_ or comp.get("period") is not None or bb.derived(r_[0])["comp"] is not None:
                 errors += fail(f"jobvitefeed: a salary paid {freq} reads as a period "
                                f"{comp.get('period')!r}, or is published")
+        # (each word the feed is read for is its own period, and no other's:
+        # 'Monthly' read as a year or 'Weekly' as a month passed every check
+        # before blind review 12)
+        for freq, period in (("Annually", "year"), ("Annual", "year"), ("Yearly", "year"),
+                             ("Monthly", "month"), ("Weekly", "week"), ("Daily", "day"),
+                             ("Hourly", "hour")):
+            r_, e_, _ = read(feed(job(P1, pay=("2000", "2500", "US Dollar (USD US$)", freq))))
+            comp = (r_ or [{}])[0].get("comp") or {}
+            if e_ or comp.get("period") != period or (bb.derived(r_[0])["comp"] or {}).get("period") != period:
+                errors += fail(f"jobvitefeed: a salary paid {freq} reads as a period "
+                               f"{comp.get('period')!r}, not {period!r} ({e_})")
         for date in ("8/26/26", "2026-08-26", "26/8/2026", "8/26/2026 10:00"):
             r_, e_, _ = read(feed(job(P1, date=date)))
             if e_ or (r_ or [{}])[0].get("posted") is not None:
@@ -20713,6 +20732,11 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
              "an entity XML does not define"),
             (feed(job("x"), job("y"), job("z"), job(P1)), "did not read as a job",
              "three rows with no id that reads"),
+            # (within the slack, but nothing read: a failure, never a board of
+            # no openings - blind review 12)
+            (feed(job("x")), "did not read as a job", "one row with no id that reads, and no other"),
+            (feed(job("x"), job(P1, title="")), "did not read as a job",
+             "two rows that do not read, and no other"),
         ]
         for body, words, why in cases:
             r_, e_, err_ = read(body)
@@ -20723,6 +20747,12 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
         if e_ or len(r_ or []) != 1 or "2 of its 3 rows did not read" not in err_:
             errors += fail(f"jobvitefeed: two rows that do not read beside one that does were not "
                            f"left out and said ({e_}): {err_!r}")
+        # (a job with no title is not a row: blind review 12)
+        r_, e_, err_ = read(feed(job(P1, title=" "), job("oDdddDfw4")))
+        if e_ or [r["url"] for r in r_ or []] != [page_of("oDdddDfw4")] \
+                or "1 of its 2 rows did not read" not in err_:
+            errors += fail(f"jobvitefeed: a job with no title was read as a row, or not said "
+                           f"({e_}): {[r.get('title') for r in r_ or []]} {err_!r}")
         for detail, why in ((f"<![CDATA[http://app.jobvite.com/CompanyJobs/Job.aspx?c=qOthersfw&j={P1}]]>",
                              "another account's job page"),
                             (f"<![CDATA[http://evil.example/CompanyJobs/Job.aspx?c={A}&j={P1}]]>",
@@ -20958,6 +20988,10 @@ def check_jobvite_feed_reads_one_row_a_job_and_no_person() -> int:
             (SITE + WIDGET, [("jobvite", "acmegov", "href")], True,
              "a jobs.jobvite.com career site beside the widget"),
             (APPLY.replace(A, "qOthr9fw"), [], True, "an id that is not in Jobvite's shape"),
+            # (one character more is no account, never another one cut from it:
+            # blind review 12)
+            (APPLY.replace(A, A + "X"), [], True, "a company id with a character more (c=)"),
+            (WIDGET.replace(A, A + "X"), [], False, "the widget's id with a character more (ci=)"),
             (APPLY.replace("app.jobvite", "hire.jobvite"), [], True, "hire.jobvite.com")):
         found, rest = fsb.sightings(markup, here, home)
         if [(f["type"], f["ref"], f["element"]) for f in found] != want \

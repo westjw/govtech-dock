@@ -4020,7 +4020,13 @@ through the door.
   is asked through it). 58 one-line breakages of the reader, the parse, the
   gate, the probe, the finder, the door and the public link, each alone in a
   private copy, each caught; the type's lines in the shared tables are held
-  by the checks that own those tables.
+  by the checks that own those tables. Blind review 12 (2026-11-23) found
+  eight more that passed every check - a feed of only rows that do not read
+  read as no openings, the finder's id cut from one a character longer,
+  'Monthly' read as a year and 'Weekly' as a month, the first of two
+  currency codes taken, a figure with thousands commas not read, a job with
+  no title read, and the account's furniture dropped on every page - and
+  each is pinned since (Daily and Yearly with them), each caught alone.
 
 ## Build order (owner, 2026-08-23)
 
