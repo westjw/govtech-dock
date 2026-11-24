@@ -72,9 +72,15 @@ import { CARD_CSS, FORM_CSS, emailForm, themeOf, themeSwitch } from "./_card.js"
 
 export const GATED = true;
 
+/* JOB HUNTER'S SIGN-IN (owner, 2026-11-23, design C) adds the last four:
+ * Access trades a code at /oidc/token server to server and reads /oidc/jwks
+ * and the discovery document, none of it with a sign-in of ours, and Access
+ * sends a person to /oidc/authorize BEFORE they have one, which it then asks
+ * for itself (functions/oidc/). Each checks what it needs on its own. */
 export const OPEN = new Set(["/admin/api/whoami", "/admin/api/login", "/api/whoami",
   "/signin", "/signin/email", "/signin/check", "/signin/code", "/signin/link", "/signin/out", "/signin/theme",
-  "/signin/google", "/signin/google/callback"]);
+  "/signin/google", "/signin/google/callback",
+  "/oidc/authorize", "/oidc/token", "/oidc/jwks", "/.well-known/openid-configuration"]);
 
 /* "CONTINUE WITH GOOGLE" ON THE LANDING PAGE AND THE SIGN-IN PAGES (owner,
  * 2026-11-02: "Can I have the cloudflare sign in and future google sign in on

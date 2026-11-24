@@ -311,21 +311,36 @@ panel on a role).**
   role page, where the credit is spent, and the panel says what it costs and
   what they hold, as Job Hunter's header says it (Job Hunter's board-role
   answer carries `credits` and `scoring`). No price for an account that
-  never pays; "Being scored in Job Hunter now" while one is on its way. It FETCHES Job Hunter's
-  `/api/board-role?id=<posting id>` with the person's own sign-in
-  (`credentials: include`, `redirect: manual`, nothing sent but the id).
-  Job Hunter answers that one route to this board's address and no other,
-  so the button shows only on the board's own host (`:root.jhp`, set by
-  whoAmI when Job Hunter is hunter.<this host>): on solesourcejobs.com or the
-  pages.dev alias it would ask and never hear. The Flag and the tab are links
-  and work anywhere. Each silence says which it is (`jhAnswer`): Job Hunter's
-  own 401 "no_account" is a person signed in with no account, its other
-  refusals ask for a sign-in, and a reply from Access itself (an expired
-  sign-in's redirect) carries no CORS header, so the browser refuses it and
-  it reads with a request that never answered (the Mac asleep): "did not
-  answer", whose words say a sign-in may need renewing. A failing gate prints above the fit
-  and a score the person rejected says so, as on Job Hunter's own board.
-  Everything Job Hunter says is printed as text.
+  never pays; "Being scored in Job Hunter now" while one is on its way.
+  **Since 2026-11-23 (design C, below) it fetches THIS SITE**:
+  `/api/jh/board-role?id=<posting id>` (`credentials: same-origin`, `mode:
+  same-origin`, `redirect: manual`, nothing sent but the id), and the
+  board's own function asks Job Hunter with a service token and a signed
+  assertion ("Job Hunter signs in with SLED JOBS"). Until then it fetched
+  Job Hunter across sites with the person's own Access sign-in, and without a
+  live one Access answered with no CORS header: the owner's "doesn't load
+  properly". The button still shows only on the board's own host
+  (`:root.jhp`, set by whoAmI when Job Hunter is hunter.<this host>): the
+  function answers only there, where the sign-in's host-only cookie is. The
+  Flag and the tab are links and work anywhere. Each silence says which it
+  is (`jhAnswer`, every word read, since this site answers): `not_signed_in`
+  (the board's sign-in run out, or the gate's refusal) offers a sign-in back
+  to this page; `not_allowed` is no place in the beta; Job Hunter's own 401
+  `no_account` is a person with no account linked; `unreachable` is the Mac
+  asleep, a timeout or Job Hunter's door answering instead ("did not answer",
+  whose words say the board's way in may need fixing); `not_set_up` is no
+  service token, D1 or signing key; `not_let_in` is Job Hunter's own 401
+  other than `no_account`, which the board relays as 502: nothing of the
+  person's is sent, so it can only be Job Hunter not taking the board's way
+  in (its `JH_BOARD_SERVICE_TOKEN` unset or another token's, or the board's
+  assertion refused), and the panel says the way in needs fixing, never
+  "sign in" (review, 2026-11-24: Job Hunter's `no_token` read "Sign in to
+  Job Hunter"); `slow_down` is one person's twenty asks a minute used up
+  ("Wait a minute, then open this one again"); any other 401 or 403, or a
+  redirect, asks for a sign-in. A
+  failing gate prints above the fit and a score the person rejected says so,
+  as on Job Hunter's own board. Everything Job Hunter says is printed as
+  text.
 - **It is a dialog** (review, 2026-10-25): a backdrop that closes it, Tab kept
   inside, Escape, focus given back to its button. Opening it pushes a history
   entry, so Back closes the panel and not the role; the × or Escape pops that
@@ -336,17 +351,237 @@ panel on a role).**
   `closeJhPanel(true)`, which pops nothing. A role page left by a link while
   the panel was open keeps that entry: Back from the next page shows the role
   twice. Known, small, and not worth a router.
-- **`connect-src` on the app page is `'self' https://hunter.<domain>`**
-  (csp.app_connect, from brand.json); every other kind of page stays on
-  `'self'`, and the policy guard holds both. It names the whole host: the one
-  route is Job Hunter's rule, not this one.
+- **`connect-src` is `'self'` on every kind of page** since 2026-11-23: the
+  panel asks this site, so no page fetches Job Hunter (the Flag, the tab and
+  the panel's buttons are links, which connect-src does not govern). From
+  2026-10-25 the app page named `https://hunter.<domain>` (csp.app_connect,
+  now gone); the policy guard holds `'self'` for all.
 - `check_the_job_hunter_panel_says_what_job_hunter_said` runs the page's own
   jhPanelHTML (jobcard_harness) on each silence, on roles in every state Job
   Hunter answers with (crm.LABEL's words), and on one whose every string is
-  markup, and its jhAnswer on each reply a fetch can hand it; the fetch and
-  the dialog are held by source. The flag check reads whoAmI's role block to
-  its closing brace. Mutation-tested 50 of 50 after a second blind review
-  (2026-10-26), the policy 3 of 3.
+  markup, and its jhAnswer on each reply a fetch can hand it (the board's
+  function's words included since 2026-11-23); the fetch and the dialog are
+  held by source, and the page may not fetch Job Hunter. The flag check reads
+  whoAmI's role block to its closing brace. Mutation-tested 50 of 50 after a
+  second blind review (2026-10-26), the policy 3 of 3.
+
+## Job Hunter signs in with SLED JOBS (owner, 2026-11-23)
+
+Of three designs, **"C: B plus popout"**: "Cloudflare Access stays in front
+of Job Hunter, but its only button becomes 'Sign in with SLED JOBS'. If
+you're already signed in on the board, you go straight through. ... plus the
+board's server fetches the scoring popout for you with a Cloudflare service
+token, so the popout never asks you to sign in." Job Hunter stays a closed
+beta ("on the same system but need a beta code"): the Users board's `hunter`
+role (or `owner`) is the beta, Access's "Beta users" policy stays, and
+`/api/beta` codes admit nobody. Never a new Access application (the existing
+"Job Hunter beta" is the one changed), never a `*.sledjobs.com` wildcard.
+**The `SLED JOBS` identity provider opens Job Hunter and nothing else**
+(review, 2026-11-24): identity providers are account-wide, and an Access
+application with "Accept all available identity providers" on offers a new
+one with nothing ticked, so on "SLED JOBS admin" the board's own 30-day
+sign-in would open /admin. DEPLOY.md §3f has the owner turn that switch off
+on every application before the provider exists, tick `SLED JOBS` on "Job
+Hunter beta" alone, and add Require → Login Methods → One-time PIN to every
+Allow policy of "SLED JOBS admin"; never undo any of the three.
+The interface is shared with Job Hunter's `scripts/serve.py`, which verifies
+the popout's assertion: change it on one side only and the popout stops.
+- **The board is an OpenID Connect provider with ONE client**, that Access
+  application: `functions/_oidc.js` (keys, codes, the interface),
+  `functions/oidc/authorize.js`, `oidc/token.js`, `oidc/jwks.js` and
+  `functions/.well-known/openid-configuration.js` (Pages routes a dot folder
+  like any other; wrangler's file routing skips nothing). Issuer
+  `https://sledjobs.com`, ES256 only, the private P-256 JWK (with its kid) in
+  the Pages secret `OIDC_SIGNING_JWK`; `OIDC_SIGNING_JWK_OLD` is published
+  beside it during a ROUTINE rotation, public half only. It holds what
+  `/oidc/jwks` printed before the rotation, pasted whole or its one entry:
+  Pages never shows a secret again, so the old private key cannot be copied
+  across (and is never needed; one pasted anyway is read for its public half
+  alone). After a key may have leaked it is never set: the leaked key goes at
+  once (DEPLOY.md §3f). No key, a malformed one, or halves that do not match
+  (a probe signature must verify under the published point) and nothing is
+  signed or published, the earlier key included (it was published alone
+  until the 2026-11-23 review): every door says it is not set up.
+  `/oidc/jwks` is `public, max-age=300`; a 503 is never cached. **That 503
+  is part of the interface**: exactly `{"error":"not_configured"}`,
+  `no-store`, for every way the key can be missing or wrong, an earlier key
+  set or not. Job Hunter's key cache (`core/board_assertion.py` `_fetch`)
+  reads it as "the board lists no keys" and stops believing every key it
+  held; any other error it reads as an outage and keeps them an hour (its
+  review, 2026-11-24). The check pins status, body and Cache-Control.
+- **authorize** holds the request to the one client: `OIDC_CLIENT_ID`,
+  Access's callback EXACTLY (`https://<team>/cdn-cgi/access/callback`, from
+  `_access.TEAM`; `OIDC_REDIRECT_URI` may replace it, as one printed https
+  address, and never widens it), `response_type=code`, `openid` in the
+  scope, PKCE S256 with a challenge REQUIRED, each parameter once, the code
+  in the query, state at most 2,048 printable characters. Anything else is
+  a page here and NO redirect: an address it has not checked is never sent
+  anywhere. **Signed out** (`signedIn`, which sees the owner's Access
+  sign-in too): the request is sealed (purpose `oidc-request`, ten minutes)
+  into the `__Host-sj_oidc` cookie and the person goes to
+  `/signin?to=/oidc/authorize?r=<16 random bytes>`, the seal carrying the
+  same reference. A seal shortens nothing, and a `to` over 1,024 characters
+  is "/" (`_to.js`), so the request never rides in `to`, only the reference
+  does (sealed into `r` itself, as first specified, it would have carried
+  Access's whole state). Back here, the reference must match this browser's
+  cookie; anything else is "that sign-in ran out". **Signed in without
+  `hunter` or `owner`**: the closed-beta page (their own address, the beta
+  page, sign out), no code. **Allowed**: a code (32 random bytes, kept only
+  as its SHA-256 with the address, nonce, challenge, client, redirect and
+  auth_time) and a 200 page that goes on by `<meta refresh>` and a link,
+  NEVER a 302: a person who just typed the emailed code arrives through a
+  form's redirect chain, and the sign-in pages' `form-action 'self'` makes
+  Chrome refuse that chain once it leaves the site. No script, no-store,
+  no-referrer, framed out (`_csp.framed` covers `/oidc`).
+- **token** (Access, server to server, no sign-in of ours): a form, each
+  parameter once; `client_secret_basic` or `client_secret_post`, never both,
+  compared in constant time (SHA-256 of each side first); `OIDC_CLIENT_SECRET`
+  under 32 characters and the door is off; `authorization_code`; the code
+  SPENT FIRST by one atomic `UPDATE ... WHERE used = 0 AND made_at >= now -
+  120` (two redemptions at once give one token; a failed try spends it),
+  then the redirect_uri, the client and the verifier's S256. The ID token:
+  iss, aud = the client, sub = b64url(SHA-256("sub:" + address)), email,
+  email_verified, iat, exp = iat + 300, auth_time (the sign-in's own iat:
+  `sessionOf` and `signedIn` carry `iat` since this), nonce. Every failure is
+  OAuth's word alone. **Only a request that is NOT THE CLIENT is counted**
+  (no credentials, an id or secret that is not the one client's, a Basic
+  header that cannot be read): twenty an hour from one network (IPv4, or an
+  IPv6 /64), and past them those get 429 and write nothing. Counted in D1
+  (`oidc_fails`), NOT KV: a sender of junk spending a KV write per request
+  could empty the 1,000 a day the sign-in and the alerts share, and D1
+  counts exactly. Each is counted by one statement (`takeTry`, `INSERT ...
+  ON CONFLICT DO UPDATE SET n = n + 1 WHERE n < 20`, whose change count says
+  yes or no): a count read first and written after let a burst of 200 sent
+  at once through whole (review, 2026-11-23); now 20 are counted and the
+  rest are 429. **THE CLIENT IS NEVER COUNTED AND NEVER REFUSED BY THE
+  COUNT** (review, 2026-11-24): its id and secret are compared first, and a
+  request that is the client takes no try and gets no 429, whatever its
+  network has done; its own failures (a code that is no good, a wrong
+  verifier, a grant type not offered) are not counted either. Until then the
+  count was consulted before the client was known, and Access, the only
+  client, calls from Cloudflare's own network, where every Worker's
+  cross-zone subrequest arrives as `2a06:98c0:3600::103` whoever owns it: a
+  free Worker sending twenty junk POSTs an hour could have refused every
+  sign-in to Job Hunter. The count slows no guesser, and need not: a 429
+  says as plainly as a 401 that the client was wrong, the secret (256 random
+  bits from the script) is compared by its hash in constant time, and a code
+  is 256 random bits, spent by its first try and bound to the PKCE verifier.
+  What it bounds is the writes junk can cost. Nothing secret leaks by
+  timing: the comparison is the same whatever is sent, and the count's work
+  follows only a refusal the answer states anyway. Only the form's own shape
+  (not a form, too big, a parameter twice, both client methods) is answered
+  before the client is compared, and none of it is counted.
+- **D1, the `DB` saved roles use** (DEPLOY.md §3e): `oidc_codes`,
+  `oidc_fails` and `jh_asks` (the panel's pace, below), made on first use. A
+  code row holds an address for minutes: a redeemed row goes at once, and
+  every write clears rows over ten minutes old. `oidc_fails` and `jh_asks`
+  rows hold a hash, never an address.
+- **The gate's OPEN set** gains exactly `/oidc/authorize`, `/oidc/token`,
+  `/oidc/jwks` and `/.well-known/openid-configuration` (no trailing slash,
+  no other spelling); the check pins the whole set.
+- **The popout**: `functions/api/jh/board-role.js`, `GET
+  /api/jh/board-role?id=`, gated like every endpoint and checking for
+  itself (the pages.dev alias, and after launch): another site's page or a
+  sibling host's (Sec-Fetch-Site), another hostname, no sign-in (401
+  `not_signed_in`), no `hunter`/`owner` (403 `not_allowed`), an id Job
+  Hunter's `board_role` would not take (1 to 600 characters with "::", no
+  control character; 400 `bad_id`), no service token, D1 or key (503
+  `{"failed":"not_set_up"}`), and **one person's pace**: twenty asks a
+  minute per signed-in address (`ASKS_PER_MINUTE`, `takeAsk`, D1 `jh_asks`
+  keyed by a hash of the address and the minute, one statement that counts
+  only while under the cap, as the token door's tries), over it 429
+  `{"error":"slow_down"}` with Retry-After 60, D1 failing 502 `unreachable` -
+  each refused before anything is signed or sent. The pace is for Job
+  Hunter's replay book (review, 2026-11-23): it keeps every assertion's jti
+  ten minutes and refuses EVERYBODY at 10,000, and one beta user's script at
+  17 a second filled it; at twenty a minute that takes fifty beta users
+  asking flat out. Then
+  ONE call: GET `https://hunter.<domain>/api/board-role?id=<id>` with
+  `CF-Access-Client-Id` / `CF-Access-Client-Secret` (`JH_SERVICE_TOKEN_ID` /
+  `JH_SERVICE_TOKEN_SECRET`) and `X-SJ-Assertion` (ES256, the same key: iss,
+  aud = that route, sub, email, the id, iat, exp = iat + 60, a 16-byte jti),
+  no other header, no cookie, no redirect followed, eight seconds. Job
+  Hunter's 200 JSON is relayed; its 401 `no_account` and its 404 as the
+  reason word alone (never the address its no_account carries); any other
+  401 of Job Hunter's (`no_token`, `bad_token`) is 502
+  `{"failed":"not_let_in"}`, because the board sends nothing of the person's
+  and so that 401 is Job Hunter refusing the board's way in; anything else -
+  a timeout, a network error, Access's login page or redirect, a 5xx,
+  anything not a JSON object or over 64 KB - is 502
+  `{"failed":"unreachable"}`. Nothing is logged. THE SERVICE TOKEN PASSES
+  ACCESS ON EVERY PATH of hunter.<domain>: that is why everything about the
+  call is fixed here, and why Job Hunter believes a person only when the
+  token's Access assertion AND the board's signed one verify, for that one
+  route.
+- **Taking someone out of the beta starts in Job Hunter** (DEPLOY.md §3f;
+  review, 2026-11-24, where the doc had said the "Beta users" policy did it
+  "at once"): the panel comes in on the service token, so "Beta users" never
+  sees it, and an Access session already granted lasts until it expires.
+  In Job Hunter, unlinking every address and revoking every token
+  `accounts_cli.py --list` shows beside their account's owner id
+  (`--unlink-email`, `--revoke`, each by the hash it shows: a token's label
+  is the beta code or "onboarding", never the person, and one account may
+  have several addresses) is the one step that acts at once, for Job Hunter
+  and the panel; then the policy and Revoke session at Access; then the
+  `hunter` role, which comes off after the board's next nightly and deploy.
+- The owner's steps are DEPLOY.md §3f. `scripts/jh_signin_secrets.mjs` makes
+  the key (kid = its RFC 7638 thumbprint), the client id and the secret and
+  prints them once, on a terminal only, and writes nothing: the first setup.
+  `--key` makes a key alone, and its words tell the two reasons apart
+  (review, 2026-11-23): a ROUTINE rotation copies what `/oidc/jwks` prints,
+  the old key's public half, into `OIDC_SIGNING_JWK_OLD` for a day (the
+  steps once said to copy the old private key, which Pages never shows
+  again); a key that MAY HAVE LEAKED is never published again, so no
+  `_OLD`, and the same sitting renews the `board popout` service token's
+  secret with **Revoke immediately**, always (Cloudflare's Rotate secret
+  otherwise keeps the old one valid for a grace period of an hour to 30
+  days, on every path of hunter.<domain>; review, 2026-11-24; disabling the
+  token first is an extra step, not a replacement, and a disabled token is
+  turned back on only once that rotation is done and the new secret
+  deployed, the panel checked after), and once `/oidc/jwks`
+  shows the new key restarts Job Hunter's server, which holds the board's
+  keys from its last read. A routine new service-token secret may keep a
+  short grace period. `--secret` makes a client secret alone: a plain run,
+  which the steps once named for that, makes a new key and client id too.
+  Into a pipe or a file it prints nothing and NO
+  SWITCH SAYS OTHERWISE: it had one, `--to-pipe`, and its refusal named it,
+  which handed an agent (whose shell is a pipe) the way to put the private
+  key in a transcript (review, 2026-11-23). The owner runs it in the macOS
+  Terminal app; **Claude never runs it** (House rules). The selftest runs it
+  on a pseudo-terminal of its own and reads the values only to check them.
+- Guards: `check_job_hunter_signs_in_with_sled_jobs` (`scripts/
+  oidc_harness.mjs`: the round trip with a real emailed-code sign-in in the
+  middle, 34 refused requests, 8 refused ways back, 27 refused trades, the
+  race, 120 seconds and not 121, the count (one by one, and 200 wrong secrets
+  at once: 20 counted; the client never refused by it, from a network whose
+  hour is used up, from Cloudflare's shared Worker address after 25 that
+  were not it, from its /64 and in the middle of a burst; its own failures
+  sent from a network with no count leave no row, review 2026-11-24), 13
+  unconfigured doors, the gate and the whole OPEN set, nothing logged; the
+  ID token verified again in Python by the curve's own arithmetic,
+  `_es256_verify`; the client compared only through `sameSecret`, id and
+  secret both: a plain `===` answers every honest case alike, so spies stand
+  where token.js's `sameSecret` and `_oidc.js`'s `sameCode` are imported
+  from, and the door's answer follows whatever the spy makes `sameSecret`
+  say, and `sameSecret`'s is `sameCode`'s; and by their source, read from the
+  tokens by what each name is bound to (review, 2026-11-24, when a pin of
+  dotted names passed `named?.secret !==` and helpers of a file's own), no
+  other comparison in token.js and `sameSecret` and `sameCode` as written),
+  `check_the_panel_asks_job_hunter_through_the_board`
+  (`scripts/jh_proxy_harness.mjs`: every refusal with no call made, the one
+  call header by header, the assertion verified in Python, ten awkward ids
+  read back by Python's own query parser as Job Hunter's would, every relay,
+  and the pace: twenty asks and the twenty-first refused unsent, another
+  person unslowed, fifty sent at once held at the count's door until all have
+  come, of which twenty reach Job Hunter, the next minute heard again; and
+  DEPLOY.md §3f's panel check, "not set up yet" naming step 1's signing key
+  as well as step 4, and its steps for taking someone out of the beta, in
+  their true order, every address and token `--list` shows taken),
+  `check_the_sign_in_secrets_are_made_and_shown_once` (a working pair, d·G
+  checked, nothing written, nothing printed into a pipe, the rotation's
+  words: after a leak ALWAYS Revoke immediately, disabling the token an
+  extra step and never instead, and on again only after that rotation and
+  the deploy), and the panel's words above.
 
 ## The job list is cards (owner, 2026-09-27)
 
@@ -541,6 +776,18 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   `None found`: a false `None found` silently deletes a warm door, which is the
   one failure this tool cannot afford. Assert a status only on concrete
   evidence in the text.
+- **Claude never runs `scripts/jh_signin_secrets.mjs`**, in any way: not in
+  its own shell (a pipe, so the script refuses, and its refusal names no way
+  past it), not on a pseudo-terminal or through `script`, not in the Claude
+  app's terminal panel or the owner's terminal tabs. It never reads his
+  terminal or clipboard after he has run it, and never asks for, accepts or
+  repeats what it printed: whatever reaches a transcript has left this
+  machine, and the script prints Job Hunter's private signing key. A value
+  the owner pastes into a chat is no longer secret: say so, and point him to
+  DEPLOY.md §3f's steps for a key that may have leaked (review, 2026-11-23).
+  The one other run is the selftest's own
+  (`check_the_sign_in_secrets_are_made_and_shown_once`), which makes
+  throwaway values nobody pastes anywhere, checks them and prints none.
 - **Never invent a fact to fill a field.** No estimated salary, no guessed
   founding year, no magic constant standing in for a count. If we do not know,
   the UI says we do not know. Every module here is tuned toward silence for

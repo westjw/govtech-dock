@@ -7,10 +7,12 @@
  * WHAT THIS IS NOT, AND THE COMMENT IS LOAD-BEARING: it is not auth. A code
  * is a BEARER token - whoever holds the string holds the code, including
  * anyone it was forwarded to - and the reply here gates a PAGE, not data.
- * Nobody's resume, fact bank or employment history is behind it, because
- * job-hunter's server binds 127.0.0.1 deliberately and there is no
- * per-request owner yet. When there is, this file is NOT what should stand
- * in front of it; see SPEC-jobhunter.md.
+ * Nobody's resume, fact bank or employment history is behind it. Job Hunter
+ * has been live at hunter.<domain> since 2026-10-14, with a per-request owner,
+ * and this file does NOT stand in front of it: Cloudflare Access does (its
+ * "Beta users" policy), signing in with SLED JOBS since 2026-11-23, and the
+ * board hands Access a code only for the Users board's `hunter` or `owner`
+ * role (functions/oidc/authorize.js). A redemption here admits nobody.
  *
  * THE REDEMPTION IS A CONSENT RECORD. SPEC-jobhunter.md (2026-09-18) says a
  * consent record, a right-to-delete path and a retention period must exist

@@ -250,6 +250,230 @@ your sign-in". Save a role, then open the board signed in on another browser
 whoever signs in after you never sees your list: it is set aside for you
 until you sign in there again. The list itself stays with the sign-in.
 
+## 3f. Job Hunter signs in with SLED JOBS (design C, 2026-11-23, ~25 minutes)
+
+Your pick of three: "C: B plus popout". Access stays in front of Job Hunter
+and its only button becomes **Sign in with SLED JOBS**; signed in on the board
+already, you go straight through. The board's own server asks Job Hunter for
+a role's panel with a service token, so the panel never asks you to sign in.
+Job Hunter stays a closed beta: the Users board's `hunter` role (or `owner`)
+gets a sign-in, everybody else is told it is a closed beta, and the "Beta
+users" policy stays as the second lock on the sign-in. (Not on the panel:
+the board's server reaches Job Hunter on the service token, so there the
+second lock is Job Hunter's own link of the address to an account.) How it
+works is in CLAUDE.md ("Job Hunter signs in with SLED JOBS"). Two rules hold
+throughout: **never a new Access application** (the existing "Job Hunter
+beta" is the one you change) and **no `*.sledjobs.com` wildcard**.
+
+**Before you start:** the board's D1 database is bound as `DB` (§3e; the
+one-time codes live there) and `SESSION_SECRET` is set (§3a).
+
+**First, BEFORE step 2 adds the `SLED JOBS` identity provider** (review,
+2026-11-24): identity providers belong to the whole Zero Trust account, not
+to one application, so these two come before it exists.
+- **Every application's login methods.** Zero Trust → Access →
+  Applications, and open every application listed, one at a time: at least
+  "SLED JOBS admin", the `*.solesource-c6g.pages.dev` preview application
+  and "Job Hunter beta". In each: Edit → **Login methods** (the
+  Authentication tab on older screens) → turn **Accept all available
+  identity providers** OFF, leave ticked the methods that application uses
+  today (One-time PIN on "SLED JOBS admin"), and Save. Why: an application
+  with that switch on offers every identity provider in the account, one
+  added later included, without anything being ticked.
+- **"SLED JOBS admin" requires the one-time PIN.** In that application, open
+  every **Allow** policy → Edit → add a rule **Require** → **Login
+  Methods** → `One-time PIN`, and Save. Why: Cloudflare's Login Methods
+  selector checks which identity provider a person signed in with, so a
+  sign-in through `SLED JOBS` is refused at /admin even if that application
+  were ever to offer it.
+
+**Your steps, in this order:**
+1. **The key and the client secret.** Yourself, in the macOS **Terminal**
+   app (not the Claude app's own terminal panel, which a Claude session can
+   read), in the repository folder: `node scripts/jh_signin_secrets.mjs`.
+   Claude never runs it and never needs to see what it prints; never paste
+   its values into a chat. It prints three values ONCE, on that terminal
+   only (into a file or a pipe it prints nothing), and saves nothing.
+   Workers & Pages → `solesource` → Settings → Variables and
+   secrets → **Add**, Type **Secret**, Production, one each:
+   `OIDC_SIGNING_JWK`, `OIDC_CLIENT_ID`, `OIDC_CLIENT_SECRET`. Keep the
+   client id and secret on screen for step 2, then close the Terminal tab.
+   A new deployment (Deployments → latest → Retry deployment). Check:
+   `curl -s https://sledjobs.com/oidc/jwks` shows one key with no `"d"` in
+   it, and `curl -s https://sledjobs.com/.well-known/openid-configuration`
+   names the issuer `https://sledjobs.com`.
+2. **The identity provider.** Zero Trust → Integrations → Identity providers
+   → **Add new** → **OpenID Connect**. Name `SLED JOBS`. App ID: the
+   `OIDC_CLIENT_ID`. Client secret: the `OIDC_CLIENT_SECRET`. Auth URL
+   `https://sledjobs.com/oidc/authorize`, Token URL
+   `https://sledjobs.com/oidc/token`, Certificate URL
+   `https://sledjobs.com/oidc/jwks`. **PKCE on.** Scopes `openid email`;
+   email claim `email`. Save, then **Test**: you meet the board's sign-in (or
+   go straight through if signed in there), and Access shows your address.
+   An address without the `hunter` or `owner` role sees "Job Hunter is in a
+   closed beta" instead, which is right.
+3. **Job Hunter's application.** Access → Applications → the EXISTING "Job
+   Hunter beta" → Edit → **Login methods**: Accept all available identity
+   providers still OFF, tick **only** `SLED JOBS`, and turn **Instant
+   Auth** on. Keep the "Beta users" policy as it is. Then open every other
+   application once more and make sure `SLED JOBS` is ticked on none of
+   them, "SLED JOBS admin" above all. Why: `SLED JOBS` is Job Hunter's
+   sign-in alone, and on any other application the board's own 30-day
+   sign-in, which cannot be taken back one person at a time, would open it.
+4. **The popout's service token.** Access → Service credentials → Service
+   Tokens → **Create**, name `board popout`. Copy its Client ID and Client
+   Secret (the secret is shown once). On "Job Hunter beta", add a policy:
+   Action **Service Auth**, Include → Service Token → `board popout`. Then
+   two more Pages secrets: `JH_SERVICE_TOKEN_ID` (the Client ID) and
+   `JH_SERVICE_TOKEN_SECRET` (the Client Secret), and a new deployment. In
+   Job Hunter's serve plist put the Client ID (only the ID) as
+   `JH_BOARD_SERVICE_TOKEN` and restart Job Hunter's server (Job Hunter's
+   deploy/README.md says how). The token passes Access on every path of
+   hunter.sledjobs.com, so Job Hunter believes it only together with the
+   board's signed assertion, and only for the panel's one route.
+5. **Who is in the beta**: grant `hunter` on the Users board, as today, and
+   keep each person on "Beta users".
+
+**Check it afterwards** (Claude can run the first two):
+- `curl -s -o /dev/null -w '%{http_code}\n' -X POST https://sledjobs.com/oidc/token`
+  → `400` (a JSON error, not the board's sign-in card: the door is open to
+  Access). `503` means a secret from step 1 is missing or the deploy has not
+  happened. The door counts only requests that are not its one client:
+  twenty of those an hour from one network are answered `invalid_client`,
+  and past them `429`. Access, which holds the client secret, is never
+  counted and never refused, whatever address it calls from (Cloudflare's
+  own Workers share one).
+- `curl -s https://sledjobs.com/oidc/jwks` → `{"keys":[{"kty":"EC",...}]}`.
+- **You, in a private window:** `https://hunter.sledjobs.com/` → the board's
+  sign-in, by email → Job Hunter. Then, signed in on the board, open Job
+  Hunter again: no sign-in at all.
+- **And in a private window:** `https://sledjobs.com/admin/` → Access's own
+  page asking for your email for a one-time PIN, with no `SLED JOBS` button
+  on it.
+- **The panel:** on any role on the board, **Job Hunter ▸** fills in with no
+  sign-in. If it says something else instead, each answer says where to
+  look:
+  - "The board's way in to Job Hunter is not set up yet": the board's side,
+    step 4's Pages secrets (or the D1 binding of §3e), or step 1's
+    `OIDC_SIGNING_JWK`, missing or badly pasted (then
+    `curl -s https://sledjobs.com/oidc/jwks` answers `503` too).
+  - "Job Hunter did not let the board in": Job Hunter's side. Its
+    `JH_BOARD_SERVICE_TOKEN` is missing from the serve plist (or the server
+    was not restarted after it was set), or it is not the `board popout`
+    token's Client ID, or Job Hunter could not check the board's signature.
+    Its serve log says which, in a line starting `board-role:` (a missing
+    variable logs nothing).
+  - "did not answer": Job Hunter is asleep or offline, or Access did not let
+    the token through (step 4's Service Auth policy on "Job Hunter beta", or
+    a `JH_SERVICE_TOKEN_ID` / `JH_SERVICE_TOKEN_SECRET` that is not the
+    token's).
+  - "no Job Hunter account is linked to that address": everything works, and
+    the address you signed in with opens no account in Job Hunter.
+  - "Wait a minute": that sign-in asked about more than twenty roles in a
+    minute. The board holds each person to that, so one script cannot swamp
+    Job Hunter.
+
+**A new signing key, once a year (a routine rotation).** Pages never shows a
+secret again, so the key in use cannot be copied, and is not needed: its
+public half is what `/oidc/jwks` prints.
+1. `curl -s https://sledjobs.com/oidc/jwks` and copy what it prints, whole.
+   It should hold ONE key; two means the last rotation's
+   `OIDC_SIGNING_JWK_OLD` is still set: delete it, redeploy, start again.
+2. Add a Pages secret `OIDC_SIGNING_JWK_OLD` and paste that in.
+3. In the macOS Terminal app, `node scripts/jh_signin_secrets.mjs --key`, and
+   replace `OIDC_SIGNING_JWK` with the key it prints. A new deployment.
+4. Check: `curl -s https://sledjobs.com/oidc/jwks` shows two keys, the new
+   one first. Both are published, so nothing signed a minute ago fails.
+5. A day later, delete `OIDC_SIGNING_JWK_OLD` and redeploy.
+
+**If the signing key may have leaked** (pasted somewhere, shown to someone,
+or the Pages secrets exposed), it must stop being trusted at once, so this
+is NOT the routine rotation: the old key is never published again.
+1. Set no `OIDC_SIGNING_JWK_OLD`; delete it if it is there.
+2. In the macOS Terminal app, `node scripts/jh_signin_secrets.mjs --key`;
+   replace `OIDC_SIGNING_JWK` with what it prints, and a new deployment, at
+   once. A sign-in under way in those minutes may fail once; trying again
+   works.
+3. The popout's service token sits in the same Pages secrets, and whoever
+   holds it and the leaked key can ask Job Hunter's panel as anybody: give
+   it a new secret in the same sitting, and end the old one AT ONCE.
+   Access → Service credentials → Service Tokens → `board popout` →
+   **Rotate secret**, and where it asks "Keep the current secret valid
+   for", ALWAYS choose **Revoke immediately**. Never a grace period after a
+   leak: for as long as one runs, the old secret still passes Access on
+   every path of hunter.sledjobs.com. Disabling the token first (**Disable
+   token**) is an extra step, not a replacement: the rotation still
+   chooses Revoke immediately, since a token turned back on while a grace
+   period runs could let the old secret in again. (While the token is
+   disabled, the panel is off.) Put the new secret in the Pages secret
+   `JH_SERVICE_TOKEN_SECRET`, and a new deployment; until it is live the
+   panel says Job Hunter did not answer. If you disabled the token, turn it
+   back on (**Enable token**) only once the rotation with Revoke immediately
+   is done and the new secret is in `JH_SERVICE_TOKEN_SECRET` and deployed;
+   then the panel check under **Check it afterwards** must pass (it cannot
+   while the token is off). (A new token instead works too:
+   delete the old one and create one as in step 4 above; a new token has a
+   new Client ID, so `JH_SERVICE_TOKEN_ID`, the Service Auth policy and Job
+   Hunter's `JH_BOARD_SERVICE_TOKEN` all take the new one.)
+4. Check: `curl -s https://sledjobs.com/oidc/jwks` shows ONE key, and its
+   `kid` is not the old one. Only then go on: before the new deployment is
+   live, Job Hunter would read the old key again.
+5. Restart Job Hunter's server (its deploy/README.md says how). It holds
+   the board's keys from its last read and may go on believing the old one
+   for a while after the new key is published; the restart makes it forget
+   the old one at once.
+
+If the Pages secrets as a whole were exposed, so was every one of them: a new
+client secret (below) in the same sitting, and a new `SESSION_SECRET` (§3a
+step 2; it signs everybody out).
+
+**A new client secret**: in the macOS Terminal app,
+`node scripts/jh_signin_secrets.mjs --secret` (not a plain run, which makes a
+new key and a new client id too), and paste it into the Pages secret
+`OIDC_CLIENT_SECRET` and the `SLED JOBS` identity provider's Client secret,
+one straight after the other, then a new deployment. `OIDC_CLIENT_ID` and
+`OIDC_SIGNING_JWK` stay as they are.
+
+**A new secret for the service token, routinely** (nothing leaked): Access →
+Service credentials → Service Tokens → `board popout` → **Rotate secret**
+may keep the current secret valid for a short grace period (an hour is
+plenty), so the panel keeps working while the new secret goes into
+`JH_SERVICE_TOKEN_SECRET` and a new deployment. After a leak, never: Revoke
+immediately, as above.
+
+**Taking someone out of the beta**, in this order. The panel reaches Job
+Hunter on the service token, never on the person's own Access sign-in, so
+"Beta users" does not stop it, and an Access session already granted lasts
+until it expires.
+1. **In Job Hunter, unlink every address and revoke every token of
+   theirs.** On the Mac, in Job Hunter's folder,
+   `python3 scripts/accounts_cli.py --list` shows each token and each
+   linked address beside their account's owner id (the `--owner` they
+   were onboarded as). Unlink every address and revoke every token it
+   shows for that owner id, each by the hash its line shows; for an
+   address,
+   `python3 scripts/accounts_cli.py --unlink-email <hash> --why "out of the beta"`
+   (the address itself works too, but reaches only that one), and for a
+   token,
+   `python3 scripts/accounts_cli.py --revoke <hash> --why "out of the beta"`.
+   Then `--list` once more: nothing may be left beside their owner id, for
+   one address or token left behind still opens their account. This stops
+   Job Hunter and the panel at once: Job Hunter maps the address, Access's
+   or the one the board signs for the panel, to an account on every
+   request, and an unlinked address opens none.
+2. **At Access**: take their address off the "Beta users" policy, so they
+   cannot sign in again, and end the session they already have: Zero Trust
+   → Users → the person → **Revoke session**.
+3. **On the Users board**: take `hunter` off them. That stops the board
+   giving them a sign-in code for Job Hunter, or a panel, after the board's
+   next nightly and deploy; until then their board sign-in (30 days, and
+   not ended one person at a time) still asks, and step 1 is what makes Job
+   Hunter say no.
+
+Switching the panel off for everybody is deleting the `board popout` service
+token (Zero Trust → Service Tokens): the panel then says Job Hunter did not
+answer, and nothing else changes.
+
 ## 3. Signed-in only until launch (decided 2026-10-05)
 **Read §3a first. Since 2026-11-13 Access covers `/admin` ONLY, for good.**
 Steps 3 to 5 and the Verify below are the 2026-10-05 history, when Access

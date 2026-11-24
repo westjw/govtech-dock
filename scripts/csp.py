@@ -246,16 +246,13 @@ def policy(hashes, connect: str = "'self'", form: str = "'none'") -> str:
 FORMS = {"signin": "'self'", "holding": "'self'"}
 
 
-def app_connect(brand: dict) -> str:
-    """Where the app page may fetch: itself, and Job Hunter at hunter.<the
-    brand's domain>, for the panel on a role (owner, 2026-10-25). Every other
-    kind of page stays on 'self'.
-
-    connect-src names the whole host, not one route: what keeps the panel to
-    one answer is Job Hunter's serve.py, which lets this board's address read
-    /api/board-role and nothing else (review, 2026-10-25)."""
-    d = (brand or {}).get("domain") or ""
-    return f"'self' https://hunter.{d}" if re.fullmatch(r"[a-z0-9.-]+\.[a-z]{2,}", d) else "'self'"
+# EVERY KIND OF PAGE FETCHES ONLY FROM ITSELF. The app page also named
+# https://hunter.<domain> from 2026-10-25, for the Job Hunter panel on a
+# role, which fetched Job Hunter across sites with the person's own sign-in.
+# Since 2026-11-23 (design C) the panel asks this site's own
+# /api/jh/board-role, whose function asks Job Hunter server to server, so
+# no page here talks to Job Hunter at all: the Flag, the tab and the panel's
+# buttons are links, which connect-src does not govern.
 
 
 def expected(root: pathlib.Path, brand: dict, hunter: str, lightmark: str) -> dict:
@@ -274,7 +271,7 @@ def expected(root: pathlib.Path, brand: dict, hunter: str, lightmark: str) -> di
     }
 
 
-def build(out: pathlib.Path, allowed: dict, connect_app: str = "'self'") -> dict:
+def build(out: pathlib.Path, allowed: dict) -> dict:
     """Read every shipped page, refuse what it must not carry, and return the
     manifest: routes, one policy per kind, and how many scripts each holds."""
     problems: list[str] = []
@@ -308,13 +305,12 @@ def build(out: pathlib.Path, allowed: dict, connect_app: str = "'self'") -> dict
         "note": "Written by scripts/csp.py at build time; read by functions/_csp.js. "
                 "Do not edit: every hash is recomputed from the pages on every build.",
         "routes": [[k, rx] for k, rx in ROUTES],
-        "policies": {k: policy(v, connect_app if k == "app" else "'self'", FORMS.get(k, "'none'"))
-                     for k, v in hashes.items()},
+        "policies": {k: policy(v, "'self'", FORMS.get(k, "'none'")) for k, v in hashes.items()},
         "scripts": count,
     }
 
 
 def write(out: pathlib.Path, root: pathlib.Path, brand: dict, hunter: str, lightmark: str) -> dict:
-    m = build(out, expected(root, brand, hunter, lightmark), app_connect(brand))
+    m = build(out, expected(root, brand, hunter, lightmark))
     (out / "meta-csp.json").write_text(json.dumps(m, indent=1, sort_keys=True) + "\n")
     return m

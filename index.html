@@ -4882,17 +4882,21 @@ function jhFlagLink(p,label){
    holds about this role - the fit, a failing gate, the application, the
    resume, the flag - and opens it there.
 
-   A FETCH, unlike the Flag's link: Job Hunter's /api/board-role answers this
-   board's address and no other (its serve.py), with the person's own sign-in
-   at its door, so nothing here can read anybody else's board. Nothing is
-   sent but the posting's id. Only an owner or beta user sees the button
-   (:root.jh); everything Job Hunter says is printed as text.
+   A FETCH OF THIS SITE, unlike the Flag's link (owner, 2026-11-23, design
+   C: "the board's server fetches the scoring popout for you with a
+   Cloudflare service token, so the popout never asks you to sign in"). The
+   page asks /api/jh/board-role here; that function checks the sign-in and
+   the role itself and asks Job Hunter's one route with the service token
+   and a signed assertion of who is asking (functions/api/jh/board-role.js),
+   so the panel never meets Job Hunter's door and nothing here can read
+   anybody else's board. Nothing is sent but the posting's id. Only an owner
+   or beta user sees the button (:root.jh); everything Job Hunter says is
+   printed as text.
 
    A DIALOG, like the conference panel: a backdrop that closes it, focus
    kept inside while it is open and given back after, Escape, and Back -
    opening it pushes an entry, so Back closes the panel rather than leaving
    the role (review, 2026-10-25). */
-function jhOrigin(){ return jhApp().replace(/\/app$/,""); }
 let JH_PANEL_SEQ=0, JH_PANEL_OPENER=null, JH_PANEL_POP=false, JH_PANEL_HREF=null;
 function jhPanelButton(p){
   const b=document.createElement("button");
@@ -4925,11 +4929,18 @@ function jhPanelHTML(r){
   if(!r||r.failed){
     const why=!r?"unreachable":r.failed;
     const say={
-      no_account:"You are signed in to Job Hunter, but no Job Hunter account is linked to that address.",
+      no_account:"Job Hunter knows your sign-in, but no Job Hunter account is linked to that address.",
+      not_allowed:"Job Hunter is in a closed beta, and your sign-in has no place in it yet. If its owner invited you, ask him to add the address you signed in with.",
+      signedout:"Your SLED JOBS sign-in has run out. Sign in again to see what Job Hunter holds.",
       signin:"Sign in to Job Hunter to see this role there.",
-      unreachable:"Job Hunter did not answer. It may be offline, or your sign-in there may need renewing; from here the two look the same.",
+      not_set_up:"The board's way in to Job Hunter is not set up yet.",
+      not_let_in:"Job Hunter did not let the board in to ask about this role. The board's way in to Job Hunter needs fixing; it is not your sign-in.",
+      slow_down:"That is a lot of roles in one minute. Wait a minute, then open this one again.",
+      unreachable:"Job Hunter did not answer. It may be offline (it runs on a computer that sleeps), or the board's way in to it may need fixing; from here the two look the same.",
     }[why]||`Job Hunter could not answer just now (${String(why)}).`;
-    return `<p>${esc(say)}</p>${go(jhApp(),"Open Job Hunter")}`;
+    return `<p>${esc(say)}</p>${why==="signedout"
+      ?go("/signin?to="+encodeURIComponent(location.pathname+location.search),"Sign in")
+      :go(jhApp(),"Open Job Hunter")}`;
   }
   if(!r.found)return `<p>This role is not on your Job Hunter board yet. Flag it to
     add it there.</p><p class="jhp-flaghost"></p>`;
@@ -4979,19 +4990,25 @@ function jhPanelHTML(r){
       cost?`<p class="jhp-cost">${cost.replace(/^ &middot; /,"")}</p>`:""}`
       :go(jhApp()+"#role/"+encodeURIComponent(r.id),"Open in Job Hunter")}`;
 }
-/* What Job Hunter's reply says: the answer, or which silence it was.
-   Job Hunter's own 401s carry the board's CORS header, so their words are
-   read: "no_account" is a person signed in at its door with no account. A
-   reply from Access ITSELF (an expired sign-in's redirect, a refusal) carries
-   no CORS header, so the browser refuses it before it reaches here and it
-   reads as "did not answer", whose words say a sign-in may need renewing
-   (second review, 2026-10-26). A redirect that does arrive (Access answering
-   CORS for the board) is the door: sign in. */
+/* What the reply says: Job Hunter's answer, or which silence it was. This
+   site's own function answers (functions/api/jh/board-role.js), so every
+   word is read: "not_signed_in" is the board's sign-in run out (the gate's
+   refusal says the same), "not_allowed" no place in the beta, "no_account"
+   Job Hunter's own 401 for a person with no account linked, "unreachable"
+   Job Hunter asleep, timed out or its door answering instead, "not_set_up"
+   the board's way in not configured, "not_let_in" Job Hunter not taking the
+   board's way in (any 401 of its own but no_account: nothing of the
+   person's is sent, so no sign-in mends it), "slow_down" this person's
+   twenty asks a minute used up. Any other 401 or 403 is a door: sign in.
+   So is a redirect. */
 async function jhAnswer(res){
   if(res.type==="opaqueredirect")return {failed:"signin"};
   if(res.ok)return await res.json();
-  let err=null; try{ err=(await res.json()).error; }catch(e){ err=null; }
-  return {failed:err==="no_account"?"no_account":res.status===401||res.status===403?"signin":res.status};
+  let b=null; try{ b=await res.json(); }catch(e){ b=null; }
+  const word=b&&typeof b==="object"?(b.failed||b.error):null;
+  if(word==="not_signed_in")return {failed:"signedout"};
+  if(word==="no_account"||word==="not_allowed"||word==="unreachable"||word==="not_set_up"||word==="not_let_in"||word==="slow_down")return {failed:word};
+  return {failed:res.status===401||res.status===403?"signin":res.status};
 }
 async function openJhPanel(p,btn){
   closeJhPanel();
@@ -5015,8 +5032,8 @@ async function openJhPanel(p,btn){
   el.focus();
   let r;
   try{
-    r=await jhAnswer(await fetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),
-      {credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"}));
+    r=await jhAnswer(await fetch("/api/jh/board-role?id="+encodeURIComponent(p.id),
+      {credentials:"same-origin",mode:"same-origin",redirect:"manual",cache:"no-store"}));
   }catch(e){ r={failed:"unreachable"}; }
   // closed, or opened again for another role, while it was asking
   if(seq!==JH_PANEL_SEQ||!document.contains(el))return;
@@ -10622,11 +10639,12 @@ async function whoAmI(){
       $("#tabs").appendChild(t);
     }
     document.documentElement.classList.add("jh");
-    /* THE PANEL ONLY WHERE JOB HUNTER ANSWERS IT: the board's own host, whose
-       Job Hunter is hunter.<it>. Its door gives the board's address, and no
-       other, leave to read (serve.py); on solesourcejobs.com or the pages.dev
-       alias the button would ask and never hear (second review, 2026-10-26).
-       The Flag and the tab are links, and work from anywhere. */
+    /* THE PANEL ONLY ON THE BOARD'S OWN HOST, whose Job Hunter is hunter.<it>
+       (second review, 2026-10-26). Since 2026-11-23 the panel asks this
+       site's own server, which answers only on the site's own address,
+       where the sign-in cookie lives (it is host-only); on
+       solesourcejobs.com or the pages.dev alias the button would ask and be
+       refused. The Flag and the tab are links, and work from anywhere. */
     if(new URL(JH_APP).hostname==="hunter."+location.hostname.replace(/^www\./,""))
       document.documentElement.classList.add("jhp");
   }

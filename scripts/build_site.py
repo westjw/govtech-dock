@@ -131,11 +131,12 @@ a{{color:var(--link)}}</style></head><body>
      how the owner and anyone he has enrolled get in; a code is how everyone
      else does, without being added to an Access policy first.
 
-     IT GATES THIS PAGE AND NOTHING ELSE. Nobody's resume, fact bank or
-     employment history sits behind it - job-hunter's server binds 127.0.0.1
-     deliberately - so the worst a forged localStorage flag buys is a look at
-     this paragraph. The day there is data behind it, this is NOT what should
-     be standing in front. */
+     IT GATES THIS PAGE AND NOTHING ELSE. Job Hunter, which does hold
+     resumes, is live at hunter.<domain> behind Cloudflare Access, which
+     signs people in with this board and is handed a code only for the
+     Users board's hunter or owner role (functions/oidc/authorize.js). So
+     the worst a forged localStorage flag buys is a look at this paragraph:
+     this is not, and must not become, what stands in front of Job Hunter. */
   const KEY = "sledjobs.beta.v1";
   let held = null;
   try {{ held = JSON.parse(localStorage.getItem(KEY) || "null"); }} catch (e) {{}}

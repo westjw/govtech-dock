@@ -2299,6 +2299,1330 @@ console.log(JSON.stringify(out));"""
     return errors
 
 
+# --- ES256, checked again in Python, with nothing installed ------------------
+#
+# The board signs Job Hunter's ID tokens and the popout's assertions with
+# ES256 (functions/_oidc.js) and Access and Job Hunter verify them. The
+# harnesses verify with Node's crypto, which is the OpenSSL WebCrypto signs
+# with, so a mistake both share (a DER signature where JWS wants the raw 64
+# bytes r||s, a hash over the wrong bytes) could pass there. These check each
+# signature again by the curve's own arithmetic, the way a Python verifier
+# such as Job Hunter's reads it. Test tokens only: speed is no matter.
+_P256_P = 0xffffffff00000001000000000000000000000000ffffffffffffffffffffffff
+_P256_N = 0xffffffff00000000ffffffffffffffffbce6faada7179e84f3b9cac2fc632551
+_P256_B = 0x5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b
+_P256_G = (0x6b17d1f2e12c4247f8bce6e563a440f277037d812deb33a0f4a13945d898c296,
+           0x4fe342e2fe1a7f9b8ee7eb4a7c0f9e162bce33576b315ececbb6406837bf51f5)
+
+
+def _p256_add(a, b):
+    p = _P256_P
+    if a is None:
+        return b
+    if b is None:
+        return a
+    (x1, y1), (x2, y2) = a, b
+    if x1 == x2 and (y1 + y2) % p == 0:
+        return None
+    if a == b:
+        lam = (3 * x1 * x1 - 3) * pow(2 * y1, -1, p) % p
+    else:
+        lam = (y2 - y1) * pow(x2 - x1, -1, p) % p
+    x3 = (lam * lam - x1 - x2) % p
+    return (x3, (lam * (x1 - x3) - y1) % p)
+
+
+def _p256_mul(k, pt):
+    out = None
+    while k:
+        if k & 1:
+            out = _p256_add(out, pt)
+        pt = _p256_add(pt, pt)
+        k >>= 1
+    return out
+
+
+def _b64u_bytes(s: str) -> bytes:
+    import base64
+    return base64.urlsafe_b64decode(s + "=" * (-len(s) % 4))
+
+
+def _p256_on_curve(x: int, y: int) -> bool:
+    return 0 <= x < _P256_P and 0 <= y < _P256_P and (y * y - (x * x * x - 3 * x + _P256_B)) % _P256_P == 0
+
+
+def _es256_verify(jwk: dict, jwt: str) -> bool:
+    """Whether `jwt` is an ES256 JWS that `jwk` (a public P-256 JWK) signed."""
+    try:
+        head, body, sig = jwt.split(".")
+        hdr = json.loads(_b64u_bytes(head))
+        raw = _b64u_bytes(sig)
+        if hdr.get("alg") != "ES256" or len(raw) != 64 or jwk.get("kty") != "EC" or jwk.get("crv") != "P-256":
+            return False
+        r, s = int.from_bytes(raw[:32], "big"), int.from_bytes(raw[32:], "big")
+        if not (0 < r < _P256_N and 0 < s < _P256_N):
+            return False
+        x, y = int.from_bytes(_b64u_bytes(jwk["x"]), "big"), int.from_bytes(_b64u_bytes(jwk["y"]), "big")
+        if not _p256_on_curve(x, y):
+            return False
+        e = int.from_bytes(hashlib.sha256(f"{head}.{body}".encode()).digest(), "big")
+        w = pow(s, -1, _P256_N)
+        pt = _p256_add(_p256_mul(e * w % _P256_N, _P256_G), _p256_mul(r * w % _P256_N, (x, y)))
+        return pt is not None and pt[0] % _P256_N == r
+    except (ValueError, KeyError, TypeError, AttributeError):
+        return False
+
+
+def _jwt_claims(jwt: str) -> dict:
+    try:
+        return json.loads(_b64u_bytes(jwt.split(".")[1]))
+    except (ValueError, IndexError, AttributeError):
+        return {}
+
+
+def _strip_js_comments(src: str) -> str:
+    src = re.sub(r"/\*[\s\S]*?\*/", "", src)
+    return "\n".join(re.sub(r"(^|[^:])//.*$", r"\1", ln) for ln in src.splitlines())
+
+
+_JS_WORD = re.compile(r"[^\W\d][\w$]*|\$[\w$]*|\d[\w.]*")
+_JS_PUNCT = re.compile(r">>>=|\.\.\.|===|!==|\*\*=|<<=|>>=|>>>|&&=|\|\|=|\?\?=|=>|==|!=|<=|>=|&&|\|\||\?\?"
+                       r"|\?\.(?!\d)|\+\+|--|\+=|-=|\*=|/=|%=|&=|\|=|\^=|<<|>>|\*\*|[^\s\w$]")
+_JS_BEFORE_REGEX = {"return", "typeof", "case", "do", "else", "in", "of", "new", "delete", "void", "throw",
+                    "instanceof", "yield", "await"}
+
+
+def _js_skip(src: str, i: int) -> int:
+    """The index just past the string or template literal starting at i, a
+    template's ${...} read as code (so a template inside one ends where it
+    ends)."""
+    q, j, n = src[i], i + 1, len(src)
+    while j < n:
+        if src[j] == "\\":
+            j += 2
+        elif src[j] == q:
+            return j + 1
+        elif q == "`" and src.startswith("${", j):
+            j, depth = j + 2, 0
+            while j < n and not (src[j] == "}" and depth == 0):
+                if src[j] in "'\"`":
+                    j = _js_skip(src, j)
+                    continue
+                depth += {"{": 1, "}": -1}.get(src[j], 0)
+                j += 1
+            j += 1
+        else:
+            j += 1
+    return n
+
+
+def _js_tokens(src: str) -> list:
+    """A JavaScript module's tokens, its comments dropped: a rough lexer, enough
+    to read what one module binds and compares. A string or regex literal is
+    one token, quotes and all; a template is its text, each piece one token in
+    backticks, with the code of each ${...} read as code between "${" and
+    "}", so nothing can hide in one."""
+    toks, i, n = [], 0, len(src)
+    while i < n:
+        c = src[i]
+        if c.isspace():
+            i += 1
+        elif src.startswith("//", i):
+            j = src.find("\n", i)
+            i = n if j < 0 else j
+        elif src.startswith("/*", i):
+            j = src.find("*/", i + 2)
+            i = n if j < 0 else j + 2
+        elif c in "'\"":
+            j = _js_skip(src, i)
+            toks.append(src[i:j])
+            i = j
+        elif c == "`":
+            j, text = i + 1, ""
+            while j < n and src[j] != "`":
+                if src[j] == "\\":
+                    text, j = text + src[j:j + 2], j + 2
+                elif src.startswith("${", j):
+                    k, depth = j + 2, 0
+                    while k < n and not (src[k] == "}" and depth == 0):
+                        if src[k] in "'\"`":
+                            k = _js_skip(src, k)
+                            continue
+                        depth += {"{": 1, "}": -1}.get(src[k], 0)
+                        k += 1
+                    toks += [f"`{text}`", "${", *_js_tokens(src[j + 2:k]), "}"]
+                    text, j = "", k + 1
+                else:
+                    text, j = text + src[j], j + 1
+            toks.append(f"`{text}`")
+            i = j + 1
+        elif c == "/" and (not toks or toks[-1] in _JS_BEFORE_REGEX
+                           or not (re.match(r"[\w$'\"`]", toks[-1][-1]) or toks[-1] in (")", "]"))):
+            j, cls = i + 1, False
+            while j < n and src[j] != "\n" and (src[j] != "/" or cls):
+                if src[j] == "\\":
+                    j += 1
+                elif src[j] in "[]":
+                    cls = src[j] == "["
+                j += 1
+            j += 1
+            while j < n and (src[j].isalnum() or src[j] in "_$"):
+                j += 1
+            toks.append(src[i:j])
+            i = j
+        else:
+            m = _JS_WORD.match(src, i) or _JS_PUNCT.match(src, i)
+            toks.append(m.group())
+            i = m.end()
+    return toks
+
+
+_JS_EQUALITY = {"===", "!==", "==", "!="}
+# what binds looser than an equality: where each side of one ends
+_JS_LOOSER = {"&&", "||", "??", "?", ":", ",", ";", "=", "+=", "-=", "*=", "/=", "%=", "**=", "<<=", ">>=", ">>>=",
+              "&=", "|=", "^=", "&&=", "||=", "??=", "=>", "&", "|", "^", "...", "return", "throw", "case", "else",
+              "do", "yield"}
+
+
+def _js_comparisons(toks: list) -> list:
+    """Every ===, !==, == and != in a module's tokens, as "left op right", each
+    side read out to where an operator looser than equality, or the bracket
+    around the comparison, ends it."""
+    pair = {"(": ")", "[": "]", "{": "}", "${": "}"}
+
+    def side(k, step):
+        j, depth, got = k + step, 0, []
+        into, out_of = (set(pair.values()), set(pair)) if step < 0 else (set(pair), set(pair.values()))
+        while 0 <= j < len(toks):
+            x = toks[j]
+            if x in out_of:
+                if depth == 0:
+                    break
+                depth -= 1
+            elif x in into:
+                depth += 1
+            elif depth == 0 and (x in _JS_LOOSER or (step > 0 and x in _JS_EQUALITY)):
+                break
+            got.append(x)
+            j += step
+        return got[::step]
+
+    return [f"{_js_text(side(k, -1))} {x} {_js_text(side(k, 1))}" for k, x in enumerate(toks) if x in _JS_EQUALITY]
+
+
+def _js_text(toks: list) -> str:
+    """Tokens back into code, a space only where two words meet."""
+    s = ""
+    for x in toks:
+        s += (" " if s and re.match(r"[\w$]", s[-1]) and re.match(r"[\w$]", x[0]) else "") + x
+    return s
+
+
+def _js_imports(toks: list) -> list:
+    """(name imported, name bound, from where) for each static import: a named
+    one as itself or `as` another name, "*" for a namespace, "default" for a
+    default."""
+    found, k = [], 0
+    try:
+        while k < len(toks):
+            if toks[k] != "import" or toks[k + 1] in ("(", "."):
+                k += 1
+                continue
+            j, names = k + 1, []
+            if _JS_WORD.fullmatch(toks[j]) and toks[j] != "from":
+                names.append(("default", toks[j]))
+                j += 2 if toks[j + 1] == "," else 1
+            if toks[j] == "*":
+                names.append(("*", toks[j + 2]))
+                j += 3
+            elif toks[j] == "{":
+                j += 1
+                while toks[j] != "}":
+                    got = (toks[j], toks[j + 2]) if toks[j + 1] == "as" else (toks[j], toks[j])
+                    names.append(got)
+                    j += 3 if toks[j + 1] == "as" else 1
+                    j += 1 if toks[j] == "," else 0
+                j += 1
+            if toks[j] == "from":
+                found += [(a, b, toks[j + 1][1:-1]) for a, b in names]
+            k = j + 1
+    except IndexError:
+        found.append(("?", "?", "an import this reader could not follow"))
+    return found
+
+
+def _the_client_is_compared_only_through_samesecret() -> int:
+    """THE CLIENT IS COMPARED IN CONSTANT TIME, AND ONLY SO, by the source
+    (review, 2026-11-24). The harness's spies (oidc_harness.mjs, "compared")
+    hold that the token door's answer is sameSecret's; this holds what no
+    answer shows and what runs where node:sqlite does not: no other
+    comparison of the client anywhere in functions/oidc/token.js, and the
+    names that compare it bound to the real helpers. Read from the code's
+    tokens, never its comments, and by what each name is bound to, not by
+    its dotted text: the first pin counted the texts "named.secret" and
+    "setup.client.secret", and `named?.secret !== setup.client?.secret`, a
+    sameSecret of token.js's own (`a === b`) and a sameCode of _oidc.js's
+    own each passed it."""
+    errors = 0
+
+    def flat(rel):
+        return re.sub(r"\s+", " ", _strip_js_comments((ROOT / rel).read_text()))
+    tt = _js_tokens((ROOT / "functions" / "oidc" / "token.js").read_text())
+    ot = _js_tokens((ROOT / "functions" / "_oidc.js").read_text())
+    st = _js_tokens((ROOT / "functions" / "_session.js").read_text())
+    tok_src = flat("functions/oidc/token.js")
+    # THE ONE COMPARISON: the id and the secret both, always (one
+    # Promise.all, no early answer), and `named` read nowhere else
+    decide = ("const [idOk, secretOk] = named ? await Promise.all([sameSecret(named.id, setup.client.id), "
+              "sameSecret(named.secret, setup.client.secret)]) : [false, false];")
+    if (tok_src.count(decide) != 1 or tok_src.count("const named = namedClient(basic, form);") != 1
+            or tt.count("named") != 4 or "OIDC_CLIENT_ID" in tok_src or "OIDC_CLIENT_SECRET" in tok_src):
+        errors += fail("functions/oidc/token.js compares the client some other way than sameSecret, for the id and "
+                       "the secret both and always, or reads what it was sent (`named`) or the client's own "
+                       "elsewhere")
+    # THE CLIENT'S OWN, read in four places only: made (setUp), tested (if
+    # (!setup)), its id (sameSecret's question, the code's own client,
+    # the token's audience) and its secret ONCE, as sameSecret's question
+    uses = []
+    for k, x in enumerate(tt):
+        if x != "setup":
+            continue
+        nxt, before = tuple(tt[k + 1:k + 7]), tuple(tt[max(0, k - 6):k])
+        if nxt == ("=", "await", "setUp", "(", "env", ")"):
+            uses.append("made")
+        elif before[-3:] == ("if", "(", "!") and nxt[:1] == (")",):
+            uses.append("tested")
+        elif nxt[:4] == (".", "client", ".", "id") and nxt[4:5] not in ((".",), ("[",), ("?.",), ("(",)):
+            uses.append("id")
+        elif (nxt[:5] == (".", "client", ".", "secret", ")")
+              and before == ("sameSecret", "(", "named", ".", "secret", ",")):
+            uses.append("secret")
+        else:
+            uses.append(_js_text(("setup",) + nxt))
+    if uses.count("made") != 1 or uses.count("secret") != 1 or any(u.startswith("setup") for u in uses):
+        errors += fail(f"functions/oidc/token.js reads the client's own (setup) somewhere it may compare it: "
+                       f"{[u for u in uses if u.startswith('setup')] or uses}")
+    # ...and has no other way to it: setUp is called once, and env, where
+    # the client's own secret lives, is never read here, only handed whole
+    # to _oidc.js's helpers (and taken in as the request's own)
+    helpers = {"notTheClient", "takeTry", "setUp", "spendCode", "signJwt"}
+    pad = ["", "", ""] + tt + [""]
+    env_reads = [_js_text([x for x in pad[k - 2:k + 3] if x]) for k in range(3, len(pad) - 1) if pad[k] == "env"
+                 and not ((pad[k - 1] == "(" and pad[k - 2] in helpers and pad[k + 1] in (",", ")"))
+                          or pad[k - 3:k + 2] == ["{", "request", ",", "env", "}"])]
+    if tt.count("setUp") != 2 or env_reads:
+        errors += fail(f"functions/oidc/token.js reaches the client's own another way than its one setUp(env): "
+                       f"{env_reads or 'setUp called again'}")
+    # NO OTHER COMPARISON: every ===, !==, == and != token.js makes is one
+    # of these, and none puts what was sent beside the client's own id or
+    # secret (the code's client beside the client's id is two of the
+    # board's own values, the code made at authorize for that client)
+    known = {
+        "h === null", "h === undefined",               # basicOf: an Authorization header at all
+        "id === null", "secret === null",              # basicOf: both halves decoded
+        "basic === false",                             # namedClient: a Basic header that cannot be read
+        'form.get("client_id") !== basic.id',          # namedClient: the body names the header's client, or none
+        'form.get("grant_type") !== "authorization_code"',
+        "row.client_id === setup.client.id",           # the code was made for the client as it is now
+        'form.get("redirect_uri") === row.redirect_uri',
+        'typeof row.nonce === "string"',
+    }
+    other = sorted(set(_js_comparisons(tt)) - known)
+    # and none in the forms the list cannot see: a switch's cases, Object.is,
+    # or code made from a string
+    other += [w for w in ("switch", "eval", "Function") if w in tt]
+    other += ["Object.is"] * any(tt[i:i + 3] == ["Object", ".", "is"] for i in range(len(tt)))
+    if other:
+        errors += fail(f"functions/oidc/token.js makes a comparison this pin does not know: {other}. The "
+                       f"client's id and secret are compared only through sameSecret, never with ===, !==, == or "
+                       f"!=; one that touches neither (nor anything taken from them) goes in `known` here")
+    # THE NAMES BOUND TO THE HELPERS: token.js's sameSecret is the one it
+    # imports from _oidc.js, by that name, and nothing else in it is called
+    # that; _oidc.js's sameCode is _session.js's, the same way; and neither
+    # module declares or rebinds its own helper again
+    imp = lambda toks, nm: [x for x in _js_imports(toks) if x[1] == nm or x[0] == nm]  # noqa: E731
+    if imp(tt, "sameSecret") != [("sameSecret", "sameSecret", "../_oidc.js")] or tt.count("sameSecret") != 3:
+        errors += fail("functions/oidc/token.js's sameSecret is not _oidc.js's: imported from elsewhere or under "
+                       "another name, or declared, shadowed or rebound in token.js")
+    if (imp(ot, "sameCode") != [("sameCode", "sameCode", "./_session.js")] or ot.count("sameCode") != 2
+            or ot.count("sameSecret") != 1):
+        errors += fail("functions/_oidc.js's sameSecret does not end in _session.js's sameCode: sameCode imported "
+                       "from elsewhere or renamed, or either declared, shadowed or rebound in _oidc.js")
+    if st.count("sameCode") != 1:
+        errors += fail("functions/_session.js rebinds or shadows sameCode after declaring it")
+    # AND THE HELPERS AS WRITTEN: sameSecret hashes each side, then compares
+    # the two digests with sameCode, which reads every character whatever
+    # it finds
+    if ("export async function sameSecret(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\") return "
+            "false; const [x, y] = await Promise.all([sha256u(`oidc-compare|${a}`), sha256u(`oidc-compare|${b}`)]); "
+            "return sameCode(x, y); }") not in flat("functions/_oidc.js"):
+        errors += fail("_oidc.js's sameSecret no longer hashes both sides and compares the two digests with sameCode")
+    if ("export function sameCode(a, b) { if (typeof a !== \"string\" || typeof b !== \"string\" || a.length !== "
+            "b.length) return false; let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ "
+            "b.charCodeAt(i); return d === 0; }") not in flat("functions/_session.js"):
+        errors += fail("_session.js's sameCode no longer reads every character before it answers")
+    return errors
+
+
+def check_job_hunter_signs_in_with_sled_jobs() -> int:
+    """"Sign in with SLED JOBS" for Job Hunter (owner, 2026-11-23, design C:
+    "Cloudflare Access stays in front of Job Hunter, but its only button
+    becomes 'Sign in with SLED JOBS'. If you're already signed in on the
+    board, you go straight through.").
+
+    The board is an OpenID Connect provider with one client, the existing
+    "Job Hunter beta" Access application (functions/_oidc.js,
+    functions/oidc/, the discovery document). Driven through
+    scripts/oidc_harness.mjs, which imports the real modules and runs the
+    whole round trip with a key it made: authorize, the code, the token, the
+    ID token verified with the published keys (here AGAIN in Python, by the
+    curve's arithmetic). Then:
+      - authorize refuses every request that is not the one client, Access's
+        callback exactly, a code with PKCE S256, with a page here and never
+        a redirect, and mints nothing;
+      - signed out, a person goes to the sign-in with a `to` of 40
+        characters (the request rides in a sealed __Host- cookie, whatever
+        Access's state weighs), signs in by the emailed code for real and
+        comes back to the code; a way back that is not this browser's own,
+        or ten minutes late, is refused;
+      - signed in with no `hunter` or `owner` role: the closed-beta page, no
+        code; not set up: every door says so;
+      - the token door takes either client method, compares in constant
+        time (review 2026-11-24: only through sameSecret, the id and the
+        secret both; a plain === answers every honest case alike, so spies
+        stand where token.js's sameSecret and _oidc.js's sameCode are
+        imported from, and the door's answer must follow whatever the spy
+        makes sameSecret say, and sameSecret's be sameCode's; and by the
+        source, read from its tokens by what each name is bound to, token.js
+        makes no comparison but the ten it has, and sameSecret and sameCode
+        are the helpers as written), spends a code once (two at once: one
+        token), 120 seconds and not 121, holds the verifier, the
+        redirect_uri and the client, and a failed try spends the code;
+        every failure is OAuth's word alone;
+      - only a request that is not the client is counted: twenty an hour
+        from one network are answered invalid_client, and past them 429,
+        writing nothing; two hundred wrong secrets sent at once are counted
+        twenty times, not two hundred (one statement takes each try). THE
+        CLIENT IS NEVER COUNTED OR REFUSED BY THE COUNT (review,
+        2026-11-24): from a network whose hour is used up, from Cloudflare's
+        own shared Worker address after twenty-five requests that were not
+        it, from its /64, in the middle of a burst, it gets its token, and
+        its own failures are OAuth's words, never 429, and sent from a
+        network with no count they leave no row (one that is not the client
+        then does, so the count is there to be seen); DEPLOY.md says the
+        count's twenty and its 429 as they are;
+      - every not-configured /oidc/jwks answer is exactly 503
+        {"error": "not_configured"}, no-store, which Job Hunter's key cache
+        reads as "no keys" (its review, 2026-11-24);
+      - the gate's OPEN set is exactly the sign-in's paths and these four;
+      - DEPLOY.md §3f has every Access application stop accepting all
+        identity providers before SLED JOBS is added, the admin's Allow
+        policies require the one-time PIN, and SLED JOBS is ticked on "Job
+        Hunter beta" alone (review, 2026-11-24);
+      - nothing logs anything.
+    """
+    import shutil
+    import subprocess
+    # by the source first: it needs no node, so it holds wherever this runs
+    errors = _the_client_is_compared_only_through_samesecret()
+    if not shutil.which("node"):
+        print("  note: node is not installed; Job Hunter's sign-in was not driven")
+        return errors
+    r = subprocess.run(["node", str(ROOT / "scripts" / "oidc_harness.mjs")],
+                       capture_output=True, text=True, timeout=180)
+    try:
+        o = json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError) as exc:
+        return errors + fail(f"oidc_harness.mjs printed no JSON ({exc}): {r.stderr[-400:]}")
+    if o.get("skip"):
+        print(f"  note: {o['skip']}; Job Hunter's sign-in was not driven")
+        return errors
+    brand = json.loads((DATA / "brand.json").read_text())
+    issuer = f"https://{brand['domain']}"
+    callback = "https://solesource-c6g-pages.cloudflareaccess.com/cdn-cgi/access/callback"
+
+    # THE DOCUMENT AND THE KEYS
+    d = o.get("discovery") or {}
+    want = {"issuer": issuer, "authorization_endpoint": f"{issuer}/oidc/authorize",
+            "token_endpoint": f"{issuer}/oidc/token", "jwks_uri": f"{issuer}/oidc/jwks",
+            "response_types_supported": ["code"], "subject_types_supported": ["public"],
+            "id_token_signing_alg_values_supported": ["ES256"], "code_challenge_methods_supported": ["S256"],
+            "token_endpoint_auth_methods_supported": ["client_secret_basic", "client_secret_post"],
+            "scopes_supported": ["openid", "email"]}
+    body = d.get("body") or {}
+    if d.get("status") != 200 or any(body.get(k) != v for k, v in want.items()):
+        errors += fail(f"the discovery document does not say what the board offers: "
+                       f"{ {k: body.get(k) for k, v in want.items() if body.get(k) != v} }")
+    if (o.get("discovery_www") or {}).get("location") != f"{issuer}/.well-known/openid-configuration":
+        errors += fail(f"the discovery document answers off the site's own address: {o.get('discovery_www')}")
+    j = o.get("jwks") or {}
+    keys = j.get("keys") or []
+    if (j.get("status") != 200 or j.get("cache") != "public, max-age=300" or len(keys) != 1 or j.get("has_d")
+            or set(keys[0]) != {"kty", "crv", "x", "y", "kid", "alg", "use"}
+            or (keys[0].get("kty"), keys[0].get("crv"), keys[0].get("alg"), keys[0].get("use"), keys[0].get("kid"))
+            != ("EC", "P-256", "ES256", "sig", j.get("kid"))):
+        errors += fail(f"/oidc/jwks does not publish the public half of the one key, cached five minutes: "
+                       f"{j.get('status')} {j.get('cache')} {keys}")
+    if (o.get("jwks_old") or {}).get("kids") != ["test-key-now", "test-key-before"] or (o.get("jwks_old") or {}).get("has_d"):
+        errors += fail(f"the earlier key is not published beside the current one, public half only: {o.get('jwks_old')}")
+    if (o.get("jwks_same_old") or {}).get("kids") != ["test-key-now"]:
+        errors += fail("an earlier key with the current key's kid is published twice")
+    off = o.get("jwks_off") or {}
+    if len(off) < 8 or any(c.get("status") != 503 or c.get("keys") or c.get("cache") != "no-store" for c in off.values()):
+        errors += fail(f"a missing, malformed or mismatched key still publishes something, or is cached: {off}")
+    # nothing signs, so nothing is published, earlier key or not (review,
+    # 2026-11-23: a bad paste during a rotation published the old key alone)
+    wo = o.get("jwks_off_with_old") or {}
+    if len(wo) < 4 or any(c.get("status") != 503 or c.get("keys") or c.get("cache") != "no-store" for c in wo.values()):
+        errors += fail(f"with the signing key missing, malformed or half a pair, the earlier key is published alone: {wo}")
+    # THE ANSWER JOB HUNTER'S KEY CACHE READS (its review, 2026-11-24): its
+    # core/board_assertion.py _fetch takes exactly 503 {"error":
+    # "not_configured"} as "the board lists no keys" and drops every key it
+    # held, and takes any other error as an outage, keeping them an hour. So
+    # every not-configured case, earlier key set or not, answers that status,
+    # that body and no-store, and nothing else: change one and Job Hunter
+    # goes on believing a key the board no longer signs with
+    for name, cases in (("no earlier key", off), ("an earlier key set", wo)):
+        for k in ("none", "garbled", "public_only", "mismatched_pair"):
+            if k not in cases:
+                errors += fail(f"the harness no longer drives /oidc/jwks with the signing key {k} and {name}")
+        for k, c in cases.items():
+            if (c.get("status"), c.get("body"), c.get("cache")) != (503, {"error": "not_configured"}, "no-store"):
+                errors += fail(f"/oidc/jwks with the signing key {k} and {name} answers {c.get('status')} "
+                               f"{c.get('body')} {c.get('cache')!r}, not the 503 {{'error': 'not_configured'}} "
+                               f"no-store Job Hunter's key cache reads as 'no keys'")
+    # a routine rotation's earlier key is what /oidc/jwks printed (Pages never
+    # shows the old private key again), whole or its one entry
+    of = o.get("jwks_old_forms") or {}
+    for k in ("document", "entry", "private"):
+        c = of.get(k) or {}
+        if c.get("status") != 200 or c.get("kids") != ["test-key-now", "test-key-before"] or c.get("has_d"):
+            errors += fail(f"the earlier key pasted as {k} is not published beside the current one, public half only: {c}")
+    for k in ("two_keys", "no_keys", "keys_not_list"):
+        c = of.get(k) or {}
+        if c.get("status") != 200 or c.get("kids") != ["test-key-now"]:
+            errors += fail(f"an earlier-key secret that is not one key ({k}) publishes something beside the current key: {c}")
+
+    # THE ROUND TRIP
+    rt = o.get("round") or {}
+    if (rt.get("status") != 200 or rt.get("location") or rt.get("cache") != "no-store" or rt.get("xfo") != "DENY"
+            or rt.get("referrer") != "no-referrer" or rt.get("script") or rt.get("form")
+            or not rt.get("refresh") or rt.get("refresh") != rt.get("link")):
+        errors += fail(f"authorize does not go on by a page (meta refresh and a link, no script, no form, "
+                       f"no-store, not framable): {({k: rt.get(k) for k in ('status', 'location', 'cache', 'xfo', 'script', 'form')})}")
+    if (rt.get("dest") != callback or rt.get("keys") != ["code", "state"] or rt.get("state") != "st8 a+b/c=d&e%f?g#h~i"
+            or rt.get("code_len") != 43):
+        errors += fail(f"the code does not go to Access's callback alone, with the state untouched: "
+                       f"{rt.get('dest')} {rt.get('keys')} {rt.get('state')!r}")
+    if rt.get("stored") != 1 or not rt.get("stored_hash_ok") or rt.get("stored_raw_code"):
+        errors += fail("the code is kept as itself, or not as its SHA-256")
+    tk = rt.get("token") or {}
+    if (tk.get("status") != 200 or tk.get("cache") != "no-store" or tk.get("keys") != ["access_token", "expires_in", "id_token", "token_type"]
+            or tk.get("token_type") != "Bearer" or tk.get("expires_in") != 300 or tk.get("access_len") != 43):
+        errors += fail(f"the token answer is not the one the spec names: {tk}")
+    idt = rt.get("id") or {}
+    cl = idt.get("claims") or {}
+    want_claims = {"iss": issuer, "aud": "jh-harness-client", "sub": idt.get("sub_want"), "email": "hunter@example.org",
+                   "email_verified": True, "iat": idt.get("now"), "exp": (idt.get("now") or 0) + 300,
+                   "auth_time": idt.get("session_iat"), "nonce": "n-0S6_WzA2Mj"}
+    if cl != want_claims:
+        errors += fail(f"the ID token's claims are not the interface's: {cl} (want {want_claims})")
+    if idt.get("head") != {"alg": "ES256", "typ": "JWT", "kid": "test-key-now"} or idt.get("sig_bytes") != 64:
+        errors += fail(f"the ID token is not ES256 with the key's kid and a raw 64-byte signature: {idt.get('head')} {idt.get('sig_bytes')}")
+    rkeys = {k.get("kid"): k for k in rt.get("jwks") or []}
+    token_jwt = rt.get("id_token") or ""
+    if not idt.get("ok") or not _es256_verify(rkeys.get("test-key-now") or {}, token_jwt):
+        errors += fail("the ID token does not verify with the published key (Node and Python both must)")
+    # one character mid-signature (the last ones may be base64 padding bits)
+    h_, b_, s_ = (token_jwt.split(".") + ["", "", ""])[:3]
+    mid = len(s_) // 2
+    flipped = f"{h_}.{b_}.{s_[:mid]}{'A' if s_[mid:mid + 1] != 'A' else 'B'}{s_[mid + 1:]}"
+    if idt.get("tampered_ok") or _es256_verify(rkeys.get("test-key-now") or {}, flipped) \
+            or _es256_verify(rkeys.get("test-key-now") or {}, token_jwt.replace(token_jwt.split(".")[1], token_jwt.split(".")[1] + "x")):
+        errors += fail("a tampered ID token verifies; the check proves nothing")
+    if rt.get("rows_after") != 0 or (rt.get("reused") or {}).get("json") != {"error": "invalid_grant"}:
+        errors += fail(f"a code is kept after it is spent, or works twice: {rt.get('rows_after')} {rt.get('reused')}")
+    if (o.get("basic") or {}).get("status") != 200 or not (o.get("basic") or {}).get("ok") or o.get("basic_with_id") != 200:
+        errors += fail(f"client_secret_basic does not trade a code: {o.get('basic')} {o.get('basic_with_id')}")
+    ao = o.get("access_owner") or {}
+    if (ao.get("status") != 200 or ao.get("token") != 200 or not ao.get("ok") or ao.get("email") != "owner@example.org"
+            or ao.get("auth_time") != ao.get("want_auth_time")):
+        errors += fail(f"the owner signed in through Access alone does not go straight through: {ao}")
+    if (o.get("session_owner") or {}).get("code") != 43:
+        errors += fail("the owner's role does not open Job Hunter's sign-in")
+
+    # AUTHORIZE REFUSES, AND NEVER SENDS ANYBODY ANYWHERE
+    ref = o.get("refused") or {}
+    if len(ref) < 30:
+        errors += fail(f"the harness drove too few refused requests to trust ({len(ref)})")
+    for k, c in ref.items():
+        if (c.get("status") != 400 or c.get("location") or c.get("refresh") or c.get("callback") or c.get("evil")
+                or c.get("code") or c.get("set") or c.get("cache") != "no-store" or c.get("xfo") != "DENY"):
+            errors += fail(f"authorize took, redirected or minted for a bad request ({k}): {c}")
+    if (o.get("refused_control") or {}).get("code") != 43 or (o.get("no_state") or {}).get("keys") != ["code"] \
+            or (o.get("mode_query") or {}).get("status") != 200:
+        errors += fail("the refusals prove nothing: the right request (with or without state) does not mint")
+    if not str((o.get("authorize_www") or {}).get("location", "")).startswith(f"{issuer}/oidc/authorize?"):
+        errors += fail("authorize answers off the site's own address, where the sign-in's cookie is not")
+
+    # SIGNED OUT: THE SIGN-IN, AND BACK
+    dt = o.get("detour") or {}
+    if (dt.get("status") != 302 or dt.get("path") != "/signin" or not re.fullmatch(r"/oidc/authorize\?r=[A-Za-z0-9_-]{22}", dt.get("to") or "")
+            or dt.get("code") or dt.get("set") != ["__Host-sj_oidc=<value>; Path=/; Max-Age=600; HttpOnly; Secure; SameSite=Lax"]):
+        errors += fail(f"signed out, authorize does not send the person to the sign-in with a short `to` and the "
+                       f"request held in a sealed cookie for ten minutes: {dt}")
+    if (dt.get("to_len") or 2000) > 1024 or dt.get("page_to") != dt.get("to"):
+        errors += fail(f"the `to` is too long for the sign-in to keep, or the sign-in page lost it: {dt.get('to_len')}")
+    if (dt.get("mailed") != 303 or (dt.get("after_code") or {}).get("location") != dt.get("to")
+            or (dt.get("back") or {}).get("status") != 200 or (dt.get("back") or {}).get("dest") != callback
+            or not (dt.get("back") or {}).get("state_kept") or not (dt.get("back") or {}).get("dropped") or dt.get("token") != 200):
+        errors += fail(f"signing in by the emailed code does not come back to Access with the code and the long state: {dt}")
+    rr = o.get("resume_refused") or {}
+    if len(rr) < 8 or any(c.get("status") != 400 or c.get("location") or c.get("refresh") or c.get("evil") or c.get("code")
+                          for c in rr.values()):
+        errors += fail(f"a way back that is not this browser's own (or ten minutes late) is taken: {rr}")
+    if (o.get("detour_too_big") or {}).get("status") != 400 or (o.get("detour_too_big") or {}).get("set"):
+        errors += fail("a request too big to hold in a cookie is half-held instead of refused")
+
+    # SIGNED IN, NO PLACE IN THE BETA
+    nr = o.get("no_role") or {}
+    for k in ("not_on_board", "admin_only", "revoked"):
+        c = nr.get(k) or {}
+        if (c.get("status") != 403 or c.get("location") or c.get("refresh") or not c.get("beta") or not c.get("names")
+                or not c.get("to_beta") or c.get("code")):
+            errors += fail(f"a sign-in without the hunter or owner role ({k}) is given a code, or not told it is a closed beta: {c}")
+    if (nr.get("users_down") or {}).get("status") != 403 or (nr.get("users_down") or {}).get("code"):
+        errors += fail("with the Users board unreadable, authorize grants a code")
+
+    # NOT SET UP
+    ns = o.get("not_set_up") or {}
+    for k, c in ns.items():
+        if c.get("authorize") != 503 or c.get("refresh") or (k != "no_session_secret" and (c.get("token") != 503
+                                                                                            or c.get("error") != "temporarily_unavailable")):
+            errors += fail(f"with {k}, a door signs or redirects instead of saying it is not set up: {c}")
+    if len(ns) < 13:
+        errors += fail("the harness drove too few unconfigured doors")
+    # the floor is 32 characters (31 is off, above): exactly 32 is enough
+    if o.get("secret_32") != 200:
+        errors += fail(f"a client secret of exactly 32 characters is refused ({o.get('secret_32')}); the floor is 32")
+    ov = o.get("override") or {}
+    if (ov.get("exact") != 200 or ov.get("dest") != "https://*.cloudflareaccess.com/cdn-cgi/access/callback"
+            or ov.get("default_refused") != 400 or ov.get("pattern_refused") != 400):
+        errors += fail(f"OIDC_REDIRECT_URI widens the one address instead of replacing it: {ov}")
+
+    # THE TOKEN DOOR
+    T = o.get("token_refused") or {}
+    want_t = {"wrong_secret_post": (401, "invalid_client"), "wrong_secret_basic": (401, "invalid_client"),
+              "wrong_client_id": (401, "invalid_client"), "no_credentials": (401, "invalid_client"),
+              "both_methods": (400, "invalid_request"), "basic_garbled": (401, "invalid_client"),
+              "bearer_header": (401, "invalid_client"), "basic_other_body_id": (401, "invalid_client"),
+              "grant_password": (400, "unsupported_grant_type"), "wrong_verifier": (400, "invalid_grant"),
+              "no_verifier": (400, "invalid_grant"), "verifier_bad_chars": (400, "invalid_grant"),
+              "verifier_is_challenge": (400, "invalid_grant"), "wrong_redirect": (400, "invalid_grant"),
+              "no_redirect": (400, "invalid_grant"), "unknown_code": (400, "invalid_grant"),
+              "malformed_code": (400, "invalid_grant"), "no_code": (400, "invalid_grant"),
+              "not_form": (400, "invalid_request"), "code_twice": (400, "invalid_request"),
+              "big_body": (400, "invalid_request"), "get": (405, "invalid_request"),
+              "off_site": (400, "invalid_request"), "spent_by_a_wrong_try": (400, "invalid_grant"),
+              "client_changed": (400, "invalid_grant"), "at_121": (400, "invalid_grant"),
+              "db_down": (503, "temporarily_unavailable")}
+    for k, (status, word) in want_t.items():
+        c = T.get(k) or {}
+        if c.get("status") != status or c.get("json") != {"error": word} or c.get("cache") != "no-store":
+            errors += fail(f"the token door's {k} answer is {c.get('status')} {c.get('json')}, not {status} {{'error': {word!r}}}")
+        if status == 401 and "Basic" not in c.get("www", ""):
+            errors += fail(f"the token door's {k} 401 names no WWW-Authenticate scheme")
+    if (T.get("at_120") or {}).get("status") != 200:
+        errors += fail("a code 120 seconds old is refused; it is good that long")
+    if (T.get("race") or {}).get("statuses") != [200, 400]:
+        errors += fail(f"two redemptions of one code at once did not give exactly one token: {T.get('race')}")
+    # all three reach the spend before any reads the row: only the atomic
+    # `used = 0` keeps it to one (the row's deletion afterwards does not)
+    if (T.get("race_interleaved") or {}).get("statuses") != [200, 400, 400]:
+        errors += fail(f"three redemptions that all reach the spend at once gave more than one token: "
+                       f"{T.get('race_interleaved')}")
+    # THE CLIENT IS ASKED OF sameSecret, AND ITS ANSWER IS THE ANSWER
+    # (review, 2026-11-24). A plain === answers every honest case alike, so
+    # the harness puts spies where token.js's import of sameSecret and
+    # _oidc.js's import of sameCode resolve: the door asks sameSecret the id
+    # and the secret it was sent against the client's own, both, every time
+    # (a wrong id still has its secret asked); a wrong secret the spy calls
+    # the same gets a token, and the right client it calls different is
+    # refused, so no other comparison decides; and every answer is
+    # sameCode's, on the two digests sameSecret makes. What no answer shows
+    # (a comparison that decides nothing) is held by the source, above
+    def asked_(id_, secret_):
+        return [["sent id", "client id", *id_, True], ["sent secret", "client secret", *secret_, True]]
+    yes_, no_ = (True, True), (False, False)
+    want_asked = {"right_post": (200, asked_(yes_, yes_)), "right_basic": (200, asked_(yes_, yes_)),
+                  "wrong_secret": (401, asked_(yes_, no_)), "wrong_id": (401, asked_(no_, yes_)),
+                  "said_same_secret": (200, asked_(yes_, (False, True))),
+                  "said_same_secret_basic": (200, asked_(yes_, (False, True))),
+                  "said_same_id": (200, asked_((False, True), yes_)),
+                  "said_same_both": (200, asked_((False, True), (False, True))),
+                  "said_differ_secret": (401, asked_(yes_, (True, False))),
+                  "said_differ_id": (401, asked_((True, False), yes_))}
+    compared = o.get("compared") or {}
+    for k, (status, asked) in want_asked.items():
+        c = compared.get(k) or {}
+        if (c.get("status") != status or c.get("asked") != asked
+                or (c.get("ok") is not True if status == 200 else c.get("error") != "invalid_client")):
+            errors += fail(f"the token door's answer to the client is not sameSecret's ({k}): it answered "
+                           f"{c.get('status')} {c.get('error')}, having asked sameSecret "
+                           f"[sent, own, said, answered, by sameCode] {c.get('asked')}; it should answer "
+                           f"{status}, having asked {asked}")
+
+    # ONLY WHAT IS NOT THE CLIENT IS COUNTED, AND THE CLIENT IS NEVER
+    # REFUSED BY THE COUNT (review, 2026-11-24): twenty requests an hour from
+    # one network that are not the client, then 429 for those, writing
+    # nothing; the client from that same network still gets its token, takes
+    # no try, and its own failures are OAuth's words, never 429
+    rl = o.get("rate") or {}
+    cap = rl.get("cap")
+    if (cap != 20 or rl.get("statuses") != [401] * 20 or (rl.get("capped") or {}).get("status") != 429
+            or (rl.get("capped") or {}).get("json") != {"error": "temporarily_unavailable"}
+            or (rl.get("capped") or {}).get("retry") != "3600" or rl.get("again") != 429
+            or rl.get("fails_at_cap") != [20] or rl.get("fails_after_refusal") != [20]):
+        errors += fail(f"the token door does not refuse a network's requests that are not the client after {cap} "
+                       f"an hour, or a refusal writes: {rl}")
+    if (rl.get("client") != 200 or not rl.get("client_ok") or rl.get("fails_after_client") != [20]
+            or rl.get("client_fails") != {"unknown_code": 400, "wrong_verifier": 400, "grant_password": 400}
+            or rl.get("fails_after_client_fails") != [20]):
+        errors += fail(f"the client is refused, or counted, because its network sent requests that were not it: "
+                       f"{ {k: rl.get(k) for k in ('client', 'client_ok', 'fails_after_client', 'client_fails', 'fails_after_client_fails')} }")
+    # ...AND FROM A NETWORK WITH NO COUNT (review, 2026-11-24): sent from one
+    # already at its cap, a count of the client's own failures could not be
+    # written whether they were counted or not, so the [20] above held
+    # either way. From a fresh network none of them may leave a row; one
+    # request from there that is not the client then does, so the empty
+    # count is theirs not being counted, not a count nobody could see
+    want_fresh = {"unknown_code": {"status": 400, "json": {"error": "invalid_grant"}},
+                  "wrong_verifier": {"status": 400, "json": {"error": "invalid_grant"}},
+                  "wrong_redirect": {"status": 400, "json": {"error": "invalid_grant"}},
+                  "grant_password": {"status": 400, "json": {"error": "unsupported_grant_type"}}}
+    if (rl.get("fresh_client_fails") != want_fresh or rl.get("fresh_rows") != []
+            or rl.get("fresh_control") != 401 or rl.get("fresh_rows_after_control") != [1]):
+        errors += fail(f"the client's own failures (an unknown code, a wrong verifier, a wrong redirect_uri, a grant "
+                       f"type not offered), sent from a network with no count, are counted or answered otherwise: "
+                       f"{ {k: rl.get(k) for k in ('fresh_client_fails', 'fresh_rows', 'fresh_control', 'fresh_rows_after_control')} }")
+    if (rl.get("other_network") != 401 or rl.get("good") != 200 or rl.get("good_wrote")
+            or rl.get("v6_neighbour") != 429 or rl.get("v6_other") != 401 or rl.get("v6_client") != 200
+            or rl.get("next_hour") != 401):
+        errors += fail(f"the count reaches another network or the next hour, misses the rest of an IPv6 /64, refuses "
+                       f"the client in it, or a working sign-in writes a count: {rl}")
+    if (rl.get("down_not_client") or {}) != {"status": 401, "json": {"error": "invalid_client"}}:
+        errors += fail(f"with D1 down, a request that is not the client is not refused as invalid_client: "
+                       f"{rl.get('down_not_client')}")
+    # CLOUDFLARE'S OWN SHARED ADDRESS: every Worker's cross-zone subrequest
+    # comes from 2a06:98c0:3600::103, and so may Access's own calls; twenty-
+    # five requests from it that are not the client must not cost Access its
+    # sign-in, from that address or its /64
+    sc = o.get("shared_caller") or {}
+    if (sc.get("statuses") != [401] * 20 + [429] * 5 or sc.get("counted") != [20]
+            or sc.get("same") != 200 or not sc.get("same_ok") or sc.get("neighbour") != 200
+            or sc.get("basic") != 200 or sc.get("counted_after") != [20]):
+        errors += fail(f"twenty-five requests from Cloudflare's shared address with no or wrong client credentials "
+                       f"lock the client out of the token door (from that address or its /64): {sc}")
+    # ...AND SENT ALL AT ONCE (2026-11-23 review): each is counted by one
+    # statement once it is found not to be the client, so a burst of 200 is
+    # counted 20 times, not 200 (a count read first and written after let
+    # them all in); the client's exchanges in the middle of it, and after
+    # it, from the same network, are tokens
+    bu = o.get("burst") or {}
+    if (bu.get("sent") != 200 or bu.get("statuses") != {"401": cap, "429": 200 - (cap or 0)}
+            or bu.get("counted") != [cap]):
+        errors += fail(f"two hundred wrong secrets sent at once are counted more than {cap} times "
+                       f"(the count is read before it is written): {bu}")
+    if bu.get("mid") != [200] * 5 or bu.get("after") != 200:
+        errors += fail(f"the client's exchanges during or after a burst from its network are refused: {bu}")
+    if bu.get("good_statuses") != [200] * 5 or bu.get("rows_after_goods") != [cap]:
+        errors += fail(f"good exchanges sent at once are refused, or leave a count behind: {bu}")
+    # THE NEW IDENTITY PROVIDER OPENS JOB HUNTER AND NOTHING ELSE (review,
+    # 2026-11-24): identity providers are account-wide, and an Access
+    # application with "Accept all available identity providers" on offers a
+    # new one with nothing ticked; on "SLED JOBS admin" the board's own
+    # 30-day sign-in would then open /admin. So DEPLOY.md §3f has the owner
+    # turn that switch off on every application BEFORE the provider is
+    # added, require the one-time PIN on the admin's Allow policies, tick
+    # SLED JOBS on "Job Hunter beta" alone, and check /admin afterwards
+    deploy_doc = (ROOT / "DEPLOY.md").read_text()
+    s3f = re.sub(r"\s+", " ", deploy_doc[deploy_doc.find("## 3f."):deploy_doc.find("\n## ", deploy_doc.find("## 3f.") + 1)])
+    first = s3f[s3f.find("**First, BEFORE step 2 adds the `SLED JOBS` identity provider**"):s3f.find("**Your steps, in this order:**")]
+    idp_step = s3f.find("2. **The identity provider.**")
+    for needle, why in (("turn **Accept all available identity providers** OFF", "turn the accept-all switch off"),
+                        ('"SLED JOBS admin", the `*.solesource-c6g.pages.dev` preview application and "Job Hunter beta"',
+                         "name every application, the admin and the preview one included"),
+                        ("every **Allow** policy → Edit → add a rule **Require** → **Login Methods** → `One-time PIN`",
+                         "require the one-time PIN on every Allow policy of the admin"),
+                        ("Why: an application with that switch on offers every identity provider", "say why the switch"),
+                        ("Why: Cloudflare's Login Methods selector checks which identity provider", "say why the rule")):
+        if not first or needle not in first:
+            errors += fail(f"DEPLOY.md §3f does not, before the identity provider is added, {why}: no {needle!r}")
+    if not first or idp_step < 0 or s3f.find(first) > idp_step:
+        errors += fail("DEPLOY.md §3f's login-method steps no longer come before the identity provider is added")
+    if ("tick **only** `SLED JOBS`" not in s3f or "make sure `SLED JOBS` is ticked on none of them" not in s3f
+            or "Why: `SLED JOBS` is Job Hunter's sign-in alone" not in s3f
+            or "`https://sledjobs.com/admin/` → Access's own page" not in s3f or "no `SLED JOBS` button" not in s3f):
+        errors += fail("DEPLOY.md §3f does not keep SLED JOBS ticked on Job Hunter beta alone, or check /admin offers "
+                       "no SLED JOBS button afterwards")
+    # and the docs say what the door now does, not what it did
+    claude_flat = re.sub(r"\s+", " ", (ROOT / "CLAUDE.md").read_text())
+    deploy_flat = re.sub(r"\s+", " ", (ROOT / "DEPLOY.md").read_text())
+    if ("THE CLIENT IS NEVER COUNTED AND NEVER REFUSED BY THE COUNT" not in claude_flat
+            or "The try is taken before anything is compared" in claude_flat
+            or "Access, which holds the client secret, is never counted and never refused" not in deploy_flat):
+        errors += fail("CLAUDE.md or DEPLOY.md still says the token door counts before it knows the client, "
+                       "or does not say the client is never counted or refused")
+    # ...and what the count answers, as the harness has it above (review,
+    # 2026-11-24): the first twenty of those from one network in an hour are
+    # 401 invalid_client, and only those past them 429 (the words read as
+    # twenty refusals with 429)
+    if ("twenty of those an hour from one network are answered `invalid_client`, and past them `429`"
+            not in deploy_flat or "and it answers them `429`" in deploy_flat):
+        errors += fail("DEPLOY.md §3f does not say the count's first twenty are answered invalid_client and only "
+                       "those past them 429")
+
+    # THE GATE: these four pass signed out, and nothing beside them
+    open_now = sorted(["/admin/api/whoami", "/admin/api/login", "/api/whoami", "/signin", "/signin/email",
+                       "/signin/check", "/signin/code", "/signin/link", "/signin/out", "/signin/theme",
+                       "/signin/google", "/signin/google/callback",
+                       "/oidc/authorize", "/oidc/token", "/oidc/jwks", "/.well-known/openid-configuration"])
+    if o.get("open_set") != open_now:
+        errors += fail(f"the gate's OPEN set is not the sign-in's paths and Job Hunter's four: {o.get('open_set')}")
+    for p, c in (o.get("gate_open") or {}).items():
+        if not c.get("reached"):
+            errors += fail(f"the gate shut {p}; Access calls it with no sign-in of ours")
+    if o.get("gated"):
+        for p, c in (o.get("gate_shut") or {}).items():
+            if c.get("reached") or c.get("status") != 403:
+                errors += fail(f"the gate let {p} through signed out; only the four exact paths are open")
+        if ((o.get("gate_shut") or {}).get("/api/jh/board-role?id=a::b") or {}).get("error") != "not_signed_in":
+            errors += fail("the gate's refusal of the panel's route is not the JSON the panel words")
+    mw = o.get("mw_authorize") or {}
+    if mw.get("status") != 200 or mw.get("xfo") != "DENY" or "frame-ancestors 'none'" not in mw.get("csp", ""):
+        errors += fail(f"through the middleware, authorize's page can be framed: {mw}")
+
+    # NOTHING LOGGED, NOTHING FETCHED BUT THE SIGN-IN'S OWN
+    if o.get("logged"):
+        errors += fail(f"the sign-in logged something (a code, a secret or an address could be in it): {o['logged'][:3]}")
+    if set(o.get("fetched") or []) - {"api.resend.com", "solesource-c6g-pages.cloudflareaccess.com"}:
+        errors += fail(f"the sign-in fetched somewhere it has no reason to: {o.get('fetched')}")
+    for f in ("functions/_oidc.js", "functions/oidc/authorize.js", "functions/oidc/token.js", "functions/oidc/jwks.js",
+              "functions/.well-known/openid-configuration.js", "functions/api/jh/board-role.js"):
+        src = _strip_js_comments((ROOT / f).read_text())
+        if "console." in src:
+            errors += fail(f"{f} logs; nothing in Job Hunter's sign-in may")
+    gate_src = (ROOT / "functions" / "_gate.js").read_text()
+    m = re.search(r"export const OPEN = new Set\(\[([^\]]*)\]\)", gate_src)
+    if not m or not all(f'"{p}"' in m.group(1) for p in ("/oidc/authorize", "/oidc/token", "/oidc/jwks",
+                                                          "/.well-known/openid-configuration")):
+        errors += fail("functions/_gate.js's OPEN set no longer names the sign-in's four paths")
+    return errors
+
+
+def check_the_panel_asks_job_hunter_through_the_board() -> int:
+    """The Job Hunter panel asks the board's own server, which asks Job
+    Hunter with a service token and a signed assertion (owner, 2026-11-23,
+    design C: "the board's server fetches the scoring popout for you with a
+    Cloudflare service token, so the popout never asks you to sign in").
+
+    The service token passes Access on every path of hunter.<domain>, so
+    functions/api/jh/board-role.js must make ONE fixed call and decide for
+    itself who may set it off. Driven through scripts/jh_proxy_harness.mjs
+    (the real function, a fake Job Hunter that records each request):
+      - signed out, no role, another site's page, another host, a bad id or
+        nothing set up: refused, and NOTHING reaches Job Hunter;
+      - allowed: exactly one GET of https://hunter.<domain>/api/board-role
+        ?id=<id>, no redirect followed, an eight-second timeout, and exactly
+        the two service-token headers and X-SJ-Assertion, none of the
+        caller's (a forged assertion, a forged token, cookies, auth);
+      - the assertion verifies with the published key (in Python too) and
+        carries iss, aud, sub, email, the id, iat, exp = iat + 60, a fresh
+        jti; Python's own query reader, as Job Hunter's is, reads every
+        awkward id back exactly;
+      - what comes back: Job Hunter's JSON, its no_account and 404 reason
+        words (never the address), "not_let_in" for any other 401 of its
+        own (nothing of the person's is sent, so that is Job Hunter not
+        taking the board's way in), and "unreachable" for everything else;
+      - nothing secret in any answer, and nothing logged;
+      - DEPLOY.md §3f's panel check says where each answer points ("not set
+        up yet" at step 1's signing key as well as step 4's secrets, as the
+        route answers for either), and its steps for taking someone out of
+        the beta come in their true order, Job Hunter's unlink (the one step
+        at once) first, taking every address and token Job Hunter's --list
+        shows beside their owner id, and the role last, after the board's
+        next nightly and deploy (review, 2026-11-24).
+    """
+    import shutil
+    import subprocess
+    import urllib.parse as _up
+    errors = 0
+    if not shutil.which("node"):
+        print("  note: node is not installed; the panel's route was not driven")
+        return 0
+    r = subprocess.run(["node", str(ROOT / "scripts" / "jh_proxy_harness.mjs")],
+                       capture_output=True, text=True, timeout=120)
+    try:
+        o = json.loads(r.stdout.strip().splitlines()[-1])
+    except (ValueError, IndexError) as exc:
+        return fail(f"jh_proxy_harness.mjs printed no JSON ({exc}): {r.stderr[-400:]}")
+    brand = json.loads((DATA / "brand.json").read_text())
+    issuer, jh = f"https://{brand['domain']}", f"https://hunter.{brand['domain']}"
+
+    for k, status, word in (("anon", 401, "not_signed_in"), ("no_role", 403, "not_allowed"),
+                            ("admin_only", 403, "not_allowed"), ("revoked", 403, "not_allowed"),
+                            ("users_down", 403, "not_allowed"), ("cross_site", 403, "not_from_this_site"),
+                            ("same_site", 403, "not_from_this_site"), ("www", 404, "not_here"),
+                            ("alias", 404, "not_here")):
+        c = o.get(k) or {}
+        if c.get("status") != status or c.get("json") != {"error": word} or c.get("calls"):
+            errors += fail(f"the panel's route answered {k} with {c.get('status')} {c.get('json')} "
+                           f"({c.get('calls')} call(s) to Job Hunter), not {status} {word} and none")
+    for k, c in (o.get("bad_id") or {}).items():
+        if c.get("status") != 400 or c.get("json") != {"error": "bad_id"} or c.get("calls"):
+            errors += fail(f"a bad id ({k}) reached Job Hunter or was not refused: {c.get('status')} {c.get('calls')}")
+    if len(o.get("bad_id") or {}) < 7 or (o.get("longest") or {}).get("status") != 200:
+        errors += fail("the id's length cap refuses the longest id Job Hunter takes, or too few bad ids were tried")
+    for k in ("no_token", "no_token_secret", "odd_token", "no_key", "no_db"):
+        c = o.get(k) or {}
+        if c.get("status") != 503 or c.get("json") != {"failed": "not_set_up"} or c.get("calls"):
+            errors += fail(f"with {k} the route still calls Job Hunter, or does not say it is not set up: {c}")
+    # ONE PERSON'S PACE (review, 2026-11-23): Job Hunter keeps every
+    # assertion's jti ten minutes in one book that refuses everybody when it
+    # holds 10,000, and one beta user's script at 17 a second filled it; so
+    # twenty asks a minute per signed-in address, counted in D1 by one
+    # statement before anything is signed or sent
+    pc = o.get("pace") or {}
+    if pc.get("skip"):
+        print(f"  note: {pc['skip']}; the panel's pace was not driven")
+    else:
+        pcap = pc.get("cap")
+        ov = pc.get("over") or {}
+        if (pcap != 20 or pc.get("first") != [200] * 20 or pc.get("first_calls") != 20 or ov.get("status") != 429
+                or ov.get("json") != {"error": "slow_down"} or ov.get("calls") or ov.get("retry") != "60"
+                or (pc.get("again") or {}).get("status") != 429 or (pc.get("again") or {}).get("calls")):
+            errors += fail(f"the panel's route does not hold one person to {pcap} asks a minute, refused with "
+                           f"nothing sent: {pc.get('first')} {ov} {pc.get('again')}")
+        if (pc.get("owner") or {}).get("status") != 200 or (pc.get("owner") or {}).get("calls") != 1:
+            errors += fail(f"one person's pace slows another: {pc.get('owner')}")
+        bu = pc.get("burst") or {}
+        if bu.get("statuses") != {"200": 20, "429": 30} or bu.get("calls") != 20:
+            errors += fail(f"fifty asks sent at once by one person reach Job Hunter more than twenty times: {bu}")
+        if (pc.get("later") or {}).get("status") != 200 or (pc.get("later") or {}).get("calls") != 1:
+            errors += fail(f"a person is still slowed the minute after: {pc.get('later')}")
+        dn = pc.get("down") or {}
+        if dn.get("status") != 502 or dn.get("json") != {"failed": "unreachable"} or dn.get("calls"):
+            errors += fail(f"with D1 down the route still calls Job Hunter, or says something else: {dn}")
+        if pc.get("stored_address") or pc.get("stored_rows") != 2:
+            errors += fail(f"the pace keeps an address in D1, or a row that is not one person's minute: {pc}")
+    for k in ("typed", "no_fetch_meta", "access_owner"):
+        if (o.get(k) or {}).get("status") != 200:
+            errors += fail(f"the route refused {k}, a request it should answer")
+    if o.get("access_owner_email") != "owner@example.org":
+        errors += fail("the owner signed in through Access is not who the assertion names")
+
+    g = o.get("good") or {}
+    call = g.get("call") or {}
+    want = g.get("want") or {}
+    u = _up.urlsplit(call.get("url", ""))
+    if (g.get("status") != 200 or g.get("calls") != 1 or g.get("cache") != "no-store"
+            or (u.scheme, u.netloc, u.path) != ("https", f"hunter.{brand['domain']}", "/api/board-role")
+            or _up.parse_qs(u.query, keep_blank_values=True) != {"id": [want.get("id")]}
+            or call.get("method") != "GET" or call.get("redirect") != "manual" or not call.get("signal")
+            or call.get("body") is not None):
+        errors += fail(f"the route's one call is not the fixed GET of Job Hunter's route, unredirected, with a "
+                       f"timeout: {call.get('url')} {call.get('method')} {call.get('redirect')}")
+    hd = call.get("headers") or {}
+    if (sorted(hd) != ["cf-access-client-id", "cf-access-client-secret", "x-sj-assertion"]
+            or hd.get("cf-access-client-id") != want.get("token_id") or hd.get("cf-access-client-secret") != want.get("token_secret")):
+        errors += fail(f"the call carries other headers than the two token headers and the assertion, or the caller's: {sorted(hd)}")
+    a = g.get("assertion") or {}
+    jwt = g.get("assertion_jwt") or ""
+    keys = {k.get("kid"): k for k in o.get("keys") or []}
+    cl = _jwt_claims(jwt)
+    if (not a.get("ok") or not _es256_verify(keys.get("proxy-test-key") or {}, jwt)
+            or a.get("head") != {"alg": "ES256", "typ": "JWT", "kid": "proxy-test-key"} or a.get("sig_bytes") != 64):
+        errors += fail(f"the assertion does not verify with the published key (Node and Python both must): {a.get('head')}")
+    if (set(cl) != {"iss", "aud", "sub", "email", "id", "iat", "exp", "jti"} or cl.get("iss") != issuer
+            or cl.get("aud") != f"{jh}/api/board-role" or cl.get("sub") != want.get("sub")
+            or cl.get("email") != "hunter@example.org" or cl.get("id") != want.get("id")
+            or cl.get("iat") != want.get("iat") or cl.get("exp") != (want.get("iat") or 0) + 60
+            or not re.fullmatch(r"[A-Za-z0-9_-]{22}", cl.get("jti") or "")):
+        errors += fail(f"the assertion's claims are not the interface's: {cl}")
+    if not o.get("jti_differs") or g.get("delays") != [8000] or o.get("slow_delay") != 8000:
+        errors += fail(f"two assertions share a jti, or the call's timeout is not about eight seconds: {g.get('delays')}")
+    tricky = o.get("tricky") or []
+    if len(tricky) < 10:
+        errors += fail("the harness asked about too few awkward ids")
+    for t in tricky:
+        tu = _up.urlsplit(t.get("url", ""))
+        if (t.get("status") != 200 or (tu.netloc, tu.path) != (f"hunter.{brand['domain']}", "/api/board-role")
+                or _up.parse_qs(tu.query, keep_blank_values=True) != {"id": [t.get("id")]}
+                or t.get("claim_id") != t.get("id") or not t.get("ok")):
+            errors += fail(f"Job Hunter would read another id than the one asked, or the assertion names another: {t}")
+
+    rel = o.get("relay") or {}
+    found = {"found": True, "id": "sig-1", "org": "Acme Gov", "title": "Account Executive", "status": "open",
+             "fit": {"as_is": 71, "ceiling": 88, "review": "accepted"}}
+    # A 401 FROM JOB HUNTER IS NEVER THE PERSON'S SIGN-IN (review,
+    # 2026-11-24): nothing of theirs is sent, so its no_token (no
+    # JH_BOARD_SERVICE_TOKEN, another token's, the assertion refused) and any
+    # other 401 but no_account is Job Hunter not taking the board's way in,
+    # a setup problem the panel words as one (it said "Sign in to Job Hunter")
+    want_rel = {"found": (200, found), "missing": (200, {"found": False}),
+                "no_account": (401, {"error": "no_account"}), "no_token": (502, {"failed": "not_let_in"}),
+                "bad_token": (502, {"failed": "not_let_in"}),
+                "refused_sentence": (502, {"failed": "not_let_in"}), "not_found": (404, {"error": "not_found"}),
+                "bad": (400, {"error": "bad_id"})}
+    for k in ("busy", "forbidden_json", "tunnel_down", "access_redirect", "access_page", "json_array", "not_json",
+              "huge", "no_type", "network", "slow"):
+        want_rel[k] = (502, {"failed": "unreachable"})
+    for k, (status, body) in want_rel.items():
+        c = rel.get(k) or {}
+        if c.get("status") != status or c.get("json") != body or c.get("calls") != 1:
+            errors += fail(f"Job Hunter's {k} answer reached the panel as {c.get('status')} {c.get('json')}, not {status} {body}")
+    if o.get("mw_signed_in", {}).get("status") != 200 or o.get("mw_signed_in", {}).get("calls") != 1:
+        errors += fail(f"through the middleware a signed-in person is refused: {o.get('mw_signed_in')}")
+    mwa = o.get("mw_anon") or {}
+    if mwa.get("calls") or mwa.get("status") not in (401, 403) or (mwa.get("json") or {}).get("error") != "not_signed_in":
+        errors += fail(f"through the middleware a signed-out request reaches Job Hunter: {mwa}")
+    if any((o.get("leaks") or {}).values()) or o.get("logged"):
+        errors += fail(f"a secret, the assertion or an address leaked into an answer, or something was logged: "
+                       f"{o.get('leaks')} {o.get('logged')}")
+    src = _strip_js_comments((ROOT / "functions" / "api" / "jh" / "board-role.js").read_text())
+    if src.count("fetch(") != 1 or "fetch(`${JH_ROUTE}?id=${encodeURIComponent(id)}`" not in src \
+            or 'redirect: "manual"' not in src:
+        errors += fail("functions/api/jh/board-role.js makes another call than the one fixed GET")
+    # THE OWNER'S CHECK READS EACH ANSWER RIGHT (review, 2026-11-24): a
+    # missing or wrong JH_BOARD_SERVICE_TOKEN is "did not let the board in",
+    # Job Hunter's side, and no longer filed under "did not answer"
+    deploy = (ROOT / "DEPLOY.md").read_text()
+    s3f = re.sub(r"\s+", " ", deploy[deploy.find("## 3f."):deploy.find("\n## ", deploy.find("## 3f.") + 1)])
+    panel = s3f[s3f.find("**The panel:**"):s3f.find("**A new signing key")]
+    if ('"Job Hunter did not let the board in": Job Hunter\'s side' not in panel
+            or "`JH_BOARD_SERVICE_TOKEN` is missing from the serve plist" not in panel
+            or "plist variable is missing" in panel or "`board-role:`" not in panel):
+        errors += fail("DEPLOY.md §3f's panel check does not say that \"did not let the board in\" is Job Hunter's "
+                       "JH_BOARD_SERVICE_TOKEN (or its check of the board's signature), or still files a missing "
+                       "plist variable under \"did not answer\"")
+    # "NOT SET UP YET" IS EITHER PART OF THE BOARD'S SIDE (review,
+    # 2026-11-24): the route answers not_set_up for step 4's service token or
+    # the D1 binding (no_token, no_db above) and, as much, for step 1's
+    # signing key missing or badly pasted (no_key above), when /oidc/jwks
+    # answers 503 too; the bullet filed it under step 4 alone
+    i_ns = panel.find("\"The board's way in to Job Hunter is not set up yet\"")
+    j_ns = panel.find("\"Job Hunter did not let the board in\"", i_ns + 1)
+    ns_ = panel[i_ns:j_ns] if 0 <= i_ns < j_ns else ""
+    if ("step 4's Pages secrets (or the D1 binding of §3e)" not in ns_
+            or "step 1's `OIDC_SIGNING_JWK`, missing or badly pasted" not in ns_
+            or "`curl -s https://sledjobs.com/oidc/jwks` answers `503` too" not in ns_
+            or "each answer points at one place" in panel):
+        errors += fail("DEPLOY.md §3f's panel check files \"not set up yet\" under step 4 alone: the route says it "
+                       "too when step 1's OIDC_SIGNING_JWK is missing or badly pasted (and /oidc/jwks answers 503)")
+    # TAKING SOMEONE OUT OF THE BETA, AS IT REALLY WORKS (review, 2026-11-24):
+    # the panel comes in on the service token, so "Beta users" never sees it,
+    # and an Access session already granted lasts until it expires. Job
+    # Hunter's own unlink is the one step that acts at once, so it comes
+    # first; then Access (the policy, and Revoke session); then the role,
+    # after the board's next nightly and deploy (Job Hunter's deploy/README.md
+    # says the same words). No "at once" anywhere else
+    out_ = s3f[s3f.find("**Taking someone out of the beta**"):s3f.find("Switching the panel off for everybody")]
+    steps = [out_.find(n) for n in ("1. **In Job Hunter, unlink every address and revoke every token of theirs.**",
+                                   "2. **At Access**: take their address off the \"Beta users\" policy",
+                                   "3. **On the Users board**: take `hunter` off them")]
+    if (min(steps) < 0 or steps != sorted(steps)
+            or "This stops Job Hunter and the panel at once" not in out_
+            or "Zero Trust → Users → the person → **Revoke session**" not in out_
+            or "after the board's next nightly and deploy" not in out_
+            or "Switching the panel off for everybody" not in s3f):
+        errors += fail("DEPLOY.md §3f does not take someone out of the beta in its three true steps, in order: "
+                       "unlink and revoke in Job Hunter (at once), the Beta users policy and Revoke session, the "
+                       "hunter role after the board's next nightly and deploy")
+    elif ("at once" in out_[:steps[0]] or "at once" in out_[steps[1]:]
+            or '"Beta users" policy (at once)' in s3f):
+        errors += fail("DEPLOY.md §3f says a step of taking someone out of the beta acts at once when it does not")
+    # EVERY ADDRESS AND EVERY TOKEN OF THEIRS (review, 2026-11-24): a token's
+    # label is the beta code or "onboarding", never the person, so "--list
+    # shows it by its label" found nobody's, and one account may have several
+    # addresses linked. Job Hunter's --list shows each token and each linked
+    # address beside the account's owner id, each by the hash --revoke and
+    # --unlink-email take, and the step takes every one shown for theirs,
+    # then lists again: as Job Hunter's deploy/README.md says it
+    first_ = out_[steps[0]:steps[1]] if 0 <= steps[0] < steps[1] else ""
+    for needle in ("`python3 scripts/accounts_cli.py --list` shows each token and each linked address beside "
+                   "their account's owner id",
+                   "Unlink every address and revoke every token it shows for that owner id",
+                   "`python3 scripts/accounts_cli.py --unlink-email <hash> --why \"out of the beta\"`",
+                   "`python3 scripts/accounts_cli.py --revoke <hash> --why \"out of the beta\"`",
+                   "Then `--list` once more: nothing may be left beside their owner id",
+                   "one address or token left behind still opens their account"):
+        if needle not in first_:
+            errors += fail(f"DEPLOY.md §3f's first step of taking someone out of the beta does not take every "
+                           f"address and token --list shows beside their owner id: no {needle!r}")
+    if "by its label" in out_ or "If they were ever given" in out_:
+        errors += fail("DEPLOY.md §3f still finds a beta user's token by its label, or revokes one only if "
+                       "somebody remembers giving it")
+    return errors
+
+
+def _on_a_terminal(cmd: list, cwd, timeout: float = 60.0):
+    """Run `cmd` with its output on a pseudo-terminal of our own, as the
+    owner's Terminal is, and read what it printed: a CompletedProcess, or
+    None where Python has no pty (Windows). A script that prints secrets
+    only to a terminal is run this way, so it needs no switch that would
+    let it print into a pipe (an agent's shell is one)."""
+    try:
+        import pty
+        import select
+    except ImportError:
+        return None
+    master, slave = pty.openpty()
+    try:
+        p = subprocess.Popen(cmd, cwd=cwd, stdin=subprocess.DEVNULL, stdout=slave, stderr=subprocess.PIPE)
+    except OSError:
+        os.close(master)
+        raise
+    finally:
+        os.close(slave)
+    chunks, end = [], time.monotonic() + timeout
+    try:
+        while True:
+            left = end - time.monotonic()
+            if left <= 0:
+                break
+            ready, _, _ = select.select([master], [], [], left)
+            if not ready:
+                break
+            try:
+                b = os.read(master, 65536)
+            except OSError:   # Linux: the other end is closed and read dry
+                break
+            if not b:         # macOS: end of file
+                break
+            chunks.append(b)
+    finally:
+        os.close(master)
+    try:
+        p.wait(timeout=max(1.0, end - time.monotonic()))
+    except subprocess.TimeoutExpired:
+        p.kill()
+        p.wait()
+    err = p.stderr.read().decode("utf-8", "replace")
+    p.stderr.close()
+    out = b"".join(chunks).decode("utf-8", "replace").replace("\r\n", "\n")
+    return subprocess.CompletedProcess(cmd, p.returncode, out, err)
+
+
+def check_the_sign_in_secrets_are_made_and_shown_once() -> int:
+    """scripts/jh_signin_secrets.mjs makes Job Hunter's sign-in secrets on the
+    owner's machine and prints them once (design C, DEPLOY.md §3f step 1).
+
+    A private key must never reach this public repository, nor a transcript:
+    the script writes nothing, prints only to a terminal - into a pipe it
+    prints nothing, whatever it is told, and its refusal names no way past
+    it (review, 2026-11-23: it named --to-pipe, and an agent's shell is a
+    pipe) - and what it prints is a working P-256 pair (d·G is the published
+    point, checked here by the curve's arithmetic) whose kid is its RFC 7638
+    thumbprint, a client id, and a secret of at least 32 characters, fresh
+    each run. It is run here on a pseudo-terminal of our own. The key it
+    prints signs, in the board's own _oidc.js, a token its published half
+    verifies. CLAUDE.md says Claude never runs it; DEPLOY.md sends the owner
+    to the macOS Terminal app, not the Claude app's panel.
+
+    The rotations it is for (review, 2026-11-23): --key tells a routine
+    rotation (copy the public half /oidc/jwks prints as the earlier key;
+    Pages never shows the old private key) from a key that may have leaked
+    (no earlier key, the service token's secret rotated with Revoke
+    immediately, ALWAYS, disabling the token first an extra step and never
+    instead of it, a disabled token turned back on only once that rotation
+    is done and the new secret deployed, then the panel checked, Job Hunter
+    restarted), and --secret makes a client secret alone, as DEPLOY.md §3f
+    says.
+    """
+    import shutil
+    import subprocess
+    import tempfile
+    errors = 0
+    if not shutil.which("node"):
+        print("  note: node is not installed; the secrets script was not run")
+        return 0
+    script = ROOT / "scripts" / "jh_signin_secrets.mjs"
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-jhsecrets-"))
+    git = lambda: subprocess.run(["git", "status", "--porcelain", "--untracked-files=all"], cwd=ROOT,  # noqa: E731
+                                 capture_output=True, text=True).stdout
+    before = git()
+
+    def run(*args):    # into a pipe, as an agent's shell is
+        return subprocess.run(["node", str(script), *args], cwd=tmp, capture_output=True, text=True, timeout=60)
+
+    def term(*args):   # on a terminal, as the owner's is
+        return _on_a_terminal(["node", str(script), *args], tmp)
+
+    def values(text):
+        lines, got = text.splitlines(), {}
+        for i, ln in enumerate(lines):
+            if ln in ("OIDC_SIGNING_JWK", "OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET") and i + 1 < len(lines):
+                got[ln] = lines[i + 1]
+        return got
+
+    # WHAT AN AGENT IS TOLD: the docs and the script hand it no way past
+    src = script.read_text()
+    if "to-pipe" in _strip_js_comments(src) or "pbcopy" in src:
+        errors += fail("the secrets script still has a way to print its secrets into a pipe")
+    deploy = (ROOT / "DEPLOY.md").read_text()
+    s3f = deploy[deploy.find("## 3f."):deploy.find("\n## ", deploy.find("## 3f.") + 1)]
+    flat3f = re.sub(r"\s+", " ", s3f)
+    if (not s3f or "to-pipe" in s3f or "pbcopy" in s3f or "macOS **Terminal** app" not in flat3f
+            or "not the Claude app's own terminal panel" not in flat3f or "Claude never runs it" not in flat3f):
+        errors += fail("DEPLOY.md §3f does not send the owner to the macOS Terminal app (not the Claude app's "
+                       "panel, which a session can read), or still names a way to pipe the secrets")
+    if "**Claude never runs `scripts/jh_signin_secrets.mjs`**" not in re.sub(r"\s+", " ", (ROOT / "CLAUDE.md").read_text()):
+        errors += fail("CLAUDE.md's house rules do not say Claude never runs the secrets script")
+    try:
+        # INTO A PIPE IT PRINTS NOTHING, AND NO SWITCH SAYS OTHERWISE
+        for args, why in (((), "its output is piped"), (("--key",), "--key's output is piped"),
+                          (("--secret",), "--secret's output is piped"),
+                          (("--to-pipe",), "told --to-pipe, the switch it no longer has"),
+                          (("--key", "--to-pipe"), "told --key --to-pipe"), (("--bogus",), "given an unknown option")):
+            r = run(*args)
+            if r.returncode == 0 or r.stdout or '"d"' in r.stdout + r.stderr:
+                errors += fail(f"the secrets script printed something when {why}")
+        refusal = run().stderr
+        if (re.search(r"(?<![\w-])--?[A-Za-z]", refusal) or "pbcopy" in refusal or "|" in refusal
+                or "Nothing was printed" not in refusal or "macOS Terminal app" not in refusal):
+            errors += fail(f"the secrets script's refusal names a way past it, or does not say the owner runs it "
+                           f"himself in Terminal: {refusal!r}")
+        r1 = term()
+        if r1 is None:
+            print("  note: no pseudo-terminal here; the secrets script was not run on one")
+            return errors
+        gone = term("--to-pipe")
+        if gone.returncode == 0 or values(gone.stdout):
+            errors += fail("the secrets script still takes --to-pipe")
+        r2, rk, rs = term(), term("--key"), term("--secret")
+        v1, v2, vk, vs = values(r1.stdout), values(r2.stdout), values(rk.stdout), values(rs.stdout)
+        if r1.returncode or set(v1) != {"OIDC_SIGNING_JWK", "OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET"}:
+            return errors + fail(f"the secrets script did not print the three secrets: {r1.returncode} {sorted(v1)}")
+        if any(v1[k] == v2.get(k) for k in v1):
+            errors += fail("two runs of the secrets script printed the same value")
+        # --key: A ROUTINE ROTATION AND A LEAK ARE TWO THINGS (review,
+        # 2026-11-23): the routine one copies the PUBLIC half /oidc/jwks
+        # prints (Pages never shows the old private key), a leaked key is
+        # never published again, and its sitting renews the service token and
+        # restarts Job Hunter
+        kt = re.sub(r"\s+", " ", rk.stdout)
+        if set(vk) != {"OIDC_SIGNING_JWK"} or rk.returncode:
+            errors += fail("--key does not print a signing key alone")
+        for needle in ("/oidc/jwks", "public half only", "as a new Pages secret OIDC_SIGNING_JWK_OLD",
+                       "MAY HAVE LEAKED", "set NO OIDC_SIGNING_JWK_OLD", "service token a new secret",
+                       "restart Job Hunter's server",
+                       # the old secret ends AT ONCE after a leak (review, 2026-11-24): Cloudflare's
+                       # Rotate secret offers a grace of an hour to 30 days, or Revoke immediately,
+                       # and that is ALWAYS the choice: disabling the token first is an extra step,
+                       # never instead of it (Job Hunter's review, 2026-11-24: "(or Disable token
+                       # first)" read as the other way, and a token turned back on during a grace
+                       # period could let the leaked secret in again)
+                       '"Keep the current secret valid for", ALWAYS choose Revoke immediately',
+                       "Disabling the token first is an extra step, not a replacement",
+                       "Never a grace period after a leak",
+                       # and WHEN a disabled token comes back on (review, 2026-11-24: the steps
+                       # offered Disable token and never said): once the rotation with Revoke
+                       # immediately is done and the new secret deployed, and the panel check after,
+                       # since with the token off the panel cannot answer
+                       "If you disabled the token, turn it back on (Enable token) only once the rotation with "
+                       "Revoke immediately is done and the new secret is in the Pages secret "
+                       "JH_SERVICE_TOKEN_SECRET and deployed; then DEPLOY.md 3f's panel check must pass"):
+            if needle not in kt:
+                errors += fail(f"--key does not tell a routine rotation from a leaked key: no {needle!r}")
+        if "or Disable token first" in kt:
+            errors += fail("--key still offers disabling the token as the other way to Revoke immediately")
+        if "copy the CURRENT OIDC_SIGNING_JWK" in kt:
+            errors += fail("--key still asks for the current private key, which Pages never shows again")
+        # --secret: the client secret alone (a plain run would make a new key
+        # and a new client id too)
+        if (rs.returncode or set(vs) != {"OIDC_CLIENT_SECRET"} or '"d"' in rs.stdout
+                or not re.fullmatch(r"[A-Za-z0-9_-]{43}", vs.get("OIDC_CLIENT_SECRET", ""))
+                or vs.get("OIDC_CLIENT_SECRET") in (v1["OIDC_CLIENT_SECRET"], v2.get("OIDC_CLIENT_SECRET"))
+                or "BOTH places" not in rs.stdout):
+            errors += fail("--secret does not print a fresh client secret alone, to paste in both places")
+        both = term("--key", "--secret")
+        if both.returncode == 0 or values(both.stdout):
+            errors += fail("the secrets script printed something when told --key and --secret at once")
+        if "--secret" not in r1.stdout or "FIRST SETUP" not in r1.stdout:
+            errors += fail("a plain run does not say it is the first setup, and --secret the way to a new secret")
+        for needle, why in (("`curl -s https://sledjobs.com/oidc/jwks` and copy what it prints, whole", "copy the public half"),
+                            ("Add a Pages secret `OIDC_SIGNING_JWK_OLD` and paste that in", "paste it as the earlier key"),
+                            ("If the signing key may have leaked", "split off a leaked key"),
+                            ("Set no `OIDC_SIGNING_JWK_OLD`; delete it if it is there", "keep a leaked key unpublished"),
+                            ("`board popout` → **Rotate secret**, and where it asks \"Keep the current secret valid "
+                             "for\", ALWAYS choose **Revoke immediately**", "end the leaked service-token secret at "
+                             "once, always"),
+                            ("Never a grace period after a leak", "rule out a grace period after a leak"),
+                            ("Disabling the token first (**Disable token**) is an extra step, not a replacement",
+                             "say disabling the token is an extra step, never instead of Revoke immediately"),
+                            ("If you disabled the token, turn it back on (**Enable token**) only once the rotation "
+                             "with Revoke immediately is done and the new secret is in `JH_SERVICE_TOKEN_SECRET` "
+                             "and deployed; then the panel check under **Check it afterwards** must pass (it "
+                             "cannot while the token is off)", "say when a disabled token is turned back on: after "
+                             "the rotation and the deploy, the panel check once it is on"),
+                            ("may keep the current secret valid for a short grace period", "allow a grace period "
+                             "only for a routine new secret"),
+                            ("Restart Job Hunter's server", "restart Job Hunter after a leak"),
+                            ("`node scripts/jh_signin_secrets.mjs --secret` (not a plain run", "change the client secret alone")):
+            if needle not in flat3f:
+                errors += fail(f"DEPLOY.md §3f does not {why}: no {needle!r}")
+        if "first copy the current `OIDC_SIGNING_JWK`" in flat3f or "a run of the script without `--key`" in flat3f:
+            errors += fail("DEPLOY.md §3f still asks for a copy of a secret Pages never shows, or a plain run "
+                           "for a new client secret")
+        if "(Or **Disable token** first" in flat3f:
+            errors += fail("DEPLOY.md §3f still offers disabling the token as the other way to Revoke immediately")
+        for name, raw in (("full run", v1["OIDC_SIGNING_JWK"]), ("--key", vk.get("OIDC_SIGNING_JWK", "{}"))):
+            k = json.loads(raw)
+            b64 = r"[A-Za-z0-9_-]{43}"
+            if (set(k) != {"kty", "crv", "x", "y", "d", "kid", "alg", "use"} or (k["kty"], k["crv"], k["alg"], k["use"])
+                    != ("EC", "P-256", "ES256", "sig") or not all(re.fullmatch(b64, k[f]) for f in ("x", "y", "d"))):
+                errors += fail(f"the {name} key is not a private P-256 JWK for ES256")
+                continue
+            thumb = _up_b64(hashlib.sha256(json.dumps({"crv": k["crv"], "kty": k["kty"], "x": k["x"], "y": k["y"]},
+                                                      separators=(",", ":"), sort_keys=True).encode()).digest())
+            if k["kid"] != thumb:
+                errors += fail(f"the {name} key's kid is not its RFC 7638 thumbprint")
+            x, y, dd = (int.from_bytes(_b64u_bytes(k[f]), "big") for f in ("x", "y", "d"))
+            if not (0 < dd < _P256_N) or _p256_mul(dd, _P256_G) != (x, y):
+                errors += fail(f"the {name} key's private half is not the published point's")
+        if not re.fullmatch(r"job-hunter-[0-9a-f]{16}", v1["OIDC_CLIENT_ID"]):
+            errors += fail(f"the client id is not plain: {v1['OIDC_CLIENT_ID'][:20]!r}")
+        if not re.fullmatch(r"[A-Za-z0-9_-]{32,}", v1["OIDC_CLIENT_SECRET"]):
+            errors += fail("the client secret is under 32 characters, or not plain base64url")
+        # THE KEY WORKS IN THE BOARD: _oidc.js signs with it, its published half verifies
+        probe = ("import(" + json.dumps((ROOT / "functions" / "_oidc.js").as_uri()) + ").then(async (O) => {"
+                 "const env = { OIDC_SIGNING_JWK: process.env.PROBE_JWK };"
+                 "const jwt = await O.signJwt(env, { iss: 'probe', iat: 1 });"
+                 "console.log(JSON.stringify({ jwt, keys: await O.publicKeys(env) })); })")
+        p = subprocess.run(["node", "--input-type=module", "-e", probe], capture_output=True, text=True, timeout=60,
+                           env={**os.environ, "PROBE_JWK": v1["OIDC_SIGNING_JWK"]})
+        try:
+            got = json.loads(p.stdout.strip().splitlines()[-1])
+        except (ValueError, IndexError):
+            got = {}
+        pub = (got.get("keys") or [{}])[0]
+        if (not got.get("jwt") or "d" in pub or pub.get("kid") != json.loads(v1["OIDC_SIGNING_JWK"])["kid"]
+                or not _es256_verify(pub, got["jwt"])):
+            errors += fail(f"the printed key does not sign in the board a token its published half verifies: {p.stderr[-200:]}")
+        if any(tmp.iterdir()):
+            errors += fail(f"the secrets script wrote a file: {[f.name for f in tmp.iterdir()]}")
+        if git() != before:
+            errors += fail("running the secrets script changed the working tree")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def _up_b64(b: bytes) -> str:
+    import base64
+    return base64.urlsafe_b64encode(b).decode("ascii").rstrip("=")
+
+
 def check_the_site_is_signed_in_only_until_launch() -> int:
     """The front door is public; nothing else is served without a sign-in.
 
@@ -12160,11 +13484,11 @@ def check_every_page_carries_a_policy_built_from_itself() -> int:
                            f"and blanks thousands of style attributes")
         if "report-uri" in d or "report-to" in d:
             errors += fail(f"{k}: a report endpoint costs a Function request per report")
-        # THE APP MAY ASK JOB HUNTER ONE THING (its panel on a role, owner,
-        # 2026-10-25), at hunter.<the brand's domain> and nowhere else; every
-        # other kind of page fetches only from itself
-        dom = json.loads((DATA / "brand.json").read_text()).get("domain")
-        want_connect = ["'self'", f"https://hunter.{dom}"] if k == "app" else ["'self'"]
+        # EVERY KIND OF PAGE FETCHES ONLY FROM ITSELF. The app page named
+        # hunter.<the brand's domain> for the Job Hunter panel from 2026-10-25;
+        # since 2026-11-23 (design C) the panel asks this site's own
+        # /api/jh/board-role and nothing on any page talks to Job Hunter
+        want_connect = ["'self'"]
         if d.get("img-src") != ["'self'"] or d.get("connect-src") != want_connect:
             errors += fail(f"{k}: img-src/connect-src widened: {d.get('img-src')} / {d.get('connect-src')}")
 
@@ -60050,8 +61374,24 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         got = flat.get(key, "")
         if needle not in got or f'href="{app}"' not in got:
             errors += fail(f"the panel's {key} silence does not say {needle!r} or offer Job Hunter: {got[:200]!r}")
-    if "did not answer" in flat.get("signin", "") or "Sign in" in flat.get("unreachable", ""):
+    if ("did not answer" in flat.get("signin", "") or "Sign in" in flat.get("unreachable", "")
+            or "Sign in" in flat.get("not_let_in", "") or "did not answer" in flat.get("not_let_in", "")):
         errors += fail("the panel says one silence for another")
+    # THE BOARD'S OWN FUNCTION'S WORDS (design C, 2026-11-23): no place in the
+    # beta, the board's sign-in run out (offered a sign-in back to this page,
+    # not Job Hunter), the board's way in not set up
+    for key, needle, href in (("not_allowed", "closed beta", f'href="{app}"'),
+                              ("signedout", "SLED JOBS sign-in has run out", 'href="http://x/signin?to=%2F"'),
+                              ("not_set_up", "way in to Job Hunter is not set up", f'href="{app}"'),
+                              # one person's twenty asks a minute (review, 2026-11-23)
+                              ("slow_down", "Wait a minute, then open this one again", f'href="{app}"'),
+                              # Job Hunter not taking the board's way in (review, 2026-11-24):
+                              # a setup problem, never "sign in"
+                              ("not_let_in", "did not let the board in", f'href="{app}"'),
+                              ("not_let_in", "way in to Job Hunter needs fixing; it is not your sign-in", f'href="{app}"')):
+        got = flat.get(key, "")
+        if needle not in got or href not in got:
+            errors += fail(f"the panel's {key} silence does not say {needle!r} or offer {href}: {got[:200]!r}")
     if "not on your Job Hunter board" not in flat.get("missing", "") or "jhp-flaghost" not in flat.get("missing", ""):
         errors += fail(f"a role Job Hunter does not hold is not offered its Flag: {flat.get('missing','')[:160]!r}")
     # THE REPLY BECOMES THE RIGHT SILENCE, run on the page's own jhAnswer: Job
@@ -60060,7 +61400,13 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
     # its status (second review, 2026-10-26: the mapping was never run)
     want = {"redirect": {"failed": "signin"}, "no_account": {"failed": "no_account"},
             "no_token": {"failed": "signin"}, "forbidden": {"failed": "signin"},
-            "down": {"failed": 503}, "found": {"found": True, "id": "s"}}
+            "down": {"failed": 503}, "found": {"found": True, "id": "s"},
+            # functions/api/jh/board-role.js's own answers, and the gate's
+            "not_allowed": {"failed": "not_allowed"}, "not_signed_in": {"failed": "signedout"},
+            "gate_refused": {"failed": "signedout"}, "unreachable": {"failed": "unreachable"},
+            "not_set_up": {"failed": "not_set_up"}, "not_from_site": {"failed": "signin"},
+            "bad_id": {"failed": 400}, "slow_down": {"failed": "slow_down"},
+            "not_let_in": {"failed": "not_let_in"}}
     got = jp.get("answers") or {}
     for k, v in want.items():
         if got.get(k) != v:
@@ -60129,11 +61475,17 @@ def check_the_job_hunter_panel_says_what_job_hunter_said() -> int:
         errors += fail("an unexpected failure is escaped twice or not at all")
     src = re.sub(r"\s+", "", (ROOT / "index.html").read_text())
     op = src[src.find("asyncfunctionopenJhPanel("):src.find("document.addEventListener(\"keydown\",e=>{constel=$(\"#jhpanel\");")]
+    # THE PANEL ASKS THIS SITE (design C, 2026-11-23): its own
+    # /api/jh/board-role, same origin only, and the board's server asks Job
+    # Hunter (check_the_panel_asks_job_hunter_through_the_board); the page
+    # never fetches Job Hunter itself
+    if "fetch(jhOrigin()" in src or 'fetch("https://hunter.' in src or "jhOrigin()" in src:
+        errors += fail("the page still fetches Job Hunter across sites; the panel asks the board's own server")
     for needle, why in (
-            ('r=awaitjhAnswer(awaitfetch(jhOrigin()+"/api/board-role?id="+encodeURIComponent(p.id),'
-             '{credentials:"include",mode:"cors",redirect:"manual",cache:"no-store"}));',
-             "asks Job Hunter something besides the posting's id, follows its door's redirect, "
-             "or reads the reply some other way than jhAnswer"),
+            ('r=awaitjhAnswer(awaitfetch("/api/jh/board-role?id="+encodeURIComponent(p.id),'
+             '{credentials:"same-origin",mode:"same-origin",redirect:"manual",cache:"no-store"}));',
+             "asks the board's own server something besides the posting's id, asks another site, "
+             "follows a redirect, or reads the reply some other way than jhAnswer"),
             ('}catch(e){r={failed:"unreachable"};}', "reads a request that never answered as something else"),
             ("constfh=body.querySelector(\".jhp-flaghost\");if(fh)fh.appendChild(jhFlagLink(p));",
              "offers a role Job Hunter does not hold no Flag"),
@@ -65047,6 +66399,9 @@ def main() -> int:
     errors += check_the_front_page_is_whole_and_public()
     errors += check_continue_with_google_waits_for_its_own_door()
     errors += check_our_own_sign_in_proves_the_address_and_opens_only_the_boards()
+    errors += check_job_hunter_signs_in_with_sled_jobs()
+    errors += check_the_panel_asks_job_hunter_through_the_board()
+    errors += check_the_sign_in_secrets_are_made_and_shown_once()
     errors += check_the_claim_moves_to_hq_on_one_switch()
     errors += check_every_published_link_is_rechecked()
     errors += check_a_pruned_row_cannot_leak_into_the_archive()
