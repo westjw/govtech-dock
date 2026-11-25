@@ -39,12 +39,14 @@ HOW, IN ORDER, and why each step exists:
   5. Merge each file three ways on PARSED JSON (merge_data.merge_text): base
      = the checkout's HEAD, ours = the desk, theirs = main. Any field both
      sides changed differently is a CONFLICT: nothing is pushed, an inbox
-     item names it. A company both sides changed in different fields is
-     journalled as merged, by the publisher (_journal_the_merge, ids of its
-     own: `<day>#publish-<n>`), so the journal's last after-image is the
-     record main now holds - only when every owner field of the merge is
-     one a side journalled; a write no entry holds is left for the checks
-     to refuse, and the refusal names it.
+     item names it. A company whose merged record the journal's last word
+     does not hold (both sides changed it, or a remedy left the newest
+     entry without the other side's change) is journalled as merged, by
+     the publisher (_journal_the_merge, ids of its own:
+     `<day>#publish-<n>`), so the journal's last after-image is the record
+     main now holds - only over what each side journalled: a write no
+     entry holds, on either side by that side's own check, refuses the
+     publish, named, and nothing it would hide may pass (_hidden_failures).
   6. In a throwaway worktree at main - main's CODE runs, never the
      checkout's uncommitted code - write the merged files, run the quick
      rebuild, stage explicit paths (never -A, never -f), and run the checks:
@@ -590,14 +592,9 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             else:
                 f.parent.mkdir(parents=True, exist_ok=True)
                 f.write_text(text)
-        unjournalled = []
-        if COMPANIES in merged:
-            entry, unjournalled = _journal_the_merge(
-                wt, base_of(COMPANIES), snap.get(COMPANIES), show(theirs_rev, COMPANIES),
-                merged[COMPANIES], now, {p: snap[p] for p in arch if snap.get(p) is not None},
-                main_live=show(theirs_rev, LIVE_JOURNAL), desk_live=desk_live)
-            if entry:
-                merged[LIVE_JOURNAL] = (wt / LIVE_JOURNAL).read_text()   # staged, and trimmed
+        # THE ARCHIVE AND THE LIVE JOURNAL FIRST: the carry trims the merged
+        # live journal back to its rules, and what it keeps is what main's
+        # check reads - so the merge entry is decided against that, exactly
         if arch or LIVE_JOURNAL in merged:
             odd, glued = _file_archive(wt, arch, snap, desk_live)
             if odd:
@@ -618,6 +615,41 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
                 inbox("checks", "A publish was refused; nothing was pushed:\n" + bad, st,
                       {"files": take})
                 return done("refused", why=bad[:1500])
+        unjournalled = []
+        main_live = show(theirs_rev, LIVE_JOURNAL)
+        main_cos = show(theirs_rev, COMPANIES)
+        if COMPANIES in merged:
+            entry, unjournalled, refusal = _journal_the_merge(
+                wt, base_of(COMPANIES), snap.get(COMPANIES), main_cos,
+                merged[COMPANIES], now, {p: snap[p] for p in arch if snap.get(p) is not None},
+                main_live=main_live, desk_live=desk_live, base_live=base_of(LIVE_JOURNAL),
+                rev=theirs_rev)
+            if refusal:
+                inbox("checks", "A publish was refused; nothing was pushed:\n" + refusal, st,
+                      {"files": take})
+                return done("refused", why=refusal[:1500])
+            if entry:
+                # the entry is the newest row: the live journal back to KEEP with it
+                journal.normalize(wt / "data", trim=True)
+                merged[LIVE_JOURNAL] = (wt / LIVE_JOURNAL).read_text()   # staged, and trimmed
+        # THE BACKSTOP: a field main's own check fails on - or the desk's, for
+        # the records it publishes - never passes in what is pushed. A merged
+        # journal can hide one without any entry of the publisher's: the
+        # other side's later after-image agreeing with a put-back, or the
+        # trim pruning the entry the check read (2026-11-25 fifth review)
+        hidden, main_red = _hidden_failures(
+            wt, main_cos, main_live,
+            snap.get(COMPANIES) if COMPANIES in merged else None, desk_live,
+            base_of(COMPANIES), base_of(LIVE_JOURNAL))
+        if hidden:
+            bad = ("this publish would hide a write to companies.json that no journal entry "
+                   "holds - main's own check (or the desk's, on what it publishes) fails on it, "
+                   "and after the merge it would not: " + "; ".join(hidden[:6])
+                   + (f"; and {len(hidden) - 6} more" if len(hidden) > 6 else "")
+                   + ". Nothing was published. " + _REFUSED_TAIL)
+            inbox("checks", "A publish was refused; nothing was pushed:\n" + bad, st,
+                  {"files": take})
+            return done("refused", why=bad[:1500])
         why = redraw(wt)
         if why:
             inbox("rebuild", "The quick rebuild failed; nothing was published:\n" + why, st)
@@ -637,10 +669,10 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             return done("idle", why="the merged files equal main already")
         bad = run_checks(wt, staged)
         if bad:
-            if unjournalled:
-                # FIRST, what the publisher knows of it: which side's record
-                # holds a write no journal entry holds - the place to look
-                bad = (_unjournalled_note(unjournalled) + "\n" + bad)
+            if main_red:
+                # FIRST, what the publisher knows of it: main's own check
+                # fails on these already - the write is on main
+                bad = (_main_red_note(main_red) + "\n" + bad)
             inbox("checks", "A publish was refused by its checks; nothing was "
                             "pushed:\n" + bad, st, {"files": take})
             return done("refused", why=bad[:1500])
@@ -761,93 +793,183 @@ def _written(side: str, hit) -> str:
     return f"written {where}, and {whose} journal has no entry for it"
 
 
-def _unjournalled_note(declined: list) -> str:
-    return ("the publisher wrote no merge entry for " + "; ".join(declined[:4])
-            + (f"; and {len(declined) - 4} more" if len(declined) > 4 else "")
-            + ": a write to companies.json that no journal entry holds. The publisher journals a "
-              "merge only over what each side journalled, so it never silences such a write, and "
-              "neither does a session: it finds the write and the owner rules on the field on "
-              "that side (CLAUDE.md, the owner's step 3, 'refused').")
+_REFUSED_TAIL = ("The publisher journals a merge only over what each side journalled, so it never "
+                 "silences such a write, and neither does a session: it finds the write and the "
+                 "owner rules on each field on the side named (CLAUDE.md, the owner's step 3, "
+                 "'refused').")
+
+
+def _refusal(items: list) -> str:
+    """The why of a publish refused over writes no journal entry holds: what
+    and where first, the instructions after - a message cut at 1,500
+    characters keeps both."""
+    return ("the publisher wrote no merge entry: a write to companies.json that no journal "
+            "entry holds - " + "; ".join(items[:6])
+            + (f"; and {len(items) - 6} more" if len(items) > 6 else "")
+            + ". Nothing was published. " + _REFUSED_TAIL)
+
+
+def _main_red_note(red: list) -> str:
+    return ("main's own check fails on these already, before this publish - the write is on "
+            "main: " + "; ".join(red[:4]) + (f"; and {len(red) - 4} more" if len(red) > 4 else "")
+            + ". " + _REFUSED_TAIL)
+
+
+def _records(text: str | None) -> dict | None:
+    try:
+        return journal.snapshot(json.loads(text), COMPANIES.rsplit("/", 1)[-1]) \
+            if text else None
+    except ValueError:
+        return None
+
+
+def _side_failures(side: str, recs: dict | None, live: str | None, base: dict | None,
+                   base_live: str | None) -> list[tuple]:
+    """Where `side`'s OWN check fails - check_journal_matches_reality's rule
+    (journal.unwritten_owner_fields) over that side's records and live
+    journal: a write to companies.json no entry of that side holds, a
+    put-back of the base value included. For the desk, a failure the
+    checkout's commit already held - the same entry, the record unchanged -
+    is not the desk's doing, and main's own check decides it."""
+    if recs is None:
+        return []
+    out = journal.unwritten_owner_fields(recs, _rows_of(live))
+    if side == "desk" and base is not None:
+        held = {(c, f, e) for c, f, e, _j, _v in
+                journal.unwritten_owner_fields(base, _rows_of(base_live))}
+        out = [x for x in out if not ((x[0], x[1], x[2]) in held
+                                      and (base.get(x[0]) or {}).get(x[1]) == x[4])]
+    return out
+
+
+def _hidden_failures(wt: pathlib.Path, main_cos: str | None, main_live: str | None,
+                     desk_cos: str | None, desk_live: str | None, base_cos: str | None,
+                     base_live: str | None) -> tuple[list, list]:
+    """(the fields a side's own check fails on that would PASS in the
+    worktree, as merged; main's own failures). The invariant the merge entry
+    is held to, checked whole after it: no write a side's check sees may be
+    hidden by the publish. The desk's side is read only when its
+    companies.json is published (`desk_cos`)."""
+    X = _records((wt / COMPANIES).read_text() if (wt / COMPANIES).is_file() else None) or {}
+    live = wt / LIVE_JOURNAL
+    W = {(c, f) for c, f, *_x in journal.unwritten_owner_fields(
+        X, _rows_of(live.read_text() if live.is_file() else ""))}
+    base = _records(base_cos)
+    hidden, red = [], []
+    for side, cos, lv in (("main", main_cos, main_live), ("desk", desk_cos, desk_live)):
+        for c, f, eid, _j, _v in _side_failures(side, _records(cos), lv, base, base_live):
+            if c not in X:
+                continue                         # gone in the merge: nothing to check
+            item = f"{c}: {f} {_written(side, (eid,))}"
+            if (c, f) not in W:
+                hidden.append(item)
+            elif side == "main":
+                red.append(item)
+    return hidden, red
+
+
+def _main_archived_rows(rev: str):
+    """Main's archived rows at `rev`, read from git: the worktree's archive
+    holds the desk's rows too once the carry has run."""
+    r = git("ls-tree", "-r", "--name-only", rev, "--", ARCHIVE_DIR, LEGACY_ARCHIVE, check=False)
+    for path in sorted(r.stdout.split(), key=_archive_order):
+        if not is_archive(path):
+            continue
+        try:
+            got = journal.lines_of(path, show_bytes(rev, path))
+        except (OSError, EOFError, zlib.error):
+            continue                             # a torn gzip vouches for nothing
+        for ln in got:
+            try:
+                yield json.loads(ln)
+            except ValueError:
+                continue
 
 
 def _journal_the_merge(wt: pathlib.Path, base: str | None, ours: str | None,
                        theirs: str | None, merged: str | None, now: float,
                        archived: dict | None = None, *, main_live: str | None = None,
-                       desk_live: str | None = None) -> tuple[dict | None, list]:
-    """A journal entry, by the publisher, for each company the desk and main
-    BOTH changed while apart: merged field by field (merge_data), the record
-    on main is neither side's, and no entry's after-image holds it - so the
-    journal said one thing and companies.json another, and main's own
-    selftest refused the publish (check_journal_matches_reality, whose
-    advice - "recover the value from <id>'s after-image" - would have
-    reverted one side's ruling; 2026-11-24 second review). The entry's
-    before is main's record, its after the merged one: what the publish does
-    to main, undoable like any other write. A company whose last live entry
-    already says what the merge made (the crawl's hiring and ats aside, which
-    nothing journals) gets none. Appended to the worktree's live journal,
-    before the carry trims it.
+                       desk_live: str | None = None, base_live: str | None = None,
+                       rev: str | None = None) -> tuple[dict | None, list, str | None]:
+    """A journal entry, by the publisher, for each company whose record on
+    main after the merge is not what the journal's last word on it says -
+    so main's own check (check_journal_matches_reality) would refuse the
+    publish, advising a recovery that reverts one side's ruling (2026-11-24
+    second review). Its before is main's record, its after the merged one:
+    what the publish does to main, undoable like any other write. Appended
+    to the worktree's live journal AFTER the carry has trimmed it, because
+    what the trim keeps is what the check reads. Returns (the entry or None,
+    what it lists as unjournalled, the why of a refusal or None).
 
-    ONLY OVER WHAT EACH SIDE JOURNALLED. That check is the one guard against
-    a write to companies.json no entry holds - six pipeline scripts still
-    write it directly - and an entry whose after-image is the merge vouches
-    for every field in it: a pipeline's unjournalled revert of an owner's
-    brands on main, merged with a desk ruling on the same company, stood
-    under the publisher's entry and main's failing check went to 0 errors
-    (2026-11-25 third review). So, field by field over the ones the check
-    guards (journal.OWNER_FIELDS), the entry is written only when the merged
-    record holds nothing no journal entry holds: a field the merge CHANGED
-    from the base carries a value some side changed it to AND journalled -
-    that side's own last after-image of the company holds it (main's live
-    journal at the fetched rev, else main's archive; the desk's live
-    journal, else the archive the cycle snapshotted) - and a field neither
-    side changed is not contradicted by the journal's last word on the
-    company (the merged live journal, what the check reads): that
-    disagreement is no doing of the merge. Otherwise no entry - the check
-    speaks - and the company is named with each such field and where it was
-    written, for the refusal. Returns (the entry or None, those names)."""
+    BY ONE INVARIANT: the entry vouches for nothing no journal entry holds,
+    and the publish hides no write a side's own check sees. In order:
+
+    1. EACH SIDE BY ITS OWN CHECK, before anything else - the check's own
+       reading (journal.unwritten_owner_fields) of main's records and live
+       journal, and of the desk's: a field whose last companies.json
+       after-image on that side disagrees with that side's record is a write
+       no entry holds there, a pipeline's put-back of the base value
+       included, and the publish is refused, naming the company, the field,
+       the side and the entry. Read only from the merged journal, the
+       other side's stale after-image agreed with such a put-back whenever
+       its entry was the later (2026-11-25 fifth review), and an early
+       "nothing to do" skip ran before any of it.
+    2. THE CANDIDATES are the companies the check would fail on in the
+       worktree without an entry - computed by the same reading over the
+       merged, trimmed journal - including one whose merged record equals a
+       side's, or whose side went back to the base: the owner's documented
+       remedies leave exactly that (his ruling is the newest entry, and its
+       after-image lacks the other side's change), and they were refused
+       again on the next cycle (fifth review).
+    3. FOR EACH, the entry is written only when every owner field the merge
+       changed from the base carries a value a side changed it to and
+       journalled - that side's own last word on the company holds it: its
+       live journal (as the check reads it), else its archive (main's at the
+       fetched rev, the desk's as snapshotted) - and a side whose last word
+       is archived agrees with its own record. Otherwise the publish is
+       refused, naming each such field and where it was written.
+    A company both sides changed that the check passes without an entry
+    gets none; a field of it no side's journal holds is returned to be
+    listed under "unjournalled" (published: nothing journalled could
+    contradict it, and the check cannot see it)."""
     if merged is None or ours is None or theirs is None:
-        return None, []
+        return None, [], None
     name = COMPANIES.rsplit("/", 1)[-1]
     try:
         B = journal.snapshot(json.loads(base) if base else [], name)
         O, T = journal.snapshot(json.loads(ours), name), journal.snapshot(json.loads(theirs), name)
         X = journal.snapshot(json.loads(merged), name)
     except ValueError:
-        return None, []
+        return None, [], None
+    recs = {"main": T, "desk": O}
+    lives = {"main": main_live, "desk": desk_live}
+    # 1. each side by its own check
+    refuse = [f"{c}: {f} {_written(side, (eid,))}"
+              for side in ("main", "desk")
+              for c, f, eid, _j, _v in _side_failures(side, recs[side], lives[side], B, base_live)
+              if c in X]
+    if refuse:
+        return None, [], _refusal(refuse)
+    # 2. what the check reads in the worktree, without an entry of ours
     live = wt / LIVE_JOURNAL
     text = live.read_text() if live.is_file() else ""
     rows = _rows_of(text)
-    merged_last = _last_after(rows, name)           # what the check will read
-    last = {k: a for k, (_i, a) in merged_last.items()}
-
-    def own(rec):
-        return {f: v for f, v in (rec or {}).items() if f not in merge_data.UPSTREAM_ONLY}
-    both = []
-    for k, x in X.items():
-        o, t, b = O.get(k), T.get(k), B.get(k)
-        if None in (o, t, b) or o == b or t == b or x in (o, t):
-            continue                    # one side's change: that side's entry holds it
-        if k in last and own(last[k]) == own(x):
-            continue
-        both.append(k)
-    if not both:
-        return None, []
+    W = {c for c, *_x in journal.unwritten_owner_fields(X, rows)}
+    both = {k for k in X if k in O and k in T and k in B and O[k] != B[k] and T[k] != B[k]
+            and X[k] not in (O[k], T[k])}
+    cands = sorted(W | both, key=str)
+    if not cands:
+        return None, [], None
     archived = archived or {}
-    recs = {"main": T, "desk": O}
-    said = {"main": _last_after(_rows_of(main_live), name, set(both)),
-            "desk": _last_after(_rows_of(desk_live), name, set(both))}
-
-    def changed(k):
-        """(field, merged value, the sides whose record carries it) for each
-        owner field the merge changed from the base."""
-        for f in journal.OWNER_FIELDS:
-            x = X[k].get(f, _ABSENT)
-            if x != B[k].get(f, _ABSENT):
-                yield f, x, [s for s in ("main", "desk") if recs[s][k].get(f, _ABSENT) == x]
+    said = {s: journal.last_after_images(_rows_of(lives[s]), name) for s in recs}
+    in_archive = {"main": {}, "desk": {}}
 
     def archived_rows(side):
-        if side == "main":                       # main's archive: the worktree, before the carry
-            yield from journal.archived_rows(wt / "data", legacy=False)
+        if side == "main":
+            if rev is not None:                  # main's own, at the fetched rev
+                yield from _main_archived_rows(rev)
+            else:
+                yield from journal.archived_rows(wt / "data", legacy=False)
             return
         for p in sorted(archived, key=_archive_order):   # the desk's, as snapshotted
             try:
@@ -859,38 +981,50 @@ def _journal_the_merge(wt: pathlib.Path, base: str | None, ours: str | None,
                     yield json.loads(ln)
                 except ValueError:
                     continue
-    # a side's last word on a company its live journal no longer holds (pruned
-    # since): the archive - read only for a side carrying a changed value
-    need = {"main": set(), "desk": set()}
-    for k in both:
-        for _f, _x, carriers in changed(k):
-            need.update({s: need[s] | {k} for s in carriers if k not in said[s]})
-    for side, ks in need.items():
+    for side in recs:
+        ks = {k for k in cands if k not in said[side]}
         if ks:
-            said[side].update({k: (f"{i}, in the archive", a) for k, (i, a) in
-                               _last_after(archived_rows(side), name, ks, by_at=True).items()})
-    changes, declined = {}, []
-    for k in both:
-        whys = []
-        for f, x, carriers in changed(k):
-            if any(k in said[s] and said[s][k][1].get(f, _ABSENT) == x for s in carriers):
-                continue                         # a side changed it, and journalled it
-            whys.append(f"{f} " + (" and ".join(_written(s, said[s].get(k)) for s in carriers)
-                                   or "holds a value neither side's record has"))
-        lid, lafter = merged_last.get(k, (None, None))
+            in_archive[side] = {k: (f"{i}, in the archive", a) for k, (i, a) in
+                                _last_after(archived_rows(side), name, ks, by_at=True).items()}
+
+    def word(side, k):
+        return said[side].get(k) or in_archive[side].get(k)
+
+    def changed(k):
+        """(field, merged value, the sides whose record carries it) for each
+        owner field the merge changed from the base."""
+        b = B.get(k) or {}
         for f in journal.OWNER_FIELDS:
-            # compared as the check compares: a field the after-image names,
-            # against the record's value (absent reads as None)
-            if X[k].get(f, _ABSENT) == B[k].get(f, _ABSENT) and lafter is not None \
-                    and f in lafter and lafter[f] != X[k].get(f):
-                whys.append(f"{f}, which neither side changed, while the journal's last entry for "
-                            f"it ({lid}) holds another value")
-        if whys:
-            declined.append(f"{k}: {'; '.join(whys)}")
+            x = X[k].get(f, _ABSENT)
+            if x != b.get(f, _ABSENT):
+                yield f, x, [s for s in ("main", "desk")
+                             if (recs[s].get(k) or {}).get(f, _ABSENT) == x]
+    changes, declined, listed = {}, [], []
+    for k in cands:
+        whys = []
+        for side in recs:
+            hit = in_archive[side].get(k) if k not in said[side] else None
+            mine = recs[side].get(k)
+            if hit and isinstance(mine, dict) and isinstance(hit[1], dict):
+                whys += [f"{f} {_written(side, hit)}" for f in journal.OWNER_FIELDS
+                         if f in hit[1] and hit[1][f] != mine.get(f)]
+        for f, x, carriers in changed(k):
+            if any(word(s, k) and word(s, k)[1].get(f, _ABSENT) == x for s in carriers):
+                continue                         # a side changed it, and journalled it
+            whys.append(f"{f} " + (" and ".join(_written(s, word(s, k)) for s in carriers)
+                                   or "holds a value neither side's record has"))
+        if k not in W:
+            if whys:
+                listed.append(f"{k}: {'; '.join(dict.fromkeys(whys))}")
             continue
-        changes[k] = {"before": T[k], "after": X[k]}
+        if whys:
+            declined.append(f"{k}: {'; '.join(dict.fromkeys(whys))}")
+            continue
+        changes[k] = {"before": T.get(k), "after": X[k]}
+    if declined:
+        return None, [], _refusal(declined)
     if not changes:
-        return None, declined
+        return None, listed, None
     lines = []
     for p, raw in archived.items():               # the desk's archive, as snapshotted
         try:
@@ -903,15 +1037,15 @@ def _journal_the_merge(wt: pathlib.Path, base: str | None, ours: str | None,
              "at": now_iso(now), "file": name, "action": "publish-merge", "by": "publisher",
              "why": (f"the desk and main each changed {', '.join(sorted(changes)[:8])}"
                      f"{f' and {len(changes) - 8} more' if len(changes) > 8 else ''} while "
-                     f"apart; the publish of {now_iso(now)} merged them field by field, so no "
-                     f"entry before this one holds the record as it now stands (before: "
-                     f"main's; after: the merge)"),
+                     f"apart; the publish of {now_iso(now)} merged them field by field, and the "
+                     f"journal's last entry before this one does not hold the record as it now "
+                     f"stands (before: main's; after: the merge)"),
              "n": len(changes), "changes": changes}
     with open(live, "a") as fh:
         if text and not text.endswith("\n"):
             fh.write("\n")
         fh.write(json.dumps(entry) + "\n")
-    return entry, declined
+    return entry, listed, None
 
 
 def _stage_archive(wt: pathlib.Path) -> None:
@@ -996,10 +1130,26 @@ def _sync_inner(snap: dict, rev: str, st: dict, out: dict) -> bool:
         others = [p for p in dirty if p in moving and p not in snap]
         same = sorted(p for p in others if _matches(rev, p))
         blocking = sorted(p for p in others if p not in same)
+        # THE DESK'S OWN WORK SINCE THE SNAPSHOT is no file to choose over: a
+        # ruling made while a hand-run cycle built - after the switch-over the
+        # desk runs through step 3 - journalled the live journal, its data
+        # file and an archive part, all of which the next cycle takes. Told
+        # "would overwrite", the owner was offered main's copy, which drops
+        # the ruling (2026-11-25 fifth review). It is carried, not chosen.
+        if blocking:
+            nxt = set(publishable()[0])
+            carried = [p for p in blocking if p in nxt]
+            blocking = [p for p in blocking if p not in nxt]
+        else:
+            carried = []
         if blocking:
             out["sync"] = "skipped: would overwrite " + ", ".join(blocking[:6])
             inbox("sync", "Published, but the checkout could not be brought up to "
                           "main without overwriting: " + ", ".join(blocking[:12]), st)
+            return False
+        if carried:
+            out["sync"] = ("skipped: the desk wrote " + ", ".join(carried[:6])
+                           + " during the cycle; the next cycle carries it")
             return False
         # AND A DIRTY PATH MAIN DOES NOT MOVE, holding a copy main held on the
         # way: a script main changed after the hand fetch and then put back as

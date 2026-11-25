@@ -1788,11 +1788,14 @@ def reversals(limit: int = 8) -> list:
     # ONE ROW PER DESK REQUEST: a placement journals the company and its
     # ruling, and the shift's Undo takes both back, which read as two rulings
     # and "2 taken back" (review, 2026-10-24)
+    # one request named whole (journal.ruling_keys): an id can name two
+    # entries once the desk's and main's same-day ids meet in one journal
+    keys = journal.ruling_keys(rows)
     members: dict = collections.defaultdict(list)
-    for r in rows:
-        members[r.get("same_ruling_as") or r.get("id")].append(r)
+    for r, k in zip(rows, keys):
+        members[k].append(r)
     out, seen = [], set()
-    for r in reversed(rows):
+    for r, group in reversed(list(zip(rows, keys))):
         if r.get("action") in ("undo", "reopen"):
             continue
         # The strip is headed "Last rulings", so it shows the person's. It
@@ -1800,7 +1803,6 @@ def reversals(limit: int = 8) -> list:
         # heading, which is the same misattribution the sitting counter had.
         if not _is_person(r.get("by")):
             continue
-        group = r.get("same_ruling_as") or r.get("id")
         if group in seen:
             continue
         seen.add(group)
@@ -1809,7 +1811,7 @@ def reversals(limit: int = 8) -> list:
         out.append({"id": first["id"], "action": first["action"],
                     "n": sum(m.get("n", 0) for m in mine),
                     "at": first.get("at"), "why": first.get("why", ""),
-                    "reversed": any(m["id"] in undone for m in mine)})
+                    "reversed": any(journal.entry_key(m) in undone for m in mine)})
         if len(out) >= limit:
             break
     return out
@@ -2649,13 +2651,19 @@ def _ruling_stamps(mine_only: bool = True) -> list[tuple[dt.datetime, str]]:
 
 
 def _undone_ids(rows: list) -> set:
-    """The journal entries an undo has taken back and nothing has put back.
-    Walked newest first, so an undo that was itself undone (admin_undo.py
-    --undo on an undo) cancels nothing."""
+    """The journal entries an undo has taken back and nothing has put back,
+    each named WHOLE (journal.entry_key: its id and its at) - one id can
+    name two entries once a publish carries the desk's and main's same-day
+    ids into one journal, and keyed by the bare id an undo of one marked
+    both taken back (2026-11-25 fifth review). Walked newest first, so an
+    undo that was itself undone (admin_undo.py --undo on an undo) cancels
+    nothing."""
+    import journal
+    targets = dict(journal.undo_targets(rows))
     undone: set = set()
-    for r in reversed(rows):
-        if r.get("undo_of") and r.get("id") not in undone:
-            undone.add(r["undo_of"])
+    for i in range(len(rows) - 1, -1, -1):
+        if i in targets and journal.entry_key(rows[i]) not in undone:
+            undone.add(targets[i])
     return undone
 
 
@@ -2696,11 +2704,10 @@ def _journal_rulings(mine_only: bool = True) -> list[tuple[dt.datetime, str, str
     # request writes with the request's first (same_ruling_as), and a stamp
     # is counted once.
     counted: set = set()
-    for r in rows:
+    for r, one in zip(rows, journal.ruling_keys(rows)):
         queue = _ruling_queue(r)
-        if not queue or r.get("id") in undone:
+        if not queue or journal.entry_key(r) in undone:
             continue
-        one = r.get("same_ruling_as") or r.get("id")
         if one in counted:
             continue
         counted.add(one)
@@ -2767,7 +2774,7 @@ def receipt() -> dict:
     opened = []
     for r in mine:
         # a board an undo took away again is not a door this sitting opened
-        if r.get("file") != "companies.json" or r.get("id") in gone:
+        if r.get("file") != "companies.json" or journal.entry_key(r) in gone:
             continue
         for cid, ch in (r.get("changes") or {}).items():
             b4 = ((ch.get("before") or {}).get("ats") or {}).get("type")
@@ -6290,25 +6297,49 @@ def act_undo(body: dict) -> dict:
     with undo_of, which reversals() and the receipt already read."""
     import journal
     ids = body.get("entries")
+
+    def named(i):
+        return (isinstance(i, str) and i) or (
+            isinstance(i, dict) and isinstance(i.get("id"), str) and i["id"]
+            and isinstance(i.get("at"), str))
     if (not isinstance(ids, list) or not ids or len(ids) > 10
-            or not all(isinstance(i, str) and i for i in ids)):
+            or not all(named(i) for i in ids)):
         return {"error": "an undo needs the journal ids its ruling made, at most ten"}
     rows = journal._entries()
-    pos = {r.get("id"): i for i, r in enumerate(rows)}
-    entries = []
-    for eid in dict.fromkeys(ids):
-        e = rows[pos[eid]] if eid in pos else None
+    pos = {journal.entry_key(r): i for i, r in enumerate(rows)}
+    entries, keys = [], set()
+    for item in ids:
+        # AN ENTRY NAMED WHOLE (the ledger sends its id and at), or by its id
+        # alone - which may name two entries once the desk's and main's
+        # same-day ids meet in one journal: then nothing is undone, and each
+        # is named (2026-11-25 fifth review: the later was taken, main's
+        # ruling reversed, and the reply said the desk's was undone)
+        eid, at = (item, None) if isinstance(item, str) else (item["id"], item["at"])
+        try:
+            e = journal.find(eid, at, rows)
+        except journal.AmbiguousId as amb:
+            return {"error": f"{eid} names {len(amb.entries)} journal entries ("
+                             + "; ".join(journal.describe_entry(x) for x in amb.entries)
+                             + f"): the desk and main each gave it out. Nothing was undone. "
+                               f"Take back the one you mean from the ledger, where each is "
+                               f"a row of its own, or with scripts/admin_undo.py --undo {eid} "
+                               f"--at <its at>.",
+                    "ambiguous": [journal.entry_key(x) for x in amb.entries]}
         if not e:
-            return {"error": f"no journal entry {eid}; nothing was undone"}
+            return {"error": f"no journal entry {eid}{' at ' + at if at else ''}; "
+                             f"nothing was undone"}
+        if journal.entry_key(e) in keys:
+            continue
+        keys.add(journal.entry_key(e))
         if e.get("action") in ("undo", "reopen") or e.get("undo_of"):
             return {"error": f"{eid} is itself an undo; nothing was undone"}
-        if journal.undone(eid):
+        if journal.undone(e, rows):
             return {"error": f"{eid} was already undone; nothing was undone"}
         if not _is_person(e.get("by")):
             return {"error": f"{eid} was written by {e.get('by')}, not at this desk. "
                              f"Undo it with scripts/admin_undo.py; nothing was undone"}
         entries.append(e)
-    entries.sort(key=lambda e: pos[e["id"]], reverse=True)
+    entries.sort(key=lambda e: pos[journal.entry_key(e)], reverse=True)
     state, plans = {}, []
     for e in entries:
         f = e.get("file") or ""
@@ -6334,7 +6365,7 @@ def act_undo(body: dict) -> dict:
     for e, f, payload in plans:
         # one ruling can be several entries (a placement and its ruling
         # record); undo_batch keeps them one undo when a shift counts undos
-        mark = {"undo_of": e["id"], "undo_batch": plans[0][0]["id"]}
+        mark = {"undo_of": e["id"], "undo_of_at": e.get("at"), "undo_batch": plans[0][0]["id"]}
         if f == "companies.json":
             read_companies()                 # the before-state save_companies journals
             bad = save_companies(payload, "undo", why=f"undid {e['id']}", by="owner",

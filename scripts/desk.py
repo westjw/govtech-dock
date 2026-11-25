@@ -909,8 +909,23 @@ def act_batch_undo(body: dict) -> dict:
         return {"error": f"{rid} is older than the live journal holds: part of what it "
                          f"wrote has been archived, so it cannot be taken back whole from "
                          f"the desk. Nothing was undone."}
-    mine = [journal.find(i) for i in r["journal"]]
-    if any(journal.undone(e["id"]) for e in mine):
+    # EACH OF THE BATCH'S OWN ENTRIES: an id may name main's entry too once
+    # the desk's and main's same-day ids meet in one journal - the batch's
+    # is the one that carries its batch_ruling; anything else is named, and
+    # nothing is undone (2026-11-25 fifth review)
+    rows = journal._entries()
+    mine = []
+    for i in r["journal"]:
+        hits = journal.find_all(i, rows)
+        own = [e for e in hits if e.get("batch_ruling") == rid]
+        if len(own) != 1:
+            return {"error": f"{i}, an entry of {rid}, names {len(hits)} journal entr"
+                             f"{'y' if len(hits) == 1 else 'ies'} ("
+                             + ("; ".join(journal.describe_entry(e) for e in hits) or "none live")
+                             + f") and not one alone that is the batch's own. Nothing was "
+                               f"undone."}
+        mine.append(own[0])
+    if any(journal.undone(e, rows) for e in mine):
         return {"error": f"{rid} is already undone"}
     state, plans = {}, []
     for e in reversed(mine):
@@ -940,8 +955,8 @@ def act_batch_undo(body: dict) -> dict:
         with journal.undoing_adds(removed):
             _eid, refusal = journal.record(name, before, after, "undo", by,
                                            f"undid {rid}", True,
-                                           {"undo_of": e["id"], "undo_batch": first,
-                                            "batch_ruling": rid})
+                                           {"undo_of": e["id"], "undo_of_at": e.get("at"),
+                                            "undo_batch": first, "batch_ruling": rid})
         if refusal:
             return {"error": f"{refusal} (part of the undo was written)"}
         admin.write_atomic(name, after)
@@ -1361,23 +1376,25 @@ def ledger(limit: int = 60, days: int | None = None, who: str | None = None) -> 
     rows = journal._entries()
     undone = admin._undone_ids(rows)
     groups: dict = collections.OrderedDict()
-    for e in rows:
+    for e, lead in zip(rows, journal.ruling_keys(rows)):
         if e.get("action") in ("batch-mark",):
             continue
         # one desk request is one row: journal.DESK links every entry after
         # the first to it, which is also how a batch's files and its audit
-        # record arrive together
-        lead = e.get("same_ruling_as") or e.get("id")
+        # record arrive together. KEYED BY THE WHOLE ENTRY (its id and at):
+        # the desk's ruling and main's with the same same-day id were one
+        # "Yours" row, whose Undo reversed main's (2026-11-25 fifth review)
         g = groups.get(lead)
         if g is None:
             g = groups[lead] = {"lead": lead, "at": e.get("at"), "by": e.get("by"),
                                 "desk": bool(e.get("desk")), "actions": [], "files": [],
-                                "n": 0, "ids": [], "why": e.get("why") or "",
+                                "n": 0, "ids": [], "keys": [], "why": e.get("why") or "",
                                 "batch_ruling": None, "undo_of": e.get("undo_of")}
         g["actions"].append(e.get("action"))
         g["files"].append(e.get("file"))
         g["n"] += int(e.get("n") or 0)
         g["ids"].append(e.get("id"))
+        g["keys"].append(journal.entry_key(e))
         if e.get("batch_ruling"):
             g["batch_ruling"] = e["batch_ruling"]
             g["batch_undo"] = g.get("batch_undo") or e.get("action") == "undo"
@@ -1412,8 +1429,9 @@ def ledger(limit: int = 60, days: int | None = None, who: str | None = None) -> 
         else:
             what = PHRASE.get(first, first.replace("-", " "))
             ok = (admin._is_person(g["by"]) and first not in ("undo", "reopen")
-                  and not any(i in undone for i in g["ids"]) and len(g["ids"]) <= 10)
-            undo = {"entries": g["ids"]} if ok else None
+                  and not any(k in undone for k in g["keys"]) and len(g["ids"]) <= 10)
+            # each entry named whole, so the Undo takes back this row's and no other
+            undo = {"entries": [{"id": i, "at": a} for i, a in g["keys"]]} if ok else None
             if first == "question-answer":
                 note = ("Undo takes back the answer and the write it made; a job it put "
                         "in Claude's inbox stays until Claude closes it.")
@@ -1421,7 +1439,7 @@ def ledger(limit: int = 60, days: int | None = None, who: str | None = None) -> 
                "who": _who(g["by"], g["desk"], g["at"]),
                "by": g["by"], "what": what, "n": g["n"], "note": note,
                "files": sorted(set(g["files"])), "why": (g["why"] or "")[:300],
-               "undone": any(i in undone for i in g["ids"]),
+               "undone": any(k in undone for k in g["keys"]),
                "batch": bool(g["batch_ruling"]), "undo": undo, "ids": g["ids"]}
         if who == "mine" and not row["who"].startswith("yours"):
             continue

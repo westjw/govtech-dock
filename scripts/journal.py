@@ -93,6 +93,47 @@ OWNER_FIELDS = ("brands", "also_known_as", "parent", "board_owner", "year_founde
 # review), and find / admin_undo reach only one of two entries under one id.
 PUBLISH_SPACE = "publish-"
 
+
+def last_after_images(rows, name: str = "companies.json") -> dict:
+    """{record key: (entry id, after-image)}: each record's LAST after-image
+    among `name`'s entries, in the rows' order - what selftest's
+    check_journal_matches_reality reads of the live journal, and what the
+    desk publisher reads of each side and of the merge (one reading for
+    both). Only `name`'s entries: embedded_ats.json, website_review.json,
+    board_doubts.json and board_proposal_rulings.json key their changes by
+    the company id too, and the check read each company's last entry of ANY
+    file - a desk ruling on a company's board left it blind to the company,
+    and a publish over a revert main's own check caught went from 2 errors
+    to 0 (2026-11-25 fifth review)."""
+    last = {}
+    for d in rows or ():
+        if not isinstance(d, dict) or d.get("file") != name:
+            continue
+        ch_all = d.get("changes")
+        for k, ch in (ch_all.items() if isinstance(ch_all, dict) else ()):
+            if isinstance(ch, dict) and ch.get("after"):
+                last[k] = (str(d.get("id")), ch["after"])
+    return last
+
+
+def unwritten_owner_fields(records: dict, rows) -> list[tuple]:
+    """(company id, field, entry id, the journalled value, the record's value)
+    for each owner field (OWNER_FIELDS) on which a company's last
+    companies.json after-image in `rows` disagrees with its record: a write
+    to companies.json no journal entry holds, a put-back of an earlier value
+    included. check_journal_matches_reality's rule, exactly - a field the
+    after-image names, against the record's value (absent reads as None);
+    a company the records lack is the deletion check's."""
+    out = []
+    for cid, (eid, after) in sorted(last_after_images(rows).items(), key=lambda kv: str(kv[0])):
+        cur = records.get(cid)
+        if not isinstance(cur, dict) or not isinstance(after, dict):
+            continue
+        for f in OWNER_FIELDS:
+            if f in after and after[f] != cur.get(f):
+                out.append((cid, f, eid, after[f], cur.get(f)))
+    return out
+
 # THE IDS THIS PROCESS WROTE, so the desk admin can say which entries a
 # ruling made without re-reading a 30 MB file twice per request: do_POST
 # clears it before an action and hands what is here back with the reply, and
@@ -515,11 +556,56 @@ def _record(name, changes, action, by, why, extra) -> tuple[str | None, str | No
     return entry["id"], None
 
 
-def find(entry_id: str) -> dict | None:
-    for r in reversed(_entries()):
-        if r.get("id") == entry_id:
-            return r
-    return None
+# ONE ID CAN NAME TWO ENTRIES. The desk and main each number their own day
+# (`<day>#<n>`) while apart, and a publish carries both into one journal:
+# agents wrote plain ids on main on 2026-11-16, 11-17 (#1..#62), 11-19 and
+# 11-21 to 11-25 while the owner's desk numbered its own. find() returned the
+# later of such a pair, act_undo the later, the ledger merged the two into
+# one "Yours" row - and an Undo reversed main's ruling and said it had
+# undone the owner's (2026-11-25 fifth review). An entry is named WHOLE by
+# its id and its at (entry_key); an id that names more than one is refused,
+# naming each, until whoever acts says which.
+
+
+class AmbiguousId(LookupError):
+    """An id that names more than one journal entry: nothing acts on it until
+    it is told which (its at)."""
+
+    def __init__(self, entry_id: str, entries: list):
+        self.entry_id, self.entries = entry_id, list(entries)
+        super().__init__(f"{entry_id} names {len(self.entries)} journal entries: "
+                         + "; ".join(describe_entry(e) for e in self.entries))
+
+
+def entry_key(e) -> tuple:
+    """A journal entry named whole: (its id, its at)."""
+    e = e if isinstance(e, dict) else {}
+    return (str(e.get("id")), str(e.get("at") or ""))
+
+
+def describe_entry(e) -> str:
+    """One entry as a person tells it from another with the same id."""
+    e = e if isinstance(e, dict) else {}
+    return f"at {e.get('at') or '?'} by {e.get('by') or '?'} on {e.get('file') or '?'}"
+
+
+def find_all(entry_id: str, rows: list | None = None) -> list[dict]:
+    """Every entry of the live journal (or `rows`) with this id, oldest first."""
+    rows = _entries() if rows is None else rows
+    return [r for r in rows if isinstance(r, dict) and r.get("id") == entry_id]
+
+
+def find(entry_id: str, at: str | None = None, rows: list | None = None) -> dict | None:
+    """The one entry with this id (and this `at`, when given); None when there
+    is none. AmbiguousId when several are - never the later of two."""
+    hits = find_all(entry_id, rows)
+    if at is not None:
+        hits = [r for r in hits if str(r.get("at") or "") == str(at)]
+    if not hits:
+        return None
+    if len(hits) > 1:
+        raise AmbiguousId(entry_id, hits)
+    return hits[0]
 
 
 def recent(limit: int = 20, day: str | None = None) -> list[dict]:
@@ -529,9 +615,66 @@ def recent(limit: int = 20, day: str | None = None) -> list[dict]:
     return rows[-limit:]
 
 
-def undone(entry_id: str) -> bool:
-    """Has an undo already been journalled for this entry?"""
-    return any(r.get("undo_of") == entry_id for r in _entries())
+def ruling_keys(rows: list) -> list[tuple]:
+    """For each row, the whole-entry key of the desk request it is part of:
+    its own (entry_key), or - for an entry after the first of one request,
+    which names the first by id alone (same_ruling_as) - that of the latest
+    entry before it with that id, written at the desk as it was when one is.
+    Grouped by the bare id, the desk's ruling and main's with the same id
+    were one row (2026-11-25 fifth review)."""
+    lead: dict = {}
+    out = []
+    for r in rows:
+        r = r if isinstance(r, dict) else {}
+        sid = r.get("same_ruling_as")
+        if sid:
+            k = lead.get((sid, bool(r.get("desk")))) or lead.get((sid, None)) \
+                or (str(sid), "")
+        else:
+            k = entry_key(r)
+            lead[(r.get("id"), bool(r.get("desk")))] = k
+            lead[(r.get("id"), None)] = k
+        out.append(k)
+    return out
+
+
+def undo_targets(rows: list) -> list[tuple[int, tuple]]:
+    """(position, the entry it took back, named whole) for each undo in `rows`.
+    An undo names its entry whole - undo_of and undo_of_at; one written
+    before ids could repeat names an id alone, and is read as the latest
+    entry before it with that id (of its file and sharing a key with it,
+    when several are): the one act_undo and admin_undo, which took the
+    later, reversed. A target not in `rows` is (id, None)."""
+    by_id: dict = {}
+    for i, r in enumerate(rows):
+        if isinstance(r, dict) and r.get("id") is not None:
+            by_id.setdefault(r["id"], []).append(i)
+    out = []
+    for i, r in enumerate(rows):
+        if not isinstance(r, dict) or not r.get("undo_of"):
+            continue
+        u = r["undo_of"]
+        if r.get("undo_of_at") is not None:
+            out.append((i, (str(u), str(r["undo_of_at"]))))
+            continue
+        prior = [rows[j] for j in by_id.get(u, []) if j < i]
+        keys = set((r.get("changes") or {}) if isinstance(r.get("changes"), dict) else ())
+        same = [p for p in prior if p.get("file") == r.get("file") and keys
+                & set((p.get("changes") or {}) if isinstance(p.get("changes"), dict) else ())]
+        pick = (same or prior)[-1:]
+        out.append((i, entry_key(pick[0]) if pick else (str(u), None)))
+    return out
+
+
+def undone(entry, rows: list | None = None) -> bool:
+    """Has an undo been journalled for this entry? Given WHOLE (the entry
+    itself), only an undo of that entry counts - not one of another entry
+    with the same id; given an id alone (the old callers), any undo of it."""
+    rows = _entries() if rows is None else rows
+    targets = [t for _i, t in undo_targets(rows)]
+    if isinstance(entry, dict):
+        return entry_key(entry) in targets
+    return any(t[0] == entry for t in targets)
 
 
 def plan_undo(entry: dict, current) -> tuple[dict, list[str]]:
@@ -908,8 +1051,23 @@ def unglue(line: bytes) -> list[bytes]:
     return [line] if _parses(line) else _split_glued(line)
 
 
+def is_row(obj) -> bool:
+    """Is this parsed object a journal ROW: an id, an at and a file - the
+    shape record() writes, and every row the journal holds (2,345 of 2,345
+    on 2026-11-25). A record inside a row is not one: a companies.json
+    before- or after-image begins {"id": " too and holds neither at nor
+    file. Read as a row, a torn copy cut just where such an image closes
+    was split as if the old code had glued a row onto it, and the image
+    was filed - and sealed, on main - as a journal row (2026-11-25 fifth
+    review)."""
+    return isinstance(obj, dict) and isinstance(obj.get("id"), str) and "at" in obj \
+        and "file" in obj
+
+
 def _split_glued(line: bytes) -> list[bytes]:
-    """unglue() for a line already known not to parse."""
+    """unglue() for a line already known not to parse. The tail is split
+    off only when it is a whole journal ROW (is_row): a record that closes
+    inside the line is part of the row the line was cut from."""
     i = line.find(_ROW_HEAD, 1)
     while i > 0:
         tail = line[i:]
@@ -917,7 +1075,7 @@ def _split_glued(line: bytes) -> list[bytes]:
             row = json.loads(tail)
         except ValueError:
             row = None
-        if isinstance(row, dict):
+        if is_row(row):
             head = line[:i].strip()
             return [head, tail] if head else [tail]
         i = line.find(_ROW_HEAD, i + 1)

@@ -755,22 +755,34 @@ plan ("be frugal")**: a cycle pushes only when something changed, never within
   data/detail/ are never taken from the desk.
 - **Merged on parsed JSON, three ways** (`merge_data.merge_text`, base = the
   checkout's HEAD, ours = the desk, theirs = main): companies.json field by
-  field (a company BOTH sides changed while apart is then neither side's
-  record, so the publisher writes one journal entry of its own, by
-  `publisher`, before = main's record, after = the merge - otherwise main's
-  selftest (`check_journal_matches_reality`) refused the publish. ONLY OVER
-  WHAT EACH SIDE JOURNALLED: every owner field (`journal.OWNER_FIELDS`, the
-  list that check reads) the merge changed must carry a value the side that
-  wrote it changed it to and journalled - its own last entry for the company
-  holds it, live or archived - and no field neither side changed may be
-  contradicted by the journal's last word on it; otherwise no entry, the
-  check refuses, and the why names the company, the field and where it was
-  written (when no after-image lets the check see that write, the publish
-  goes ahead and the cycle's line lists it under `"unjournalled"`). Its
-  entry stood over a pipeline's unjournalled revert of an
-  owner's brands and main's failing check went to 0 errors - 2026-11-25
-  third review. Its ids are its own, `<day>#publish-<n>`: numbered in the
-  desk's space it took an id the desk handed out next), a record
+  field (when the merged record on main is not what the journal's last
+  word on it says - a company BOTH sides changed while apart, or one whose
+  remedy left the newest entry without the other side's change - the
+  publisher writes one journal entry of its own, by `publisher`, before =
+  main's record, after = the merge - otherwise main's selftest
+  (`check_journal_matches_reality`) refused the publish. BY ONE INVARIANT:
+  the entry vouches for nothing no journal entry holds, and the publish
+  hides no write a side's own check sees. FIRST each side by its own check
+  (`journal.unwritten_owner_fields`, the reading that check makes, over
+  that side's records and live journal, companies.json entries only): a
+  field whose last after-image on main disagrees with main's record - or on
+  the desk with the desk's - is a write no entry holds there, a put-back of
+  the base value included, and the publish is refused, naming the company,
+  the field, the side and the entry. THEN the candidates are exactly the
+  companies the check would fail on in the merged, trimmed journal, and for
+  each the entry is written only when every owner field
+  (`journal.OWNER_FIELDS`) the merge changed carries a value a side changed
+  it to and journalled - that side's own last word on the company holds it,
+  live or archived. LAST a backstop: nothing a side's check fails on may
+  pass on main after the merge (the trim can push out the entry it read).
+  When no after-image lets the check see a write, the publish goes ahead
+  and the cycle's line lists it under `"unjournalled"`. Read only from the
+  merged journal, the other side's stale after-image agreed with a
+  pipeline's put-back whenever it was later, and a desk ruling on a
+  company's board blinded the check, which read any file's entry as the
+  company's last word - 2026-11-25 fifth review. Its ids are its own,
+  `<day>#publish-<n>`: numbered in the desk's space it took an id the desk
+  handed out next), a record
   the desk merged away is deleted when main changed only hiring/ats, news
   and discovery_log records by the later read, the live journal by line (then
   trimmed in the worktree: a row the archive holds leaves it - the union had
@@ -1358,7 +1370,21 @@ python3 scripts/admin_undo.py                    what changed recently
 python3 scripts/admin_undo.py --show 2026-08-24#4
 python3 scripts/admin_undo.py --undo 2026-08-24#4
 python3 scripts/admin_undo.py --reopen 2026-08-24#4
+python3 scripts/admin_undo.py --undo 2026-08-24#4 --at 2026-08-24T10:00:00-04:00
 ```
+
+**One id can name two entries.** The desk and main each number their own
+day while apart, and a publish carries both into one journal (agents wrote
+plain ids on main on 2026-11-16, 11-17, 11-19 and 11-21 to 11-25 while the
+desk numbered its own). Every tool then refuses the bare id, naming each
+entry (its at, who wrote it, its file), rather than taking one: the desk's
+Undo, `admin_undo.py` (say which with `--at`) and a batch undo (which takes
+the entry that carries its batch ruling). The ledger keys its rows by the
+whole entry - id and at - and its Undo sends the entry whole; an undo
+records the entry it took back whole (`undo_of` and `undo_of_at`), and
+"taken back" is said of that entry alone. Before 2026-11-25 the later of two
+was taken: an Undo on the owner's row reversed main's ruling and said it had
+undone his.
 
 `--reopen` is the one that matters for scope rulings. A ruling is never
 re-asked, which is right for a correct answer and permanent for a wrong one.
@@ -1440,7 +1466,11 @@ authority; in short:
   old-code write stalled past it (memory pressure, a stopped process) lands
   in the moved copy after it is gone - kept at 0.2 s and 0.6 s, lost at 1.5 s
   and 3 s when measured (2026-11-25 third review). The guard is the owner's
-  step 1: the old desk is stopped before anything folds its file.
+  step 1: the old desk is stopped before anything folds its file. The
+  shipped wait, the last look at the file before it goes and the restart of
+  the wait at every change are pinned on a virtual clock at the shipped
+  SETTLE (fifth review: with SETTLE 0, or either removed, every fold check
+  had passed).
 - **The constructive step first.** Every move of a line - a seal, a row going
   home, a re-split, a fold, a resolve - writes it where it goes before taking
   it from where it was: a failure part way (a full disk, a kill) leaves a line
@@ -1464,7 +1494,11 @@ authority; in short:
   out (2026-11-25 third review). **The OLD code did glue**: its
   append had no newline guard, so in a desk's old single file a cut-off
   append is followed on the same line by its next row. That line is split
-  (`journal.unglue`: the row is the end of the line from a row's head) by the
+  (`journal.unglue`: the row is the end of the line from a row's head, and
+  only a whole journal ROW - an id, an at and a file, `journal.is_row`: a
+  companies.json image inside a row begins `{"id": "` too, and a torn copy
+  cut where one closed was split there and the image filed as a row, sealed
+  on main - 2026-11-25 fifth review) by the
   fold, the full pass and the publisher's carry: the row is filed, the
   fragment is a torn copy when its row is held whole. Any other line that
   is no JSON - a fragment whose row no file holds whole - is `BAD` for a
@@ -1581,7 +1615,16 @@ authority; in short:
   `check_the_fold_waits_for_an_append_already_under_way`,
   `check_a_publisher_entry_never_shares_an_id_with_a_desk_ruling` (its own
   id space, numbered past its archived ids) and
-  `check_main_s_value_is_kept_by_a_ruling_in_the_checkout`.
+  `check_main_s_value_is_kept_by_a_ruling_in_the_checkout`, and from the
+  fifth review (2026-11-25): `check_a_put_back_is_refused_whichever_entry_is_later`,
+  `check_each_documented_remedy_clears_in_one_cycle` (keep main's, keep the
+  desk's, keep the journalled value: a second owner field, both orders, a
+  side back at the base), `check_the_reality_check_reads_companies_entries_only`,
+  `check_a_publish_never_hides_what_a_side_s_check_sees`,
+  `check_an_id_two_entries_share_is_never_undone_by_its_id`,
+  `check_a_torn_copy_cut_where_an_image_closes_is_no_row`,
+  `check_the_fold_holds_its_shipped_wait_its_last_look_and_its_restart` and
+  `check_a_ruling_made_during_a_cycle_is_carried_not_overwritten`.
 
 **THE OWNER'S STEPS, ONCE, after this lands on main.** His machine as it is
 (2026-11-24): NO publisher is installed - he removed it on 2026-09-28, so
@@ -1646,12 +1689,16 @@ on his word; each says what to look for.
      main's value as a journalled ruling in `~/govtech-dock-launch`, the desk
      stopped (step 1), through the same `admin.save_companies` /
      `save_decisions` with his why, and commits nothing there. Either way
-     both sides then hold one value for the field; then step 3 again. (Not
-     `admin_undo.py --undo` of the desk entry that set it: 500 later rulings
-     prune that entry into the archive, where admin_undo cannot find it, and
-     an undo takes back every later desk change to the record with it.)
+     both sides then hold one value for the field; then step 3 again, and
+     that cycle publishes: when the kept side's ruling also changed another
+     field of the record, the publisher journals the merged record itself.
+     (Not `admin_undo.py --undo` of the desk entry that set it: 500 later
+     rulings prune that entry into the archive, where admin_undo cannot find
+     it, and an undo takes back every later desk change to the record with
+     it.)
    - `"refused"` or `"failed"`: the checks or the rebuild failed in the
-     throwaway worktree at main (`"why"`; nothing was pushed). The session
+     throwaway worktree at main, or the publisher refused before them
+     (`"why"`; nothing was pushed). The session
      reads the why and fixes the cause where it is: on main for a check of
      main's code; in the checkout only what `python3 scripts/journal.py
      --check` names there - a line of its archive that is no JSON, named by
@@ -1665,26 +1712,33 @@ on his word; each says what to look for.
      first - the row is filed, the fragment left alone on a line of its own
      in `data/journal_archive/` - and `--check` then names that line, the
      fragment alone; that is what is cut. A why that begins "the publisher
-     wrote no merge entry for <company>: <field> written on main" (or "in
-     the checkout") above a `check_journal_matches_reality` failure
-     ("Recover the value from <id>'s after-image") is a write to
-     companies.json no journal entry holds - a pipeline script on main, or
-     something in the checkout - in a company the desk and main both
-     changed. The publisher journals a merge only over what each side
-     journalled, and the session never silences such a write either: it
-     finds it (`git log -p origin/main -- data/companies.json` for main's;
-     the checkout's file against the desk's last entry, `python3
+     wrote no merge entry: a write to companies.json that no journal entry
+     holds", "this publish would hide a write to companies.json" or "main's
+     own check fails on these already" names each company and field and the
+     SIDE it was written on: "<company>: <field> written on main, and main's
+     own last journal entry for it (<id>) does not hold it" (or "main's own
+     journal has no entry for it"), or the same "in the checkout" for the
+     desk's. That is a write to companies.json no journal entry of that side
+     holds - a pipeline script on main, or a script in the checkout - a
+     write that put an earlier value back included. The publisher never
+     silences such a write, and neither does the session: it finds the
+     write (`git log -p origin/main -- data/companies.json` for main's; for
+     the checkout's, the checkout's file against that entry, `python3
      scripts/admin_undo.py --show <id>` - or its line in the archive files,
-     when the why says "in the archive" - for the checkout's), shows him the
-     field's journalled value and the written one, and on his word writes
-     the value he keeps as a journalled ruling on the side the why names -
-     on main in a fresh worktree of main (commit and push), in the checkout
-     with the desk stopped - through `admin.save_companies` with his why.
-     To keep the written value, which the file already holds, the session
-     journals it as it stands: `journal.record("companies.json", <the file
-     with that field put back as it stood before the write>, <the file as
-     it is>, "keep-written", by="owner", why=<his why>)`, writing no file.
-     Then step 3 again.
+     when the why says "in the archive"), shows him the field's journalled
+     value and the written one, and on his word journals the value he keeps
+     ON THE SIDE THE WHY NAMES - on main in a fresh worktree of main (commit
+     and push), in the checkout with the desk stopped (commit nothing
+     there). To keep the JOURNALLED value: write it back as a ruling,
+     `admin.read_companies()`, set the field, `admin.save_companies(...,
+     "keep-journalled", why=<his why>, by="owner")`. To keep the WRITTEN
+     value, which the file already holds: journal it as it stands, writing
+     no file, `journal.record("companies.json", <the file with that field
+     put back as it stood before the write>, <the file as it is>,
+     "keep-written", by="owner", why=<his why>)`. Every field the why names for that
+     company, in one ruling or one each. Then step 3 again, and that cycle
+     publishes - or names what is left the same way. Journalled on the
+     other side, it changes nothing: the next why names the same side.
    - `"held"`: the checkout has a commit main does not - someone committed
      in it. His call; nobody drops or pushes it without him.
    - `"crashed"`: the cycle stopped part way (`"why"`; the inbox has it).
@@ -1694,9 +1748,17 @@ on his word; each says what to look for.
      Anything else: the session reads the why, and `git log -1 origin/main`
      to see whether a push landed before the crash (the next cycle carries
      only what main still lacks), fixes the cause, and step 3 again.
+   - `"sync": "skipped: the desk wrote <paths> during the cycle; the next
+     cycle carries it"` after a push: published, and the desk made a ruling
+     while the cycle built (it was running). Nothing to choose: those files
+     are the desk's own journalled work, and the next cycle publishes them.
+     Before step 4: step 1, then step 3 again. After it (the desk running as
+     it should): step 3 again once the desk has been quiet 5 minutes; it
+     carries the ruling and brings the checkout up to main.
    - `"sync": "skipped: would overwrite <paths>"` after a push: published,
      but the checkout could not follow main without overwriting a file there
-     that main changed and the desk did not publish. A script: it holds no
+     that main changed and the desk did not publish - never a file a desk
+     ruling journalled, which the bullet above carries. A script: it holds no
      copy main ever had, so it is an edit made in the checkout, which step 2
      would write over for good - as for scripts that differ, the session
      first shows him `git status -- scripts`, `git diff -- scripts` and any

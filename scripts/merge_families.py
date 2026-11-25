@@ -652,7 +652,7 @@ def show() -> int:
     print(f"{len(rows)} family-merge write(s), oldest first. Undo newest "
           f"first, or the older one will refuse as changed-since.\n")
     for r in rows:
-        mark = "  (already undone)" if journal.undone(r["id"]) else ""
+        mark = "  (already undone)" if journal.undone(r) else ""
         print(f"{r['id']}  {r['at']}  {r['action']}  by {r['by']}  "
               f"{r['n']} record(s){mark}")
         for key, ch in (r.get("changes") or {}).items():

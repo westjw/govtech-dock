@@ -6,6 +6,7 @@
   python scripts/admin_undo.py --show 2026-08-23#4
   python scripts/admin_undo.py --undo 2026-08-23#4
   python scripts/admin_undo.py --reopen 2026-08-23#4
+  python scripts/admin_undo.py --undo 2026-08-23#4 --at 2026-08-23T10:00:00-04:00
 
 --undo puts the records back exactly as they were.
 
@@ -19,6 +20,11 @@ which is a different thing from being sure you were wrong.
 Undoing is refused when a record has moved on since - restoring it would
 silently revert whatever changed it. The conflicting keys are named so you can
 decide, rather than being told "no".
+
+An id that names more than one entry - the desk and main each gave out the
+same same-day ids while apart, and a publish carried both into one journal -
+is refused too, each entry named by its at, who wrote it and its file: say
+which with --at. It took the later of the two (2026-11-25 fifth review).
 """
 from __future__ import annotations
 
@@ -55,7 +61,7 @@ def show(entry: dict, verbose: bool = False) -> None:
           f" - {entry['n']} record(s)")
     if entry.get("why"):
         print(f"  why: {entry['why']}")
-    if journal.undone(entry["id"]):
+    if journal.undone(entry):
         print("  (already undone)")
     items = list((entry.get("changes") or {}).items())
     for key, ch in items[: (None if verbose else 6)]:
@@ -115,7 +121,9 @@ def apply(entry: dict, drop: bool, force: bool) -> int:
             rows = journal._entries()
             for r in rows:
                 if r.get("id") == entry_id:
+                    # the entry undone, named whole: its id may name another
                     r["undo_of"] = entry["id"]
+                    r["undo_of_at"] = entry.get("at")
             journal._write_entries(rows)
     if refusal:
         print(refusal)
@@ -140,31 +148,54 @@ def main() -> int:
     ap.add_argument("--reopen", metavar="ID",
                     help="delete the rulings so the queue asks again")
     ap.add_argument("--last", action="store_true", help="act on the newest entry")
+    ap.add_argument("--at", metavar="AT",
+                    help="which entry, when the id names more than one (its at)")
     ap.add_argument("--force", action="store_true")
     a = ap.parse_args()
+
+    def lookup(eid):
+        """The one entry eid (and --at) names; None (said why) when there is
+        none, or when it names several - each is listed, and nothing acts."""
+        try:
+            entry = journal.find(eid, a.at)
+        except journal.AmbiguousId as amb:
+            print(f"refusing: {eid} names {len(amb.entries)} journal entries - the desk "
+                  f"and main each gave it out while apart:")
+            for e in amb.entries:
+                print(f"    {e.get('id')}  {journal.describe_entry(e)}  {str(e.get('why') or '')[:60]}")
+            print(f"Nothing was done. Say which with --at, e.g. --at {amb.entries[0].get('at')}")
+            return None
+        if not entry:
+            print(f"no journal entry {eid}" + (f" at {a.at}" if a.at else ""))
+        return entry
 
     if a.last:
         rows = journal.recent(1)
         if not rows:
             print("nothing in the journal yet")
             return 0
-        a.undo = a.undo or rows[-1]["id"]
+        if not a.undo:                  # the newest entry, named whole
+            a.undo, a.at = rows[-1]["id"], rows[-1].get("at")
 
     for flag, drop in ((a.undo, False), (a.reopen, True)):
         if not flag:
             continue
-        entry = journal.find(flag)
+        entry = lookup(flag)
         if not entry:
-            print(f"no journal entry {flag}")
             return 1
         show(entry)
         print()
         return apply(entry, drop=drop, force=a.force)
 
     if a.show:
-        entry = journal.find(a.show)
+        if a.at is None and len(journal.find_all(a.show)) > 1:
+            for e in journal.find_all(a.show):      # --show reads; it lists every one
+                show(e, verbose=True)
+                print()
+            print(f"{a.show} names more than one entry: undo one with --undo {a.show} --at <its at>")
+            return 0
+        entry = lookup(a.show)
         if not entry:
-            print(f"no journal entry {a.show}")
             return 1
         show(entry, verbose=True)
         return 0
