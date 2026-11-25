@@ -10,7 +10,7 @@ How a platform is met. find_site_boards.py reads a company's own website: an add
 
 measured_on lists the days the code or the research records a live measurement; a window (day..day) is a day within it that the research does not narrow down; unknown is none recorded. A form is a finder vendor id that belongs to the platform and names no board the wiring door can use.
 
-50 platforms: 29 read, 1 build, 3 skip, 17 seen.
+50 platforms: 30 read, 1 build, 3 skip, 16 seen.
 
 | Status | Means |
 |---|---|
@@ -38,6 +38,7 @@ measured_on lists the days the code or the research records a live measurement; 
 | [iCIMS](#icims) | `icims` | read | `fetch_icims` | `_icims` | 2026-08-23, 2026-09-01, 2026-10-09 |
 | [JazzHR](#jazzhr) | `jazzhr` | read | `fetch_jazzhr` | `_jazzhr` | 2026-08-23, 2026-09-01, 2026-11-18 |
 | [Jibe (iCIMS Talent Cloud)](#jibe-icims-talent-cloud) | `jibe` | read | `fetch_jibe` | `board_says` | unknown |
+| [JobScore](#jobscore) | `jobscore` | read | `fetch_jobscore` | `_jobscore` | 2026-11-23, 2026-11-24 |
 | [Jobvite](#jobvite) | `jobvite` | read | `fetch_jobvite` | `_jobvite` | 2026-11-19, 2026-11-21, 2026-11-22 |
 | [Jobvite (an account's XML feed)](#jobvite-an-accounts-xml-feed) | `jobvitefeed` | read | `fetch_jobvitefeed` | `_jobvitefeed` | 2026-11-20, 2026-11-23 |
 | [Lever](#lever) | `lever` | read | `fetch_lever` | `board_says` | 2026-08-23, 2026-11-18 |
@@ -67,7 +68,6 @@ measured_on lists the days the code or the research records a live measurement; 
 | [Hireology](#hireology) | `hireology` | seen | - | - | unknown |
 | [HRM Direct](#hrm-direct) | `hrmdirect` | seen | - | - | unknown |
 | [Indeed](#indeed) | `indeed` | seen | - | - | unknown |
-| [JobScore](#jobscore) | `jobscore` | seen | - | - | unknown |
 | [LinkedIn](#linkedin) | `linkedin` | seen | - | - | 2026-10-09 |
 | [Oracle Taleo](#oracle-taleo) | `taleo` | seen | - | - | unknown |
 | [Personio](#personio) | `personio` | seen | - | - | unknown |
@@ -79,19 +79,19 @@ measured_on lists the days the code or the research records a live measurement; 
 
 <!-- live -->
 
-From data/companies.json as last refreshed 2026-11-23. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
+From data/companies.json as last refreshed 2026-11-24. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
 
 | Type | On file | With roles |
 |---|---:|---:|
-| [`html`](#a-careers-page-html) | 958 | 129 |
+| [`html`](#a-careers-page-html) | 957 | 128 |
 | `unknown` (no board on file) | 930 | 0 |
-| [`greenhouse`](#greenhouse) | 116 | 64 |
+| [`greenhouse`](#greenhouse) | 116 | 65 |
 | [`ashby`](#ashby) | 91 | 50 |
 | [`bamboohr`](#bamboohr) | 53 | 19 |
-| [`paylocity`](#paylocity) | 45 | 12 |
+| [`paylocity`](#paylocity) | 45 | 11 |
 | [`lever`](#lever) | 42 | 21 |
 | [`workday`](#workday) | 42 | 32 |
-| [`rippling`](#rippling) | 38 | 16 |
+| [`rippling`](#rippling) | 38 | 17 |
 | [`workable`](#workable) | 31 | 13 |
 | [`jazzhr`](#jazzhr) | 21 | 4 |
 | [`breezy`](#breezy-hr) | 13 | 2 |
@@ -103,13 +103,14 @@ From data/companies.json as last refreshed 2026-11-23. **On file** is how many c
 | [`recruitee`](#recruitee) | 5 | 4 |
 | [`pinpoint`](#pinpoint) | 4 | 2 |
 | [`smartrecruiters`](#smartrecruiters) | 4 | 1 |
-| [`successfactors`](#sap-successfactors-career-site-builder) | 4 | 3 |
+| [`successfactors`](#sap-successfactors-career-site-builder) | 4 | 4 |
 | [`gem`](#gem) | 3 | 1 |
 | [`hirebridge`](#hirebridge) | 3 | 3 |
 | [`jobvite`](#jobvite) | 3 | 2 |
 | [`zohorecruit`](#zoho-recruit) | 3 | 0 |
 | [`applicantpro`](#applicantpro-isolved) | 2 | 2 |
 | [`jobvitefeed`](#jobvite-an-accounts-xml-feed) | 1 | 1 |
+| [`trinethire`](#trinet-hire) | 1 | 0 |
 
 **The last sweep**: a `find_site_boards.py` results file generated 2026-11-22T04:00:53+00:00 in static mode, over 59 companies (a sweep covers the companies it was given, not the whole map). 42 companies had a board we read named on their own site.
 
@@ -146,7 +147,7 @@ From data/companies.json as last refreshed 2026-11-23. **On file** is how many c
 
 <!-- live -->
 
-On file today: 958 companies, 129 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 957 companies, 128 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -381,7 +382,7 @@ On file today: 3 companies (City Detect, Nutrislice, Token Transit), 1 of them w
 
 <!-- live -->
 
-On file today: 116 companies, 64 of them with roles. The last sweep (2026-11-22): 1 company's own site pointed to a board on it.
+On file today: 116 companies, 65 of them with roles. The last sweep (2026-11-22): 1 company's own site pointed to a board on it.
 
 <!-- /live -->
 
@@ -520,6 +521,43 @@ On file today: 21 companies, 4 of them with roles. The last sweep (2026-11-22): 
 
 - Not what fetch_icims reads: a Jibe site answers ?in_iframe=1 with a 143-byte script that bounces back to the careers page and serves an Angular shell at the portal address, which is why BigBear.ai read as a JavaScript wall; its apply links still point back at the iCIMS portal.
 - An empty read raises ('no jobs parsed from Jibe API'): Unknown, never a zero.
+
+<!-- live -->
+
+On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+
+<!-- /live -->
+
+### JobScore
+
+`jobscore` · **read** · researched as build · reader `ats.fetch_jobscore` · identity probe `verify_boards._jobscore` · measured 2026-11-23, 2026-11-24
+
+**How to spot it.** A JobScore account's slug in one of three forms on a company's own page (find_site_boards): a link to the hosted board, its feed or a posting, under /careers/\<slug> or /jobs/\<slug> on careers., www., hire. or widgets.jobscore.com or the bare domain (the widget's own fallback link is one); the widget's iframe, widgets.jobscore.com/jobs/\<slug>/widget_iframe (Finalsite's careers page), and any other page of the widget's naming an account so (its widget.js); and the script loader, which builds '//careers.jobscore.com/jobs/' + c + '/widget.js' at run time and is handed the slug as the last argument of the call that closes its own function, })(document, 'script', '\<slug>') (ImageTrend's) - never a call after another function or another widget.js address. The ref is the slug AS SPELLED: JobScore minds the case of the path (2026-11-24: /jobs/Finalsite/feed.atom answered 404 and /jobs/finalsite/feed.atom is the board). discover_js reads the same three forms with the same guards, all but the loader's own parameter (its pattern's first group must be the slug). Hint: jobscore.com.
+
+**Forms the finder tallies apart** (`find_site_boards.ELSEWHERE`):
+
+- `jobscore-other`: Any other jobscore.com address (JobScore's own site and asset hosts, the 'Powered by JobScore' link www.jobscore.com/?utm_source=\<slug>, a page naming no slug): a platform we read, naming no board.
+- `jobscore-tenant`: A jobscore.com address that names an account or a job in a shape no board form reads: a slug run into an underscore under /careers/ or /jobs/ (on any jobscore.com host), the same paths on a jobscore.com host that is none of careers., www., hire. or widgets. (or the bare domain), and one job's apply link, /apply_flow/...?job_id=\<22 characters>, which robots.txt closes. Another account beside their board, or a job whose account it does not show: a doubt (blind review of 2026-11-24: as jobscore-other it was dropped beside the board, or a note on another page).
+
+**How it publishes.** One GET of https://careers.jobscore.com/jobs/\<slug>/feed.atom, the Atom feed the board's own hosted page links as rel=alternate: every opening in one answer, unpaged (8 of 8 and 14 of 14 rows against the hosted list, the same addresses, 2026-11-23). Read by name and by place with expat (a DOCTYPE or an ENTITY refused, the root Atom's \<feed>), and only this: the feed's \<title>, \<subtitle> and \<link>s, and of each \<entry> its \<title> (stripped: they come with trailing spaces), its one rel=alternate \<link> (a posting under /careers/\<slug>/jobs/[\<title slug>-]\<22-character id>, the tracking query ?ref=rss&sid=68 dropped; never the tag:jobscore.com/apply_url link, which points under /apply_flow/), its atom#location \<category> term (the employer's own words: 'Remote in Eagan, MN', '100% Remote in the U.S', 'Remote- LatAm'; no country is invented), its \<content type="html"> (the whole ad), and \<j:publicCompensation>, whose salaryMinimum and salaryMaximum count CENTS (5000000 is $50,000) and are published only where its own \<j:formatted> ('From $50,000 to $60,000 per year', kept as raw) prints the very figures, names no period but the block's \<j:interval> ('per year'; anything but 'per year', 'per month', 'per week', 'per day' or 'per hour' is no period) and no currency sign or code but the block's \<j:currencyCode> ('$' for the dollars; a block naming none is US dollars). Rows are one a posting id. No date: \<updated> moves on every edit and the day inside \<id> is the day the job was created, so neither is read and the board keeps its first-seen day; a posting page's JSON-LD datePosted is not read, flag or no flag. build_board.posting_id keys a JobScore posting on its address alone (ats.jobscore_posting_key), so a posting first read through the hosted list as type html keeps its id and its first-seen day under this reader; across a renamed account slug the first-seen day follows the 22-character job id (build_board.carry_first_seen). Read as a stream (ats.follow and \_one), capped as it arrives.
+
+**Public link** (`build_board.board_url`). The board's hosted list, https://careers.jobscore.com/careers/\<slug> (build_board.board_url and the desk's card): every opening, each linking its posting. Never the feed, which is for programs and names a hiring team. A ref that is no slug links the company's website.
+
+**robots.txt.** Asked at every hop (ats.\_page), and the feed answers in place, so any redirect - another host, another path, the feed again - is refused before it is asked anything. Measured 2026-11-23 and 11-24: careers.jobscore.com's robots.txt is 'User-agent: \*' with 'Disallow: /apply_flow/' and a Sitemap line, so the feed, the hosted list and the postings are allowed; every entry's apply_url link points under /apply_flow/ and is never followed. Only careers.jobscore.com is asked.
+
+**Where it names its employer.** Stated by the feed the reader reads, in two fields that must agree: its \<subtitle>, the bare name, and its \<title>, 'Careers at ' and the same name (ats.jobscore_name, verify_boards.\_jobscore): 'ImageTrend' and 'Finalsite', measured 2026-11-23 and 11-24; each given once (two subtitles, or two titles, state nobody). The feed is the whole board, so the name is the whole board's. Inside the wiring door's plan, and when a held board is accepted at the desk or by a ruling (ats.one_ask_a_board), the probe takes the answer the read had (ats.jobscore_kept): one request a feed. Never \<author>\<name> ('ImageTrend HR'), the slug or any person. A feed that does not name the slug's own hosted page as its alternate link is not read as this board. No website is read: the hosted page and each posting's JSON-LD state one, and neither is asked.
+
+**Quirks.**
+
+- A person's name on the rows: an \<entry> may carry \<j:hiringTeam>, hiring managers and recruiters each with a name, a job title, a LinkedIn address and a photo (23 people on ImageTrend's 8 entries, none on Finalsite's). The parser never keeps a character of it, and jobscore.com is in ats.NEVER_CACHED, so the feed is never written to data/http_cache.
+- Pay is in cents, and published only where the converted figures are the very ones \<j:formatted> prints, and the line names no other period and no other currency than the block's own: a block given twice, a field that does not read and a formatted line that disagrees in any of these are no pay from the block (the ad's text may still state one). A row the board lists outside the US whose block names no currency code states no pay.
+- No zero, because none is measured: no empty JobScore board was at hand, so a feed with no \<entry> raises - Unknown, never 'None found' - as do a feed that names another page than the slug's own as its alternate link, one that says it is one page of a longer one (a link rel first, last or current, any rel naming a next, a previous or an archive page, IANA's URI form of one included; a self link with a query; an OpenSearch total past its entries or a startIndex past the first), one holding an \<entry> anywhere but directly under \<feed>, an entry that does not read as a posting of this board, a feed over 16,000,000 bytes, anything that does not read as Atom (a challenge page) and any answer but a 200. A slug that is not there answers 404: gone.
+- The location is free text with no country field: 'Remote- LatAm' and 'Remote, India' read as abroad only by their words (roles.is_us), and '100% Remote in the U.S' is read as no country at all.
+- The slug is case-sensitive in JobScore's paths (2026-11-24: /jobs/Finalsite/feed.atom answered 404, /jobs/finalsite/feed.atom is the board), so the finder, the reader and the desk's link keep it as spelled; whether any account's slug holds a capital has not been measured.
+
+**Notes.**
+
+- The research of 2026-11-23 found two companies on file on JobScore: ImageTrend, read as a careers page (type html) at its hosted list, titles and links only, and Finalsite, whose careers page frames the widget, which no careers-page reader sees (no rows). Through the feed, 2026-11-24: ImageTrend 8 rows with place, pay and the ad; Finalsite 13 (14 the day before), one of them a plain SLED sales role. Neither record is rewired by the reader's work: that is the wiring door's, after review.
 
 <!-- live -->
 
@@ -689,7 +727,7 @@ On file today: no company. The last sweep (2026-11-22): did not meet it.
 
 <!-- live -->
 
-On file today: 45 companies, 12 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 45 companies, 11 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -778,7 +816,7 @@ On file today: 5 companies (Amilia, Cyclomedia, Greyparrot, Sensys Gatso Group, 
 
 <!-- live -->
 
-On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 38 companies, 17 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -818,7 +856,7 @@ On file today: 38 companies, 16 of them with roles. The last sweep (2026-11-22):
 
 <!-- live -->
 
-On file today: 4 companies (Aurigo Software, Esri Canada, Gainwell Technologies, Octave), 3 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 4 companies (Aurigo Software, Esri Canada, Gainwell Technologies, Octave), 4 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -918,7 +956,7 @@ On file today: 6 companies (AM, Fonroche Lighting America, iLOQ, Powerfleet, Tra
 
 <!-- live -->
 
-On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 1 company (Codoxo), 0 with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -1315,24 +1353,6 @@ On file today: no company. The last sweep (2026-11-22): did not meet it.
 **Quirks.**
 
 - An advertisement is not a second board: a link to (or a mention of) the company's Indeed page is kept on a WIRE row as advertised_on and holds nothing (wire_found.ADVERTISED_ON).
-
-<!-- live -->
-
-On file today: no company. The last sweep (2026-11-22): did not meet it.
-
-<!-- /live -->
-
-### JobScore
-
-`jobscore` · **seen** · no reader · no identity probe · measured unknown
-
-**How to spot it.** Any jobscore.com address: find_site_boards tallies it as 'jobscore'. discover_js reads careers.jobscore.com/careers/\<slug>.
-
-**How it publishes.** Unknown: not researched.
-
-**robots.txt.** Unknown: not measured.
-
-**Where it names its employer.** Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.
 
 <!-- live -->
 

@@ -442,6 +442,10 @@ def proven(company: dict, said: dict) -> dict:
 #     trinethire       the embed's <title>, 'Open Jobs | X'  (the list the
 #                                                reader reads, never paged: the
 #                                                whole board; 2026-11-24)
+#     jobscore         the feed's <subtitle> X, agreeing with its <title>
+#                                                'Careers at X' (the feed is the
+#                                                whole board in one answer;
+#                                                2026-11-24)
 #   (lever's page is read as far as the end of its <head> and no further;
 #   ashby and jazzhr also state the employer's website, which proven() holds
 #   to the one on file)
@@ -1368,6 +1372,32 @@ def _trinethire(ref, out: dict) -> None:
         out["how"] = "trinethire embed's <title> names no employer a person could read"
 
 
+def _jobscore(ref, out: dict) -> None:
+    # The feed the reader reads - the board's whole list in one answer, never
+    # paged - states its employer in two fields of its own, and the name is
+    # believed only where they agree: its <subtitle>, the bare name, and its
+    # <title>, 'Careers at ' and the same name (ats.jobscore_name; 'ImageTrend'
+    # and 'Finalsite', 2026-11-23 and 11-24). Nothing else is a name: not
+    # <author><name> ('ImageTrend HR'), not the slug, not any person - the
+    # hiring team is never read (ats.jobscore_feed). A feed that is not this
+    # board's whole list (another board's page as its own, a pager, an entry
+    # that does not read, no entry at all: an empty feed is not measured) is
+    # an error (ats.jobscore_rows), never a board that names nobody. Inside
+    # the door's plan this takes the answer the read had (ats.jobscore_kept):
+    # one request a plan.
+    _url, name, rows = ats.jobscore_board(ref)
+    out["n"] = len(rows)
+    out["hosts"] = {ats.JOBSCORE_HOST}
+    if not name:
+        out["how"] = ("jobscore feed's <subtitle> and <title> do not state one name ('X' and "
+                      "'Careers at X')")
+        return
+    if not _state(out, [name], "jobscore feed's own <subtitle>, agreeing with its <title> "
+                               "('Careers at ...'), stated by the board's whole feed (it is never "
+                               "paged)"):
+        out["how"] = "jobscore feed states its employer in no form a person could read"
+
+
 def _jvx_said(jobs: list, field: str) -> tuple:
     """(every distinct name a feed's rows give `field`, how many rows give it
     one): a value that is blank is none."""
@@ -1811,7 +1841,7 @@ _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "teamtailor": _teamtailor, "pinpoint": _pinpoint,
            "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite,
            "jobvitefeed": _jobvitefeed, "trinethire": _trinethire,
-           "successfactors": _successfactors}
+           "jobscore": _jobscore, "successfactors": _successfactors}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.

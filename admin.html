@@ -5156,6 +5156,12 @@ function boardUrlFor(f, c){
   if (f.type === 'trinethire')
     return (typeof r === 'string' && /^[0-9]{1,12}(?:-[A-Za-z0-9-]{1,200})?$/.test(r.trim()))
       ? 'https://app.trinethire.com/companies/' + r.trim() + '/jobs/embed' : '#';
+  // a JobScore board is its account's slug, as spelled (JobScore minds its
+  // case); a person opens its hosted list (as build_board.board_url links
+  // it), never the feed, which is for programs and names a hiring team
+  if (f.type === 'jobscore')
+    return (typeof r === 'string' && /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$/.test(r.trim()))
+      ? 'https://careers.jobscore.com/careers/' + r.trim() : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
     // the list [tenant, pod, site], or [pod, tenant, site] on Workday's other

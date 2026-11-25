@@ -2883,7 +2883,13 @@ and never said where in a page a reference sat.
   which stays the board (see "A Jobvite account's XML feed" below). A TriNet
   Hire company number on app.trinethire.com, in any form (/jobs/embed, /jobs,
   a posting), is a `trinethire` board, keyed on the number (see "TriNet Hire:
-  the reader" below).
+  the reader" below). A JobScore account's slug, as spelled - a link to its
+  hosted board, its feed or a posting on careers., www., hire. or
+  widgets.jobscore.com or the bare domain, the widget's iframe
+  (widgets.jobscore.com/jobs/<slug>/widget_iframe), or the last argument of
+  the call closing the script loader's own function - is a `jobscore` board;
+  an account or a job named in a shape none of these reads is
+  `jobscore-tenant`, a doubt (see "JobScore: the reader" below).
 - **What the door must still do, because this file cannot:** make the
   second check (ask the board whose it is); refuse a (type, ref) another
   record already holds, or that two records' candidates share (two brands
@@ -2921,7 +2927,7 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Twenty-five types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Ten more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), and trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-six types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Eleven more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below), and jobscore (2026-11-24: the feed's own <subtitle>, agreeing with its <title> 'Careers at ...'; see "JobScore: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
 - `site`: the employer's website where the board gives one (ashby, jazzhr).
@@ -4688,6 +4694,179 @@ wired or rewired by this work: that is the door's, after review.
   tags cut so and each of seven alone, the finder's empty slug, the ref's
   refusal and its normalising), each caught.
 
+## JobScore: the reader (2026-11-24)
+
+Owner, 2026-11-18: "review what we got and see if we can get more companies
+with postings and up". The research of 2026-11-23 found two companies on file
+on JobScore: ImageTrend, read as a careers page (type html) at its hosted
+list, careers.jobscore.com/careers/imagetrend - titles and links, nothing
+else - and Finalsite, whose careers page frames JobScore's widget
+(widgets.jobscore.com), which no careers-page reader can see: no rows, while
+its board carried 14 (13 on 11-24), one a plain SLED sales role.
+`ats.fetch_jobscore` reads the type `jobscore`. No record is wired or rewired
+by this work: that is the door's, after review.
+
+- **The ref is the account's slug** ('imagetrend', 'finalsite'), AS SPELLED,
+  one DNS label's shape as Pinpoint's is (`ats.jobscore_slug`): never an
+  address, never anything but text. Never lowered - JobScore minds the case
+  of the path (2026-11-24: /jobs/Finalsite/feed.atom answered 404 and
+  /jobs/finalsite/feed.atom is the board), so the finder (not in `LOWERED`),
+  the reader and the desk's link keep the page's spelling; whether any
+  account's slug holds a capital is not measured.
+- **One request is the whole board: the feed.** GET
+  https://careers.jobscore.com/jobs/<slug>/feed.atom, the Atom feed the
+  board's own hosted page links as rel=alternate, through `ats.follow` and
+  `ats._one` (robots.txt at every hop, the crawler's own name, the host
+  gate), as a stream, as the Jobvite feed is read. It answers in place, so
+  any redirect - another host, the board's own page, the feed again - is
+  refused before it is asked anything (`ats._jobscore_read`). Unpaged as
+  measured (8 of 8 and 14 of 14 rows against the hosted list, the same
+  addresses); a feed that says it is one page of a longer one raises - a
+  link rel first, last or current, any rel naming a next, a previous or an
+  archive page (RFC 5005's next-archive and prev-archive; IANA's URI form,
+  http://www.iana.org/assignments/relation/next, is the same rel), a self
+  link with a query (?page=1), an OpenSearch totalResults past its entries
+  or a startIndex past the first - and so does one past 16,000,000 bytes,
+  refused as it arrives with no more taken off the wire than the cap and a
+  chunk (blind review of 2026-11-24: read whole through `_get`, which takes
+  a body whole to fix its charset, a 40 MB answer was pulled down to its
+  last byte first). No posting page is asked, flag or no flag.
+- **Read by name and by place, and nothing else** (`ats.jobscore_feed`):
+  expat with namespaces, a DOCTYPE or an ENTITY refused, the root Atom's
+  <feed>, every <entry> directly under it (one anywhere else - wrapped in a
+  vendor's element, in no namespace, inside another entry - raises: it would
+  have been lost while the rest were read). Of the feed its <title>,
+  <subtitle>, <link>s and OpenSearch counts; of each <entry>
+  its <title>, <link>s, <category>s, <content> and the five fields of its
+  <j:publicCompensation>. The characters of every other element are dropped
+  as the parser meets them, so **<j:hiringTeam> is never read**: hiring
+  managers and recruiters by name, job title, LinkedIn address and photo
+  (23 people on ImageTrend's 8 entries), and Atom's own element names inside
+  it are no field of a posting (they are not in a posting's place). Nor is
+  <author><name> ('ImageTrend HR'). jobscore.com - the domain and every host
+  under it - is in `ats.NEVER_CACHED`: the feed is never written to
+  data/http_cache (it sends an ETag).
+- **A row**: the title stripped (they come with trailing spaces, one with a
+  leading tab); the url the entry's ONE rel=alternate link, a posting of this
+  very board (https://careers.jobscore.com/careers/<slug>/jobs/[<title
+  slug>-]<22-character id>), its tracking query ?ref=rss&sid=68 dropped, and
+  NEVER its apply_url link, which points under /apply_flow/, which robots.txt
+  closes; the location, the atom#location category's term as the employer
+  typed it ('Remote in Eagan, MN', '100% Remote in the U.S', 'Remote-
+  LatAm'), no country invented (the department and job type categories are
+  no place); the ad, the entry's <content type="html">; pay from
+  <j:publicCompensation>, whose salaryMinimum and salaryMaximum count CENTS
+  (5000000 is $50,000), published only where the converted figures are the
+  very ones its own <j:formatted> prints ('From $50,000 to $60,000 per
+  year', kept as raw) and the line names no period but the block's
+  <j:interval> and no currency sign or code but its <j:currencyCode> ('$'
+  for the dollars; a block naming no code is US dollars) - a comp never
+  contradicts its own raw (blind review of 2026-11-24: '$50,000-$60,000 per
+  hour' was published over 'per year') - so a block given twice, a field
+  given twice or holding markup, a formatted line that prints or names
+  anything else: no pay from the block; <j:interval> is read word for word
+  ('per year'; anything but per year, month, week, day or hour is no
+  period); a row abroad whose block names no currency code states no pay.
+  One row a posting id: a posting listed twice is one, two postings of one
+  title are two.
+- **No posted date.** The feed has no <published>; <updated> moves on every
+  edit (all 8 of ImageTrend's entries read 2026-11-10 or 11-20) and the day
+  inside <id> is the day the job was created (ImageTrend's Account
+  Executive: 10-07, posted 10-19). Neither is read; the board keeps its
+  first-seen day. A posting page's JSON-LD datePosted is not read either:
+  not built (one request a posting, and the page prints the recruiter's
+  name).
+- **No zero, because none is measured.** No empty JobScore board was at
+  hand, so a feed with no <entry> raises - Unknown, never "None found" -
+  until one is read. So do a feed that does not name the slug's own hosted
+  page (https://careers.jobscore.com/careers/<slug>) as its one alternate
+  link, a pager in any of the spellings above, an entry anywhere but under
+  <feed>, an entry that does not read as a posting of this board (no title,
+  two titles, a title holding markup, not one alternate link to a posting under
+  /careers/<slug>/jobs/, over https), anything that does not read as Atom (a
+  challenge page, RSS, a feed cut short) and any answer but a 200. A slug
+  that is not there answers 404 (measured): gone, to the probe.
+- **Whose it is: the feed's <subtitle>**, believed only where its <title>
+  reads 'Careers at ' and the same name, each given once (`ats.jobscore_name`,
+  `verify_boards._jobscore`): 'ImageTrend' and 'Finalsite' (2026-11-23,
+  11-24). The feed is the whole board, so the name is stated over it. Never
+  <author><name>, the slug or any person. Inside the door's plan the probe
+  takes the answer the read had (`ats.jobscore_kept`, as `ats.trinethire_kept`
+  keeps a list): one request a feed a plan. So does accepting a held board
+  at the desk (`admin.act_board_proposal`) or by a ruling
+  (`proposal_rulings._accept_board`): `ats.one_ask_a_board` holds all three
+  kept reads - a Jobvite feed, a TriNet Hire list, a JobScore feed - so the
+  read and the probe are one request (blind review of 2026-11-24: two).
+- **A posting's id is its address alone** (`ats.jobscore_posting_key`,
+  hashed by `build_board.posting_id` with no place beside it): one address is
+  one posting. The hosted list a careers-page reader reads states no place
+  and the feed states one, so keyed with its place a posting would have
+  moved ids the night its company moved from html to jobscore - its
+  first-seen day reset and every saved role and shared link to it broken.
+  Keyed on its address it is the same posting, id, opening id and day, under
+  either reader (ImageTrend's 7 on the board, first seen 09-25 to 11-03).
+  The board's general carry does not reach a switch whose rows change ids:
+  Tyler Technologies' 129 postings, html on 11-23 and jobvitefeed on 11-24,
+  share no id and were all re-dated 11-24. A renamed account slug, or a
+  title slug JobScore writes anew, moves the address and so the id; the
+  first-seen day follows the 22-character job id across it, within the
+  company (`build_board.carry_first_seen`; blind review of 2026-11-24).
+  Keyed on the job id instead, ImageTrend's 7 would all have moved ids on
+  the switch.
+- **The public link is the hosted list**, careers.jobscore.com/careers/<slug>
+  (build_board.board_url, the desk's card); never the feed. A ref that is no
+  slug links the company's website.
+- **The finder** (find_site_boards) reads the three forms a company's own
+  page names a board in: a link to the hosted board, its feed or a posting
+  under /careers/<slug> or /jobs/<slug> on careers., www., hire. or
+  widgets.jobscore.com or the bare domain (the loader's fallback link is
+  one); the widget's iframe, widgets.jobscore.com/jobs/<slug>/widget_iframe
+  (Finalsite's), and any other page of the widget's naming an account so
+  (its widget.js); and the script loader, which builds
+  '//careers.jobscore.com/jobs/' + c + '/widget.js' and is handed the slug as
+  its last argument, })(document, 'script', '<slug>') (ImageTrend's), read
+  only from the call that closes the loader's OWN function - the
+  function(d, s, c) whose third parameter the address is built from, no
+  other function and no other widget.js address between (closed '}(document,
+  ...))' or as !function(...){...}(document, ...), it once took the next
+  snippet's argument: Facebook's 'facebook-jssdk', or a second account's
+  slug). Never JobScore's own name or its furniture. An address that names
+  an account or a job in a shape none of these reads - a slug run into an
+  underscore, the same paths on another jobscore.com host, one job's apply
+  link (/apply_flow/...?job_id=) - is `jobscore-tenant`, a tenant form
+  (`TENANT_FORMS`): beside their board a second account, a doubt. Every
+  other jobscore.com address - its asset hosts, the 'Powered by JobScore'
+  link (www.jobscore.com/?utm_source=<slug>) - is `jobscore-other`, a form
+  of a platform we read that names no board (the door's own-form note
+  beside a board, `wire_found.OWN_FORMS`). discover_js reads the same three
+  forms with the same guards, all but the loader's own parameter, which a
+  pattern whose first group is the slug cannot name (it read
+  careers.jobscore.com/careers/<slug> only, and caught neither embed; then
+  lacked the finder's guards: blind review of 2026-11-24).
+- **Read live 2026-11-24** (three requests through the repo's helpers:
+  robots.txt and the two feeds, the hiring teams cut before anything was
+  saved, nothing kept in the repo): ImageTrend 8 rows, place and pay on all
+  8; Finalsite 13, pay on 1; 'ImageTrend' and 'Finalsite' stated by both
+  fields. Job Hunter's core/parsers.py lists no jobscore rank, so the type
+  ranks 'none'.
+- Guard: `check_jobscore_reads_its_feed_and_names_it_once` (the read, the
+  rows, nobody's name kept, the cache, the cap kept on the wire, pay from
+  cents against its formatted line's figures, period and currency, no date,
+  the name each given once, no zero and every pager, the redirects, the ref
+  as spelled, the kept feed, the id across a switch from html and the day
+  across a slug rename, the public link, the finder and discover_js, the
+  door wiring a board their page frames or loads and holding one that names
+  somebody else or whose site names a second account in any shape, each
+  feed asked once, and accepting a held board asking it once), beside a row
+  in `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS and a
+  quiet one (a title and a subtitle that disagree, an author and a slug that
+  spell the company), the type in
+  `check_a_stated_name_does_not_loosen_the_older_doors`, four forms in
+  SITE_BOARD_FORMS and four non-forms in SITE_BOARD_NOT_ONE, and
+  `ats._jobscore_read` (with `ats._jvx_body`) among the feeds that
+  `check_the_crawler_honours_robots_txt` holds to follow() and _one as a
+  stream.
+
 ## Build order (owner, 2026-08-23)
 
 This repo comes first, and inside it: front end, back end, data, admin. The
@@ -5581,10 +5760,11 @@ an icon the site declares.
   smartrecruiters | bamboohr | workday | rippling | jazzhr | icims | paylocity
   | oracle | jibe | adp | gusto | gem | hirebridge | applicantpro | teamtailor
   | pinpoint | zohorecruit | comeet | jobvite | jobvitefeed | trinethire
-  | successfactors | html | unknown (`ats.FETCHERS` is the list; the seven
-  before successfactors were read from 2026-11-21 and had not been added
-  here; jobvitefeed, a Jobvite account's XML feed, since 2026-11-23;
-  trinethire, a TriNet Hire board's list, since 2026-11-24).
+  | jobscore | successfactors | html | unknown (`ats.FETCHERS` is the list;
+  the seven before successfactors were read from 2026-11-21 and had not been
+  added here; jobvitefeed, a Jobvite account's XML feed, since 2026-11-23;
+  trinethire, a TriNet Hire board's list, and jobscore, a JobScore board's
+  Atom feed, since 2026-11-24).
   Prefer structured API types; `html` is a last resort; `unknown` means
   "needs discovery" and is skipped by refresh. `coverage.py::STRUCTURED` is the
   list that decides what counts as a real API — add a new type in both places.

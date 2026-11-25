@@ -452,6 +452,7 @@ HINTS = {
     "jobvite": ("jobvite.com",),
     "jobvitefeed": ("jobvite.com",),
     "trinethire": ("trinethire.com",),
+    "jobscore": ("jobscore.com",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -467,7 +468,11 @@ JIBE_MARK = "jibecdn.com"
 # 2026-11-18, api.lever.co answered nine postings for "Wayground", the
 # spelling on file and on that company's page, and HTTP 404 for "wayground":
 # the lowered ref would have lost a board the page named correctly. Two of
-# the 33 Lever boards on file are spelt with a capital.
+# the 33 Lever boards on file are spelt with a capital. SO DOES JOBSCORE, in
+# the path its slug sits in: asked on 2026-11-24, /jobs/Finalsite/feed.atom
+# answered 404 and /jobs/finalsite/feed.atom is the board - so a JobScore
+# slug is kept as spelled (it was lowered here at first; blind review of
+# 2026-11-24).
 LOWERED = {"recruitee", "breezy", "bamboohr", "jazzhr", "icims", "pinpoint"}
 
 # The vendor's own furniture, never a customer. Three tables' worth, joined
@@ -666,6 +671,25 @@ def _trinethire_board(m):
     return (f"{number}-{slug}" if slug else number), number.lstrip("0") or "0"
 
 
+def _jobscore_loader(m):
+    # JobScore's script loader builds its address at run time -
+    # '//careers.jobscore.com/jobs/' + c + '/widget.js' - and hands it the
+    # slug as its LAST argument, })(document, 'script', '<slug>') (ImageTrend's
+    # careers page, 2026-11-23): the slug is that argument, read only from the
+    # call that closes the loader's OWN function - a function(d, s, c) whose
+    # third parameter the address is built from, and the first call after
+    # the address closed '})(', '}(' or '}' and no other function (no
+    # 'function', no '=>') between them (blind review of 2026-11-24: matched
+    # from the address to the first '})(' after it, a loader closed
+    # '}(document, ...))' took Facebook's 'facebook-jssdk' from the snippet
+    # after it, or a second account's slug, which made two accounts one).
+    # Spelled as the page spells it - JobScore minds the case (LOWERED) - and
+    # never JobScore's own name or its furniture.
+    slug = m.group("slug")
+    low = slug.lower()
+    return None if _furniture(low) or low == "jobscore" else (slug, low)
+
+
 def _here(kind, pattern, make=None):
     return _Pat(kind, re.compile(pattern, re.I), make or _slug(kind), "find_site_boards")
 
@@ -767,6 +791,30 @@ BOARDS: list[_Pat] = (
         # too (/companies/<n>-/jobs)
         _here("trinethire", r"(?<![a-z0-9.-])app\.trinethire\.com/companies/([0-9]{1,12})"
                             r"(?:-([a-z0-9-]{0,200}))?(?![a-z0-9-])", _trinethire_board),
+        # A JOBSCORE BOARD, by its account's slug, in the three forms a
+        # company's own page names it in (2026-11-23): a link to the hosted
+        # board, its feed or a posting, under /careers/ or /jobs/ on careers.,
+        # www., hire. or widgets.jobscore.com or the bare domain (the loader's
+        # fallback link is one); the widget's iframe, widgets.jobscore.com/
+        # jobs/<slug>/widget_iframe (Finalsite's), and any other page of the
+        # widget's that names an account the same way (its widget.js among
+        # them: blind review of 2026-11-24 - a second account named so was
+        # dropped beside the first, and the door wired one of two); and the
+        # script loader, whose slug is its last argument (ImageTrend's). The
+        # slug as the page spells it (JobScore minds the case: LOWERED).
+        # JobScore's own hosts and pages - its asset hosts, the 'Powered by'
+        # link (www.jobscore.com/?utm_source=<slug>) - are no board:
+        # jobscore-other; an account or a job named in a shape none of these
+        # reads is jobscore-tenant, a doubt (ELSEWHERE)
+        _here("jobscore", r"(?<![a-z0-9.-])(?:(?:careers|www|hire|widgets)\.)?jobscore\.com/(?:careers|jobs)/"
+                          r"([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)(?![a-z0-9_-])"),
+        _here("jobscore", r"\bfunction\s*\(\s*[A-Za-z_$][\w$]{0,40}\s*,\s*[A-Za-z_$][\w$]{0,40}\s*,\s*"
+                          r"(?P<arg>[A-Za-z_$][\w$]{0,40})\s*\)\s*\{[^<]{0,2000}?"
+                          r"(?<![a-z0-9.-])careers\.jobscore\.com/jobs/['\"]\s*\+\s*(?P=arg)\s*\+\s*"
+                          r"['\"]/widget\.js['\"](?:(?!function\b|=>)[^<]){0,2000}?\}\s*\)?\s*\(\s*"
+                          r"document\s*,\s*['\"]script['\"]\s*,\s*"
+                          r"['\"](?P<slug>[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)['\"]\s*\)",
+              _jobscore_loader),
     ])
 
 # A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
@@ -947,7 +995,26 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("avature", "avature.net", _B + r"avature\.net"),
         ("csod", "csod.com", _B + r"csod\.com"),
         ("personio", "personio.", _B + r"personio\.(?:de|com)(?![a-z0-9-])"),
-        ("jobscore", "jobscore.com", _B + r"jobscore\.com"),
+        # A JOBSCORE ADDRESS THAT NAMES AN ACCOUNT OR A JOB IN A SHAPE NO BOARD
+        # FORM READS: a slug run into an underscore, under /careers/ or /jobs/
+        # on any jobscore.com host; the same paths on a host of jobscore.com's
+        # that is none of the board's four; and one job's apply link
+        # (/apply_flow/...?job_id=<22 characters>, which robots.txt closes, so
+        # it is never followed to its board). Another account beside their
+        # board, or a job whose account it does not show: a doubt, never
+        # JobScore's own form (blind review of 2026-11-24: filed as
+        # jobscore-other, it was dropped beside the board it sat by, and as a
+        # link on another of their pages it was a note)
+        ("jobscore-tenant", "jobscore.com",
+         r"(?<![a-z0-9.-])(?:[a-z0-9-]{1,63}\.)*jobscore\.com/(?:careers|jobs)/[a-z0-9-]*_[a-z0-9_-]*"
+         r"|(?<![a-z0-9.-])(?!(?:careers|www|hire|widgets)\.jobscore\.com)(?:[a-z0-9-]{1,63}\.)+"
+         r"jobscore\.com/(?:careers|jobs)/[a-z0-9_]"
+         r"|(?<![a-z0-9.-])(?:[a-z0-9-]{1,63}\.)*jobscore\.com/apply_flow/[^\s\"'<>]{0,300}?"
+         r"\bjob_id=[a-z0-9_-]{22}"),
+        # any other jobscore.com address (JobScore's own site and asset
+        # hosts, the 'Powered by' link, a page naming no slug): a platform we
+        # read, naming no board
+        ("jobscore-other", "jobscore.com", _B + r"jobscore\.com"),
         ("careerplug", "careerplug.com", _B + r"careerplug\.com"),
         ("hireology", "hireology.com", _B + r"hireology\.com"),
         # where a company posts instead of keeping a board of its own
@@ -996,7 +1063,10 @@ def _other_region(text: str, m) -> bool:
 # second account, and a doubt - unless they name the very tenant the board is
 # (same_tenant). The door says so in those words.
 TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet",
-                "jobvite-tenant": "jobvite", "jobvite-joblink": "jobvite"}
+                "jobvite-tenant": "jobvite", "jobvite-joblink": "jobvite",
+                # (tenant_of names no JobScore account in it, so it is never
+                # the board's own: a doubt beside it, always)
+                "jobscore-tenant": "jobscore"}
 _TENANT_UID = re.compile(r"(?<![0-9A-F])([0-9A-F]{2}\.[0-9A-F]{3})(?![0-9A-F])", re.I)
 
 
@@ -1054,7 +1124,7 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "applicantpro-other": "applicantpro", "pinpoint-other": "pinpoint",
                    "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
                    "jobvite-other": "jobvite", "successfactors-other": "successfactors",
-                   "trinethire-other": "trinethire"}
+                   "trinethire-other": "trinethire", "jobscore-other": "jobscore"}
 # A platform's form that is somewhere else to hire through on any other page
 # and the board's own furniture on the board's own pages: a Career Site
 # Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
