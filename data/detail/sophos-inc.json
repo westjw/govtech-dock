@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Sophos named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u2122 for Integrated Security Operations Center Systems",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sophos.com/blog/sophos-named-leader-2026-gartner-magic-quadrant-for-integrated-security-operations-center-systems"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sophos.com/en-us/blog/your-training-data-is-boring-anomaly-detection-with-llms"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Malicious ScreenConnect deployments observed",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sophos.com/en-us/blog/malicious-screenconnect-deployments-observed"
   }
  ]
 }

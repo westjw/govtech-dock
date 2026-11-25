@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "What Is the Difference Between Decodable Books and Leveled Readers?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://decodablereads.com/blog/decodable-books-vs-leveled-readers"
+  },
+  {
    "date": "2026-11-17",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://decodablereads.com/blog/what-parents-need-to-know-science-of-reading"
-  },
-  {
-   "date": "2026-09-29",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "How Can I Help My Struggling Reader Gain Confidence?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://decodablereads.com/blog/help-struggling-reader-gain-confidence"
   }
  ],
  "profile": {

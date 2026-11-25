@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Why cybersecurity tool sprawl makes security harder to manage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.threatlocker.com/blog/why-cybersecurity-tool-sprawl-makes-security-harder-to-manage"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-21",
    "headline": "How attackers abuse OAuth permissions to maintain access",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.threatlocker.com/blog/why-ai-agents-need-just-in-time-access"
-  },
-  {
-   "date": "2026-11-06",
-   "date_source": "card-date",
-   "first_seen": "2026-11-07",
-   "headline": "Cybersecurity frameworks and regulations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.threatlocker.com/blog/govramp-vs-fedramp-whats-the-difference"
   }
  ]
 }

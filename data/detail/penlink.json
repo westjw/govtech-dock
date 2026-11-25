@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "TikTok Investigations: What Investigators Should Know About the Platform",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/tiktok-investigations/"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Social Media Intercepts: When Suspects Move Platforms",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.penlink.com/blog/social-media-intercepts/"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.penlink.com/blog/data-center-security-intelligence-problem/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Why Live Intercepts Still Matter in Fast-Moving Investigations",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/blog/live-intercepts-fast-moving-investigations/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "How CoAnalyst360 Gives Investigators Their Time Back",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.penlink.com/blog/coanalyst360-investigators-time/"
   }
  ],
  "profile": {

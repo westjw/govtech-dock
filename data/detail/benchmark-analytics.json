@@ -1,6 +1,51 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "What Is a Field Training Officer? A Plain-Language Guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.benchmarkanalytics.com/blog/what-is-a-field-training-officer/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Police Early Intervention System: Why an Alert Isn\u2019t a Diagnosis",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.benchmarkanalytics.com/blog/police-early-intervention-system-alert-vs-diagnosis/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "FTO Training: What Makes a Good FTO, and How to Keep One",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.benchmarkanalytics.com/blog/fto-training-good-field-training-officer/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "The Case for Self-Service Configuration in Police Field Training Software",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.benchmarkanalytics.com/blog/police-field-training-software-configuration/"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Daily Observation Reports: Stop Writing Them from Memory",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.benchmarkanalytics.com/blog/daily-observation-report/"
+  },
+  {
    "date": "2026-10-20",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -62,51 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.benchmarkanalytics.com/blog/police-officer-performance-drift/"
-  },
-  {
-   "date": "2026-05-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "New Research Validates Why a Data-Driven, Predictive Early Intervention System is Critical",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.benchmarkanalytics.com/blog/why-data-driven-predictive-early-intervention-system-is-critical/"
-  },
-  {
-   "date": "2026-03-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Experiment That Changed Miami Policing (And What Happened When It Ended)",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.benchmarkanalytics.com/blog/john-timoney-use-of-force-miami/"
-  },
-  {
-   "date": "2026-01-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "From Training Platform to Complete Police Force Management: Bloomington PD\u2019s BMS Journey",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.benchmarkanalytics.com/blog/bloomington-pd-bms-case-study/"
-  },
-  {
-   "date": "2025-11-14",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond Compliance: Takeaways from Panel on Organizational Excellence",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.benchmarkanalytics.com/blog/beyond-compliance-takeaways-from-panel-on-organizational-excellence/"
-  },
-  {
-   "date": "2025-08-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Why This Police Captain Says Your EIS Will Fail If It\u2019s Punitive",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.benchmarkanalytics.com/blog/why-this-police-captain-says-your-eis-will-fail-if-its-punitive-and-how-to-fix-it/"
   }
  ],
  "profile": {

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "What Is Naloxone? Why Everyday Carrying Matters",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ncasetechnologies.com/blogs/news/what-is-naloxone-how-to-carry-it"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "Can Naloxone Nasal Spray Freeze? What to Know This Winter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ncasetechnologies.com/blogs/news/does-narcan-freeze"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "time",
    "first_seen": "2026-11-11",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ncasetechnologies.com/blogs/news/harm-reduction-explained-what-it-is-and-why-it-matters"
-  },
-  {
-   "date": "2026-08-31",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Signs of Opioid Addiction - A Guide for Families and Friends",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ncasetechnologies.com/blogs/news/signs-of-opioid-addiction-a-guide-for-families-and-friends"
-  },
-  {
-   "date": "2026-08-25",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Fentanyl Overdose Response: Common Mistakes and What to Do Instead",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ncasetechnologies.com/blogs/news/fentanyl-overdose-response"
   }
  ],
  "profile": {

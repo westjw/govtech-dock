@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "index-text",
+   "first_seen": "2026-11-24",
+   "headline": "Engineering for an 80,000-Seat Arena: How We Tuned Verkada\u2019s Video Pipeline for an NFL Stadium",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.verkada.com/blog/tuning-video-pipeline-for-an-nfl-stadium/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "index-text",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.verkada.com/blog/thermal-camera-series/"
-  },
-  {
-   "date": "2026-09-16",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "Introducing Maps: Spatial Awareness Across Your Physical Sites",
-   "kind": "product",
-   "kind_rule": "Introducing",
-   "url": "https://www.verkada.com/blog/introducing-maps-in-command/"
   }
  ],
  "profile": {

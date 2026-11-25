@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "ARTEX: When AI starts testing your identities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://delinea.com/blog/artex-when-ai-starts-testing-your-identities"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://delinea.com/blog/the-next-cve-is-already-being-found"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "The confidence gap in application access governance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://delinea.com/blog/application-access-governance-report"
   }
  ]
 }

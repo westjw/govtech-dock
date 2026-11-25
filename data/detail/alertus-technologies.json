@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Best Practices to Protect Against and Communicate Effectively During Cyberattacks",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://alertus.com/blog/best-practices-to-protect-against-and-communicate-effectively-during-cybersecurity-attacks"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://alertus.com/blog/top-notification-solutions-for-enhancing-worker-safety-across-the-oil-and-gas-industry"
-  },
-  {
-   "date": "2026-07-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Beyond Legacy Alerts: A Modern Approach to Campus Emergency Response",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://alertus.com/blog/beyond-legacy-alerts-a-modern-approach-to-campus-emergency-response"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "EP 131 \u2014 Red Cat Aerial's Mitch McDonald On Why Scaling Army Drones Past Prototype Volumes Runs Through The Supply Chain",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://radicl.com/resources/red-cat-mitch-mcdonald-scaling-army-drones"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://radicl.com/resources/the-worst-time-to-step-off-the-gas-ai-accelerated-threats-meet-the-cmmc-pause"
-  },
-  {
-   "date": "2026-10-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-09",
-   "headline": "Right Vendor, Right Sender, Wrong Keyboard",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://radicl.com/resources/right-vendor-right-sender-wrong-keyboard"
   }
  ],
  "profile": {

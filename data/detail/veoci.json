@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "index-text",
+   "first_seen": "2026-11-24",
+   "headline": "What Should Government Look for in NIMS-Compatible Incident Management Software?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/nims-incident-management-software"
+  },
+  {
+   "date": "2026-11-12",
+   "date_source": "index-text",
+   "first_seen": "2026-11-24",
+   "headline": "Thanksgiving Safety Tips for the Holidays",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.veoci.com/blog/thanksgiving-safety-tips"
+  },
+  {
    "date": "2026-11-03",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.veoci.com/blog/veoci-security"
-  },
-  {
-   "date": "2026-09-14",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "Building a Culture of Preparedness: What Actually Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/building-culture-of-preparedness"
-  },
-  {
-   "date": "2026-08-13",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "When the Breach Happens: What NYC Health + Hospitals Reveals About Incident Response Readiness",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.veoci.com/blog/healthcare-breach-incident-response-readiness"
   }
  ]
 }

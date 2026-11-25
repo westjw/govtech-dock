@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "Comsol Networks selects managed optical fiber network solution from Adtran and NEC XON to drive 5G growth in South Africa",
+   "kind": "contract",
+   "kind_rule": "selects",
+   "url": "https://www.adtran.com/en/newsroom/press-releases/20261124-comsol-networks-selects-managed-optical-fiber-network-solution-from-adtran-and-nec-xon"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "time",
    "first_seen": "2026-11-19",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-07",
-   "date_source": "time",
+   "date_source": "card-date",
    "first_seen": "2026-10-07",
    "headline": "Oscilloquartz expands OSAinside\u2122 Series OSA 5400 TimeCard\u2122 with advanced server-integrated timing capabilities",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-09-28",
-   "date_source": "card-date",
+   "date_source": "time",
    "first_seen": "2026-10-05",
    "headline": "Oscilloquartz and Iridium expand resilient positioning and navigation capabilities with new PNT service integration",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.adtran.com/en/newsroom/press-releases/20260811-tec-reduces-pressure-on-support-teams-with-proactive-outage-communications"
-  },
-  {
-   "date": "2026-08-06",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Adtran launches Mosaic One Fabric, empowering operators to build custom AI agents and workflows",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://www.adtran.com/en/newsroom/press-releases/20260806-adtran-launches-mosaic-one-fabric-empowering-operators-to-build-custom-ai-agents"
   }
  ],
  "profile": {

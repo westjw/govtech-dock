@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Rapid7 Analysis: VMware vCenter SRP Authentication Bypass to Root (CVE-2026-123890)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rapid7.com/blog/post/ra-rapid7-analysis-vmware-vcenter-srp-authentication-bypass-to-root-cve-2026-123890/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.rapid7.com/blog/post/ra-netscaler-intrusions-chaining-cve-2026-88771-and-cve-2026-88779/"
-  },
-  {
-   "date": "2026-09-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-05",
-   "headline": "How AI Is Changing the Roles Required in the Security Operations Center",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "http://www.rapid7.com/blog/post/ai-changing-security-operations-center-roles-soc/"
   }
  ]
 }

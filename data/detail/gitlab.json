@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "GitLab Dedicated: A go-live guide",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/gitlab-dedicated-a-go-live-guide/"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/prevent-leaks-from-claude-code-dont-ask-again-file/"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "How to design a decision-grade pilot for agentic AI",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/how-to-develop-a-decision-grade-ai-pilot/"
   }
  ]
 }

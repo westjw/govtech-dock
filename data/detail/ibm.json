@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "index-text",
+   "first_seen": "2026-11-24",
+   "headline": "Celebrating the future of computing on the Genesis Mission's first anniversary",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ibm.com/quantum/blog/genesis-first-anniversary"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ibm.com/quantum/blog/whats-new-q3-2026"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "index-text",
-   "first_seen": "2026-10-06",
-   "headline": "Qiskit beyond Python: Fortran, C++, and Julia",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ibm.com/quantum/blog/qiskit-beyond-python"
   }
  ],
  "profile": {

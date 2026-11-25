@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "When Your Systems Go Down: How Regroup Keeps Your People Connected and Your Recovery Moving -->",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.regroup.com/blog/cyber-incident-response-communications/"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.regroup.com/blog/inside-customer-onboarding-for-mass-notification-systems-regroups-6-step-go-live-process/"
-  },
-  {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Streamlining Business Communications with Regroup -->",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.regroup.com/blog/streamlining-business-communications-with-regroup/"
   }
  ],
  "profile": {

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-10-28",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Veovo selected for LiDAR-powered passenger flow management at Toronto Pearson",
+   "kind": "contract",
+   "kind_rule": "selected for",
+   "url": "https://veovo.com/insights/news/veovo-selected-for-lidar-powered-passenger-flow-management-at-toronto-pearson"
+  },
+  {
    "date": "2026-09-24",
    "date_source": "json-ld",
    "first_seen": "2026-10-13",
@@ -62,6 +71,24 @@
    "kind": "contract",
    "kind_rule": "adopts",
    "url": "https://veovo.com/insights/news/avinor-forecasting-technololgy"
+  },
+  {
+   "date": "2022-06-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Can AI help address airport staff shortages as travel rebounds?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://veovo.com/insights/articles/ai-address-airport-staff-shortages"
+  },
+  {
+   "date": "2022-05-17",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Using airport charges as levers for growth, efficiency and sustainability",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://veovo.com/insights/articles/airport-charges-growth-efficiency-sustainability"
   },
   {
    "date": "2020-09-09",

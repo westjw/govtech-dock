@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "7 volunteer management best practices for nonprofit organizations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.bonterratech.com/blog/volunteer-management-best-practices"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.bonterratech.com/resources/participation-gap-why-csr-programs-fall-short-what-top-programs-do"
-  },
-  {
-   "date": "2026-09-28",
-   "date_source": "index-text",
-   "first_seen": "2026-10-05",
-   "headline": "What enterprise CSR leaders are getting wrong when they evaluate platforms",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.bonterratech.com/blog/what-csr-leaders-get-wrong-when-evaluating-csr-platforms"
   }
  ],
  "profile": {

@@ -1,10 +1,19 @@
 {
  "news": [
   {
+   "date": "2026-09-02",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "City Detect Named Finalist in Civic Solutions Challenge",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.citydetect.com/blog/city-detect-named-a-finalist-in-sourcewell-s-civic-solutions-challenge"
+  },
+  {
    "date": "2026-08-27",
-   "date_source": "index-text",
+   "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "Back-to-School Means More than School Zones: Seasonal Code Enforcement Challenges",
+   "headline": "Back-to-School Means More than School Zones",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.citydetect.com/blog/back-to-school-means-more-than-school-zones-seasonal-code-enforcement-challenges"
@@ -20,9 +29,9 @@
   },
   {
    "date": "2026-08-17",
-   "date_source": "index-text",
+   "date_source": "time",
    "first_seen": "2026-09-05",
-   "headline": "San Francisco Adds City Detect to Its Emerging Technologies Vendor Pool",
+   "headline": "San Francisco Adds City Detect to Emerging Tech Vendor Pool",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.citydetect.com/blog/san-francisco-adds-city-detect-to-its-emerging-technologies-vendor-pool"
@@ -31,7 +40,7 @@
    "date": "2026-07-30",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "One Survey, Five Departments: Getting More Value from Municipal Data",
+   "headline": "One Survey, Five Departments: Getting More Value from Data",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.citydetect.com/blog/one-survey-five-departments-getting-more-value-from-municipal-data"
@@ -40,7 +49,7 @@
    "date": "2026-07-23",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "Measuring What Matters: 7 KPIs Every Code Enforcement Director Should Track",
+   "headline": "Measuring What Matters: 7 KPIs Code Directors Should Track",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.citydetect.com/blog/measuring-what-matters-7-kpis-every-code-enforcement-director-should-track"
@@ -58,7 +67,7 @@
    "date": "2026-06-30",
    "date_source": "index-text",
    "first_seen": "2026-09-05",
-   "headline": "How AI Code Enforcement Is Transforming Municipal Compliance in Cathedral City",
+   "headline": "How Code Is Transforming Compliance in Cathedral City",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.citydetect.com/blog/how-ai-code-enforcement-is-transforming-municipal-compliance-in-cathedral-city"
@@ -71,6 +80,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.citydetect.com/blog/proactive-code-enforcement-roi-building-the-business-case"
+  },
+  {
+   "date": "2026-06-11",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "How the 2026 World Cup Tests Code Enforcement & Public Works",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.citydetect.com/blog/how-the-2026-world-cup-tests-code-enforcement-public-works"
   },
   {
    "date": "2026-05-07",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.citydetect.com/blog/the-documentation-infrastructure-cities-need-to-win-grants"
-  },
-  {
-   "date": "2026-03-31",
-   "date_source": "time",
-   "first_seen": "2026-09-12",
-   "headline": "Community Development Metrics Every Code Enforcement Director Should Track in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.citydetect.com/blog/community-development-metrics-every-code-enforcement-director-should-track-in-2026"
-  },
-  {
-   "date": "2026-03-26",
-   "date_source": "time",
-   "first_seen": "2026-09-28",
-   "headline": "Your Team Didn't Get Bigger. It Got Smarter",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.citydetect.com/blog/your-team-didnt-get-bigger-it-got-smarter"
   }
  ],
  "profile": {

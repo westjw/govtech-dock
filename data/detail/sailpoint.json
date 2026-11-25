@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "SailPoint Unveils 2027 Identity Security Predictions: The Era of \"Ungoverned Agentic AI\" Ends as Legal Baselines, Executive Accountability, and Intent Redefine the Enterprise",
+   "kind": "product",
+   "kind_rule": "Unveils",
+   "url": "https://www.sailpoint.com/press-releases/sailpoint-2027-identity-security-predictions"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sailpoint.com/blog/secure-any-identity-any-application"
-  },
-  {
-   "date": "2026-10-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-31",
-   "headline": "Put your existing data classification to work: How SailPoint and BigID keep sensitive data safe",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sailpoint.com/blog/put-your-existing-data-classification-to-work-how-sailpoint-and-bigid-keep-sensitive-data-safe"
   }
  ]
 }

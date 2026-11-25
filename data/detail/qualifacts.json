@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Qualifacts Partners with San Diego Youth Services to Advance Data-Driven Care and Operational Excellence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.qualifacts.com/resources/san-diego-youth-services-selects-qualifacts-behavioral-health-analytics/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.qualifacts.com/resources/2026-ccbhc-impact-areas-9-ways-qualifacts-supports-ccbhc-success/"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "988 Suicide & Crisis Lifeline: Four Years of Impact",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.qualifacts.com/resources/national-988-suicide-hotline-and-mobile-crisis-through-the-ccbhcs/"
   }
  ],
  "profile": {
