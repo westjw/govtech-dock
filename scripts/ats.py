@@ -4892,9 +4892,9 @@ def clearcompany_posting_key(url) -> str | None:
     knows it - https://apply.clearcompany.com/<slug>?jobId=<id>, both lower-
     cased, every other query left out - or None for any other address. The
     html reader that read these boards before (Rehrig's) wrote the same
-    posting as ?noheader=False&jobId=<id>; build_board keys the posting on
-    this, so a posting keeps its id and its first-seen day whichever way its
-    address was written. A key, never an address anybody is sent to."""
+    posting as ?noheader=False&jobId=<id>; build_board matches the posting
+    on this, so a posting keeps its first-seen day whichever way its address
+    was written. A key, never an address anybody is sent to."""
     slug = clearcompany_hosted_slug(url)
     if slug is None:
         return None
@@ -4906,6 +4906,28 @@ def clearcompany_posting_key(url) -> str | None:
     if len(ids) != 1 or not _CC_GUID_RX.fullmatch(next(iter(ids))):
         return None
     return f"https://{CLEARCOMPANY_HOST}/{slug.lower()}?jobId={ids.pop()}"
+
+
+def clearcompany_posting_forms(url) -> list[str]:
+    """Every address the ClearCompany posting `url` names has been written as
+    on this board, or [] for an address that names no posting
+    (clearcompany_posting_key): this reader's ?jobId=<id>, and the careers
+    page's widget's ?noheader=False&jobId=<id> (every one of the 42 Rehrig
+    ids the snapshots held by 2026-11-24) and ?noheader=True&jobId=<id> (the
+    framed form) - the slug as `url` writes it and lower-cased, the id
+    lower-cased (as the list, the widget and the canonical link write it) and
+    upper-cased. A snapshot under data/history keeps a posting's id alone,
+    hashed from its address as it was written, so build_board.carry_first_seen
+    looks an earlier night up under each of these. Keys, never addresses
+    anybody is sent to."""
+    key = clearcompany_posting_key(url)
+    if key is None:
+        return []
+    slug, job = clearcompany_hosted_slug(url), key.rsplit("jobId=", 1)[1]
+    return list(dict.fromkeys(
+        f"https://{CLEARCOMPANY_HOST}/{s}?{q}jobId={j}"
+        for s in (slug, slug.lower()) for j in (job, job.upper())
+        for q in ("", "noheader=False&", "noheader=True&")))
 
 
 def _cc_attr(rx, attrs: str) -> str:

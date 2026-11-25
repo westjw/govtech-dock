@@ -4537,7 +4537,21 @@ type `clearcompany`. No record is rewired by this; the session runs the door.
   posting by its number and job id), and `carry_first_seen` matches a posting
   the previous board held under the same company and key, whatever its place
   reads now. The titles are the same, so the opening id is too (all 8 of
-  Rehrig's rows on file, checked against the measured list). **The posting
+  Rehrig's rows on file, checked against the measured list). **One only an
+  earlier night's snapshot held keeps its day too**: a snapshot under
+  data/history keeps the id alone, hashed from the address as that night's
+  reader wrote it, and Rehrig's careers page showed 8-10 of its 115 a night -
+  30 of the 115 are in the snapshots under their html ids, 8 were on the
+  board of 11-24, and 22 were dated the night of the move (blind
+  verification, 2026-11-25). So a ClearCompany posting is looked up under
+  every address it has been written as (`ats.clearcompany_posting_forms`:
+  the reader's ?jobId=<id>, the widget's ?noheader=False&jobId=<id> - all 42
+  of Rehrig's snapshot ids - and ?noheader=True&jobId=<id>, the slug as
+  written and lower-cased, the id lower- and upper-cased), with no place or
+  its own, by the company and the address's hash (`build_board.posting_disc`)
+  whatever its title read then: the address names the job. 31 of the 115
+  keep an earlier day (one retitled since 11-10); the other 84 the careers
+  page never showed. **The posting
   id moves once, at the move**: `posting_id` hashes a ClearCompany address as
   written (only TriNet's is keyed), so the 8 html rows keep their ids until
   the door moves Rehrig to its reader; keyed on the posting, they took new
@@ -4590,8 +4604,10 @@ type `clearcompany`. No record is rewired by this; the session runs the door.
   read, the rows, the pay, the pages made whole and every way they are not,
   the empty list, the hops, robots.txt, the ref, the cache, the probe and its
   two halves, the brand filter, the public link, the rank, the first-seen day
-  across the move from html, the finder's forms and a legacy frame asked
-  where it lands, and the door wiring a site that names them - each board
+  across the move from html (from the previous board, or from an earlier
+  night's snapshot under each address form), the finder's forms and a
+  legacy frame asked where it lands, and the door wiring a site that names
+  them - each board
   asked once - and holding one that names somebody else), beside a row in
   `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS, the type
   in `check_a_stated_name_does_not_loosen_the_older_doors`, three forms in

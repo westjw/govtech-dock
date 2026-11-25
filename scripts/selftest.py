@@ -21958,7 +21958,9 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
     assets name no board.
     THE BOARD: the public link is the hosted site; a posting moved from the
     careers page (html) to this reader keeps its first-seen day and its
-    opening id, and its id until it moves; the type ranks 'none' (Job Hunter
+    opening id - held by the previous board, or only by an earlier night's
+    snapshot under any address it has been written as - and its id until it
+    moves; the type ranks 'none' (Job Hunter
     does not list it).
     THE DOOR: a company whose own page links the site and whose site names it
     is wired, each board asked once for the read and the probe; one whose site
@@ -22361,6 +22363,68 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
     if bb.posting_id("acme-gov", "Account Executive", old["url"], old["location"]) != old["id"]:
         errors += fail("clearcompany: a posting the careers page carries took a new id under the "
                        "careers page's own reader (its address is hashed as written until it moves)")
+    # ...and so does one only an EARLIER NIGHT's snapshot holds (blind verification, 2026-11-25).
+    # A snapshot keeps the id alone, hashed from the address as that night's reader wrote it, and
+    # Rehrig's careers page showed 8-10 of its 115 a night: 30 of the 115 are in the snapshots under
+    # their html ids, 8 were on the board of 11-24, and 22 were dated the night of the move. Looked
+    # up under every way the posting has been written, with no place or its own, by the company
+    # and the address whatever its title read then; another job or another company is not it, a
+    # snapshot never moves a date later, and it moves one the previous board held earlier.
+
+    def snap(cid, title, url, loc=""):
+        return f"{cid}::{title}::" + hashlib.blake2s(f"{url}\n{loc}".encode("utf-8"),
+                                                     digest_size=4).hexdigest()
+    jl, mixed_url = JID.lower(), ats.clearcompany_posting_url("AcmeGov", JID)
+    widget = f"{HOSTED}?noheader=False&jobId={jl}"
+    for url, title, at, loc, night, want, why in (
+            (new_url, "Account Executive", widget, "", "2026-11-02", "2026-11-02",
+             "the careers page's widget, ?noheader=False&jobId=<id> with no place (Rehrig's 42)"),
+            (new_url, "Account Executive", f"{HOSTED}?noheader=True&jobId={jl}", "", "2026-11-02",
+             "2026-11-02", "the framed widget, ?noheader=True&jobId=<id>"),
+            (new_url, "Account Executive", f"{HOSTED}?noheader=False&jobId={jl.upper()}", "", "2026-11-02",
+             "2026-11-02", "the widget with the id upper-cased"),
+            (mixed_url, "Account Executive", widget, "", "2026-11-02", "2026-11-02",
+             "the widget with the slug lower-cased (the ref on file 'AcmeGov')"),
+            (mixed_url, "Account Executive", "https://apply.clearcompany.com/AcmeGov?noheader=False&jobId="
+             + jl, "", "2026-11-02", "2026-11-02", "the widget with the slug as the ref writes it"),
+            (new_url, "Account Executive", widget, "Austin, TX, US", "2026-11-02", "2026-11-02",
+             "the widget's address with the reader's place"),
+            (new_url, "Account Executive", new_url, "", "2026-11-02", "2026-11-02",
+             "the reader's own address with no place"),
+            (new_url, "Account Exec - Public Sector", widget, "", "2026-11-02", "2026-11-02",
+             "the same job under the title it had then"),
+            (new_url, "Account Executive", widget, "", "2026-11-30", "2026-11-24",
+             "a night after its own day (never moved later)"),
+            (new_url, "Account Executive", f"{HOSTED}?noheader=False&jobId=aaaaaaaa-0000-4000-8000-000000000009",
+             "", "2026-11-02", "2026-11-24", "another job of the same site"),
+    ):
+        p = fresh(url=url)
+        bb.carry_first_seen([p], [], {snap("acme-gov", title, at, loc): night})
+        if p["first_seen"] != want or p["opening_id"] != bb.opening_id("acme-gov", "Account Executive"):
+            errors += fail(f"clearcompany: a posting an earlier night's snapshot held as {why} was dated "
+                           f"{p['first_seen']}, not {want} (Rehrig: 22 of its 115 re-dated the night it "
+                           f"moved off its careers page)")
+    p = fresh()
+    bb.carry_first_seen([p], [], {snap("beta-gov", "Account Executive", widget): "2026-11-02"})
+    if p["first_seen"] != "2026-11-24":
+        errors += fail("clearcompany: a posting took the night another company's snapshot held for the "
+                       "same address")
+    for nights_ in ({fresh()["id"]: "2026-11-02", snap("acme-gov", "Account Executive", widget): "2026-11-10"},
+                    {snap("acme-gov", "Account Executive", widget): "2026-11-02",
+                     snap("acme-gov", "Account Executive", new_url): "2026-11-10"}):
+        p = fresh()
+        bb.carry_first_seen([p], [], nights_)
+        if p["first_seen"] != "2026-11-02":
+            errors += fail(f"clearcompany: snapshots held the posting on 11-02 and 11-10 and it was dated "
+                           f"{p['first_seen']}, not the earliest")
+    for held, night, want in (("2026-11-10", "2026-11-02", "2026-11-02"),
+                              ("2026-11-02", "2026-11-10", "2026-11-02"), ("2026-11-02", None, "2026-11-02")):
+        p = fresh()
+        bb.carry_first_seen([p], [dict(old, first_seen=held)],
+                            *([{snap("acme-gov", "Account Executive", widget): night}] if night else []))
+        if p["first_seen"] != want:
+            errors += fail(f"clearcompany: the previous board held {held} and a snapshot {night}, and the "
+                           f"posting was dated {p['first_seen']}, not the earliest")
 
     # ---- the finder: the forms a company's own page names the board in --------------------
     here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"

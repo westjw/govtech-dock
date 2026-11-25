@@ -602,9 +602,15 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     once then, keeping their first-seen day and their opening id
     (carry_first_seen matches them on posting_key).
     """
+    return f"{opening_id(company_id, title)}::{posting_disc(url, location)}"
+
+
+def posting_disc(url: str | None, location: str) -> str:
+    """The last part of posting_id: the posting's address and place hashed,
+    the part a snapshot's id carries of them (carry_first_seen looks a
+    posting's earlier nights up by it)."""
     key = f"{ats.trinethire_posting_key(url) or url or ''}\n{location or ''}"
-    disc = hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
-    return f"{opening_id(company_id, title)}::{disc}"
+    return hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
 
 
 # THE LONGEST LOCATION A POSTING PUBLISHES. A board may list every office a
@@ -1914,7 +1920,9 @@ def history_first_seen(history: pathlib.Path | None = None) -> tuple[dict, dict]
     Granicus printed "first read here 1 day ago" over postings in our
     snapshots since 08-24 (launch audit 2, 2026-10-09). Exact ids only: the id
     holds the title, url and place, so a match is the same posting. A title
-    that merely recurs is not.
+    that merely recurs is not. (carry_first_seen also matches a posting whose
+    address names it - a ClearCompany posting's job id - on the address and
+    place alone, under each way it has been written: see there.)
 
     `history` defaults to HISTORY as it stands when CALLED: a default bound at
     import kept reading the real data/history inside the suite's sandbox.
@@ -2052,6 +2060,7 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
         if p["id"] == opening_id(p.get("company_id"), p.get("title")):
             if p["id"] not in legacy or seen < legacy[p["id"]]:
                 legacy[p["id"]] = seen
+    by_address = None
     for p in postings:
         was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
         if not was and p.get("company_id"):
@@ -2059,6 +2068,26 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
             was = named.get((p["company_id"], key)) if key else None
         # a snapshot only ever moves a date EARLIER, never past one held
         night = (nights or {}).get(p["id"])
+        # ...AND ON AN EARLIER NIGHT (blind verification, 2026-11-25). A
+        # snapshot keeps a posting's id alone, hashed from its address as the
+        # reader of that night wrote it, so one the careers page showed on an
+        # earlier night but not on the previous board was dated the night of
+        # the move: Rehrig's careers page showed 8-10 of its 115 postings a
+        # night, 30 of the 115 are in the snapshots under their html ids and 8
+        # were on the board of 11-24, so 22 were re-dated. A ClearCompany
+        # posting is looked up under every address it has been written as
+        # (ats.clearcompany_posting_forms), with no place or its own, by the
+        # company and the address's hash: the address names the job, so
+        # whatever its title read then (Rehrig retitles), it is the same
+        # posting. Another job, or another company, is another hash.
+        forms = ats.clearcompany_posting_forms(p.get("url")) if nights else []
+        if forms and by_address is None:
+            by_address = _nights_by_address(nights)
+        for form in forms:
+            for loc in dict.fromkeys(("", p.get("location") or "")):
+                n = by_address.get((p.get("company_id"), posting_disc(form, loc)))
+                if n and (not night or n < night):
+                    night = n
         if night and (not was or night < was) and night < (p.get("first_seen") or "9999"):
             was = night
         # A CAPTURE KEEPS ITS OWN DATE when that is earlier: the role page
@@ -2069,6 +2098,18 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
             was = min(was, p["first_seen"])
         if was:
             p["first_seen"] = was
+
+
+def _nights_by_address(nights: dict) -> dict:
+    """{(company id, posting_disc): first night} from history_first_seen's
+    {id: night}, an id being company::title::posting_disc: what a snapshot
+    keeps of a posting's address and place, whatever its title."""
+    out: dict = {}
+    for i, day in nights.items():
+        k = (i.split("::", 1)[0], i.rsplit("::", 1)[-1])
+        if day < out.get(k, "9999"):
+            out[k] = day
+    return out
 
 
 def fill_geography(postings: list[dict]) -> None:
