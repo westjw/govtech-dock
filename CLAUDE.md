@@ -1698,8 +1698,8 @@ on his word; each says what to look for.
      it.)
    - `"refused"` or `"failed"`: the checks or the rebuild failed in the
      throwaway worktree at main, or the publisher refused before them
-     (`"why"`; nothing was pushed). The session
-     reads the why and fixes the cause where it is: on main for a check of
+     (`"why"`; nothing was pushed). The session reads the why and fixes the
+     cause where it is: on main for a check of
      main's code; in the checkout only what `python3 scripts/journal.py
      --check` names there - a line of its archive that is no JSON, named by
      file and line number, the old single file `data/admin_journal.archive.jsonl`
@@ -1735,10 +1735,11 @@ on his word; each says what to look for.
      value, which the file already holds: journal it as it stands, writing
      no file, `journal.record("companies.json", <the file with that field
      put back as it stood before the write>, <the file as it is>,
-     "keep-written", by="owner", why=<his why>)`. Every field the why names for that
-     company, in one ruling or one each. Then step 3 again, and that cycle
-     publishes - or names what is left the same way. Journalled on the
-     other side, it changes nothing: the next why names the same side.
+     "keep-written", by="owner", why=<his why>)`. Every field the why names
+     for that company, in one ruling or one each. Then step 3 again, and
+     that cycle publishes - or names what is left the same way. Journalled
+     on the other side, it changes nothing: the next why names the same
+     side.
    - `"held"`: the checkout has a commit main does not - someone committed
      in it. His call; nobody drops or pushes it without him.
    - `"crashed"`: the cycle stopped part way (`"why"`; the inbox has it).
