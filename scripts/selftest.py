@@ -31006,9 +31006,15 @@ def check_journal_matches_reality() -> int:
     Deliberately NOT every field. `hiring` is refresh.py's and changes every
     run by design; flagging it would bury the real signal in noise, and a
     check that cries wolf is one somebody turns off.
+
+    The fields are journal.OWNER_FIELDS, the one list the desk publisher
+    also reads: its own merge entry vouches only for what a side journalled
+    on exactly these (check_a_merge_entry_vouches_only_for_what_each_side_
+    journalled).
     """
-    OWNED = ("brands", "also_known_as", "parent", "board_owner", "year_founded",
-             "location", "website", "sector", "category", "description")
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import journal
+    OWNED = journal.OWNER_FIELDS
     jpath = DATA / "admin_journal.jsonl"
     if not jpath.exists():
         return 0
@@ -63032,11 +63038,46 @@ def check_the_owner_steps_say_what_each_outcome_means() -> int:
     for why in ("could not reach GitHub", "a rebase or merge is in progress"):
         if why not in paused:
             errors += fail(f"the owner's 'paused' bullet does not say what {why!r} means")
-    conflict = bullet('"conflict"')
-    if "admin_undo" not in conflict or "journalled ruling" not in conflict or \
-            "step 3 again" not in conflict:
+    conflict = " ".join(bullet('"conflict"').split())
+    if conflict.count("journalled ruling") < 2 or "step 3 again" not in conflict:
         errors += fail("the owner's 'conflict' bullet does not spell out how each choice is "
                        "carried out and what comes next")
+    # MAIN'S VALUE IS KEPT BY A RULING IN THE CHECKOUT, the mirror of the
+    # desk's: admin_undo's way could not reach a desk entry 500 later rulings
+    # had pruned into the archive, and undid every later change to the
+    # record with it (2026-11-25 third review)
+    def flat(s):
+        return " ".join(s.split())
+    keep_main = flat(conflict[conflict.find("To keep MAIN's value"):]) \
+        if "To keep MAIN's value" in conflict else ""
+    if not keep_main or "journalled ruling in `~/govtech-dock-launch`, the desk stopped" \
+            not in keep_main or "admin_undo.py --today" in conflict:
+        errors += fail("the owner's 'conflict' bullet does not keep MAIN's value by a journalled "
+                       "ruling in the checkout with the desk stopped (or still sends him to "
+                       "admin_undo, which cannot reach a pruned desk entry)")
+    # A LOCAL EDIT IS SHOWN BEFORE STEP 2 WRITES MAIN'S COPY OVER IT - where
+    # scripts differ, and where a script blocks the sync (it matches no copy
+    # main ever held, so it is an edit made in the checkout)
+    for key, what in (('"sync"` ending `", but N script(s) differ', "differ from main's"),
+                      ('"sync": "skipped: would overwrite', "would overwrite")):
+        said = flat(bullet(key))
+        said = said[said.find("script"):]
+        found = [said.find(x) for x in ("git status -- scripts", "git diff -- scripts",
+                                        "untracked")]
+        word, again = said.find("on his word"), said.find("step 2 again")
+        if not said or min(found) < 0 or word < 0 or word > again or max(found) > word:
+            errors += fail(f"the owner's {what!r} bullet redoes step 2 - which writes main's "
+                           f"scripts over a local edit - before showing him git status, git "
+                           f"diff and any untracked script, and without his word")
+    # A WRITE NO ENTRY HOLDS IS FOUND, NEVER SILENCED; A GLUED LINE IS SPLIT FIRST
+    refused = flat(bullet('"refused"'))
+    if "no merge entry" not in refused or "never silences" not in refused or \
+            "fixes the publisher on main" in refused or "keep-written" not in refused:
+        errors += fail("the owner's 'refused' bullet does not say that a write no journal entry "
+                       "holds is found and ruled on where it was written, never silenced")
+    if "--fold" not in refused or refused.find("--fold") > refused.find("that is what is cut"):
+        errors += fail("the owner's 'refused' bullet does not split a line the old code glued "
+                       "(journal.py --fold) before a person cuts the fragment out of it")
     if "300s" not in bullet('"crashed"') or "data/.journal.lock" not in bullet('"crashed"'):
         errors += fail("the owner's 'crashed' bullet does not say what the journal lock's wait "
                        "means")
@@ -63049,6 +63090,585 @@ def check_the_owner_steps_say_what_each_outcome_means() -> int:
     if "differ from main's" not in steps:
         errors += fail("the owner's steps do not say what a sync naming scripts that differ "
                        "from main's means")
+    return errors
+
+
+# --- THE THIRD REVIEW OF THE ARCHIVE SPLIT (2026-11-25): its findings, pinned
+
+def _vouch_real_check(seen: dict):
+    """The REAL check_journal_matches_reality, as the publisher's full
+    selftest runs it, against a worktree's data/."""
+    def run(wt, staged):
+        g = globals()
+        keep = g["DATA"]
+        g["DATA"] = wt / "data"
+        buf = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(buf):
+                n = check_journal_matches_reality()
+        finally:
+            g["DATA"] = keep
+        seen["out"] = buf.getvalue()
+        return ("the selftest failed:\n" + buf.getvalue()) if n else None
+    return run
+
+
+def _vouch_rig(tmp: pathlib.Path, name: str, rows=()) -> dict:
+    cos = [{"id": cid, "name": cid.upper(), "website": f"https://{cid}.example", "description": "",
+            "hiring": {"checked": "2026-11-01"}} for cid in ("c1", "c3")]
+    cos[1]["brands"] = ["Acme Rec"]
+    return _rig(tmp, name, {
+        "data/companies.json": json.dumps(cos, indent=2) + "\n",
+        "data/board.json": '{"generated": "x"}\n',
+        "data/admin_journal.jsonl": _rows_text([{"id": "x#1", "at": "2026-11-01T09:00:00",
+                                                 "file": "scrub.json"}] + list(rows))})
+
+
+def _vouch_write(repo: pathlib.Path, cid: str, eid: str | None, at: str = "", **fields):
+    """One write to a company in a clone: journalled as a ruling under `eid`,
+    or - eid None - with NO journal entry, as a pipeline script writes."""
+    p = repo / "data" / "companies.json"
+    now = json.loads(p.read_text())
+    before = next(c for c in now if c["id"] == cid)
+    after = dict(before, **fields)
+    p.write_text(json.dumps([after if c["id"] == cid else c for c in now], indent=1) + "\n")
+    if eid:
+        with open(repo / "data" / "admin_journal.jsonl", "a") as fh:
+            fh.write(json.dumps(_vouch_entry(eid, at, before, after)) + "\n")
+    return before, after
+
+
+def _vouch_entry(eid: str, at: str, before, after) -> dict:
+    return {"id": eid, "at": at, "file": "companies.json", "action": "edit", "by": "owner",
+            "why": "selftest", "n": 1, "changes": {after["id"]: {"before": before, "after": after}}}
+
+
+def _rig_rows(origin: pathlib.Path) -> list:
+    return [json.loads(x) for x in (_rig_main(origin, "data/admin_journal.jsonl") or b"")
+            .splitlines() if x.strip()]
+
+
+def check_a_merge_entry_vouches_only_for_what_each_side_journalled() -> int:
+    """The publisher's own entry for a company the desk and main both changed
+    (check_a_company_both_sides_changed_is_journalled_as_merged) has the
+    merged record as its after-image, so it vouches for every field in it -
+    and check_journal_matches_reality, the one guard against a write to
+    companies.json no entry holds, reads the last after-image. A pipeline's
+    unjournalled revert of an owner's brands on main, merged with a desk
+    ruling on the same company, stood under the publisher's entry, and
+    main's failing check went from 2 errors to 0 (2026-11-25 third review).
+    Now the entry is written only over what a side journalled, field by
+    field over journal.OWNER_FIELDS; otherwise none, the real check refuses,
+    and the why names the company, the field and where it was written.
+    Driven through whole cycles whose checks run the REAL check in the
+    worktree: an unjournalled write on main to a company the desk also
+    changed (main with, and without, an entry of its own for it), one in
+    the checkout, a pipeline putting back the base value of a field main
+    had journalled, the owner's two remedies on main, and a main change
+    journalled and then pruned into main's archive, which it may vouch for."""
+    import journal
+    errors = 0
+    seen: dict = {}
+    real_check = _vouch_real_check(seen)
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-publish-vouch-"))
+    base_c3 = {"id": "c3", "name": "C3", "website": "https://c3.example", "description": "",
+               "hiring": {"checked": "2026-11-01"}}
+    owner_brands = _vouch_entry("2026-11-10#1", "2026-11-10T10:00:00-05:00", base_c3,
+                                dict(base_c3, brands=["Acme Rec"]))
+    keep_log = (journal.LOG, journal.DATA)
+    t0 = time.time()
+    try:
+        # A. main's pipeline empties c3's brands and rewrites its description,
+        # no entry; main's own last entry for c3 is the owner's brands ruling
+        rig = _vouch_rig(tmp, "a", [owner_brands])
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        _vouch_write(desk, "c3", "2026-11-20#d1", "2026-11-20T10:00:00-05:00",
+                     website="https://desk.example")
+        _rig_push(bot, lambda r: _vouch_write(r, "c3", None, brands=[],
+                                              description="overwritten by a pipeline"),
+                  "a pipeline writes companies.json directly")
+        head = _git(origin, "rev-parse", "main").strip()
+        r = _rig_cycle(desk, t0, run_checks=real_check)
+        why = " ".join(str(r.get("why")).split())
+        if r.get("outcome") != "refused" or _git(origin, "rev-parse", "main").strip() != head:
+            errors += fail(f"an unjournalled write on main to a company the desk also changed was "
+                           f"published under the publisher's merge entry: {r.get('outcome')} "
+                           f"{why[:300]}")
+        elif not all(x in why for x in ("no merge entry for c3", "brands written on main",
+                                         "description written on main", "2026-11-10#1",
+                                         "Recover the value")):
+            errors += fail(f"the refusal over an unjournalled write on main does not name the "
+                           f"company, the fields, where they were written and main's own last "
+                           f"entry for it: {why[:600]}")
+        # D. the owner's steps on main: brands back as the journal holds them
+        # (a ruling), the pipeline's description kept (journalled as it stands)
+        def remedy(repo):
+            _vouch_write(repo, "c3", "2026-11-21#m1", "2026-11-21T10:00:00-05:00",
+                         brands=["Acme Rec"])
+            p = repo / "data" / "companies.json"
+            now = json.loads(p.read_text())
+            was = [dict(c, description="") if c["id"] == "c3" else c for c in now]
+            journal.LOG, journal.DATA = repo / "data" / "admin_journal.jsonl", repo / "data"
+            journal._CACHE = None
+            try:
+                eid, refusal = journal.record("companies.json", was, now, "keep-written",
+                                              by="owner", why="selftest: keep the written value")
+            finally:
+                journal.LOG, journal.DATA = keep_log
+                journal._CACHE = None
+            if refusal or not eid:
+                raise RuntimeError(f"journalling the written value failed: {refusal}")
+        _rig_push(bot, remedy, "a session: the owner's word on c3, journalled")
+        r = _rig_cycle(desk, t0 + 4000, run_checks=real_check)
+        merged = {c["id"]: c for c in json.loads(_rig_main(origin, "data/companies.json") or b"[]")}
+        pub = [x for x in _rig_rows(origin) if x.get("by") == "publisher"]
+        if r.get("outcome") != "pushed" or merged["c3"].get("website") != "https://desk.example" \
+                or merged["c3"].get("brands") != ["Acme Rec"] \
+                or merged["c3"].get("description") != "overwritten by a pipeline" \
+                or len(pub) != 1 or "c3" not in pub[0].get("changes", {}):
+            errors += fail(f"once the owner's word on each field was journalled on main, the "
+                           f"publish did not go through with the publisher's entry: "
+                           f"{r.get('outcome')} {str(r.get('why'))[:300]} {merged.get('c3')}")
+        # B. main has no entry for c3 at all; its pipeline rewrites the description
+        rig = _vouch_rig(tmp, "b")
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        _vouch_write(desk, "c3", "2026-11-20#d1", "2026-11-20T10:00:00-05:00",
+                     website="https://desk.example")
+        _rig_push(bot, lambda r: _vouch_write(r, "c3", None, description="a pipeline's text"),
+                  "a pipeline writes companies.json directly")
+        r = _rig_cycle(desk, t0, run_checks=real_check)
+        why = " ".join(str(r.get("why")).split())
+        if r.get("outcome") != "refused" or \
+                "description written on main, and main's own journal has no entry for it" not in why:
+            errors += fail(f"an unjournalled write on main to a company main never journalled, "
+                           f"merged with a desk ruling, was not refused naming it: "
+                           f"{r.get('outcome')} {why[:400]}")
+        # C. the write no entry holds is in the CHECKOUT
+        rig = _vouch_rig(tmp, "c")
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        _vouch_write(desk, "c3", "2026-11-20#d1", "2026-11-20T10:00:00-05:00",
+                     website="https://desk.example")
+        _vouch_write(desk, "c3", None, description="a script in the checkout")
+        _rig_push(bot, lambda r: _vouch_write(r, "c3", "2026-11-21#m1",
+                                              "2026-11-21T10:00:00-05:00",
+                                              brands=["Acme Rec", "Acme Two"]),
+                  "a session's ruling")
+        r = _rig_cycle(desk, t0, run_checks=real_check)
+        why = " ".join(str(r.get("why")).split())
+        if r.get("outcome") != "refused" or "description written in the checkout, and the " \
+                "desk's own last journal entry for it (2026-11-20#d1)" not in why:
+            errors += fail(f"an unjournalled write in the checkout to a company main also changed "
+                           f"was not refused naming it: {r.get('outcome')} {why[:400]}")
+        # F. main journalled a description, then a pipeline put back the base
+        # value: neither side "changed" it, and main's own check fails on it
+        rig = _vouch_rig(tmp, "f")
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        _vouch_write(desk, "c3", "2026-11-20#d1", "2026-11-20T10:00:00-05:00",
+                     website="https://desk.example")
+
+        def put_back(repo):
+            _vouch_write(repo, "c3", "2026-11-21#m1", "2026-11-21T10:00:00-05:00",
+                         description="main's text")
+            _vouch_write(repo, "c3", None, description="", hiring={"checked": "2026-11-22"})
+        _rig_push(bot, put_back, "a ruling, then a pipeline puts the old value back")
+        r = _rig_cycle(desk, t0, run_checks=real_check)
+        why = " ".join(str(r.get("why")).split())
+        if r.get("outcome") != "refused" or "description, which neither side changed, while " \
+                "the journal's last entry for it (2026-11-21#m1)" not in why:
+            errors += fail(f"a pipeline's revert of a field main had journalled - main's own check "
+                           f"failing on it - was silenced by the publisher's merge entry: "
+                           f"{r.get('outcome')} {why[:400]}")
+        # E. main's change journalled and then PRUNED into main's archive:
+        # journalled all the same, so the entry is written
+        rig = _vouch_rig(tmp, "e")
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        _vouch_write(desk, "c3", "2026-11-20#d1", "2026-11-20T10:00:00-05:00",
+                     website="https://desk.example")
+
+        def pruned(repo):
+            _vouch_write(repo, "c3", "2026-11-21#m1", "2026-11-21T10:00:00-05:00",
+                         description="main's text")
+            live = repo / "data" / "admin_journal.jsonl"
+            lines = [x for x in live.read_text().splitlines() if x.strip()]
+            part = repo / "data" / "journal_archive" / "2026-11.jsonl"
+            part.parent.mkdir(parents=True, exist_ok=True)
+            part.write_text(lines[-1] + "\n")
+            live.write_text("\n".join(lines[:-1]) + "\n")
+        _rig_push(bot, pruned, "a session's ruling, pruned into the archive")
+        r = _rig_cycle(desk, t0, run_checks=real_check)
+        pub = [x for x in _rig_rows(origin) if x.get("by") == "publisher"]
+        if r.get("outcome") != "pushed" or len(pub) != 1:
+            errors += fail(f"a change main journalled and then pruned into its archive was not "
+                           f"vouched for (the archive holds main's last word on the company): "
+                           f"{r.get('outcome')} {str(r.get('why'))[:400]}")
+    except RuntimeError as exc:
+        errors += fail(f"the vouching publisher fixture could not be built: {exc}")
+    finally:
+        journal.LOG, journal.DATA = keep_log
+        journal._CACHE = None
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_a_torn_copy_told_by_a_live_journal_holds_no_publish() -> int:
+    """A torn copy is told by the row it was cut from, held whole - and an
+    archive append a full disk cuts off stops the write before the live
+    journal is rewritten, so that row is whole in the live journal and
+    nowhere else. The publisher told a torn copy by the desk's live journal
+    only when the cycle took that file, which an unchanged live journal it
+    is not, and the full pass (`--fold`) never read a live journal: every
+    publish was refused over a fragment `--check` called a torn copy, and
+    `--fold` took out none (2026-11-25 third review); and a fragment whose
+    row main's live journal holds whole refused the publish too. Driven
+    through whole cycles and the full pass."""
+    import journal
+    errors = 0
+    cur = dt.date.today().isoformat()[:7]
+    r0, r1, r2 = (_jrow(cur, 1, i, why="w" * 40) for i in (1, 2, 3))
+    frag = _jline(r0)[:len(_jline(r0)) // 2]
+    with _journal_box() as tmp:
+        d = journal.archive_dir(tmp)
+        d.mkdir()
+        journal.LOG.write_text(_rows_text([r0, r1, r2]))
+        (d / f"{cur}.jsonl").write_bytes(frag)          # the append the full disk cut off
+        did = journal.normalize(tmp, full=True)
+        held = journal.lines_of("x", (d / f"{cur}.jsonl").read_bytes()) \
+            if (d / f"{cur}.jsonl").exists() else []
+        bad, look = journal.archive_problems(tmp)
+        if did["torn"] != 1 or frag in held or bad or look:
+            errors += fail(f"the full pass (--fold) kept a torn copy whose row only the live journal "
+                           f"holds whole: {did} {held} {bad} {look}")
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-torn-live-"))
+    try:
+        files = {"data/companies.json": '[{"id": "a", "name": "A"}]\n',
+                 "data/board.json": '{"generated": "x"}\n',
+                 "data/admin_journal.jsonl": _rows_text([r0, r1, r2])}
+        # the desk's live journal UNCHANGED since the sync: not a file the cycle
+        # takes, and - main having dropped that row since - the only one that
+        # holds it whole
+        rig = _rig(tmp, "unchanged", files)
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        _rig_push(bot, lambda r: (r / "data" / "admin_journal.jsonl").write_text(
+            _rows_text([r1, r2])), "main drops a row")
+        part = desk / "data" / "journal_archive" / f"{cur}.jsonl"
+        part.parent.mkdir(parents=True)
+        part.write_bytes(frag)
+        r = _rig_cycle(desk, time.time())
+        if r.get("outcome") not in ("pushed", "idle") or \
+                any(not _parses_json(x) for x in _rig_archive(origin)):
+            errors += fail(f"a torn copy whose row the desk's unchanged live journal holds whole "
+                           f"refused the publish, or was carried: {r.get('outcome')} "
+                           f"{str(r.get('why'))[:300]}")
+        # the row whole only in MAIN's live journal (merged with the desk's by
+        # line - main journalled since, the sGlue shape): the desk pruned it,
+        # and its old code glued its next row onto the fragment
+        rig = _rig(tmp, "main-holds", files)
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+
+        def main_rules(repo):
+            with open(repo / "data" / "admin_journal.jsonl", "a") as fh:
+                fh.write(json.dumps(_jrow(cur, 3, 11, file="scrub.json")) + "\n")
+        _rig_push(bot, main_rules, "a session's ruling")
+        g = _jrow(cur, 2, 9, file="scrub.json")
+        (desk / "data" / "scrub.json").write_text('{"x": {"on": 1}}\n')
+        (desk / "data" / journal.LEGACY_ARCHIVE).write_bytes(frag + _jline(g) + b"\n")
+        (desk / "data" / "admin_journal.jsonl").write_text(_rows_text([r1, r2, _jrow(cur, 3, 10)]))
+        r = _rig_cycle(desk, time.time() + 4000)
+        held = _rig_archive(origin)
+        if r.get("outcome") != "pushed" or held.count(_jline(g)) != 1 or \
+                any(not _parses_json(x) for x in held):
+            errors += fail(f"a fragment whose row main's live journal holds whole refused the "
+                           f"publish, or was carried: {r.get('outcome')} {str(r.get('why'))[:300]}")
+    except RuntimeError as exc:
+        errors += fail(f"the live-journal torn-copy fixture could not be built: {exc}")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_a_glued_line_is_split_before_a_person_cuts_it() -> int:
+    """A fragment no file holds whole, with the OLD code's next row glued
+    onto it, is one line that a person must read. `--check` and the
+    publisher's refusal named it by the fragment's size alone ("line 664:
+    145 bytes") and said to cut it, and the line was 351 bytes: cut as
+    named, the whole row glued after the fragment went too (2026-11-25 third
+    review). Now both name the line's size, the fragment's and the row
+    after it, which is kept, and say to split the line with `--fold` first;
+    `--check` then names the fragment alone. Driven through archive_problems,
+    a refused cycle, and the owner's steps carried out to a push."""
+    import journal
+    errors = 0
+    cur = dt.date.today().isoformat()[:7]
+    a, b = _jrow(cur, 1, 1), _jrow(cur, 1, 2)
+    lost = _jline(_jrow(cur, 1, 3, why="no file holds this row whole"))[:80]
+    g = _jrow(cur, 1, 4, file="scrub.json")
+    line = lost + _jline(g)
+    old_bytes = _jline(a) + b"\n" + line + b"\n" + _jline(b) + b"\n"
+    said = f"{len(line):,} bytes: a fragment of {len(lost):,} bytes"
+    with _journal_box() as tmp:
+        journal.legacy_archive(tmp).write_bytes(old_bytes)
+        bad, _look = journal.archive_problems(tmp)
+        text = " ".join(" ".join(bad).split())
+        if not all(x in text for x in ("line 2: " + said, g["id"], "which is kept",
+                                       "python3 scripts/journal.py --fold", "only the fragment")):
+            errors += fail(f"--check names a fragment with a row glued after it by the fragment "
+                           f"alone, or says to cut it before the line is split: {bad}")
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-glued-split-"))
+    keep_settle = journal.SETTLE
+    try:
+        journal.SETTLE = 0.05
+        rig = _rig(tmp, "split", {"data/companies.json": '[{"id": "a", "name": "A"}]\n',
+                                  "data/board.json": '{"generated": "x"}\n',
+                                  "data/admin_journal.jsonl": _rows_text([_jrow(cur, 2, 5)])})
+        desk, origin = rig["desk"], rig["origin"]
+        (desk / "data" / journal.LEGACY_ARCHIVE).write_bytes(old_bytes)
+        (desk / "data" / "scrub.json").write_text('{"x": {"on": 1}}\n')
+        with open(desk / "data" / "admin_journal.jsonl", "a") as fh:
+            fh.write(json.dumps(_jrow(cur, 2, 6, file="scrub.json")) + "\n")
+        head = _git(origin, "rev-parse", "main").strip()
+        r = _rig_cycle(desk, time.time())
+        why = " ".join(str(r.get("why")).split())
+        if r.get("outcome") != "refused" or _git(origin, "rev-parse", "main").strip() != head or \
+                not all(x in why for x in (f"line 2 ({said}", g["id"], "is split first")):
+            errors += fail(f"the publisher's refusal over a fragment with a row glued after it does "
+                           f"not name both, or say to split the line first: {r.get('outcome')} "
+                           f"{why[:500]}")
+        # THE OWNER'S STEPS: --fold in the checkout, then cut the line --check names
+        journal.normalize(desk / "data", full=True)
+        bad, _look = journal.archive_problems(desk / "data")
+        named = re.search(r"(\S+\.jsonl) holds 1 line\(s\) that are not JSON.*?line (\d+): "
+                          r"([\d,]+) bytes", " ".join(bad))
+        if not named or int(named.group(3).replace(",", "")) != len(lost):
+            errors += fail(f"after --fold split the glued line, --check does not name the fragment "
+                           f"alone: {bad}")
+        else:
+            p = desk / "data" / "journal_archive" / named.group(1)
+            rows = p.read_bytes().split(b"\n")
+            cut = rows.pop(int(named.group(2)) - 1)
+            p.write_bytes(b"\n".join(rows))
+            if cut != lost:
+                errors += fail(f"the line --check named after the split is not the fragment: {cut}")
+            r = _rig_cycle(desk, time.time() + 4000)
+            held = _rig_archive(origin)
+            if r.get("outcome") != "pushed" or held.count(_jline(g)) != 1 or \
+                    any(not _parses_json(x) for x in held):
+                errors += fail(f"the owner's steps over a glued line did not reach main with the "
+                               f"glued row whole and once: {r.get('outcome')} "
+                               f"{str(r.get('why'))[:300]}")
+    except RuntimeError as exc:
+        errors += fail(f"the glued-line split fixture could not be built: {exc}")
+    finally:
+        journal.SETTLE = keep_settle
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_the_fold_waits_for_an_append_already_under_way() -> int:
+    """The fold moves the old single file aside and removes the moved copy
+    only once it has stood still for journal.SETTLE: an old-code append
+    through a handle opened before the move lands in it shortly after. No
+    pin held the wait - every fold check passed with it removed, and with
+    no wait every delayed write was lost (2026-11-25 third review). The wait
+    is a heuristic (a write stalled past SETTLE is lost; stopping the old
+    desk, the owner's step 1, is the guard), and here it is held: a write
+    0.1 s after the fold's first read, SETTLE 0.5 s, is filed."""
+    import journal
+    errors = 0
+    cur = dt.date.today().isoformat()[:7]
+    keep_settle = journal.SETTLE
+    real = journal._Archive._fold_blob
+    try:
+        journal.SETTLE = 0.5
+        with _journal_box() as tmp:
+            old = journal.legacy_archive(tmp)
+            rows = [_jrow(cur, 1, i) for i in (1, 2, 3)]
+            old.write_bytes(b"".join(_jline(r) + b"\n" for r in rows))
+            late = _jrow(cur, 2, 9)
+            handle = open(old, "ab")             # the old desk's, opened before the fold
+            fired: list = []
+
+            def first_read(self, blob):
+                if not fired:
+                    def write():
+                        time.sleep(0.1)
+                        handle.write(_jline(late) + b"\n")
+                        handle.flush()
+                    th = threading.Thread(target=write)
+                    fired.append(th)
+                    th.start()
+                return real(self, blob)
+            journal._Archive._fold_blob = first_read
+            try:
+                journal.normalize(tmp, live=[])
+            finally:
+                journal._Archive._fold_blob = real
+                for th in fired:
+                    th.join()
+                handle.close()
+            ids = {json.loads(x)["id"] for x in journal.archived_lines(tmp)}
+            if late["id"] not in ids or old.exists() or journal.folding_archive(tmp).exists():
+                errors += fail(f"a row the old code wrote through its open handle 0.1 s after the "
+                               f"fold read the moved file is gone: the fold did not wait "
+                               f"journal.SETTLE for the file to stand still ({sorted(ids)})")
+    finally:
+        journal._Archive._fold_blob = real
+        journal.SETTLE = keep_settle
+    return errors
+
+
+def check_a_publisher_entry_never_shares_an_id_with_a_desk_ruling() -> int:
+    """The publisher numbered its merge entry in the desk's own id space,
+    from the merged journal, while the desk went on numbering from its own:
+    a ruling the desk made during the cycle took the same id, and main held
+    2026-11-26#10 twice - journal.find and admin_undo reach one (2026-11-25
+    third review). Its entries are `<day>#publish-<n>` now, numbered past
+    every one of its own today - in the live journal, main's archive and the
+    desk's archive as snapshotted (next_id lines=, unpinned before). Driven
+    through next_id, _journal_the_merge and a whole cycle during which the
+    desk rules."""
+    import journal
+    import publish as P
+    errors = 0
+    today = dt.date.today().isoformat()
+    rows = [{"id": f"{today}#{i}"} for i in (1, 2, 3)] + [{"id": f"{today}#publish-2"}]
+    if journal.next_id(rows, space=journal.PUBLISH_SPACE) != f"{today}#publish-3" or \
+            journal.next_id(rows) != f"{today}#4":
+        errors += fail(f"next_id does not keep the publisher's ids apart from the desk's: "
+                       f"{journal.next_id(rows, space=journal.PUBLISH_SPACE)} "
+                       f"{journal.next_id(rows)}")
+    # numbered past its own archived ids: main's archive, and the desk's
+    base = [{"id": "c1", "name": "C1", "website": "https://c1.example", "description": ""}]
+    ours = [dict(base[0], website="https://desk.example")]
+    theirs = [dict(base[0], description="main's text")]
+    merged = [dict(base[0], website="https://desk.example", description="main's text")]
+    desk_e = _vouch_entry("2026-11-20#d1", "2026-11-20T10:00:00-05:00", base[0], ours[0])
+    main_e = _vouch_entry("2026-11-21#m1", "2026-11-21T10:00:00-05:00", base[0], theirs[0])
+
+    def published(n):
+        return "".join(json.dumps({"id": f"{today}#publish-{i}", "at": f"{today}T08:00:00-05:00",
+                                   "file": "companies.json", "changes": {}}) + "\n" for i in n)
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-publish-ids-"))
+    try:
+        for name, main_arch, desk_arch, want in (
+                ("main", range(1, 4), (), f"{today}#publish-4"),
+                ("desk", (), range(5, 7), f"{today}#publish-7")):
+            wt = tmp / name
+            (wt / "data" / "journal_archive").mkdir(parents=True)
+            if main_arch:
+                (wt / "data" / "journal_archive" / f"{today[:7]}.jsonl").write_text(
+                    published(main_arch))
+            (wt / "data" / "admin_journal.jsonl").write_text(_rows_text([desk_e, main_e]))
+            got, declined = P._journal_the_merge(
+                wt, json.dumps(base), json.dumps(ours), json.dumps(theirs), json.dumps(merged),
+                time.time(), {f"data/journal_archive/{today[:7]}.jsonl":
+                              published(desk_arch).encode()} if desk_arch else {},
+                main_live=_rows_text([main_e]), desk_live=_rows_text([desk_e]))
+            if not got or got["id"] != want:
+                errors += fail(f"the publisher's entry took {got and got['id']!r} with today's "
+                               f"publisher ids held only in {name}'s archive: wanted {want!r} "
+                               f"{declined}")
+        # A WHOLE CYCLE, the desk ruling while it builds
+        rig = _vouch_rig(tmp, "ids")
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        for i in (1, 2, 3):
+            _vouch_write(desk, "c3", f"{today}#{i}", f"{today}T0{i}:00:00-05:00",
+                         website=f"https://desk{i}.example")
+        _rig_push(bot, lambda r: _vouch_write(r, "c3", "2026-11-21#m1",
+                                              "2026-11-21T10:00:00-05:00",
+                                              description="main's text"), "a session's ruling")
+        keep_log = (journal.LOG, journal.DATA)
+
+        def redraw(wt):                          # the desk rules while the cycle builds
+            journal.LOG, journal.DATA = desk / "data" / "admin_journal.jsonl", desk / "data"
+            journal._CACHE = None
+            try:
+                p = desk / "data" / "rulings_selftest.json"
+                eid, _ = journal.record("rulings_selftest.json", {}, {"k": {"on": 1}}, "rule",
+                                        by="owner", why="a desk ruling during the cycle")
+                p.write_text('{"k": {"on": 1}}\n')
+            finally:
+                journal.LOG, journal.DATA = keep_log
+                journal._CACHE = None
+            seen["desk"] = eid
+            (wt / "data" / "board.json").write_text('{"generated": "x", "organizations": []}\n')
+            return None
+        seen: dict = {}
+        r1 = _rig_cycle(desk, time.time(), redraw=redraw)
+        r2 = _rig_cycle(desk, time.time() + 4000)
+        ids = [x.get("id") for x in _rig_rows(origin)]
+        twice = sorted({i for i in ids if ids.count(i) > 1})
+        pub = [x for x in _rig_rows(origin) if x.get("by") == "publisher"]
+        if r1.get("outcome") != "pushed" or r2.get("outcome") != "pushed" or twice or \
+                len(pub) != 1 or not re.fullmatch(rf"{today}#publish-\d+", str(pub[0].get("id"))) \
+                or seen.get("desk") not in ids:
+            errors += fail(f"a publisher entry and a desk ruling made during the cycle share an id "
+                           f"on main, or the publisher's is not in its own space: {twice} "
+                           f"{[x.get('id') for x in pub]} {r1.get('outcome')} {r2.get('outcome')}")
+    except RuntimeError as exc:
+        errors += fail(f"the publisher id fixture could not be built: {exc}")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return errors
+
+
+def check_main_s_value_is_kept_by_a_ruling_in_the_checkout() -> int:
+    """The owner's 'conflict' bullet kept MAIN's value by admin_undo --undo of
+    the desk entry that set the field, and admin_undo reads the live journal
+    only: a desk entry 500 later rulings had pruned into the archive was "no
+    journal entry", and an undo takes back every later desk change to the
+    record with it (2026-11-25 third review). It is kept the way the desk's
+    is, mirrored: a journalled ruling in the checkout, the desk stopped,
+    writing main's value - and then the cycle publishes. Driven through
+    admin.save_companies in a desk checkout whose entry is in its archive."""
+    import admin
+    import journal
+    errors = 0
+    tmp = pathlib.Path(tempfile.mkdtemp(prefix="gtd-keep-main-"))
+    keep = (admin.DATA, journal.LOG, journal.DATA, admin._LAST_COMPANIES)
+    try:
+        rig = _vouch_rig(tmp, "keep-main")
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        before, after = _vouch_write(desk, "c1", "2026-11-14#22", "2026-11-14T10:00:00-05:00",
+                                     posts_at="desk-value")
+        live = desk / "data" / "admin_journal.jsonl"
+        lines = [x for x in live.read_text().splitlines() if x.strip()]
+        part = desk / "data" / "journal_archive" / "2026-11.jsonl"
+        part.parent.mkdir(parents=True)
+        part.write_text(lines[-1] + "\n")                # 500 later rulings pruned it
+        live.write_text("\n".join(lines[:-1] + [json.dumps(
+            _jrow("2026-11", 20, 7, file="rulings_selftest.json"))]) + "\n")
+        _rig_push(bot, lambda r: _vouch_write(r, "c1", "2026-11-22#4482",
+                                              "2026-11-22T10:00:00-05:00",
+                                              posts_at="main-value"), "a session's ruling")
+        r = _rig_cycle(desk, time.time())
+        if r.get("outcome") != "conflict":
+            errors += fail(f"the keep-main fixture did not stop on a conflict: {r.get('outcome')}")
+        admin.DATA, journal.DATA = desk / "data", desk / "data"
+        journal.LOG = desk / "data" / "admin_journal.jsonl"
+        journal._CACHE = None
+        if journal.find("2026-11-14#22") is not None:
+            errors += fail("the keep-main fixture's desk entry is still in the live journal")
+        main_val = next(c for c in json.loads(_rig_main(origin, "data/companies.json"))
+                        if c["id"] == "c1")["posts_at"]
+        cos = admin.read_companies()
+        next(c for c in cos if c["id"] == "c1")["posts_at"] = main_val
+        refusal = admin.save_companies(cos, "keep-main", why="selftest: keep main's value",
+                                       by="owner")
+        admin.DATA, journal.LOG, journal.DATA, admin._LAST_COMPANIES = keep
+        journal._CACHE = None
+        r = _rig_cycle(desk, time.time() + 4000)
+        c1 = next(c for c in json.loads(_rig_main(origin, "data/companies.json") or b"[]")
+                  if c["id"] == "c1")
+        if refusal or r.get("outcome") != "pushed" or c1.get("posts_at") != "main-value":
+            errors += fail(f"main's value, written as a journalled ruling in the checkout, did not "
+                           f"settle the conflict: {refusal} {r.get('outcome')} "
+                           f"{str(r.get('why'))[:300]} {c1.get('posts_at')}")
+    except RuntimeError as exc:
+        errors += fail(f"the keep-main fixture could not be built: {exc}")
+    finally:
+        admin.DATA, journal.LOG, journal.DATA, admin._LAST_COMPANIES = keep
+        journal._CACHE = None
+        shutil.rmtree(tmp, ignore_errors=True)
     return errors
 
 
@@ -68762,6 +69382,12 @@ def main() -> int:
     errors += check_an_archive_reader_outlasts_a_writer()
     errors += check_the_archive_is_on_disk_before_it_is_moved()
     errors += check_the_owner_steps_say_what_each_outcome_means()
+    errors += check_a_merge_entry_vouches_only_for_what_each_side_journalled()
+    errors += check_a_torn_copy_told_by_a_live_journal_holds_no_publish()
+    errors += check_a_glued_line_is_split_before_a_person_cuts_it()
+    errors += check_the_fold_waits_for_an_append_already_under_way()
+    errors += check_a_publisher_entry_never_shares_an_id_with_a_desk_ruling()
+    errors += check_main_s_value_is_kept_by_a_ruling_in_the_checkout()
     errors += check_a_site_that_names_somebody_else_is_read_correctly()
     errors += check_a_gate_review_only_covers_what_it_saw()
     errors += check_the_buyer_door_holds()

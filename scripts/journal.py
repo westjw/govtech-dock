@@ -79,6 +79,19 @@ BLAST = 25
 RUNAWAY = 0.34
 RUNAWAY_FLOOR = 60
 KEEP = 500          # entries retained; older ones are pruned on write
+# THE FIELDS OF A COMPANY THE ADMIN OWNS: what selftest's
+# check_journal_matches_reality holds companies.json to (the last after-image
+# of each company against the record), and so what the desk publisher's own
+# merge entry must never vouch for unless a side journalled it - the only
+# guard against a write no entry holds is that check. One list, read by both.
+OWNER_FIELDS = ("brands", "also_known_as", "parent", "board_owner", "year_founded",
+                "location", "website", "sector", "category", "description")
+# THE DESK PUBLISHER'S OWN ID SPACE: its merge entries are numbered
+# `<day>#publish-<n>`, never `<day>#<n>`. It wrote them in the plain space from
+# the merged journal while the desk went on numbering its own: the desk's next
+# ruling took the same id (2026-11-26#10 twice on main, 2026-11-25 third
+# review), and find / admin_undo reach only one of two entries under one id.
+PUBLISH_SPACE = "publish-"
 
 # THE IDS THIS PROCESS WROTE, so the desk admin can say which entries a
 # ruling made without re-reading a 30 MB file twice per request: do_POST
@@ -332,54 +345,66 @@ def _write_entries(rows: list[dict]) -> None:
     _CACHE = None
 
 
-_ID_AT_HEAD = re.compile(rb'(?:^|\n)\{"id": "(\d{4}-\d{2}-\d{2})#(\d+)"')
-_ID_SCAN: dict = {}        # archive part -> (inode, bytes read, {day: highest #n})
+_ID_HEADS: dict = {}       # id space -> the head of a row numbered in it
+_ID_SCAN: dict = {}        # (space, archive part) -> (inode, bytes read, {day: highest #n})
 
 
-def _scan_ids(blob: bytes, top: dict) -> None:
-    for m in _ID_AT_HEAD.finditer(blob):
+def _id_head(space: str = ""):
+    if space not in _ID_HEADS:
+        _ID_HEADS[space] = re.compile(rb'(?:^|\n)\{"id": "(\d{4}-\d{2}-\d{2})#'
+                                      + re.escape(space.encode()) + rb'(\d+)"')
+    return _ID_HEADS[space]
+
+
+_ID_AT_HEAD = _id_head("")
+
+
+def _scan_ids(blob: bytes, top: dict, space: str = "") -> None:
+    for m in _id_head(space).finditer(blob):
         d, n = m.group(1).decode(), int(m.group(2))
         if n > top.get(d, 0):
             top[d] = n
 
 
-def _archived_top(data, day: str) -> int:
-    """The highest #n of `day` among the archived rows of day's month. An open
-    part is read only past what an earlier call in this process read (an
-    append moves only its end); a part rewritten or sealed is read whole,
-    once - reading a month per click is the cost the archive keeps off the
-    admin."""
+def _archived_top(data, day: str, space: str = "") -> int:
+    """The highest #n of `day` (in id space `space`) among the archived rows
+    of day's month. An open part is read only past what an earlier call in
+    this process read (an append moves only its end); a part rewritten or
+    sealed is read whole, once - reading a month per click is the cost the
+    archive keeps off the admin."""
     best = 0
     for m, _n, sealed, p in archive_parts(data):
         if m != day[:7]:
             continue
         try:
             st = p.stat()
-            ino, size, top = _ID_SCAN.get(str(p), (None, 0, {}))
+            ino, size, top = _ID_SCAN.get((space, str(p)), (None, 0, {}))
             if ino != st.st_ino or st.st_size < size or (sealed and st.st_size != size):
                 top = {}
                 raw = p.read_bytes()
-                _scan_ids(gzip.decompress(raw) if sealed else raw, top)
+                _scan_ids(gzip.decompress(raw) if sealed else raw, top, space)
                 size = len(raw)
             elif st.st_size > size:
                 with open(p, "rb") as fh:
                     fh.seek(size)
                     tail = fh.read()
-                _scan_ids(tail, top)
+                _scan_ids(tail, top, space)
                 size += len(tail)
-            _ID_SCAN[str(p)] = (st.st_ino, size, top)
+            _ID_SCAN[(space, str(p))] = (st.st_ino, size, top)
         except (OSError, EOFError, zlib.error):
             continue
         best = max(best, top.get(day, 0))
     return best
 
 
-def next_id(rows: list[dict] | None = None, archive=None, lines=()) -> str:
+def next_id(rows: list[dict] | None = None, archive=None, lines=(), space: str = "") -> str:
     """The next free id for today: past the highest of today's numbers in
     `rows` (the live journal when not given) - and in the archive's month of
     today (`archive`, a data folder; the live journal's own when `rows` is
     read here), and in `lines` (raw archived lines held elsewhere). Never one
-    already used.
+    already used. `space` numbers in an id space of its own -
+    `<day>#<space><n>` (the desk publisher's, PUBLISH_SPACE) - which no
+    number in the plain space can ever equal, nor be equalled by.
 
     This counted today's entries and added one, which collides the moment the
     prune drops an early entry for the same day: the count falls, the number
@@ -398,18 +423,18 @@ def next_id(rows: list[dict] | None = None, archive=None, lines=()) -> str:
     used = {str(r.get("id", "")) for r in rows if isinstance(r, dict)}
     top = {}
     for blob in lines or ():
-        _scan_ids(blob, top)
+        _scan_ids(blob, top, space)
     n = top.get(today, 0)
     for i in used:
         day, _, k = i.partition("#")
-        if day == today and k.isdigit():
-            n = max(n, int(k))
+        if day == today and k.startswith(space) and k[len(space):].isdigit():
+            n = max(n, int(k[len(space):]))
     if archive is not None:
-        n = max(n, _archived_top(archive, today))
+        n = max(n, _archived_top(archive, today, space))
     n += 1
-    while f"{today}#{n}" in used:
+    while f"{today}#{space}{n}" in used:
         n += 1
-    return f"{today}#{n}"
+    return f"{today}#{space}{n}"
 
 
 def check(name: str, before, after, force: bool = False) -> tuple[dict, str | None]:
@@ -635,7 +660,12 @@ def as_payload(original, restored: dict, name: str = ""):
 # before the move lands in the moved copy - read again after its lines are
 # filed, and removed only once it has stood still for SETTLE seconds
 # (fold_old). Readers read the moved copy as they read the old file; a fold
-# cut off part way leaves it, and the next write finishes it first.
+# cut off part way leaves it, and the next write finishes it first. THE WAIT
+# IS A HEURISTIC, NOT A GUARD: an old-code write stalled past SETTLE (memory
+# pressure, a stopped process) lands in the moved copy after it is gone, and
+# is lost - kept at 0.2 s and 0.6 s, lost at 1.5 s (2026-11-25 third review).
+# The guard is the owner's step 1: the old desk is stopped before anything
+# folds its file.
 #
 # THE CONSTRUCTIVE STEP FIRST. Every move of a line - a seal, a row going home
 # from another month's file, a re-split, a fold, a resolve - writes the line
@@ -1136,6 +1166,7 @@ class _Archive:
         self._nl: set = set()              # open parts known to end in a newline
         self._touched: set = set()         # open parts appended to, not yet on disk for sure
         self.whole: set = set()            # whole lines held elsewhere (a torn copy's test)
+        self._live: set | None = None      # the live journal's lines, read once when asked
         self.did = {"filed": 0, "known": 0, "folded": 0, "refiled": 0, "sealed": [],
                     "split": [], "deduped": 0, "torn": 0, "held": [], "trimmed": 0,
                     "unglued": 0, "dropped": [], "odd": []}
@@ -1173,7 +1204,19 @@ class _Archive:
         return self._size[p]
 
     def _torn(self, line: bytes, m: str) -> bool:
+        """Is this line a torn copy of a row held whole: in `whole` (what the
+        caller says is held elsewhere), in the live journal beside this
+        archive, or in the month's parts? The LIVE JOURNAL TOO, as the seal
+        and archive_problems read it: an archive append cut off part way
+        (a full disk) stops the write before the live journal is rewritten,
+        so the row it was cutting is whole there and nowhere else - and the
+        full pass kept the fragment that `--check` called a torn copy, and
+        every publish was refused over it (2026-11-25 third review)."""
         if _torn_copy(line, self.whole):
+            return True
+        if self._live is None:
+            self._live = set(_live_lines(self.data))
+        if _torn_copy(line, self._live):
             return True
         return any(_torn_copy(line, self._lines(p))
                    for _k, p in sorted(self.parts.get(m, {}).items()))
@@ -1532,7 +1575,9 @@ class _Archive:
         seconds since it was moved (`since`) or last grew, everything in it
         filed. Bytes after its last newline, once it stands still, are an
         append cut off part way: a line of their own (a torn copy, by the
-        usual test, or a line for a person)."""
+        usual test, or a line for a person). SETTLE is a heuristic: a write
+        stalled longer than it is lost - stopping the old desk first (the
+        owner's step 1) is what makes the fold safe."""
         off, sig, quiet_from = 0, None, since
         while True:
             st = os.stat(p)
@@ -1657,7 +1702,8 @@ def _odd_lines(numbered, whole) -> tuple[list, list, list]:
     """Of one file's (line number, line) pairs that do not parse: the lines
     that are no torn copy of a row held whole (for a person), the torn
     copies, and the glued lines whose fragment is a torn copy (the full pass
-    splits them) - each as (line number, the piece that does not parse)."""
+    splits them) - each as (line number, the piece that does not parse, the
+    whole line it sits in)."""
     other, torn, glued = [], [], []
     for i, ln in numbered:
         pieces = unglue(ln)
@@ -1665,17 +1711,58 @@ def _odd_lines(numbered, whole) -> tuple[list, list, list]:
             if _parses(x):
                 continue
             if not _torn_copy(x, whole):
-                other.append((i, x))
+                other.append((i, x, ln))
             elif len(pieces) > 1:
-                glued.append((i, x))
+                glued.append((i, x, ln))
             else:
-                torn.append((i, x))
+                torn.append((i, x, ln))
     return other, torn, glued
 
 
+def glued_after(piece: bytes, line: bytes) -> list[tuple[str, int]]:
+    """(id, bytes) of each whole row the old code glued onto `piece` in
+    `line` - nothing when the line is the piece alone."""
+    out = []
+    for x in unglue(line):
+        if x == piece or not _parses(x):
+            continue
+        try:
+            rid = json.loads(x).get("id")
+        except (ValueError, AttributeError):
+            rid = None
+        out.append((str(rid or "a row"), len(x)))
+    return out
+
+
+def describe_piece(piece: bytes, line: bytes) -> str:
+    """A line that is no JSON, as a person must be told it before cutting:
+    its size, and - when the old code glued a whole row onto it - the
+    fragment's size apart from the line's, and the row after it, which is
+    kept. A message that gave the fragment's size alone led a person to
+    cut the whole line, and the row glued onto it went with it (2026-11-25
+    third review)."""
+    glued = glued_after(piece, line)
+    if not glued:
+        return f"{len(piece):,} bytes, '{_head(piece, 70)}'"
+    rows = ", ".join(f"{rid} ({n:,} bytes)" for rid, n in glued)
+    return (f"{len(line):,} bytes: a fragment of {len(piece):,} bytes, '{_head(piece, 70)}', "
+            f"with a whole row the old code glued after it - {rows} - which is kept")
+
+
 def _where(name: str, items) -> str:
-    return "; ".join(f"line {i}: {len(x):,} bytes, '{_head(x, 70)}'" for i, x in items[:3]) + \
+    return "; ".join(f"line {t[0]}: {describe_piece(t[1], t[2] if len(t) > 2 else t[1])}"
+                     for t in items[:3]) + \
         (f"; and {len(items) - 3} more" if len(items) > 3 else "")
+
+
+def split_first(items, fold: str) -> str:
+    """What a person does before cutting a fragment the old code glued a
+    whole row onto: nothing is cut from such a line until it is split."""
+    if not any(len(t) > 2 and glued_after(t[1], t[2]) for t in items):
+        return ""
+    return (f" A line with a whole row glued after its fragment is split first: {fold} (the "
+            f"desk stopped) files the row and leaves the fragment alone on a line of its own in "
+            f"{ARCHIVE_DIR}/, which --check then names - only the fragment's bytes are cut")
 
 
 def archive_problems(data=None) -> tuple[list[str], list[str]]:
@@ -1742,7 +1829,8 @@ def archive_problems(data=None) -> tuple[list[str], list[str]]:
                        f"whole starts with them ({_where(name, other)}): what an append cut off "
                        f"part way left of a row no file holds whole now. A person reads each; "
                        f"once he has, it is removed from {name} (a copy kept outside the "
-                       f"repository) - a desk publish is refused while it is there")
+                       f"repository) - a desk publish is refused while it is there."
+                       + split_first(other, fold))
         if glued:
             look.append(f"{name} holds {len(glued)} row(s) the old code glued onto a torn copy of "
                         f"a row held whole ({_where(name, glued)}): the fold, and a desk "
@@ -1777,7 +1865,8 @@ def archive_problems(data=None) -> tuple[list[str], list[str]]:
             elif other:
                 bad.append(f"{name} holds {len(other)} line(s) that are not JSON and no torn copy "
                            f"of a row held whole ({_where(name, other)}): a person reads and "
-                           f"removes them; the month is not sealed while they are there")
+                           f"removes them; the month is not sealed while they are there."
+                           + split_first(other, fold))
             if glued and not s:
                 look.append(f"{name} holds {len(glued)} row(s) glued onto a torn copy of a row "
                             f"held whole ({_where(name, glued)}): {fold} splits them, as the "

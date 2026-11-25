@@ -40,8 +40,11 @@ HOW, IN ORDER, and why each step exists:
      = the checkout's HEAD, ours = the desk, theirs = main. Any field both
      sides changed differently is a CONFLICT: nothing is pushed, an inbox
      item names it. A company both sides changed in different fields is
-     journalled as merged, by the publisher (_journal_the_merge), so the
-     journal's last after-image is the record main now holds.
+     journalled as merged, by the publisher (_journal_the_merge, ids of its
+     own: `<day>#publish-<n>`), so the journal's last after-image is the
+     record main now holds - only when every owner field of the merge is
+     one a side journalled; a write no entry holds is left for the checks
+     to refuse, and the refusal names it.
   6. In a throwaway worktree at main - main's CODE runs, never the
      checkout's uncommitted code - write the merged files, run the quick
      rebuild, stage explicit paths (never -A, never -f), and run the checks:
@@ -73,6 +76,7 @@ import argparse
 import contextlib
 import datetime as dt
 import fcntl
+import gzip
 import hashlib
 import json
 import os
@@ -545,6 +549,13 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
     # ---- snapshot, merge
     with admin_lock(), journal.journal_lock(ROOT / "data"):
         snap = {p: _read(p) for p in take}
+        # THE DESK'S LIVE JOURNAL, READ WHETHER OR NOT IT IS PUBLISHED: what
+        # tells a torn copy in the desk's archive (an append cut off by a full
+        # disk stops the write before the live journal is rewritten, so the
+        # file is unchanged and not taken, and still holds the row whole -
+        # every cycle was refused over the fragment, 2026-11-25 third review),
+        # and what the desk last journalled of each company (_journal_the_merge)
+        desk_live = snap[LIVE_JOURNAL] if LIVE_JOURNAL in snap else _read(LIVE_JOURNAL)
     head_sha = git("rev-parse", "HEAD").stdout.strip()
     held = st.get("base_files") if st.get("base_head") == head_sha else None
 
@@ -579,21 +590,31 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             else:
                 f.parent.mkdir(parents=True, exist_ok=True)
                 f.write_text(text)
-        if COMPANIES in merged and _journal_the_merge(
+        unjournalled = []
+        if COMPANIES in merged:
+            entry, unjournalled = _journal_the_merge(
                 wt, base_of(COMPANIES), snap.get(COMPANIES), show(theirs_rev, COMPANIES),
-                merged[COMPANIES], now, [snap[p] for p in arch if snap.get(p) is not None
-                                         and not p.endswith(".gz")]):
-            merged[LIVE_JOURNAL] = (wt / LIVE_JOURNAL).read_text()   # staged, and trimmed
+                merged[COMPANIES], now, {p: snap[p] for p in arch if snap.get(p) is not None},
+                main_live=show(theirs_rev, LIVE_JOURNAL), desk_live=desk_live)
+            if entry:
+                merged[LIVE_JOURNAL] = (wt / LIVE_JOURNAL).read_text()   # staged, and trimmed
         if arch or LIVE_JOURNAL in merged:
-            odd = _file_archive(wt, arch, snap)
+            odd, glued = _file_archive(wt, arch, snap, desk_live)
             if odd:
+                # what to do first, the lines after: a message cut at 1,500
+                # characters keeps the instructions
                 bad = ("the desk's journal archive holds " + str(len(odd)) + " line(s) that are "
                        "not JSON, and no row held whole starts with them - what an append cut "
-                       "off part way left of a row no file holds whole now: "
-                       + "; ".join(odd[:3]) + ". Nothing was published. A person reads each "
-                       "where it is (python3 scripts/journal.py --check in the checkout names "
-                       "them too); once he has, it is removed from that file, a copy kept "
-                       "outside the repository.")
+                       "off part way left of a row no file holds whole now. Nothing was "
+                       "published. A person reads each where it is (python3 scripts/journal.py "
+                       "--check in the checkout names them too); once he has, it is removed from "
+                       "that file, a copy kept outside the repository."
+                       + (" A line with a whole row glued after its fragment is split first: "
+                          "python3 scripts/journal.py --fold in the checkout (the desk stopped) "
+                          "files the row and leaves the fragment alone on a line of its own, "
+                          "which --check then names - only the fragment's bytes are cut."
+                          if glued else "")
+                       + " The line(s): " + "; ".join(odd[:3]) + ".")
                 inbox("checks", "A publish was refused; nothing was pushed:\n" + bad, st,
                       {"files": take})
                 return done("refused", why=bad[:1500])
@@ -616,9 +637,15 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             return done("idle", why="the merged files equal main already")
         bad = run_checks(wt, staged)
         if bad:
+            if unjournalled:
+                # FIRST, what the publisher knows of it: which side's record
+                # holds a write no journal entry holds - the place to look
+                bad = (_unjournalled_note(unjournalled) + "\n" + bad)
             inbox("checks", "A publish was refused by its checks; nothing was "
                             "pushed:\n" + bad, st, {"files": take})
             return done("refused", why=bad[:1500])
+        if unjournalled:
+            out["unjournalled"] = unjournalled[:20]      # pushed: the check could not see it
         n_desk = len([p for p in staged if p in merged or is_archive(p)])
         msg = (f"desk: publish {n_desk} file(s) the admin changed"
                if not repair else "desk: redraw the board from main's own inputs")
@@ -642,7 +669,8 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
     return done("pushed", sha=sha, files=staged[:60], repair=repair)
 
 
-def _file_archive(wt: pathlib.Path, arch: list, snap: dict) -> None:
+def _file_archive(wt: pathlib.Path, arch: list, snap: dict,
+                  desk_live: str | None = None) -> tuple[list, bool]:
     """Carry the desk's archive onto main's, row by row, in the worktree.
 
     Every line of every archive path the desk changed - the old single file
@@ -661,13 +689,20 @@ def _file_archive(wt: pathlib.Path, arch: list, snap: dict) -> None:
     brought it back: 257 rows in both places, filed twice by main's next
     write (2026-11-24 review) - and it keeps its last KEEP entries. A torn
     copy in the desk's archive (an append cut off part way) is told by the
-    desk's live journal, which still holds that row whole, and is not
-    carried; a row the desk's OLD code glued onto a fragment is split and
-    carried (journal.unglue).
+    desk's live journal (`desk_live`, read under the lock whether or not the
+    cycle takes it: an append a full disk cut off leaves the live file
+    unchanged, so it was not taken, and every cycle was refused over the
+    fragment - 2026-11-25 third review) or by the worktree's own merged live
+    journal (the full pass reads it), and is not carried; a row the desk's
+    OLD code glued onto a fragment is split and carried (journal.unglue).
 
-    Returns what it could not carry: a line of the desk's archive that is no
+    Returns (what it could not carry, whether any of it sits in a line with
+    a whole row glued after it): a line of the desk's archive that is no
     JSON and no torn copy of a row held whole - what a cut-off append left of
-    a row no file holds whole - named by the desk's file and line number.
+    a row no file holds whole - named by the desk's file and line number,
+    and, when the old code glued a row onto it, the line's size apart from
+    the fragment's and the row after it, which is kept: told the fragment's
+    size alone, a person cut the whole line and lost the row (third review).
     The cycle is refused over it: carried, it would refuse every publish
     after from main's side, and a person must read it where it is."""
     lines, where = [], {}
@@ -676,16 +711,69 @@ def _file_archive(wt: pathlib.Path, arch: list, snap: dict) -> None:
             for i, ln in journal.numbered_lines(p, snap[p]):
                 lines.append(ln)
                 for x in journal.unglue(ln):
-                    where.setdefault(x, (p, i))
-    known = journal.lines_of(LIVE_JOURNAL, (snap.get(LIVE_JOURNAL) or "").encode())
+                    where.setdefault(x, (p, i, ln))
+    live = desk_live if desk_live is not None else snap.get(LIVE_JOURNAL)
+    known = journal.lines_of(LIVE_JOURNAL, (live or "").encode())
     did = journal.normalize(wt / "data", lines=lines, known=known, full=True, trim=True)
-    return [f"{where[x][0]} line {where[x][1]} ({len(x):,} bytes, '{journal._head(x)}')"
-            for x in did["odd"] if x in where]
+    odd = [x for x in did["odd"] if x in where]
+    return ([f"{where[x][0]} line {where[x][1]} ({journal.describe_piece(x, where[x][2])})"
+             for x in odd],
+            any(journal.glued_after(x, where[x][2]) for x in odd))
+
+
+_ABSENT = object()
+
+
+def _rows_of(text: str | None) -> list:
+    out = []
+    for ln in (text or "").splitlines():
+        try:
+            out.append(json.loads(ln))
+        except ValueError:
+            continue
+    return out
+
+
+def _last_after(rows, name: str, want=None, by_at: bool = False) -> dict:
+    """{company id: (entry id, after-image)}: each company's last after-image
+    among `name`'s entries in these journal rows - the last in their order,
+    as check_journal_matches_reality reads a live journal; with `by_at`, the
+    latest by its `at` (archived rows: a merge may have interleaved a part)."""
+    last, when = {}, {}
+    for i, r in enumerate(rows):
+        if not isinstance(r, dict) or r.get("file") != name:
+            continue
+        for k, ch in (r.get("changes") or {}).items():
+            if (want is not None and k not in want) or not isinstance(ch, dict) \
+                    or not ch.get("after"):
+                continue
+            key = (str(r.get("at") or ""), i) if by_at else (i,)
+            if k not in when or key >= when[k]:
+                when[k], last[k] = key, (str(r.get("id")), ch["after"])
+    return last
+
+
+def _written(side: str, hit) -> str:
+    where, whose = (("on main", "main's own") if side == "main"
+                    else ("in the checkout", "the desk's own"))
+    if hit:
+        return f"written {where}, and {whose} last journal entry for it ({hit[0]}) does not hold it"
+    return f"written {where}, and {whose} journal has no entry for it"
+
+
+def _unjournalled_note(declined: list) -> str:
+    return ("the publisher wrote no merge entry for " + "; ".join(declined[:4])
+            + (f"; and {len(declined) - 4} more" if len(declined) > 4 else "")
+            + ": a write to companies.json that no journal entry holds. The publisher journals a "
+              "merge only over what each side journalled, so it never silences such a write, and "
+              "neither does a session: it finds the write and the owner rules on the field on "
+              "that side (CLAUDE.md, the owner's step 3, 'refused').")
 
 
 def _journal_the_merge(wt: pathlib.Path, base: str | None, ours: str | None,
                        theirs: str | None, merged: str | None, now: float,
-                       archived=()) -> dict | None:
+                       archived: dict | None = None, *, main_live: str | None = None,
+                       desk_live: str | None = None) -> tuple[dict | None, list]:
     """A journal entry, by the publisher, for each company the desk and main
     BOTH changed while apart: merged field by field (merge_data), the record
     on main is neither side's, and no entry's after-image holds it - so the
@@ -697,45 +785,121 @@ def _journal_the_merge(wt: pathlib.Path, base: str | None, ours: str | None,
     to main, undoable like any other write. A company whose last live entry
     already says what the merge made (the crawl's hiring and ats aside, which
     nothing journals) gets none. Appended to the worktree's live journal,
-    before the carry trims it; returns the entry, or None."""
+    before the carry trims it.
+
+    ONLY OVER WHAT EACH SIDE JOURNALLED. That check is the one guard against
+    a write to companies.json no entry holds - six pipeline scripts still
+    write it directly - and an entry whose after-image is the merge vouches
+    for every field in it: a pipeline's unjournalled revert of an owner's
+    brands on main, merged with a desk ruling on the same company, stood
+    under the publisher's entry and main's failing check went to 0 errors
+    (2026-11-25 third review). So, field by field over the ones the check
+    guards (journal.OWNER_FIELDS), the entry is written only when the merged
+    record holds nothing no journal entry holds: a field the merge CHANGED
+    from the base carries a value some side changed it to AND journalled -
+    that side's own last after-image of the company holds it (main's live
+    journal at the fetched rev, else main's archive; the desk's live
+    journal, else the archive the cycle snapshotted) - and a field neither
+    side changed is not contradicted by the journal's last word on the
+    company (the merged live journal, what the check reads): that
+    disagreement is no doing of the merge. Otherwise no entry - the check
+    speaks - and the company is named with each such field and where it was
+    written, for the refusal. Returns (the entry or None, those names)."""
     if merged is None or ours is None or theirs is None:
-        return None
+        return None, []
     name = COMPANIES.rsplit("/", 1)[-1]
     try:
         B = journal.snapshot(json.loads(base) if base else [], name)
         O, T = journal.snapshot(json.loads(ours), name), journal.snapshot(json.loads(theirs), name)
         X = journal.snapshot(json.loads(merged), name)
     except ValueError:
-        return None
+        return None, []
     live = wt / LIVE_JOURNAL
     text = live.read_text() if live.is_file() else ""
-    rows, last = [], {}
-    for ln in text.splitlines():
-        try:
-            r = json.loads(ln)
-        except ValueError:
-            continue
-        rows.append(r)
-        if isinstance(r, dict) and r.get("file") == name:
-            for k, ch in (r.get("changes") or {}).items():
-                if isinstance(ch, dict) and ch.get("after"):
-                    last[k] = ch["after"]
+    rows = _rows_of(text)
+    merged_last = _last_after(rows, name)           # what the check will read
+    last = {k: a for k, (_i, a) in merged_last.items()}
 
     def own(rec):
         return {f: v for f, v in (rec or {}).items() if f not in merge_data.UPSTREAM_ONLY}
-    changes = {}
+    both = []
     for k, x in X.items():
         o, t, b = O.get(k), T.get(k), B.get(k)
         if None in (o, t, b) or o == b or t == b or x in (o, t):
             continue                    # one side's change: that side's entry holds it
         if k in last and own(last[k]) == own(x):
             continue
-        changes[k] = {"before": t, "after": x}
+        both.append(k)
+    if not both:
+        return None, []
+    archived = archived or {}
+    recs = {"main": T, "desk": O}
+    said = {"main": _last_after(_rows_of(main_live), name, set(both)),
+            "desk": _last_after(_rows_of(desk_live), name, set(both))}
+
+    def changed(k):
+        """(field, merged value, the sides whose record carries it) for each
+        owner field the merge changed from the base."""
+        for f in journal.OWNER_FIELDS:
+            x = X[k].get(f, _ABSENT)
+            if x != B[k].get(f, _ABSENT):
+                yield f, x, [s for s in ("main", "desk") if recs[s][k].get(f, _ABSENT) == x]
+
+    def archived_rows(side):
+        if side == "main":                       # main's archive: the worktree, before the carry
+            yield from journal.archived_rows(wt / "data", legacy=False)
+            return
+        for p in sorted(archived, key=_archive_order):   # the desk's, as snapshotted
+            try:
+                got = journal.lines_of(p, archived[p])
+            except (OSError, EOFError, zlib.error):
+                continue                         # a torn gzip vouches for nothing
+            for ln in got:
+                try:
+                    yield json.loads(ln)
+                except ValueError:
+                    continue
+    # a side's last word on a company its live journal no longer holds (pruned
+    # since): the archive - read only for a side carrying a changed value
+    need = {"main": set(), "desk": set()}
+    for k in both:
+        for _f, _x, carriers in changed(k):
+            need.update({s: need[s] | {k} for s in carriers if k not in said[s]})
+    for side, ks in need.items():
+        if ks:
+            said[side].update({k: (f"{i}, in the archive", a) for k, (i, a) in
+                               _last_after(archived_rows(side), name, ks, by_at=True).items()})
+    changes, declined = {}, []
+    for k in both:
+        whys = []
+        for f, x, carriers in changed(k):
+            if any(k in said[s] and said[s][k][1].get(f, _ABSENT) == x for s in carriers):
+                continue                         # a side changed it, and journalled it
+            whys.append(f"{f} " + (" and ".join(_written(s, said[s].get(k)) for s in carriers)
+                                   or "holds a value neither side's record has"))
+        lid, lafter = merged_last.get(k, (None, None))
+        for f in journal.OWNER_FIELDS:
+            # compared as the check compares: a field the after-image names,
+            # against the record's value (absent reads as None)
+            if X[k].get(f, _ABSENT) == B[k].get(f, _ABSENT) and lafter is not None \
+                    and f in lafter and lafter[f] != X[k].get(f):
+                whys.append(f"{f}, which neither side changed, while the journal's last entry for "
+                            f"it ({lid}) holds another value")
+        if whys:
+            declined.append(f"{k}: {'; '.join(whys)}")
+            continue
+        changes[k] = {"before": T[k], "after": X[k]}
     if not changes:
-        return None
-    entry = {"id": journal.next_id(rows, archive=wt / "data",
-                                   lines=[x if isinstance(x, bytes) else x.encode()
-                                          for x in archived]),
+        return None, declined
+    lines = []
+    for p, raw in archived.items():               # the desk's archive, as snapshotted
+        try:
+            lines.append(gzip.decompress(raw) if p.endswith(".gz") else
+                         (raw if isinstance(raw, bytes) else raw.encode()))
+        except (OSError, EOFError, zlib.error):
+            continue
+    entry = {"id": journal.next_id(rows, archive=wt / "data", lines=lines,
+                                   space=journal.PUBLISH_SPACE),
              "at": now_iso(now), "file": name, "action": "publish-merge", "by": "publisher",
              "why": (f"the desk and main each changed {', '.join(sorted(changes)[:8])}"
                      f"{f' and {len(changes) - 8} more' if len(changes) > 8 else ''} while "
@@ -747,7 +911,7 @@ def _journal_the_merge(wt: pathlib.Path, base: str | None, ours: str | None,
         if text and not text.endswith("\n"):
             fh.write("\n")
         fh.write(json.dumps(entry) + "\n")
-    return entry
+    return entry, declined
 
 
 def _stage_archive(wt: pathlib.Path) -> None:
