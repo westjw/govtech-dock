@@ -2890,6 +2890,10 @@ and never said where in a page a reference sat.
   the call closing the script loader's own function - is a `jobscore` board;
   an account or a job named in a shape none of these reads is
   `jobscore-tenant`, a doubt (see "JobScore: the reader" below).
+  the reader" below). A ClearCompany hosted site's slug on
+  apply.clearcompany.com is a `clearcompany` board, and a legacy HRM Direct
+  board on their own page is asked where its redirect lands (see
+  "ClearCompany: the reader" below).
 - **What the door must still do, because this file cannot:** make the
   second check (ask the board whose it is); refuse a (type, ref) another
   record already holds, or that two records' candidates share (two brands
@@ -2927,10 +2931,10 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Twenty-six types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Eleven more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below), and jobscore (2026-11-24: the feed's own <subtitle>, agreeing with its <title> 'Careers at ...'; see "JobScore: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-seven types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Twelve more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below), jobscore (2026-11-24: the feed's own <subtitle>, agreeing with its <title> 'Careers at ...'; see "JobScore: the reader" below), and clearcompany (2026-11-24: brandFullName, where the hosted page's <title> agrees; see "ClearCompany: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
-- `site`: the employer's website where the board gives one (ashby, jazzhr).
+- `site`: the employer's website where the board gives one (ashby, jazzhr, clearcompany).
 - `failed`: None, or why the board was not read. `refused` (robots.txt, 401, 403, 429) is never asked again in the same run. `gone` is 404 or 410. `unreadable` is anything else, and `how` says what. `how` gives the status and the address in words.
 - `n_is_partial`: True on icims, where `n` is the first page only. Size a board from the reader (`add_company.verify`), never from `n`.
 - `kind`: the type that was asked.
@@ -4866,6 +4870,194 @@ by this work: that is the door's, after review.
   `ats._jobscore_read` (with `ats._jvx_body`) among the feeds that
   `check_the_crawler_honours_robots_txt` holds to follow() and _one as a
   stream.
+## ClearCompany: the reader (2026-11-24)
+
+Two companies on file hire through ClearCompany (research of 2026-11-23):
+Rehrig Pacific links its hosted site, and its record was type html at a
+legacy HRM Direct address, showing 9 rows - the widget's first page of 10 -
+of 115 (two 'Territory Sales Manager - Environmental' roles sell to
+municipalities); Clearfield frames a legacy HRM Direct board (ClearCompany
+owns HRM Direct) and showed none of 5. `ats.fetch_clearcompany` reads the
+type `clearcompany`. No record is rewired by this; the session runs the door.
+
+- **The ref is the hosted site's slug** on apply.clearcompany.com ('rehrig',
+  'clearfield'), taken from a link there or from the address a legacy board's
+  redirect lands on, never guessed: the tenant label matched the slug on 2 of
+  2 sites, which proves nothing. Never 'internal' (robots.txt closes
+  /internal/), never an address (`ats.clearcompany_slug`).
+- **Three requests a board**, every one through `ats._page`: the hosted page
+  (its widget's `data-site-id`, a GUID, or the bootstrap's `?siteId=`; its
+  <title> '<brand> - Careers' with an en dash; its footer's a.cc-home link),
+  `careers-api.clearcompany.com/v1/settings/<site id>` (brandFullName, the
+  brand filter), and `/v1/<site id>?pageIndex=0&pageSize=1000&source=CJB-0`.
+  Every hop is held to the board's own addresses and refused before it is
+  asked: the hosted page to apply.clearcompany.com/<the same slug>[/redirect]
+  over https, any query (`ats._cc_hosted`); the API to the very address asked,
+  no redirect followed (`ats._cc_api`; the same host serves a posting's hiring
+  team at /v1/insights/team/<id>, which nothing asks).
+- **Never the tenant host.** applyLink and jobPortalUrl point at
+  <tenant>.clearcompany.com, whose robots.txt says Disallow: /: never asked,
+  never a ref, never a row's url. A row's url is the hosted site's own
+  https://apply.clearcompany.com/<slug>?jobId=<id lower-cased>.
+  careers-api.clearcompany.com is in `ats.NEVER_CACHED`: an e-mail-to-apply
+  posting's applyLink there is an e-mail address, often a person's.
+- **Whole or not at all.** The order is not stable between requests, so the
+  list is whole only when its rows number its own totalCount; fewer, and the
+  next pages are asked at the same size, deduplicated by id, and the read
+  raises unless they make up exactly totalCount (`ats.clearcompany_jobs`). A
+  count that moves between pages, more rows than the count, a row whose id or
+  title does not read, another shape, another page index, a hosted page with
+  no site id (an offline site) or two, a gone slug (404 on the hosted page) or
+  site id (404 on the API), a page past 2,000,000 characters: each raises.
+  **No empty board has been measured**, so an empty list raises too - kept
+  Unknown, never "None found", as an empty Jobvite feed is.
+- **A row**: positionTitle stripped; the place built from locations[]
+  (`ats.clearcompany_place`), never the server's `location` string, whose
+  whitespace is mangled; the office from the first place with a city or
+  state, else the first naming a country alone; the ad from the list's own
+  description (always read: it is in the answer); a date only where the row
+  carries postedDate (`ats.posted_date`). **No pay field is read**:
+  salaryRangeLow, salaryRangeHigh and salaryType were on no measured row, and
+  the widget prints USD and CAD both as '$', so pay comes from the ad's text
+  through `ats.plain_rows`' one parser - and on a row abroad a bare '$' is no
+  pay. departmentName (cost centres) and the requisition number are not read.
+  A posting page is never read: a closed one answers 200, titled 'Careers'.
+- **A place the board can read** (blind review of the reader, 2026-11-24).
+  The country is an ISO-2 code and `roles.geography` reads a trailing
+  two-letter code as a US state: 'Toronto, ON, CA' was a California office,
+  'Calgary, AB, CA' and 'Pune, MH, IN' US ones, and a Calgary ad's '$' US
+  dollars. So a US place is 'City, ST' or 'Statewide (ST)'; a place abroad is
+  its city alone (its subdivision can be a US code too, Tamil Nadu's TN) or
+  nothing, its country in `office_hint` and never in the text.
+- **A nationwide place is no way of working.** The widget shows one as
+  'Remote (US)'; three of Rehrig's five are a forklift job, a yard driver and
+  a warehouse associate its own On-Site/Hybrid/Remote field calls On-Site.
+  It is written 'US' (abroad, nothing), which geography reads as no mode, and
+  the row's mode is only the posting's own answer to a custom field that IS
+  that question - every part of its name a work_mode word, two or more, the
+  answer one of them, two answers that differ none (`ats.clearcompany_mode`).
+  No other custom field is read. Rehrig's 115 read 112 on-site, 2 remote (the
+  two Territory Sales Managers), 1 hybrid.
+- **The employer, twice** (`verify_boards._clearcompany`): brandFullName,
+  believed only where the hosted page's <title> says the same before
+  ' - Careers' ('Clearfield, Inc', 'Rehrig Pacific Company'); the footer's
+  home link is handed on as `site`, which `proven()` holds to the website on
+  file as it does ashby's and jazzhr's - the link as the settings wrote it,
+  '//www.x/' and 'www.x' naming a website too (dropped, a namesake passed on
+  its name alone: blind review, 2026-11-24), and one naming no host
+  (javascript:, a path, an e-mail address) none. A site whose brand filter lists
+  brands states each of them beside its name; one listing more than one
+  names several companies, which its rows do not tell apart, so none of its
+  names is the whole board's (`stated` False) and the door holds it, even
+  where each brand is a spelling of theirs. Never settings.name (the
+  site's internal label, 'Public - <brand> - Career Site'), the slug, orgId
+  or a tenant label. Inside the door's plan the read and the probe take one
+  answer (`ats.clearcompany_kept`): three requests a board a plan.
+- **Moved from html, a posting keeps its first-seen day and its opening
+  id.** The id hashes the posting's url and place, and the reader writes
+  both otherwise than the careers page's reader did (Rehrig's html rows are
+  ?noheader=False&jobId=<id> with no place). Tyler Technologies' 129
+  postings were all re-dated the night it moved to its Jobvite feed
+  (2026-11-24). So `build_board.posting_key` names a hosted-site posting by
+  its slug and job id (`ats.clearcompany_posting_key`, as a TriNet Hire
+  posting by its number and job id), and `carry_first_seen` matches a posting
+  the previous board held under the same company and key, whatever its place
+  reads now. The titles are the same, so the opening id is too (all 8 of
+  Rehrig's rows on file, checked against the measured list). **One only an
+  earlier night's snapshot held keeps its day too**: a snapshot under
+  data/history keeps the id alone, hashed from the address as that night's
+  reader wrote it, and Rehrig's careers page showed 8-10 of its 115 a night -
+  30 of the 115 are in the snapshots under their html ids, 8 were on the
+  board of 11-24, and 22 were dated the night of the move (blind
+  verification, 2026-11-25). So a ClearCompany posting is looked up under
+  every address it has been written as (`ats.clearcompany_posting_forms`:
+  the reader's ?jobId=<id>, the widget's ?noheader=False&jobId=<id> - all 42
+  of Rehrig's snapshot ids - and ?noheader=True&jobId=<id>, the slug as
+  written and lower-cased, the id lower- and upper-cased), with no place or
+  its own, by the company and the address's hash (`build_board.posting_disc`)
+  whatever its title read then: the address names the job. 31 of the 115
+  keep an earlier day (one retitled since 11-10); the other 84 the careers
+  page never showed. **The posting
+  id moves once, at the move**: `posting_id` hashes a ClearCompany address as
+  written (only TriNet's is keyed), so the 8 html rows keep their ids until
+  the door moves Rehrig to its reader; keyed on the posting, they took new
+  ids at the first build after the merge, before anything was wired, and
+  moved again when the reader gave them a place (blind review, 2026-11-24).
+  A role saved by id before the move shows as no longer listed after it.
+- **The finder**: a link, frame or script naming apply.clearcompany.com/<slug>
+  is a `clearcompany` board (a posting's ?jobId= and /<slug>/redirect too).
+  A legacy HRM Direct board (<label>.hrmdirect.com/employment/...) seen on a
+  page of their own, framed, linked or redirected to, is asked where it goes
+  (`find_site_boards.clearcompany_landing`: robots.txt at every hop, its own
+  host only, at most two a company, within the company's own time), and the
+  slug ClearCompany's redirect names is the candidate, as that page's
+  element; the hosted site itself is never asked, and ClearCompany's
+  furniture beside the frame on that page leaves `elsewhere`. One address is
+  asked once however a page writes it ('//x...&amp;' and 'https://x...&').
+  An address that does not redirect there stays `clearcompany-legacy`, a
+  tenant form, with a `note` saying what came back or why it was not asked
+  (robots.txt, no redirect, another host, one brand's view, a page not
+  theirs alone, the cap); the door says it as a legacy board not followed,
+  never as another account, and alone as such, never as no board. A follow
+  that failed on the day (the network, a timeout, a 5xx, a 429, a robots.txt
+  that would not say) carries `on_the_day`, and the door skips it and asks
+  again, never files it (`wire_found.legacy_left`). The widget drawn
+  straight into a page by career-site.js, naming its site by id alone, is
+  `clearcompany-site`, a tenant form: its slug is not on the page and is
+  never guessed. **One brand's view of a site** (apply.clearcompany.com/
+  <slug>?brand=: its widget turns ?brand= into a filter whether or not it
+  shows a brand menu, so the site may carry sister brands' postings and its
+  settings need not list them) is `clearcompany-brand`, a tenant form and a
+  doubt, never the board: beside a board it holds it, and alone the door
+  lists it as a board it cannot use (`unusable`), never as no board seen -
+  it is not made a candidate, so it reaches the owner's queue only through a
+  board their site also names. **An account's own host**, <label>.clearcompany.com
+  (robots.txt closes it; its label is no proven slug), is
+  `clearcompany-tenant`, a tenant form and a doubt beside a board or not -
+  filed as naming no board it vanished beside the board and was a note
+  elsewhere (blind review, 2026-11-24). Every other clearcompany.com address
+  (careers-content's assets, cc-client-cdn's logos, ClearCompany's own site)
+  is `clearcompany-other`, a form of a platform we read naming no board, the
+  door's own-form note beside a board. discover_js reads the hosted slug.
+  discover_ats.MARKERS still files <label>.clearcompany.com as type html,
+  which robots.txt refuses (Unknown, never a zero).
+- **Read**: the session's build read the research's saved answers only (no
+  request): Rehrig's 115 rows and Clearfield's 5, their settings and hosted
+  pages; 'Rehrig Pacific Company' and 'Clearfield, Inc' stated on both
+  halves, and both home links the websites on file.
+- Ranks 'none' (`build_board.ats_tier`): Job Hunter's parsers do not list it.
+- Guard: `check_clearcompany_reads_its_site_whole_and_names_it_twice` (the
+  read, the rows, the pay, the pages made whole and every way they are not,
+  the empty list, the hops, robots.txt, the ref, the cache, the probe and its
+  two halves, the brand filter, the public link, the rank, the first-seen day
+  across the move from html (from the previous board, or from an earlier
+  night's snapshot under each address form), the finder's forms and a
+  legacy frame asked where it lands, and the door wiring a site that names
+  them - each board
+  asked once - and holding one that names somebody else), beside a row in
+  `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS, the type
+  in `check_a_stated_name_does_not_loosen_the_older_doors`, three forms in
+  SITE_BOARD_FORMS, `ats._cc_hosted` and `ats._cc_api` among the page readers
+  of `check_the_crawler_honours_robots_txt`, the public link and ClearCompany's
+  own site as the board's furniture in
+  `check_what_the_second_review_of_the_new_readers_found_stays_fixed`, and the
+  desk card's link in `check_the_boards_found_card_opens_what_it_names`. 42
+  one-line breakages at the build (each rule above undone: the union and its
+  count, the empty list, applyLink, the server's place, the title, the id's
+  case, each hop rule, 'internal', the cache, the paging, the page index, the
+  comment, the bootstrap's host, two sites, the mode, the date, the kept
+  board, the cap, each row rule, robots.txt, each half of the probe and its
+  brands, the first-seen carry, the id's key, the slug's case in board_key,
+  the public link, each finder rule, the door's kept board and own forms,
+  discover_js), each alone, each caught. Two blind reviewers then found five
+  reader rules and two identity rules that passed with the rule removed (the
+  statewide place, the place dedupe, the title's comment, the home link's
+  check and its class, the pattern's left edge, the legacy gates); the fix
+  pass pinned each, and broke 39 rules of its own alone (the place and the
+  mode, each custom-field rule, the country abroad, the office, the legacy
+  ask's key, the brand and tenant forms, each on-the-day rule, the notes, the
+  door's words and skips, the home link's forms, the count's words, the
+  posting id), each caught; tenant and brand rows also in SITE_BOARD_NOT_ONE.
 
 ## Build order (owner, 2026-08-23)
 

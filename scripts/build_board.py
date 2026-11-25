@@ -446,6 +446,15 @@ def board_url(c: dict) -> str | None:
             return ats.jobscore_page(ref)
         except ats.AtsError:
             return c.get("website")
+    if kind == "clearcompany":
+        # the hosted site, apply.clearcompany.com/<slug>: every opening, each
+        # linking its posting and its form - never the tenant host
+        # (<tenant>.clearcompany.com), which robots.txt closes; a ref that is
+        # no board: their website
+        try:
+            return ats.clearcompany_url(ref)
+        except ats.AtsError:
+            return c.get("website")
     if kind == "html" and ats.trinethire_career(ref) is not None:
         # a careers page on file that is TriNet's career page links the same
         # board's list, its embed: that page says there are no openings
@@ -560,6 +569,16 @@ def opening_id(company_id: str, title: str) -> str:
     return f"{company_id}::{title}"
 
 
+def posting_key(url) -> str | None:
+    """What a posting's address NAMES, for the platforms whose one posting is
+    written more than one way - a TriNet Hire posting by its company number
+    and job id, a ClearCompany posting by its slug and job id - or None for
+    any other address. carry_first_seen matches a posting on it when the
+    reader or the place written beside it changed. posting_id hashes only
+    TriNet's (see there)."""
+    return ats.trinethire_posting_key(url) or ats.clearcompany_posting_key(url)
+
+
 def posting_id(company_id: str, title: str, url: str | None, location: str) -> str:
     """One id per requisition, stable across runs.
 
@@ -582,7 +601,15 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     changes (5502-fraudscope became 5502-codoxo), so it is hashed as its
     company number and job id (ats.trinethire_posting_key) and keeps its id,
     its first-seen day and its saved links across a rename (blind review 13,
-    2026-11-24). Every other address is hashed as it is.
+    2026-11-24). Every other address is hashed as it is - a ClearCompany
+    posting's too. Keyed on its slug and job id, Rehrig Pacific's eight rows
+    on file (its careers page's, ?noheader=False&jobId=<id>, no place) took
+    new ids at the first build after the reader merged, before any board was
+    wired, and moved again when the reader gave them a place (blind review of
+    the identity, 2026-11-24): saved roles key on the id. Hashed as written,
+    they keep their ids until the company is moved to its reader, and move
+    once then, keeping their first-seen day and their opening id
+    (carry_first_seen matches them on posting_key).
 
     A JOBSCORE POSTING IS ITS ADDRESS ALONE (ats.jobscore_posting_key): one
     address is one posting - its 22-character id names it - so the place
@@ -597,11 +624,17 @@ def posting_id(company_id: str, title: str, url: str | None, location: str) -> s
     first-seen day is carried across by the 22-character job id
     (carry_first_seen).
     """
+    return f"{opening_id(company_id, title)}::{posting_disc(url, location)}"
+
+
+def posting_disc(url: str | None, location: str) -> str:
+    """The last part of posting_id: the posting's address and place hashed,
+    the part a snapshot's id carries of them (carry_first_seen looks a
+    posting's earlier nights up by it)."""
     posting = ats.jobscore_posting_key(url)
     key = (f"{posting}\n" if posting else
            f"{ats.trinethire_posting_key(url) or url or ''}\n{location or ''}")
-    disc = hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
-    return f"{opening_id(company_id, title)}::{disc}"
+    return hashlib.blake2s(key.encode("utf-8"), digest_size=4).hexdigest()
 
 
 # THE LONGEST LOCATION A POSTING PUBLISHES. A board may list every office a
@@ -1911,7 +1944,9 @@ def history_first_seen(history: pathlib.Path | None = None) -> tuple[dict, dict]
     Granicus printed "first read here 1 day ago" over postings in our
     snapshots since 08-24 (launch audit 2, 2026-10-09). Exact ids only: the id
     holds the title, url and place, so a match is the same posting. A title
-    that merely recurs is not.
+    that merely recurs is not. (carry_first_seen also matches a posting whose
+    address names it - a ClearCompany posting's job id - on the address and
+    place alone, under each way it has been written: see there.)
 
     `history` defaults to HISTORY as it stands when CALLED: a default bound at
     import kept reading the real data/history inside the suite's sandbox.
@@ -2026,7 +2061,7 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
     the day across. (The id itself still moves: keyed on the job id instead,
     ImageTrend's 7 postings on the board would all have moved ids the night
     their company moved from html to jobscore.)"""
-    prev, legacy, jobs = {}, {}, {}
+    prev, legacy, jobs, named = {}, {}, {}, {}
     for p in prev_postings:
         seen = p.get("first_seen")
         if not seen:
@@ -2038,6 +2073,21 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
             key = (p.get("company_id"), job[1])
             if key not in jobs or seen < jobs[key]:
                 jobs[key] = seen
+        # THE SAME POSTING UNDER ANOTHER READER (2026-11-24). A company moved
+        # from its careers page (type html) to its board's own reader is read
+        # again posting by posting, and the id - its url and its place - is
+        # not what the page gave: Rehrig Pacific's html rows are
+        # ?noheader=False&jobId=<id> with no place, the ClearCompany reader's
+        # ?jobId=<id> in Kenosha, WI. Tyler Technologies' 129 postings were
+        # all dated the night it moved to its Jobvite feed (11-24). Where the
+        # address names the posting itself (posting_key: the vendor's own job
+        # id), the same company's posting under that key is the same posting,
+        # whatever its place reads now, and keeps the earliest date held for it.
+        key = posting_key(p.get("url"))
+        if key and p.get("company_id"):
+            k = (p["company_id"], key)
+            if k not in named or seen < named[k]:
+                named[k] = seen
         # Rows written before ids carried a requisition discriminator have
         # id == company::title exactly. Without this fallback the very
         # first run under the new scheme matches nothing, resets every
@@ -2049,13 +2099,37 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
         if p["id"] == opening_id(p.get("company_id"), p.get("title")):
             if p["id"] not in legacy or seen < legacy[p["id"]]:
                 legacy[p["id"]] = seen
+    by_address = None
     for p in postings:
         was = prev.get(p["id"]) or legacy.get(p.get("opening_id"))
         if not was:
             job = ats.jobscore_posting(p.get("url"))
             was = jobs.get((p.get("company_id"), job[1])) if job else None
+        if not was and p.get("company_id"):
+            key = posting_key(p.get("url"))
+            was = named.get((p["company_id"], key)) if key else None
         # a snapshot only ever moves a date EARLIER, never past one held
         night = (nights or {}).get(p["id"])
+        # ...AND ON AN EARLIER NIGHT (blind verification, 2026-11-25). A
+        # snapshot keeps a posting's id alone, hashed from its address as the
+        # reader of that night wrote it, so one the careers page showed on an
+        # earlier night but not on the previous board was dated the night of
+        # the move: Rehrig's careers page showed 8-10 of its 115 postings a
+        # night, 30 of the 115 are in the snapshots under their html ids and 8
+        # were on the board of 11-24, so 22 were re-dated. A ClearCompany
+        # posting is looked up under every address it has been written as
+        # (ats.clearcompany_posting_forms), with no place or its own, by the
+        # company and the address's hash: the address names the job, so
+        # whatever its title read then (Rehrig retitles), it is the same
+        # posting. Another job, or another company, is another hash.
+        forms = ats.clearcompany_posting_forms(p.get("url")) if nights else []
+        if forms and by_address is None:
+            by_address = _nights_by_address(nights)
+        for form in forms:
+            for loc in dict.fromkeys(("", p.get("location") or "")):
+                n = by_address.get((p.get("company_id"), posting_disc(form, loc)))
+                if n and (not night or n < night):
+                    night = n
         if night and (not was or night < was) and night < (p.get("first_seen") or "9999"):
             was = night
         # A CAPTURE KEEPS ITS OWN DATE when that is earlier: the role page
@@ -2066,6 +2140,18 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
             was = min(was, p["first_seen"])
         if was:
             p["first_seen"] = was
+
+
+def _nights_by_address(nights: dict) -> dict:
+    """{(company id, posting_disc): first night} from history_first_seen's
+    {id: night}, an id being company::title::posting_disc: what a snapshot
+    keeps of a posting's address and place, whatever its title."""
+    out: dict = {}
+    for i, day in nights.items():
+        k = (i.split("::", 1)[0], i.rsplit("::", 1)[-1])
+        if day < out.get(k, "9999"):
+            out[k] = day
+    return out
 
 
 def fill_geography(postings: list[dict]) -> None:

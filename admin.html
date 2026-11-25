@@ -5162,6 +5162,13 @@ function boardUrlFor(f, c){
   if (f.type === 'jobscore')
     return (typeof r === 'string' && /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$/.test(r.trim()))
       ? 'https://careers.jobscore.com/careers/' + r.trim() : '#';
+  // a ClearCompany board is its hosted site's slug; a person opens the hosted
+  // site (as build_board.board_url links it), never the tenant host, which
+  // robots.txt closes; 'internal' is no board
+  if (f.type === 'clearcompany')
+    return (typeof r === 'string' && /^[A-Za-z0-9][A-Za-z0-9-]{0,80}$/.test(r.trim())
+            && r.trim().toLowerCase() !== 'internal')
+      ? 'https://apply.clearcompany.com/' + r.trim() : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
     // the list [tenant, pod, site], or [pod, tenant, site] on Workday's other

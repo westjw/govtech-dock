@@ -70,6 +70,7 @@ ATS_NAME = {"ashby": "Ashby", "greenhouse": "Greenhouse", "lever": "Lever",
             "jobvitefeed": "Jobvite (an account's feed)",
             "trinethire": "TriNet Hire",
             "jobscore": "JobScore",
+            "clearcompany": "ClearCompany",
             "successfactors": "SAP SuccessFactors",
             "html": "Careers page", "unknown": "No board on file"}
 

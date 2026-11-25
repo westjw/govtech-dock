@@ -46,7 +46,10 @@ ATS_URL_PATS = [
     ("adp",     r"workforcenow\.adp\.com/mascsr/default/mdf/recruitment/recruitment\.html\?cid=([a-f0-9-]+)"),
     ("successfactors", r"([a-z0-9-]+)\.(?:successfactors|sapsf)\.com"),
     ("taleo",   r"([a-z0-9-]+)\.taleo\.net"),
-    ("clearcompany", r"([a-z0-9-]+)\.clearcompany\.com"),
+    # (the hosted site's slug, which ats.fetch_clearcompany reads; never
+    # <label>.clearcompany.com, the tenant host robots.txt closes, or
+    # careers-content / cc-client-cdn, which serve every site's assets)
+    ("clearcompany", r"apply\.clearcompany\.com/([A-Za-z0-9-]+)"),
     # (a link to the hosted board, its feed or a posting, or any page of the
     # widget's, the iframe among them; the script loader, whose slug is the
     # last argument of the first call after its address closed '})(', '}('
