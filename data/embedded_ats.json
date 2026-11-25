@@ -4989,5 +4989,35 @@
    "read_at": "2026-11-24T10:27:29-05:00",
    "page": "https://www.soundthinking.com/careers/"
   }
+ },
+ {
+  "id": "clearfield",
+  "name": "Clearfield",
+  "was": "html",
+  "found": {
+   "type": "clearcompany",
+   "ref": "clearfield"
+  },
+  "saw": "//clearfield.hrmdirect.com/employment/job-openings.php?search=true&nohd=&dept=-1&city=-1&state=-1 -> https://apply.clearcompany.com/clearfield/redirect?search=t",
+  "times": 1,
+  "verified": "5 posting(s) readable",
+  "board_calls_itself": "Clearfield, Inc",
+  "identity": "unknown",
+  "identity_why": "the board names \"Clearfield, Inc\", which is this company, but their own site also names a legacy HRM Direct board (ClearCompany's), //reports.hrmdirect.com/employment/default/sm/settings/dynamic-embed/dynamic-iframe-embed-js.php, which was not followed to the hosted site it names (not asked: named in a script - only a link, a frame or a redirect of theirs is followed), and 3 more, so whether it is this board is not settled; https://www.seeclearfield.com:443/about/careers.html embeds the board",
+  "postings": 5,
+  "titles": [
+   "Manufacturing Engineer",
+   "Extrusion Operator",
+   "Product Marketing Manager",
+   "Production Assembler-Panel",
+   "Product Manager"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-25",
+   "on": "2026-11-25",
+   "at": "2026-11-25T10:43:26-05:00",
+   "read_at": "2026-11-25T10:28:08-05:00",
+   "page": "https://www.seeclearfield.com:443/about/careers.html"
+  }
  }
 ]

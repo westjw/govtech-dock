@@ -3407,8 +3407,8 @@
     "category": "EMS",
     "description": "Incident records and ePCR data platform for EMS and fire agencies - exhibited at IAFC FRI 2026, FDIC International 2026, FDIC International 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://careers.jobscore.com/careers/imagetrend"
+      "type": "jobscore",
+      "ref": "imagetrend"
     },
     "hiring": {
       "status": "Yes",
@@ -3554,7 +3554,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-25: imagetrend.com/meet-us/careers loads the board; the board names \"ImageTrend\"; 8 postings read"
   },
   {
     "id": "rapidsos",
@@ -6732,8 +6733,8 @@
     "category": "Waste & Recycling",
     "description": "Carts and bins with embedded RFID/telematics for collection programs - exhibited at SWANA WASTECON 2025",
     "ats": {
-      "type": "html",
-      "ref": "https://rehrig.hrmdirect.com/employment/job-openings.php?search=true"
+      "type": "clearcompany",
+      "ref": "rehrig"
     },
     "hiring": {
       "status": "Unknown",
@@ -6774,7 +6775,9 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-25: rehrigpacific.com/careers/join-our-team links to the board; the board names \"Rehrig Pacific Company\"; 113 postings read",
+    "board_owner": "Rehrig Pacific Company"
   },
   {
     "id": "recycle-track-systems",
@@ -121676,8 +121679,8 @@
     "category": "Operations & SIS",
     "description": "Website, CMS and mass communications platform for school districts - exhibited at ASBO School Business 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.finalsite.com/jobs"
+      "type": "jobscore",
+      "ref": "finalsite"
     },
     "hiring": {
       "status": "Sales (non-AE)",
@@ -121805,7 +121808,8 @@
     "competitors_none_found": false,
     "also_known_as": [
       "RevTrak (Finalsite)"
-    ]
+    ],
+    "ats_note": "wired 2026-11-25: finalsite.com/jobs links to the board; the board names \"Finalsite\"; 13 postings read"
   },
   {
     "id": "edlio",
