@@ -63164,8 +63164,10 @@ def check_a_merge_entry_vouches_only_for_what_each_side_journalled() -> int:
     worktree: an unjournalled write on main to a company the desk also
     changed (main with, and without, an entry of its own for it), one in
     the checkout, a pipeline putting back the base value of a field main
-    had journalled, the owner's two remedies on main, and a main change
-    journalled and then pruned into main's archive, which it may vouch for."""
+    had journalled, the owner's two remedies on main, a main change
+    journalled and then pruned into main's archive, which it may vouch for,
+    and a write the check cannot see (no after-image names the field):
+    published without an entry, and named under "unjournalled"."""
     import journal
     errors = 0
     seen: dict = {}
@@ -63301,6 +63303,23 @@ def check_a_merge_entry_vouches_only_for_what_each_side_journalled() -> int:
             errors += fail(f"a change main journalled and then pruned into its archive was not "
                            f"vouched for (the archive holds main's last word on the company): "
                            f"{r.get('outcome')} {str(r.get('why'))[:400]}")
+        # G. a write no entry holds that the check cannot see (no after-image
+        # names the field): published, no entry vouches for it, and the line
+        # says so under "unjournalled"
+        rig = _vouch_rig(tmp, "g")
+        desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        _vouch_write(desk, "c3", "2026-11-20#d1", "2026-11-20T10:00:00-05:00",
+                     website="https://desk.example")
+        _rig_push(bot, lambda r: _vouch_write(r, "c3", None, board_owner="a pipeline's guess"),
+                  "a pipeline writes companies.json directly")
+        r = _rig_cycle(desk, t0, run_checks=real_check)
+        said = " ".join(str(r.get("unjournalled")).split())
+        if r.get("outcome") != "pushed" or [x for x in _rig_rows(origin)
+                                            if x.get("by") == "publisher"] or \
+                "c3: board_owner written on main, and main's own journal has no entry" not in said:
+            errors += fail(f"a write no entry holds, which the check cannot see, was vouched for "
+                           f"by a publisher entry or not named under 'unjournalled': "
+                           f"{r.get('outcome')} {said[:300]}")
     except RuntimeError as exc:
         errors += fail(f"the vouching publisher fixture could not be built: {exc}")
     finally:
