@@ -24601,7 +24601,7 @@ def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
                 ("www.acme-namesake.example", "www.acme-namesake.example", "with no scheme"),
                 ("javascript:void(0)", None, "a script"),
                 ("/about", None, "a path on the hosted site"),
-                ("mailto:jobs@acme-namesake.example", None, "an e-mail address")):
+                ("mailto:jobs" + "@" + "acme-namesake.example", None, "an e-mail address")):
             said = says({**MAIN, HOSTED: _cc_page(home=home_link)})
             judged = vb.proven({"name": "Acme Gov Systems", "website": "https://acmegov.example"}, said)["ok"]
             if said["site"] != want_site or judged != (want_site is None):
