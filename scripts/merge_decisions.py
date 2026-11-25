@@ -194,8 +194,22 @@ def resolve() -> int:
             subprocess.run(["git", "add", path], cwd=ROOT, check=True)
         print(f"  {path}: merged record by record")
     if archive:
+        # IN A REBASE stage 2 is the upstream (main). IN A MERGE it is HEAD,
+        # whichever branch that is: passing 2 in a merge of main into a
+        # branch let the branch's sealed file stand over main's (2026-11-24
+        # second review). A merge asks journal.main_side, as journal.py
+        # --resolve does, and is refused when neither side is main.
+        merging = subprocess.run(["git", "rev-parse", "-q", "--verify", "MERGE_HEAD"],
+                                 cwd=ROOT, capture_output=True).returncode == 0
+        up = journal.main_side(ROOT) if merging else 2
+        if up is None:
+            print("  the journal archive: in this merge neither HEAD nor MERGE_HEAD is main, so "
+                  "there is no telling whose archive files stand; left for a person: "
+                  "python3 scripts/journal.py --resolve --upstream 2 (HEAD's stand) or 3 "
+                  "(MERGE_HEAD's)", file=sys.stderr)
+            return 1
         try:
-            print("  " + journal.resolve(ROOT, archive, upstream=2))
+            print("  " + journal.resolve(ROOT, archive, upstream=up))
         except Exception as exc:                                # noqa: BLE001
             print(f"  the journal archive could not be settled ({exc}); left for a "
                   f"person: python3 scripts/journal.py --resolve", file=sys.stderr)

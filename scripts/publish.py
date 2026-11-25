@@ -14,9 +14,10 @@ WHAT A CYCLE PUBLISHES is DERIVED, never typed: the data files named by
 admin journal entries that are not yet on main (every admin write goes
 through save_decisions/save_companies, which journal the file name), the
 journal itself - the live file and every new or changed part of its archive,
-data/journal_archive/, carried onto main's row by row - and the three files
+data/journal_archive/, carried onto main's row by row - and the four files
 the desk writes as a crawl does (news.json and site_pages_index.json from
-"check their news now", identity_labels.jsonl). Anything else modified in the checkout - a research
+"check their news now", identity_labels.jsonl, discovery_log.json from a
+website saved or a board tried again). Anything else modified in the checkout - a research
 session's exhibitors file, a board.json a local build drew - is left out and
 named in the status. board.json and data/detail/ are never taken from the
 desk: the quick rebuild redraws them on top of main.
@@ -38,7 +39,9 @@ HOW, IN ORDER, and why each step exists:
   5. Merge each file three ways on PARSED JSON (merge_data.merge_text): base
      = the checkout's HEAD, ours = the desk, theirs = main. Any field both
      sides changed differently is a CONFLICT: nothing is pushed, an inbox
-     item names it.
+     item names it. A company both sides changed in different fields is
+     journalled as merged, by the publisher (_journal_the_merge), so the
+     journal's last after-image is the record main now holds.
   6. In a throwaway worktree at main - main's CODE runs, never the
      checkout's uncommitted code - write the merged files, run the quick
      rebuild, stage explicit paths (never -A, never -f), and run the checks:
@@ -60,7 +63,7 @@ never triggers one: news reaches the site with the nightly, as before.
 
     python3 scripts/publish.py               one cycle (what launchd runs)
     python3 scripts/publish.py --dry-run     what a cycle would do; writes nothing
-    python3 scripts/publish.py --status      the last cycle's outcome
+    python3 scripts/publish.py --status      the whole state file; its "last" is the last cycle
     python3 scripts/publish.py --install     write and load the launchd job
     python3 scripts/publish.py --uninstall   unload and remove it
 """
@@ -96,9 +99,15 @@ AUTHOR = ("westjw", "67345260+westjw@users.noreply.github.com")
 # files this publisher also commits.
 DATA_WORKFLOWS = ("daily-refresh", "discovery", "news", "write-profiles", "links")
 BUSY = ("queued", "in_progress", "waiting", "pending", "requested")
-# Written by the desk the way a crawl writes, so not journalled.
+# Written by the desk the way a crawl writes, so not journalled - and merged
+# by record (merge_data: the later read of a company stands). discovery_log
+# .json is the desk's record of having looked for a board (saving a website,
+# "try again"), and main's weekly discovery sweep writes the same file: left
+# out of this list, a website saved at the desk kept the checkout off main
+# for good - every cycle "skipped: would overwrite data/discovery_log.json"
+# (2026-11-24 second review).
 CRAWL_WRITES = ("data/news.json", "data/site_pages_index.json",
-                "data/identity_labels.jsonl")
+                "data/identity_labels.jsonl", "data/discovery_log.json")
 # THE JOURNAL: the live file, and the archive of what it pruned - one file
 # per month under data/journal_archive/ (journal.py, 2026-11-24), every new
 # or changed part published. The old single file is named only to be folded:
@@ -107,7 +116,9 @@ CRAWL_WRITES = ("data/news.json", "data/site_pages_index.json",
 LIVE_JOURNAL = "data/admin_journal.jsonl"
 ARCHIVE_DIR = f"data/{journal.ARCHIVE_DIR}"
 LEGACY_ARCHIVE = f"data/{journal.LEGACY_ARCHIVE}"
-JOURNALS = (LIVE_JOURNAL, ARCHIVE_DIR + "/", LEGACY_ARCHIVE)
+FOLDING = f"data/{journal.FOLDING}"
+JOURNALS = (LIVE_JOURNAL, ARCHIVE_DIR + "/", LEGACY_ARCHIVE, FOLDING)
+COMPANIES = "data/companies.json"
 LABEL = "com.sledjobs.publish"
 
 
@@ -134,9 +145,12 @@ def _write(f: pathlib.Path, v) -> None:
 
 def _archive_order(p: str) -> tuple:
     """The old single file first (a desk on the old code wrote it before any
-    month file), then the parts in reading order."""
-    if p == LEGACY_ARCHIVE:
+    month file) - a copy of it a fold moved aside before it - then the parts
+    in reading order."""
+    if p == FOLDING:
         return (0, "", 0, False)
+    if p == LEGACY_ARCHIVE:
+        return (0, "~", 0, False)
     k = journal.parse_part(p.rsplit("/", 1)[-1])
     return (1, *k) if k else (2, p, 0, False)
 
@@ -341,24 +355,40 @@ def run_py(args: list, cwd: pathlib.Path, timeout: int = 900) -> subprocess.Comp
 
 
 def unparsed(wt: pathlib.Path, staged: list) -> str | None:
-    """The first staged JSON file that does not parse - a sealed archive part
-    read through gzip, so a torn one is named - or None."""
+    """The first staged JSON file that does not parse, or None. A JSON-lines
+    file is read line by line, and the line is named.
+
+    THE JOURNAL'S ARCHIVE IS HELD TO ITS OWN RULES (journal.archive_problems)
+    the moment any part of it is staged - a sealed part read through gzip, so
+    a torn one is named. A torn copy of a row held whole is no failure there
+    (the seal leaves it out, the full pass takes it out), and this parse
+    refused every desk publish over one on main (2026-11-24 second review);
+    any other line that is no JSON is, named by file and line."""
+    archive = False
     for p in staged:
         f = wt / p
-        if not f.exists() or not p.endswith((".json", ".jsonl", ".jsonl.gz")):
+        if is_archive(p) or p.startswith(ARCHIVE_DIR + "/"):
+            archive = True
+            continue
+        if not f.exists() or not p.endswith((".json", ".jsonl")):
             continue
         try:
-            if p.endswith(".jsonl.gz"):
-                for ln in journal.lines_of(p, f.read_bytes()):
-                    json.loads(ln)
-            elif p.endswith(".jsonl"):
-                for ln in f.read_text().splitlines():
+            if p.endswith(".jsonl"):
+                for i, ln in enumerate(f.read_text().splitlines(), 1):
                     if ln.strip():
-                        json.loads(ln)
+                        try:
+                            json.loads(ln)
+                        except ValueError as exc:
+                            return f"{p} line {i} does not parse: {exc}"
             else:
                 json.loads(f.read_text())
-        except (ValueError, EOFError, OSError, zlib.error) as exc:     # a torn gzip too
+        except (ValueError, OSError) as exc:
             return f"{p} does not parse: {exc}"
+    if archive:
+        bad, _look = journal.archive_problems(wt / "data")
+        if bad:
+            return ("the journal archive does not parse by its rules (python3 scripts/journal.py "
+                    "--check): " + "; ".join(bad[:3]))[:1500]
     return None
 
 
@@ -481,7 +511,7 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
         if git("rev-list", f"HEAD..{theirs_rev}").stdout.split() and not dry_run:
             _sync({}, theirs_rev, st, out)
         elif not dry_run:
-            out["sync"] = f"checkout at {main_sha[:7]}, which is main"
+            out["sync"] = f"checkout at {main_sha[:7]}, which is main" + _scripts_note()
         if st.get("drift_checked") == main_sha:
             return done("idle", why="nothing to publish")
         if now - st.get("last_push_ts", 0) < GAP_S:
@@ -549,8 +579,24 @@ def cycle(dry_run: bool = False, *, now: float | None = None,
             else:
                 f.parent.mkdir(parents=True, exist_ok=True)
                 f.write_text(text)
+        if COMPANIES in merged and _journal_the_merge(
+                wt, base_of(COMPANIES), snap.get(COMPANIES), show(theirs_rev, COMPANIES),
+                merged[COMPANIES], now, [snap[p] for p in arch if snap.get(p) is not None
+                                         and not p.endswith(".gz")]):
+            merged[LIVE_JOURNAL] = (wt / LIVE_JOURNAL).read_text()   # staged, and trimmed
         if arch or LIVE_JOURNAL in merged:
-            _file_archive(wt, arch, snap)
+            odd = _file_archive(wt, arch, snap)
+            if odd:
+                bad = ("the desk's journal archive holds " + str(len(odd)) + " line(s) that are "
+                       "not JSON, and no row held whole starts with them - what an append cut "
+                       "off part way left of a row no file holds whole now: "
+                       + "; ".join(odd[:3]) + ". Nothing was published. A person reads each "
+                       "where it is (python3 scripts/journal.py --check in the checkout names "
+                       "them too); once he has, it is removed from that file, a copy kept "
+                       "outside the repository.")
+                inbox("checks", "A publish was refused; nothing was pushed:\n" + bad, st,
+                      {"files": take})
+                return done("refused", why=bad[:1500])
         why = redraw(wt)
         if why:
             inbox("rebuild", "The quick rebuild failed; nothing was published:\n" + why, st)
@@ -616,13 +662,92 @@ def _file_archive(wt: pathlib.Path, arch: list, snap: dict) -> None:
     write (2026-11-24 review) - and it keeps its last KEEP entries. A torn
     copy in the desk's archive (an append cut off part way) is told by the
     desk's live journal, which still holds that row whole, and is not
-    carried."""
-    lines = []
+    carried; a row the desk's OLD code glued onto a fragment is split and
+    carried (journal.unglue).
+
+    Returns what it could not carry: a line of the desk's archive that is no
+    JSON and no torn copy of a row held whole - what a cut-off append left of
+    a row no file holds whole - named by the desk's file and line number.
+    The cycle is refused over it: carried, it would refuse every publish
+    after from main's side, and a person must read it where it is."""
+    lines, where = [], {}
     for p in sorted(arch, key=_archive_order):
         if snap.get(p) is not None:
-            lines += journal.lines_of(p, snap[p])
+            for i, ln in journal.numbered_lines(p, snap[p]):
+                lines.append(ln)
+                for x in journal.unglue(ln):
+                    where.setdefault(x, (p, i))
     known = journal.lines_of(LIVE_JOURNAL, (snap.get(LIVE_JOURNAL) or "").encode())
-    journal.normalize(wt / "data", lines=lines, known=known, full=True, trim=True)
+    did = journal.normalize(wt / "data", lines=lines, known=known, full=True, trim=True)
+    return [f"{where[x][0]} line {where[x][1]} ({len(x):,} bytes, '{journal._head(x)}')"
+            for x in did["odd"] if x in where]
+
+
+def _journal_the_merge(wt: pathlib.Path, base: str | None, ours: str | None,
+                       theirs: str | None, merged: str | None, now: float,
+                       archived=()) -> dict | None:
+    """A journal entry, by the publisher, for each company the desk and main
+    BOTH changed while apart: merged field by field (merge_data), the record
+    on main is neither side's, and no entry's after-image holds it - so the
+    journal said one thing and companies.json another, and main's own
+    selftest refused the publish (check_journal_matches_reality, whose
+    advice - "recover the value from <id>'s after-image" - would have
+    reverted one side's ruling; 2026-11-24 second review). The entry's
+    before is main's record, its after the merged one: what the publish does
+    to main, undoable like any other write. A company whose last live entry
+    already says what the merge made (the crawl's hiring and ats aside, which
+    nothing journals) gets none. Appended to the worktree's live journal,
+    before the carry trims it; returns the entry, or None."""
+    if merged is None or ours is None or theirs is None:
+        return None
+    name = COMPANIES.rsplit("/", 1)[-1]
+    try:
+        B = journal.snapshot(json.loads(base) if base else [], name)
+        O, T = journal.snapshot(json.loads(ours), name), journal.snapshot(json.loads(theirs), name)
+        X = journal.snapshot(json.loads(merged), name)
+    except ValueError:
+        return None
+    live = wt / LIVE_JOURNAL
+    text = live.read_text() if live.is_file() else ""
+    rows, last = [], {}
+    for ln in text.splitlines():
+        try:
+            r = json.loads(ln)
+        except ValueError:
+            continue
+        rows.append(r)
+        if isinstance(r, dict) and r.get("file") == name:
+            for k, ch in (r.get("changes") or {}).items():
+                if isinstance(ch, dict) and ch.get("after"):
+                    last[k] = ch["after"]
+
+    def own(rec):
+        return {f: v for f, v in (rec or {}).items() if f not in merge_data.UPSTREAM_ONLY}
+    changes = {}
+    for k, x in X.items():
+        o, t, b = O.get(k), T.get(k), B.get(k)
+        if None in (o, t, b) or o == b or t == b or x in (o, t):
+            continue                    # one side's change: that side's entry holds it
+        if k in last and own(last[k]) == own(x):
+            continue
+        changes[k] = {"before": t, "after": x}
+    if not changes:
+        return None
+    entry = {"id": journal.next_id(rows, archive=wt / "data",
+                                   lines=[x if isinstance(x, bytes) else x.encode()
+                                          for x in archived]),
+             "at": now_iso(now), "file": name, "action": "publish-merge", "by": "publisher",
+             "why": (f"the desk and main each changed {', '.join(sorted(changes)[:8])}"
+                     f"{f' and {len(changes) - 8} more' if len(changes) > 8 else ''} while "
+                     f"apart; the publish of {now_iso(now)} merged them field by field, so no "
+                     f"entry before this one holds the record as it now stands (before: "
+                     f"main's; after: the merge)"),
+             "n": len(changes), "changes": changes}
+    with open(live, "a") as fh:
+        if text and not text.endswith("\n"):
+            fh.write("\n")
+        fh.write(json.dumps(entry) + "\n")
+    return entry
 
 
 def _stage_archive(wt: pathlib.Path) -> None:
@@ -712,6 +837,16 @@ def _sync_inner(snap: dict, rev: str, st: dict, out: dict) -> bool:
             inbox("sync", "Published, but the checkout could not be brought up to "
                           "main without overwriting: " + ", ".join(blocking[:12]), st)
             return False
+        # AND A DIRTY PATH MAIN DOES NOT MOVE, holding a copy main held on the
+        # way: a script main changed after the hand fetch and then put back as
+        # the checkout's commit has it, or added and then removed. It is in
+        # no fast-forward's way, so it was left as it was - main's passing copy,
+        # still staged, run by the desk - under a sync that said "checkout at
+        # <sha>, which is main" (2026-11-24 second review). Restored with the
+        # rest; a path that is the desk's own (no copy main held) is left.
+        stale = sorted(p for p in dirty if p not in moving and p not in snap
+                       and _matches(rev, p))
+        same += stale
         kept_same = {p: ((ROOT / p).read_bytes() if (ROOT / p).is_file() else None)
                      for p in same}
         restore = list(snap) + same
@@ -736,8 +871,22 @@ def _sync_inner(snap: dict, rev: str, st: dict, out: dict) -> bool:
             inbox("sync", "Published, but the checkout's fast-forward failed; the "
                           "desk's files were put back as they were.\n" + out["sync"], st)
             return False
-        out["sync"] = f"checkout at {git('rev-parse', '--short=7', 'HEAD').stdout.strip()}"
+        out["sync"] = f"checkout at {git('rev-parse', '--short=7', 'HEAD').stdout.strip()}" \
+            + _scripts_note()
         return True
+
+
+def _scripts_note() -> str:
+    """'' when the checkout's scripts are main's - at HEAD, nothing changed -
+    else what a person must know before calling the checkout main: which
+    scripts differ (the desk would run them)."""
+    r = git("status", "--porcelain=v1", "-z", "--untracked-files=all", "--", "scripts",
+            check=False)
+    differ = sorted({rec[3:] for rec in r.stdout.split("\0") if len(rec) > 3})
+    if not differ:
+        return ""
+    return (f", but {len(differ)} script(s) differ from main's: {', '.join(differ[:6])}"
+            + (" ..." if len(differ) > 6 else ""))
 
 
 # ------------------------------------------------------------------ launchd

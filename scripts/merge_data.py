@@ -186,8 +186,11 @@ SHAPED = ("manual.json", "task_notes.json", "submissions.json", "logic_notes.jso
 
 # Crawl records, one per company, that carry the day they were read. Both
 # sides reading the same company is not a disagreement: the later read is the
-# truth (a desk "check their news now" against news.yml's sweep).
-FRESHEST = {"news.json": "checked_on", "site_pages_index.json": "fetched_on"}
+# truth (a desk "check their news now" against news.yml's sweep; a website
+# saved at the desk, which looks for its board, against discovery.yml's weekly
+# sweep - discovery_log.json records the attempt, not a ruling).
+FRESHEST = {"news.json": "checked_on", "site_pages_index.json": "fetched_on",
+            "discovery_log.json": "on"}
 
 
 def merge_freshest(base: dict, ours: dict, theirs: dict, stamp: str) -> dict:
