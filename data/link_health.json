@@ -1,9 +1,9 @@
 {
- "checked_on": "2026-11-18",
+ "checked_on": "2026-11-25",
  "counts": {
-  "moved": 141,
-  "ok": 3121,
-  "unread": 273
+  "moved": 148,
+  "ok": 3044,
+  "unread": 261
  },
  "links": {
   "365labs": [
@@ -11,7 +11,7 @@
     "field": "website",
     "final": "https://www.365labs.com",
     "kind": "unread",
-    "status": 502,
+    "status": 202,
     "title": "",
     "url": "https://www.365labs.com"
    },
@@ -19,9 +19,19 @@
     "field": "board",
     "final": "https://www.365labs.com/careers",
     "kind": "unread",
-    "status": 502,
+    "status": 202,
     "title": "",
     "url": "https://www.365labs.com/careers"
+   }
+  ],
+  "a-ice": [
+   {
+    "field": "website",
+    "final": "https://www.airport-operations.com/",
+    "kind": "unread",
+    "status": 502,
+    "title": "",
+    "url": "https://www.airport-operations.com/"
    }
   ],
   "abilis-solutions": [
@@ -39,9 +49,20 @@
     "field": "website",
     "final": "https://www.accuratecontrols.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://www.accuratecontrols.com"
+   }
+  ],
+  "acendre": [
+   {
+    "field": "website",
+    "final": "https://www.acendre.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.acendre.com",
+    "why": "timed out"
    }
   ],
   "acentra-health": [
@@ -107,9 +128,27 @@
     "field": "website",
     "final": "https://www.adfsolutions.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://www.adfsolutions.com"
+   }
+  ],
+  "affordablehousing-com": [
+   {
+    "field": "website",
+    "final": "https://www.affordablehousing.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.affordablehousing.com"
+   },
+   {
+    "field": "board",
+    "final": "https://www.affordablehousing.com/join-us/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.affordablehousing.com/join-us/"
    }
   ],
   "ai-rgus": [
@@ -117,10 +156,9 @@
     "field": "website",
     "final": "https://airgus.com/",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://airgus.com/",
-    "why": "connection dropped"
+    "url": "https://airgus.com/"
    }
   ],
   "airit": [
@@ -169,7 +207,7 @@
     "status": null,
     "title": "",
     "url": "https://alcherax.com",
-    "why": "secure connection failed"
+    "why": "connection dropped"
    }
   ],
   "alertsense": [
@@ -186,7 +224,7 @@
   "almaviva": [
    {
     "field": "website",
-    "final": "https://www.almavivagroup.com",
+    "final": "https://www.almavivagroup.com/it",
     "kind": "moved",
     "status": 200,
     "title": "Almaviva - Home page",
@@ -201,26 +239,6 @@
     "status": 404,
     "title": "",
     "url": "https://altumint.com/careers/"
-   }
-  ],
-  "am": [
-   {
-    "field": "website",
-    "final": "https://www.amdigital.co.uk",
-    "kind": "unread",
-    "status": 405,
-    "title": "",
-    "url": "https://www.amdigital.co.uk"
-   }
-  ],
-  "am-quartex": [
-   {
-    "field": "website",
-    "final": "https://www.amdigital.co.uk/am-quartex",
-    "kind": "unread",
-    "status": 405,
-    "title": "",
-    "url": "https://www.amdigital.co.uk/am-quartex"
    }
   ],
   "american-legal-publishing": [
@@ -278,42 +296,14 @@
     "why": "timed out"
    }
   ],
-  "apx-data": [
-   {
-    "field": "website",
-    "final": "https://www.apxdata.com",
-    "kind": "unread",
-    "status": 500,
-    "title": "",
-    "url": "https://www.apxdata.com"
-   }
-  ],
   "aquarius-spectrum": [
    {
     "field": "website",
-    "final": "https://aqs-systems.com/",
+    "final": "https://www.aqs-systems.com:443/",
     "kind": "moved",
     "status": 200,
-    "title": "Leak Detection Systems Home | Aquarius Spectrum",
+    "title": "One moment, please...",
     "url": "https://www.aquarius-spectrum.com"
-   }
-  ],
-  "archistar": [
-   {
-    "field": "website",
-    "final": "https://www.archistar.ai",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.archistar.ai"
-   },
-   {
-    "field": "board",
-    "final": "https://www.archistar.ai/careers/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.archistar.ai/careers/"
    }
   ],
   "armis": [
@@ -349,10 +339,9 @@
     "field": "website",
     "final": "https://astrophysicsinc.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://astrophysicsinc.com",
-    "why": "connection dropped"
+    "url": "https://astrophysicsinc.com"
    }
   ],
   "atlantic-management-center-inc": [
@@ -363,16 +352,6 @@
     "status": 200,
     "title": "Home | AMCI",
     "url": "https://www.syntropisolutions.com"
-   }
-  ],
-  "atozdatabases": [
-   {
-    "field": "website",
-    "final": "https://www.atozdatabases.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.atozdatabases.com"
    }
   ],
   "aurelian": [
@@ -450,16 +429,6 @@
     "url": "https://www.axon.com/careers/all"
    }
   ],
-  "badger-meter": [
-   {
-    "field": "website",
-    "final": "https://www.badgermeter.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.badgermeter.com"
-   }
-  ],
   "barkpass": [
    {
     "field": "posts_at",
@@ -493,10 +462,9 @@
     "field": "website",
     "final": "https://bisdigital.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://bisdigital.com",
-    "why": "connection dropped"
+    "url": "https://bisdigital.com"
    }
   ],
   "blip-systems": [
@@ -515,20 +483,9 @@
     "field": "website",
     "final": "https://www.blue-bird.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.blue-bird.com",
-    "why": "connection dropped"
-   }
-  ],
-  "blyncsy": [
-   {
-    "field": "board",
-    "final": "https://bentleysystems.wd5.myworkdayjobs.com/bentley",
-    "kind": "moved",
-    "status": 200,
-    "title": "",
-    "url": "https://jobs.bentley.com"
+    "url": "https://www.blue-bird.com"
    }
   ],
   "bonfire-interactive": [
@@ -544,28 +501,28 @@
   "brainfreeze": [
    {
     "field": "website",
-    "final": "https://brainfreeze.ai",
-    "kind": "unread",
-    "status": 521,
-    "title": "",
+    "final": "https://airia.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Airia | AI Security & Governance Platform",
     "url": "https://brainfreeze.ai"
    }
   ],
   "briefcam": [
    {
     "field": "website",
-    "final": "https://www.milestonesys.com/products/briefcam/",
+    "final": "https://www.milestonesys.com/products/briefcam",
     "kind": "moved",
     "status": 200,
-    "title": "BriefCam video analytics software | Milestone Systems",
+    "title": "BriefCam video analytics software | Milestone Systems | Milestone Systems",
     "url": "https://www.briefcam.com"
    },
    {
     "field": "board",
-    "final": "https://www.milestonesys.com/careers/",
+    "final": "https://www.milestonesys.com/careers",
     "kind": "moved",
     "status": 200,
-    "title": "Careers",
+    "title": "Careers at Milestone | Grow with a Global Tech Leader | Milestone Systems",
     "url": "https://www.briefcam.com/careers"
    }
   ],
@@ -604,10 +561,9 @@
     "field": "website",
     "final": "https://www.bulkhandlingsystems.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.bulkhandlingsystems.com",
-    "why": "connection dropped"
+    "url": "https://www.bulkhandlingsystems.com"
    }
   ],
   "bullard": [
@@ -628,6 +584,16 @@
     "url": "https://www.bullard.com/careers/"
    }
   ],
+  "businessolver": [
+   {
+    "field": "website",
+    "final": "https://businessolver.com/",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://businessolver.com/"
+   }
+  ],
   "calamp": [
    {
     "field": "website",
@@ -643,10 +609,9 @@
     "field": "website",
     "final": "https://caliberpublicsafety.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://caliberpublicsafety.com",
-    "why": "connection dropped"
+    "url": "https://caliberpublicsafety.com"
    }
   ],
   "canva": [
@@ -664,13 +629,20 @@
     "field": "website",
     "final": "https://www.carasolva.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.carasolva.com",
-    "why": "connection dropped"
+    "url": "https://www.carasolva.com"
    }
   ],
   "carbyne": [
+   {
+    "field": "website",
+    "final": "https://www.carbyne.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.carbyne.com"
+   },
    {
     "field": "board",
     "final": "https://www.carbyne.com/careers",
@@ -690,25 +662,14 @@
     "url": "https://www.cartegraph.com"
    }
   ],
-  "caselle": [
-   {
-    "field": "board",
-    "final": "https://casellejobs.applicantpro.com/jobs/",
-    "kind": "moved",
-    "status": 200,
-    "title": "Job Listings - Caselle Jobs",
-    "url": "https://www.caselle.com/careers"
-   }
-  ],
   "castus": [
    {
     "field": "website",
     "final": "https://castus.tv",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://castus.tv",
-    "why": "connection dropped"
+    "url": "https://castus.tv"
    }
   ],
   "causeway-one-network": [
@@ -726,7 +687,7 @@
     "field": "website",
     "final": "https://www.chronicle.rip",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://www.chronicle.rip"
    }
@@ -782,10 +743,9 @@
     "field": "website",
     "final": "https://claritysolutionsgroup.net",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://claritysolutionsgroup.net",
-    "why": "connection dropped"
+    "url": "https://claritysolutionsgroup.net"
    }
   ],
   "cleanrobotics": [
@@ -894,26 +854,6 @@
     "status": 200,
     "title": "Automated fiber network planning and design software | IQGeo",
     "url": "https://www.comsof.com"
-   }
-  ],
-  "consat": [
-   {
-    "field": "board",
-    "final": "https://www.consat.com/career",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.consat.com/career"
-   }
-  ],
-  "contentactive": [
-   {
-    "field": "board",
-    "final": "https://contentactive.com/careers",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://contentactive.com/careers"
    }
   ],
   "coprocure": [
@@ -1123,10 +1063,9 @@
     "field": "website",
     "final": "https://diglobal.tech",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://diglobal.tech",
-    "why": "connection dropped"
+    "url": "https://diglobal.tech"
    }
   ],
   "dzs": [
@@ -1169,10 +1108,18 @@
   ],
   "easyvote-solutions": [
    {
+    "field": "website",
+    "final": "https://www.easyvotesolutions.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.easyvotesolutions.com"
+   },
+   {
     "field": "board",
     "final": "https://www.easyvotesolutions.com/about/career-opportunities",
     "kind": "unread",
-    "status": 404,
+    "status": 403,
     "title": "",
     "url": "https://www.easyvotesolutions.com/about/career-opportunities"
    }
@@ -1185,6 +1132,26 @@
     "status": null,
     "title": "",
     "url": "https://ebidsystems.com",
+    "why": "timed out"
+   }
+  ],
+  "ebridge-procurement": [
+   {
+    "field": "website",
+    "final": "https://www.ebridgeprocurement.com/",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.ebridgeprocurement.com/",
+    "why": "timed out"
+   },
+   {
+    "field": "board",
+    "final": "https://www.ebridgeprocurement.com/about/careers",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.ebridgeprocurement.com/about/careers",
     "why": "timed out"
    }
   ],
@@ -1241,10 +1208,9 @@
     "field": "board",
     "final": "https://www.enghouse.com/careers",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.enghouse.com/careers",
-    "why": "connection dropped"
+    "url": "https://www.enghouse.com/careers"
    }
   ],
   "enhanced-voting": [
@@ -1288,7 +1254,7 @@
     "field": "website",
     "final": "https://everdriven.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://everdriven.com"
    }
@@ -1334,10 +1300,10 @@
   "findhelp": [
    {
     "field": "website",
-    "final": "https://www.findhelp.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
+    "final": "https://www.findhelp.org/?ref=ab_redirect",
+    "kind": "moved",
+    "status": 200,
+    "title": "findhelp.org by Findhelp - Search and Connect to Social Care",
     "url": "https://www.findhelp.com"
    }
   ],
@@ -1366,7 +1332,7 @@
     "field": "website",
     "final": "https://frogparking.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://frogparking.com"
    }
@@ -1457,16 +1423,6 @@
     "url": "https://company.getinsured.com/about/working-at-get-insured"
    }
   ],
-  "givepulse": [
-   {
-    "field": "website",
-    "final": "https://www.givepulse.com",
-    "kind": "unread",
-    "status": 405,
-    "title": "",
-    "url": "https://www.givepulse.com"
-   }
-  ],
   "global-traffic-technologies": [
    {
     "field": "website",
@@ -1512,10 +1468,9 @@
     "field": "website",
     "final": "https://home.gotsport.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://home.gotsport.com",
-    "why": "connection dropped"
+    "url": "https://home.gotsport.com"
    }
   ],
   "govdeals": [
@@ -1599,10 +1554,9 @@
     "field": "website",
     "final": "https://www.gutermann-water.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.gutermann-water.com",
-    "why": "connection dropped"
+    "url": "https://www.gutermann-water.com"
    }
   ],
   "hanover-displays": [
@@ -1610,45 +1564,25 @@
     "field": "website",
     "final": "https://www.hanoverdisplays.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.hanoverdisplays.com",
-    "why": "connection dropped"
+    "url": "https://www.hanoverdisplays.com"
    },
    {
     "field": "board",
     "final": "https://www.hanoverdisplays.com/careers",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.hanoverdisplays.com/careers",
-    "why": "connection dropped"
-   }
-  ],
-  "hansen-technologies": [
-   {
-    "field": "website",
-    "final": "https://www.hansencx.com",
-    "kind": "unread",
-    "status": 404,
-    "title": "",
-    "url": "https://www.hansencx.com"
+    "url": "https://www.hanoverdisplays.com/careers"
    }
   ],
   "harris-local-government": [
    {
-    "field": "website",
-    "final": "https://harrislocalgov.com",
-    "kind": "unread",
-    "status": 503,
-    "title": "",
-    "url": "https://harrislocalgov.com"
-   },
-   {
     "field": "board",
     "final": "https://harrislocalgov.com/careers",
     "kind": "unread",
-    "status": 503,
+    "status": 404,
     "title": "",
     "url": "https://harrislocalgov.com/careers"
    }
@@ -1658,7 +1592,7 @@
     "field": "website",
     "final": "https://www.harrisschoolsolutions.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://www.harrisschoolsolutions.com"
    }
@@ -1699,7 +1633,7 @@
     "field": "website",
     "final": "https://hexagon.com/products/product-groups/public-safety-solutions",
     "kind": "unread",
-    "status": 404,
+    "status": 403,
     "title": "",
     "url": "https://hexagon.com/products/product-groups/public-safety-solutions"
    }
@@ -1725,16 +1659,6 @@
     "why": "no such domain"
    }
   ],
-  "hotb-software-solutions": [
-   {
-    "field": "website",
-    "final": "https://hotbsoftware.com/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://hotbsoftware.com/"
-   }
-  ],
   "hunter-industries": [
    {
     "field": "website",
@@ -1743,6 +1667,17 @@
     "status": 403,
     "title": "",
     "url": "https://www.hunterirrigation.com"
+   }
+  ],
+  "icsolutions": [
+   {
+    "field": "website",
+    "final": "https://www.icsolutions.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.icsolutions.com",
+    "why": "timed out"
    }
   ],
   "id-me": [
@@ -1829,7 +1764,7 @@
     "field": "website",
     "final": "https://www.incidentiq.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://www.incidentiq.com"
    }
@@ -1842,17 +1777,6 @@
     "status": 200,
     "title": "Command and Planning Solution | Omnigo",
     "url": "https://www.irtsoftware.com"
-   }
-  ],
-  "indra-group": [
-   {
-    "field": "website",
-    "final": "https://www.indragroup.com/es",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.indragroup.com/es",
-    "why": "network error"
    }
   ],
   "infrahub": [
@@ -1896,15 +1820,58 @@
     "url": "https://www.autodesk.com/products/innovyze"
    }
   ],
+  "intangles-usa-inc": [
+   {
+    "field": "website",
+    "final": "https://www.intangles.ai",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.intangles.ai"
+   },
+   {
+    "field": "board",
+    "final": "https://www.intangles.ai/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://www.intangles.ai/careers"
+   }
+  ],
+  "intime-solutions": [
+   {
+    "field": "website",
+    "final": "https://intime.com",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://intime.com"
+   },
+   {
+    "field": "board",
+    "final": "https://intime.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://intime.com/careers"
+   },
+   {
+    "field": "posts_at",
+    "final": "https://intime.com/careers",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://intime.com/careers"
+   }
+  ],
   "invita-healthcare-technologies": [
    {
     "field": "website",
     "final": "https://www.invitahealth.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.invitahealth.com",
-    "why": "connection dropped"
+    "url": "https://www.invitahealth.com"
    }
   ],
   "invoicecloud": [
@@ -1932,7 +1899,7 @@
     "field": "website",
     "final": "https://www.ipsgroup.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://www.ipsgroup.com"
    }
@@ -1974,11 +1941,6 @@
     "field": "website",
     "final": "https://www.jackrabbitsystems.com",
     "kind": "unread",
-    "plain_http": {
-     "final": "https://www.simpleviewinc.com/products/simpleview-cms/online-booking-referral-engine/",
-     "kind": "moved",
-     "title": "Simpleview Book \u203a Direct | The Ultimate Booking Referral Engine"
-    },
     "status": null,
     "title": "",
     "url": "https://www.jackrabbitsystems.com",
@@ -2000,10 +1962,9 @@
     "field": "website",
     "final": "https://jailgeek.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://jailgeek.com",
-    "why": "connection dropped"
+    "url": "https://jailgeek.com"
    }
   ],
   "justice-systems-by-long": [
@@ -2021,28 +1982,9 @@
     "field": "website",
     "final": "https://www.justicesystems.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.justicesystems.com",
-    "why": "connection dropped"
-   }
-  ],
-  "kaltura-inc": [
-   {
-    "field": "website",
-    "final": "https://corp.kaltura.com/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://corp.kaltura.com/"
-   },
-   {
-    "field": "board",
-    "final": "https://corp.kaltura.com/company/careers/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://corp.kaltura.com/company/careers/"
+    "url": "https://www.justicesystems.com"
    }
   ],
   "kamstrup": [
@@ -2076,25 +2018,14 @@
     "url": "https://knowink.com/careers"
    }
   ],
-  "konnech": [
-   {
-    "field": "website",
-    "final": "https://konnech.com",
-    "kind": "unread",
-    "status": 503,
-    "title": "",
-    "url": "https://konnech.com"
-   }
-  ],
   "lambent": [
    {
     "field": "website",
     "final": "https://lambentspaces.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://lambentspaces.com",
-    "why": "connection dropped"
+    "url": "https://lambentspaces.com"
    }
   ],
   "legacy-inmate-communications": [
@@ -2108,34 +2039,42 @@
     "why": "no such domain"
    }
   ],
+  "lexisnexis-risk-solutions": [
+   {
+    "field": "website",
+    "final": "https://lexisnexisrisk.com/en-us",
+    "kind": "moved",
+    "status": 200,
+    "title": "LexisNexis Risk Solutions | Transform Your Risk Decision Making",
+    "url": "https://risk.lexisnexis.com"
+   },
+   {
+    "field": "board",
+    "final": "https://lexisnexisrisk.com/en-us/contact#career",
+    "kind": "moved",
+    "status": 200,
+    "title": "Contact Us",
+    "url": "https://risk.lexisnexis.com/contact-us#career"
+   }
+  ],
+  "lexisnexis-risk-solutions-government": [
+   {
+    "field": "website",
+    "final": "https://lexisnexisrisk.com/en-us/government",
+    "kind": "moved",
+    "status": 200,
+    "title": "Government Data, Analytics & Linking Technology",
+    "url": "https://risk.lexisnexis.com/government"
+   }
+  ],
   "limble": [
    {
     "field": "website",
     "final": "https://limble.com/",
     "kind": "moved",
     "status": 200,
-    "title": "Limble CMMS | Maintenance Software Technicians Actually Use | Limble",
+    "title": "Limble CMMS | Maintenance Software Technicians Actually Use",
     "url": "https://limblecmms.com"
-   }
-  ],
-  "lion-electric": [
-   {
-    "field": "website",
-    "final": "https://thelionelectric.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://thelionelectric.com",
-    "why": "timed out"
-   },
-   {
-    "field": "board",
-    "final": "https://lionlion.ca/careers/",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://lionlion.ca/careers/",
-    "why": "timed out"
    }
   ],
   "lobbyguard-solutions": [
@@ -2163,27 +2102,9 @@
     "field": "website",
     "final": "https://lote4kids.com",
     "kind": "unread",
-    "status": 502,
+    "status": 202,
     "title": "",
     "url": "https://lote4kids.com"
-   }
-  ],
-  "lumu-technologies": [
-   {
-    "field": "website",
-    "final": "https://lumu.io/cybersecurity-for-schools/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://lumu.io/cybersecurity-for-schools/"
-   },
-   {
-    "field": "board",
-    "final": "https://lumu.io/careers/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://lumu.io/careers/"
    }
   ],
   "matterhorn": [
@@ -2251,8 +2172,18 @@
     "final": "https://www.sovra.com:443/",
     "kind": "moved",
     "status": 200,
-    "title": "SOVRA | Government procurement software for public sector",
+    "title": "One moment, please...",
     "url": "https://mdfcommerce.com"
+   }
+  ],
+  "minga": [
+   {
+    "field": "website",
+    "final": "https://minga.io",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://minga.io"
    }
   ],
   "missionsquare-retirement": [
@@ -2304,10 +2235,9 @@
     "field": "website",
     "final": "https://modaxo.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://modaxo.com",
-    "why": "connection dropped"
+    "url": "https://modaxo.com"
    }
   ],
   "modeshift": [
@@ -2315,19 +2245,17 @@
     "field": "website",
     "final": "https://www.modeshift.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.modeshift.com",
-    "why": "connection dropped"
+    "url": "https://www.modeshift.com"
    },
    {
     "field": "board",
     "final": "https://www.modeshift.com/careers",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.modeshift.com/careers",
-    "why": "connection dropped"
+    "url": "https://www.modeshift.com/careers"
    }
   ],
   "monster-government-solutions": [
@@ -2339,24 +2267,6 @@
     "title": "",
     "url": "http://www.monstergov.com/",
     "why": "certificate is for another address"
-   }
-  ],
-  "moodle-us": [
-   {
-    "field": "website",
-    "final": "https://moodle.com/us/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://moodle.com/us/"
-   },
-   {
-    "field": "board",
-    "final": "https://moodle.com/us/careers/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://moodle.com/us/careers/"
    }
   ],
   "moovit": [
@@ -2379,6 +2289,17 @@
     "url": "https://www.mprest.com/"
    }
   ],
+  "munilogic": [
+   {
+    "field": "website",
+    "final": "https://munilogic.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://munilogic.com",
+    "why": "timed out"
+   }
+  ],
   "mutualink": [
    {
     "field": "website",
@@ -2397,6 +2318,17 @@
     "status": 200,
     "title": "MyGovernmentOnline (MGO) \u2014 Permitting, Code Enforcement & Public Works",
     "url": "https://www.mygovernmentonline.org"
+   }
+  ],
+  "myvolunteer": [
+   {
+    "field": "website",
+    "final": "https://myvolunteer.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://myvolunteer.com",
+    "why": "certificate expired"
    }
   ],
   "navblue": [
@@ -2449,22 +2381,15 @@
     "url": "https://neology.net"
    }
   ],
-  "neptune-technology-group": [
+  "netfile": [
    {
     "field": "website",
-    "final": "https://www.neptunetg.com",
+    "final": "https://netfile.com",
     "kind": "unread",
-    "status": 403,
+    "status": null,
     "title": "",
-    "url": "https://www.neptunetg.com"
-   },
-   {
-    "field": "board",
-    "final": "https://www.neptunetg.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.neptunetg.com/careers"
+    "url": "https://netfile.com",
+    "why": "timed out"
    }
   ],
   "neuralguard": [
@@ -2472,20 +2397,19 @@
     "field": "website",
     "final": "https://www.neuralguard.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.neuralguard.com",
-    "why": "connection dropped"
+    "url": "https://www.neuralguard.com"
    }
   ],
-  "nexsos": [
+  "newcom-technologies": [
    {
     "field": "website",
-    "final": "https://nexsos.app",
+    "final": "https://cemetery.newcomtech.com",
     "kind": "unread",
-    "status": 404,
+    "status": 403,
     "title": "",
-    "url": "https://nexsos.app"
+    "url": "https://cemetery.newcomtech.com"
    }
   ],
   "nice": [
@@ -2503,10 +2427,9 @@
     "field": "website",
     "final": "https://nimble-energy.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://nimble-energy.com",
-    "why": "connection dropped"
+    "url": "https://nimble-energy.com"
    }
   ],
   "nordsense": [
@@ -2542,10 +2465,9 @@
     "field": "website",
     "final": "https://www.numetric.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.numetric.com",
-    "why": "connection dropped"
+    "url": "https://www.numetric.com"
    }
   ],
   "numina": [
@@ -2564,38 +2486,27 @@
     "field": "website",
     "final": "https://www.nwave.io",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.nwave.io",
-    "why": "connection dropped"
+    "url": "https://www.nwave.io"
    }
   ],
   "onsolve": [
    {
     "field": "website",
-    "final": "https://www.onsolve.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
+    "final": "https://www.crisis24.com/lp/onsolve",
+    "kind": "moved",
+    "status": 200,
+    "title": "OnSolve | Crisis24",
     "url": "https://www.onsolve.com"
    },
    {
     "field": "board",
-    "final": "https://www.onsolve.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
+    "final": "https://www.crisis24.com/lp/onsolve",
+    "kind": "moved",
+    "status": 200,
+    "title": "OnSolve | Crisis24",
     "url": "https://www.onsolve.com/careers"
-   }
-  ],
-  "openai": [
-   {
-    "field": "website",
-    "final": "https://openai.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://openai.com"
    }
   ],
   "opendatasoft": [
@@ -2613,10 +2524,9 @@
     "field": "website",
     "final": "https://openmeetingtech.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://openmeetingtech.com",
-    "why": "connection dropped"
+    "url": "https://openmeetingtech.com"
    }
   ],
   "optum-serve": [
@@ -2659,6 +2569,17 @@
     "url": "https://www.ospinsight.com"
    }
   ],
+  "otto-environmental-systems": [
+   {
+    "field": "website",
+    "final": "https://www.otto-usa.com",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.otto-usa.com",
+    "why": "timed out"
+   }
+  ],
   "park-assist": [
    {
     "field": "website",
@@ -2684,10 +2605,9 @@
     "field": "website",
     "final": "https://bookflowgo.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://bookflowgo.com",
-    "why": "connection dropped"
+    "url": "https://bookflowgo.com"
    }
   ],
   "passport-workforce": [
@@ -2695,7 +2615,7 @@
     "field": "website",
     "final": "https://passportworkforce.com",
     "kind": "unread",
-    "status": 502,
+    "status": 202,
     "title": "",
     "url": "https://passportworkforce.com"
    },
@@ -2703,7 +2623,7 @@
     "field": "board",
     "final": "https://passportworkforce.com/careers",
     "kind": "unread",
-    "status": 502,
+    "status": 202,
     "title": "",
     "url": "https://passportworkforce.com/careers"
    }
@@ -2723,7 +2643,7 @@
     "field": "board",
     "final": "https://planetbids.com/careers",
     "kind": "unread",
-    "status": 405,
+    "status": 404,
     "title": "",
     "url": "https://planetbids.com/careers"
    }
@@ -2754,10 +2674,9 @@
     "field": "website",
     "final": "https://pointapp.org",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://pointapp.org",
-    "why": "connection dropped"
+    "url": "https://pointapp.org"
    }
   ],
   "pom": [
@@ -2857,26 +2776,6 @@
     "url": "https://proactis.com"
    }
   ],
-  "prodata-ptexcellence": [
-   {
-    "field": "website",
-    "final": "https://www.pptexcellence.com",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.pptexcellence.com",
-    "why": "network error"
-   },
-   {
-    "field": "board",
-    "final": "https://www.pptexcellence.com/jobs",
-    "kind": "unread",
-    "status": null,
-    "title": "",
-    "url": "https://www.pptexcellence.com/jobs",
-    "why": "network error"
-   }
-  ],
   "prodigy-solutions": [
    {
     "field": "website",
@@ -2890,10 +2789,18 @@
   ],
   "projectmates": [
    {
+    "field": "website",
+    "final": "https://www.projectmates.com",
+    "kind": "unread",
+    "status": 202,
+    "title": "",
+    "url": "https://www.projectmates.com"
+   },
+   {
     "field": "board",
     "final": "https://www.projectmates.com/careers",
     "kind": "unread",
-    "status": 502,
+    "status": 202,
     "title": "",
     "url": "https://www.projectmates.com/careers"
    }
@@ -2903,10 +2810,9 @@
     "field": "website",
     "final": "https://propeller.cloud",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://propeller.cloud",
-    "why": "connection dropped"
+    "url": "https://propeller.cloud"
    }
   ],
   "q-free": [
@@ -2932,19 +2838,17 @@
     "field": "website",
     "final": "https://qryde.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://qryde.com",
-    "why": "connection dropped"
+    "url": "https://qryde.com"
    },
    {
     "field": "board",
     "final": "https://qryde.com/employment",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://qryde.com/employment",
-    "why": "connection dropped"
+    "url": "https://qryde.com/employment"
    }
   ],
   "qscend-technologies": [
@@ -3013,10 +2917,9 @@
     "field": "website",
     "final": "https://www.recdesk.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.recdesk.com",
-    "why": "connection dropped"
+    "url": "https://www.recdesk.com"
    }
   ],
   "rectimes": [
@@ -3138,10 +3041,9 @@
     "field": "website",
     "final": "https://saferwatchapp.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://saferwatchapp.com",
-    "why": "connection dropped"
+    "url": "https://saferwatchapp.com"
    }
   ],
   "sage": [
@@ -3172,24 +3074,6 @@
     "url": "https://www.sandata.com/careers"
    }
   ],
-  "sap-concur": [
-   {
-    "field": "board",
-    "final": "https://jobs.sap.com/en/jobs/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://jobs.sap.com/en/jobs/"
-   },
-   {
-    "field": "posts_at",
-    "final": "https://jobs.sap.com/search/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://jobs.sap.com/search/"
-   }
-  ],
   "scheidt-bachmann": [
    {
     "field": "board",
@@ -3216,16 +3100,6 @@
     "status": 403,
     "title": "",
     "url": "https://www.schreder.com/en/careers"
-   }
-  ],
-  "scram-systems": [
-   {
-    "field": "board",
-    "final": "https://scramsystems.dejobs.org",
-    "kind": "unread",
-    "status": 202,
-    "title": "",
-    "url": "https://scramsystems.dejobs.org"
    }
   ],
   "scribbles-software": [
@@ -3264,7 +3138,7 @@
     "field": "website",
     "final": "https://seatsone.com",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://seatsone.com"
    }
@@ -3274,10 +3148,9 @@
     "field": "website",
     "final": "https://www.securetechwave.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.securetechwave.com",
-    "why": "connection dropped"
+    "url": "https://www.securetechwave.com"
    }
   ],
   "securus-technologies": [
@@ -3288,6 +3161,22 @@
     "status": 200,
     "title": "Securus Technologies | Securus Technologies Receive Calls, Messaging, Video & Help",
     "url": "https://securustech.net"
+   }
+  ],
+  "sedaru": [
+   {
+    "field": "website",
+    "final": "https://sedaru.com",
+    "kind": "unread",
+    "plain_http": {
+     "final": "http://sedaru.com/",
+     "kind": "ok",
+     "title": ""
+    },
+    "status": null,
+    "title": "",
+    "url": "https://sedaru.com",
+    "why": "secure connection failed"
    }
   ],
   "sedc": [
@@ -3344,10 +3233,9 @@
     "field": "website",
     "final": "https://sensysnetworks.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://sensysnetworks.com",
-    "why": "connection dropped"
+    "url": "https://sensysnetworks.com"
    }
   ],
   "sentient-energy": [
@@ -3394,7 +3282,7 @@
     "final": "https://www.skp-cs.com",
     "kind": "moved",
     "status": 200,
-    "title": "",
+    "title": "Shakespeare Home",
     "url": "https://www.shakespearecomposites.com"
    }
   ],
@@ -3446,6 +3334,16 @@
     "url": "https://www.smartmatic.com"
    }
   ],
+  "smowl": [
+   {
+    "field": "website",
+    "final": "https://smowl.net",
+    "kind": "unread",
+    "status": 202,
+    "title": "",
+    "url": "https://smowl.net"
+   }
+  ],
   "snowflake": [
    {
     "field": "website",
@@ -3461,7 +3359,7 @@
     "field": "website",
     "final": "https://soilflo.com/",
     "kind": "unread",
-    "status": 520,
+    "status": 202,
     "title": "",
     "url": "https://soilflo.com/"
    }
@@ -3515,10 +3413,9 @@
     "field": "website",
     "final": "https://sportskey.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://sportskey.com",
-    "why": "connection dropped"
+    "url": "https://sportskey.com"
    }
   ],
   "srs-computing": [
@@ -3548,7 +3445,7 @@
     "final": "https://www.telematics-wireless.com/",
     "kind": "moved",
     "status": 200,
-    "title": "Home | Telematics site",
+    "title": "Smart Water AMI & Street Lighting | ST Engineering TW",
     "url": "https://tlmw.com"
    },
    {
@@ -3556,7 +3453,7 @@
     "final": "https://www.telematics-wireless.com/careers",
     "kind": "moved",
     "status": 200,
-    "title": "Careers | Telematics site",
+    "title": "Careers | ST Engineering Telematics Wireless",
     "url": "https://tlmw.com/careers"
    }
   ],
@@ -3582,10 +3479,18 @@
   ],
   "streametric": [
    {
+    "field": "website",
+    "final": "https://streametric.io",
+    "kind": "unread",
+    "status": 403,
+    "title": "",
+    "url": "https://streametric.io"
+   },
+   {
     "field": "board",
     "final": "https://streametric.io/careers",
     "kind": "unread",
-    "status": 404,
+    "status": 403,
     "title": "",
     "url": "https://streametric.io/careers"
    }
@@ -3622,9 +3527,9 @@
     "final": "https://www.stresscretegroup.com",
     "kind": "unread",
     "plain_http": {
-     "final": "https://scgrp.com/",
+     "final": "https://www.scgrp.com",
      "kind": "moved",
-     "title": "StressCrete Group"
+     "title": "One moment, please..."
     },
     "status": null,
     "title": "",
@@ -3666,10 +3571,9 @@
     "field": "website",
     "final": "https://sunridgesystems.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://sunridgesystems.com",
-    "why": "connection dropped"
+    "url": "https://sunridgesystems.com"
    }
   ],
   "surepassid": [
@@ -3700,31 +3604,21 @@
     "url": "https://www.swimtopia.com/careers"
    }
   ],
-  "syniverse": [
-   {
-    "field": "website",
-    "final": "https://www.syniverse.com/",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
-    "url": "https://www.syniverse.com/"
-   }
-  ],
   "syrinix": [
    {
     "field": "website",
-    "final": "https://www.syrinix.com",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
+    "final": "https://www.badgermeter.com/",
+    "kind": "moved",
+    "status": 200,
+    "title": "Badger Meter: Water Measurement, Monitoring & Management",
     "url": "https://www.syrinix.com"
    },
    {
     "field": "board",
-    "final": "https://www.syrinix.com/careers",
-    "kind": "unread",
-    "status": 403,
-    "title": "",
+    "final": "https://www.badgermeter.com/careers",
+    "kind": "moved",
+    "status": 200,
+    "title": "Careers | Badger Meter",
     "url": "https://www.syrinix.com/careers"
    }
   ],
@@ -3749,10 +3643,9 @@
     "field": "website",
     "final": "https://www.systemautomation.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.systemautomation.com",
-    "why": "connection dropped"
+    "url": "https://www.systemautomation.com"
    }
   ],
   "tarana-wireless": [
@@ -3763,6 +3656,17 @@
     "status": 403,
     "title": "",
     "url": "https://www.taranawireless.com"
+   }
+  ],
+  "tav-technologies": [
+   {
+    "field": "website",
+    "final": "https://www.tavtechnologies.aero",
+    "kind": "unread",
+    "status": null,
+    "title": "",
+    "url": "https://www.tavtechnologies.aero",
+    "why": "timed out"
    }
   ],
   "teledyne-flir": [
@@ -3780,10 +3684,19 @@
     "field": "website",
     "final": "https://www.thoroughtec.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.thoroughtec.com",
-    "why": "connection dropped"
+    "url": "https://www.thoroughtec.com"
+   }
+  ],
+  "tightrope-media-systems": [
+   {
+    "field": "website",
+    "final": "https://www.trms.com",
+    "kind": "unread",
+    "status": 429,
+    "title": "",
+    "url": "https://www.trms.com"
    }
   ],
   "tootris": [
@@ -3839,10 +3752,9 @@
     "field": "website",
     "final": "https://tssparatransit.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://tssparatransit.com",
-    "why": "connection dropped"
+    "url": "https://tssparatransit.com"
    }
   ],
   "turbo-data-systems": [
@@ -3994,10 +3906,9 @@
     "field": "website",
     "final": "https://www.vermontsystems.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.vermontsystems.com",
-    "why": "connection dropped"
+    "url": "https://www.vermontsystems.com"
    }
   ],
   "vetro": [
@@ -4035,10 +3946,9 @@
     "field": "website",
     "final": "https://viqsolutions.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://viqsolutions.com",
-    "why": "connection dropped"
+    "url": "https://viqsolutions.com"
    }
   ],
   "vision-box": [
@@ -4083,6 +3993,16 @@
     "why": "no such domain"
    }
   ],
+  "waste-robotics": [
+   {
+    "field": "website",
+    "final": "https://wasterobotic.com",
+    "kind": "unread",
+    "status": 429,
+    "title": "",
+    "url": "https://wasterobotic.com"
+   }
+  ],
   "watersmart-software": [
    {
     "field": "website",
@@ -4106,10 +4026,9 @@
     "field": "website",
     "final": "https://wavepointsolution.com/",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://wavepointsolution.com/",
-    "why": "connection dropped"
+    "url": "https://wavepointsolution.com/"
    }
   ],
   "way-com": [
@@ -4130,16 +4049,6 @@
     "url": "https://www.way.com/careers"
    }
   ],
-  "wayground": [
-   {
-    "field": "website",
-    "final": "https://wayground.com",
-    "kind": "unread",
-    "status": 202,
-    "title": "",
-    "url": "https://wayground.com"
-   }
-  ],
   "yardi-systems": [
    {
     "field": "website",
@@ -4155,10 +4064,9 @@
     "field": "website",
     "final": "https://www.yunextraffic.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.yunextraffic.com",
-    "why": "connection dropped"
+    "url": "https://www.yunextraffic.com"
    }
   ],
   "zaristai": [
@@ -4186,10 +4094,9 @@
     "field": "website",
     "final": "https://www.zetron.com",
     "kind": "unread",
-    "status": null,
+    "status": 202,
     "title": "",
-    "url": "https://www.zetron.com",
-    "why": "connection dropped"
+    "url": "https://www.zetron.com"
    }
   ],
   "zonar-systems": [
