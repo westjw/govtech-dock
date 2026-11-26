@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "What If N-central Were Compromised, but Customer Endpoints Remained Protected?",
    "kind": "press",
@@ -92,21 +92,21 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "index-text",
-   "first_seen": "2026-10-27",
-   "headline": "What is Vulnerability Management? Process, Tools, and Best Practices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/vulnerability-management/"
-  },
-  {
-   "date": "2026-10-26",
    "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Mean Time to Patch: The Patch Management Metric that Measures Your Exposure Window",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.action1.com/blog/mean-time-to-patch/"
+  },
+  {
+   "date": "2026-10-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-10-27",
+   "headline": "What is Vulnerability Management? Process, Tools, and Best Practices",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.action1.com/blog/vulnerability-management/"
   }
  ]
 }

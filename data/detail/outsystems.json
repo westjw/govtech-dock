@@ -1,16 +1,7 @@
 {
  "news": [
   {
-   "date": "2026-11-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-19",
-   "headline": "EdgeIQ and OutSystems: Accelerating Industry 4.0 outcomes",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/edgeiq-outsystems-alliance"
-  },
-  {
-   "date": "2026-11-20",
+   "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
    "headline": "5 steps to a successful Lotus Notes migration",
@@ -19,7 +10,7 @@
    "url": "https://www.outsystems.com/blog/posts/lotus-notes-migration"
   },
   {
-   "date": "2026-11-19",
+   "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "OWT London: OutSystems unveils agentic legacy modernization",
@@ -28,13 +19,31 @@
    "url": "https://www.outsystems.com/blog/posts/agentic-legacy-modernization"
   },
   {
-   "date": "2026-11-18",
+   "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "AI sovereignty for your agents: Where should they live?",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/ai-sovereignty-self-hosted-runtime"
+  },
+  {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Introducing the OutSystems EU Sovereign Cloud",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://www.outsystems.com/blog/posts/eu-sovereign-cloud"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-19",
+   "headline": "EdgeIQ and OutSystems: Accelerating Industry 4.0 outcomes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.outsystems.com/blog/posts/edgeiq-outsystems-alliance"
   },
   {
    "date": "2026-11-17",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.outsystems.com/blog/posts/outsystems-enterprise-agentic-ai-governance"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-28",
-   "headline": "The future of enterprise AI is Agentic Systems Engineering",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.outsystems.com/blog/posts/enterprise-ai-future"
   }
  ]
 }

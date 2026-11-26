@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Intake to Procure Explained: From Request to Purchase Order in Five Steps",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jaggaer.com/blog/intake-to-procure-explained"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -8,6 +17,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jaggaer.com/blog/gulf-petrochemical-procurement-priorities"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "What Are AI Workers? From AI Assistant to AI Workforce in Procurement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jaggaer.com/blog/what-are-ai-workers"
   },
   {
    "date": "2026-11-20",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jaggaer.com/blog/ev-supply-chain-reset-ai-supplier-risk-management"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "The EV Supply Chain Reset, Part 2: Procurement Challenges in the EV Automotive Industry",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jaggaer.com/blog/ev-supply-chain-reset-procurement-challenges"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "The EV Supply Chain Reset, Part 1: Why Procurement Is Central to the EV Era",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jaggaer.com/blog/ev-supply-chain-reset-procurement-central"
   }
  ],
  "profile": {

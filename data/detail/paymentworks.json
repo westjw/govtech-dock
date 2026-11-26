@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-05",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "PaymentWorks Pulse: The Scale and Complexity of Vendor Master Data Management Are Outpacing the Capabilities of Most Organizations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paymentworks.com/news/press-release-paymentworks-pulse-the-scale-and-complexity-of-vendor-master-data-management-are-outpacing-the-capabilities-of-most-organizations/"
+  },
+  {
+   "date": "2026-08-05",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "PaymentWorks Launches Payee Profile to Make Vendor Identity Portable Across B2B Payments",
+   "kind": "product",
+   "kind_rule": "Launches",
+   "url": "https://www.paymentworks.com/news/paymentworks-launches-payee-profile-portable-vendor-identity/"
+  },
+  {
    "date": "2026-06-12",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.paymentworks.com/resources/vendor-identity-glossary/"
+  },
+  {
+   "date": "2026-03-17",
+   "date_source": "time",
+   "first_seen": "2026-11-24",
+   "headline": "PaymentWorks Customers Now Qualify for Up to $5 Million in Total Fraud Coverage",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.paymentworks.com/news/press-release-paymentworks-announces-customers-qualify-5-million-dollars-total-fraud-coverage/"
   }
  ],
  "profile": {

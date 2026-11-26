@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Fleet Standardization Across Your Construction Jobsites",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://whiparound.com/blog/fleet-standardization/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://whiparound.com/blog/estimate-fleet-labor-costs/"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "Vehicle Maintenance BASIC: The Violations That Hurt Your CSA Score Most",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://whiparound.com/blog/vehicle-maintenance-basic/"
   }
  ],
  "profile": {

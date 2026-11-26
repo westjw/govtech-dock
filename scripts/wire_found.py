@@ -272,7 +272,16 @@ OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-
              "jobvitefeed": {"jobvite-other"},
              # (every address naming a company number on app.trinethire.com is
              # a board, so trinethire-other names none: 2026-11-24)
-             "trinethire": {"trinethire-other"}}
+             "trinethire": {"trinethire-other"},
+             # (every jobscore.com address naming a slug in a board's form is a
+             # board, and one naming an account or a job in any other shape is
+             # jobscore-tenant - a doubt, never this note - so jobscore-other,
+             # the 'Powered by' link or an asset host, names none: 2026-11-24)
+             "jobscore": {"jobscore-other"},
+             # (an address on apply.clearcompany.com naming a slug is a board,
+             # so clearcompany-other names none: its scripts, its pictures, a
+             # tenant host robots.txt closes; 2026-11-24)
+             "clearcompany": {"clearcompany-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -638,6 +647,33 @@ def also_seen(entry: dict, key, website: str, kind=None) -> dict:
     if away - own:
         out["elsewhere_off_site"] = sorted(away - own)[:6]
     return out
+
+
+def legacy_left(entry: dict, website: str, vendor: str = "clearcompany-legacy") -> list[dict]:
+    """The legacy HRM Direct boards (ClearCompany owns HRM Direct) named on
+    their OWN site that the finder did not make a board, as also_seen counts
+    a page theirs: each row with its `note` - what came back when it was
+    asked where ClearCompany sends it, or why it was not asked - and
+    `on_the_day` where that was a failure of the day
+    (find_site_boards.clearcompany_legacy). Said for what each is, never as
+    another account (blind review of the finder, 2026-11-24). With `vendor`,
+    that form's rows on their own site instead (clearcompany-brand)."""
+    return [e for e in entry.get("elsewhere") or [] if isinstance(e, dict)
+            and e.get("vendor") == vendor
+            and (not str(e.get("page") or "").strip()
+                 or page_belt._same_site(str(e.get("page")), website or ""))]
+
+
+def legacy_words(rows: list[dict]) -> str:
+    """'frames a legacy HRM Direct board (ClearCompany's), <address>, which
+    <what came back>' for the first of `rows` (and how many more)."""
+    e = rows[0]
+    how = {"iframe": "frames", "frame": "frames", "href": "links",
+           "redirect": "redirects to"}.get(str(e.get("element") or ""), "names")
+    note = str(e.get("note") or "").strip() or "not asked"
+    more = f", and {len(rows) - 1} more" if len(rows) > 1 else ""
+    return (f"{how} a legacy HRM Direct board (ClearCompany's), {short(e.get('saw'))}, which "
+            f"was not followed to the hosted site it names ({note}){more}")
 
 
 # ------------------------------------------------- what is on file, no network
@@ -2737,13 +2773,33 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     if not boards and postings:
         return posting_skip(base, c, postings, ctx, unusable)
     if not boards:
-        if unusable:
+        # A LEGACY HRM DIRECT BOARD THEIR SITE NAMES, NOT FOLLOWED to the board
+        # it names, is said for what it is - never "none named a board" - and
+        # where asking failed on the day it is asked again by the next plan
+        # (blind review of the finder, 2026-11-24)
+        legacy = legacy_left(entry, c.get("website") or "")
+        day = [e for e in legacy if e.get("on_the_day")]
+        if day:
+            return _skip(base, "unreadable",
+                         f"their site {legacy_words(day)}, a failure on the day; it is asked "
+                         f"again on the next plan, and a failure on the day is not a doubt to file",
+                         error=str(day[0].get("note") or "a failure on the day"))
+        # ...and so is ONE BRAND'S VIEW of a ClearCompany site alone, which is
+        # never read whole as theirs (find_site_boards.clearcompany_one_brand)
+        brand = legacy_left(entry, c.get("website") or "", "clearcompany-brand")
+        if unusable or legacy or brand:
             # THEIR SITE DID NAME A BOARD, and the finder wrote it down in a
             # shape no reader takes. That is not "no board seen": it is
             # listed under its own name so somebody looks at the reference
             return _skip(base, "unusable",
-                         "their site named a board, and the finder's reference cannot be "
-                         "used: " + "; ".join(unusable[:3]))
+                         "; ".join(([f"their site {legacy_words(legacy)}"] if legacy else [])
+                                   + ([f"their site links one brand's view of a ClearCompany site "
+                                       f"({short(brand[0].get('saw'))}), which is never read whole "
+                                       f"as theirs: such a site can carry several companies' "
+                                       f"postings, and no row names its brand"] if brand else [])
+                                   + (["their site named a board, and the finder's reference "
+                                       "cannot be used: " + "; ".join(unusable[:3])]
+                                      if unusable else [])))
         return _skip(base, "no-candidate", "the finder saw no board on their own site: "
                      + _pages_note(entry))
 
@@ -2933,6 +2989,22 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         forms = [v for v in extra["elsewhere"] if v in _fsb._NO_BOARD_IN_IT]
         tenants = [v for v in extra["elsewhere"] if v in _fsb.TENANT_FORMS]
         unread = [v for v in extra["elsewhere"] if v not in forms and v not in tenants]
+        # TWO CLEARCOMPANY FORMS ARE SAID FOR WHAT THEY ARE (blind review,
+        # 2026-11-24): a legacy HRM Direct board not followed - what came back,
+        # never "another account" (one that failed on the day is skipped
+        # below and asked again) - and one brand's view of a site
+        if "clearcompany-legacy" in tenants:
+            tenants.remove("clearcompany-legacy")
+            legacy = [e for e in legacy_left(entry, website) if not e.get("on_the_day")]
+            if legacy:
+                doubts.append(f"their own site also {legacy_words(legacy)}, so whether it is this "
+                              f"board is not settled")
+        if "clearcompany-brand" in tenants:
+            tenants.remove("clearcompany-brand")
+            doubts.append("their own site also links one brand's view of a ClearCompany site (an "
+                          "address on apply.clearcompany.com asking ?brand=): such a site can carry "
+                          "several companies' postings, and no row names its brand, so it is never "
+                          "read whole as theirs and which board they hire through is not settled")
         if tenants:
             # (true of each tenant form: another account's address, or one
             # job's, whose account the address does not show - never "another
@@ -3211,6 +3283,17 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                      f"({ref}), and {seen['follow_failed']}; it is asked again on the next "
                      f"plan, and a failure on the day is not a doubt to file",
                      error=seen["follow_failed"], **_carry(doubts))
+    day = [e for e in legacy_left(entry, website) if e.get("on_the_day")]
+    if day:
+        # A LEGACY HRM DIRECT BOARD WHOSE FOLLOW FAILED ON THE DAY IS NO ANSWER:
+        # it may be this board or another, and filed as a doubt the row would
+        # hold every later plan; the same site wired on a day the follow lands
+        # (blind review of the finder, 2026-11-24). Listed, and asked again.
+        return _skip(base, "unreadable",
+                     f"their site also {legacy_words(day)}, a failure on the day, so whether it "
+                     f"is this board is not known; it is asked again on the next plan, and a "
+                     f"failure on the day is not a doubt to file",
+                     error=str(day[0].get("note") or "a failure on the day"), **_carry(doubts))
     if pl:
         # A RECORD'S OWN PAGE THAT FAILED ON THE DAY IS NO DOUBT TO FILE (eighth
         # blind review, 2026-11-22). records_by_page asked it because nothing
@@ -3425,9 +3508,12 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 # (a Jobvite account's feed is read and asked whose it is in ONE request a
 # plan: the probe takes the answer the read had - ats.jobvitefeed_kept, blind
 # review 12, 2026-11-23; and so is a TriNet Hire list - ats.trinethire_kept,
-# blind review 13, 2026-11-24)
+# blind review 13, 2026-11-24 - and a JobScore board's feed, ats.jobscore_kept, and a
+# ClearCompany site's three answers - ats.clearcompany_kept, 2026-11-24)
 @ats.jobvitefeed_kept()
 @ats.trinethire_kept()
+@ats.jobscore_kept()
+@ats.clearcompany_kept()
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
          pages: dict | None = None, postings: dict | None = None,

@@ -1,146 +1,83 @@
 {
-  "date": "2026-11-24",
-  "previous": "2026-11-23",
+  "date": "2026-11-25",
+  "previous": "2026-11-24",
   "changes": [
     {
-      "company": "SoundThinking (ShotSpotter)",
-      "id": "soundthinking",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "https://app.trinethire.com/companies/328"
-    },
-    {
-      "company": "Polimorphic",
-      "id": "polimorphic",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "https://app.trinethire.com/companies/381"
-    },
-    {
-      "company": "SOVRA",
-      "id": "sovra",
-      "from": "Sales (non-AE)",
+      "company": "Glacier",
+      "id": "glacier",
+      "from": "Yes",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Bamboo Health",
-      "id": "bamboo-health",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Bamboo Bridge Strategic Account Ma"
-    },
-    {
-      "company": "VirTra",
-      "id": "virtra",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "InTime Solutions",
-      "id": "intime-solutions",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Peachjar",
-      "id": "peachjar",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "Beep",
-      "id": "beep",
+      "company": "Rehrig Pacific",
+      "id": "rehrig-pacific",
       "from": "Unknown",
-      "to": "None found",
-      "note": ""
+      "to": "Yes",
+      "note": "Territory Sales Manager - Environm (US)"
     },
     {
-      "company": "Netchex",
-      "id": "netchex",
-      "from": "Sales (non-AE)",
+      "company": "Paymentus",
+      "id": "paymentus",
+      "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "ClassLink",
-      "id": "classlink",
-      "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Regional Vice President of Sales-  only"
-    },
-    {
-      "company": "Gainwell Technologies",
-      "id": "gainwell-technologies",
+      "company": "Ascento AG",
+      "id": "ascento-ag",
       "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Senior Account Manager (KS, US)"
-    },
-    {
-      "company": "mdf commerce",
-      "id": "mdf-commerce",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "IDEMIA",
-      "id": "idemia",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Business Operations and Leadership only"
-    },
-    {
-      "company": "Norix Group",
-      "id": "norix-group",
-      "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
       "company": "GE Vernova",
       "id": "ge-vernova",
-      "from": "Sales (non-AE)",
-      "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "StarRez",
-      "id": "starrez",
-      "from": "Sales (non-AE)",
+      "from": "Unknown",
       "to": "Yes",
-      "note": "Enterprise Account Executive (US - Remote)"
+      "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Codoxo",
-      "id": "codoxo",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Founding Account Management Leader only"
-    },
-    {
-      "company": "Cotiviti",
-      "id": "cotiviti",
-      "from": "Unknown",
-      "to": "Sales (non-AE)",
-      "note": "Senior Manager Revenue Cycle Opera only"
-    },
-    {
-      "company": "Sharecare",
-      "id": "sharecare",
+      "company": "GridUnity",
+      "id": "gridunity",
       "from": "None found",
       "to": "Sales (non-AE)",
-      "note": "Director, Provider Sales - Remote only"
+      "note": "Business Solutions Engineer only"
     },
     {
-      "company": "Green River",
-      "id": "green-river",
+      "company": "OpusXenta",
+      "id": "opusxenta",
       "from": "None found",
       "to": "Unknown",
-      "note": "https://app.trinethire.com/companies/336"
+      "note": "network error: robots.txt on byond.cloud"
+    },
+    {
+      "company": "Clinically AI",
+      "id": "clinically-ai",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
+    },
+    {
+      "company": "Kaltura Inc",
+      "id": "kaltura-inc",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Lumu Technologies",
+      "id": "lumu-technologies",
+      "from": "Unknown",
+      "to": "Yes",
+      "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "Myriota",
+      "id": "myriota",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "network error: robots.txt on myriota.com"
     }
   ]
 }

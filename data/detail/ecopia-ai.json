@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Seeing Stormwater Risk Before It Becomes a Problem",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ecopiatech.com/resources/blog/seeing-stormwater-risk-before-it-becomes-a-problem"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ecopiatech.com/resources/blog/the-importance-of-high-precision-geolocation-in-wildfire-risk-estimation"
-  },
-  {
-   "date": "2026-08-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-09",
-   "headline": "AI-Powered Imagery Analysis for P&C Insurance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ecopiatech.com/resources/blog/ai-powered-imagery-analysis-for-p-c-insurance"
   }
  ],
  "profile": {

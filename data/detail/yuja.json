@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "og:published",
+   "first_seen": "2026-11-24",
+   "headline": "YuJa Lumina v26.8.0 Release \u2013 A New Interactive Live Video Player, Advanced Replay Capabilities, Streamlined Software Capture Setup, and More",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.yuja.com/blog/yuja-lumina-v26-8-0-release-a-new-interactive-live-video-player-advanced-replay-capabilities-streamlined-software-capture-setup-and-more/"
+  },
+  {
+   "date": "2026-11-24",
+   "date_source": "og:published",
+   "first_seen": "2026-11-24",
+   "headline": "YuJa GenAI Video PowerPack v26.8.0 Release \u2013 Deliver improved, full-coverage chaptering to your audiences",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.yuja.com/blog/yuja-genai-powerpack-v26-8-0-release-deliver-improved-full-coverage-chaptering-to-your-audiences/"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "index-text",
    "first_seen": "2026-11-23",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-11-16",
    "headline": "YuJa EqualGround v26.8.0 Release \u2013 Expanded LiveFix Capabilities, A New Office Add-In, and More\u2026",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-11-10",
-   "date_source": "index-text",
+   "date_source": "og:published",
    "first_seen": "2026-11-10",
    "headline": "Why Continuous Monitoring Needs To Replace One-Time Accessibility Audits",
    "kind": "press",
@@ -89,24 +107,6 @@
    "kind": "contract",
    "kind_rule": "Adopts",
    "url": "https://www.yuja.com/blog/news/marist-university-yuja-verity/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "Digital Accessibility Remediation Accelerates: YuJa Reports Significant Improvements Across Documents and Websites in 2026 November 4, 2026 | 2 min read",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.yuja.com/blog/news/digital-accessibility-remediation-accelerates-2026/"
-  },
-  {
-   "date": "2026-11-02",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "Metro Technology Centers Selects YuJa Panorama to Uphold LMS Accessibility Standards November 2, 2026 | < 1 min read",
-   "kind": "contract",
-   "kind_rule": "Selects",
-   "url": "https://www.yuja.com/blog/news/metro-technology-centers-yuja-panorama/"
   }
  ],
  "profile": {

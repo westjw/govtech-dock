@@ -74,6 +74,7 @@ import re
 import sys
 import threading
 import time
+import unicodedata
 import urllib.parse
 import xml.parsers.expat
 from collections import Counter
@@ -409,8 +410,17 @@ HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cac
 # sends no ETag today, and if it ever starts to, or answers from another of
 # its hosts, that is still not a reason to keep a copy of it. A Jobvite
 # account's XML feed names each job's hiring manager, a person, on every row
-# (fetch_jobvitefeed): its host is here for the same reason.
-NEVER_CACHED = frozenset({"hirebridge.com", "app.jobvite.com"})
+# (fetch_jobvitefeed): its host is here for the same reason. So is JobScore's
+# domain: a board's feed names its hiring team - hiring managers and
+# recruiters, with LinkedIn addresses and photos - on its entries, and a
+# posting page prints the recruiter's name (fetch_jobscore). The domain and
+# every host under it: careers.jobscore.com, where the feed and the postings
+# are, and www.jobscore.com, which serves the same feed as its self link.
+# So is ClearCompany's career-site API (fetch_clearcompany): an e-mail-to-apply
+# posting's applyLink there is an e-mail address, often a person's, and the
+# same host serves each posting's hiring team, names and photos.
+NEVER_CACHED = frozenset({"hirebridge.com", "app.jobvite.com", "jobscore.com",
+                          "careers-api.clearcompany.com"})
 
 
 def never_cached(url: str) -> bool:
@@ -4733,6 +4743,1080 @@ def trinethire_posting_key(url) -> str | None:
 def fetch_trinethire(ref) -> list[dict]:
     return trinethire_board(ref)[2]
 
+# ---- jobscore: JobScore, careers.jobscore.com/careers/<slug>
+#
+# Two companies on file hire through JobScore (research of 2026-11-23):
+# ImageTrend, read as a careers page (type html) at its hosted list - titles
+# and links, nothing else - and Finalsite, whose careers page frames
+# JobScore's widget (widgets.jobscore.com), which no careers-page reader can
+# see: no row at all. Each board publishes one Atom feed, which its own
+# hosted page links as rel=alternate and robots.txt allows (it closes
+# /apply_flow/ and nothing else):
+#
+#     GET https://careers.jobscore.com/jobs/<slug>/feed.atom
+#
+# ONE REQUEST IS THE WHOLE BOARD: no paging offered and none needed (8 of 8
+# and 14 of 14 rows against the hosted list, the same addresses, 2026-11-23;
+# 8 and 13 on 2026-11-24). Read through ats.follow and _one - robots.txt at
+# every hop, the crawler's own name, the host gate - as a stream, and the
+# feed answers in place, so any redirect (another host, another path, the
+# feed again) is refused before it is asked anything (_jobscore_read). A
+# feed past JOBSCORE_FEED_MAX bytes is refused, never read in part, and no
+# more of it is taken off the wire than the cap and one chunk (blind review
+# of 2026-11-24: read whole first, a 40 MB answer was pulled down to the last
+# byte before it was refused). A feed that says it is one page of a longer
+# one raises: one page is never the whole board - an Atom link rel first,
+# last or current, or any rel naming a next, a previous or an archive page
+# (RFC 5005's next-archive and prev-archive; a rel spelled as IANA's URI,
+# http://www.iana.org/assignments/relation/next, is the same rel, RFC 4287),
+# a self link carrying a query (?page=1), an OpenSearch totalResults above
+# the entries it holds or a startIndex past the first; and so does an
+# <entry> anywhere but directly under <feed> (wrapped in a vendor's element,
+# it would have been skipped while the rest were read).
+#
+# THE REF IS THE ACCOUNT'S SLUG ('imagetrend', 'finalsite'), AS SPELLED -
+# never lowered: JobScore minds the case of the path (asked 2026-11-24,
+# /jobs/Finalsite/feed.atom answered 404 and /jobs/finalsite/feed.atom is the
+# board), so a slug in other capitals is another address, never a guess at
+# this one (find_site_boards.LOWERED and the Lever lesson) - and held to one
+# DNS label's shape as Pinpoint's is: never an address, never anything that
+# changes the path it is put in.
+#
+# PARSED AS XML, BY NAME AND BY PLACE, AND NOTHING ELSE IS READ: expat with
+# namespaces, a DOCTYPE or an ENTITY declaration refused before anything it
+# declares is read, the root Atom's <feed>. Of the feed: its <title>,
+# <subtitle> and <link>s. Of each <entry>: its <title>, <link>s,
+# <category>s, <content> and the five fields of its <j:publicCompensation>.
+# The characters of every other element are dropped as the parser meets
+# them, so <j:hiringTeam> - hiring managers and recruiters by name, job
+# title, LinkedIn address and photo (23 people on ImageTrend's 8 entries) -
+# is never read, nor is <author><name> ('ImageTrend HR'); and jobscore.com
+# is in NEVER_CACHED, so the feed is never written to data/http_cache.
+#
+# A ROW: the title, stripped (they come with trailing spaces, one with a
+# leading tab); the url, the entry's ONE rel=alternate link, a posting of
+# this very board - https://careers.jobscore.com/careers/<slug>/jobs/
+# [<title slug>-]<22-character id> - its tracking query (?ref=rss&sid=68)
+# dropped, and NEVER the apply_url link, which points under /apply_flow/,
+# which robots.txt closes; the location, the atom#location category's term
+# as the employer typed it ('Remote in Eagan, MN', '100% Remote in the U.S',
+# 'Remote- LatAm'), no country invented; the ad, the entry's <content
+# type="html">; and pay from <j:publicCompensation>, whose salaryMinimum and
+# salaryMaximum count CENTS (5000000 is $50,000), published only where the
+# block's own <j:formatted> ('From $50,000 to $60,000 per year'), which is
+# kept as raw, agrees with all of it: the very figures, no period but the
+# block's <j:interval>, and no currency sign or code but one its
+# <j:currencyCode> is ('$' for USD, CAD and the other dollars; none named is
+# US dollars) - a comp never contradicts its own raw (blind review of
+# 2026-11-24). One row a posting id: a posting listed twice is one. An entry
+# that does not read as a posting of this board (no title, two titles, or
+# not one alternate link to a posting under /careers/<slug>/jobs/) raises: a
+# board is never read in part.
+#
+# NO POSTED DATE. The feed has no <published>; <updated> moves on every edit
+# (all 8 of ImageTrend's entries read 2026-11-10 or 2026-11-20), and the day
+# inside <id> is the day the job was CREATED (ImageTrend's Account Executive:
+# 2026-10-07, posted 2026-10-19). Neither is read, so the board keeps its
+# first-seen day. A posting page's JSON-LD states datePosted; it is not read
+# (one request a posting, and the page prints the recruiter's name), flag or
+# no flag.
+#
+# NO ZERO, BECAUSE NONE IS MEASURED. No empty JobScore board was at hand
+# (2026-11-23 and 11-24), so whether an empty feed keeps its title and
+# subtitle is not known: a feed with no <entry> raises - Unknown, never "None
+# found" - until one is read. A slug that is not there answers 404 (measured,
+# the feed and the page alike), which is gone, never a zero; so is any other
+# answer but a 200.
+#
+# WHOSE IT IS (jobscore_name): the feed's <subtitle>, the bare name, believed
+# only where its <title> reads 'Careers at ' and the same name - ImageTrend's
+# and Finalsite's, 2026-11-23 and 11-24. Never <author><name>, the slug, or
+# any person. And the feed must name this board's own hosted page as its
+# alternate link (https://careers.jobscore.com/careers/<slug>): a feed that
+# names another is not this board's, and raises.
+JOBSCORE_HOST = "careers.jobscore.com"
+JOBSCORE_FEED = "https://careers.jobscore.com/jobs/{slug}/feed.atom"
+JOBSCORE_PAGE = "https://careers.jobscore.com/careers/{slug}"
+JOBSCORE_TITLE = "Careers at "
+# Bytes of a feed read; more is refused, never read in part. A posting is 9
+# to 12 KB of feed (93 KB for ImageTrend's 8, 125 KB for Finalsite's 14), so
+# this is some 1,300 postings - past the owner's giants of about 500.
+JOBSCORE_FEED_MAX = 16_000_000
+JOBSCORE_LOCATION = "http://schemas.jobscore.com/atom#location"
+_JOBSCORE_SLUG = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?")
+_ATOM_NS = "http://www.w3.org/2005/Atom|"
+_JOBSCORE_NS = "http://schemas.jobscore.com/atom|"
+# OpenSearch's namespaces (1.1's, and RSS 1.0's before it), whose
+# totalResults and startIndex say how much of a longer list a page is
+_OPENSEARCH_NS = "http://a9.com/-/spec/opensearch"
+_OPENSEARCH = ("totalResults", "startIndex", "itemsPerPage")
+# a rel written as IANA's registry names it is the short rel (RFC 4287 4.2.7.2)
+_IANA_REL = ("http://www.iana.org/assignments/relation/", "https://www.iana.org/assignments/relation/")
+# a posting of board <slug>: its 22-character id last, the title's slug and a
+# hyphen before it (or nothing: a title with no ASCII letter or digit)
+_JOBSCORE_POSTING = re.compile(r"/careers/([A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)/jobs/"
+                               r"(?:[a-z0-9_-]{0,300}-)?([A-Za-z0-9_-]{22})")
+# THE ONLY PAY FIELDS EVER READ, inside <j:publicCompensation>
+_JOBSCORE_PAY = ("salaryMinimum", "salaryMaximum", "interval", "currencyCode", "formatted")
+# what <j:interval> says, word for word (measured: 'per year' on all nine
+# pay blocks); anything else is no period (the figures, where the formatted
+# line agrees, are published with none)
+_JOBSCORE_PERIODS = {"per year": "year", "per month": "month", "per week": "week",
+                     "per day": "day", "per hour": "hour"}
+# THE PERIOD A FORMATTED LINE NAMES, word by word: a line naming one its
+# block's <j:interval> does not ('From $25 to $30 per hour' over 'per year')
+# states no pay. 'odd' is a period none of the five is (every two weeks,
+# biweekly, semimonthly), and never agrees with one
+_JOBSCORE_PERIOD_WORDS = {
+    **dict.fromkeys(("year", "years", "yr", "yrs", "annum", "annual", "annually", "yearly"), "year"),
+    **dict.fromkeys(("month", "months", "monthly"), "month"),
+    **dict.fromkeys(("week", "weeks", "weekly", "wk", "wks"), "week"),
+    **dict.fromkeys(("day", "days", "daily"), "day"),
+    **dict.fromkeys(("hour", "hours", "hourly", "hr", "hrs"), "hour")}
+_JOBSCORE_ODD_PERIOD = re.compile(
+    r"\b(?:bi|semi)[\s-]?(?:weekly|monthly|annual(?:ly)?|week|month)\b|\bfortnight"
+    r"|\bevery\s+(?:other|[a-z0-9]+)\s+(?:years?|months?|weeks?|days?|hours?)\b", re.I)
+# THE CURRENCIES A SIGN STANDS FOR in a formatted line: a sign not listed
+# fits no code, and a block naming no code is US dollars ('$' or nothing)
+_JOBSCORE_DOLLARS = frozenset({"USD", "CAD", "AUD", "NZD", "SGD", "HKD", "MXN", "TWD", "BSD", "BMD",
+                               "BBD", "BZD", "JMD", "TTD", "XCD", "FJD", "LRD", "NAD", "SBD", "SRD",
+                               "GYD", "KYD", "BND", "CLP", "COP", "ARS", "UYU", "DOP", "CUP"})
+_JOBSCORE_SIGNS = {"$": _JOBSCORE_DOLLARS, "€": frozenset({"EUR"}), "£": frozenset({"GBP"}),
+                   "₹": frozenset({"INR"}), "¥": frozenset({"JPY", "CNY"}),
+                   "₱": frozenset({"PHP"}), "₩": frozenset({"KRW"})}
+_JOBSCORE_FIGURE = re.compile(r"[0-9][0-9,]*(?:\.[0-9]+)?")
+_JOBSCORE_CENTS = re.compile(r"[0-9]{1,13}")
+_MARKUP = object()        # a field that held markup of its own: not read
+
+
+class _JobscoreRefused(Exception):
+    """A feed the parser stops reading at once (a DOCTYPE or an ENTITY, a root
+    that is not Atom's <feed>), raised out of an expat handler."""
+
+
+def jobscore_slug(ref) -> str:
+    """The JobScore account a ref names - its slug, as spelled: JobScore
+    minds its case - or AtsError (for anything else, a number or a list among
+    them: a ref is text)."""
+    slug = _text(ref) if isinstance(ref, str) else ""
+    if not _JOBSCORE_SLUG.fullmatch(slug):
+        raise AtsError(f"not a jobscore board: {ref!r} (a JobScore board is its account's slug, "
+                       f"as careers.jobscore.com/careers/<slug> names it)")
+    return slug
+
+
+def jobscore_url(ref) -> str:
+    """The board's feed: what is read."""
+    return JOBSCORE_FEED.format(slug=jobscore_slug(ref))
+
+
+def jobscore_page(ref) -> str:
+    """The board's hosted list, where a person looks (build_board.board_url):
+    every opening, each linking its posting. Never read by this reader."""
+    return JOBSCORE_PAGE.format(slug=jobscore_slug(ref))
+
+
+def _jobscore_read(url: str) -> bytes:
+    """The feed's bytes, asked once: robots.txt at every hop (follow), the
+    crawler's own name and the host gate (_one); no redirect followed - the
+    feed answers in place, so a hop anywhere, the feed itself again included,
+    is refused before it is asked anything. Read as a stream, as
+    _jvx_body reads a Jobvite feed, and refused past JOBSCORE_FEED_MAX
+    bytes - never read in part, and never pulled down whole to be refused. A
+    429 is honoured at the gate and raised as RateLimited; any other answer
+    but a 200 is an error (a slug that is not there answers 404: gone); the
+    network failing on the way, mid-body included, is a network error. Never
+    the HTTP cache: _one keeps nothing (and jobscore.com is NEVER_CACHED)."""
+    hops: list[str] = []
+
+    def stay(u: str):
+        hops.append(u)
+        if u != url or len(hops) > 1:
+            raise AtsError(f"{url} leads off to {str(u)[:160]}, which is not this board's own feed "
+                           f"(the feed answers in place), so it is not read as a board with "
+                           f"nothing open")
+    resp = follow(url, lambda u: _one(u, stream=True), may=stay)
+    try:
+        status = getattr(resp, "status_code", None)
+        if status == 429:
+            _back_off(url, resp)
+        if status != 200:
+            raise AtsError(f"HTTP {status} for {url}")
+        raw = bytearray()
+        try:
+            for chunk in resp.iter_content(chunk_size=65536):
+                raw += chunk
+                if len(raw) > JOBSCORE_FEED_MAX:
+                    raise AtsError(f"{url} is more than {JOBSCORE_FEED_MAX:,} bytes, this reader's "
+                                   f"cap: it is not read, and never read in part")
+        except requests.RequestException as exc:
+            raise AtsError(f"network error: {exc}") from exc
+    finally:
+        try:
+            resp.close()
+        except Exception:                          # noqa: BLE001
+            pass
+    return bytes(raw)
+
+
+def jobscore_feed(raw: bytes, url: str = "the feed") -> dict:
+    """What a feed says in the places this reader reads, and nothing else:
+    {"title", "subtitle", "links", "entries"}, each entry {"title", "links",
+    "categories", "content", "content_type", "pay", "pay_blocks"}. A text
+    field is a list holding what it said each time it appeared (_MARKUP where
+    it held markup of its own); a link is (rel, href) - an Atom link with no
+    rel is 'alternate' - and a category (scheme, term).
+
+    The characters of every element not named here are never kept: the
+    parser drops them as it meets them, the hiring team's and the author's
+    included. Also kept: the feed's OpenSearch totalResults, startIndex and
+    itemsPerPage, under "opensearch". AtsError for a feed that declares a
+    DOCTYPE or an ENTITY, does not read as XML (cut short, a bare '&', an
+    entity XML does not define, junk after it), whose root is not Atom's
+    <feed>, or that holds an element named entry anywhere but an Atom <entry>
+    directly under it (a posting wrapped in another element would be lost
+    while the rest were read)."""
+    feed: dict = {"title": [], "subtitle": [], "links": [], "entries": [], "opensearch": {}}
+    stack: list[str] = []
+    here: dict = {"entry": None, "into": None, "key": None, "depth": 0}
+
+    def refuse(*_args):
+        raise _JobscoreRefused("declares a DOCTYPE or an ENTITY")
+
+    def begin(into: dict, key: str):
+        into.setdefault(key, []).append([])
+        here.update(into=into, key=key, depth=len(stack))
+
+    def rel(attrs) -> str:
+        said = _text(attrs.get("rel")).lower() or "alternate"
+        for lead in _IANA_REL:
+            said = said.removeprefix(lead)
+        return said
+
+    def start(name, attrs):
+        stack.append(name)
+        depth = len(stack)
+        if depth > 1 and name.rsplit("|", 1)[-1] == "entry" and (depth != 2 or name != _ATOM_NS + "entry"):
+            raise _JobscoreRefused(f"holds an <entry> other than directly under its <feed> "
+                                   f"(<{name[-60:]}> at depth {depth}), whose posting would be lost")
+        if here["into"] is not None:
+            # markup inside a field this reads: that field is not read
+            here["into"][here["key"]][-1] = _MARKUP
+            return
+        if depth == 1:
+            if name != _ATOM_NS + "feed":
+                raise _JobscoreRefused(f"is not an Atom feed (its root is <{name[-60:]}>)")
+            return
+        parent, entry = stack[-2], here["entry"]
+        if depth == 2:
+            if name == _ATOM_NS + "entry":
+                here["entry"] = {"title": [], "links": [], "categories": [], "content": [],
+                                 "content_type": None, "pay": {}, "pay_blocks": 0}
+            elif name in (_ATOM_NS + "title", _ATOM_NS + "subtitle"):
+                begin(feed, name[len(_ATOM_NS):])
+            elif name == _ATOM_NS + "link":
+                feed["links"].append((rel(attrs), attrs.get("href") or ""))
+            elif name.startswith(_OPENSEARCH_NS) and name.rsplit("|", 1)[-1] in _OPENSEARCH:
+                begin(feed["opensearch"], name.rsplit("|", 1)[-1])
+        elif depth == 3 and parent == _ATOM_NS + "entry" and entry is not None:
+            if name == _ATOM_NS + "title":
+                begin(entry, "title")
+            elif name == _ATOM_NS + "link":
+                entry["links"].append((rel(attrs), attrs.get("href") or ""))
+            elif name == _ATOM_NS + "category":
+                entry["categories"].append((attrs.get("scheme") or "", attrs.get("term") or ""))
+            elif name == _ATOM_NS + "content":
+                entry["content_type"] = (_text(attrs.get("type")) or "text").lower()
+                begin(entry, "content")
+            elif name == _JOBSCORE_NS + "publicCompensation":
+                entry["pay_blocks"] += 1
+        elif (depth == 4 and parent == _JOBSCORE_NS + "publicCompensation"
+              and stack[-3] == _ATOM_NS + "entry" and entry is not None
+              and name.startswith(_JOBSCORE_NS) and name[len(_JOBSCORE_NS):] in _JOBSCORE_PAY):
+            begin(entry["pay"], name[len(_JOBSCORE_NS):])
+
+    def end(name):
+        depth = len(stack)
+        if here["into"] is not None and depth == here["depth"]:
+            parts = here["into"][here["key"]]
+            if isinstance(parts[-1], list):
+                parts[-1] = "".join(parts[-1])
+            here["into"] = None
+        elif depth == 2 and name == _ATOM_NS + "entry" and here["entry"] is not None:
+            feed["entries"].append(here["entry"])
+            here["entry"] = None
+        stack.pop()
+
+    def text(data):
+        into = here["into"]
+        if into is not None and len(stack) == here["depth"] and isinstance(into[here["key"]][-1], list):
+            into[here["key"]][-1].append(data)
+
+    p = xml.parsers.expat.ParserCreate(namespace_separator="|")
+    p.buffer_text = True
+    p.StartDoctypeDeclHandler = refuse
+    p.EntityDeclHandler = refuse
+    p.UnparsedEntityDeclHandler = refuse
+    p.NotationDeclHandler = refuse
+    p.SetParamEntityParsing(xml.parsers.expat.XML_PARAM_ENTITY_PARSING_NEVER)
+    p.StartElementHandler, p.EndElementHandler, p.CharacterDataHandler = start, end, text
+    try:
+        p.Parse(raw, True)
+    except _JobscoreRefused as exc:
+        raise AtsError(f"{url} {exc}: refused, and nothing it lists is read") from None
+    except xml.parsers.expat.ExpatError as exc:
+        raise AtsError(f"{url} does not read as XML ({exc}): a feed cut short, a challenge page or "
+                       f"not a feed, and never read in part") from None
+    return feed
+
+
+def _js_one(fields: dict, key: str):
+    """The one text a field was given, or None: absent, given more than
+    once, or holding markup of its own."""
+    got = fields.get(key) or []
+    return got[0] if len(got) == 1 and isinstance(got[0], str) else None
+
+
+def jobscore_name(feed: dict) -> str:
+    """The employer a feed states, or "": its <subtitle>, where its <title>
+    reads 'Careers at ' and the same name. Both must agree."""
+    sub = _text(html_lib.unescape(_js_one(feed, "subtitle") or ""))
+    title = _text(html_lib.unescape(_js_one(feed, "title") or ""))
+    return sub if sub and title == JOBSCORE_TITLE + sub else ""
+
+
+def jobscore_posting(href, slug: str | None = None) -> tuple[str, str] | None:
+    """(the posting's address, its 22-character id) where `href` is a
+    posting on careers.jobscore.com - https, /careers/<slug>/jobs/[<title
+    slug>-]<id>, of board `slug` when one is given - its query (?ref=rss&
+    sid=68) and fragment dropped; or None for any other address."""
+    try:
+        parts = urllib.parse.urlsplit(_text(href))
+    except ValueError:
+        return None
+    m = _JOBSCORE_POSTING.fullmatch(parts.path or "")
+    if (parts.scheme != "https" or (parts.netloc or "").lower() != JOBSCORE_HOST or not m
+            or (slug is not None and m.group(1) != slug)):
+        return None
+    return f"https://{JOBSCORE_HOST}{parts.path}", m.group(2)
+
+
+def jobscore_posting_key(url) -> str | None:
+    """The address a JobScore posting is known by - the posting's own
+    address, query dropped - or None for any other address. One address is
+    one posting (its 22-character id names it), so build_board.posting_id
+    hashes this alone, never a place beside it: a posting first read through
+    the hosted list (type html, which states no place) keeps its id, its
+    first-seen day and its saved links when the feed is read instead."""
+    got = jobscore_posting(url)
+    return got[0] if got else None
+
+
+def _jobscore_cents(raw) -> tuple[int | float | None, bool]:
+    """(whole units from a count of cents, whether it read). Blank or zero
+    is no figure; a figure in cents ('5000000') is $50,000, and '2250' stays
+    22.5 - nothing is rounded the feed did not round."""
+    s = _text(raw)
+    if not s:
+        return None, True
+    if not _JOBSCORE_CENTS.fullmatch(s):
+        return None, False
+    cents = int(s)
+    if cents <= 0:
+        return None, True
+    units = cents / 100
+    return (int(units) if units.is_integer() else round(units, 2)), True
+
+
+def _jobscore_formatted_agrees(formatted: str, period: str | None, currency: str | None) -> bool:
+    """Whether a block's formatted line says nothing its own fields do not:
+    no period but `period` (the block's <j:interval>, where it is one of the
+    five; where it is none, any the line names stands as raw), and no
+    currency sign or code but one `currency` is - a block naming no code is
+    US dollars, '$' or nothing. A sign this does not know fits no code."""
+    said = {_JOBSCORE_PERIOD_WORDS[w] for w in re.findall(r"[a-z]+", formatted.lower())
+            if w in _JOBSCORE_PERIOD_WORDS}
+    if _JOBSCORE_ODD_PERIOD.search(formatted):
+        said.add("odd")
+    if period is not None and said - {period}:
+        return False
+    want = currency or "USD"
+    signs = {ch for ch in formatted if unicodedata.category(ch) == "Sc"}
+    codes = set(re.findall(r"(?<![A-Za-z])[A-Z]{3}(?![A-Za-z])", formatted))
+    return all(want in _JOBSCORE_SIGNS.get(s, ()) for s in signs) and codes <= {want}
+
+
+def _jobscore_pay(entry: dict, abroad: bool = False) -> dict | None:
+    """The contract's comp block from the entry's own <j:publicCompensation>,
+    source "ats" - or None where it has none, has two, or states figures that
+    do not read or that its own <j:formatted> does not state: the cents,
+    converted, must be the very figures the formatted line prints ('From
+    $50,000 to $60,000 per year'), which is kept as raw, and the line may name
+    no period but the block's interval and no currency but the block's own
+    (_jobscore_formatted_agrees): a comp never contradicts its raw. A row the
+    board lists outside the US (`abroad`) whose block names no currency code
+    states no pay published (a block with none is read as US dollars on the
+    site)."""
+    if entry.get("pay_blocks") != 1:
+        return None
+    pay = entry.get("pay") or {}
+    said = {k: _js_one(pay, k) for k in _JOBSCORE_PAY}
+    if any(said[k] is None and k in pay for k in _JOBSCORE_PAY):
+        return None                                # given twice, or holding markup
+    (lo, lo_ok), (hi, hi_ok) = _jobscore_cents(said["salaryMinimum"]), _jobscore_cents(said["salaryMaximum"])
+    if not (lo_ok and hi_ok) or (lo is None and hi is None):
+        return None
+    if lo is not None and hi is not None and lo > hi:
+        lo, hi = hi, lo
+    formatted = _text(said["formatted"])
+    printed = {round(float(f.replace(",", "")), 2) for f in _JOBSCORE_FIGURE.findall(formatted)}
+    if not formatted or printed != {round(float(x), 2) for x in (lo, hi) if x is not None}:
+        return None
+    code = _text(said["currencyCode"]).upper()
+    currency = code if re.fullmatch(r"[A-Z]{3}", code) else None
+    if currency is None and abroad:
+        return None
+    period = _JOBSCORE_PERIODS.get(_text(said["interval"]).lower())
+    if not _jobscore_formatted_agrees(formatted, period, currency):
+        return None
+    return {"min": lo, "max": hi, "currency": currency, "period": period,
+            "source": "ats", "raw": formatted}
+
+
+def _jobscore_pager(rel: str) -> bool:
+    """Whether a feed link's rel (IANA's URI form already folded) points to
+    another page of the same list: first, last or current (an archive
+    document's), or any rel naming a next, a previous or an archive page -
+    RFC 5005's next-archive and prev-archive among them."""
+    return rel in ("first", "last", "current") or any(w in rel for w in ("next", "prev", "archive"))
+
+
+def jobscore_rows(feed: dict, slug: str, url: str = "the feed") -> list[dict]:
+    """One row a posting of a board's feed (jobscore_feed), or AtsError for a
+    feed that is not this board's whole list (see above)."""
+    page = JOBSCORE_PAGE.format(slug=slug)
+    alternates = [_text(h).rstrip("/") for rel, h in feed["links"] if rel == "alternate"]
+    if alternates != [page]:
+        raise AtsError(f"{url} does not name this board's own page ({page}) as its one alternate "
+                       f"link ({alternates[:3]}), so it is not read as this board")
+    pager = sorted({rel for rel, _h in feed["links"] if _jobscore_pager(rel)})
+    if pager:
+        raise AtsError(f"{url} links a {pager[0]!r} page of itself: one page of a longer feed is "
+                       f"never read as the whole board")
+    for rel, href in feed["links"]:
+        try:
+            query = urllib.parse.urlsplit(_text(href)).query if rel == "self" else ""
+        except ValueError:
+            query = "unreadable"
+        if query:
+            raise AtsError(f"{url} calls itself {_text(href)[:160]!r}: a feed that knows itself by a "
+                           f"query (?page=) may be one page of a longer one, never read as the whole "
+                           f"board")
+    if not feed["entries"]:
+        raise AtsError(f"{url} lists no posting: an empty JobScore feed has not been measured, so it "
+                       f"is never read as a board with nothing open")
+    for key, most in (("totalResults", len(feed["entries"])), ("startIndex", 1)):
+        if key in feed["opensearch"]:
+            n = _text(_js_one(feed["opensearch"], key) or "")
+            if not re.fullmatch(r"[0-9]{1,9}", n) or int(n) > most:
+                raise AtsError(f"{url} says OpenSearch {key} {n[:20] or 'unreadable'!r} beside "
+                               f"{len(feed['entries'])} entries: one page of a longer list is never "
+                               f"read as the whole board")
+    rows, ids = [], set()
+    for entry in feed["entries"]:
+        title = _text(_js_one(entry, "title") or "")
+        links = [h for rel, h in entry["links"] if rel == "alternate"]
+        got = jobscore_posting(links[0], slug) if len(links) == 1 else None
+        if not title or got is None:
+            raise AtsError(f"{url}: an entry does not read as a posting of this board (a title, and "
+                           f"one alternate link to a posting under /careers/{slug}/jobs/), so the "
+                           f"board is not read in part")
+        address, job = got
+        if job in ids:                                  # one posting listed twice is one posting
+            continue
+        ids.add(job)
+        places = dict.fromkeys(p for scheme, term in entry["categories"]
+                               if scheme == JOBSCORE_LOCATION for p in (_text(term),) if p)
+        row = {"title": title, "location": "; ".join(places), "url": address}
+        # (where the board will list it decides what a block naming no
+        # currency is: _jobscore_pay)
+        row["comp"] = _jobscore_pay(entry, abroad=_abroad(row))
+        # THE AD IS ALWAYS READ: it is in the answer already downloaded
+        # (FETCH_DETAILS above)
+        content = _js_one(entry, "content")
+        if not content or entry["content_type"] not in ("html", "text"):
+            row["jd"] = ""
+        else:
+            row["jd"] = plain_html(content) if entry["content_type"] == "html" else content.strip()
+        rows.append(row)
+    return rows
+
+
+# ONE PLAN ASKS THE FEED ONCE, as for a Jobvite account's feed and a TriNet
+# Hire list: the wiring door reads the board and then asks it whose it is,
+# both this one feed. Inside jobscore_kept() - wire_found.plan, and the two
+# accept paths of a held board (one_ask_a_board) - a feed read whole is kept
+# in memory under the address it was asked at, and asked again it is that
+# answer; a read that failed raised and is not kept; nothing is written
+# anywhere; outside the block every call asks.
+_JOBSCORE_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def jobscore_kept():
+    """Each feed read whole is the answer to every later ask of it in the
+    block. Also a decorator: each call is a block of its own."""
+    global _JOBSCORE_KEPT
+    outer = _JOBSCORE_KEPT
+    _JOBSCORE_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _JOBSCORE_KEPT = outer
+
+
+def _jobscore_copy(rows: list[dict]) -> list[dict]:
+    return [dict(r, comp=dict(r["comp"]) if isinstance(r.get("comp"), dict) else r.get("comp"))
+            for r in rows]
+
+
+def jobscore_board(ref) -> tuple[str, str, list[dict]]:
+    """(the feed's address, the name it states or "", its rows): one
+    request - none inside jobscore_kept() where the feed was read whole
+    already - or AtsError."""
+    slug = jobscore_slug(ref)
+    url = JOBSCORE_FEED.format(slug=slug)
+    kept = _JOBSCORE_KEPT
+    if kept is not None and url in kept:
+        name, rows = kept[url]
+        return url, name, _jobscore_copy(rows)
+    feed = jobscore_feed(_jobscore_read(url), url)
+    rows = jobscore_rows(feed, slug, url)
+    name = jobscore_name(feed)
+    if kept is not None:
+        kept[url] = (name, _jobscore_copy(rows))
+    return url, name, rows
+
+
+def fetch_jobscore(ref) -> list[dict]:
+    return jobscore_board(ref)[2]
+
+
+@contextlib.contextmanager
+def one_ask_a_board():
+    """jobvitefeed_kept, trinethire_kept and jobscore_kept at once: inside
+    it, a board those readers read whole is asked once, however many times it
+    is read and then asked whose it is. For the paths that read a board and
+    then probe it - accepting a held board at the desk (admin.
+    act_board_proposal) and by a ruling (proposal_rulings._accept_board): a
+    Jobvite feed and a JobScore feed name people, and the second ask was the
+    same answer again (blind review of 2026-11-24). Also a decorator."""
+    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept():
+        yield
+# ---- clearcompany: ClearCompany career sites, apply.clearcompany.com/<slug>
+#
+# Two companies on file hire through ClearCompany (research of 2026-11-23):
+# Rehrig Pacific links its hosted site; Clearfield frames a legacy HRM Direct
+# board (<label>.hrmdirect.com/employment/, which ClearCompany owns), and that
+# address redirects to the hosted site. Both were type html: Rehrig showed 9
+# rows, the widget's first page of 10, of 115; Clearfield showed none of 5.
+#
+# THREE REQUESTS A BOARD, every one through _page (robots.txt asked at every
+# hop, the crawler's own name, the host gate):
+#   1. the hosted page, https://apply.clearcompany.com/<slug>: a server-drawn
+#      shell of about 5 KB with no posting in it, read for its widget's site id
+#      (<script src=".../js/v1/career-site.js?hosted=true" data-site-id=GUID>),
+#      its <title> ('<brand> - Careers', an en dash) and its footer's
+#      a.cc-home link, the employer's own website;
+#   2. https://careers-api.clearcompany.com/v1/settings/<site id>: the site's
+#      settings, brandFullName among them;
+#   3. https://careers-api.clearcompany.com/v1/<site id>?pageIndex=0&
+#      pageSize=1000&source=CJB-0: the list, {results, totalCount, ...}, each
+#      posting's whole ad in it. pageSize=1000 was honoured (Rehrig's 115 in one
+#      answer); the order is NOT stable between two requests, so the list is
+#      read whole only when its rows number its own totalCount. Fewer, and the
+#      next pages are asked at the same size, deduplicated by id, and the read
+#      raises unless they make up exactly totalCount: a partial board is never
+#      published as whole.
+# Measured 2026-11-23 on both boards (Clearfield 5, Rehrig 115).
+#
+# THE REF IS THE HOSTED SITE'S SLUG ('rehrig', 'clearfield'), as an address on
+# apply.clearcompany.com names it: the finder takes it from a link there or
+# from the address a legacy HRM Direct board's redirect lands on, never from
+# a guess (the tenant label matched the slug on 2 of 2 sites, which proves
+# nothing). Never 'internal', which robots.txt closes. The site id is lifted
+# from the hosted page each read and never stored.
+#
+# NEVER THE TENANT HOST. applyLink and jobPortalUrl point at
+# <tenant>.clearcompany.com, whose robots.txt says Disallow: / to everybody: it
+# is never asked, never a ref, and never a row's url. A row's url is the
+# hosted site's own posting address, https://apply.clearcompany.com/<slug>?
+# jobId=<id>, which robots.txt allows. An e-mail-to-apply posting's applyLink
+# is an e-mail address, often a person's: it is never read, and nothing from
+# careers-api.clearcompany.com is ever written to the HTTP cache (NEVER_CACHED;
+# the same host serves a posting's hiring team, names and photos, at
+# /v1/insights/team/<id>, which no reader asks - every hop of a read is held
+# to the very address it asked).
+#
+# A ROW: positionTitle (the server leaves stray spaces on it), the place from
+# locations[] (clearcompany_place) - never the server's `location` string,
+# whose whitespace is mangled ('Erie  PA', 'Hope Mills\t NC'); the ad from the
+# list's own description (no second request); a date only where the row
+# carries postedDate (both measured sites switch it off, and the feed leaves
+# out what a site does not show). No pay field is read: salaryRangeLow,
+# salaryRangeHigh and salaryType were on no measured row and the widget prints
+# USD and CAD both as '$', so pay comes from the ad's own text through
+# plain_rows, as for every reader whose feed states none - and where the row
+# is abroad (its office_hint's country, ats._abroad) a bare '$' is no pay.
+# departmentName (cost centres: '101004 Kenosha Production') and the
+# requisition number are not read.
+#
+# A PLACE THE BOARD CAN READ (blind review of the reader, 2026-11-24). The
+# country is an ISO-2 code, and roles.geography reads a trailing two-letter
+# code as a US state: 'Toronto, ON, CA' was a California office and
+# 'Calgary, AB, CA' and 'Pune, MH, IN' US ones. So a US place is 'City, ST'
+# (or 'Statewide (ST)'); a place abroad is its city alone - its subdivision
+# can be a US code too, Tamil Nadu's TN - and its country goes in office_hint
+# and nowhere in the text, where it settles is_us and what a '$' means.
+# A NATIONWIDE PLACE IS NO WAY OF WORKING. The widget shows one as
+# 'Remote (US)', but it is a place an employer picked, not a mode: three of
+# Rehrig's five are a forklift job, a yard driver and a warehouse associate
+# its own On-Site/Hybrid/Remote field calls On-Site. It is written 'US'
+# (abroad: nothing), which geography reads as no mode, and the row's mode is
+# only ever the posting's own answer to a field that IS that question
+# (clearcompany_mode), through work_mode; the site's other custom fields are
+# not read.
+#
+# A ZERO HAS NOT BEEN SEEN. Neither board was empty, so an empty list raises,
+# kept Unknown and never "None found", as an empty Jobvite feed does. Every
+# other failure raises too: a slug that is gone (404 on the hosted page), a
+# site id that is gone (404 on both API calls), a hosted page with no site id
+# or with two, a list in another shape, a count the rows do not make up, a
+# redirect off the board's own addresses. A closed posting's address still
+# answers 200, titled plain 'Careers', so no posting page is ever read for
+# whether it is open.
+#
+# ONE PLAN ASKS EACH BOARD ONCE: inside clearcompany_kept() - wire_found.plan,
+# and nothing else - a board read whole is kept in memory under its hosted
+# address, so the wiring door's read and its probe (verify_boards) take one
+# answer, as trinethire_kept and jobvitefeed_kept keep theirs.
+CLEARCOMPANY_HOST = "apply.clearcompany.com"
+CLEARCOMPANY_API_HOST = "careers-api.clearcompany.com"
+CLEARCOMPANY_PAGE_SIZE = 1000
+# pages of CLEARCOMPANY_PAGE_SIZE asked when the first answer falls short of
+# its own count (none was needed on either board measured)
+CLEARCOMPANY_MAX_PAGES = 10
+CLEARCOMPANY_PAGE_MAX = 2_000_000        # characters of a hosted page read; more is refused
+CLEARCOMPANY_TITLE_TAIL = " – Careers"   # an en dash, as the hosted page writes it
+CLEARCOMPANY_BOOTSTRAP = "careers-content.clearcompany.com/js/v1/career-site.js"
+_CC_SLUG = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9-]{0,80})")
+_CC_CLOSED = frozenset({"internal"})      # robots.txt: Disallow: /internal/
+_CC_GUID = r"[0-9A-Fa-f]{8}-(?:[0-9A-Fa-f]{4}-){3}[0-9A-Fa-f]{12}"
+_CC_GUID_RX = re.compile(_CC_GUID)
+_CC_SCRIPT = re.compile(r"<script\b([^<>]{0,4000})>", re.I)
+_CC_A = re.compile(r"<a\b([^<>]{0,4000})>", re.I)
+_CC_SITE_ATTR = re.compile(r"""(?:^|\s)data-site-id\s*=\s*(?:"(""" + _CC_GUID + r""")"|'("""
+                           + _CC_GUID + r""")'|(""" + _CC_GUID + r""")(?=[\s>/]|$))""", re.I)
+_CC_SRC = re.compile(r"""(?:^|\s)src\s*=\s*(?:"([^"<>]{0,2000})"|'([^'<>]{0,2000})'|([^\s"'<>]{1,2000}))""",
+                     re.I)
+_CC_HREF = re.compile(r"""(?:^|\s)href\s*=\s*(?:"([^"<>]{0,2000})"|'([^'<>]{0,2000})'|([^\s"'<>]{1,2000}))""",
+                      re.I)
+_CC_CLASS = re.compile(r"""(?:^|\s)class\s*=\s*(?:"([^"<>]{0,400})"|'([^'<>]{0,400})'|([^\s"'<>]{1,400}))""",
+                       re.I)
+
+
+def clearcompany_slug(ref) -> str:
+    """The hosted site's slug a ref names, or AtsError: one label of letters,
+    digits and hyphens, never 'internal' (robots.txt closes it), never an
+    address."""
+    s = _text(ref) if isinstance(ref, str) else ""
+    if not _CC_SLUG.fullmatch(s) or s.lower() in _CC_CLOSED:
+        raise AtsError(f"not a clearcompany board: {ref!r} (a ClearCompany board is the slug "
+                       f"of its hosted site, apply.clearcompany.com/<slug>)")
+    return s
+
+
+def clearcompany_url(ref) -> str:
+    """The hosted site: what is read first, and what a person is sent to
+    (build_board.board_url). Never the tenant host, which robots.txt closes."""
+    return f"https://{CLEARCOMPANY_HOST}/{clearcompany_slug(ref)}"
+
+
+def clearcompany_posting_url(slug: str, job_id: str) -> str:
+    """A posting's own address on the hosted site, the id lower-cased: the
+    address the server itself gives a posting (its canonical link). Never
+    applyLink or jobPortalUrl, which are on the tenant host robots.txt closes."""
+    return f"https://{CLEARCOMPANY_HOST}/{slug}?jobId={job_id.lower()}"
+
+
+def clearcompany_hosted_slug(url) -> str | None:
+    """The slug of a hosted site's address - apply.clearcompany.com/<slug>,
+    /<slug>/redirect, any query - or None (another host, another path,
+    'internal')."""
+    try:
+        parts = urllib.parse.urlsplit(url if isinstance(url, str) else "")
+    except ValueError:
+        return None
+    m = re.fullmatch(r"/([A-Za-z0-9](?:[A-Za-z0-9-]{0,80}))(?:/redirect)?/?", parts.path or "")
+    if (parts.scheme not in ("http", "https") or (parts.hostname or "").lower() != CLEARCOMPANY_HOST
+            or not m or m.group(1).lower() in _CC_CLOSED):
+        return None
+    return m.group(1)
+
+
+def clearcompany_posting_key(url) -> str | None:
+    """The posting a ClearCompany hosted-site address names, as the board
+    knows it - https://apply.clearcompany.com/<slug>?jobId=<id>, both lower-
+    cased, every other query left out - or None for any other address. The
+    html reader that read these boards before (Rehrig's) wrote the same
+    posting as ?noheader=False&jobId=<id>; build_board matches the posting
+    on this, so a posting keeps its first-seen day whichever way its address
+    was written. A key, never an address anybody is sent to."""
+    slug = clearcompany_hosted_slug(url)
+    if slug is None:
+        return None
+    try:
+        query = urllib.parse.parse_qs(urllib.parse.urlsplit(url).query, keep_blank_values=True)
+    except ValueError:
+        return None
+    ids = {v.lower() for k, vs in query.items() if k.lower() == "jobid" for v in vs}
+    if len(ids) != 1 or not _CC_GUID_RX.fullmatch(next(iter(ids))):
+        return None
+    return f"https://{CLEARCOMPANY_HOST}/{slug.lower()}?jobId={ids.pop()}"
+
+
+def clearcompany_posting_forms(url) -> list[str]:
+    """Every address the ClearCompany posting `url` names has been written as
+    on this board, or [] for an address that names no posting
+    (clearcompany_posting_key): this reader's ?jobId=<id>, and the careers
+    page's widget's ?noheader=False&jobId=<id> (every one of the 42 Rehrig
+    ids the snapshots held by 2026-11-24) and ?noheader=True&jobId=<id> (the
+    framed form) - the slug as `url` writes it and lower-cased, the id
+    lower-cased (as the list, the widget and the canonical link write it) and
+    upper-cased. A snapshot under data/history keeps a posting's id alone,
+    hashed from its address as it was written, so build_board.carry_first_seen
+    looks an earlier night up under each of these. Keys, never addresses
+    anybody is sent to."""
+    key = clearcompany_posting_key(url)
+    if key is None:
+        return []
+    slug, job = clearcompany_hosted_slug(url), key.rsplit("jobId=", 1)[1]
+    return list(dict.fromkeys(
+        f"https://{CLEARCOMPANY_HOST}/{s}?{q}jobId={j}"
+        for s in (slug, slug.lower()) for j in (job, job.upper())
+        for q in ("", "noheader=False&", "noheader=True&")))
+
+
+def _cc_attr(rx, attrs: str) -> str:
+    m = rx.search(attrs or "")
+    return html_lib.unescape(next((g for g in m.groups() if g is not None), "")).strip() if m else ""
+
+
+def clearcompany_site_id(page: str, url: str = "the hosted page") -> str:
+    """The site id the hosted page's widget is drawn for, lower-cased - the
+    data-site-id (or ?siteId=) of its career-site.js script - or AtsError for
+    a page with none (an offline site, another page) or naming two. Read off
+    the page as a browser runs it: a script inside a comment is none."""
+    ids = set()
+    for m in _CC_SCRIPT.finditer(_COMMENT.sub(" ", page or "")):
+        attrs = m.group(1)
+        src = _cc_attr(_CC_SRC, attrs)
+        try:
+            parts = urllib.parse.urlsplit(urllib.parse.urljoin(f"https://{CLEARCOMPANY_HOST}/", src))
+            query = urllib.parse.parse_qs(parts.query)
+        except ValueError:
+            continue
+        if f"{(parts.hostname or '').lower()}{parts.path.lower()}" != CLEARCOMPANY_BOOTSTRAP:
+            continue                       # (the widget's own bootstrap, and nothing else)
+        said = _CC_SITE_ATTR.search(attrs)
+        if said:
+            ids.add(next(g for g in said.groups() if g is not None).lower())
+        ids |= {v.lower() for k, vs in query.items() if k.lower() == "siteid"
+                for v in vs if _CC_GUID_RX.fullmatch(v.strip())}
+    if len(ids) != 1:
+        raise AtsError(f"{url} " + ("draws no ClearCompany career site (no career-site.js with a "
+                                    "site id): an offline site or another page, never a board "
+                                    "with nothing open" if not ids else
+                                    f"names {len(ids)} ClearCompany sites, so which is the board "
+                                    f"is not known"))
+    return ids.pop()
+
+
+def clearcompany_page_name(page: str) -> str:
+    """The name the hosted page's <title> states before ' - Careers' (an en
+    dash), unescaped, one line - or "" for any other title (a closed posting's
+    and an unknown one's are the bare word 'Careers')."""
+    body = _COMMENT.sub(" ", page or "")
+    low = lower_same(body)
+    t0 = _tag_at(low, "title", 0)
+    gt = low.find(">", t0) if t0 >= 0 else -1
+    t1 = low.find("</title", gt) if gt >= 0 else -1
+    title = _text(html_lib.unescape(body[gt + 1:t1])) if 0 <= gt < t1 else ""
+    if not title.endswith(CLEARCOMPANY_TITLE_TAIL):
+        return ""
+    return title[:-len(CLEARCOMPANY_TITLE_TAIL)].strip()
+
+
+def clearcompany_home(page: str) -> str | None:
+    """The employer's website the hosted page's footer links ('Visit our home
+    page', a.cc-home), as the employer's settings wrote it - or None. An
+    address, never a name. What it names is verify_boards._site's to judge,
+    as for ashby's and jazzhr's: a link written '//www.x/' or 'www.x' still
+    names a website, and dropped it let a namesake pass on its name alone
+    (blind review of the probe, 2026-11-24). A link with another scheme
+    (javascript:, mailto:) or an '@' in it names none."""
+    for m in _CC_A.finditer(_COMMENT.sub(" ", page or "")):
+        attrs = m.group(1)
+        if "cc-home" not in _cc_attr(_CC_CLASS, attrs).lower().split():
+            continue
+        href = _cc_attr(_CC_HREF, attrs)
+        try:
+            parts = urllib.parse.urlsplit(href)
+        except ValueError:
+            return None
+        if not href or "@" in href or parts.scheme.lower() not in ("", "http", "https"):
+            return None
+        return "https:" + href if href.startswith("//") else href
+    return None
+
+
+def _cc_hosted(slug: str) -> tuple[str, str]:
+    """(the hosted page, where it landed). Every hop held to this site's own
+    addresses - apply.clearcompany.com, /<slug> or /<slug>/redirect, this very
+    slug in any case - and refused before it is asked anything."""
+    url = f"https://{CLEARCOMPANY_HOST}/{slug}"
+
+    def stay(u: str):
+        there = clearcompany_hosted_slug(u)
+        if there is None or there.lower() != slug.lower() or not u.startswith("https://"):
+            raise AtsError(f"{url} leads off to {str(u)[:160]}, which is not this site's own page, "
+                           f"so it is not read as a board with nothing open")
+    resp = _page(url, same_host=True, may=stay)
+    page = resp.text or ""
+    if len(page) > CLEARCOMPANY_PAGE_MAX:
+        raise AtsError(f"{url} is more than {CLEARCOMPANY_PAGE_MAX:,} characters: not read, and "
+                       f"never read in part")
+    return page, str(getattr(resp, "url", "") or url)
+
+
+def _cc_api(url: str):
+    """One answer of ClearCompany's career-site API, read in place: robots.txt
+    asked (_page), and any redirect refused before it is asked - the API
+    answers where it is asked, and its host also serves a posting's hiring
+    team, which nothing here asks."""
+    def stay(u: str):
+        if u != url:
+            raise AtsError(f"{url} leads off to {str(u)[:160]}: the API answers in place, so a "
+                           f"redirect is never followed, and it is not read as a board with "
+                           f"nothing open")
+    return _json(_page(url, same_host=True, may=stay))
+
+
+def clearcompany_settings(site_id: str) -> dict:
+    d = _cc_api(f"https://{CLEARCOMPANY_API_HOST}/v1/settings/{site_id}")
+    if not isinstance(d, dict):
+        raise AtsError(f"the settings of ClearCompany site {site_id} are not an object")
+    return d
+
+
+def _cc_list_url(site_id: str, index: int) -> str:
+    return (f"https://{CLEARCOMPANY_API_HOST}/v1/{site_id}?pageIndex={index}"
+            f"&pageSize={CLEARCOMPANY_PAGE_SIZE}&source=CJB-0")
+
+
+def _cc_page_of(site_id: str, index: int) -> tuple[list, int]:
+    url = _cc_list_url(site_id, index)
+    d = _cc_api(url)
+    results = d.get("results") if isinstance(d, dict) else None
+    total = d.get("totalCount") if isinstance(d, dict) else None
+    if (not isinstance(results, list) or not all(isinstance(j, dict) for j in results)
+            or not isinstance(total, int) or isinstance(total, bool) or total < 0
+            or d.get("currentPageIndex") not in (index, None)):
+        raise AtsError(f"{url} is not a ClearCompany job list (results, totalCount, its page "
+                       f"index), so it is not read")
+    return results, total
+
+
+def clearcompany_jobs(site_id: str) -> list[dict]:
+    """Every posting of the site, once each, or AtsError: the first page at
+    CLEARCOMPANY_PAGE_SIZE, and where it falls short of its own totalCount
+    the next pages at the same size, deduplicated by id. The union must be
+    exactly totalCount; anything else is a board that did not read whole."""
+    results, total = _cc_page_of(site_id, 0)
+    if total == 0 and not results:
+        raise AtsError(f"ClearCompany site {site_id} lists no job: an empty ClearCompany board has "
+                       f"not been measured, so it is kept Unknown and never read as a zero")
+    by_id: dict = {}
+    for j in results:
+        by_id.setdefault(_text(j.get("id")).lower(), j)
+    index = 1
+    while len(by_id) < total and index < CLEARCOMPANY_MAX_PAGES \
+            and index * CLEARCOMPANY_PAGE_SIZE < total:
+        more, again = _cc_page_of(site_id, index)
+        if again != total:
+            raise AtsError(f"ClearCompany site {site_id} counted {total} and then {again} between "
+                           f"two pages, so it is not read in part")
+        if not more:
+            break
+        for j in more:
+            by_id.setdefault(_text(j.get("id")).lower(), j)
+        index += 1
+    # (said for what it is, one answer or several: the owner's queue shows it -
+    # blind review of the reader, 2026-11-24)
+    n, asked = len(by_id), ("its one answer" if index == 1 else f"its {index} pages")
+    if n > total:
+        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and {asked} of up to "
+                       f"{CLEARCOMPANY_PAGE_SIZE} gave {n} distinct ones, more than its own count, "
+                       f"so what it lists is not the board it counts")
+    if n < total and index == 1:
+        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and its one answer of "
+                       f"up to {CLEARCOMPANY_PAGE_SIZE} gave {n} distinct ones, fewer than its own "
+                       f"count where one page holds them all, so the board is not read in part")
+    if n < total:
+        raise AtsError(f"ClearCompany site {site_id} counts {total} postings and {asked} of "
+                       f"{CLEARCOMPANY_PAGE_SIZE} gave {n} distinct ones between them: the order is "
+                       f"not stable between requests, and a partial board is never published as "
+                       f"whole")
+    return list(by_id.values())
+
+
+def clearcompany_place(loc) -> tuple[str, tuple | None]:
+    """(a place as the board shows it, what it names as (city, subdivision,
+    country) or None) for one of a posting's locations[]. In the US
+    'Kenosha, WI', 'Statewide (MN)', and a nationwide place 'US'; abroad the
+    city alone, or nothing - never the ISO-2 country or a subdivision code,
+    which roles.geography reads as a US state - its country carried in what
+    it names (see A PLACE THE BOARD CAN READ above). A country that is not
+    stated leaves the place as written ('City, ST')."""
+    if not isinstance(loc, dict):
+        return "", None
+    city, sub, country = (_text(loc.get(k)) for k in ("city", "subdivision", "country"))
+    k = country.lower().replace(".", "")
+    us, abroad = k in _US_COUNTRY, bool(k) and k not in _US_COUNTRY
+    if loc.get("isNationwide") is True:
+        return ("US" if us else ""), ((None, None, country) if country else None)
+    if loc.get("isStatewide") is True and sub:
+        return ("" if abroad else f"Statewide ({sub})"), (None, sub, country or None)
+    place = city if abroad else ", ".join(p for p in (city, sub) if p)
+    return place, ((city or None, sub or None, country or None) if (city or sub or country) else None)
+
+
+def clearcompany_mode(job: dict) -> str | None:
+    """How the posting is worked, as its own answer says - or None. Only an
+    answer to a custom field whose NAME is the question itself, every part of
+    it a work_mode word and two or more of them ('On-Site/Hybrid/Remote', as
+    Rehrig's site asks it), answered with one of those words, through
+    work_mode; two such answers that differ are none. Nothing is inferred
+    from a place (a nationwide place is not remote: A NATIONWIDE PLACE IS NO
+    WAY OF WORKING above), and no other custom field is read."""
+    said = set()
+    answers = job.get("customFieldAnswers")
+    for a in answers if isinstance(answers, list) else ():
+        name = a.get("customFieldName") if isinstance(a, dict) else None
+        answer = a.get("customFieldOptionName") if isinstance(a, dict) else None
+        if not isinstance(name, str) or not isinstance(answer, str):
+            continue
+        asks = [work_mode(p) for p in re.split(r"\s*(?:/|,|\|)\s*|\s+or\s+", name.strip(), flags=re.I)]
+        if len(asks) < 2 or None in asks or len(set(asks)) != len(asks):
+            continue
+        got = work_mode(answer)
+        if got in asks:
+            said.add(got)
+    return said.pop() if len(said) == 1 else None
+
+
+def clearcompany_rows(jobs: list[dict], slug: str, url: str = "the list") -> list[dict]:
+    """One row a posting, or AtsError for a row that does not read as one (no
+    id in the site's own form, no title): the list is the board, so a row it
+    cannot read is never left out of a board published as whole. The office
+    hint is the first place that names a city or a subdivision, else the
+    first that names a country alone (a nationwide place: is_us and what a
+    '$' means settle on it)."""
+    rows = []
+    for j in jobs:
+        jid, title = _text(j.get("id")).lower(), _text(j.get("positionTitle"))
+        if not _CC_GUID_RX.fullmatch(jid) or not title:
+            raise AtsError(f"{url}: a row does not read as a posting (its id or its title), so the "
+                           f"board is not read in part")
+        places, named = [], []
+        for loc in j.get("locations") if isinstance(j.get("locations"), list) else ():
+            place, where = clearcompany_place(loc)
+            if place:
+                places.append(place)
+            if where is not None:
+                named.append(where)
+        office = next((w for w in named if w[0] or w[1]), None) or next(iter(named), None)
+        desc = j.get("description")
+        rows.append({"title": title,
+                     # (one place a posting names twice is written once)
+                     "location": "; ".join(dict.fromkeys(places)),
+                     "url": clearcompany_posting_url(slug, jid),
+                     "posted": posted_date(j.get("postedDate")) if j.get("postedDate") else None,
+                     "mode": clearcompany_mode(j),
+                     "office_hint": office_hint(*office) if office else None,
+                     # (the ad is in the answer already downloaded: always read)
+                     "jd": plain_html(desc) if isinstance(desc, str) else ""})
+    return rows
+
+
+def clearcompany_brands(settings: dict) -> list[str]:
+    """The brands the site's own brand filter lists (filterOptions.brand),
+    one each, blanks (the 'All Brands' default) left out. A site listing more
+    than one names several companies, and verify_boards says so."""
+    opts = settings.get("requisitionList") if isinstance(settings, dict) else None
+    opts = opts.get("search") if isinstance(opts, dict) else None
+    opts = opts.get("filterOptions") if isinstance(opts, dict) else None
+    brand = opts.get("brand") if isinstance(opts, dict) else None
+    return list(dict.fromkeys(_text(o.get("text")) for o in brand or ()
+                              if isinstance(o, dict) and _text(o.get("text")))) \
+        if isinstance(brand, list) else []
+
+
+_CC_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def clearcompany_kept():
+    """Each board read whole is the answer to every later ask of it in the
+    block (see ONE PLAN ASKS EACH BOARD ONCE above). Also a decorator."""
+    global _CC_KEPT
+    outer = _CC_KEPT
+    _CC_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _CC_KEPT = outer
+
+
+def clearcompany_board(ref) -> dict:
+    """{slug, url, landed, site_id, page_name, home, brand, brands, rows}: the
+    hosted page, the settings and the list, three requests - none inside
+    clearcompany_kept() where the board was read whole already - or AtsError.
+    `page_name` is what the hosted page's <title> names, `brand` the settings'
+    brandFullName, `home` the footer's website: verify_boards weighs them;
+    nothing here reads a name for anything else."""
+    slug = clearcompany_slug(ref)
+    url = f"https://{CLEARCOMPANY_HOST}/{slug}"
+    kept = _CC_KEPT
+    if kept is not None and url.lower() in kept:
+        got = kept[url.lower()]
+        return dict(got, rows=[dict(r) for r in got["rows"]])
+    page, landed = _cc_hosted(slug)
+    site = clearcompany_site_id(page, url)
+    settings = clearcompany_settings(site)
+    rows = clearcompany_rows(clearcompany_jobs(site), slug, url)
+    got = {"slug": slug, "url": url, "landed": landed, "site_id": site,
+           "page_name": clearcompany_page_name(page), "home": clearcompany_home(page),
+           "brand": _text(settings.get("brandFullName")) if isinstance(settings.get("brandFullName"), str) else "",
+           "brands": clearcompany_brands(settings), "rows": rows}
+    if kept is not None:
+        kept[url.lower()] = dict(got, rows=[dict(r) for r in rows])
+    return got
+
+
+def fetch_clearcompany(ref) -> list[dict]:
+    return clearcompany_board(ref)["rows"]
+
 # ---- successfactors: SAP SuccessFactors' Career Site Builder (CSB), a career
 # site on the employer's own careers host (jobs.gainwelltechnologies.com,
 # careers.landisgyr.com)
@@ -6153,6 +7237,8 @@ FETCHERS = {
     "jobvite": fetch_jobvite,
     "jobvitefeed": fetch_jobvitefeed,
     "trinethire": fetch_trinethire,
+    "jobscore": fetch_jobscore,
+    "clearcompany": fetch_clearcompany,
     "successfactors": fetch_successfactors,
 }
 

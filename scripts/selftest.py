@@ -6652,6 +6652,99 @@ _ID_TRINET_PAGE = (
     '  <a target="_blank" href="/companies/41234-acme-gov-systems-inc/jobs/99001-account-'
     'executive">Account Executive</a>\n  <p><strong>Location:</strong> Austin, TX - Remote - '
     'Full-time</p>\n</li>\n</ul></div></body></html>')
+# A JobScore board's Atom feed in the shape measured on 2026-11-23 and 11-24,
+# every name, slug, title, place and person in it made up: the employer named
+# twice, by <subtitle> and by <title> 'Careers at ...', an <author> that is the
+# employer's HR desk, and a hiring team (a made-up person) that nothing may read
+_ID_JOBSCORE = "https://careers.jobscore.com/jobs/acmegov/feed.atom"
+_ID_JOBSCORE_FEED = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n<!-- This page requires an RSS Reader to view. -->\n'
+    '<feed xmlns="http://www.w3.org/2005/Atom" xmlns:j="http://schemas.jobscore.com/atom">'
+    '<author><name>Acme Gov HR</name></author><title>Careers at Acme Gov Systems</title>'
+    '<subtitle>Acme Gov Systems</subtitle><link href="https://careers.jobscore.com/careers/acmegov"/>'
+    '<link rel="self" href="https://www.jobscore.com/jobs/acmegov/feed.atom" type="application/atom+xml"/>'
+    '<updated>2026-11-23T19:20:36Z</updated><id>tag:jobscore.com,2024-11-15:/zz00000000000000000000</id>'
+    '<entry><title>Account Executive </title><link rel="alternate" href="https://careers.jobscore.com/'
+    'careers/acmegov/jobs/account-executive-zz00000000000000000001?ref=rss&amp;sid=68"/>'
+    '<link rel="tag:jobscore.com/apply_url" href="https://careers.jobscore.com/apply_flow/applications/'
+    'go?job_id=zz00000000000000000001&amp;ref=rss&amp;sid=68"/><id>tag:jobscore.com,2026-10-07:/'
+    'zz00000000000000000001</id><category scheme="http://schemas.jobscore.com/atom#location" '
+    'term="Remote in Anytown, MN"/><j:hiringTeam><j:recruiters><j:member><j:name>Pat Example</j:name>'
+    '<j:title>Recruiter</j:title><j:linkedinProfileUrl>https://social.example/in/pat-example-0'
+    '</j:linkedinProfileUrl></j:member></j:recruiters></j:hiringTeam>'
+    '<updated>2026-11-10T23:04:10Z</updated><content type="html">&lt;p&gt;Sell to cities.&lt;/p&gt;'
+    '</content></entry></feed>')
+# A ClearCompany career site, in the shapes measured on two boards
+# (2026-11-23) and every company, slug, id, title and place in it made up: the
+# hosted page apply.clearcompany.com/<slug> (its widget's site id, its <title>
+# '<brand> - Careers', its footer's home link), the site's settings, and its
+# list. settings.name is the site's internal label and names nobody; applyLink
+# and jobPortalUrl are on the tenant host robots.txt closes
+_ID_CC = "https://apply.clearcompany.com/acmegov"
+_ID_CC_SITE = "11111111-2222-4333-8444-555555555555"
+_ID_CC_SETTINGS = f"https://careers-api.clearcompany.com/v1/settings/{_ID_CC_SITE}"
+_ID_CC_LIST = (f"https://careers-api.clearcompany.com/v1/{_ID_CC_SITE}"
+               f"?pageIndex=0&pageSize=1000&source=CJB-0")
+
+
+def _cc_page(brand="Acme Gov Systems, Inc.", site=_ID_CC_SITE, home="https://www.acmegov.example/",
+             title=None, script=None, slug="acmegov", head=""):
+    # (the anchors in the order the measured page has them: the skip link,
+    # the footer's home link, ClearCompany's own 'Powered by' link - so a
+    # reader that took any anchor but a.cc-home reads another address)
+    title = f"{brand} &#x2013; Careers" if title is None else title
+    script = (f'<script src="https://careers-content.clearcompany.com/js/v1/career-site.js?hosted=true" '
+              f'data-site-id="{site}" data-default-source="CJB-0"></script>') if script is None else script
+    return (f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">{head}<title>{title}</title>'
+            f'<link rel="canonical" href="https://apply.clearcompany.com/{slug}">'
+            f'<meta property="og:title" content="{title}"></head><body><div class="cc-page">'
+            f'<a class="cc-skip" href="#cc-widget">Skip to job openings</a>'
+            f'<main class="cc-main"><div class="cc-wrap cc-widget" id="cc-widget">{script}</div></main>'
+            f'<footer class="cc-footer"><div class="cc-copy"><span>&copy; 2026 {brand}</span>'
+            f'<a class="cc-home" href="{home}" target="_blank" rel="noopener noreferrer">Visit our home '
+            f'page</a></div><div class="cc-credit"><span>Powered by</span><a href="https://www.'
+            f'clearcompany.com" target="_blank" rel="noopener noreferrer">ClearCompany</a></div>'
+            f'</footer></div></body></html>')
+
+
+def _cc_settings(brand="Acme Gov Systems, Inc.", brands=None, name="Public - Some Label - Career Site"):
+    options = {"location": [{"text": "", "value": "", "count": None, "isDefaultSelection": True,
+                             "metadata": {}}]}
+    if brands is not None:
+        options["brand"] = [{"text": "", "value": "", "count": None, "isDefaultSelection": True,
+                             "metadata": {}}] + [
+            {"text": b, "value": f"B{i}", "count": 1, "isDefaultSelection": False, "metadata": {}}
+            for i, b in enumerate(brands)]
+    return json.dumps({"id": "00000000-0000-0000-0000-000000000000", "name": name,
+                       "orgId": "99999999-8888-4777-8666-555555555555", "pageSize": 10,
+                       "jobPortalUrl": "https://acmegov.clearcompany.com/careers/portal",
+                       "brandFullName": brand,
+                       "requisitionList": {"search": {"filters": ["keywords", "city"],
+                                                      "filterOptions": options}},
+                       "requisitionDetails": {"displayFields": ["city", "subdivision"]}})
+
+
+def _cc_job(n, title, locs, **over):
+    jid = f"aaaaaaaa-0000-4000-8000-{n:012d}"
+    return dict({"id": jid, "positionTitle": title,
+                 "description": f"<p>The {title.strip()} role.</p><ul><li>Travel to cities.</li></ul>",
+                 "applyLink": f"https://acmegov.clearcompany.com/careers/jobs/{jid}/apply?source=CJB-0",
+                 "canSelfSchedule": False, "location": "Somewhere\t  XX", "departmentName": "101 Cost Centre",
+                 "locations": locs, "customFieldAnswers": []}, **over)
+
+
+def _cc_where(city=None, sub="", country="US", nationwide=False, statewide=False):
+    return {"city": city, "subdivision": sub, "country": country, "isNationwide": nationwide,
+            "isStatewide": statewide}
+
+
+def _cc_list(jobs, total=None, index=0):
+    return json.dumps({"results": jobs, "currentPageIndex": index,
+                       "totalCount": len(jobs) if total is None else total,
+                       "currentPageCount": len(jobs)})
+
+
+_ID_CC_JOBS = [_cc_job(1, " Account Executive ", [_cc_where("Austin", "TX")])]
 # A SuccessFactors Career Site Builder search page and one of its postings, in
 # the shapes measured on Gainwell's board (2026-11-22): the row's title link is
 # written twice, once for a desk and once for a phone
@@ -7011,6 +7104,15 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
         # (the list's own <title>, never the stale slug the ref carries)
         ("trinethire", "41234-old-name", "Acme Gov Systems", {_ID_TRINET: _ID_TRINET_PAGE}, None,
          ["Acme Gov Systems, Inc."], 1, _ID_TRINET),
+        # (the feed's <subtitle>, agreeing with its <title>: never its
+        # author, its slug or the person its hiring team names)
+        ("jobscore", "acmegov", "Acme Gov Systems", {_ID_JOBSCORE: _ID_JOBSCORE_FEED}, None,
+         ["Acme Gov Systems"], 1, _ID_JOBSCORE),
+        # (brandFullName where the hosted page's <title> says the same, and
+        # never settings.name, the site's internal label)
+        ("clearcompany", "acmegov", "Acme Gov Systems",
+         {_ID_CC: _cc_page(), _ID_CC_SETTINGS: _cc_settings(), _ID_CC_LIST: _cc_list(_ID_CC_JOBS)}, None,
+         ["Acme Gov Systems, Inc."], 1, _ID_CC),
         # (stated as the board's own configuration names it, LLC and all, and
         # proven for the record that is named without it)
         ("successfactors", _ID_SF, "Gainwell Technologies",
@@ -7392,6 +7494,14 @@ def check_a_board_is_proven_only_by_its_own_stated_name() -> int:
              "trinethire", "41234-acme-gov-systems",
              {"https://app.trinethire.com/companies/41234-acme-gov-systems/jobs/embed":
               _ID_TRINET_PAGE.replace("Open Jobs | Acme Gov Systems, Inc.", "Open Jobs | ")}, None),
+            # ...nor JobScore's: its <title> and <subtitle> disagree here, its
+            # author names the company, and so does the slug
+            ("jobscore: a title and a subtitle that disagree, beside an author and a slug that "
+             "name the company", "jobscore", "acmegovsystems",
+             {"https://careers.jobscore.com/jobs/acmegovsystems/feed.atom": _ID_JOBSCORE_FEED.replace(
+                 "/careers/acmegov", "/careers/acmegovsystems").replace(
+                 "Careers at Acme Gov Systems", "Careers at Beta Holdings").replace(
+                 "Acme Gov HR", "Acme Gov Systems")}, None),
             # a field of 5,000 characters is not a name, whatever it is called
             ("rippling: a companyName too long to be a name", "rippling", "codehs",
              {R_PAGE: _ID_RIPPLING.replace('"companyName":"CodeHS, Inc."',
@@ -8024,7 +8134,7 @@ def check_a_stated_name_does_not_loosen_the_older_doors() -> int:
                    "teamtailor", "zohorecruit",                                  # 2026-11-21
                    "successfactors",                                             # 2026-11-22
                    "jobvitefeed",                                                # 2026-11-23
-                   "trinethire"}                                                 # 2026-11-24
+                   "trinethire", "jobscore", "clearcompany"}                                     # 2026-11-24
     if vb._ALWAYS_NAMED != {"greenhouse", "workable", "jibe"} or set(new) != named_since:
         errors += fail(f"the types judge() is forgiving on have changed: "
                        f"{sorted(vb._ALWAYS_NAMED)}, and the ones it is strict on are "
@@ -16018,10 +16128,20 @@ def check_the_crawler_honours_robots_txt() -> int:
     # the page readers go through _page; a raw _get in one reads past robots.txt
     for name in ("_schema_posting", "fetch_paylocity", "_page_text", "fetch_rippling",
                  "_rippling_detail", "fetch_jazzhr", "fetch_icims", "fetch_html_titles",
-                 "fetch_gusto", "_trinet_read"):
+                 "fetch_gusto", "_trinet_read", "_cc_hosted", "_cc_api"):
         src = inspect.getsource(getattr(ats, name))
         if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
             errors += fail(f"ats.{name} reads a page without asking robots.txt")
+    # ...and the feeds read as a stream, capped as they arrive (_get takes a
+    # body whole to fix its charset), walk every hop through follow(), which
+    # asks robots.txt at each, one request a hop by _one (a JobScore feed:
+    # blind review of 2026-11-24; a Jobvite account's feed)
+    for name in ("_jobscore_read", "_jvx_body"):
+        src = inspect.getsource(getattr(ats, name))
+        if re.search(r"(?<![\w.])_(?:get|page)\(", src) or not re.search(
+                r"(?<![\w.])follow\(url, lambda u: _one\(u, stream=True\)", src):
+            errors += fail(f"ats.{name} reads a feed without asking robots.txt at every hop, or reads it "
+                           f"whole before its cap")
     # and so do the scripts a person runs by hand: a sweep is a crawl whoever
     # starts it. Every request they make directly must be one hop of
     # ats.follow, never a library following redirects for it. Exempt, and not
@@ -23229,6 +23349,1721 @@ def check_trinethire_reads_its_list_and_names_it_once() -> int:
     return errors
 
 
+def check_jobscore_reads_its_feed_and_names_it_once() -> int:
+    """A JobScore board (careers.jobscore.com), driven through ats.requests
+    with feeds written here by hand - every company, slug, title, place and
+    person in them made up - and nothing that can reach a real host.
+
+    THE READ: one request, /jobs/<slug>/feed.atom, through the repo's
+    helpers - robots.txt asked at every hop, the crawler's own name, the
+    host gate - as a stream, stopped at the cap (never pulled down whole to
+    be refused), and the feed answers in place, so a redirect anywhere
+    (another host, the board's own page, the feed again) is refused before
+    it is asked; FETCH_DETAILS on or off, never a posting page.
+    THE ROWS: one a posting id; the title stripped; the url the entry's one
+    alternate link with ?ref=rss&sid=68 dropped, never its apply_url link
+    (/apply_flow/, which robots.txt closes); the location the atom#location
+    term as the employer typed it, no country invented, the department and
+    the job type no place; the ad from the entry's content; pay from CENTS,
+    published only where j:formatted prints the same figures and names no
+    other period and no other currency, and is kept as raw; no posted date,
+    whatever <updated> and <id> say.
+    NOBODY'S NAME: the hiring team (names, job titles, LinkedIn addresses,
+    photos - and Atom's own element names inside it) and the author are
+    never kept, in a row or in what the parser hands back, and the feed is
+    never written to the HTTP cache.
+    NO ZERO, BECAUSE NONE IS MEASURED: a feed with no entry raises, and so do
+    a 404 (gone, to the probe), a 429, a 503, a challenge page, RSS, a
+    DOCTYPE, a feed cut short, another board's page as the feed's own, a
+    pager in any spelling (next, previous, prev, first, last, current, the
+    archive rels, IANA's URI form), a self link with a query, an OpenSearch
+    total past its entries, an entry anywhere but under <feed>, an entry
+    that does not read (two titles among them) and a feed past the cap.
+    THE PROBE: the <subtitle> where the <title> is 'Careers at ' and the same
+    name, each given once, stated over the whole board; never the author,
+    the slug or a person.
+    ONE PLAN ASKS THE FEED ONCE (ats.jobscore_kept), and so does accepting
+    a held board, at the desk or by a ruling (ats.one_ask_a_board) - a
+    Jobvite feed and a TriNet Hire list too.
+    THE REF: the slug as spelled - JobScore minds the case.
+    THE ID: a posting first read through the hosted list (type html, which
+    states no place) keeps its id, its opening id and its first-seen day
+    read through the feed; elsewhere a place still parts two rows; and the
+    first-seen day follows the 22-character job id across a slug rename.
+    THE FINDER: the hosted links (the bare domain and widgets. among them),
+    the widget's iframe and the script loader - whose slug is taken from the
+    call closing its own function - and none of JobScore's own furniture;
+    an account or a job in a shape it does not read is jobscore-tenant, a
+    doubt; discover_js reads the same forms with the same guards.
+    THE DOOR: a company whose own page frames the widget, or runs the loader,
+    and whose feed names it is wired, each feed asked once for the read and
+    the probe; one whose feed names somebody else is held, and so is one
+    whose site names a second account in any shape.
+    """
+    import ast as ast_lib
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import board_proposals as bp
+    import build_board as bb
+    import find_site_boards as fsb
+    import verify_boards as vb
+    errors = 0
+    SLUG = "acmegov"
+    FEED = f"https://careers.jobscore.com/jobs/{SLUG}/feed.atom"
+    PAGE = f"https://careers.jobscore.com/careers/{SLUG}"
+    # what the hiring team and the author say, which nothing may keep
+    NOBODY = ("Pat Example", "Sam Sample", "VP of Sales", "Lead Recruiter", "social.example/in/",
+              "photos.example", "Acme Gov HR")
+
+    def jid(n):                       # a posting id: 22 characters, as JobScore's are
+        return f"zz{n:020d}"
+
+    def posting(n, tslug="account-executive", slug=SLUG):
+        return f"https://careers.jobscore.com/careers/{slug}/jobs/" + (f"{tslug}-" if tslug else "") + jid(n)
+
+    TEAM = ('<j:hiringTeam><j:hiringManagers><j:member><j:name>Pat Example</j:name><j:title>VP of Sales'
+            '</j:title><j:linkedinProfileUrl>https://social.example/in/pat-example-0</j:linkedinProfileUrl>'
+            '<j:photoUrl>https://photos.example/pat.jpg</j:photoUrl></j:member></j:hiringManagers>'
+            '<j:recruiters><j:member><j:name>Sam Sample</j:name><j:title>Lead Recruiter</j:title>'
+            # (Atom's own names inside it, which a parser reading by name and
+            # not by place would take for the posting's)
+            '<title>Sam Sample</title><link rel="alternate" href="https://social.example/in/sam-sample-0"/>'
+            '<category scheme="http://schemas.jobscore.com/atom#location" term="Sam Sample, Lead Recruiter"/>'
+            '<content type="html">Sam Sample</content><j:publicCompensation><j:salaryMinimum>100'
+            '</j:salaryMinimum></j:publicCompensation></j:member></j:recruiters></j:hiringTeam>')
+
+    def pay(lo="6500000", hi="15000000", said="From $65,000 to $150,000 per year", every="per year",
+            code="USD"):
+        return ("<j:publicCompensation>"
+                + "".join(f"<j:{k}>{v}</j:{k}>" for k, v in (
+                    ("salaryMinimum", lo), ("salaryMaximum", hi), ("interval", every),
+                    ("currencyCode", code), ("formatted", said)) if v is not None)
+                + "</j:publicCompensation>")
+
+    def entry(n, title="Account Executive ", where="Remote in Anytown, MN", tslug="account-executive",
+              block="default", team=TEAM, ad="&lt;p&gt;Sell to &lt;b&gt;cities&lt;/b&gt;.&lt;/p&gt;",
+              link=None, slug=SLUG, extra=""):
+        href = (posting(n, tslug, slug) + "?ref=rss&amp;sid=68") if link is None else link
+        return (f"<entry>\n    <title>{title}</title>"
+                + (f'<link rel="alternate" href="{href}"/>' if href else "")
+                + f'<link rel="tag:jobscore.com/apply_url" href="https://careers.jobscore.com/apply_flow/'
+                  f'applications/go?job_id={jid(n)}&amp;ref=rss&amp;sid=68"/>'
+                + f"<id>tag:jobscore.com,2026-10-07:/{jid(n)}</id>"
+                + '<category scheme="http://schemas.jobscore.com/atom#department" term="Sales - Sales - 10"/>'
+                + (f'<category scheme="http://schemas.jobscore.com/atom#location" term="{where}"/>'
+                   if where is not None else "")
+                + '<category scheme="http://schemas.jobscore.com/atom#job_type" term="Full Time"/>'
+                + "<j:customFields>\n    </j:customFields>"
+                + (pay() if block == "default" else block or "") + (team or "") + extra
+                + f'<updated>2026-11-20T17:57:34Z</updated><content type="html">{ad}</content></entry>\n')
+
+    def feed(*entries, title="Careers at Acme Gov Systems", subtitle="Acme Gov Systems", alternate=None,
+             links="", slug=SLUG):
+        alternate = f"https://careers.jobscore.com/careers/{slug}" if alternate is None else alternate
+        return ('<?xml version="1.0" encoding="UTF-8"?>\n<!-- This page requires an RSS Reader to view. -->\n'
+                '<feed xmlns="http://www.w3.org/2005/Atom" xmlns:j="http://schemas.jobscore.com/atom">\n'
+                f"  <author>\n    <name>Acme Gov HR</name>\n  </author>\n  <title>{title}</title>\n"
+                f"  <subtitle>{subtitle}</subtitle>\n"
+                + (f'  <link href="{alternate}"/>\n' if alternate else "")
+                + f'  <link rel="self" href="https://www.jobscore.com/jobs/{slug}/feed.atom" '
+                  f'type="application/atom+xml"/>\n' + links
+                + f"  <updated>2026-11-23T19:20:36Z</updated>\n  <id>tag:jobscore.com,2024-11-15:/{jid(0)}</id>\n"
+                + "".join(entries) + "</feed>\n")
+
+    MAIN = feed(
+        entry(1),
+        entry(2, title="\tSenior Account Executive  ", where="100% Remote in the U.S",
+              tslug="senior-account-executive", block=None, team=None),
+        entry(3, title="Account Executive", where="Remote- LatAm", block=None),  # one title, another posting
+        entry(3, title="Account Executive", where="Remote- LatAm", block=None),  # the same posting again
+        entry(4, title="Grants Manager", tslug="grants-manager",
+              block=pay("2250", "3000", "From $22.50 to $30.00 per hour", "per hour")),
+        entry(5, title="Field Engineer", where=None, tslug="", block=None))
+    WANT = [("Account Executive", "Remote in Anytown, MN", posting(1)),
+            ("Senior Account Executive", "100% Remote in the U.S", posting(2, "senior-account-executive")),
+            ("Account Executive", "Remote- LatAm", posting(3)),
+            ("Grants Manager", "Remote in Anytown, MN", posting(4, "grants-manager")),
+            ("Field Engineer", "", posting(5, ""))]
+    WANT_PAY = [{"min": 65000, "max": 150000, "currency": "USD", "period": "year", "source": "ats",
+                 "raw": "From $65,000 to $150,000 per year"}, None, None,
+                {"min": 22.5, "max": 30, "currency": "USD", "period": "hour", "source": "ats",
+                 "raw": "From $22.50 to $30.00 per hour"}, None]
+
+    sent, asked, gated = [], [], []
+    web: dict = {}
+
+    class Resp:
+        def __init__(self, code, text="", headers=None):
+            self.status_code, self.headers, self.url = code, dict(headers or {}), ""
+            self.text, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
+
+        def iter_content(self, chunk_size=1):
+            for i in range(0, len(self.content), chunk_size):
+                yield self.content[i:i + chunk_size]
+
+        def close(self):
+            pass
+
+    class Endless(Resp):
+        """An answer far past the cap, sent in chunks as a wire sends it: a
+        reader that takes .content pulls every chunk down before it can
+        refuse it, as requests does."""
+        def __init__(self, chunks, size=65536):
+            self.pulled = 0
+            super().__init__(200, "", {"Content-Type": "application/atom+xml; charset=utf-8"})
+            self.chunks, self.size = chunks, size
+
+        def iter_content(self, chunk_size=1):
+            for _ in range(self.chunks):
+                self.pulled += 1
+                yield b"<feed>" + b" " * (self.size - 6)
+
+        @property
+        def content(self):
+            return b"".join(self.iter_content())
+
+        @content.setter
+        def content(self, _value):
+            pass
+
+        @property
+        def text(self):
+            return self.content.decode("utf-8")
+
+        @text.setter
+        def text(self, _value):
+            pass
+
+    def get(url, **kw):
+        sent.append((url, kw))
+        v = web.get(url)
+        if isinstance(v, Exception):
+            raise v
+        if isinstance(v, Resp):
+            return v
+        return Resp(404) if v is None else Resp(200, v, {"Content-Type": "application/atom+xml; charset=utf-8"})
+
+    def ask(url):
+        asked.append(url)
+
+    def serve(routes):
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web.update(routes if isinstance(routes, dict) else {FEED: routes})
+
+    def read(routes, ref=SLUG, details=False):
+        """(rows, the error) of one read of the board `ref`."""
+        serve(routes)
+        ats.FETCH_DETAILS = details
+        try:
+            return ats.plain_rows(ats.fetch_jobscore(ref)), None
+        except Exception as exc:                            # noqa: BLE001 - said by the pin
+            return None, exc
+
+    def says(routes, ref=SLUG):
+        serve(routes)
+        return vb.board_says("jobscore", ref)
+
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS,
+            dict(ats._HOST_NOT_BEFORE), ats.JOBSCORE_FEED_MAX)
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+
+        # ---- the read: one request, the feed, through the helpers -----------------------
+        for details in (False, True):
+            rows, exc = read(MAIN, details=details)
+            got = [(r["title"], r["location"], r["url"]) for r in rows or []]
+            if exc or got != WANT:
+                errors += fail(f"jobscore (FETCH_DETAILS {details}): the feed did not read as one row a "
+                               f"posting, its title stripped, its url the alternate link with no query, its "
+                               f"location the employer's own words: {exc or got}")
+            else:
+                if [r["comp"] for r in rows] != WANT_PAY:
+                    errors += fail(f"jobscore: pay was not read from cents, checked against its formatted "
+                                   f"line and kept as raw: {[r['comp'] for r in rows]}")
+                if any(r.get("posted") for r in rows):
+                    errors += fail(f"jobscore: a row carries a date the feed never states as posted (its "
+                                   f"<updated> moves on every edit, its <id> is the day it was created): "
+                                   f"{[r.get('posted') for r in rows]}")
+                if not all("Sell to" in r["jd"] and "cities" in r["jd"] and "<" not in r["jd"] for r in rows):
+                    errors += fail(f"jobscore: the ad was not read from the entry's content as text: "
+                                   f"{[r['jd'][:40] for r in rows]}")
+                if any("/apply_flow/" in r["url"] for r in rows):
+                    errors += fail("jobscore: a row links its apply form, which robots.txt closes")
+            if [u for u, _kw in sent] != [FEED] or asked != [FEED] or gated != [FEED] \
+                    or any((kw.get("headers") or {}).get("User-Agent") != ats.UA["User-Agent"]
+                           or kw.get("allow_redirects") is not False for _u, kw in sent):
+                errors += fail(f"jobscore (FETCH_DETAILS {details}): one read asked {[u for u, _ in sent]} "
+                               f"(robots.txt of {asked}, the gate {len(gated)} times): it is one request, "
+                               f"the feed, robots.txt asked, at the gate, under the crawler's own name, "
+                               f"redirects walked by ats.follow - never a posting page")
+            # NOBODY'S NAME, in a row or anywhere in what the parser hands back
+            kept_text = json.dumps(rows, default=str) + repr(ats.jobscore_feed(MAIN.encode("utf-8")))
+            leaked = [w for w in NOBODY if w in kept_text]
+            if leaked:
+                errors += fail(f"jobscore: the hiring team or the author was read ({leaked}): the parser "
+                               f"keeps only the fields it names, in the places it names them")
+
+        # ---- never written to the HTTP cache, ETag or no ETag ---------------------------
+        cache = pathlib.Path(tempfile.mkdtemp(prefix="gtd-selftest-jobscore-"))
+        try:
+            ats.HTTP_CACHE = cache
+            rows, exc = read({FEED: Resp(200, MAIN, {"ETag": 'W/"0a1b2c"', "Content-Type":
+                                                      "application/atom+xml; charset=utf-8"})})
+            if exc or len(rows or []) != 5 or any(cache.iterdir()):
+                errors += fail(f"jobscore: a feed sent with an ETag was written to the HTTP cache, or did not "
+                               f"read ({exc or [p.name for p in cache.iterdir()]}): it names a hiring team")
+        finally:
+            ats.HTTP_CACHE = None
+            shutil.rmtree(cache, ignore_errors=True)
+        if not all(ats.never_cached(u) for u in (FEED, posting(1), PAGE,
+                                                 f"https://www.jobscore.com/jobs/{SLUG}/feed.atom")):
+            errors += fail("jobscore: a JobScore address is not kept out of the HTTP cache (NEVER_CACHED)")
+
+        # ---- pay: cents, and only what its own formatted line prints --------------------
+        # (each want is (min, max, period, currency), or None for no pay)
+        USD = "USD"
+        for block, where, want, why in (
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year"), None,
+                 (50000, 60000, "year", USD), "cents read as cents"),
+                (pay("6000000", "5000000", "From $50,000 to $60,000 per year"), None,
+                 (50000, 60000, "year", USD), "the two figures given backwards"),
+                (pay("5000000", None, "From $50,000 per year"), None, (50000, None, "year", USD),
+                 "a floor alone"),
+                (pay("50000", "60000", "From $50,000 to $60,000 per year"), None, None,
+                 "figures in whole units where cents are meant"),
+                (pay("5000000", "6000000", None), None, None, "no formatted line to check them by"),
+                (pay("5000000", "6000000", "From $50,000 to $65,000 per year"), None, None,
+                 "a formatted line that prints other figures"),
+                (pay("5000000", "6000000", "Competitive"), None, None, "a formatted line with no figure"),
+                # (no figure at all: never an empty comp, whatever the line says)
+                (pay("", "", "Competitive"), None, None, "a block with no figure, its line none either"),
+                (pay("5000000.5", "6000000", "From $50,000 to $60,000 per year"), None, None,
+                 "a figure that is not a count of cents"),
+                # (the line agreeing with the figure that reads: the one that
+                # does not is still no pay)
+                (pay("abc", "6000000", "Up to $60,000 per year"), None, None,
+                 "a floor that does not read, the line printing the ceiling alone"),
+                (pay("0", "6000000", "From $0 to $60,000 per year"), None, None,
+                 "a floor of zero cents, which is no figure"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 every two weeks", "every two weeks"),
+                 None, (50000, 60000, None, USD), "an interval that is no period"),
+                (pay("5000000", None, None, None, None) + pay(None, "6000000", "From $50,000 to $60,000 "
+                                                                "per year"), None, None,
+                 "two pay blocks, the figures split between them"),
+                # (the line agreeing with the first of the two: the field given
+                # twice is no pay, never its first)
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year").replace(
+                    "<j:salaryMinimum>5000000</j:salaryMinimum>",
+                    "<j:salaryMinimum>5000000</j:salaryMinimum><j:salaryMinimum>4000000</j:salaryMinimum>"),
+                 None, None, "a figure given twice"),
+                (pay().replace("<j:salaryMinimum>6500000", "<j:salaryMinimum>65<j:x/>00000"), None,
+                 None, "a figure holding markup of its own"),
+                (pay(code=None), None, (65000, 150000, "year", None), "no currency code, on a row in the US"),
+                (pay(code=None), "Remote, India", None, "no currency code, on a row abroad"),
+                (pay(code="US Dollars"), None, (65000, 150000, "year", None),
+                 "a currency code in no code's shape, on a row in the US"),
+                # A COMP NEVER CONTRADICTS ITS OWN RAW: the period and the
+                # currency the formatted line names are the block's own
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year", "per hour"), None, None,
+                 "an interval of hours under a line of years"),
+                (pay("2500", "3000", "From $25 to $30 per hour", "per year"), None, None,
+                 "an interval of years under a line of hours"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 annually", "per month"), None, None,
+                 "an interval of months under a line that says annually"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 every two weeks", "per week"), None,
+                 None, "an interval of weeks under a line of every two weeks"),
+                (pay("2500", "3000", "From $25 to $30 per hour", None), None, (25, 30, None, USD),
+                 "no interval, the line's own period kept as raw"),
+                (pay("150000000", "200000000", "From \u20b91,500,000 to \u20b92,000,000 per year"),
+                 "Remote, India", None, "a code of US dollars under a line of rupees"),
+                (pay("5000000", "6000000", "From \u20ac50,000 to \u20ac60,000 per year", code=None), None,
+                 None, "no code, read as US dollars, under a line of euros"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year", code="EUR"), "Remote, Spain",
+                 None, "a code of euros under a line of dollars"),
+                (pay("5000000", "6000000", "From 50,000 to 60,000 EUR per year"), None, None,
+                 "a code of US dollars under a line naming EUR"),
+                (pay("5000000", "6000000", "From \u20ac50,000 to \u20ac60,000 per year", code="EUR"),
+                 "Remote, Spain", (50000, 60000, "year", "EUR"), "euros, the line and the code agreeing"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 per year", code="CAD"),
+                 "Remote in Toronto, ON, Canada", (50000, 60000, "year", "CAD"),
+                 "Canadian dollars, a dollar sign"),
+                (pay("5000000", "6000000", "From $50,000 to $60,000 USD per year"), None,
+                 (50000, 60000, "year", USD), "the line naming the block's own code")):
+            rows, exc = read(feed(entry(1, block=block, **({"where": where} if where else {}))))
+            comp = (rows or [{}])[0].get("comp") if not exc else "error"
+            got = (comp["min"], comp["max"], comp["period"], comp["currency"]) if isinstance(comp, dict) \
+                else comp
+            if got != want:
+                errors += fail(f"jobscore pay, {why}: {exc or comp}, not {want}")
+            elif isinstance(comp, dict) and (comp["source"] != "ats" or not comp["raw"]):
+                errors += fail(f"jobscore pay, {why}: its source or raw is wrong: {comp}")
+
+        # ---- the employer's name: the subtitle, where the title agrees ------------------
+        for title, subtitle, want in (("Careers at Acme Gov Systems", "Acme Gov Systems", "Acme Gov Systems"),
+                                      ("Careers at Acme Gov Systems", "Acme Gov", ""),
+                                      ("Acme Gov Systems", "Acme Gov Systems", ""),
+                                      ("Jobs at Acme Gov Systems", "Acme Gov Systems", ""),
+                                      ("Careers at ", "", ""),
+                                      ("Careers at Smith &amp;amp; Wesson", "Smith &amp;amp; Wesson",
+                                       "Smith & Wesson"),
+                                      # (each given once: two subtitles, or two
+                                      # titles, state nobody - never the first)
+                                      ("Careers at Acme Gov Systems",
+                                       "Acme Gov Systems</subtitle><subtitle>Beta Holdings", ""),
+                                      ("Careers at Acme Gov Systems</title><title>Careers at Beta Holdings",
+                                       "Acme Gov Systems", "")):
+            serve(feed(entry(1), title=title, subtitle=subtitle))
+            try:
+                got = ats.jobscore_board(SLUG)[1]
+            except Exception as exc:                        # noqa: BLE001 - said by the pin
+                got = f"error: {exc}"
+            if got != want:
+                errors += fail(f"jobscore: a feed titled {title!r} over the subtitle {subtitle!r} states "
+                               f"{got!r}, not {want!r}")
+        said = says(MAIN)
+        if said["names"] != ["Acme Gov Systems"] or not said["stated"] or said["n"] != 5 or said["failed"] \
+                or said["hosts"] != {"careers.jobscore.com"} or "jobscore" not in (said["how"] or ""):
+            errors += fail(f"jobscore probe: the feed's own subtitle was not stated over the whole board: {said}")
+        for body, why in ((feed(entry(1), title="Careers at Beta Holdings"), "a title naming another"),
+                          (feed(entry(1), title="Careers at ", subtitle=""), "a feed naming nobody"),
+                          (MAIN.replace("Careers at Acme Gov Systems", "Careers at ").replace(
+                              "<subtitle>Acme Gov Systems</subtitle>", "<subtitle></subtitle>"),
+                           "the author and the slug spelling the company, the feed naming nobody"),
+                          (feed(entry(1), subtitle="Acme Gov Systems</subtitle><subtitle>Beta Holdings"),
+                           "two subtitles, the first agreeing with the title"),
+                          (feed(entry(1), title="Careers at Acme Gov Systems</title><title>Careers at "
+                                                "Beta Holdings"), "two titles, the first agreeing")):
+            said = says(body, ref="acmegov")
+            if said["stated"] or said["names"] or said["name"]:
+                errors += fail(f"jobscore probe, {why}: stated {said['names']} ({said['how']})")
+        said = says({})
+        if said["failed"] != "gone" or said["stated"]:
+            errors += fail(f"jobscore probe: a slug that is not there (404) is not gone: {said}")
+
+        # ---- no zero, because none is measured; anything else raises ---------------------
+        NOT_ZERO = [
+            (feed(), "a feed with no entry (an empty JobScore feed has not been measured)"),
+            (feed(title="Careers at ", subtitle=""), "an empty feed naming nobody"),
+            (Resp(404), "a slug that is not there"),
+            (Resp(429, "", {"Retry-After": "5"}), "a 429"),
+            (Resp(503), "a 503"),
+            ("<!DOCTYPE html><html><head><title>Just a moment...</title></head><body>Checking your "
+             "browser</body></html>", "a challenge page"),
+            ('<?xml version="1.0"?><rss><channel><title>Careers at Acme Gov Systems</title>'
+             '<item><title>Account Executive</title></item></channel></rss>', "an RSS feed, not Atom"),
+            (MAIN[:len(MAIN) // 2], "a feed cut short"),
+            ('<?xml version="1.0"?><!DOCTYPE feed [<!ENTITY co "Acme">]>' + MAIN[MAIN.index("<feed"):],
+             "a feed that declares an entity"),
+            ('<?xml version="1.0"?><!DOCTYPE feed>' + MAIN[MAIN.index("<feed"):], "a feed that declares a DOCTYPE"),
+            (feed(entry(1), alternate="https://careers.jobscore.com/careers/betaholdings"),
+             "a feed naming another board's page as its own"),
+            (feed(entry(1), alternate=""), "a feed naming no page of its own"),
+            (feed(entry(1), links=f'  <link rel="next" href="{FEED}?page=2"/>\n'), "a feed with a next page"),
+            (feed(entry(1), entry(2, link="")), "an entry with no alternate link"),
+            (feed(entry(1), entry(2, link=posting(2, slug="betaholdings"))),
+             "an entry linking another board's posting"),
+            (feed(entry(1), entry(2, link="https://careers.jobscore.com/apply_flow/applications/go?job_id="
+                                          + jid(2))), "an entry whose alternate link is its apply form"),
+            (feed(entry(1), entry(2, link="https://careers.jobscore.example/careers/acmegov/jobs/x-" + jid(2))),
+             "an entry linking another host"),
+            (feed(entry(1), entry(2, link=f"http://careers.jobscore.com/careers/{SLUG}/jobs/x-" + jid(2))),
+             "an entry linking its posting over http"),
+            (feed(entry(1), entry(2, link=f"https://careers.jobscore.com/careers/{SLUG}/jobs/account-executive")),
+             "an entry whose posting has no 22-character id"),
+            (feed(entry(1), entry(2, title="  ")), "an entry with no title"),
+            (feed(entry(1), entry(2, title="Account <b>Executive</b> Manager")), "a title holding markup"),
+            (MAIN.replace("<feed ", "<feeds ").replace("</feed>", "</feeds>"),
+             "a document that is no Atom <feed>, holding Atom entries"),
+            (feed(entry(1), entry(2, extra=f'<link rel="alternate" href="{posting(9)}"/>')),
+             "an entry with two alternate links"),
+            # (two titles: never the first of them)
+            (feed(entry(1), entry(2, title="Account Executive</title><title>Chief Executive Officer")),
+             "an entry with two titles"),
+            # ONE PAGE OF A LONGER FEED, IN EVERY SPELLING (blind review of
+            # 2026-11-24): Atom's paging rels, RFC 5005's archive rels, a rel
+            # written as IANA's URI, a self link that knows itself by a query,
+            # OpenSearch saying there is more
+            *[(feed(entry(1), links=f'  <link rel="{rel_}" href="{FEED}?page=2"/>\n'),
+               f"a feed with a {rel_!r} link")
+              for rel_ in ("previous", "prev", "first", "last", "current", "next-archive", "prev-archive",
+                           "NEXT", "http://www.iana.org/assignments/relation/next",
+                           "http://www.iana.org/assignments/relation/last")],
+            (feed(entry(1)).replace(f'<link rel="self" href="https://www.jobscore.com/jobs/{SLUG}/feed.atom"',
+                                    f'<link rel="self" href="https://www.jobscore.com/jobs/{SLUG}/feed.atom'
+                                    f'?page=1"'), "a feed whose self link carries ?page=1"),
+            (feed(entry(1), links='  <os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/">60'
+                                  '</os:totalResults>\n'), "a feed whose OpenSearch total is past its entries"),
+            (feed(entry(1), links='  <os:startIndex xmlns:os="http://a9.com/-/spec/opensearch/1.1/">21'
+                                  '</os:startIndex>\n'), "a feed whose OpenSearch page starts past the first"),
+            (feed(entry(1), links='  <os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/1.1/">lots'
+                                  '</os:totalResults>\n'), "a feed whose OpenSearch total does not read"),
+            # AN ENTRY ANYWHERE BUT DIRECTLY UNDER <feed> is never skipped
+            # while the rest are read
+            (feed(entry(1), "<j:group>" + entry(2, title="Grants Manager", tslug="grants-manager")
+                  + "</j:group>"), "an entry wrapped in a vendor's element"),
+            (feed(entry(1), entry(2, title="Grants Manager", tslug="grants-manager").replace(
+                "<entry>", '<entry xmlns="">', 1)), "an entry in no namespace"),
+            (feed(entry(1, extra=entry(2, title="Grants Manager", tslug="grants-manager"))),
+             "an entry inside another entry")]
+        for body, why in NOT_ZERO:
+            rows, exc = read(body)
+            if not isinstance(exc, ats.AtsError) or [u for u, _kw in sent] != [FEED]:
+                errors += fail(f"jobscore: {why} was read as {len(rows) if rows is not None else exc!r} "
+                               f"row(s) ({[u for u, _ in sent]}): it is unreadable, never a board with "
+                               f"nothing open and never part of one")
+        # ...and what it raises is a reading, not a count: a feed that says
+        # it is whole, an OpenSearch total that is its own, still reads
+        rows, exc = read(feed(entry(1), links='  <os:totalResults xmlns:os="http://a9.com/-/spec/opensearch/'
+                                              '1.1/">1</os:totalResults>\n'))
+        if exc or len(rows or []) != 1:
+            errors += fail(f"jobscore: a feed whose OpenSearch total is its own entries did not read: {exc}")
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[5])
+        ats.JOBSCORE_FEED_MAX = len(MAIN.encode("utf-8")) - 1
+        rows, exc = read(MAIN)
+        ats.JOBSCORE_FEED_MAX = held[6]
+        if not isinstance(exc, ats.AtsError):
+            errors += fail(f"jobscore: a feed past the cap was read: {len(rows or [])} row(s)")
+        # THE CAP IS KEPT ON THE WIRE: read as a stream, and no more taken off
+        # it than the cap and a chunk (blind review of 2026-11-24: read whole,
+        # a 40 MB answer was pulled down to its last byte before it was refused)
+        big = Endless(640)
+        ats.JOBSCORE_FEED_MAX = 100_000
+        rows, exc = read({FEED: big})
+        ats.JOBSCORE_FEED_MAX = held[6]
+        if not isinstance(exc, ats.AtsError) or big.pulled > 2 \
+                or [kw.get("stream") for _u, kw in sent] != [True]:
+            errors += fail(f"jobscore: an answer past the cap was taken off the wire {big.pulled} chunk(s) "
+                           f"of 640 before it was refused ({exc!r}; asked as a stream: "
+                           f"{[kw.get('stream') for _u, kw in sent]}): the cap is kept as it arrives")
+
+        # ---- the feed answers in place: a redirect is refused before it is asked ---------
+        for there, why in (("https://www.jobscore.com/", "JobScore's own site"),
+                           (PAGE, "the board's own hosted page"),
+                           ("https://evil.example/feed.atom", "another host")):
+            rows, exc = read({FEED: Resp(302, "", {"Location": there}), there: MAIN})
+            if not isinstance(exc, ats.AtsError) or [u for u, _ in sent] != [FEED] or asked != [FEED]:
+                errors += fail(f"jobscore: the feed redirecting to {why} was followed or asked of "
+                               f"robots.txt ({[u for u, _ in sent]}, {asked}): {exc or len(rows or [])}")
+        rows, exc = read({FEED: Resp(302, "", {"Location": FEED})})
+        if not isinstance(exc, ats.AtsError) or len(sent) != 1:
+            errors += fail(f"jobscore: a feed redirecting to itself was asked {len(sent)} times")
+
+        # ---- the ref: one slug, AS SPELLED, nothing else asked ------------------------------
+        # JobScore minds the case of the path (2026-11-24: /jobs/Finalsite/
+        # feed.atom answered 404, /jobs/finalsite/feed.atom is the board), so a
+        # slug in capitals is asked as spelled - never lowered into another
+        # account's address - and a feed of that spelling reads
+        rows, exc = read(MAIN, ref=" acmegov ")
+        if exc or [u for u, _ in sent] != [FEED]:
+            errors += fail(f"jobscore: the ref ' acmegov ' was not read as the slug {SLUG!r}: "
+                           f"{exc or [u for u, _ in sent]}")
+        CAPS = "https://careers.jobscore.com/jobs/AcmeGov/feed.atom"
+        rows, exc = read(MAIN, ref="AcmeGov")
+        if not isinstance(exc, ats.AtsError) or [u for u, _ in sent] != [CAPS]:
+            errors += fail(f"jobscore: the ref 'AcmeGov' was asked {[u for u, _ in sent]} ({exc!r}), not "
+                           f"its own spelling alone: a lowered slug is another account's address")
+        rows, exc = read({CAPS: feed(entry(1, slug="AcmeGov"), slug="AcmeGov")}, ref="AcmeGov")
+        if exc or [r["url"] for r in rows or []] != [posting(1, slug="AcmeGov")]:
+            errors += fail(f"jobscore: a board whose slug is spelled with capitals did not read as "
+                           f"spelled: {exc or rows}")
+        for ref in (PAGE, "acme/gov", "../acmegov", "acme gov", "-acme", "acme-", "", None, 7, "a" * 64,
+                    "acme.gov", "acme_gov", "acmegov?x=1", "acmegov#x"):
+            rows, exc = read(MAIN, ref=ref)
+            if not isinstance(exc, ats.AtsError) or sent:
+                errors += fail(f"jobscore: the ref {ref!r} is no slug and was asked {[u for u, _ in sent]}")
+
+        # ---- one plan asks the feed once -----------------------------------------------------
+        serve({FEED: Resp(503)})
+        outcomes = []
+        def count():
+            try:
+                return len(ats.fetch_jobscore(SLUG))
+            except Exception:                               # noqa: BLE001 - said by the pin
+                return "error"
+        with ats.jobscore_kept():
+            for body in (Resp(503), MAIN, Resp(503)):
+                web[FEED] = body
+                outcomes.append(count())
+            kept_said = vb.board_says("jobscore", SLUG)
+            kept_asks = len(sent)
+        web[FEED] = MAIN
+        outcomes += [count(), count()]
+        if outcomes != ["error", 5, 5, 5, 5] or kept_asks != 2 or len(sent) != 4 \
+                or ats._JOBSCORE_KEPT is not None or kept_said["names"] != ["Acme Gov Systems"]:
+            errors += fail(f"jobscore: a feed was kept that failed or outside a plan, or not kept inside "
+                           f"one ({outcomes}; {kept_asks} then {len(sent)} requests; {kept_said['names']})")
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[5])
+
+        # ---- the id: read through the hosted list first, then through the feed ------------
+        # The hosted list (type html) gives each posting its title and its
+        # address and no place; the feed gives the same title (with a space
+        # after it) and address (with ?ref=rss&sid=68) and a place
+        rows, exc = read(MAIN)
+        html_rows = [("Account Executive", posting(1)), ("Senior Account Executive",
+                                                          posting(2, "senior-account-executive")),
+                     ("Account Executive", posting(3)), ("Grants Manager", posting(4, "grants-manager"))]
+        before = [{"id": bb.posting_id("acme-gov", t, u, ""), "opening_id": bb.opening_id("acme-gov", t),
+                   "company_id": "acme-gov", "title": t, "url": u, "location": "",
+                   "first_seen": f"2026-09-2{i}", "source": "ats"} for i, (t, u) in enumerate(html_rows)]
+        after = [{"id": bb.posting_id("acme-gov", r["title"], r["url"], r["location"]),
+                  "opening_id": bb.opening_id("acme-gov", r["title"]), "company_id": "acme-gov",
+                  "title": r["title"], "url": r["url"], "location": r["location"],
+                  "first_seen": "2026-11-24", "source": "ats"} for r in rows or []]
+        bb.carry_first_seen(after, before, {})
+        by_url = {p["url"]: p for p in before}
+        moved = [(p["title"], p["location"]) for p in after if p["url"] in by_url and (
+            p["id"], p["opening_id"], p["first_seen"]) != (by_url[p["url"]]["id"], by_url[p["url"]]["opening_id"],
+                                                           by_url[p["url"]]["first_seen"])]
+        if exc or len(after) != 5 or moved or after[4]["first_seen"] != "2026-11-24":
+            errors += fail(f"jobscore: a posting read through the hosted list and then through the feed did "
+                           f"not keep its id, its opening id and its first-seen day ({exc or moved}): the "
+                           f"switch from html re-dates it and breaks every saved role")
+        nights = {before[0]["id"]: "2026-09-01"}
+        again = [dict(p, first_seen="2026-11-24") for p in after[:1]]
+        bb.carry_first_seen(again, [], nights)
+        if [p["first_seen"] for p in again] != ["2026-09-01"]:
+            errors += fail("jobscore: a snapshot's night held for the hosted list's id did not date the "
+                           "feed's row of the same posting")
+        # ...and a place still parts two rows that share an address elsewhere
+        # (Workable answers six cities with one requisition address)
+        wk = "https://apply.workable.com/acme/j/0A1B2C3D4E/"
+        if bb.posting_id("acme", "Account Executive", wk, "Austin, TX") == \
+                bb.posting_id("acme", "Account Executive", wk, "Denver, CO"):
+            errors += fail("jobscore: a place no longer parts two rows of one address on another platform")
+        if bb.posting_id("acme", "Account Executive", posting(1), "") == \
+                bb.posting_id("acme", "Account Executive", posting(3), ""):
+            errors += fail("jobscore: two JobScore postings of one title share an id")
+        # THE FIRST-SEEN DAY FOLLOWS THE JOB ID across a renamed account slug
+        # and a title slug written anew (blind review of 2026-11-24: the id
+        # hashes the whole address, and the day reset with it) - within the
+        # company, and never to another job
+        was = [{"id": bb.posting_id("acme-gov", "Account Executive", posting(1), ""),
+                "company_id": "acme-gov", "title": "Account Executive", "url": posting(1),
+                "first_seen": "2026-09-01"}]
+        now = [{"id": bb.posting_id("acme-gov", "Account Executive", u, "Remote in Anytown, MN"),
+                "opening_id": bb.opening_id("acme-gov", "Account Executive"), "company_id": cid_,
+                "title": "Account Executive", "url": u, "first_seen": "2026-11-24", "source": "ats"}
+               for cid_, u in (("acme-gov", posting(1, slug="acmegov-inc")),
+                               ("acme-gov", posting(1, tslug="account-exec")),
+                               ("acme-gov", posting(2, slug="acmegov-inc")),
+                               ("beta-co", posting(1, slug="acmegov-inc")))]
+        bb.carry_first_seen(now, was, {})
+        if [p["first_seen"] for p in now] != ["2026-09-01", "2026-09-01", "2026-11-24", "2026-11-24"]:
+            errors += fail(f"jobscore: the first-seen day did not follow the 22-character job id across a "
+                           f"renamed slug, or followed it to another job or company: "
+                           f"{[p['first_seen'] for p in now]}")
+
+        # ---- the public link: the hosted list, never the feed ----------------------------
+        W = "https://www.acmegov.example"
+        for ref, want in (("acmegov", PAGE), ("AcmeGov", "https://careers.jobscore.com/careers/AcmeGov"),
+                          ("acme/gov", W), (None, W)):
+            if bb.board_url({"ats": {"type": "jobscore", "ref": ref}, "website": W}) != want:
+                errors += fail(f"jobscore: the public link of the ref {ref!r} is not {want}")
+
+        # ---- the door: wired on both checks, held when the feed names somebody else -------
+        import add_company
+        real = (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+                ats._get, ats._page)
+        B_FEED = "https://careers.jobscore.com/jobs/betaco/feed.atom"
+        D_FEED = "https://careers.jobscore.com/jobs/deltagov/feed.atom"
+        E_FEED = "https://careers.jobscore.com/jobs/echogov/feed.atom"
+        e_home = _wb_site("echo-gov")
+        d_site = f"{_wb_site('delta-gov')}/careers"
+        d_found, d_rest = fsb.sightings(
+            "<script>(function(d, s, c) { if (window.Jobscore) return; var js, fjs = d.getElementsByTagName(s)"
+            "[0]; js = d.createElement(s); js.async = true; js.src = '//careers.jobscore.com/jobs/' + c + "
+            "'/widget.js'; fjs.parentNode.insertBefore(js, fjs); })(document, 'script', 'deltagov');</script>"
+            '<a href="https://www.jobscore.com/?utm_source=deltagov">Powered by JobScore</a>',
+            d_site, _wb_site("delta-gov"))
+        d_entry = _wb_entry("delta-gov", [_wb_cand(f["type"], f["ref"], d_site, element=f["element"],
+                                                   times=f["times"]) for f in d_found],
+                            elsewhere=[{"vendor": r["vendor"], "saw": r["saw"], "page": d_site,
+                                        "element": r["element"], "times": r["times"]} for r in d_rest])
+        serve({FEED: MAIN,
+               B_FEED: feed(entry(11, slug="betaco"), slug="betaco", title="Careers at Gamma Holdings",
+                            subtitle="Gamma Holdings"),
+               D_FEED: feed(entry(21, slug="deltagov"), slug="deltagov", title="Careers at Delta Gov",
+                            subtitle="Delta Gov"),
+               E_FEED: feed(entry(31, slug="echogov"), slug="echogov", title="Careers at Echo Gov",
+                            subtitle="Echo Gov")})
+        with _WiringBox([_wb_co("acme-gov-systems", "Acme Gov Systems"), _wb_co("beta-co", "Beta Co"),
+                         _wb_co("delta-gov", "Delta Gov"), _wb_co("echo-gov", "Echo Gov")], {}) as box, \
+                contextlib.redirect_stderr(io.StringIO()):
+            (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+             ats._get, ats._page) = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({
+                "acme-gov-systems": _wb_one("acme-gov-systems", "jobscore", SLUG, element="iframe"),
+                "beta-co": _wb_one("beta-co", "jobscore", "betaco", element="iframe"),
+                "delta-gov": d_entry,
+                # (the 'Powered by' link in the footer of their home page, the
+                # board framed on their careers page: JobScore's own form,
+                # never a second place they hire through)
+                "echo-gov": _wb_entry("echo-gov", [_wb_cand("jobscore", "echogov", f"{e_home}/careers",
+                                                            element="iframe")],
+                                      pages=[{"asked": f"{e_home}/careers", "final": f"{e_home}/careers",
+                                              "same_site": True, "status": "read", "note": ""},
+                                             {"asked": e_home, "final": e_home, "same_site": True,
+                                              "status": "read", "note": ""}],
+                                      elsewhere=[{"vendor": "jobscore-other",
+                                                  "saw": "https://www.jobscore.com/?utm_source=echogov",
+                                                  "page": e_home, "element": "href", "times": 1}])}))
+        a_row, b_row, d_row, e_row = ((rows_ or {}).get(c) or {} for c in (
+            "acme-gov-systems", "beta-co", "delta-gov", "echo-gov"))
+        if a_row.get("action") != "WIRE" or (a_row.get("type"), a_row.get("ref")) != ("jobscore", SLUG):
+            errors += fail(f"jobscore door: a board their own page frames, naming them, was not wired: "
+                           f"{a_row.get('action')} {a_row.get('ref')!r} ({_wb_words(a_row)[:200]!r})")
+        if b_row.get("action") != "HOLD" or "Gamma Holdings" not in _wb_words(b_row):
+            errors += fail(f"jobscore door: a board naming somebody else was not held for the owner with "
+                           f"both names: {b_row.get('action')} ({_wb_words(b_row)[:200]!r})")
+        if [(f["type"], f["ref"], f["element"]) for f in d_found] != [("jobscore", "deltagov", "script")] \
+                or d_rest or d_row.get("action") != "WIRE" or d_row.get("ref") != "deltagov":
+            errors += fail(f"jobscore door: a board their own page loads by JobScore's script, naming them, "
+                           f"was not found and wired so (finder {[(f['type'], f['ref']) for f in d_found]}, "
+                           f"elsewhere {[r['vendor'] for r in d_rest]}; door {d_row.get('action')} "
+                           f"{d_row.get('ref')!r}: {_wb_words(d_row)[:200]!r})")
+        if e_row.get("action") != "WIRE" or e_row.get("ref") != "echogov":
+            errors += fail(f"jobscore door: the 'Powered by JobScore' link on another page of their site was "
+                           f"taken for a second place they hire through: {e_row.get('action')} "
+                           f"({_wb_words(e_row)[:200]!r})")
+        asks = sorted(u for u, _kw in sent)
+        if asks != sorted([FEED, B_FEED, D_FEED, E_FEED]) or sorted(asked) != asks:
+            errors += fail(f"jobscore door: the plan asked {asks} (robots.txt of {sorted(asked)}), not each "
+                           f"feed once")
+
+        # ---- the door: A SECOND ACCOUNT IN ANY SHAPE IS A DOUBT (blind review of 2026-11-24) --
+        # Their careers page frames account A, whose feed names them, and their
+        # site names account B in a form the finder once read as JobScore's own
+        # (the bare domain, a widget's script, a slug run into an underscore,
+        # one job's apply link): held for the owner, never A wired alone
+        FRAMED = ('<iframe src="https://widgets.jobscore.com/jobs/{a}/widget_iframe?bg_color=FFFFFF">'
+                  '</iframe>')
+
+        def entry_of(cid, careers, home_markup=None):
+            site = _wb_site(cid)
+            cands, others, pages = [], [], []
+            for page, markup in ((f"{site}/careers", careers), (site, home_markup)):
+                if markup is None:
+                    continue
+                f_, r_ = fsb.sightings(markup, page, site)
+                cands += [_wb_cand(f["type"], f["ref"], page, element=f["element"], times=f["times"])
+                          for f in f_]
+                others += [{"vendor": r["vendor"], "saw": r["saw"], "page": page, "element": r["element"],
+                            "times": r["times"]} for r in r_]
+                pages.append({"asked": page, "final": page, "same_site": True, "status": "read", "note": ""})
+            return _wb_entry(cid, cands, pages=pages, elsewhere=others)
+        SECOND = {
+            "gamma-gov": ('<a href="https://jobscore.com/careers/betaholdings">Our sister company</a>', None),
+            "hotel-gov": ('<script src="https://widgets.jobscore.com/jobs/betaholdings/widget.js"></script>',
+                          None),
+            "india-gov": ('<a href="https://careers.jobscore.com/careers/beta_holdings">x</a>', None),
+            "juliet-gov": ('<a href="https://careers.jobscore.com/apply_flow/applications/go?job_id='
+                           + jid(99) + '">Apply</a>', None),
+            "kilo-gov": ("", '<a href="https://careers.jobscore.com/careers/beta_holdings">Jobs</a>'),
+            "lima-gov": ("", '<a href="https://jobscore.com/careers/betaholdings">Jobs</a>')}
+        web.clear()
+        for cid_ in SECOND:
+            slug_ = cid_.replace("-", "")
+            web[f"https://careers.jobscore.com/jobs/{slug_}/feed.atom"] = feed(
+                entry(41, slug=slug_), slug=slug_, title=f"Careers at {cid_.title().replace('-', ' ')}",
+                subtitle=cid_.title().replace("-", " "))
+        web["https://careers.jobscore.com/jobs/betaholdings/feed.atom"] = feed(
+            entry(42, slug="betaholdings"), slug="betaholdings", title="Careers at Beta Holdings",
+            subtitle="Beta Holdings")
+        with _WiringBox([_wb_co(c, c.title().replace("-", " ")) for c in SECOND], {}) as box, \
+                contextlib.redirect_stderr(io.StringIO()):
+            (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+             ats._get, ats._page) = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({
+                cid_: entry_of(cid_, FRAMED.format(a=cid_.replace("-", "")) + extra, home_)
+                for cid_, (extra, home_) in SECOND.items()}))
+        for cid_, (extra, home_) in SECOND.items():
+            row_ = (rows_ or {}).get(cid_) or {}
+            if row_.get("action") != "HOLD":
+                errors += fail(f"jobscore door: their page frames one JobScore account and their site names "
+                               f"a second ({(extra or home_)[:90]!r}{', on their home page' if home_ else ''})"
+                               f", and the door said {row_.get('action')} {row_.get('ref')!r}: "
+                               f"{_wb_words(row_)[:240]!r}")
+
+        # ---- accepting a held board asks it ONCE, at the desk and by a ruling -------------
+        # (blind review of 2026-11-24: add_company.verify, then board_says - two
+        # requests of a feed that names a hiring team; and so for a Jobvite
+        # feed and a TriNet Hire list, whose kept blocks wrapped only the door)
+        import admin
+        import proposal_rulings
+        for kind_, ref_, url_, body_, name_ in (
+                ("jobscore", SLUG, FEED, MAIN, "Acme Gov Systems"),
+                ("trinethire", "41234-old-name", _ID_TRINET, _ID_TRINET_PAGE, "Acme Gov Systems, Inc."),
+                ("jobvitefeed", "q6NaVfwI", _ID_JVX, _ID_JVX_FEED, "Tyler Technologies")):
+            cid_ = "held-co"
+            files_ = {bp.FOUND.name: [{"id": cid_, "name": name_, "found": {"type": kind_, "ref": ref_},
+                                       "filed": {"page": f"{_wb_site(cid_)}/careers"}}]}
+            for how_ in ("the desk", "a ruling"):
+                web.clear()
+                web[url_] = body_
+                with _WiringBox([_wb_co(cid_, name_)], {}, files=files_) as box, \
+                        contextlib.redirect_stderr(io.StringIO()):
+                    (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+                     ats._get, ats._page) = real
+                    sent.clear()
+                    if how_ == "the desk":
+                        r_ = admin.act_board_proposal({"id": cid_, "accept": True, "by": "owner",
+                                                       "why": "selftest", "force": True})
+                    else:
+                        r_ = proposal_rulings._accept_board({"id": cid_, "ats_type": kind_, "ats_ref": ref_},
+                                                            "owner", "selftest", True)
+                    wired = box.record(cid_).get("ats")
+                asks_ = [u for u, _kw in sent]
+                if asks_ != [url_] or wired != {"type": kind_, "ref": ref_}:
+                    errors += fail(f"accepting a held {kind_} board by {how_} asked {asks_} ({r_}; on file "
+                                   f"{wired}): it is read, then asked whose it is, in one request")
+    finally:
+        (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS) = held[:5]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[5])
+        ats.JOBSCORE_FEED_MAX = held[6]
+
+    # ---- the finder: the three forms, and none of JobScore's own furniture ------------------
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+    LOADER = ("<script>(function(d, s, c) { if (window.Jobscore) return; var js, fjs = "
+              "d.getElementsByTagName(s)[0]; js = d.createElement(s); js.async = true; js.src = "
+              "'//careers.jobscore.com/jobs/' + c + '/widget.js'; fjs.parentNode.insertBefore(js, fjs); "
+              "})(document, 'script', 'acmegov');</script>")
+    FRAME = ('<iframe src="https://widgets.jobscore.com/jobs/acmegov/widget_iframe?bg_color=FFFFFF&amp;'
+             'group_by=department"></iframe>')
+    POWERED = '<a href="https://www.jobscore.com/?utm_source=acmegov">Powered by JobScore</a>'
+    # THE LOADER'S SLUG IS THE ARGUMENT OF THE CALL THAT CLOSES ITS OWN
+    # FUNCTION (blind review of 2026-11-24): closed '}(document, ...));' -
+    # as minifiers and Crockford write it - the call after it was another
+    # snippet's, Facebook's or a second account's
+    CROCK = ("(function(d, s, c) { var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); "
+             "js.src = '//careers.jobscore.com/jobs/' + c + '/widget.js'; fjs.parentNode.insertBefore(js, fjs);"
+             " }(document, 'script', '%s'));")
+    BANG = ('!function(d,s,c){var js=d.createElement(s);js.src="//careers.jobscore.com/jobs/"+c+'
+            '"/widget.js";d.body.appendChild(js)}(document,"script","%s");')
+    SDK = ("(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) "
+           "return; js = d.createElement(s); js.id = id; js.src = 'https://connect.social.example/sdk.js'; "
+           "fjs.parentNode.insertBefore(js, fjs); })(document, 'script', 'social-jssdk');")
+    PLAIN = ("(function(d, s, c) { var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); "
+             "js.src = '//careers.jobscore.com/jobs/' + c + '/widget.js'; fjs.parentNode.insertBefore(js, fjs);"
+             " })(document, 'script', '%s');")
+    ARROW = ("((d, s, id) => { const js = d.createElement(s); js.id = id; js.src = "
+             "'https://connect.social.example/sdk.js'; d.head.appendChild(js); })(document, 'script', "
+             "'social-jssdk');")
+    UNCALLED = ("(function(d, s, c) { js.src = '//careers.jobscore.com/jobs/' + c + '/widget.js'; "
+                "}; ")
+    for markup, want, why in (
+            ('<a href="https://careers.jobscore.com/careers/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
+             "a link to the hosted board"),
+            ('<a href="https://careers.jobscore.com/jobs/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
+             "a link to its /jobs/ address"),
+            (f'<a href="{posting(1)}?ref=rss">AE</a>', [("jobscore", SLUG, "href")], "a link to a posting"),
+            # (as spelled: JobScore minds the case of the path)
+            ('<a href="https://www.jobscore.com/careers/AcmeGov">Jobs</a>', [("jobscore", "AcmeGov", "href")],
+             "a link on www., its slug in capitals"),
+            ('<a href="https://hire.jobscore.com/jobs/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
+             "a link on hire."),
+            ('<a href="https://jobscore.com/careers/acmegov">Jobs</a>', [("jobscore", SLUG, "href")],
+             "a link on the bare domain"),
+            (FRAME, [("jobscore", SLUG, "iframe")], "the widget's iframe"),
+            ('<iframe src="https://widgets.jobscore.com/jobs/acmegov/other_frame"></iframe>',
+             [("jobscore", SLUG, "iframe")], "another page of the widget's, naming the account"),
+            ('<script src="https://widgets.jobscore.com/jobs/acmegov/widget.js"></script>',
+             [("jobscore", SLUG, "script")], "the widget's own script, naming the account"),
+            (LOADER, [("jobscore", SLUG, "script")], "the script loader"),
+            ("<script>" + CROCK % "acmegov" + "</script>", [("jobscore", SLUG, "script")],
+             "the loader closed '}(document, ...))'"),
+            ("<script>" + BANG % "acmegov" + "</script>", [("jobscore", SLUG, "script")],
+             "the loader as a minifier writes it, !function(d,s,c){...}(document, ...)"),
+            ("<script>" + CROCK % "acmegov" + SDK + "</script>", [("jobscore", SLUG, "script")],
+             "the loader closed so, another vendor's snippet after it"),
+            ("<script>" + CROCK % "acmegov" + PLAIN % "betaholdings" + "</script>",
+             [("jobscore", SLUG, "script"), ("jobscore", "betaholdings", "script")],
+             "two loaders in one script: two boards"),
+            # (a function of its own before the address is still the loader's)
+            ("<script>(function(d, s, c) { var ready = function() {}; var js = d.createElement(s); js.src = "
+             "'//careers.jobscore.com/jobs/' + c + '/widget.js'; d.body.appendChild(js); })(document, "
+             "'script', 'acmegov');</script>", [("jobscore", SLUG, "script")],
+             "the loader holding a function of its own before its address"),
+            (LOADER.replace("'acmegov'", "'AcmeGov'"), [("jobscore", "AcmeGov", "script")],
+             "the loader handed a slug in capitals, kept as spelled"),
+            ("<div class='jobscore-jobs'><div class='js-fallback'><a href='https://careers.jobscore.com/jobs/"
+             "acmegov'>Jobs</a></div></div>" + LOADER,
+             [("jobscore", SLUG, "href"), ("jobscore", SLUG, "script")], "the loader beside its fallback link"),
+            (FRAME + POWERED, [("jobscore", SLUG, "iframe")], "the iframe beside the 'Powered by' link"),
+            (FRAME + '<a href="https://careers.jobscore.com/careers/betaholdings">x</a>',
+             [("jobscore", SLUG, "iframe"), ("jobscore", "betaholdings", "href")], "two slugs: two boards"),
+            (FRAME + '<a href="https://jobscore.com/careers/betaholdings">x</a>',
+             [("jobscore", SLUG, "iframe"), ("jobscore", "betaholdings", "href")],
+             "a second account on the bare domain: two boards"),
+            (FRAME + '<script src="https://widgets.jobscore.com/jobs/betaholdings/widget.js"></script>',
+             [("jobscore", SLUG, "iframe"), ("jobscore", "betaholdings", "script")],
+             "a second account's widget script: two boards")):
+        found, rest = fsb.sightings(markup, here, home)
+        got = sorted((f["type"], f["ref"], f["element"]) for f in found)
+        if got != sorted(want) or rest:
+            errors += fail(f"finder, {why}: {got}, not {sorted(want)}, or JobScore's own furniture was filed "
+                           f"beside the board: {[r['vendor'] for r in rest]}")
+    # AN ACCOUNT OR A JOB IN A SHAPE NO BOARD FORM READS is jobscore-tenant:
+    # beside their board a second account, a doubt - never JobScore's own
+    # form, dropped beside the board (blind review of 2026-11-24)
+    for markup, why in (
+            ('<a href="https://careers.jobscore.com/careers/beta_holdings">x</a>', "a slug run into an underscore"),
+            ('<a href="https://jobscore.com/jobs/beta_holdings">x</a>', "the same, on the bare domain"),
+            ('<a href="https://careers.jobscore.com/apply_flow/applications/go?job_id=' + jid(99)
+             + '&amp;sid=68">Apply</a>', "one job's apply link, whose account it does not show"),
+            ('<a href="https://acme.jobscore.com/careers/betaholdings">x</a>', "a host none of the board's four")):
+        found, rest = fsb.sightings(FRAME + markup, here, home)
+        if sorted((f["type"], f["ref"]) for f in found) != [("jobscore", SLUG)] \
+                or [r["vendor"] for r in rest] != ["jobscore-tenant"]:
+            errors += fail(f"finder, {why}, beside their board: boards {[(f['type'], f['ref']) for f in found]}, "
+                           f"others {[r['vendor'] for r in rest]} - not their board and jobscore-tenant, "
+                           f"a second account")
+    if fsb.TENANT_FORMS.get("jobscore-tenant") != "jobscore" or "jobscore-tenant" in fsb._NO_BOARD_IN_IT:
+        errors += fail("finder: jobscore-tenant is not a tenant form of jobscore (a doubt beside its board)")
+    for markup, why in (
+            (POWERED, "the 'Powered by' link"),
+            ('<link rel="stylesheet" href="https://static.jobscore.com/assets/widget.css">', "an asset host"),
+            ('<img src="https://careers.jobscore.com/images/logo.png">', "an image on the board's host"),
+            ('<a href="https://careers.jobscore.com/careers/">x</a>', "no slug"),
+            ('<a href="https://careers.jobscore.com.evil.example/careers/acmegov">x</a>', "a host under another"),
+            ('<a href="https://xcareers.jobscore.com/careers/acmegov">x</a>', "a host ending in it"),
+            ('<a href="https://x.example/careers/acmegov">x</a>', "another host's same path"),
+            ('<a href="https://careers.jobscore.com/careers/acme_gov">x</a>', "a slug run into an underscore"),
+            ('<a href="https://www.jobscore.com/careers/jobscore">Work at JobScore</a>', "JobScore's own board"),
+            ("<script>(function(d, s, id) {})(document, 'script', 'acmegov');</script>",
+             "another vendor's loader, naming no JobScore address"),
+            ("<script>var u = '//careers.jobscore.com/jobs/' + c + '/widget.js';</script><script>"
+             "})(document, 'script', 'acmegov');</script>", "the loader's address and a call in two scripts"),
+            # (the loader is told JobScore's own name or its furniture: no board)
+            *[(LOADER.replace("'acmegov'", f"'{s_}'"), f"a loader handed {s_!r}")
+              for s_ in ("jobscore", "JobScore", "widgets", "search")],
+            # (the address built from another name than the loader's own third
+            # parameter, or the call after another function: not its own call)
+            ("<script>(function(d, s, c) { var js = d.createElement(s); js.src = '//careers.jobscore.com/jobs/'"
+             " + slug + '/widget.js'; })(document, 'script', 'acmegov');</script>",
+             "a loader whose address is built from another name"),
+            ("<script>" + UNCALLED + SDK + "</script>",
+             "a loader closed with no call, another vendor's snippet after it"),
+            ("<script>" + UNCALLED + ARROW + "</script>",
+             "a loader closed with no call, an arrow function's snippet after it")):
+        found, _rest = fsb.sightings(markup, here, home)
+        if found:
+            errors += fail(f"finder: {why} was read as a board: {[(f['type'], f['ref']) for f in found]}")
+    _found, alone = fsb.sightings(POWERED, here, home)
+    if [r["vendor"] for r in alone] != ["jobscore-other"] or "jobscore" in {v for v, _h, _rx in fsb.ELSEWHERE} \
+            or fsb._NO_BOARD_IN_IT.get("jobscore-other") != "jobscore":
+        errors += fail(f"finder: JobScore's own site alone is not jobscore-other (a platform we read, naming "
+                       f"no board): {[r['vendor'] for r in alone]}")
+    if "jobscore" in fsb.LOWERED:
+        errors += fail("finder: JobScore's slugs are lowered (LOWERED): JobScore minds their case")
+    # (board_key is loose by design - a collision only sends a board to a
+    # person - so two spellings of one slug are one key there; never what
+    # is read)
+    if bp.board_key("jobscore", "AcmeGov") != bp.board_key("jobscore", SLUG) \
+            or bp.board_key("jobscore", "betaco") == bp.board_key("jobscore", SLUG):
+        errors += fail("board_key: one JobScore slug in two cases is not one board, or two slugs are")
+    # ...and discover_js, which only prints, reads the same three forms with
+    # the same guards
+    tree = ast_lib.parse((ROOT / "scripts" / "discover_js.py").read_text())
+    pats = next(ast_lib.literal_eval(n.value) for n in tree.body if isinstance(n, ast_lib.Assign)
+                and any(getattr(t, "id", "") == "ATS_URL_PATS" for t in n.targets))
+    mine = [p for k, p in pats if k == "jobscore"]
+
+    def lift(text):
+        return [next((g for g in m.groups() if g), "") for m in re.finditer(mine[0], text, re.I)] if mine else []
+    for markup, want in (('<a href="https://careers.jobscore.com/careers/acmegov">', ["acmegov"]),
+                         ('<a href="https://careers.jobscore.com/jobs/acmegov">', ["acmegov"]),
+                         ('<a href="https://jobscore.com/careers/acmegov">', ["acmegov"]),
+                         (FRAME, ["acmegov"]), (LOADER, ["acmegov"]), (POWERED, []),
+                         ("<script>" + CROCK % "acmegov" + SDK + "</script>", ["acmegov"]),
+                         ("<script>" + CROCK % "acmegov" + PLAIN % "betaholdings" + "</script>",
+                          ["acmegov", "betaholdings"]),
+                         ("<script>" + BANG % "acmegov" + "</script>", ["acmegov"]),
+                         ("<script>" + UNCALLED + SDK + "</script>", []),
+                         ("<script>" + UNCALLED + ARROW + "</script>", []),
+                         ('<a href="https://careers.jobscore.com/careers/acme_gov">', []),
+                         ('<a href="https://xcareers.jobscore.com/careers/acmegov">', []),
+                         ('<a href="https://www.jobscore.com/careers/jobscore">', []),
+                         (LOADER.replace("'acmegov'", "'jobscore'"), [])):
+        if len(mine) != 1 or lift(markup) != want:
+            errors += fail(f"discover_js reads {lift(markup)} out of {markup[:60]!r}, not {want}: its "
+                           f"jobscore pattern is not in step with the finder's three forms and guards")
+    return errors
+
+
+def check_clearcompany_reads_its_site_whole_and_names_it_twice() -> int:
+    """A ClearCompany career site (apply.clearcompany.com/<slug>), driven
+    through ats.requests with answers written here by hand - every company,
+    slug, id, title and place made up - and nothing that can reach a real host.
+
+    THE READ: three requests - the hosted page (its widget's site id), the
+    site's settings, the list at pageSize 1000 - through the repo's page
+    helpers: robots.txt asked at every hop, the crawler's own name, the host
+    gate; every hop held to the site's own addresses and refused before it is
+    asked; never the tenant host <label>.clearcompany.com (robots.txt closes
+    it), never a posting page, and nothing from the API host kept in the cache.
+    THE ROWS: the title stripped; the place from locations[] ('City, ST',
+    'Statewide (ST)', a nationwide place 'US'; abroad the city alone, its
+    country in office_hint - never an ISO-2 code geography reads as a state),
+    never the server's mangled string; the mode only the posting's own answer
+    to a field that is that question, never a nationwide place's 'remote';
+    the url the hosted site's own ?jobId=<id lower-cased>, never applyLink;
+    the ad from the list; a date only where the row carries one; no pay field
+    read, and a '$' abroad no pay.
+    WHOLE OR NOT AT ALL: rows short of totalCount are paged at the same size
+    and deduplicated by id, and the read raises unless they make up exactly
+    totalCount; a count that moves, more rows than the count, an empty list
+    (never measured), a page with no site id or two, a gone slug or site, a
+    row that does not read, another shape, a 429 - each raises, the count's
+    cases each in its own words.
+    THE PROBE: brandFullName believed only where the hosted page's <title>
+    (not one a comment holds) says the same before ' - Careers'; the footer's
+    a.cc-home link handed on as the site as written ('//www.x/', 'www.x'),
+    which proven() holds to the record's, one naming no host none; a brand
+    filter's brands stated beside it; never settings.name, the slug or the
+    tenant label.
+    THE FINDER: a link to apply.clearcompany.com/<slug> is a board; one
+    brand's view of it (?brand=) and an account's own host are tenant forms; a
+    legacy HRM Direct frame on a page of theirs alone is asked where
+    ClearCompany's redirect sends it (robots.txt at the hop, the board itself
+    never asked, one address once however it is written) and the slug it names
+    is the board - any other answer a doubt with a note, a failure of the day
+    so marked; a widget naming its site by id alone is a tenant form; the
+    assets name no board.
+    THE BOARD: the public link is the hosted site; a posting moved from the
+    careers page (html) to this reader keeps its first-seen day and its
+    opening id - held by the previous board, or only by an earlier night's
+    snapshot under any address it has been written as - and its id until it
+    moves; the type ranks 'none' (Job Hunter
+    does not list it).
+    THE DOOR: a company whose own page links the site and whose site names it
+    is wired, each board asked once for the read and the probe; one whose site
+    names somebody else is held; so is one whose site also links one brand's
+    view, an account's host or a legacy board not followed, each said for
+    what it is; a legacy follow that failed on the day is skipped unread and
+    asked again, and a legacy board alone is said as one.
+    """
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import ats
+    import build_board as bb
+    import find_site_boards as fsb
+    import verify_boards as vb
+    errors = 0
+    SLUG = "acmegov"
+    HOSTED, SETTINGS, LIST = _ID_CC, _ID_CC_SETTINGS, _ID_CC_LIST
+    MODE_Q = "On-Site/Hybrid/Remote"          # (a site's own field, as Rehrig's asks it)
+
+    def answered(answer, name=MODE_Q):
+        return [{"customFieldId": "AAAAAAAA-1111-4222-8333-444444444444", "customFieldName": name,
+                 "customFieldOptionName": answer, "listOrder": 0, "detailsOrder": None}]
+    JOBS = [_cc_job(1, " Account Executive ", [_cc_where("Austin", "TX")]),
+            _cc_job(2, "Territory Sales Manager  ", [_cc_where(nationwide=True)],
+                    postedDate="2026-11-20T15:04:05Z", customFieldAnswers=answered("Remote")),
+            _cc_job(3, "Field Engineer", [_cc_where("Erie", "PA"), _cc_where("Dayton", "OH")],
+                    id="AAAAAAAA-0000-4000-8000-000000000003"),
+            _cc_job(4, "Grants Manager", [], salaryRangeLow=90000, salaryRangeHigh=120000,
+                    salaryType="Annually")]
+    WANT = [("Account Executive", "Austin, TX", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000001",
+             None, None),
+            ("Territory Sales Manager", "US", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000002",
+             "2026-11-20", "remote"),
+            ("Field Engineer", "Erie, PA; Dayton, OH",
+             f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000003", None, None),
+            ("Grants Manager", "", f"{HOSTED}?jobId=aaaaaaaa-0000-4000-8000-000000000004", None, None)]
+    MAIN = {HOSTED: _cc_page(), SETTINGS: _cc_settings(), LIST: _cc_list(JOBS)}
+    sent, asked, gated = [], [], []
+    web: dict = {}
+    refusing = {"on": False}
+
+    class Resp:
+        def __init__(self, code, text="", headers=None, url=""):
+            self.status_code, self.headers, self.url = code, dict(headers or {}), url
+            self.text, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
+
+        def json(self):
+            return json.loads(self.text)
+
+        def close(self):
+            pass
+
+    def get(url, **kw):
+        sent.append((url, kw))
+        v = web.get(url)
+        if isinstance(v, Exception):
+            raise v
+        if isinstance(v, Resp):
+            v.url = v.url or url
+            return v
+        return Resp(404, url=url) if v is None else Resp(200, v, {"content-type": "text/html"}, url)
+
+    def ask(url):
+        asked.append(url)
+        if refusing["on"]:
+            raise ats.RobotsRefused(f"robots.txt asks crawlers not to read {url}")
+
+    def serve(routes):
+        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        web.update(routes)
+
+    def read(routes, ref=SLUG):
+        serve(routes)
+        try:
+            return ats.plain_rows(ats.fetch_clearcompany(ref)), None
+        except Exception as exc:                            # noqa: BLE001 - said by the pin
+            return None, exc
+
+    def says(routes, ref=SLUG):
+        serve(routes)
+        return vb.board_says("clearcompany", ref)
+
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, dict(ats._HOST_NOT_BEFORE))
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+
+        # ---- the read: three requests, through the helpers ------------------------------
+        rows, exc = read(MAIN)
+        got = [(r["title"], r["location"], r["url"], r["posted"], r["mode"]) for r in rows or []]
+        if exc or got != WANT:
+            errors += fail(f"clearcompany: the site did not read as one row a posting (the title "
+                           f"stripped, the place from locations[], the hosted site's own ?jobId= "
+                           f"lower-cased, a date only where stated): {exc or got}")
+        else:
+            if [r["office_hint"] for r in rows] != [
+                    {"city": "Austin", "state": "TX", "country": "US"},
+                    {"city": None, "state": None, "country": "US"},
+                    {"city": "Erie", "state": "PA", "country": "US"}, None]:
+                errors += fail(f"clearcompany: the office is not the first place's city, state and "
+                               f"country (a nationwide place's country alone): "
+                               f"{[r['office_hint'] for r in rows]}")
+            if rows[0]["jd"] != "The Account Executive role.\nTravel to cities.":
+                errors += fail(f"clearcompany: the ad is not the list's own description: {rows[0]['jd']!r}")
+            if rows[3]["comp"] is not None:
+                errors += fail(f"clearcompany: pay was read from salaryRange fields nobody has "
+                               f"measured (the widget prints USD and CAD both as '$'): {rows[3]['comp']}")
+            if any("clearcompany.com/careers" in str(r) or "Somewhere" in str(r) for r in rows):
+                errors += fail("clearcompany: a row carries applyLink, jobPortalUrl or the server's "
+                               "mangled location string")
+        if [u for u, _ in sent] != [HOSTED, SETTINGS, LIST] or asked != [HOSTED, SETTINGS, LIST] \
+                or gated != [HOSTED, SETTINGS, LIST] \
+                or any((kw.get("headers") or {}).get("User-Agent") != ats.UA["User-Agent"]
+                       or kw.get("allow_redirects") is not False for _u, kw in sent):
+            errors += fail(f"clearcompany: one read asked {[u for u, _ in sent]} (robots.txt of {asked}, "
+                           f"the gate {len(gated)} times): it is the hosted page, the settings and the "
+                           f"list, robots.txt asked at each, at the gate, under the crawler's own name")
+        # (the reader's own rows, before plain_rows: its title already stripped)
+        if [r["title"] for r in ats.clearcompany_rows(JOBS, SLUG)][:2] != ["Account Executive",
+                                                                          "Territory Sales Manager"]:
+            errors += fail("clearcompany: the reader left the server's stray spaces on a title")
+        # the pay a row's own ad states comes through the repo's one text parser
+        rows, exc = read({**MAIN, LIST: _cc_list([_cc_job(5, "Account Executive", [_cc_where("Austin", "TX")],
+                                                          description="<p>Pay: $24-$25/hour</p>")])})
+        if exc or (rows[0]["comp"] or {}).get("source") != "text":
+            errors += fail(f"clearcompany: pay stated in the ad was not read by the text parser: "
+                           f"{exc or rows[0]['comp']}")
+
+        # ---- a place the board reads as it is; a way of working only as the posting says ---
+        # (blind review of the reader, 2026-11-24: a nationwide place was 'Remote (US)' and the
+        # row remote, though the employer's own field said On-Site; an ISO-2 country at the end
+        # of a place was read as a US state, and a Canadian ad's '$' as US dollars)
+        import roles
+        US = {"city": None, "state": None, "country": "US"}
+        PAY = "<p>The pay is $90,000 - $110,000 per year.</p>"
+        for locs, answers, want_loc, want_mode, want_hint, why in (
+                ([_cc_where(nationwide=True)], answered("On-Site"), "US", "onsite", US,
+                 "a nationwide place its own field calls On-Site"),
+                ([_cc_where(nationwide=True)], [], "US", None, US, "a nationwide place, no field"),
+                ([_cc_where(nationwide=True), _cc_where("Austin", "TX")], [], "US; Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a nationwide place and a city"),
+                ([_cc_where(sub="MN", statewide=True)], [], "Statewide (MN)", None,
+                 {"city": None, "state": "MN", "country": "US"}, "a statewide place"),
+                ([_cc_where("Erie", "PA"), _cc_where("Dayton", "OH"), _cc_where("Erie", "PA")], [],
+                 "Erie, PA; Dayton, OH", None, {"city": "Erie", "state": "PA", "country": "US"},
+                 "one place named twice"),
+                ([_cc_where("Toronto", "ON", "CA")], [], "Toronto", None,
+                 {"city": "Toronto", "state": None, "country": "CA"}, "a Canadian city"),
+                ([_cc_where("Chennai", "TN", "IN")], [], "Chennai", None,
+                 {"city": "Chennai", "state": None, "country": "IN"}, "a subdivision abroad that is a US code"),
+                ([_cc_where(nationwide=True, country="CA")], [], "", None,
+                 {"city": None, "state": None, "country": "CA"}, "a nationwide place abroad"),
+                ([_cc_where(sub="ON", country="CA", statewide=True)], [], "", None,
+                 {"city": None, "state": None, "country": "CA"}, "a statewide place abroad"),
+                ([_cc_where("Austin", "TX")], answered("Remote"), "Austin, TX", "remote",
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a city its own field calls Remote"),
+                ([_cc_where("Austin", "TX")], answered("Hybrid", name="Remote or Hybrid"), "Austin, TX",
+                 "hybrid", {"city": "Austin", "state": "TX", "country": "US"}, "the question asked with 'or'"),
+                ([_cc_where("Austin", "TX")], answered("Remote", name="Work Location"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a field that is not the question"),
+                ([_cc_where("Austin", "TX")], answered("Remote", name="Remote"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "a field named by one mode alone"),
+                ([_cc_where("Austin", "TX")], answered("Remote", name="On-Site/Hybrid"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "an answer the field does not offer"),
+                ([_cc_where("Austin", "TX")], answered("Remote") + answered("On-Site"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "two answers that differ"),
+                ([_cc_where("Austin", "TX")], answered("Remote (US)"), "Austin, TX", None,
+                 {"city": "Austin", "state": "TX", "country": "US"}, "an answer that is no work_mode word")):
+            row = ats.plain_rows(ats.clearcompany_rows(
+                [_cc_job(9, "Role", locs, customFieldAnswers=answers, description=PAY)], SLUG))[0]
+            if (row["location"], row["mode"], row["office_hint"]) != (want_loc, want_mode, want_hint):
+                errors += fail(f"clearcompany: {why} read as {row['location']!r}, mode {row['mode']!r}, "
+                               f"office {row['office_hint']}; wanted {want_loc!r}, {want_mode!r}, {want_hint}")
+                continue
+            geo = roles.geography(row["location"], "Role")
+            abroad = want_hint["country"] != "US"
+            # the board reads the place for no way of working, and an abroad row as abroad:
+            # no US state in its office, not in the US, a bare '$' no pay
+            if geo["work_mode"] != "not stated" \
+                    or (abroad and ((geo["office"] or {}).get("state")
+                                    or not ats._abroad(row) or row["comp"] is not None)) \
+                    or (not abroad and ((row["comp"] or {}).get("currency") != "USD" or ats._abroad(row))):
+                errors += fail(f"clearcompany: {why} ({row['location']!r}) reads on the board as mode "
+                               f"{geo['work_mode']!r}, office {geo['office']}, abroad {ats._abroad(row)}, "
+                               f"pay {row['comp']}")
+
+        # ---- whole or not at all ------------------------------------------------------------
+        P1 = LIST.replace("pageIndex=0", "pageIndex=1")
+        OTHER_SITE = "22222222-3333-4444-8555-666666666666"
+        OTHER_SETTINGS, OTHER_LIST = SETTINGS.replace(_ID_CC_SITE, OTHER_SITE), LIST.replace(_ID_CC_SITE, OTHER_SITE)
+        two = [_cc_job(i, f"Role {i}", [_cc_where("Austin", "TX")]) for i in range(1, 5)]
+        # (fewer than the count: the next page at the same size; the order is not stable, so
+        # one row comes again, and the union is exactly the count)
+        rows, exc = read({**MAIN, LIST: _cc_list(two[:2], total=1003),
+                          P1: _cc_list(two[1:4] + [_cc_job(i, f"Role {i}", []) for i in range(5, 1004)],
+                                       total=1003, index=1)})
+        if exc or len(rows or []) != 1003 or P1 not in [u for u, _ in sent]:
+            errors += fail(f"clearcompany: a first page short of its count was not paged at the same "
+                           f"size and made whole: {exc or len(rows or [])}")
+        for routes, why in (
+                ({**MAIN, LIST: _cc_list(two[:2], total=1003), P1: _cc_list(two[1:3], total=1003, index=1)},
+                 "pages that do not make up the count"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=1003),
+                  P1: _cc_list(two[2:] + [_cc_job(i, f"Role {i}", []) for i in range(5, 1004)], total=1004,
+                               index=1)},
+                 "a count that moved between two pages, the rows making up the first"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=4)}, "rows short of a count one page holds"),
+                ({**MAIN, LIST: _cc_list(two, total=3)}, "more rows than the count"),
+                ({**MAIN, LIST: _cc_list(two[:1] + two[:1], total=2)}, "one row twice, counted as two"),
+                ({**MAIN, LIST: _cc_list([])}, "an empty list (never measured: no zero)"),
+                ({**MAIN, LIST: _cc_list([_cc_job(1, "", [])])}, "a row with no title"),
+                ({**MAIN, LIST: _cc_list([_cc_job(1, "AE", [], id="7")])}, "a row whose id is not the site's"),
+                ({**MAIN, LIST: json.dumps({"jobs": []})}, "a list in another shape"),
+                ({**MAIN, LIST: "<html>"}, "an answer that is not JSON"),
+                ({**MAIN, LIST: _cc_list(two, index=3)}, "another page than the one asked"),
+                ({HOSTED: _cc_page(), SETTINGS: _cc_settings()}, "a site id that is gone (404)"),
+                ({HOSTED: _cc_page(), LIST: _cc_list(JOBS)}, "settings that are gone (404)"),
+                ({SETTINGS: _cc_settings(), LIST: _cc_list(JOBS)}, "a slug that is gone (404)"),
+                ({**MAIN, HOSTED: _cc_page(script="")}, "a hosted page with no site id (offline)"),
+                ({**MAIN, HOSTED: _cc_page(script='<!-- <script src="https://careers-content.clearcompany.'
+                                           f'com/js/v1/career-site.js" data-site-id="{_ID_CC_SITE}">'
+                                           '</script> -->')}, "a site id inside a comment"),
+                ({**MAIN, HOSTED: _cc_page(script='<script src="https://elsewhere.example/js/v1/career-site.js'
+                                           f'" data-site-id="{_ID_CC_SITE}"></script>')},
+                 "a site id on another host's script"),
+                ({**MAIN, HOSTED: _cc_page() + _cc_page(site=OTHER_SITE),
+                  OTHER_SETTINGS: _cc_settings(), OTHER_LIST: _cc_list(JOBS)},
+                 "a page naming two sites, either of which would read"),
+                ({**MAIN, HOSTED: Resp(503)}, "a server error"),
+                ({**MAIN, HOSTED: _cc_page() + "<!--" + " " * ats.CLEARCOMPANY_PAGE_MAX + "-->"},
+                 "a page past the cap")):
+            rows, exc = read(routes)
+            if not isinstance(exc, ats.AtsError) or rows is not None:
+                errors += fail(f"clearcompany: {why} was read as {len(rows or [])} row(s), not refused "
+                               f"as unreadable: {exc!r}")
+        # (and refused in true words, which the owner's queue shows: one answer is no unstable
+        # order, and more rows than counted is no partial board - blind review, 2026-11-24)
+        for routes, words, never, why in (
+                ({**MAIN, LIST: _cc_list(two, total=3)}, "more than its own count", "not stable",
+                 "more rows than the count"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=4)}, "fewer than its own count where one page "
+                 "holds them all", "not stable", "fewer rows than the count, on one page"),
+                ({**MAIN, LIST: _cc_list(two[:2], total=1003), P1: _cc_list(two[1:3], total=1003, index=1)},
+                 "its 2 pages of 1000 gave 3 distinct ones between them: the order is not stable",
+                 "one answer", "pages that fall short of the count")):
+            rows, exc = read(routes)
+            if words not in str(exc) or never in str(exc):
+                errors += fail(f"clearcompany: {why} was refused in other words: {exc}")
+        rows, exc = read({**MAIN, LIST: Resp(429, headers={"Retry-After": "0"})})
+        if not isinstance(exc, ats.RateLimited):
+            errors += fail(f"clearcompany: a 429 was not raised as RateLimited: {exc!r}")
+        ats._HOST_NOT_BEFORE.pop("careers-api.clearcompany.com", None)
+        # (a site id written ?siteId= in the bootstrap's own address reads the same)
+        rows, exc = read({**MAIN, HOSTED: _cc_page(script='<script src="https://careers-content.clearcompany'
+                                                   f'.com/js/v1/career-site.js?siteId={_ID_CC_SITE.upper()}">'
+                                                   '</script>')})
+        if exc or len(rows or []) != 4:
+            errors += fail(f"clearcompany: a site id in the bootstrap's ?siteId= was not read: {exc}")
+
+        # ---- every hop held to the site's own addresses, refused before it is asked --------
+        TENANT = "https://acmegov.clearcompany.com/careers/jobs"
+        for frm, to, why in ((HOSTED, "https://apply.clearcompany.com/othergov", "another employer's site"),
+                             (HOSTED, "https://apply.clearcompany.com/internal/x", "the closed /internal/"),
+                             (HOSTED, TENANT, "the tenant host robots.txt closes"),
+                             (HOSTED, "http://apply.clearcompany.com/acmegov", "its own site over http"),
+                             (HOSTED, "https://www.clearcompany.example/acmegov", "another host"),
+                             (LIST, LIST.replace("pageSize=1000", "pageSize=10"), "another list address"),
+                             (SETTINGS, "https://careers-api.clearcompany.com/v1/insights/team/x",
+                              "the API's hiring team")):
+            rows, exc = read({**MAIN, frm: Resp(302, headers={"Location": to}), to: "{}"})
+            if rows is not None or not isinstance(exc, ats.AtsError) \
+                    or any(u == to for u, _ in sent) or to in asked:
+                errors += fail(f"clearcompany: a redirect to {why} was asked ({[u for u, _ in sent]}, "
+                               f"robots.txt of {asked}) or read: {rows or exc!r}")
+        LANDS = "https://apply.clearcompany.com/AcmeGov?noheader=False"
+        rows, exc = read({**MAIN, HOSTED: Resp(302, headers={"Location": LANDS}), LANDS: _cc_page()})
+        if exc or len(rows or []) != 4 or LANDS not in asked:
+            errors += fail(f"clearcompany: a hosted page sent on to its own slug was not read there, "
+                           f"robots.txt asked at the hop: {exc or rows}")
+        refusing["on"] = True
+        rows, exc = read(MAIN)
+        refusing["on"] = False
+        if not isinstance(exc, ats.RobotsRefused) or sent:
+            errors += fail(f"clearcompany: a site robots.txt closes was asked ({sent}) or read: {rows or exc!r}")
+        for ref in ("internal", "Internal", "", None, 7, ["acmegov"], HOSTED, "acme/gov", "acme gov",
+                    "-acme", "acmegov?x=1", "a" * 90):
+            rows, exc = read(MAIN, ref=ref)
+            if not isinstance(exc, ats.AtsError) or sent:
+                errors += fail(f"clearcompany: {ref!r} was taken as a board's ref ({sent}): {rows or exc!r}")
+        if not ats.never_cached(LIST) or not ats.never_cached(SETTINGS) or ats.never_cached(HOSTED):
+            errors += fail("clearcompany: the career-site API (an e-mail-to-apply posting's applyLink is "
+                           "an e-mail address; the host serves a hiring team) is not kept out of the "
+                           "HTTP cache, or the hosted page is")
+
+        # ---- the probe: brandFullName where the hosted page's title agrees ----------------
+        said = says(MAIN)
+        if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"] or said["n"] != 4 \
+                or said["site"] != "https://www.acmegov.example/" or said["failed"] \
+                or said["hosts"] != {"apply.clearcompany.com"} or [u for u, _ in sent] != [HOSTED, SETTINGS, LIST]:
+            errors += fail(f"clearcompany probe: the site's name, where its settings and its title agree, "
+                           f"was not stated with its home link in three requests: {said}")
+        if not vb.proven({"name": "Acme Gov Systems", "website": "https://acmegov.example"}, said)["ok"] \
+                or vb.proven({"name": "Acme Gov Systems", "website": "https://acme-namesake.example"},
+                             said)["ok"] or vb.proven({"name": "Some Label"}, said)["ok"]:
+            errors += fail("clearcompany probe: the stated name was not proven for its company on its own "
+                           "website, or passed for a namesake's website or settings.name's label")
+        for routes, why in (
+                ({**MAIN, HOSTED: _cc_page(brand="Acme Gov Holdings LLC")}, "a title naming another name"),
+                ({**MAIN, HOSTED: _cc_page(title="Careers")}, "a title that names nobody"),
+                ({**MAIN, SETTINGS: _cc_settings(brand="")}, "settings with no brandFullName"),
+                ({**MAIN, SETTINGS: _cc_settings(brand="", name="Public - Acme Gov Systems, Inc. - "
+                                                              "Career Site")},
+                 "settings whose name alone carries the company")):
+            said = says(routes)
+            if said["stated"] or said["names"] or vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+                errors += fail(f"clearcompany probe: {why} stated {said['names']} or was proven")
+        # (a <title> a comment holds is not the page's: the real one after it is read)
+        said = says({**MAIN, HOSTED: _cc_page(head="<!-- <title>Old Name Co &#x2013; Careers</title> -->")})
+        if said["names"] != ["Acme Gov Systems, Inc."] or not said["stated"]:
+            errors += fail(f"clearcompany probe: a commented-out <title> before the page's own was read "
+                           f"as its name: {said['names']} ({said['how']})")
+        # THE FOOTER'S LINK AS THE SETTINGS WROTE IT (blind review of the probe, 2026-11-24):
+        # '//www.x/' and 'www.x' name a website, which proven() holds to theirs - dropped, a
+        # namesake passed on its name alone; one that names no host (javascript:, a path on the
+        # hosted site, an e-mail address) is none, and the name alone is judged
+        for home_link, want_site, why in (
+                ("//www.acme-namesake.example/", "https://www.acme-namesake.example/", "protocol-relative"),
+                ("www.acme-namesake.example", "www.acme-namesake.example", "with no scheme"),
+                ("javascript:void(0)", None, "a script"),
+                ("/about", None, "a path on the hosted site"),
+                ("mailto:jobs" + "@" + "acme-namesake.example", None, "an e-mail address")):
+            said = says({**MAIN, HOSTED: _cc_page(home=home_link)})
+            judged = vb.proven({"name": "Acme Gov Systems", "website": "https://acmegov.example"}, said)["ok"]
+            if said["site"] != want_site or judged != (want_site is None):
+                errors += fail(f"clearcompany probe: a footer link {why} ({home_link!r}) gave the site "
+                               f"{said['site']!r} and proven {judged} for a company at acmegov.example")
+        # (several brands: said, never proven - not even where each is a spelling of theirs)
+        for brands in (["Acme Gov Systems, Inc.", "Beta Fleet Co"], ["Acme Gov Systems, Inc.", "Acme Gov Systems"]):
+            said = says({**MAIN, SETTINGS: _cc_settings(brands=brands)})
+            if not set(brands) <= set(said["names"]) or said["stated"] \
+                    or "several companies" not in said["how"] \
+                    or vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+                errors += fail(f"clearcompany probe: a site whose brand filter lists {brands} did not say it "
+                               f"names several companies, or was proven for one of them: {said}")
+        said = says({**MAIN, SETTINGS: _cc_settings(brands=["Acme Gov Systems, Inc."])})
+        if said["names"] != ["Acme Gov Systems, Inc."] or not vb.proven({"name": "Acme Gov Systems"}, said)["ok"]:
+            errors += fail(f"clearcompany probe: a brand filter listing the site's own brand alone cost "
+                           f"it its name: {said}")
+        for routes, kind_, why in (({SETTINGS: _cc_settings(), LIST: _cc_list(JOBS)}, "gone", "a gone slug"),
+                                   ({**MAIN, LIST: _cc_list([])}, "unreadable", "an empty list")):
+            said = says(routes)
+            if said["failed"] != kind_ or said["names"] or said["stated"]:
+                errors += fail(f"clearcompany probe: {why} was not '{kind_}', naming nobody: {said}")
+
+        # ---- the public link, the rank ------------------------------------------------------
+        for ref, want in ((SLUG, HOSTED), ("internal", "https://acme.example"),
+                          (TENANT, "https://acme.example"), (None, "https://acme.example")):
+            if bb.board_url({"ats": {"type": "clearcompany", "ref": ref},
+                             "website": "https://acme.example"}) != want:
+                errors += fail(f"clearcompany: the public link for {ref!r} is not {want} (the hosted site, "
+                               f"never the tenant host; else their website)")
+        import board_proposals as bp
+        if bp.board_key("clearcompany", "AcmeGov") != bp.board_key("clearcompany", "acmegov") \
+                or bp.board_key("clearcompany", "acmegov") == bp.board_key("clearcompany", "acmegov2"):
+            errors += fail("board_key: one ClearCompany slug in two cases is two boards, or two slugs one")
+        if bb.ats_tier("clearcompany") != "none":
+            errors += fail("clearcompany: ranks other than 'none', which Job Hunter's parsers do not say")
+    finally:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held[:4]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[4])
+
+    # ---- a posting moved from the careers page to this reader keeps its day ----------------
+    JID = "aaaaaaaa-0000-4000-8000-000000000001"
+    old = {"company_id": "acme-gov", "title": "Account Executive", "location": "",
+           "url": f"{HOSTED}?noheader=False&jobId={JID.upper()}", "first_seen": "2026-11-02"}
+    # (its id as the careers page's reader wrote it: the address whole, no place)
+    old["id"] = "acme-gov::Account Executive::" + hashlib.blake2s(
+        f"{old['url']}\n".encode("utf-8"), digest_size=4).hexdigest()
+    old["opening_id"] = bb.opening_id("acme-gov", old["title"])
+    new_url = ats.clearcompany_posting_url(SLUG, JID)
+
+    def fresh(cid="acme-gov", url=new_url, loc="Austin, TX, US", title="Account Executive"):
+        return {"id": bb.posting_id(cid, title, url, loc), "opening_id": bb.opening_id(cid, title),
+                "company_id": cid, "title": title, "url": url, "location": loc,
+                "first_seen": "2026-11-24", "source": "ats"}
+    same, other_co, other_job = fresh(), fresh(cid="beta-gov"), fresh(
+        url=ats.clearcompany_posting_url(SLUG, "aaaaaaaa-0000-4000-8000-000000000009"))
+    bb.carry_first_seen([same, other_co, other_job], [old], {})
+    if same["first_seen"] != "2026-11-02" or same["opening_id"] != old["opening_id"]:
+        errors += fail(f"clearcompany: a posting the careers page carried (?noheader=False&jobId=, no "
+                       f"place) re-read by the reader (?jobId=, its place) was dated "
+                       f"{same['first_seen']}, or its opening id moved: Tyler's 129 postings were all "
+                       f"re-dated the night it moved off its careers page")
+    if other_co["first_seen"] != "2026-11-24" or other_job["first_seen"] != "2026-11-24":
+        errors += fail("clearcompany: another company's posting, or another job of the same site, took "
+                       "a date that was never held for it")
+    # ...and a row the careers page carries keeps its id until the company moves to the reader:
+    # its address hashed as written, as on every board (blind review, 2026-11-24: keyed on the
+    # posting, Rehrig's eight rows took new ids at the first build, before anything was wired,
+    # and moved again when the reader gave them a place; saved roles key on the id)
+    if bb.posting_id("acme-gov", "Account Executive", old["url"], old["location"]) != old["id"]:
+        errors += fail("clearcompany: a posting the careers page carries took a new id under the "
+                       "careers page's own reader (its address is hashed as written until it moves)")
+    # ...and so does one only an EARLIER NIGHT's snapshot holds (blind verification, 2026-11-25).
+    # A snapshot keeps the id alone, hashed from the address as that night's reader wrote it, and
+    # Rehrig's careers page showed 8-10 of its 115 a night: 30 of the 115 are in the snapshots under
+    # their html ids, 8 were on the board of 11-24, and 22 were dated the night of the move. Looked
+    # up under every way the posting has been written, with no place or its own, by the company
+    # and the address whatever its title read then; another job or another company is not it, a
+    # snapshot never moves a date later, and it moves one the previous board held earlier.
+
+    def snap(cid, title, url, loc=""):
+        return f"{cid}::{title}::" + hashlib.blake2s(f"{url}\n{loc}".encode("utf-8"),
+                                                     digest_size=4).hexdigest()
+    jl, mixed_url = JID.lower(), ats.clearcompany_posting_url("AcmeGov", JID)
+    widget = f"{HOSTED}?noheader=False&jobId={jl}"
+    for url, title, at, loc, night, want, why in (
+            (new_url, "Account Executive", widget, "", "2026-11-02", "2026-11-02",
+             "the careers page's widget, ?noheader=False&jobId=<id> with no place (Rehrig's 42)"),
+            (new_url, "Account Executive", f"{HOSTED}?noheader=True&jobId={jl}", "", "2026-11-02",
+             "2026-11-02", "the framed widget, ?noheader=True&jobId=<id>"),
+            (new_url, "Account Executive", f"{HOSTED}?noheader=False&jobId={jl.upper()}", "", "2026-11-02",
+             "2026-11-02", "the widget with the id upper-cased"),
+            (mixed_url, "Account Executive", widget, "", "2026-11-02", "2026-11-02",
+             "the widget with the slug lower-cased (the ref on file 'AcmeGov')"),
+            (mixed_url, "Account Executive", "https://apply.clearcompany.com/AcmeGov?noheader=False&jobId="
+             + jl, "", "2026-11-02", "2026-11-02", "the widget with the slug as the ref writes it"),
+            (new_url, "Account Executive", widget, "Austin, TX, US", "2026-11-02", "2026-11-02",
+             "the widget's address with the reader's place"),
+            (new_url, "Account Executive", new_url, "", "2026-11-02", "2026-11-02",
+             "the reader's own address with no place"),
+            (new_url, "Account Exec - Public Sector", widget, "", "2026-11-02", "2026-11-02",
+             "the same job under the title it had then"),
+            (new_url, "Account Executive", widget, "", "2026-11-30", "2026-11-24",
+             "a night after its own day (never moved later)"),
+            (new_url, "Account Executive", f"{HOSTED}?noheader=False&jobId=aaaaaaaa-0000-4000-8000-000000000009",
+             "", "2026-11-02", "2026-11-24", "another job of the same site"),
+    ):
+        p = fresh(url=url)
+        bb.carry_first_seen([p], [], {snap("acme-gov", title, at, loc): night})
+        if p["first_seen"] != want or p["opening_id"] != bb.opening_id("acme-gov", "Account Executive"):
+            errors += fail(f"clearcompany: a posting an earlier night's snapshot held as {why} was dated "
+                           f"{p['first_seen']}, not {want} (Rehrig: 22 of its 115 re-dated the night it "
+                           f"moved off its careers page)")
+    p = fresh()
+    bb.carry_first_seen([p], [], {snap("beta-gov", "Account Executive", widget): "2026-11-02"})
+    if p["first_seen"] != "2026-11-24":
+        errors += fail("clearcompany: a posting took the night another company's snapshot held for the "
+                       "same address")
+    for nights_ in ({fresh()["id"]: "2026-11-02", snap("acme-gov", "Account Executive", widget): "2026-11-10"},
+                    {snap("acme-gov", "Account Executive", widget): "2026-11-02",
+                     snap("acme-gov", "Account Executive", new_url): "2026-11-10"}):
+        p = fresh()
+        bb.carry_first_seen([p], [], nights_)
+        if p["first_seen"] != "2026-11-02":
+            errors += fail(f"clearcompany: snapshots held the posting on 11-02 and 11-10 and it was dated "
+                           f"{p['first_seen']}, not the earliest")
+    for held, night, want in (("2026-11-10", "2026-11-02", "2026-11-02"),
+                              ("2026-11-02", "2026-11-10", "2026-11-02"), ("2026-11-02", None, "2026-11-02")):
+        p = fresh()
+        bb.carry_first_seen([p], [dict(old, first_seen=held)],
+                            *([{snap("acme-gov", "Account Executive", widget): night}] if night else []))
+        if p["first_seen"] != want:
+            errors += fail(f"clearcompany: the previous board held {held} and a snapshot {night}, and the "
+                           f"posting was dated {p['first_seen']}, not the earliest")
+
+    # ---- the finder: the forms a company's own page names the board in --------------------
+    here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
+    WIDGET = ('<script src="https://careers-content.clearcompany.com/js/v1/career-site.js?hosted=true" '
+              f'data-site-id="{_ID_CC_SITE}"></script>')
+    for markup, want, rest_want, why in (
+            ('<a class="btn" href="https://apply.clearcompany.com/acmegov?noheader=False">Explore</a>',
+             [("clearcompany", "acmegov", "href")], [], "a link to the hosted site"),
+            (f'<a href="https://apply.clearcompany.com/AcmeGov?jobId={JID}">AE</a>'
+             '<a href="https://apply.clearcompany.com/acmegov/redirect?x=1">Jobs</a>',
+             [("clearcompany", "AcmeGov", "href")], [], "a posting and the redirect, one board"),
+            ('<a href="https://apply.clearcompany.com/internal/x">x</a>', [], ["clearcompany-other"],
+             "the closed /internal/"),
+            # AN ACCOUNT'S OWN HOST is a tenant form, a doubt, beside the board or not, framed or
+            # linked; ClearCompany's own hosts name nobody (blind review, 2026-11-24)
+            ('<a href="https://acmegov.clearcompany.com/careers/jobs">Jobs</a>', [], ["clearcompany-tenant"],
+             "the tenant host"),
+            ('<a href="https://apply.clearcompany.com/acmegov">Jobs</a><a href="https://betagov.clearcompany.'
+             'com/careers/jobs">More jobs</a>', [("clearcompany", "acmegov", "href")], ["clearcompany-tenant"],
+             "another account's host beside the board"),
+            ('<a href="https://apply.clearcompany.com/acmegov">Jobs</a><iframe src="https://betagov.'
+             'clearcompany.com/careers/jobs"></iframe>', [("clearcompany", "acmegov", "href")],
+             ["clearcompany-tenant"], "another account's host framed beside the board"),
+            ('<a href="https://reapply.clearcompany.com/careers/jobs">Jobs</a>', [], ["clearcompany-tenant"],
+             "a tenant whose label ends in 'apply'"),
+            ('<a href="https://www.clearcompany.com">Powered by ClearCompany</a>', [], ["clearcompany-other"],
+             "ClearCompany's own site"),
+            # ONE BRAND'S VIEW OF A SITE (?brand=) is no board here, read whole under their name: a
+            # tenant form, a doubt - beside the site's own address too (blind review, 2026-11-24)
+            ('<a href="https://apply.clearcompany.com/acmegroup?brand=B-ACME">Jobs</a>', [],
+             ["clearcompany-brand"], "one brand's view of a site"),
+            ('<a href="https://apply.clearcompany.com/acmegroup/redirect?search=true&amp;brand=B-ACME">J</a>',
+             [], ["clearcompany-brand"], "one brand's view, its redirect, the key written after another"),
+            ('<a href="https://apply.clearcompany.com/acmegroup">Jobs</a><a href="https://apply.clearcompany.'
+             'com/acmegroup?Brand=B-ACME">Ours</a>', [("clearcompany", "acmegroup", "href")],
+             ["clearcompany-brand"], "the site and one brand's view of it"),
+            ('<a href="https://apply.clearcompany.com/acmegroup?branding=x&rebrand=y">Jobs</a>',
+             [("clearcompany", "acmegroup", "href")], [], "a query whose keys only contain the word"),
+            ('<img src="https://cc-client-cdn.clearcompany.com/x/Logo/y">', [], ["clearcompany-other"],
+             "a logo"),
+            (WIDGET, [], ["clearcompany-site"], "the widget naming its site by id alone"),
+            ('<iframe src="//acmegov.hrmdirect.com/employment/job-openings.php?search=true"></iframe>',
+             [], ["clearcompany-legacy"], "a legacy HRM Direct frame, before it is asked"),
+            ('<a href="https://www.hrmdirect.com/">HRM Direct</a>', [], ["hrmdirect"], "HRM Direct's own site"),
+            ('<a href="https://apply.clearcompany.com/acmegov">Jobs</a><script src="https://careers-content.'
+             'clearcompany.com/js/dynamic-embed/x.js"></script>', [("clearcompany", "acmegov", "href")], [],
+             "the board beside ClearCompany's own furniture")):
+        found, rest = fsb.sightings(markup, here, home)
+        got = sorted((f["type"], f["ref"], f["element"]) for f in found)
+        if got != sorted(want) or sorted(r["vendor"] for r in rest) != sorted(rest_want):
+            errors += fail(f"finder, {why}: boards {got}, forms {[r['vendor'] for r in rest]}; wanted "
+                           f"{sorted(want)} and {rest_want}")
+    dj = (ROOT / "scripts" / "discover_js.py").read_text()
+    if '("clearcompany", r"apply\\.clearcompany\\.com/' not in dj \
+            or '("clearcompany", r"([a-z0-9-]+)\\.clearcompany' in dj:
+        errors += fail("discover_js labels a ClearCompany board by its tenant label, not the hosted "
+                       "site's slug the reader takes")
+    if any(fsb.TENANT_FORMS.get(f"clearcompany-{v}") != "clearcompany"
+           for v in ("site", "legacy", "brand", "tenant")) \
+            or {f"clearcompany-{v}" for v in ("site", "legacy", "brand", "tenant")} & set(fsb._NO_BOARD_IN_IT) \
+            or fsb._NO_BOARD_IN_IT.get("clearcompany-other") != "clearcompany" \
+            or {v for v, _h, _rx in fsb.ELSEWHERE} & {"clearcompany"}:
+        errors += fail("finder: ClearCompany's forms are not filed as its own (a site by id, a legacy "
+                       "board, one brand's view and an account's host as tenant forms, the rest naming "
+                       "no board), or 'clearcompany' is still a platform nothing reads")
+    # A LEGACY HRM DIRECT FRAME IS ASKED WHERE CLEARCOMPANY SENDS IT: robots.txt at the hop,
+    # the hosted site its redirect names never asked, and the slug it names the board, from
+    # their own page, with ClearCompany's furniture beside the frame dropped. Any other answer
+    # keeps it a doubt, with a note saying what came back, and `on_the_day` where that was a
+    # failure of the day, which the door skips and asks again (blind review, 2026-11-24)
+    LEG = "https://acmegov.hrmdirect.com/employment/job-openings.php?search=true&nohd=&dept=-1"
+    LANDS_AT = "https://apply.clearcompany.com/acmegov/redirect?search=true&nohd=&dept=-1"
+    frame = ('<iframe name="Career Site iFrame" src="//acmegov.hrmdirect.com/employment/job-openings.php?'
+             'search=true&amp;nohd=&amp;dept=-1"></iframe><script src="https://careers-content.clearcompany.'
+             'com/js/dynamic-embed/dynamic-iframe-embed-js.php"></script>')
+    asked_robots = []
+    real_verdict = robots.verdict
+
+    def legacy_look(web_, site=home, closed=(), down=False, on_file=None):
+        with _SiteBoardsWeb(fsb, web_, closed=closed) as w:
+            verdict = robots.verdict
+
+            def noted(url, fetch=None, _v=verdict):
+                asked_robots.append(url)
+                return _v(url, fetch)
+
+            def dropped(url, _w=w):
+                if url == LEG:
+                    _w.reads.append(url)
+                    raise ConnectionError("the network dropped it")
+                return _SiteBoardsWeb._request(_w, url)
+            robots.verdict = noted
+            if down:
+                fsb._request = dropped
+            asked_robots.clear()
+            try:
+                rec = asyncio.run(fsb.look(_site_boards_co("acme-gov", "Acme Gov", site), "static",
+                                           fsb.read_plain, on_file=on_file))
+            finally:
+                robots.verdict = verdict
+        robots.verdict = real_verdict
+        return rec, w
+    for to, want, note, day, why in (
+            (LANDS_AT, [("clearcompany", "acmegov", "iframe")], None, False, "lands on the hosted site"),
+            (None, [], "answered HTTP 200", False, "answers in place"),
+            ("https://www.elsewhere.example/acmegov", [], "leads off to", False, "leads off to another host"),
+            (LANDS_AT + "&brand=B-ACME", [], "one brand's view", False, "lands on one brand's view"),
+            ((503, "busy"), [], "HTTP 503", True, "answers 503"),
+            ((429, "slow down"), [], "HTTP 429", True, "answers 429"),
+            ("down", [], "network error", True, "is lost on the network"),
+            ("closed", [], "robots.txt asks crawlers not to read", False, "is closed by robots.txt")):
+        web_ = {home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+                here: _site_boards_page("Careers at Acme Gov", frame),
+                LEG: (to if isinstance(to, tuple) else (302, to) if to not in (None, "down", "closed")
+                      else _site_boards_page("Openings", "x"))}
+        rec, w = legacy_look(web_, closed=("acmegov.hrmdirect.com",) if to == "closed" else (),
+                             down=to == "down")
+        got = sorted((c["type"], c["ref"], c["element"]) for c in rec["candidates"])
+        vendors = sorted(e["vendor"] for e in rec["elsewhere"])
+        kept = [e for e in rec["elsewhere"] if e["vendor"] == "clearcompany-legacy"]
+        if got != want or w.reads.count(LEG) != (0 if to == "closed" else 1) or LEG not in asked_robots \
+                or any("apply.clearcompany.com" in u or "elsewhere.example" in u for u in w.reads + asked_robots) \
+                or (want and vendors) or (not want and len(kept) != 1) \
+                or any(k.startswith("_") for e in rec["elsewhere"] for k in e) \
+                or (kept and (note not in kept[0].get("note", "") or bool(kept[0].get("on_the_day")) != day)):
+            errors += fail(f"finder: a legacy HRM Direct frame that {why} gave boards {got} and forms "
+                           f"{[(e['vendor'], e.get('note'), e.get('on_the_day')) for e in rec['elsewhere']]} "
+                           f"(asked {w.reads}, robots.txt of {asked_robots}): wanted {want}, a note saying "
+                           f"{note!r}, on the day {day}, the frame asked once with robots.txt, never the "
+                           f"hosted site or another host")
+    # ONE ADDRESS WRITTEN TWO WAYS is asked once (the frame's '//...&amp;' and a link's 'https://...&')
+    both = frame + ('<a href="https://acmegov.hrmdirect.com/employment/job-openings.php?search=true&nohd=&'
+                    'dept=-1">All openings</a>')
+    rec, w = legacy_look({home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+                          here: _site_boards_page("Careers at Acme Gov", both), LEG: (302, LANDS_AT)})
+    if w.reads.count(LEG) != 1 or {c["ref"] for c in rec["candidates"]} != {"acmegov"}:
+        errors += fail(f"finder: one legacy address written two ways on a page was asked "
+                       f"{w.reads.count(LEG)} times (a company's asks are {fsb.CC_LEGACY_ASKED}), or its "
+                       f"board was not found: {rec['candidates']}")
+    # A LEGACY FRAME ON A PAGE THAT IS NOT THEIRS ALONE is never asked: another record on file
+    # gives the same website, so the page is read as theirs and cannot say whose a board is
+    shared = fsb.site_index([_site_boards_co("acme-gov", "Acme Gov", home),
+                             _site_boards_co("acme-gov-parks", "Acme Gov Parks", home)])
+    rec, w = legacy_look({home: _site_boards_page("Acme Gov", '<a href="/careers">Careers</a>'),
+                          here: _site_boards_page("Careers at Acme Gov", frame), LEG: (302, LANDS_AT)},
+                         on_file=shared)
+    if LEG in w.reads or LEG in asked_robots or rec["candidates"] or here not in w.reads \
+            or [e.get("note") for e in rec["elsewhere"] if e["vendor"] == "clearcompany-legacy"] != [
+                "not asked: seen on a page that is not theirs alone"]:
+        errors += fail(f"finder: a legacy frame on a site another record shares was asked ({w.reads}) or "
+                       f"made a board of theirs: {rec['candidates']}, {rec['elsewhere']}")
+
+    # ---- the door: wired on both checks, held when the site names somebody else --------
+    import add_company
+    B_HOSTED = "https://apply.clearcompany.com/betagov"
+    B_SITE = "33333333-4444-4555-8666-777777777777"
+    B_SETTINGS = f"https://careers-api.clearcompany.com/v1/settings/{B_SITE}"
+    B_LIST = f"https://careers-api.clearcompany.com/v1/{B_SITE}?pageIndex=0&pageSize=1000&source=CJB-0"
+    web_ = {**MAIN, HOSTED: _cc_page(home=_wb_site("acme-gov") + "/"),
+            B_HOSTED: _cc_page(brand="Gamma Holdings LLC", site=B_SITE, slug="betagov",
+                                       home="https://www.gammaholdings.example/"),
+            B_SETTINGS: _cc_settings(brand="Gamma Holdings LLC"), B_LIST: _cc_list(JOBS[:1])}
+    real = (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch, ats._get,
+            ats._page)
+    held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, dict(ats._HOST_NOT_BEFORE))
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, ask, gated.append, None
+        serve(web_)
+        with _WiringBox([_wb_co("acme-gov", "Acme Gov Systems"), _wb_co("beta-gov", "Beta Gov")],
+                        {}) as box, \
+                contextlib.redirect_stderr(io.StringIO()):
+            (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+             ats._get, ats._page) = real
+            _code, _text, _wl, rows_ = box.plan(_wb_results({
+                "acme-gov": _wb_one("acme-gov", "clearcompany", SLUG),
+                "beta-gov": _wb_one("beta-gov", "clearcompany", "betagov")}))
+        a_row, b_row = ((rows_ or {}).get(c) or {} for c in ("acme-gov", "beta-gov"))
+        if a_row.get("action") != "WIRE" or (a_row.get("type"), a_row.get("ref")) != ("clearcompany", SLUG):
+            errors += fail(f"clearcompany door: a site their own page links, naming them, was not wired: "
+                           f"{a_row.get('action')} ({_wb_words(a_row)[:240]!r})")
+        if b_row.get("action") != "HOLD" or "Gamma Holdings" not in _wb_words(b_row):
+            errors += fail(f"clearcompany door: a site naming somebody else was not held for the owner "
+                           f"with both names: {b_row.get('action')} ({_wb_words(b_row)[:240]!r})")
+        asks = sorted(u for u, _ in sent)
+        if asks != sorted([HOSTED, SETTINGS, LIST, B_HOSTED, B_SETTINGS, B_LIST]):
+            errors += fail(f"clearcompany door: the plan asked {asks}, not each site's three addresses once "
+                           f"for the read and the probe together")
+
+        # WHAT ELSE THEIR SITE SAYS HOLDS IT, OR SKIPS IT, beside a site their page links and
+        # that names them (blind review, 2026-11-24): one brand's view of a site, another
+        # account's host, a legacy HRM Direct board not followed - said as what each is - and
+        # a legacy board whose follow failed on the day, skipped unread and asked again, never
+        # filed; a legacy board alone is said for what it is, never "none named a board"
+        def door(entry):
+            serve(web_)
+            with _WiringBox([_wb_co("acme-gov", "Acme Gov Systems")], {}) as box_, \
+                    contextlib.redirect_stderr(io.StringIO()):
+                (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
+                 ats._get, ats._page) = real
+                planned = box_.plan(_wb_results({"acme-gov": entry}))[3]
+            return (planned or {}).get("acme-gov") or {}
+        careers_, about_ = f"{_wb_site('acme-gov')}/careers", f"{_wb_site('acme-gov')}/about"
+
+        def form(vendor, element="href", page=careers_, **more):
+            return {"vendor": vendor, "saw": f"https://{vendor}.example/x", "page": page,
+                    "element": element, "times": 1, **more}
+        CLOSED = "robots.txt asks crawlers not to read acmegov.hrmdirect.com"
+        for extra, beside, action, kind_, words, never, why in (
+                (form("clearcompany-brand"), True, "HOLD", None, "one brand's view", None,
+                 "one brand's view of a site"),
+                (form("clearcompany-tenant", page=about_), True, "HOLD", None, "another account", None,
+                 "another account's host, linked from their About page"),
+                (form("clearcompany-tenant", element="iframe"), True, "HOLD", None, "another account", None,
+                 "another account's host, framed"),
+                (form("clearcompany-legacy", element="iframe", note=CLOSED), True, "HOLD", None,
+                 f"legacy HRM Direct board (ClearCompany's), clearcompany-legacy.example/x, which "
+                 f"was not followed to the hosted site it names ({CLOSED})", "another account",
+                 "a legacy board robots.txt closes"),
+                (form("clearcompany-legacy", element="iframe", note="network error: ConnectionError",
+                      on_the_day=True), True, "SKIP", "unreadable", "a failure on the day", None,
+                 "a legacy board whose follow failed on the day"),
+                (form("clearcompany-legacy", element="iframe", note="network error: ConnectionError",
+                      on_the_day=True), False, "SKIP", "unreadable", "a failure on the day", None,
+                 "a legacy board alone, whose follow failed on the day"),
+                (form("clearcompany-legacy", element="iframe", note=CLOSED), False, "SKIP", "unusable",
+                 "frames a legacy HRM Direct board", "none named a board",
+                 "a legacy board alone, robots.txt closing it"),
+                (form("clearcompany-brand"), False, "SKIP", "unusable", "links one brand's view of a "
+                 "ClearCompany site", "none named a board", "one brand's view of a site alone")):
+            entry = _wb_one("acme-gov", "clearcompany", SLUG) if beside else _wb_entry("acme-gov", [])
+            entry["elsewhere"] = [extra]
+            row = door(entry)
+            said_ = _wb_words(row)
+            if row.get("action") != action or (kind_ and row.get("kind") != kind_) or words not in said_ \
+                    or (never and never in said_) or (action == "SKIP" and sent):
+                errors += fail(f"clearcompany door: {why} gave {row.get('action')} {row.get('kind') or ''} "
+                               f"({said_[:300]!r}), asking {[u for u, _ in sent]}; wanted {action} "
+                               f"{kind_ or ''} saying {words!r}" + (f", never {never!r}" if never else ""))
+        # (only a board read whole is kept, only inside the block)
+        serve({**MAIN, LIST: Resp(503)})
+        outcomes = []
+        with ats.clearcompany_kept():
+            for body in (Resp(503), _cc_list(JOBS), Resp(503)):
+                web[LIST] = body
+                try:
+                    outcomes.append(len(ats.fetch_clearcompany(SLUG)))
+                except ats.AtsError:
+                    outcomes.append("error")
+            kept_asks = len(sent)
+        web[LIST] = _cc_list(JOBS)
+        outcomes.append(len(ats.fetch_clearcompany(SLUG)))
+        if outcomes != ["error", 4, 4, 4] or kept_asks != 6 or len(sent) != 9 or ats._CC_KEPT is not None:
+            errors += fail(f"clearcompany: a board was kept that failed or outside a plan, or not kept inside "
+                           f"one ({outcomes}; {kept_asks} then {len(sent)} requests)")
+    finally:
+        (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch, ats._get,
+         ats._page) = real
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = held[:4]
+        ats._HOST_NOT_BEFORE.clear()
+        ats._HOST_NOT_BEFORE.update(held[4])
+    return errors
+
+
 def check_successfactors_reads_its_career_site() -> int:
     """SAP SuccessFactors' Career Site Builder (2026-11-22), driven through
     ats.requests so every hop and every robots.txt ask is seen. Fixtures are
@@ -26608,7 +28443,9 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
             ("zohorecruit", '<a href="https://acmegov.zohorecruit.com/jobs/Careers">Jobs</a>',
              '<a href="https://www.zohorecruit.com/">Powered by Zoho Recruit</a>'),
             ("trinethire", '<iframe src="https://app.trinethire.com/companies/41234-acme/jobs/embed"></iframe>',
-             '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>')):
+             '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>'),
+            ("clearcompany", '<a href="https://apply.clearcompany.com/acmegov">Jobs</a>',
+             '<a href="https://www.clearcompany.com/">Powered by ClearCompany</a>')):
         found, rest = fsb.sightings(board + furniture, here, home)
         if [f["type"] for f in found] != [kind] or rest:
             errors += fail(f"finder: {kind}'s own furniture beside its board came out as "
@@ -26706,7 +28543,7 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
                     "rippling": "acme", "smartrecruiters": "Acme", "icims": "careers-acme",
                     "hirebridge": "7724", "applicantpro": "acme.applicantpro.com",
                     "pinpoint": "acme", "jobvite": "acme", "jobvitefeed": "qAcmefwX",
-                    "trinethire": "41234-acme-gov",
+                    "trinethire": "41234-acme-gov", "jobscore": "acmegov", "clearcompany": "acmegov",
                     "teamtailor": "https://acme.teamtailor.com",
                     "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
                     "comeet": "https://www.comeet.com/jobs/acme/F7.009",
@@ -26723,6 +28560,8 @@ def check_what_the_second_review_of_the_new_readers_found_stays_fixed() -> int:
         "jobvite": "https://jobs.jobvite.com/acme/jobs", "teamtailor": "https://acme.teamtailor.com",
         "jobvitefeed": "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX",
         "trinethire": "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed",
+        "jobscore": "https://careers.jobscore.com/careers/acmegov",
+        "clearcompany": "https://apply.clearcompany.com/acmegov",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009",
         "gusto": "https://jobs.gusto.com/boards/acme-c850a9b3", "gem": "https://jobs.gem.com/acme",
@@ -33596,6 +35435,33 @@ SITE_BOARD_FORMS = [
     # found it filed as a form naming no board)
     ('<iframe src="https://app.trinethire.com/companies/41234-/jobs/embed"></iframe>',
      "trinethire", "41234", "https://app.trinethire.com/companies/41234/jobs/embed"),
+    # A JOBSCORE BOARD by its account's slug, in the three forms a company's
+    # own page names it in (2026-11-23; the slugs here are made up), and its
+    # feed is what is asked whatever the form: a link to the hosted board, a
+    # posting or the /jobs/ address the loader's fallback links; the widget's
+    # iframe (Finalsite's); the script loader, whose slug is its last
+    # argument (ImageTrend's)
+    ('<a href="https://careers.jobscore.com/careers/acmegov">Careers</a>',
+     "jobscore", "acmegov", "https://careers.jobscore.com/jobs/acmegov/feed.atom"),
+    # (the slug as the page spells it: JobScore minds the case of the path)
+    ("<div class='js-fallback'><a href='https://careers.jobscore.com/jobs/AcmeGov'>Jobs</a></div>",
+     "jobscore", "AcmeGov", "https://careers.jobscore.com/jobs/AcmeGov/feed.atom"),
+    ('<iframe src="https://widgets.jobscore.com/jobs/acmegov/widget_iframe?bg_color=FFFFFF&amp;'
+     'group_by=department" width="100%"></iframe>',
+     "jobscore", "acmegov", "https://careers.jobscore.com/jobs/acmegov/feed.atom"),
+    ("<script>(function(d, s, c) { if (window.Jobscore) return; var js, fjs = d.getElementsByTagName(s)[0];"
+     " js = d.createElement(s); js.async = true; js.src = '//careers.jobscore.com/jobs/' + c + "
+     "'/widget.js'; fjs.parentNode.insertBefore(js, fjs); })(document, 'script', 'acmegov');</script>",
+     "jobscore", "acmegov", "https://careers.jobscore.com/jobs/acmegov/feed.atom"),
+    # A CLEARCOMPANY BOARD by its hosted site's slug, and the hosted page is
+    # what is asked first whatever the form: Rehrig's link (seen 2026-11-23),
+    # a posting on the site, the site's own /redirect (the slug made up)
+    ('<a class="btn" href="https://apply.clearcompany.com/acmegov?noheader=False">Explore Current '
+     'Openings</a>', "clearcompany", "acmegov", "https://apply.clearcompany.com/acmegov"),
+    ('<a href="https://apply.clearcompany.com/acmegov?jobId=aaaaaaaa-0000-4000-8000-000000000001">'
+     'Account Executive</a>', "clearcompany", "acmegov", "https://apply.clearcompany.com/acmegov"),
+    ('<iframe src="https://apply.clearcompany.com/acmegov/redirect?search=true"></iframe>',
+     "clearcompany", "acmegov", "https://apply.clearcompany.com/acmegov"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -33626,6 +35492,13 @@ SITE_BOARD_NOT_ONE = [
     '<a href="https://www.trinethire.com/">Powered by TriNet Hire</a>',   # the vendor's own site
     '<a href="https://app.trinethire.com/companies/41234abc/jobs">x</a>',  # no company number
     '<a href="https://app.trinethire.com/login">Sign in</a>',             # no company at all
+    '<a href="https://www.jobscore.com/?utm_source=acmegov">Powered by JobScore</a>',  # vendor's
+    '<link rel="stylesheet" href="https://static.jobscore.com/assets/widget.css">',  # its assets
+    '<img src="https://careers.jobscore.com/images/logo.png">',          # no /careers/ or /jobs/
+    "<script>(function(d, s, id) {})(document, 'script', 'acmegov');</script>",  # no loader address
+    '<a href="https://reapply.clearcompany.com/careers/jobs">Jobs</a>',   # a tenant host, not apply.
+    '<a href="https://www.clearcompany.com">Powered by ClearCompany</a>',  # the vendor's own site
+    '<a href="https://apply.clearcompany.com/acmegroup?brand=B-ACME">Ours</a>',  # one brand's view
     "We cut greenhouse gas emissions for cities and jobs.lever.co is a job site.",
     # WHAT A COMPANY TOOK DOWN BY COMMENTING IT OUT IS NOT ON ITS PAGE, and
     # that is so whatever it commented out. The first version cut a
@@ -50414,7 +52287,7 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "teamtailor": "https://acme.teamtailor.com", "pinpoint": "acme",
         "zohorecruit": "https://acme.zohorecruit.com/jobs/Careers",
         "comeet": "https://www.comeet.com/jobs/acme/F7.009", "jobvite": "acme",
-        "jobvitefeed": "qAcmefwX", "trinethire": "41234-acme-gov",
+        "jobvitefeed": "qAcmefwX", "trinethire": "41234-acme-gov", "jobscore": "acmegov", "clearcompany": "acmegov",
         "successfactors": "https://jobs.acme.test",
     }
     types = sorted(t for t in ats.FETCHERS if t != "html")
@@ -50446,6 +52319,10 @@ def check_the_boards_found_card_opens_what_it_names() -> int:
         "a type nothing reads": {"type": "paycom", "ref": "acme"},
         "comeet pair": {"type": "comeet", "ref": "F7.009|0123456789ABCDEF0123456789ABCD"},
         "successfactors with a path": {"type": "successfactors", "ref": "https://jobs.acme.test/go/x/1/"},
+        # (a JobScore slug is read as spelled - JobScore minds its case;
+        # anything that is no slug opens nothing)
+        "jobscore in capitals": {"type": "jobscore", "ref": "AcmeGov"},
+        "jobscore, no slug": {"type": "jobscore", "ref": "acme/gov"},
     })
     site_ = "https://www.acme.test"
     number = {"type": "workable", "ref": "710855"}
@@ -50515,6 +52392,10 @@ console.log(JSON.stringify(out));"""
         ("jobvite", "https://jobs.jobvite.com/acme/jobs"),
         ("jobvitefeed", "https://app.jobvite.com/CompanyJobs/Careers.aspx?c=qAcmefwX"),
         ("trinethire", "https://app.trinethire.com/companies/41234-acme-gov/jobs/embed"),
+        ("jobscore", "https://careers.jobscore.com/careers/acmegov"),
+        ("jobscore in capitals", "https://careers.jobscore.com/careers/AcmeGov"),
+        ("jobscore, no slug", "#"),
+        ("clearcompany", "https://apply.clearcompany.com/acmegov"),
         ("successfactors", "https://jobs.acme.test/search/"),
         ("successfactors with a path", "#"),
         ("paylocity", PAY),
@@ -69953,6 +71834,8 @@ def main() -> int:
     errors += check_jobvite_reads_its_list_page_and_names_it_twice()
     errors += check_jobvite_feed_reads_one_row_a_job_and_no_person()
     errors += check_trinethire_reads_its_list_and_names_it_once()
+    errors += check_jobscore_reads_its_feed_and_names_it_once()
+    errors += check_clearcompany_reads_its_site_whole_and_names_it_twice()
     errors += check_successfactors_reads_its_career_site()
     errors += check_successfactors_unify_reads_its_sitemap()
     errors += check_what_the_second_review_of_the_new_readers_found_stays_fixed()

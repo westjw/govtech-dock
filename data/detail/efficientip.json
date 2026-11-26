@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Network Source of Truth Reconciliation: Discovery to Action",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://efficientip.com/blog/network-source-of-truth-reconciliation/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://efficientip.com/blog/enhance-visibility-and-control-with-unified-asset-discovery/"
-  },
-  {
-   "date": "2025-10-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "2025 EMA\u2122 Radar for DDI: EfficientIP Named Value Leader",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://efficientip.com/resources/2025-ema-radar-for-ddi-efficientip-named-value-leader/"
   }
  ]
 }

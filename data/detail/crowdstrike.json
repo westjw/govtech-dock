@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "index-text",
+   "first_seen": "2026-11-24",
+   "headline": "Reprioritizing Automated Leads with CrowdStrike Signal",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/reprioritizing-automated-leads-crowdstrike-signal/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "index-text",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/falcon-cloud-security-innovations-secure-cloud-ai-runs-on/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "CrowdStrike Brings Enterprise Browser Security to the Falcon Platform",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-brings-enterprise-browser-security-to-falcon-platform/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Data Modeling Best Practices for an Agentic CDP, Part 1: The Data Foundation",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/agentic-cdp-data-modeling-data-foundation"
+  },
+  {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Sharing catalog metadata across data platforms, engines, and agents",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/sharing-catalog-metadata-across-data-platforms-engines-and-agents"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -8,6 +26,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.databricks.com/blog/announcing-general-availability-native-lakebase-postgres-sink-spark-structured-streaming"
+  },
+  {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "What 5,400 Malicious npm Packages Reveal about Software Supply Chain Risk in 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.databricks.com/blog/what-5400-malicious-npm-packages-reveal-about-software-supply-chain-risk-2026"
   },
   {
    "date": "2026-11-20",
@@ -47,7 +74,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-19",
    "headline": "Four AI Architecture Patterns for Regulated Industries",
    "kind": "press",
@@ -56,7 +83,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-19",
    "headline": "How partners use Genie's free tier on Azure Databricks",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://www.databricks.com/blog/customerlake-conversions"
-  },
-  {
-   "date": "2026-11-19",
-   "date_source": "index-text",
-   "first_seen": "2026-11-19",
-   "headline": "Databricks Wins A-Team Award for AI in Capital Markets",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/databricks-wins-team-award-ai-capital-markets-0"
-  },
-  {
-   "date": "2026-11-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-21",
-   "headline": "Why PostgreSQL 19 shipped late",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/why-postgresql-19-shipped-late"
-  },
-  {
-   "date": "2026-11-19",
-   "date_source": "index-text",
-   "first_seen": "2026-11-21",
-   "headline": "PostgreSQL 19 is available on Lakebase",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.databricks.com/blog/postgresql-19-available-lakebase"
   }
  ]
 }

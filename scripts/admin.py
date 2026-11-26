@@ -1874,10 +1874,14 @@ def act_board_proposal(body: dict) -> dict:
                          f"its postings, see where it lands "
                          f"(apply.workable.com/<slug>/j/...), and put the board on file "
                          f"by that slug. Nothing was written."}
-    ok, detail = add_company.verify(block)
+    # (read, then asked whose it is: one request for the readers that keep
+    # what they read whole - a Jobvite feed, a TriNet Hire list, a JobScore
+    # feed - ats.one_ask_a_board; blind review of 2026-11-24)
+    with ats.one_ask_a_board():
+        ok, detail = add_company.verify(block)
+        said = verify_boards.board_says(block["type"], block["ref"]) if ok else None
     if not ok:
         return {"error": f"the board no longer reads: {detail}"}
-    said = verify_boards.board_says(block["type"], block["ref"])
     who = verify_boards.judge(c, said)
     if who["verdict"] == "MISMATCH" and not body.get("force"):
         return {"error": f"{who['why']}. If they were acquired, record the "
@@ -5863,7 +5867,7 @@ def sweep_gaps(c: dict, board_org: dict | None, news: dict,
 STRUCTURED_ATS = {"ashby", "greenhouse", "lever", "workable", "recruitee",
                   "breezy", "smartrecruiters", "bamboohr", "workday",
                   "rippling", "jazzhr", "icims", "paylocity", "oracle",
-                  "jibe", "adp", "gusto", "gem", "hirebridge", "applicantpro", "teamtailor", "pinpoint", "zohorecruit", "comeet", "jobvite", "jobvitefeed", "trinethire", "successfactors"}
+                  "jibe", "adp", "gusto", "gem", "hirebridge", "applicantpro", "teamtailor", "pinpoint", "zohorecruit", "comeet", "jobvite", "jobvitefeed", "trinethire", "jobscore", "clearcompany", "successfactors"}
 
 
 def q_sweep(companies, board, category: str | None = None,

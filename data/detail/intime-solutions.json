@@ -1,6 +1,69 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "What Is Smart Scheduling? How It Works for Public Safety Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/the-power-of-smart-scheduling-revolutionizing-time-management/"
+  },
+  {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Top 5 Police Shift Scheduling Software Features",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/top-5-police-scheduling-software-features/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "How Fair Overtime Distribution Reduces Turnover in Corrections and Custody Facilities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/how-fair-overtime-distribution-reduces-turnover-in-corrections-and-custody-facilities/"
+  },
+  {
+   "date": "2026-11-19",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "What does a Police Officer\u2019s Schedule look like?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/what-does-police-officer-schedule-look-like/"
+  },
+  {
+   "date": "2026-11-16",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "How Springfield-Greene County 911 Reduced Monthly Schedule Build Time by 76%",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/springfield-greene-county-911/"
+  },
+  {
+   "date": "2026-11-15",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "5 Ways to Adjust to Shift Changes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/adjusting-shift-changes/"
+  },
+  {
+   "date": "2026-11-13",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "How San Luis Obispo Police Department Replaced 50 Phone Calls per Open Shift With One Posting",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/san-luis-obispo-police-department/"
+  },
+  {
    "date": "2026-10-14",
    "date_source": "index-text",
    "first_seen": "2026-10-15",
@@ -8,6 +71,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://intime.com/category/resources/article/"
+  },
+  {
+   "date": "2026-10-14",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Why Scheduling Is the Foundation of Public Safety Workforce Modernization",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://intime.com/resources/public-safety-scheduling-modernization/"
   },
   {
    "date": "2026-07-15",
@@ -28,85 +100,13 @@
    "url": "https://intime.com/resources/blog/top-six-types-of-law-enforcement-technology/"
   },
   {
-   "date": "2025-12-09",
+   "date": "2026-02-08",
    "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "InTime Celebrates Multiple 2025 Recognitions from Capterra, Software Advice, and GetApp",
+   "first_seen": "2026-11-24",
+   "headline": "Intelligent Workforce Management for Public Safety: From Complexity to Control",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://intime.com/announcements/intime-celebrates-multiple-2025-recognitions-from-capterra-software-advice-and-getapp/"
-  },
-  {
-   "date": "2025-05-22",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "InTime Recognized with Best Customer Support in Employee Scheduling and Workforce Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/announcements/intime-recognized-with-best-customer-support-in-employee-scheduling-and-workforce-management/"
-  },
-  {
-   "date": "2025-03-12",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The Power of Smart Scheduling: Revolutionizing Time Management",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/resources/blog/the-power-of-smart-scheduling-revolutionizing-time-management/"
-  },
-  {
-   "date": "2025-02-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Real-Time Crime Centers: The Future of Smarter, Faster Policing",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/resources/blog/real-time-crime-centers-the-future-of-smarter-faster-policing/"
-  },
-  {
-   "date": "2024-12-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Much Do Police Officers Make? Understanding Police Salaries",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/resources/blog/how-much-do-police-officers-make-understanding-police-salaries/"
-  },
-  {
-   "date": "2024-11-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Police Burnout: The Hidden Struggles Facing Law Enforcement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/resources/blog/police-burnout-the-hidden-struggles-facing-law-enforcement/"
-  },
-  {
-   "date": "2024-11-07",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "InTime Celebrates Multiple Recognitions from Gartner Digital Markets in 2024",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/announcements/intime-celebrates-multiple-recognitions-from-gartner-digital-markets-in-2024-2/"
-  },
-  {
-   "date": "2024-11-06",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "InTime Proudly Announces Winners of the InTime Excellence Awards 2024",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/announcements/intime-proudly-announces-winners-of-the-intime-excellence-awards-2024/"
-  },
-  {
-   "date": "2024-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "2-2-3 Work Schedule: How the Rotation Works",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://intime.com/resources/blog/understanding-the-2-2-3-work-schedule/"
+   "url": "https://intime.com/resources/intelligent-workforce-management-for-public-safety-from-complexity-to-control/"
   }
  ],
  "profile": {

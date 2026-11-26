@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "AI innovation is accelerating. AI governance can\u2019t wait.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.everbridge.com/blog/ai-innovation-is-accelerating-ai-governance-cant-wait/"
+  },
+  {
    "date": "2026-11-04",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.everbridge.com/blog/how-12-european-countries-are-strengthening-public-warning-with-everbridge/"
-  },
-  {
-   "date": "2026-09-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-28",
-   "headline": "Everbridge Assist named finalist at the 2026 ITIJ Awards",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.everbridge.com/blog/everbridge-assist-named-finalist-at-the-2026-itij-awards/"
   }
  ],
  "profile": {

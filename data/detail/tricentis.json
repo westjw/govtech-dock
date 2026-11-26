@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Agentic Performance Testing: Performance engineering at the speed of AI",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/resources/agentic-performance-testing-transform2026"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "How Agentic Test Creation + AI Workspace can detect and fill coverage gaps autonomously",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/resources/atc-aiw-fill-coverage-gaps"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Improve SAP quality with code coverage insights",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tricentis.com/resources/sealights-abap-demo"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "index-text",
    "first_seen": "2026-11-18",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tricentis.com/blog/sap-autonomous-enterprise-context-layer"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Performance testing is now built into SAP\u2019s agent-led toolchain",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/neoload-joins-sap-agent-led-toolchain"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "Operationalizing AI-powered testing for the public sector: A 6-step framework",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/operationalizing-ai-for-the-public-sector"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-12",
-   "headline": "The limitations of open-source test automation, and what enterprise-scale testing needs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tricentis.com/resources/the-limits-of-open-source-testing"
   }
  ]
 }

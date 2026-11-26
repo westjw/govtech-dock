@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Construction and Building Inspectors\u2019 Salaries in the US: Pay and Purchasing Power by State",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://lightcast.io/resources/blog/construction-building-inspectors-salaries"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://lightcast.io/resources/blog/lightcast-announces-ask-and-mcp"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-24",
-   "headline": "Highest Explosives Workers\u2019 Salaries in the US",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://lightcast.io/resources/blog/skilled-trades-explosives-workers-salaries"
   }
  ]
 }

@@ -166,7 +166,7 @@ def _accept_read(p: dict, by: str, why: str, force: bool) -> dict:
 
 
 def _accept_board(p: dict, by: str, why: str, force: bool) -> dict:
-    import add_company, verify_boards
+    import add_company, ats, verify_boards
     cid = p.get("id")
     kind, ref = (p.get("ats_type") or "").strip(), (p.get("ats_ref") or "").strip()
     if not kind or not ref:
@@ -176,12 +176,15 @@ def _accept_board(p: dict, by: str, why: str, force: bool) -> dict:
     if c is None:
         return {"error": "no such company"}
     block = {"type": kind, "ref": ref}
-    ok, detail = add_company.verify(block)
+    # (read, then asked whose it is: one request for the readers that keep
+    # what they read whole - ats.one_ask_a_board, as at the desk)
+    with ats.one_ask_a_board():
+        ok, detail = add_company.verify(block)
+        said = verify_boards.board_says(kind, ref) if ok else None
     if not ok:
         return {"error": f"the board does not read right now: {detail}. "
                          f"Nothing was written; a slug is never wired on a "
                          f"proposal alone"}
-    said = verify_boards.board_says(kind, ref)
     who = verify_boards.judge(c, said)
     if who["verdict"] == "MISMATCH" and not force:
         return {"error": f"{who['why']}. If they were acquired, record the "

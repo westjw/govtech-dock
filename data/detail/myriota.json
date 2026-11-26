@@ -1,8 +1,8 @@
 {
  "news": [
   {
-   "date": "2026-11-23",
-   "date_source": "json-ld",
+   "date": "2026-11-24",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "Myriota secures first AU$60 million of Series C investment in just 100 days",
    "kind": "funding",
@@ -10,8 +10,8 @@
    "url": "https://myriota.com/news/myriota-series-c-announcement/"
   },
   {
-   "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date": "2026-11-20",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "Cartrack expands into satellite asset tracking with Myriota\u2019s AssetHawk",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "Product update: AssetHawk now supports up to five BLE sensor connections.",
    "kind": "product",
@@ -28,8 +28,8 @@
    "url": "https://myriota.com/news/assethawk-5-ble-sensor-update/"
   },
   {
-   "date": "2026-10-07",
-   "date_source": "json-ld",
+   "date": "2026-10-08",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "How EDGE remotely monitors oil spill containment ponds with Myriota FlexSense and radar sensors",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-06",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "Myriota\u2019s AssetHawk\u2122 Wins Prestigious Good Design Award",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "The total cost of ownership in asset tracking: Why hardware durability matters.",
    "kind": "press",
@@ -55,8 +55,8 @@
    "url": "https://myriota.com/news/asset-tracking-why-hardware-durability-matters/"
   },
   {
-   "date": "2026-08-05",
-   "date_source": "json-ld",
+   "date": "2026-08-06",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "Myriota Appoints Richard Leon as Chief Financial Officer",
    "kind": "leadership",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-08-04",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "Applications Open: Myriota Impact & Access Fund",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-07-10",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-23",
    "headline": "Myriota AssetHawk\u2122 Now Integrated into the RedGPS Platform",
    "kind": "press",

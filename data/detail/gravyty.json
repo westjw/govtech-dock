@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-23",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Small Teams, Big Gratitude: Fundraising and Stewardship Takeaways From Engagement Labs 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gravyty.com/blog/donor-stewardship-ideas-small-teams/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Connection Comes First: Alumni and Community Engagement Takeaways From Engagement Labs 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gravyty.com/blog/alumni-engagement-lessons/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Always On, Always Human: Student Support Takeaways From Engagement Labs 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gravyty.com/blog/student-support-chatbots-higher-ed/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gravyty.com/blog/donor-retention-strategies-playbook-by-donor-type/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Your Campaigns Are Working\u2026 But Here\u2019s Why Your Donors Still Disappear After Giving",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gravyty.com/blog/donor-retention-gap/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "College Colors Day: Turning School Spirit Into Alumni Engagement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gravyty.com/blog/college-colors-day-alumni-engagement/"
-  },
-  {
-   "date": "2026-08-20",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "How Graduway Turns Alumni Events Into Year-Round Engagement",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gravyty.com/blog/alumni-relations-teams-events/"
   }
  ],
  "profile": {

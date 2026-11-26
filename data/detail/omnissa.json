@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-21",
+   "headline": "Workspace ONE UEM 2610: What's new for your fleet",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/workspace-one-uem-2610-whats-new-your-fleet/"
+  },
+  {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Why cost cutting falls short in financial services IT",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.omnissa.com/newsroom/blog/why-cost-cutting-falls-short-financial-services-it/"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -19,15 +37,6 @@
    "url": "https://www.omnissa.com/newsroom/9-workspace-one-challenges-accelerator-solves/"
   },
   {
-   "date": "2026-11-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-21",
-   "headline": "Workspace ONE UEM 2610: What's new for your fleet",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/workspace-one-uem-2610-whats-new-your-fleet/"
-  },
-  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-12",
    "headline": "What is digital friction? How it affects your business",
    "kind": "press",
@@ -49,7 +58,7 @@
    "date": "2026-11-10",
    "date_source": "json-ld",
    "first_seen": "2026-11-04",
-   "headline": "AI needs a safe place to run",
+   "headline": "AI needs a safe place to run: sovereignty and the endpoint",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-safe-place-to-run-for-ai/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-oss-expands-to-more-countries/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "card-date",
-   "first_seen": "2026-11-03",
-   "headline": "How HP and Omnissa streamline PC provisioning",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.omnissa.com/newsroom/blog/omnissa-one-emea-2026-omnissa-and-hp-bring-drop-ship-provisioning/"
   }
  ]
 }

@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Manage the complexity of public sector HR",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/manage-complexity-of-public-sector-hr"
+  },
+  {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-24",
+   "headline": "Use AI with confidence",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/resources/use-ai-with-confidence"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -17,6 +35,15 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/corporate-bank-billing-accuracy-transparency"
+  },
+  {
+   "date": "2026-11-18",
+   "date_source": "index-text",
+   "first_seen": "2026-11-24",
+   "headline": "Population health works best when you can trust the numbers",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.infor.com/blog/population-health-trust-the-numbers"
   },
   {
    "date": "2026-11-17",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.infor.com/blog/cloudsuite-food-beverage-october-2026-release"
-  },
-  {
-   "date": "2026-11-16",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-21",
-   "headline": "Is your shop floor ready for AI agents?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/is-your-shop-floor-ready-for-ai-agents"
-  },
-  {
-   "date": "2026-11-13",
-   "date_source": "og:published",
-   "first_seen": "2026-11-13",
-   "headline": "AI that works the way councils need it to",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/ai-that-works-the-way-councils-need-it-to"
-  },
-  {
-   "date": "2026-11-13",
-   "date_source": "og:published",
-   "first_seen": "2026-11-17",
-   "headline": "Connect CRM and ERP data with Infor CRM SLX",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.infor.com/resources/connect-crm-and-erp-data-with-infor-crm-slx"
   }
  ],
  "profile": {
