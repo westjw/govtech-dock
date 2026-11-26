@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "How to Handle Holiday Flight Delays and Cancellations",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://clearme.com/blog/handling-holiday-flight-delays-and-cancellations"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-24",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-21",
    "headline": "CLEAR Destination Guide: NYC on a Layover",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://clearme.com/blog/airport-guide-lga"
-  },
-  {
-   "date": "2026-11-10",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "CLEAR Airport Guides: Newark Liberty International Airport",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://clearme.com/blog/airport-guide-ewr"
   }
  ],
  "profile": {

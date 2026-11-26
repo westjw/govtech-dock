@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "index-text",
+   "first_seen": "2026-11-25",
+   "headline": "CrowdStrike Accelerates the Shift to the Agentic SOC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-named-leader-2026-gartner-mq-isoc/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "index-text",
    "first_seen": "2026-11-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-detects-and-stops-agent-insider-threats/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "New Falcon Cloud Security Innovations Secure the Cloud AI Runs On",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/falcon-cloud-security-innovations-secure-cloud-ai-runs-on/"
   }
  ]
 }

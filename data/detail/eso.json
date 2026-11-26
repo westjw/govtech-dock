@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "VHC Health: Improving Patient Care, EMS Collaboration, and Operational Efficiency",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.eso.com/resources/vhc-health-improving-patient-care-ems-collaboration-operational-efficiency/"
+  },
+  {
    "date": "2026-11-10",
    "date_source": "index-text",
    "first_seen": "2026-11-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.eso.com/news/press-releases/2026-eso-trauma-index-connects-hospital-and-prehospital-blood-product-data-revealing-new-patterns-across-the-emergency-care-continuum/"
-  },
-  {
-   "date": "2026-05-20",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "ESO Innovation Awards Recognize Customers Improving Outcomes Through Data Across the Emergency Response Lifecycle",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.eso.com/news/press-releases/eso-innovation-awards-recognize-customers-improving-outcomes-through-data-across-the-emergency-response-lifecycle/"
   }
  ],
  "profile": {

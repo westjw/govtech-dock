@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-09",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "We Keep Modernizing the Wrong Layer of Government",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "From Justice Data to Better Decisions: Connecting Policy Goals to Measurable Outcomes",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2025-11-06",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "A District Attorney\u2019s Office Saves Time and Money Using Data. Yep, It\u2019s True.",
    "kind": "press",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2025-11-06",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "Data Processing Is Hard",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2025-10-29",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "A Heartfelt Note From Our Founder and CEO, Amy Bach",
    "kind": "press",

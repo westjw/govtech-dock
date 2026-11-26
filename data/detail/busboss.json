@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Data Integration in School Routing Software for 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.busboss.com/blog/data-integration-in-school-routing-software-for-2026"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.busboss.com/blog/understanding-school-bus-dispatch-data-bottlenecks"
-  },
-  {
-   "date": "2026-11-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-10",
-   "headline": "School Bus Maintenance Records: What Inspectors Ask For",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.busboss.com/blog/school-bus-maintenance-records-what-inspectors-ask-for"
   }
  ],
  "profile": {

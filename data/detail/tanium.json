@@ -1,8 +1,26 @@
 {
  "news": [
   {
-   "date": "2026-11-17",
+   "date": "2026-11-25",
+   "date_source": "og:published",
+   "first_seen": "2026-11-25",
+   "headline": "Tanium Converge 2026 Defined a New Era for IT and Security: Real-time Visibility. Agentic Defense.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/press-releases/tanium-converge-2026-defined-a-new-era-for-it-and-security"
+  },
+  {
+   "date": "2026-11-25",
    "date_source": "card-date",
+   "first_seen": "2026-11-25",
+   "headline": "Autonomous Security Operations: The End of the Reactive SOC",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.tanium.com/resources/wbr-reactivesoc"
+  },
+  {
+   "date": "2026-11-17",
+   "date_source": "og:published",
    "first_seen": "2026-11-17",
    "headline": "Tanium Honors Top Global Partners for Growth and Innovation at Converge 2026",
    "kind": "press",
@@ -20,7 +38,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "card-date",
+   "date_source": "og:published",
    "first_seen": "2026-11-17",
    "headline": "Tanium Launches AgentSight to Observe and Govern AI Across Endpoints",
    "kind": "product",
@@ -29,7 +47,7 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "card-date",
+   "date_source": "og:published",
    "first_seen": "2026-11-13",
    "headline": "Tanium Converge 2026 Brings Global IT and Cybersecurity Leaders Together to Accelerate the Journey from Reactive to Autonomous",
    "kind": "press",
@@ -38,7 +56,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "Real time isn't a setting, it's a design.",
    "kind": "press",
@@ -56,7 +74,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "card-date",
+   "date_source": "og:published",
    "first_seen": "2026-11-03",
    "headline": "Tanium Joins OpenAI Trusted Access for Cyber Program to Strengthen Platform Security with Frontier AI",
    "kind": "press",
@@ -65,7 +83,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "Cybersecurity Awareness Month: Securing the Next 250 with Cyber Threat Hunting",
    "kind": "press",
@@ -74,7 +92,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-27",
    "headline": "Hunt or be Hunted: The Crash That Gives HTTP2Shell Away",
    "kind": "press",
@@ -83,30 +101,12 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Hunt or be Hunted: HuntIQ Hunters Take on php2shell",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.tanium.com/blog/php2shell-php-core-rce-huntiq"
-  },
-  {
-   "date": "2026-10-26",
-   "date_source": "card-date",
-   "first_seen": "2026-10-26",
-   "headline": "Hands-Free, Not Hands-Off: The Case for Autonomous IT",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/resources/hands-free-not-hands-off-ebook"
-  },
-  {
-   "date": "2026-10-24",
-   "date_source": "card-date",
-   "first_seen": "2026-10-24",
-   "headline": "eMudhra CA Compromise: Find and Fix Your Exposure with Tanium",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.tanium.com/blog/emudhra-ca-compromise-find-and-fix-your-exposure-with-tanium"
   }
  ],
  "profile": {

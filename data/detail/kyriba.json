@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "AI Was Everywhere at AFP 2026. Now Treasury Has to Make It Work",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kyriba.com/blog/ai-everywhere-afp-2026-treasury-make-work/"
+  },
+  {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Kyriba Named to Fast Company\u2019s Annual Brands That Matter List",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.kyriba.com/news/fast-company-brands-matter-kyriba/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.kyriba.com/blog/payments-complexity-vs-payment-volume/"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Spain\u2019s Finance Leaders Rank Political Instability as Top Risk, While 75% Report Financial Impact from Poor Visibility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kyriba.com/news/risk-radar-spain-political-instability/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-30",
-   "headline": "Kyriba receives 2026 IDC SaaS treasury management customer satisfaction award",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.kyriba.com/blog/2026-idc-saas-treasury-customer-satisfaction-award/"
   }
  ]
 }

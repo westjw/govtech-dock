@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "When Cloud Apps Go Down, How Do Employees Access Email and Files?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crashplan.com/blog/access-data-during-microsoft-365-outage/"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "index-text",
    "first_seen": "2026-11-16",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.crashplan.com/blog/microsoft-entra-id-backup-recovery/"
-  },
-  {
-   "date": "2026-09-09",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "What Growing Businesses Should Look for in a Windows Server Backup Solution",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crashplan.com/blog/windows-server-backup-growing-businesses/"
   }
  ]
 }

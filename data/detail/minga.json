@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Product Updates: Coming to Minga in 2027",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://minga.io/blog/product-updates-coming-to-minga-in-2027/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-31",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://minga.io/blog/keeping-every-parent-in-the-loop-without-lifting-a-finger/"
-  },
-  {
-   "date": "2026-08-21",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "Flex Periods Only Work If Every Student Actually Shows Up Somewhere Meaningful",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://minga.io/blog/flex-periods-every-student-shows-up-somewhere-meaningful/"
   }
  ],
  "profile": {

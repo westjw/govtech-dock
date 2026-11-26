@@ -6286,5 +6286,137 @@
    "company": "Workday",
    "description": "Account Executive - Manufacturing ... within Medium Enterprise customers"
   }
+ },
+ "boostlingo::Account Manager, LSP": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds. The seat handles renewals, upsells and QBRs for Boostlingo's language service provider (LSP) accounts. It works with 'LSP leaders, operations teams, and technical staff'. LSPs are interpreting businesses, so these are private buyers. The brief's ad stops at the 6,000-character cap, so I read the rest on the Greenhouse page (11-25). It adds only preferred experience with 'enterprise healthcare accounts' and with the language services industry. No court, agency or other public buyer appears in the seat.",
+  "saw": {
+   "title": "Account Manager, LSP",
+   "company": "Boostlingo",
+   "description": "Language service providers (LSPs) run their businesses on Boostlingo."
+  }
+ },
+ "canonical::OEM Sales Director": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; quote checked in the brief's ad. The ad behind this title is Canonical's IHV Alliance Sales Director, based remotely in AMER, EMEA or APAC. It runs alliances with hardware makers: Lenovo, Huawei, Fujitsu in APAC; Ericsson, Nokia, Siemens in EMEA; Dell, HPE, IBM, Supermicro in the Americas. No public buyer appears anywhere in the ad.",
+  "saw": {
+   "title": "OEM Sales Director",
+   "company": "Canonical",
+   "description": "Lead partnerships in the Americas with companies like Dell, HPE, IBM, Supermicro"
+  }
+ },
+ "cloudera::Key Account Executive - Financial Services": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; quote checked in the brief's ad. The seat owns Cloudera's largest banking relationships ('helping banks modernize how they use their proprietary data for AI'). It asks for proven success selling into large financial institutions. Banks are B2B buyers. No public buyer is named; a central bank or a GSE would be federal in any case.",
+  "saw": {
+   "title": "Key Account Executive - Financial Services",
+   "company": "Cloudera",
+   "description": "Own and grow a portfolio of Cloudera\u2019s most strategic banking customers."
+  }
+ },
+ "kaltura-inc::Account Executive, Media & Telco": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; posting page re-read 11-25. The page lists the seat in VN, on Kaltura's APAC sales team, 'Based in Southeast Asia'. It sells Cloud TV and an AI customer-engagement platform to telecom, media and entertainment organizations, and it asks for B2B SaaS experience. It is not a US role, so it cannot be SLED. If any of those telecoms were state-owned, the role would be FEDERAL under the board's rules; it comes off either way.",
+  "saw": {
+   "title": "Account Executive, Media & Telco",
+   "company": "Kaltura Inc",
+   "description": "Build and develop relationships with telecom, media and entertainment organizations across Southeast Asia."
+  }
+ },
+ "kaltura-inc::Enterprise Account Executive, Healthcare": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; posting page re-read 11-25. The ad says: 'As an Enterprise Account Executive, Healthcare, North America, you will own and grow a territory focused on large enterprise organizations.' It sells AI and SaaS to Marketing, IT, L&D, Security and Procurement buyers. The buyer line, a nice-to-have, names healthcare organizations and healthcare-related enterprises. No public hospital, health district or university medical center is named. This matches the earlier healthcare-vertical rulings.",
+  "saw": {
+   "title": "Enterprise Account Executive, Healthcare",
+   "company": "Kaltura Inc",
+   "description": "Experience selling into large healthcare organizations or healthcare-related enterprises in North America."
+  }
+ },
+ "kaltura-inc::Sales Director": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; posting page re-read 11-25. Despite the board title, the ad is a Senior Enterprise AE (Hunter) seat in Kaltura's NA Tech sales organization. It is 'solely focused' on the tech sector and requires a book of business in Tier-1/Tier-2 tech and SaaS companies. All the buyers are private.",
+  "saw": {
+   "title": "Sales Director",
+   "company": "Kaltura Inc",
+   "description": "Tech and High-Tech sector across (including leading SaaS companies, global tech corporations, and ISVs)"
+  }
+ },
+ "nutanix::Commercial Account Manager": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; posting page re-read 11-25. The page title is 'Commercial Account Manager, Manila, Philippines'. The seat sells through channel partners to Philippine commercial accounts and asks for 8+ years with 'Philippines based Named and/or Commercial accounts'. It is not a US role: any public buyer would be another country's government (FEDERAL), so it comes off either way. FOR THE OWNER: the board shows no location for it.",
+  "saw": {
+   "title": "Commercial Account Manager",
+   "company": "Nutanix",
+   "description": "a strong relationship with Philippines Commercial based accounts"
+  }
+ },
+ "sap-concur::Senior Account Executive": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; posting page re-read 11-25. The page is 'Senior Account Executive, K\u00f8benhavn, Denmark' on the SAP Nordics MM team, with Danish and English required. It sells SAP's cloud portfolio to Danish midmarket customers 'from established brands to organisations beginning their cloud journey', and asks for 'a track record in complex B2B sales'. It is not a US role; any public buyer would be the Danish government, so it comes off either way. FOR THE OWNER: the board files it under SAP Concur and shows no location.",
+  "saw": {
+   "title": "Senior Account Executive",
+   "company": "SAP Concur",
+   "description": "You will own the full sales cycle for midmarket accounts in Denmark from first contact to signed contract."
+  }
+ },
+ "workday::Medium Enterprise Account Executive, Customer Based - (Tech & Media)": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds. The ad is Workday's Medium Enterprise customer-base upsell template, and it names no public buyer. The title sets the industry as Tech & Media (technology and media companies). There is a single posting (one location set). This matches the earlier title-industry rulings (FSI, Healthcare, Manufacturing).",
+  "saw": {
+   "title": "Medium Enterprise Account Executive, Customer Based - (Tech & Media)",
+   "company": "Workday",
+   "description": "Medium Enterprise Account Executive, Customer Based - (Tech & Media)"
+  }
+ },
+ "workday::Medium Enterprise Account Executive, Customer Based - MFG": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds. The ad is Workday's Medium Enterprise customer-base upsell template, and it names no public buyer. The title sets the industry as MFG (manufacturers, a B2B buyer in the brief's rules). There is a single posting (one location set). This matches the earlier B2B ruling on 'Medium Enterprise | Customer Base | Account Executive - Manufacturing'.",
+  "saw": {
+   "title": "Medium Enterprise Account Executive, Customer Based - MFG",
+   "company": "Workday",
+   "description": "Medium Enterprise Account Executive, Customer Based - MFG"
+  }
+ },
+ "workiva::Senior Solution Sales Executive - Capital Markets": {
+  "in_scope": false,
+  "on": "2026-11-25",
+  "at": "2026-11-25T22:34:15-05:00",
+  "by": "agent:scope-review-2026-11-25",
+  "why": "B2B: Holds; quote checked in the brief's ad. The seat wins business from executive buyers 'within our Capital Markets customers' (SEC and IPO reporting). It prefers experience selling to the CFO's office at pre-IPO companies, which are private companies going public, and it asks for success with large enterprise organizations. No government, municipal-issuer or higher-ed buyer is named. Workiva's ACFR work for governments is not this seat.",
+  "saw": {
+   "title": "Senior Solution Sales Executive - Capital Markets",
+   "company": "Workiva",
+   "description": "Experience selling to the office of the CFO at pre IPO Customers"
+  }
  }
 }

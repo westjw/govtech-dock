@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "What's New at MaintainX: December 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/whats-new-at-maintainx-december-2026"
+  },
+  {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Wrench Works Florida 2026 Recap",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.getmaintainx.com/blog/lessons-from-wrench-works-florida-2026"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -31,7 +49,7 @@
    "date": "2026-11-03",
    "date_source": "json-ld",
    "first_seen": "2026-11-03",
-   "headline": "How to Adopt Autonomous Maintenance: A Playbook for Aligning Operations and Maintenance",
+   "headline": "A Playbook For Aligning Operations and Maintenance",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/blog/how-to-adopt-autonomous-maintenance-aligning-operations-and-maintenance"
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.getmaintainx.com/newsroom/waites-and-maintainx-partnership"
-  },
-  {
-   "date": "2026-10-13",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-13",
-   "headline": "OEE Explained: A Complete Guide to Measuring and Improving Overall Equipment Effectiveness for Maintenance Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/complete-guide-to-overall-equipment-effectiveness-oee"
-  },
-  {
-   "date": "2026-10-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "What's New at MaintainX: October 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.getmaintainx.com/blog/whats-new-at-maintainx-october-2026"
   }
  ],
  "profile": {

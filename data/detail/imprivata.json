@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "What the reported NCIC security incident means for law enforcement agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.imprivata.com/blog/what-reported-ncic-security-incident-means-law-enforcement-agencies"
+  },
+  {
    "date": "2026-11-17",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "This everyday task may be costing your organization thousands of working hours",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-05",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-05",
    "headline": "Identity Security Signals: AI-powered threats, access governance gaps, authentication friction, and the growing need for cyber resilience",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-29",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "Make the secure choice the default for AI agents",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-28",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "CJIS compliance: 5 priorities agencies need to address before October 2027",
    "kind": "press",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-10-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Five years of evolution: The future of Imprivata Privileged Access",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.imprivata.com/blog/beyond-compliance-improving-workforce-efficiency-aged-care"
-  },
-  {
-   "date": "2026-10-14",
-   "date_source": "time",
-   "first_seen": "2026-10-14",
-   "headline": "Imprivata and Verosint merge branding, websites and other marketing materials in support of the recent Imprivata acquisition of Verosint",
-   "kind": "funding",
-   "kind_rule": "acquisition of",
-   "url": "https://www.imprivata.com/company/press/imprivata-and-verosint-websites-merge-2026"
   }
  ],
  "profile": {

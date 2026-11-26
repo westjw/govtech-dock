@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-18",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-18",
    "headline": "CampDoc Expands Single Sign-On and Multi-Factor Authentication for Camps and Youth Programs",
    "kind": "press",
@@ -10,8 +10,8 @@
    "url": "https://www.campdoc.com/blog/sso-mfa-for-camps/"
   },
   {
-   "date": "2026-11-18",
-   "date_source": "index-text",
+   "date": "2026-11-17",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "Camp Enrollment Marketing Challenges and Tips",
    "kind": "press",

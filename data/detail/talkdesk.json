@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Where AI belongs in patient support programs",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/blog/where-ai-belongs-patient-support-programs/"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-22",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-16",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "The prescription starts the journey: Introducing Life Sciences Experience Cloud",
    "kind": "product",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/news-and-press/press-releases/the-state-of-agentic-automation-in-cx-emea/"
-  },
-  {
-   "date": "2026-10-27",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "Beyond determinism: AI agents governance",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/blog/beyond-determinism-ai-agents-governance/"
   }
  ]
 }

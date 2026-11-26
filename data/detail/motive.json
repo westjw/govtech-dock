@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-21",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Top 7 AI trends transforming fleet safety in 2027.",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomotive.com/blog/7-ai-trends-fleet-safety-2027/"
+  },
+  {
    "date": "2026-11-19",
    "date_source": "time",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomotive.com/blog/landscaping-fleet-safety-scores/"
-  },
-  {
-   "date": "2026-10-28",
-   "date_source": "time",
-   "first_seen": "2026-10-28",
-   "headline": "Pre- and post-trip inspections: How to close the loop from inspection to repair.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomotive.com/blog/pre-trip-post-trip-vehicle-inspections/"
   }
  ],
  "profile": {

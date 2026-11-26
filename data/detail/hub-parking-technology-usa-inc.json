@@ -1,8 +1,17 @@
 {
  "news": [
   {
-   "date": "2026-11-20",
+   "date": "2026-11-25",
    "date_source": "near-h1",
+   "first_seen": "2026-11-25",
+   "headline": "A more secure way to manage parking access",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.hubparking.com/news/a-more-secure-way-to-manage-parking-access/"
+  },
+  {
+   "date": "2026-11-20",
+   "date_source": "index-text",
    "first_seen": "2026-11-21",
    "headline": "Building Operations That Work When Things Don't Go as Planned",
    "kind": "press",
@@ -83,9 +92,9 @@
   },
   {
    "date": "2026-09-10",
-   "date_source": "index-text",
+   "date_source": "near-h1",
    "first_seen": "2026-09-10",
-   "headline": "HUB Parking Technology Expands Customer Reach in the Netherlands with New PARKRable Partnership",
+   "headline": "\u2190 HUB Parking Techn...",
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hubparking.com/news/hub-parking-technology-expands-customer-reach-in-the-netherlands-with-new-parkrable-partnership/"
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.hubparking.com/news/making-payment-faster-in-just-one-scan-with-j4pay/"
-  },
-  {
-   "date": "2026-08-12",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Smart Parking - Summer Edition",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.hubparking.com/news/smart-parking-summer-edition/"
   }
  ],
  "profile": {

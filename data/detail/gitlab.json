@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Take on complex coding changes with Gemini 4 Neon on GitLab",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://about.gitlab.com/blog/gemini-4-neon-on-gitlab/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-24",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://about.gitlab.com/blog/jira-ticket-to-gitlab-mr-with-duo-agent-platform/"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "How to prevent leaks from Claude Code's 'Don't ask again' file",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://about.gitlab.com/blog/prevent-leaks-from-claude-code-dont-ask-again-file/"
   }
  ]
 }

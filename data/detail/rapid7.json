@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "CVE-2026-123903: Critical VMware Directory Service Authentication Bypass affects vCenter",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.rapid7.com/blog/post/etr-cve-2026-123903-critical-vmware-directory-service-authentication-bypass-affects-vcenter/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-24",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Update",
    "url": "https://www.rapid7.com/blog/post/tr-q3-2026-threat-update-attackers-exploiting-vulnerabilities-within-3-days/"
-  },
-  {
-   "date": "2026-10-19",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Rapid7 Analysis: NetScaler intrusions chaining CVE-2026-88771 and CVE-2026-88779",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.rapid7.com/blog/post/ra-netscaler-intrusions-chaining-cve-2026-88771-and-cve-2026-88779/"
   }
  ]
 }

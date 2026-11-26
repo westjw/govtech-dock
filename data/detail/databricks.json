@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-24",
    "headline": "Data Modeling Best Practices for an Agentic CDP, Part 1: The Data Foundation",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-24",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-24",
    "headline": "Sharing catalog metadata across data platforms, engines, and agents",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-11-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-23",
    "headline": "Announcing General Availability of native Lakebase Postgres sink for Spark Structured Streaming",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-11-23",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-24",
    "headline": "What 5,400 Malicious npm Packages Reveal about Software Supply Chain Risk in 2026",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-11-20",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-21",
    "headline": "Interactive Databricks Reference Architectures Across 70 Industries",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-19",
    "headline": "Genie ZeroOps, now in public beta: An autonomous agent that fixes data pipelines, with lessons from 80,000 customer issues",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-11-19",
    "headline": "Genie One Accuracy: Why Curated Agents Need Governed Context",
    "kind": "press",

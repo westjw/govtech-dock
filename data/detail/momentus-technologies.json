@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "AI Lead Scoring for Venues: How to Prioritize Inbound Event Inquiries",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://gomomentus.com/blog/ai-lead-scoring-for-venues"
+  },
+  {
    "date": "2026-11-16",
    "date_source": "near-h1",
    "first_seen": "2026-09-10",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://gomomentus.com/blog/event-rfp-tool"
-  },
-  {
-   "date": "2026-10-21",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-20",
-   "headline": "Top Business Intelligence Tools for Venue and Event Teams",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://gomomentus.com/blog/top-business-intelligence-tools"
   }
  ],
  "profile": {

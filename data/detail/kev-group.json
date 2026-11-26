@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "og:published",
+   "first_seen": "2026-11-25",
+   "headline": "2027 Post-Audit Guide: Audit Findings and Fixes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://kevgroup.com/blog/post-audit-guide-2027/"
+  },
+  {
    "date": "2026-11-02",
    "date_source": "og:published",
    "first_seen": "2026-11-03",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://kevgroup.com/blog/district-wide-k-12-financial-visibility-2026/"
-  },
-  {
-   "date": "2026-06-24",
-   "date_source": "og:published",
-   "first_seen": "2026-10-22",
-   "headline": "How to Simplify K-12 Finance Software Setup in 2026",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://kevgroup.com/blog/k12-finance-software-setup/"
   }
  ]
 }

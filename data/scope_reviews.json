@@ -8475,5 +8475,201 @@
   "quote": "across municipal, industrial, construction, and emergency response markets",
   "on": "2026-11-24",
   "by": "agent:scope-review-2026-11-24"
+ },
+ "boostlingo::Account Manager, LSP": {
+  "verdict": "B2B",
+  "why": "Holds. The seat handles renewals, upsells and QBRs for Boostlingo's language service provider (LSP) accounts. It works with 'LSP leaders, operations teams, and technical staff'. LSPs are interpreting businesses, so these are private buyers. The brief's ad stops at the 6,000-character cap, so I read the rest on the Greenhouse page (11-25). It adds only preferred experience with 'enterprise healthcare accounts' and with the language services industry. No court, agency or other public buyer appears in the seat.",
+  "quote": "Language service providers (LSPs) run their businesses on Boostlingo.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "canonical::OEM Sales Director": {
+  "verdict": "B2B",
+  "why": "Holds; quote checked in the brief's ad. The ad behind this title is Canonical's IHV Alliance Sales Director, based remotely in AMER, EMEA or APAC. It runs alliances with hardware makers: Lenovo, Huawei, Fujitsu in APAC; Ericsson, Nokia, Siemens in EMEA; Dell, HPE, IBM, Supermicro in the Americas. No public buyer appears anywhere in the ad.",
+  "quote": "Lead partnerships in the Americas with companies like Dell, HPE, IBM, Supermicro",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "cloudera::Key Account Executive - Financial Services": {
+  "verdict": "B2B",
+  "why": "Holds; quote checked in the brief's ad. The seat owns Cloudera's largest banking relationships ('helping banks modernize how they use their proprietary data for AI'). It asks for proven success selling into large financial institutions. Banks are B2B buyers. No public buyer is named; a central bank or a GSE would be federal in any case.",
+  "quote": "Own and grow a portfolio of Cloudera\u2019s most strategic banking customers.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "conduent::Senior Sales Executive - State & Local Government": {
+  "verdict": "SLED",
+  "why": "Holds. The title names state and local government buyers. The posting page (read 11-25) keeps that title: 'Senior Sales Executive - State & Local Government in Remote US'. No private buyer appears. FOR THE OWNER: the same page now says 'the job you are trying to apply for has been filled', so the listing is likely stale even though it is in scope.",
+  "quote": "Senior Sales Executive - State & Local Government",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "crowdstrike::Regional Sales Manager (Remote, DMV)": {
+  "verdict": "UNCLEAR",
+  "why": "Holds. The brief has no ad, and Workday pages are off limits. The title names a region (DC, Maryland, Virginia; the address slug reads 'Regional Sales Manager, Southeast (Remote - DMV)'), not buyers. CrowdStrike sells to federal, state and local, and commercial buyers, and a DMV seat could sit with any of them. The reader cites a 10-27 B2B ruling on this slug's old 'Enterprise Accounts' template and an 11-24 finding that the template does not exclude government. Nothing quotable supports B2B or FEDERAL.",
+  "quote": "Regional Sales Manager (Remote, DMV)",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "crowdstrike::Sr. Corporate Account Manager": {
+  "verdict": "UNCLEAR",
+  "why": "Holds; quote checked in the brief's ad. The ad names no buyer type, public or private. Its only buyer words are size words: 'Corporate' in the title and 'mid/enterprise organizations' in the experience list. It also says the hire may join either the Senior or the Named Account Management team. Size bands are not buyers. It is probably the commercial segment, but nothing in this ad shows it.",
+  "quote": "proven ability to sell a broad, multi-module solution to mid/enterprise organizations",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "eagleview::Sr. Strategic Account Manager": {
+  "verdict": "UNCLEAR",
+  "why": "Stays UNCLEAR, now with the ad read. The posting page is a script shell, so on 11-25 I read the ad from EagleView's careers job feed (careers.eagleview.com/api/jobs, the Jibe feed the nightly crawler reads). The Customer Success seat owns 'complex, strategic enterprise accounts', which is a tier, not a buyer. The ad twice prefers property-insurance experience: 'Experience in the Property Insurance industry is highly preferred' and 'familiarity with carrier workflows'. No county assessor, GIS office, utility or other public buyer appears in the role; government shows up only in the company blur",
+  "quote": "Preferred Property Insurance industry experience, including familiarity with carrier workflows, industry partners, market conditions, and relevant practices.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "intrado-life-safety::Sales Account Executive": {
+  "verdict": "UNCLEAR",
+  "why": "Stays UNCLEAR, but the reader's guess that it is 'most likely PSAP-facing' is wrong. On 11-25 I read the full ad from Intrado's careers job feed (careers.intrado.com/api/jobs). The seat sells Enterprise 911 (911 for an organization's own phone systems) and Intrado's 'Enterprise and Safety Suite'; it does not sell PSAP call handling. Its only buyer words are 'decision-makers, IT leaders, and operational stakeholders' in assigned accounts. The '2+ years of B2B sales experience' requirement describes the candidate's background, not the seat's buyers. Businesses buy Enterprise 911, but so do schoo",
+  "quote": "You will sell Intrado's Enterprise 911, emergency communications, and safety solutions while supporting customer retention and expansion efforts.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "kaltura-inc::Account Executive, Media & Telco": {
+  "verdict": "B2B",
+  "why": "Holds; posting page re-read 11-25. The page lists the seat in VN, on Kaltura's APAC sales team, 'Based in Southeast Asia'. It sells Cloud TV and an AI customer-engagement platform to telecom, media and entertainment organizations, and it asks for B2B SaaS experience. It is not a US role, so it cannot be SLED. If any of those telecoms were state-owned, the role would be FEDERAL under the board's rules; it comes off either way.",
+  "quote": "Build and develop relationships with telecom, media and entertainment organizations across Southeast Asia.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "kaltura-inc::Enterprise Account Executive, Healthcare": {
+  "verdict": "B2B",
+  "why": "Holds; posting page re-read 11-25. The ad says: 'As an Enterprise Account Executive, Healthcare, North America, you will own and grow a territory focused on large enterprise organizations.' It sells AI and SaaS to Marketing, IT, L&D, Security and Procurement buyers. The buyer line, a nice-to-have, names healthcare organizations and healthcare-related enterprises. No public hospital, health district or university medical center is named. This matches the earlier healthcare-vertical rulings.",
+  "quote": "Experience selling into large healthcare organizations or healthcare-related enterprises in North America.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "kaltura-inc::Sales Director": {
+  "verdict": "B2B",
+  "why": "Holds; posting page re-read 11-25. Despite the board title, the ad is a Senior Enterprise AE (Hunter) seat in Kaltura's NA Tech sales organization. It is 'solely focused' on the tech sector and requires a book of business in Tier-1/Tier-2 tech and SaaS companies. All the buyers are private.",
+  "quote": "Tech and High-Tech sector across (including leading SaaS companies, global tech corporations, and ISVs)",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "motorola-solutions::Regional Sales Manager - Government Video (North Carolina)": {
+  "verdict": "SLED",
+  "why": "Holds; quote checked in the brief's ad. The Government Video seat (in-car and body-worn cameras, license plate readers, fixed video) builds relationships with chiefs, sheriffs and city/county administrators. It runs state user group meetings and wants outside sales experience with government organizations. No private buyer is named. FOR THE OWNER: the ad prefers North Carolina residents but says 'Travel within the state of Alabama 50% of the time (3x per week)', a template slip. The scope is the same either way.",
+  "quote": "garnering relationships with Economic Buying Influences (Chief, Sheriff, City/County Administrators)",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "motorola-solutions::Senior Sales Manager - Software": {
+  "verdict": "SLED",
+  "why": "Holds; quote checked in the brief's ad. The seat develops new software accounts (CAD, RMS, jail management) with public safety organizations, state and local agencies and K-12 districts. It asks for experience with state, county and local government buying and RFP/RFI procurement, and names 911, Emergency Management and County/City Executive Offices as customer profiles. No private buyer is named.",
+  "quote": "You excel at building relationships and closing new business with Public Safety Organizations, State and Local Government Agencies, and K-12 School Districts.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "nutanix::Commercial Account Manager": {
+  "verdict": "B2B",
+  "why": "Holds; posting page re-read 11-25. The page title is 'Commercial Account Manager, Manila, Philippines'. The seat sells through channel partners to Philippine commercial accounts and asks for 8+ years with 'Philippines based Named and/or Commercial accounts'. It is not a US role: any public buyer would be another country's government (FEDERAL), so it comes off either way. FOR THE OWNER: the board shows no location for it.",
+  "quote": "a strong relationship with Philippines Commercial based accounts",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "opengov::Commercial Account Executive": {
+  "verdict": "SLED",
+  "why": "Holds; quote checked in the brief's ad. OpenGov sells only to US public bodies. This seat drives new business 'in the State and Local Government market' with local and state governments, school districts and special districts. 'Commercial' is OpenGov's segment name, not a buyer type. The brief lists two locations (Chicago and Boston) under one title, so both postings are SLED.",
+  "quote": "Manage a defined territory and build relationships with prospects in local and state governments, school districts, and special districts.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "rehrig-pacific::Territory Sales Manager - Environmental": {
+  "verdict": "MIXED",
+  "why": "Holds; quote checked in the brief's ad. One multi-state territory (candidates in AZ, KS, CO, UT) sells carts and collection technology to municipalities and local governments, including through bids, RFPs and municipal procurement. The same territory sells to national and regional haulers and private waste firms. Public and private buyers share one seat, so it stays.",
+  "quote": "develops new business and expands existing relationships with municipalities, local governments, national and regional haulers, and private waste and recycling organizations",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "sap-concur::Senior Account Executive": {
+  "verdict": "B2B",
+  "why": "Holds; posting page re-read 11-25. The page is 'Senior Account Executive, K\u00f8benhavn, Denmark' on the SAP Nordics MM team, with Danish and English required. It sells SAP's cloud portfolio to Danish midmarket customers 'from established brands to organisations beginning their cloud journey', and asks for 'a track record in complex B2B sales'. It is not a US role; any public buyer would be the Danish government, so it comes off either way. FOR THE OWNER: the board files it under SAP Concur and shows no location.",
+  "quote": "You will own the full sales cycle for midmarket accounts in Denmark from first contact to signed contract.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "socure::Senior Account Executive": {
+  "verdict": "MIXED",
+  "why": "Holds; quote checked in the brief's ad. The seat owns enterprise and government accounts. Enterprise accounts are private buyers, and government accounts are public ones. The ad does not say which level of government, but Socure sells to state and local benefit agencies, and nothing in the ad limits the seat to federal. Both kinds of buyer share one seat, so it stays.",
+  "quote": "The Senior Account Executive (SIP) owns the full sales cycle for enterprise and government accounts",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "ukg::Account Executive 3 United States Sales": {
+  "verdict": "UNCLEAR",
+  "why": "Stays UNCLEAR, now with the ad read. The posting page is a script shell, so on 11-25 I read UKG's own job data (apply.ukg.com/api/pcsx/position_details). The seat is an HRMS/Payroll new-logo hunter 'responsible for net-new logo sales in the mid-market space', and mid-market is a size band. The rest of the ad is generic business wording ('familiar with the local business climate', 'companies relying upon SaaS'). It names no industry and no public buyer, and UKG also sells to governments. FOR THE OWNER: probably the commercial mid-market, but no words in the ad name the buyers.",
+  "quote": "responsible for net-new logo sales in the mid-market space",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "ukg::Install Base Account Executive - SMB United States Sales": {
+  "verdict": "UNCLEAR",
+  "why": "Stays UNCLEAR, now with the ad read (UKG job data, 11-25). The seat expands existing SMB customers ('a high-volume portfolio of standard growth opportunities'). The only buyer word is 'SMB', a size band. The ad names no industry and no public buyer. UKG's SMB book has included small acute-care hospitals, and UKG sells to governments, so the seat cannot be quoted as B2B.",
+  "quote": "As an SMB Account Executive focused on customer expansion, you will own a high-volume portfolio of standard growth opportunities",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "vector-solutions::Enterprise Sales Development Representative": {
+  "verdict": "SLED",
+  "why": "Holds; quote checked in the brief's ad. This SDR seat prospects fire departments, EMS agencies and municipal leaders for training, scheduling and compliance software, and wants fire-service or EMS backgrounds. Vector sells to commercial buyers too, but this seat names only fire, EMS and municipal buyers. A private ambulance firm would make it MIXED at most, and it stays either way.",
+  "quote": "Connect with fire chiefs, training officers, and municipal leaders who speak your language.",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "verkada::Regional Sales Director (Southern California - Education)": {
+  "verdict": "SLED",
+  "why": "Holds; quote checked in the brief's ad. The seat leads Enterprise AEs selling to education-market organizations in Southern California. It reports to the 'Regional Vice President (West - SLED)' and asks for public-sector deals across 'State, Local Municipalities and Education'. Private campuses would make it MIXED at most, and it stays either way.",
+  "quote": "acquiring net-new business and expanding existing accounts in organizations within the education market in Southern California",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "workday::Account Executive": {
+  "verdict": "UNCLEAR",
+  "why": "Holds. The opening carries three postings (the brief lists three location sets). The only ad in the brief is the CA Adaptive Planning seat (JR-0111721-1), and it reads SLED: '3+ years focused selling into the Educational Vertical' and 'complex sales cycles within the educational systems'. Private campuses would make it MIXED at most. The other two postings' ads are not in the brief, Workday pages are off limits, and Workday sells to businesses too, so the opening as a whole is not settled. It stays.",
+  "quote": "3+ years focused selling into the Educational Vertical",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "workday::Large Enterprise | Customer Base | Account Executive - Local Government": {
+  "verdict": "SLED",
+  "why": "Holds. The title names local government. The ad, an upsell seat on existing Large Enterprise customers, adds 'Experience in State and Local Government strongly preferred'. No private buyer is named.",
+  "quote": "Large Enterprise | Customer Base | Account Executive - Local Government",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "workday::Medium Enterprise Account Executive, Customer Based": {
+  "verdict": "UNCLEAR",
+  "why": "Holds; quote checked in the brief's ad. The opening carries two postings (two location sets). The ad in the brief, the San Francisco posting (JR-0111956), is B2B: the 'Professional Business Services (PBS)' customer-base team. The second posting has no ad in the brief and Workday pages are off limits, so its buyers are unread. A B2B ruling on the opening would take that posting off too. FOR THE OWNER: if the opening is split, the PBS posting is B2B.",
+  "quote": "Our Customer Base - Professional Business Services (PBS) sales team",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "workday::Medium Enterprise Account Executive, Customer Based - (Tech & Media)": {
+  "verdict": "B2B",
+  "why": "Holds. The ad is Workday's Medium Enterprise customer-base upsell template, and it names no public buyer. The title sets the industry as Tech & Media (technology and media companies). There is a single posting (one location set). This matches the earlier title-industry rulings (FSI, Healthcare, Manufacturing).",
+  "quote": "Medium Enterprise Account Executive, Customer Based - (Tech & Media)",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "workday::Medium Enterprise Account Executive, Customer Based - MFG": {
+  "verdict": "B2B",
+  "why": "Holds. The ad is Workday's Medium Enterprise customer-base upsell template, and it names no public buyer. The title sets the industry as MFG (manufacturers, a B2B buyer in the brief's rules). There is a single posting (one location set). This matches the earlier B2B ruling on 'Medium Enterprise | Customer Base | Account Executive - Manufacturing'.",
+  "quote": "Medium Enterprise Account Executive, Customer Based - MFG",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
+ },
+ "workiva::Senior Solution Sales Executive - Capital Markets": {
+  "verdict": "B2B",
+  "why": "Holds; quote checked in the brief's ad. The seat wins business from executive buyers 'within our Capital Markets customers' (SEC and IPO reporting). It prefers experience selling to the CFO's office at pre-IPO companies, which are private companies going public, and it asks for success with large enterprise organizations. No government, municipal-issuer or higher-ed buyer is named. Workiva's ACFR work for governments is not this seat.",
+  "quote": "Experience selling to the office of the CFO at pre IPO Customers",
+  "on": "2026-11-25",
+  "by": "agent:scope-review-2026-11-25"
  }
 }

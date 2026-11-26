@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "How McCarthy-Vaughn Keeps 2,000 Construction Workers Aligned on Every Weather Call",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://perryweather.com/resources/mccarthy-vaughn-partnership/"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "index-text",
    "first_seen": "2026-11-23",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://perryweather.com/resources/what-is-heat-index/"
-  },
-  {
-   "date": "2026-09-25",
-   "date_source": "index-text",
-   "first_seen": "2026-09-28",
-   "headline": "El Ni\u00f1o 2026 Winter Forecast: U.S. Weather Outlook for 2026-27",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://perryweather.com/resources/el-nino-2026-winter-forecast/"
   }
  ],
  "profile": {

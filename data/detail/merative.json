@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Merge expands partner ecosystem with Subtle Medical for faster, higher-quality, AI-powered MRI, PET and CT imaging",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/newsroom/subtle-medical-partner-announcement"
+  },
+  {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Merge Community Snapshot: Your 5-minute recap of November 2026",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.merative.com/newsroom/merge-community-snapshot-november-2026"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-05",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.merative.com/blog/ai-powered-marketscan-snapshot-speeds-real-world-data-feasibility"
-  },
-  {
-   "date": "2026-09-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-06",
-   "headline": "What employers & payers need to know about multi-cancer early detection tests",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.merative.com/blog/what-employers-payers-need-to-know-about-multi-cancer-early-detection-tests"
-  },
-  {
-   "date": "2026-09-15",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Merge launches MergeIQ\u2122, the AI layer powering intelligence across its enterprise imaging platform",
-   "kind": "product",
-   "kind_rule": "launches",
-   "url": "https://www.merative.com/newsroom/merge-launches-mergeiq-ai-enterprise-imaging-platform"
   }
  ],
  "profile": {

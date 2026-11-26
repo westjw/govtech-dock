@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Financial management software for multi-site behavioral health: what to ask",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.sage.com/en-us/blog/choosing-financial-management-software-behavioral-health-evaluation-questions/"
+  },
+  {
    "date": "2026-11-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-23",
    "headline": "2027 physician fee schedule: what changes in a primary care group\u2019s forecast",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-23",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-23",
    "headline": "Performance Improvement Plan (PIP): How to write one that works, with a free template",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.sage.com/en-us/blog/monthly-board-finance-pack-community-health-center/"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "card-date",
-   "first_seen": "2026-11-11",
-   "headline": "What\u2019s new in Sage Intacct 2026 Release 4?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.sage.com/en-us/blog/sage-intacct-2026-release-4/"
   }
  ]
 }

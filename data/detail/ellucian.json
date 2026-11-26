@@ -1,8 +1,8 @@
 {
  "news": [
   {
-   "date": "2026-11-12",
-   "date_source": "index-text",
+   "date": "2026-11-09",
+   "date_source": "json-ld",
    "first_seen": "2026-11-10",
    "headline": "By Dr. Warren Hilton",
    "kind": "press",
@@ -20,7 +20,7 @@
   },
   {
    "date": "2026-10-22",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-22",
    "headline": "More Than a Portfolio: How Documenting My Journey Helped Me Find My Place",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-10-16",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-17",
    "headline": "Heroes of Higher Ed",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-10-05",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-26",
    "headline": "Artificial Intelligence, Data Security and Privacy",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "Shifting Mindsets: Turning Internal Roadblocks Into Academic Success",
    "kind": "press",

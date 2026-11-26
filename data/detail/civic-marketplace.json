@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-24",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "How two cities made their websites work for every resident",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://civicmarketplace.com/news/how-two-cities-made-their-websites-work-for-every-resident"
+  },
+  {
    "date": "2026-11-20",
    "date_source": "json-ld",
    "first_seen": "2026-11-21",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot"
-  },
-  {
-   "date": "2026-08-26",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "TXShare Supplier Series: Cooperative Purchasing 101",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101"
   }
  ],
  "profile": {

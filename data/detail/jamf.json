@@ -1,6 +1,24 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "index-text",
+   "first_seen": "2026-11-25",
+   "headline": "Jamf Nation: Apple admin community and support",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/jamf-nation-apple-admin-community/"
+  },
+  {
+   "date": "2026-11-25",
+   "date_source": "index-text",
+   "first_seen": "2026-11-25",
+   "headline": "SMS of Death: how an 8-byte payload can crash Android\u2019s telephony stack",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.jamf.com/blog/sms-of-death-android-zero-click-vulnerability/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "index-text",
    "first_seen": "2026-11-24",
@@ -89,24 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.jamf.com/blog/declarative-mac-app-deployment-alme/"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "index-text",
-   "first_seen": "2026-10-31",
-   "headline": "Binance attack: how DPRK targets developer laptops",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/binance-attack-dprk-developer-laptop-security/"
-  },
-  {
-   "date": "2026-10-29",
-   "date_source": "index-text",
-   "first_seen": "2026-10-31",
-   "headline": "JNUC 2027 Diversity Sponsorship",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.jamf.com/blog/jnuc-diversity-sponsorship/"
   }
  ]
 }

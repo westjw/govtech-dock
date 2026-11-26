@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "index-text",
+   "first_seen": "2026-11-25",
+   "headline": "Happy Thanksgiving from ProPhoenix",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://prophoenix.com/2026/11/happy-thanksgiving-from-prophoenix/"
+  },
+  {
    "date": "2026-10-28",
    "date_source": "json-ld",
    "first_seen": "2026-10-28",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://prophoenix.com/2026/06/visit-us-booth-324-at-fbinaa/"
-  },
-  {
-   "date": "2026-06-11",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Visit us booth 609 at National Sheriffs\u2019 Association Conference",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://prophoenix.com/2026/06/visit-us-booth-609-at-national-sheriffs-association-conference/"
   }
  ]
 }

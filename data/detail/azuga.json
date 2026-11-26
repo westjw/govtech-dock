@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "How Winter Weather Impacts Fleet Operations (and How to Stay Ahead)",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.azuga.com/blog/how-winter-weather-impacts-fleet-operations"
+  },
+  {
    "date": "2026-07-07",
    "date_source": "json-ld",
    "first_seen": "2026-09-05",
@@ -37,8 +46,8 @@
    "url": "https://www.azuga.com/blog/delivery-route-planning-software-fleets"
   },
   {
-   "date": "2026-06-10",
-   "date_source": "json-ld",
+   "date": "2026-06-02",
+   "date_source": "index-text",
    "first_seen": "2026-09-05",
    "headline": "Your Guide to the Benefits of Driver Coaching Programs",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.azuga.com/blog/small-equipment-tracking-devices-guide"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Telematics for Fleets: A Complete Guide",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.azuga.com/blog/video-telematics-for-fleets"
   }
  ],
  "profile": {

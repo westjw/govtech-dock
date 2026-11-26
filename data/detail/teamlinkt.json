@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "League & Community Management",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://teamlinkt.com/blog/average-youth-sports-roster-size-by-sport"
+  },
+  {
    "date": "2026-11-16",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-16",
    "headline": "League & Community Management",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-03",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "League & Community Management",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://teamlinkt.com/blog/blog/humboldt-minor-hockey-easy-to-use-software"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Switching from Crossbar to TeamLinkt: What the Migration Actually Looks Like",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://teamlinkt.com/blog/what-to-know-before-switching-from-crossbar"
   }
  ],
  "profile": {

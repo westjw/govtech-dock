@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-23",
    "headline": "Why AI Makes Identity Security Urgent",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-19",
    "headline": "Real-Time Policy Enforcement: Palo Alto Networks Firewalls Integrate with A...",
    "kind": "press",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-11-12",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-12",
    "headline": "Europe Is Setting the Global Standard for Sovereignty. Here Is Where We Sta...",
    "kind": "press",
@@ -38,7 +38,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "The SASE \u201cTrilemma\u201d: How Regulated Enterprises are Navigating Digital Sover...",
    "kind": "press",
@@ -47,7 +47,7 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "Digital Contagion: How AI Is Transforming Supply Chain Cyber Risk",
    "kind": "press",
@@ -56,7 +56,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Guiding Customers Through Critical PHP Vulnerabilities",
    "kind": "press",
@@ -65,7 +65,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "New Cortex XDR Integration with Claude Cowork Secures Desktop AI Agents",
    "kind": "product",
@@ -74,7 +74,7 @@
   },
   {
    "date": "2026-10-26",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-26",
    "headline": "Palo Alto Networks Named a Leader in the 2026 Gartner\u00ae Magic Quadrant\u0212...",
    "kind": "press",
@@ -83,7 +83,7 @@
   },
   {
    "date": "2026-10-23",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-24",
    "headline": "Palo Alto Networks Brings Continuous AI Defense and Prisma AIRS to the Open...",
    "kind": "press",

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Introducing STQRY Signage: Bring Your Stories to Every Screen",
+   "kind": "product",
+   "kind_rule": "Introducing",
+   "url": "https://stqry.com/blog/introducing-stqry-signage-bring-your-stories-to-every-screen"
+  },
+  {
    "date": "2026-11-11",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "September 2026: Apps Gone Live",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-05",
    "headline": "From Scenic Backroads to 65+ Tours: How Drives & Detours Is Scaling Self-Guided Travel with STQRY",
    "kind": "press",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-13",
    "headline": "How Visit Aurora Created a Brewery Passport Using STQRY",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-10-12",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "August 2026: Apps Gone Live",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introducing",
    "url": "https://stqry.com/blog/introducing-stqry-studio"
-  },
-  {
-   "date": "2026-07-03",
-   "date_source": "time",
-   "first_seen": "2026-09-05",
-   "headline": "May 2026: Apps Gone Live",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://stqry.com/blog/may-2026-apps-gone-live"
   }
  ],
  "profile": {

@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-25",
+   "headline": "Chainalysis Nodes London 2026: Chain, Our AI Workspace \u2018Tips the Scales\u2019 for Defenders",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.chainalysis.com/blog/nodes-london-2026-chain-ai-workspace/"
+  },
+  {
    "date": "2026-11-19",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-19",
    "headline": "How Chain, Our AI Workspace, Helps Investigators Fight Crime",
    "kind": "press",
@@ -10,8 +19,8 @@
    "url": "https://www.chainalysis.com/blog/how-chain-our-ai-workspace-helps-investigators-fight-crime/"
   },
   {
-   "date": "2026-11-19",
-   "date_source": "index-text",
+   "date": "2026-11-17",
+   "date_source": "json-ld",
    "first_seen": "2026-11-17",
    "headline": "Refugees, ATMs, and Tax Shifts: What\u2019s Driving Crypto in Eastern Europe",
    "kind": "press",
@@ -19,8 +28,8 @@
    "url": "https://www.chainalysis.com/blog/eastern-europe-crypto-adoption-2026/"
   },
   {
-   "date": "2026-11-17",
-   "date_source": "index-text",
+   "date": "2026-11-13",
+   "date_source": "json-ld",
    "first_seen": "2026-11-13",
    "headline": "FinCEN Bars U.S. Institutions From Moving Funds for MEXC Global",
    "kind": "press",
@@ -28,8 +37,8 @@
    "url": "https://www.chainalysis.com/blog/fincen-mexc-global-november-2026/"
   },
   {
-   "date": "2026-11-13",
-   "date_source": "index-text",
+   "date": "2026-11-10",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "The Shadow Market Behind China\u2019s AI Model Distillation Boom",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "Sanctioned Canadian Crypto OTCs Served Iran and Drug Cartels",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-11-09",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "Western Europe\u2019s $2 Trillion Crypto Economy Holds Firm",
    "kind": "press",
@@ -55,8 +64,8 @@
    "url": "https://www.chainalysis.com/blog/western-europe-crypto-adoption-2026/"
   },
   {
-   "date": "2026-11-09",
-   "date_source": "index-text",
+   "date": "2026-11-03",
+   "date_source": "json-ld",
    "first_seen": "2026-11-04",
    "headline": "DPRK Hackers Perfected Their Fake Interview Playbook Over Dozens of Attacks Before Binance",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-11-02",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-03",
    "headline": "Disrupting the Mercado Bitcoin Attack: How Chainalysis Led the Freeze of Nearly $10M in Stolen Funds",
    "kind": "press",
@@ -73,8 +82,8 @@
    "url": "https://www.chainalysis.com/blog/chainalysis-response-mercado-bitcoin/"
   },
   {
-   "date": "2026-11-02",
-   "date_source": "index-text",
+   "date": "2026-10-30",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "Updated Nov 10: Chainalysis Security Incident Information",
    "kind": "product",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-30",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-10-30",
    "headline": "The $6.4 Billion Binance Hack: Tracing the North Korea Link",
    "kind": "press",
@@ -91,17 +100,8 @@
    "url": "https://www.chainalysis.com/blog/binance-exploit-latest-findings-and-response/"
   },
   {
-   "date": "2026-10-30",
-   "date_source": "index-text",
-   "first_seen": "2026-11-24",
-   "headline": "Chainalysis Supports Arc with Automatic Token Support",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.chainalysis.com/blog/chainalysis-supports-arc-with-automatic-token-support/"
-  },
-  {
-   "date": "2026-10-30",
-   "date_source": "index-text",
+   "date": "2026-10-29",
+   "date_source": "json-ld",
    "first_seen": "2026-10-29",
    "headline": "South Africa Leads Sub-Saharan Africa\u2019s 13.4% Crypto Growth",
    "kind": "press",
