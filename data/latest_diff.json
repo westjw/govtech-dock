@@ -1,83 +1,97 @@
 {
-  "date": "2026-11-25",
-  "previous": "2026-11-24",
+  "date": "2026-11-26",
+  "previous": "2026-11-25",
   "changes": [
     {
-      "company": "Glacier",
-      "id": "glacier",
+      "company": "SOVRA",
+      "id": "sovra",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only"
+    },
+    {
+      "company": "Luminator Technology Group",
+      "id": "luminator-technology-group",
       "from": "Yes",
-      "to": "None found",
-      "note": ""
+      "to": "Sales (non-AE)",
+      "note": "Sales Backoffice Specialist only"
     },
     {
-      "company": "Rehrig Pacific",
-      "id": "rehrig-pacific",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "Territory Sales Manager - Environm (US)"
-    },
-    {
-      "company": "Paymentus",
-      "id": "paymentus",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Ascento AG",
-      "id": "ascento-ag",
+      "company": "Eptura",
+      "id": "eptura",
       "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
+      "to": "Yes",
+      "note": "Account Executive (London - UK)"
+    },
+    {
+      "company": "mdf commerce",
+      "id": "mdf-commerce",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Sales Development Representative,  only"
     },
     {
       "company": "GE Vernova",
       "id": "ge-vernova",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "GridUnity",
-      "id": "gridunity",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Business Solutions Engineer only"
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     },
     {
       "company": "OpusXenta",
       "id": "opusxenta",
-      "from": "None found",
-      "to": "Unknown",
-      "note": "network error: robots.txt on byond.cloud"
-    },
-    {
-      "company": "Clinically AI",
-      "id": "clinically-ai",
-      "from": "Sales (non-AE)",
+      "from": "Unknown",
       "to": "None found",
       "note": ""
     },
     {
-      "company": "Kaltura Inc",
-      "id": "kaltura-inc",
-      "from": "Unknown",
+      "company": "Measures for Justice",
+      "id": "measures-for-justice",
+      "from": "None found",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
+    },
+    {
+      "company": "BusRight",
+      "id": "busright",
+      "from": "None found",
+      "to": "Sales (non-AE)",
+      "note": "Customer Success Manager only"
+    },
+    {
+      "company": "Kaltura Inc",
+      "id": "kaltura-inc",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://corp.kaltura.com/co"
     },
     {
       "company": "Lumu Technologies",
       "id": "lumu-technologies",
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "HTTP 403 for https://lumu.io/careers/"
+    },
+    {
+      "company": "Myriota",
+      "id": "myriota",
       "from": "Unknown",
       "to": "Yes",
       "note": "AE-type role (page scan) [page scan - verify]"
     },
     {
-      "company": "Myriota",
-      "id": "myriota",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "network error: robots.txt on myriota.com"
+      "company": "Onit",
+      "id": "onit",
+      "from": "Sales (non-AE)",
+      "to": "Yes",
+      "note": "Global Account Executive (Remote - USA)"
+    },
+    {
+      "company": "Blumira",
+      "id": "blumira",
+      "from": "Sales (non-AE)",
+      "to": "None found",
+      "note": ""
     }
   ]
 }

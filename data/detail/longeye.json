@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-24",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-25",
    "headline": "Clearer roles and access in Longeye",
    "kind": "press",
@@ -19,8 +19,8 @@
    "url": "https://www.longeye.com/blog/product-update-nov-2026"
   },
   {
-   "date": "2026-10-08",
-   "date_source": "json-ld",
+   "date": "2026-11-10",
+   "date_source": "time",
    "first_seen": "2026-10-14",
    "headline": "October Product Update \ud83c\udf42",
    "kind": "product",
@@ -29,7 +29,7 @@
   },
   {
    "date": "2026-09-14",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-09-28",
    "headline": "Product Update Danielle Man \u00b7 September 2026",
    "kind": "product",
@@ -73,8 +73,8 @@
    "url": "https://www.longeye.com/blog/funding-investigative-technology-fy26-cops-tep"
   },
   {
-   "date": "2026-06-05",
-   "date_source": "json-ld",
+   "date": "2026-06-12",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Can Investigators Use AI Without Breaking CJIS?",
    "kind": "press",
@@ -82,8 +82,8 @@
    "url": "https://www.longeye.com/blog/ai-without-breaking-cjis"
   },
   {
-   "date": "2026-06-04",
-   "date_source": "json-ld",
+   "date": "2026-06-05",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Product Update Danielle Man \u00b7 June 4, 2026 June Product Update Summer is here, and so are a few new things: relationship graphs, a dedicated Drafts page for your reports, and sharper CSAM detection.",
    "kind": "product",
@@ -91,8 +91,8 @@
    "url": "https://www.longeye.com/blog/product-update-jun-2026"
   },
   {
-   "date": "2026-05-06",
-   "date_source": "json-ld",
+   "date": "2026-06-04",
+   "date_source": "time",
    "first_seen": "2026-09-05",
    "headline": "Product Update Danielle Man \u00b7 May 6, 2026",
    "kind": "product",
