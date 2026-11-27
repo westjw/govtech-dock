@@ -1,22 +1,112 @@
 {
  "news": [
   {
-   "date": "2025-07-16",
+   "date": "2026-11-12",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "GTFS: The backbone of Trip Planning Apps",
+   "first_seen": "2026-11-26",
+   "headline": "Comparing Transit Fare Media Types",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://transitfare.com/blog/gtfs-for-trip-planning-apps"
+   "url": "https://transitfare.com/blog/fare-media-comparison"
   },
   {
-   "date": "2024-11-19",
+   "date": "2026-11-12",
    "date_source": "json-ld",
-   "first_seen": "2026-10-21",
-   "headline": "Smart Bus Transit Controllers",
+   "first_seen": "2026-11-26",
+   "headline": "NTD Reporting Changes 2026: What's New",
    "kind": "press",
    "kind_rule": null,
-   "url": "https://transitfare.com/blog/smart-bus-controller-basics-whitepaper"
+   "url": "https://transitfare.com/blog/ntd-reporting-changes-2026"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "GTFS-Realtime Feed Reliability Standards",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/gtfs-realtime-feed-reliability"
+  },
+  {
+   "date": "2026-11-11",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Regional Transit Alerts Across Communities",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/regional-transit-alerts"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Farebox Recovery Ratio, Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/farebox-recovery-ratio"
+  },
+  {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Transit ITS Gateway: One Box or Four Vendors",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/one-onboard-device-vs-four"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "APC Partial Fleet Deployment vs Full Equip",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/apc-partial-fleet-deployment"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "GTFS Feed Monitoring Over Time",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/gtfs-feed-monitoring"
+  },
+  {
+   "date": "2026-11-09",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Transit Grant Writing for Small Agencies",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/transit-grant-writing"
+  },
+  {
+   "date": "2026-11-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Communicating Transit Route Changes",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/communicating-transit-route-changes"
+  },
+  {
+   "date": "2026-11-07",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Speeding Up Google's GTFS Feed Audit",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/gtfs-feed-audit-google-maps"
+  },
+  {
+   "date": "2026-11-06",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "GTFS-Realtime Trip Modifications, Explained",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://transitfare.com/blog/gtfs-realtime-trip-modifications"
   }
  ]
 }

@@ -1,97 +1,27 @@
 {
-  "date": "2026-11-26",
-  "previous": "2026-11-25",
+  "date": "2026-11-27",
+  "previous": "2026-11-26",
   "changes": [
     {
-      "company": "SOVRA",
-      "id": "sovra",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative,  only"
-    },
-    {
-      "company": "Luminator Technology Group",
-      "id": "luminator-technology-group",
+      "company": "Octave",
+      "id": "octave",
       "from": "Yes",
-      "to": "Sales (non-AE)",
-      "note": "Sales Backoffice Specialist only"
+      "to": "Unknown",
+      "note": "HTTP 403 for https://careers.octave.com/"
     },
     {
-      "company": "Eptura",
-      "id": "eptura",
+      "company": "Saltus Technologies",
+      "id": "saltus-technologies",
       "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Account Executive (London - UK)"
-    },
-    {
-      "company": "mdf commerce",
-      "id": "mdf-commerce",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Sales Development Representative,  only"
-    },
-    {
-      "company": "GE Vernova",
-      "id": "ge-vernova",
-      "from": "Yes",
       "to": "Unknown",
-      "note": "page scan found no listings"
-    },
-    {
-      "company": "OpusXenta",
-      "id": "opusxenta",
-      "from": "Unknown",
-      "to": "None found",
-      "note": ""
-    },
-    {
-      "company": "Measures for Justice",
-      "id": "measures-for-justice",
-      "from": "None found",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "BusRight",
-      "id": "busright",
-      "from": "None found",
-      "to": "Sales (non-AE)",
-      "note": "Customer Success Manager only"
-    },
-    {
-      "company": "Kaltura Inc",
-      "id": "kaltura-inc",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://corp.kaltura.com/co"
-    },
-    {
-      "company": "Lumu Technologies",
-      "id": "lumu-technologies",
-      "from": "Yes",
-      "to": "Unknown",
-      "note": "HTTP 403 for https://lumu.io/careers/"
+      "note": "robots.txt on saltustechnologies.com ans"
     },
     {
       "company": "Myriota",
       "id": "myriota",
-      "from": "Unknown",
-      "to": "Yes",
-      "note": "AE-type role (page scan) [page scan - verify]"
-    },
-    {
-      "company": "Onit",
-      "id": "onit",
-      "from": "Sales (non-AE)",
-      "to": "Yes",
-      "note": "Global Account Executive (Remote - USA)"
-    },
-    {
-      "company": "Blumira",
-      "id": "blumira",
-      "from": "Sales (non-AE)",
-      "to": "None found",
-      "note": ""
+      "from": "Yes",
+      "to": "Unknown",
+      "note": "page scan found no listings"
     }
   ]
 }

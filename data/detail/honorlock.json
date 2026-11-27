@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-10",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "How Honorlock Makes Proctored Exams More Accessible",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://honorlock.com/blog/accommodations-accessibility-in-online-learning/"
+  },
+  {
    "date": "2026-11-05",
    "date_source": "json-ld",
    "first_seen": "2026-11-06",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://honorlock.com/blog/protect-credentialing-exams-from-ai/"
-  },
-  {
-   "date": "2026-06-03",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Honorlock and Alpine Testing Solutions Partner to Protect High-Stakes Credentialing Programs",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://honorlock.com/news/honorlock-and-alpine-testing-solutions-partner-to-protect-high-stakes-credentialing-programs/"
   }
  ],
  "profile": {

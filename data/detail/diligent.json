@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "IN-DEPTH: Pay activism shifts to parachutes and ownership",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.diligent.com/resources/blog/in-depth-pay-activism-shifts-to-parachutes-and-ownership"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.diligent.com/resources/blog/fedramp-20x-key-changes"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-11",
-   "headline": "GC Risk Index 2026: Risk remains elevated as regulatory pressure rises",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.diligent.com/resources/blog/general-counsel-risk-index-report"
   }
  ]
 }

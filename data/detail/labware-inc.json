@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Connecting Laboratory and Field Activities with LabWare Mobile",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "http://www.labware.com/blog/connecting-laboratory-and-field-activities-with-labware-mobile"
+  },
+  {
    "date": "2026-11-12",
    "date_source": "json-ld",
    "first_seen": "2026-11-12",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "http://www.labware.com/blog/how-does-a-lims-work"
-  },
-  {
-   "date": "2026-07-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-22",
-   "headline": "LIS vs LIMS: What's the Difference and Which Does Your Lab Need?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.labware.com/blog/lis-vs-lims"
   }
  ]
 }

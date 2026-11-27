@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "5 lessons on agentic fraud from Incode's Jorge Braniff on the Inferencia podcast",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://incode.com/blog/jorge-braniff-inferencia-podcast/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-24",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-18",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-18",
    "headline": "Incode Extends Fraud Protection to AI Agents With Biometric Liveness",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-19",
    "headline": "Incode Launches Incode Know Your Agent to Anchor AI Agent Trust in Verified Human Identity",
    "kind": "product",
@@ -56,7 +65,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-19",
    "headline": "Incode Launches Incode Know Your Agent to Anchor AI Agent Trust in Verified Human Identity",
    "kind": "product",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-19",
    "headline": "Incode Launches 'Know Your Agent' to Secure the $1 Trillion Agentic Commerce Market",
    "kind": "product",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-19",
    "headline": "Incode Launches Incode Know Your Agent to Anchor AI Agent Trust in Verified Human Identity",
    "kind": "product",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-19",
    "headline": "Incode Launches Incode Know Your Agent to Anchor AI Agent Trust in Verified Human Identity",
    "kind": "product",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-11-17",
-   "date_source": "json-ld",
+   "date_source": "time",
    "first_seen": "2026-11-19",
    "headline": "Incode\u2019s Know Your Agent Controls Access for Customer AI Agents",
    "kind": "press",
    "kind_rule": null,
    "url": "https://incode.com/press/unite-ai-incode-know-your-agent-access-control/"
-  },
-  {
-   "date": "2026-11-17",
-   "date_source": "json-ld",
-   "first_seen": "2026-11-19",
-   "headline": "Incode Launches Incode Know Your Agent to Anchor AI Agent Trust in Verified Human Identity",
-   "kind": "product",
-   "kind_rule": "Launches",
-   "url": "https://incode.com/press/yahoo-finance-incode-know-your-agent-human-identity/"
   }
  ]
 }

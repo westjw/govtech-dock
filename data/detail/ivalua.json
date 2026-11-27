@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Ivalua and Altares Dun & Bradstreet Bring Trusted Supplier Intelligence into AI-Powered Procurement",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ivalua.com/press-releases/ivalua-and-altares-dun-bradstreet-bring-trusted-supplier-intelligence-into-ai-powered-procurement/"
+  },
+  {
    "date": "2026-11-19",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-21",
    "headline": "Ivalua Named Solution Provider of the Year at the Procurement Leaders APAC Awards for the Second Time in Three Years",
    "kind": "press",
@@ -11,7 +20,7 @@
   },
   {
    "date": "2026-11-19",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-11-21",
    "headline": "Ivalua opens new Milan office to support accelerating growth in Italy",
    "kind": "press",
@@ -74,7 +83,7 @@
   },
   {
    "date": "2026-10-27",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-28",
    "headline": "Ivalua Named a Leader in Supplier Value Management Platforms, Q4 2026 Evaluation by Independent Research Firm",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "card-date",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "Businesses waste $1.5 million a year on manual work AI could do",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ivalua.com/blog/supplier-risk-management-srm/"
-  },
-  {
-   "date": "2026-10-01",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "Purchase Requisition vs Purchase Order: What\u2019s The Difference?",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ivalua.com/blog/purchase-requisition-vs-purchase-order/"
   }
  ],
  "profile": {

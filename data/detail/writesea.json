@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Why Experiential Learning Is Becoming Essential to Career Readiness",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://writesea.com/blog/experiential-learning-career-readiness/"
+  },
+  {
    "date": "2026-11-18",
    "date_source": "json-ld",
    "first_seen": "2026-11-19",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://writesea.com/blog/ai-skills-every-graduate-should-have-before-leaving-university/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "The New Rules of Career Readiness in an AI Economy",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://writesea.com/blog/career-readiness-ai-economy/"
   }
  ]
 }

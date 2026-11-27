@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Discovery Days 2026: One day to every day",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://littlepay.com/resource-hub/blog/articles/discovery-days-2026-one-day-to-every-day/"
+  },
+  {
    "date": "2026-11-23",
    "date_source": "json-ld",
    "first_seen": "2026-11-23",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://littlepay.com/resource-hub/blog/articles/what-andy-burnhams-government-could-mean-for-uk-transport/"
-  },
-  {
-   "date": "2026-04-30",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "Littlepay selected for Project Coral, a landmark DfT-funded national programme enabling contactless travel across multiple operators",
-   "kind": "contract",
-   "kind_rule": "selected for",
-   "url": "https://littlepay.com/resource-hub/blog/articles/littlepay-selected-for-landmark-dft-funded-national-programme/"
   }
  ],
  "profile": {

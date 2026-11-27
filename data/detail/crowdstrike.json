@@ -10,6 +10,15 @@
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-named-leader-2026-gartner-mq-isoc/"
   },
   {
+   "date": "2026-11-25",
+   "date_source": "index-text",
+   "first_seen": "2026-11-26",
+   "headline": "Securing Employees\u2019 AI Use Requires a Unified Architecture",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.crowdstrike.com/en-us/blog/securing-employees-ai-use-requires-unified-architecture/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "index-text",
    "first_seen": "2026-11-24",
@@ -98,15 +107,6 @@
    "kind": "product",
    "kind_rule": "Introduces",
    "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-agentic-adversary-emulation-counters-ai-enabled-adversaries/"
-  },
-  {
-   "date": "2026-11-04",
-   "date_source": "index-text",
-   "first_seen": "2026-11-04",
-   "headline": "CrowdStrike Extends the Agentic SOC to Detect and Stop Agent Insider Threats",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.crowdstrike.com/en-us/blog/crowdstrike-detects-and-stops-agent-insider-threats/"
   }
  ]
 }

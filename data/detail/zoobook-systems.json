@@ -1,6 +1,33 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "What to ask any EHR vendor",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://zoobooksystems.com/blog/what-to-ask-any-ehr-vendor-about-njsams/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "How to choose an EHR for a mental health practice",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://zoobooksystems.com/blog/how-to-choose-an-ehr-for-a-mental-health-practice/"
+  },
+  {
+   "date": "2026-10-22",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "How to choose an EHR for an opioid treatment program",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://zoobooksystems.com/blog/how-to-choose-an-ehr-for-an-opioid-treatment-program/"
+  },
+  {
    "date": "2026-09-23",
    "date_source": "json-ld",
    "first_seen": "2026-10-05",
@@ -19,8 +46,8 @@
    "url": "https://zoobooksystems.com/blog/one-license-one-system-njac-843k/"
   },
   {
-   "date": "2026-04-06",
-   "date_source": "index-text",
+   "date": "2026-09-23",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "What New Jersey outpatient facilities need to know about the new integrated license",
    "kind": "press",
@@ -80,33 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://zoobooksystems.com/blog/the-future-of-mat-clinic-safety/"
-  },
-  {
-   "date": "2026-01-21",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "The Future of AI in Mental Health Care: How Technology is Transforming Behavioral Healthcare",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://zoobooksystems.com/blog/how-technology-is-transforming-behavioral-healthcare/"
-  },
-  {
-   "date": "2026-01-06",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "Mental Health Practices Are Going Digital: A Transition from Paper to EHR Systems",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://zoobooksystems.com/blog/a-transition-from-paper-to-ehr-systems/"
-  },
-  {
-   "date": "2025-11-28",
-   "date_source": "near-h1",
-   "first_seen": "2026-09-05",
-   "headline": "The Hidden Costs of Data Silos: Why Electronic Health Record Integration is No Longer Optional",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://zoobooksystems.com/blog/why-electronic-health-record-integration-is-no-longer-optional/"
   }
  ]
 }

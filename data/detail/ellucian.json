@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Business Operations and Efficiency, Partners",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.ellucian.com/blog/ellucian-marketplace-pre-built-integrations-higher-ed"
+  },
+  {
    "date": "2026-11-09",
    "date_source": "json-ld",
    "first_seen": "2026-11-10",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "json-ld",
+   "date_source": "index-text",
    "first_seen": "2026-10-05",
    "headline": "Shifting Mindsets: Turning Internal Roadblocks Into Academic Success",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.ellucian.com/blog/ed-dol-interagency-agreement-higher-education"
-  },
-  {
-   "date": "2026-09-01",
-   "date_source": "index-text",
-   "first_seen": "2026-09-05",
-   "headline": "Heroes of Higher Ed",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.ellucian.com/blog/joe-bradley-carroll-community-college-student-success"
   }
  ],
  "profile": {

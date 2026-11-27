@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-25",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-25",
    "headline": "What is Finger.exe, and how can attackers abuse it?",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-11-24",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-24",
    "headline": "Why cybersecurity tool sprawl makes security harder to manage",
    "kind": "press",

@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "near-h1",
+   "first_seen": "2026-11-11",
+   "headline": "Enterprise EHR Consolidation Planner",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://easehealth.com/resources/enterprise-ehr-consolidation-planner"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -17,15 +26,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://easehealth.com/blog/otp-counseling-and-iop-services"
-  },
-  {
-   "date": "2026-11-11",
-   "date_source": "near-h1",
-   "first_seen": "2026-11-11",
-   "headline": "Enterprise EHR Consolidation Planner",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://easehealth.com/resources/enterprise-ehr-consolidation-planner"
   },
   {
    "date": "2026-11-10",

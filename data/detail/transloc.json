@@ -1,8 +1,17 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "TransL\u014dc Delivers Phase 3 Reporting Updates: All Fixed Route Reports Move to the New Platform",
+   "kind": "product",
+   "kind_rule": "Updates",
+   "url": "https://transloc.com/press/transloc-delivers-phase-3-reporting-updates-all-fixed-route-reports-move-to-the-new-platform/"
+  },
+  {
    "date": "2026-11-20",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-11-21",
    "headline": "TransL\u014dc to Exhibit at the FPTA/MSTPA Joint Conference & Trade Show 2026, Bringing Fixed Route and OnDemand Microtransit to Parking and Mobility Leaders",
    "kind": "press",
@@ -38,7 +47,7 @@
   },
   {
    "date": "2026-10-15",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-16",
    "headline": "TransL\u014dc to Exhibit at CPTA Annual Conference & Trade Show 2026, Highlighting Connected Campus Mobility Solutions",
    "kind": "press",
@@ -47,7 +56,7 @@
   },
   {
    "date": "2026-10-14",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-15",
    "headline": "TransL\u014dc Congratulates Longtime Partner Senior Resource Association / GoLine on APTA\u2019s 2026 Outstanding Public Transportation System Achievement Award",
    "kind": "press",
@@ -65,7 +74,7 @@
   },
   {
    "date": "2026-10-01",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "TransL\u014dc to Exhibit at APTA TRANSform & EXPO 2026, Highlighting Connected Fixed Route and OnDemand Solutions",
    "kind": "press",
@@ -83,7 +92,7 @@
   },
   {
    "date": "2026-09-16",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-10-05",
    "headline": "TransLoc to Exhibit at NACAS C3X 2026, Highlighting Connected Mobility for Safer, Smarter Campuses",
    "kind": "press",
@@ -92,21 +101,12 @@
   },
   {
    "date": "2026-09-04",
-   "date_source": "time",
+   "date_source": "json-ld",
    "first_seen": "2026-09-09",
    "headline": "TransL\u014dc Delivers Phase 2 Enhancements to Reporting Platform: Faster, More Responsive Fixed Route Reports",
    "kind": "press",
    "kind_rule": null,
    "url": "https://transloc.com/press/reporting-phase-2-enhancements-fixed-route/"
-  },
-  {
-   "date": "2026-09-02",
-   "date_source": "json-ld",
-   "first_seen": "2026-09-05",
-   "headline": "What a Student Newspaper\u2019s Transit Guide Reveals About Layered Campus Mobility",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://transloc.com/blog/what-a-student-newspapers-transit-guide-reveals-about-layered-campus-mobility/"
   }
  ]
 }

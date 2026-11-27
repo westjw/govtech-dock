@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Faster Patching Won\u2019t Be Enough in 2027. Here\u2019s What IT Teams Need to Change",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.action1.com/blog/faster-patching-wont-be-enough-in-2027-heres-what-it-teams-need-to-change/"
+  },
+  {
    "date": "2026-11-13",
    "date_source": "json-ld",
    "first_seen": "2026-11-13",
@@ -20,7 +29,7 @@
   },
   {
    "date": "2026-11-13",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-15",
    "headline": "Microsoft 365 Outage Exposes a Risk Bigger Than Downtime",
    "kind": "press",
@@ -29,7 +38,7 @@
   },
   {
    "date": "2026-11-11",
-   "date_source": "index-text",
+   "date_source": "json-ld",
    "first_seen": "2026-11-11",
    "headline": "N-able N-central Vulnerabilities Expose a Bigger Risk",
    "kind": "press",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.action1.com/blog/mean-time-to-patch/"
-  },
-  {
-   "date": "2026-10-24",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-27",
-   "headline": "What is Vulnerability Management? Process, Tools, and Best Practices",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.action1.com/blog/vulnerability-management/"
   }
  ]
 }

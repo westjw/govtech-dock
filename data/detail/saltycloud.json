@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-26",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "CJIS Password Requirements: Complete Guide [2026]",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.saltycloud.com/blog/cjis-password-requirements/"
+  },
+  {
    "date": "2026-11-11",
    "date_source": "json-ld",
    "first_seen": "2026-11-11",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.saltycloud.com/blog/cmmc-2-0/"
-  },
-  {
-   "date": "2026-09-04",
-   "date_source": "json-ld",
-   "first_seen": "2026-10-05",
-   "headline": "CJIS Compliance: Complete Guide [2026]",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.saltycloud.com/blog/cjis-compliance/"
   }
  ],
  "profile": {

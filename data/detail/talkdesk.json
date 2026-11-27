@@ -1,6 +1,15 @@
 {
  "news": [
   {
+   "date": "2026-11-25",
+   "date_source": "json-ld",
+   "first_seen": "2026-11-26",
+   "headline": "Retail is moving fast on AI. What about orchestration?",
+   "kind": "press",
+   "kind_rule": null,
+   "url": "https://www.talkdesk.com/blog/ai-orchestration-retail-cx/"
+  },
+  {
    "date": "2026-11-24",
    "date_source": "json-ld",
    "first_seen": "2026-11-25",
@@ -98,15 +107,6 @@
    "kind": "press",
    "kind_rule": null,
    "url": "https://www.talkdesk.com/news-and-press/press-releases/2026-holiday-shopping-survey/"
-  },
-  {
-   "date": "2026-11-03",
-   "date_source": "time",
-   "first_seen": "2026-11-03",
-   "headline": "AI is transforming customer experience in EMEA. But not for everyone.",
-   "kind": "press",
-   "kind_rule": null,
-   "url": "https://www.talkdesk.com/news-and-press/press-releases/the-state-of-agentic-automation-in-cx-emea/"
   }
  ]
 }

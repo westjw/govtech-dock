@@ -2,7 +2,7 @@
  "news": [
   {
    "date": "2026-11-26",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-11-26",
    "headline": "Meet the newest addition to our team: Lisa White",
    "kind": "press",
@@ -11,7 +11,7 @@
   },
   {
    "date": "2026-10-20",
-   "date_source": "json-ld",
+   "date_source": "card-date",
    "first_seen": "2026-10-20",
    "headline": "Meet the newest addition to our team: Fiona Wu",
    "kind": "press",
@@ -64,8 +64,8 @@
    "url": "https://vapar.co/blog/what-is-wastewater-exploring-its-origins-challenges-and-solutions"
   },
   {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
+   "date": "2025-05-08",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "From Drones to AI: Technology in Asset Inspection Jobs",
    "kind": "press",
@@ -73,8 +73,8 @@
    "url": "https://vapar.co/blog/drones-to-ai-asset-inspections"
   },
   {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
+   "date": "2025-04-30",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Underground Heroes: The Essential Role of Sewer Workers",
    "kind": "press",
@@ -82,8 +82,8 @@
    "url": "https://vapar.co/blog/sewer-workers-role"
   },
   {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
+   "date": "2025-04-10",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Product Update: Asset centric data model",
    "kind": "product",
@@ -91,8 +91,8 @@
    "url": "https://vapar.co/blog/asset-centric-data-model"
   },
   {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
+   "date": "2025-04-08",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "VAPAR\u2019s Role in AMP8: Driving Innovation in the UK\u2019s Water Industry",
    "kind": "press",
@@ -100,8 +100,8 @@
    "url": "https://vapar.co/blog/ai-solutions-for-amp8"
   },
   {
-   "date": "2026-02-17",
-   "date_source": "json-ld",
+   "date": "2025-04-01",
+   "date_source": "card-date",
    "first_seen": "2026-09-05",
    "headline": "Meet the newest addition to our team: Scotty Hunt",
    "kind": "press",
