@@ -330,6 +330,19 @@ def board_total(ats_block: dict) -> tuple[int | None, str]:
     zero, and never leave to treat the board as small.
     """
     kind, ref = ats_block.get("type"), ats_block.get("ref")
+    if kind == "eightfold":
+        # AN EIGHTFOLD BOARD STATES ITS COUNT ON ITS LIST'S FIRST PAGE, after its
+        # careers page answered as the ref's own group (ats.eightfold_total):
+        # asked before the read, so a board past the giants line is never
+        # walked page by page and is said as a giant, never as a board that did
+        # not read (blind reviews of 2026-11-27: one counting 900 cost 91
+        # requests before the door skipped it; one counting 1,200 was filed as
+        # unreadable). Inside the door's plan the read takes the same two
+        # answers (ats.eightfold_kept). Its words whole: they are the door's.
+        try:
+            return ats.eightfold_total(ref), "the Eightfold feed's own count (data.count)"
+        except Exception as exc:
+            return None, str(exc)[:300]
     if kind != "workday":
         return None, f"nothing here asks a {kind} board how many postings it holds"
     try:

@@ -23562,6 +23562,9 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
             for i in range(0, len(self.content), chunk_size):
                 yield self.content[i:i + chunk_size]
 
+        def json(self):                 # (the JSON readers accepted below: 2026-11-27)
+            return json.loads(self.text)
+
         def close(self):
             pass
 
@@ -24153,16 +24156,24 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
         # feed and a TriNet Hire list, whose kept blocks wrapped only the door)
         import admin
         import proposal_rulings
+        # (and so for a ClearCompany site's three answers and an Eightfold
+        # career site's page and first list page: blind review of the
+        # Eightfold reader, 2026-11-27 - each asked once)
         for kind_, ref_, url_, body_, name_ in (
                 ("jobscore", SLUG, FEED, MAIN, "Acme Gov Systems"),
                 ("trinethire", "41234-old-name", _ID_TRINET, _ID_TRINET_PAGE, "Acme Gov Systems, Inc."),
-                ("jobvitefeed", "q6NaVfwI", _ID_JVX, _ID_JVX_FEED, "Tyler Technologies")):
+                ("jobvitefeed", "q6NaVfwI", _ID_JVX, _ID_JVX_FEED, "Tyler Technologies"),
+                ("clearcompany", "acmegov", None,
+                 {_ID_CC: _cc_page(), _ID_CC_SETTINGS: _cc_settings(), _ID_CC_LIST: _cc_list(_ID_CC_JOBS)},
+                 "Acme Gov Systems, Inc."),
+                ("eightfold", _ID_EF, None, {_ID_EF: _ef_page(), _ef_search_url(0): _ID_EF_FIRST},
+                 "Acme Gov Systems")):
             cid_ = "held-co"
             files_ = {bp.FOUND.name: [{"id": cid_, "name": name_, "found": {"type": kind_, "ref": ref_},
                                        "filed": {"page": f"{_wb_site(cid_)}/careers"}}]}
             for how_ in ("the desk", "a ruling"):
                 web.clear()
-                web[url_] = body_
+                web.update({url_: body_} if url_ else body_)
                 with _WiringBox([_wb_co(cid_, name_)], {}, files=files_) as box, \
                         contextlib.redirect_stderr(io.StringIO()):
                     (add_company.read_board, vb.board_says, vb.proven, ats.follow, ats._one, ats.fetch,
@@ -24176,7 +24187,8 @@ def check_jobscore_reads_its_feed_and_names_it_once() -> int:
                                                             "owner", "selftest", True)
                     wired = box.record(cid_).get("ats")
                 asks_ = [u for u, _kw in sent]
-                if asks_ != [url_] or wired != {"type": kind_, "ref": ref_}:
+                if sorted(asks_) != sorted([url_] if url_ else body_) \
+                        or wired != {"type": kind_, "ref": ref_}:
                     errors += fail(f"accepting a held {kind_} board by {how_} asked {asks_} ({r_}; on file "
                                    f"{wired}): it is read, then asked whose it is, in one request")
     finally:
@@ -25287,6 +25299,14 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
         refused("a board whose count moves between pages", "counted 23 and then 24")
         board([], 0)
         refused("an empty board (never measured)", "never read as a zero")
+        # (blind review of the reader, 2026-11-27: a count of 0 beside a page
+        # of rows was read as a board with nothing open, and the probe said
+        # n=0; a first page listing more rows than its count is not the board
+        # it counts either)
+        board(POS[:7], 0)
+        refused("a page of 7 rows beside a count of 0", "never read as a zero")
+        board(POS[:7], 3)
+        refused("a first page of 7 rows of a board counting 3", "not the board it counts")
         board(POS, 1001)
         refused("a board past what the reader walks", "giant")
         if any("start=10" in u for u in urls()):
@@ -25316,6 +25336,25 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
             refused(what)
             if any("/api/pcsx/search" in u for u in urls()):
                 errors += fail(f"eightfold: the list was asked after {what}")
+        # A SAME-HOST REDIRECT TO ANOTHER GROUP'S ADDRESS is never followed
+        # (blind review of the reader, 2026-11-27: same_host alone let the
+        # list's redirect to another tenant's list through, and its rows were
+        # read as this board's): the list, and the careers page, each held to
+        # the very address asked
+        other_list = _ef_search_url(0, group="othergov.example")
+        board()
+        web[_ef_search_url(0)] = (302, other_list)
+        web[other_list] = _ef_search([_ef_pos(n, f"Other tenant role {n}") for n in range(50, 55)])
+        refused("a list that redirects to another group's list on its own host", "leads off")
+        if other_list in urls() + asked:
+            errors += fail("eightfold: the list's redirect to another group's list was followed")
+        other_page = f"https://{HOST}/careers?domain=othergov.example"
+        board()
+        web[REF] = (302, other_page)
+        web[other_page] = _ef_page(group="othergov.example", brand="Other Gov")
+        refused("a careers page that redirects to another group's page on its own host", "leads off")
+        if other_page in urls() + asked:
+            errors += fail("eightfold: the careers page's redirect to another group's page was followed")
         board()
         web[REF] = (302, "https://www.vendor.example/careers")
         refused("a careers page that redirects off")
@@ -25351,6 +25390,19 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
                 or (r.get("comp") or {}).get("min") != 93250 or "Placeholder Colleague" in json.dumps(rows):
             errors += fail(f"eightfold: behind FETCH_DETAILS the ad and its pay were not read from "
                            f"jobDescription alone, or a person it names was kept: {r}")
+        # AN ANSWER NAMING ANOTHER POSTING IS NOT THIS ONE'S AD (blind review
+        # of the reader, 2026-11-27): its ad and its pay are never put on the row
+        board(POS[:2])
+        web[details] = json.dumps({"status": 200, "data": {
+            "id": 7000000002, "jobDescription": "<p>Another posting.</p><p>The base salary range "
+            "for this position is $50,000 - $60,000.</p>"}})
+        ats.FETCH_DETAILS = True
+        rows, why = fetched()
+        ats.FETCH_DETAILS = False
+        mine = next((r for r in rows or [] if r.get("url", "").endswith("/7000000001")), None)
+        if mine is None or mine.get("jd") or mine.get("comp"):
+            errors += fail(f"eightfold: a position_details answer naming another posting gave this "
+                           f"row its ad or its pay: {mine or why}")
         if not ats.never_cached(details) or not ats.never_cached(details.replace(HOST, "app.eightfold.ai")) \
                 or ats.never_cached(_ef_search_url(0)) or ats.never_cached(REF):
             errors += fail("eightfold: position_details is not kept out of the HTTP cache on every "
@@ -25397,6 +25449,12 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
         s = vb.board_says("eightfold", REF)
         if s["stated"] or s["failed"] != "unreadable":
             errors += fail(f"eightfold: a page answering as another group was believed: {s}")
+        board(POS[:7], 0)
+        s = vb.board_says("eightfold", REF)
+        if s["stated"] or s["names"] or s["failed"] != "unreadable":
+            errors += fail(f"eightfold: the probe of a page of 7 rows counting 0 said {s}: a zero is "
+                           f"never believed, and a board that does not read is unreadable (its n "
+                           f"then the probe's own 0 for nothing counted, never a count)")
 
         # ---- 6. inside one plan, one ask -----------------------------------------
         board()
@@ -25407,6 +25465,36 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
         if len(urls()) != 4:
             errors += fail(f"eightfold: inside eightfold_kept the read and the probe asked "
                            f"{len(urls())} times, not once each address")
+        # TWO TENANTS OF THE SHARED HOST IN ONE PLAN are two boards: what is
+        # kept is kept under the ref, never the host (blind review of the
+        # identity, 2026-11-27: keyed on the host, the second tenant took the
+        # first one's page, brand and rows, and every pin passed)
+        SH = ats.EIGHTFOLD_SHARED_HOST
+        ten = {g: (f"https://{SH}/careers?domain={g}", b, t) for g, b, t in (
+            ("alphagov.example", "Alpha Gov", ["Alpha role"]),
+            ("betagov.example", "Beta Gov", ["Beta role", "Beta role two"]))}
+        web.clear()
+        for i, (g, (ref_, brand_, titles_)) in enumerate(ten.items()):
+            web[ref_] = _ef_page(brand=brand_, group=g, host=SH)
+            web[_ef_search_url(0, SH, g)] = _ef_search(
+                [_ef_pos(40 + 10 * i + k, t) for k, t in enumerate(titles_)])
+        sent.clear()
+        got_ = {}
+        with ats.eightfold_kept():
+            for g, (ref_, _b, _t) in ten.items():
+                got_[g] = ([r["title"] for r in ats.fetch({"type": "eightfold", "ref": ref_})],
+                           vb.board_says("eightfold", ref_))
+        for g, (ref_, brand_, titles_) in ten.items():
+            rows_, said_ = got_[g]
+            if rows_ != titles_ or said_["names"] != [brand_] or not said_["stated"] \
+                    or said_["n"] != len(titles_):
+                errors += fail(f"eightfold: on the shared host, in one plan, group {g} read "
+                               f"{rows_} and was said to be {said_['names']} (n={said_['n']}): wanted "
+                               f"its own {titles_} and {brand_!r}")
+        if sorted(urls()) != sorted(u for g, (ref_, _b, _t) in ten.items()
+                                    for u in (ref_, _ef_search_url(0, SH, g))):
+            errors += fail(f"eightfold: two tenants of the shared host in one plan asked {urls()}, "
+                           f"not each one's own page and list once")
     finally:
         (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS,
          ats.DETAIL_PAUSE) = keep
@@ -25441,7 +25529,11 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
             ('<img src="https://www.facebook.com/tr?id=1&ev=PageView&domain=eightfold.ai">', [], ["eightfold-other"]),
             ('<a href="https://eightfold.ai/privacy-policy">Privacy</a>', [], ["eightfold-other"]),
             ('<link rel="stylesheet" href="https://static.vscdn.net/gen/app.css">', [], ["eightfold-other"]),
-            ('<a href="https://acmegov.eightfold.ai/careers">Jobs</a>', [], ["eightfold-tenant"])):
+            ('<a href="https://acmegov.eightfold.ai/careers">Jobs</a>', [], ["eightfold-tenant"]),
+            ('<a href="https://app.eightfold.ai/careers?domain=acmegov.example&amp;domain=othergov.example">J</a>',
+             [("eightfold", shared + "?domain=acmegov.example")], []),
+            ('<a href="https://app.eightfold.ai/careers?domain=acme_gov.example">J</a>', [], ["eightfold-tenant"]),
+            ('<a href="https://app.eightfold.ai/careers?domain=acme%2Egov.example">J</a>', [], ["eightfold-tenant"])):
         found, rest = fsb.sightings(markup, "https://www.acmegov.example/careers", home)
         if [(f["type"], f["ref"]) for f in found] != kinds or [r["vendor"] for r in rest] != vendors:
             errors += fail(f"finder: {markup[:70]!r} came out as {[(f['type'], f['ref']) for f in found]} "
@@ -25476,6 +25568,34 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
                        f"(2026-10-28), another posting's or another company's never")
     if bb.posting_id("acme-gov", "X", url, "") != f"acme-gov::X::{bb.posting_disc(url, '')}":
         errors += fail("build_board: an eightfold address moved the posting id's hash")
+    # ...AND FROM THE SNAPSHOTS (blind review of the reader, 2026-11-27): a
+    # posting the careers page showed on an earlier night but that is not on
+    # the previous board keeps that night, and so does one whose day on the
+    # previous board is later than a snapshot's (its html title churned:
+    # "Posted N days ago"); by the address with no place, or with the
+    # reader's own; never another company's snapshot of the same address
+    u9, u8, u7, u6 = (f"https://{HOST}/careers/job/700000000{n}" for n in (9, 8, 7, 6))
+    nights_ = {bb.posting_id("acme-gov", "Product Manager II Pune Hybrid Posted a day ago", u9, ""): "2026-11-19",
+               bb.posting_id("acme-gov", "Tax Analyst II Remote Posted 6 days ago", u8, ""): "2026-11-21",
+               bb.posting_id("someone-else", "Field Lead", u7, ""): "2026-10-01",
+               bb.posting_id("acme-gov", "Payroll Associate I Anytown, KY", u6, "Anytown, KY"): "2026-11-20"}
+    prev8 = {"company_id": "acme-gov", "title": "Tax Analyst II Remote Posted a day ago", "url": u8,
+             "location": "", "first_seen": "2026-11-24"}
+    prev8["id"] = bb.posting_id("acme-gov", prev8["title"], u8, "")
+    now_ = [{"company_id": "acme-gov", "title": t, "url": u, "location": loc, "first_seen": "2026-11-28"}
+            for t, u, loc in (("Product Manager II", u9, "Pune, Maharashtra, India"),
+                              ("Tax Analyst II", u8, ""), ("Field Lead", u7, ""),
+                              ("Payroll Associate I", u6, "Anytown, KY"))]
+    for p in now_:
+        p["id"] = bb.posting_id(p["company_id"], p["title"], p["url"], p["location"])
+        p["opening_id"] = bb.opening_id(p["company_id"], p["title"])
+    bb.carry_first_seen(now_, [prev8], nights_)
+    if [p["first_seen"] for p in now_] != ["2026-11-19", "2026-11-21", "2026-11-28", "2026-11-20"]:
+        errors += fail(f"build_board: postings moved from the careers page to the eightfold reader "
+                       f"kept {[p['first_seen'] for p in now_]}: wanted the snapshots' earlier nights "
+                       f"(2026-11-19 off the board, 2026-11-21 before the board's 11-24), never "
+                       f"another company's (2026-11-28), and a place written as the reader writes it "
+                       f"(2026-11-20)")
 
     # ---- 9. the door: two checks, a parent's board held, a giant skipped -------
     import wire_found as wf
@@ -25511,6 +25631,145 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
         if acts.get("giant-gov") != ("SKIP", "giant"):
             errors += fail(f"eightfold door: a board of 500 was {acts.get('giant-gov')}, not skipped "
                            f"as a giant")
+
+    # ---- 10. the door, with the real reader: a giant by its own count, first ----
+    # (blind reviews of 2026-11-27: one counting 1,200 raised in the read and
+    # was filed "unreadable", its words cut before "a giant"; one counting 600
+    # was walked, 61 requests, before it was skipped) - the board's own count
+    # is asked first (add_company.board_total), and the read never follows
+    import add_company
+    import board_proposals as bp
+    real = (add_company.read_board, add_company.board_total, vb.board_says, ats.follow, ats._one,
+            ats.fetch, ats._get, ats._page)
+    keep = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE)
+    GH, GG = "careers.giantgov.example", "giantgov.example"
+    gref = f"https://{GH}/careers?domain={GG}"
+    try:
+        ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, asker, gated.append, None
+        for count in (1200, 600):
+            web.clear()
+            web[gref] = _ef_page(brand="Giant Gov", group=GG, host=GH)
+            for start in range(0, count, 10):
+                web[_ef_search_url(start, GH, GG)] = _ef_search(
+                    [_ef_pos(start + k + 1, f"Role {start + k + 1}") for k in range(10)], count)
+            with _WiringBox([_wb_co("giant-gov", "Giant Gov")], {}) as box, \
+                    contextlib.redirect_stderr(io.StringIO()):
+                (add_company.read_board, add_company.board_total, vb.board_says, ats.follow, ats._one,
+                 ats.fetch, ats._get, ats._page) = real
+                sent.clear()
+                code, text, _wl, rows = box.plan(_wb_results({
+                    "giant-gov": _wb_one("giant-gov", "eightfold", gref, element="script")}))
+            row = (rows or {}).get("giant-gov") or {}
+            if (row.get("action"), row.get("kind")) != ("SKIP", "giant") \
+                    or f"holds {count} postings" not in _wb_words(row) or len(urls()) != 2:
+                errors += fail(f"eightfold door: a board counting {count} was {row.get('action')} "
+                               f"{row.get('kind')} after {len(urls())} request(s) "
+                               f"({_wb_words(row)[:160]!r}): wanted SKIP giant, by the count its "
+                               f"careers page and first list page state, two requests, never walked")
+    finally:
+        (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE) = keep
+
+    # ---- 11. a shared board is never split unasked ---------------------------------
+    # (blind review of the identity, 2026-11-27: UKG Telestaff is on file with
+    # UKG's careers page; once UKG read its Eightfold board, keyed apart, the
+    # product line would hold UKG's page alone and publish its rows as its own)
+    PG = "https://www.parentgov.test/careers"
+    POWN = PG + "?domain=parentgov.test"
+    cos = [_wb_co("parent-gov", "Parent Gov"),
+           _wb_co("parent-gov-telestaff", "Parent Gov Telestaff", ats={"type": "html", "ref": PG}),
+           _wb_co("split-gov", "Split Gov"),
+           _wb_co("split-gov-product", "Split Gov Product",
+                  ats={"type": "html", "ref": "https://www.splitgov.test/careers"})]
+    boards = {wf.show("eightfold", POWN): (12, ["Parent Gov"]),
+              wf.show("greenhouse", "splitgov"): (5, ["Split Gov"])}
+    with _WiringBox(cos, boards) as box:
+        code, text, _wl, rows = box.plan(_wb_results({
+            "parent-gov": _wb_one("parent-gov", "eightfold", POWN, element="script"),
+            "split-gov": _wb_one("split-gov", "greenhouse", "splitgov")}))
+    rows = rows or {}
+    if (rows.get("parent-gov") or {}).get("action") != "WIRE":
+        errors += fail(f"eightfold door: a parent moving from its careers page to the Eightfold career "
+                       f"site it IS was {(rows.get('parent-gov') or {}).get('action')}: "
+                       f"{_wb_words(rows.get('parent-gov') or {})[:240]}")
+    held = rows.get("split-gov") or {}
+    if held.get("action") != "HOLD" or "Split Gov Product" not in _wb_words(held):
+        errors += fail(f"door: a company wired away from a board another record shares was "
+                       f"{held.get('action')}, not held naming the record it would leave alone on it: "
+                       f"{_wb_words(held)[:240]}")
+    after = [dict(cos[0], ats={"type": "eightfold", "ref": POWN}), cos[1]]
+    if bb.board_owners(after)[0] != {"parent-gov-telestaff": "parent-gov"} \
+            or bb.board_owners(cos[:2])[0] != {"parent-gov-telestaff": "parent-gov"}:
+        errors += fail(f"build_board: the product line on its parent's careers page owns "
+                       f"{bb.board_owners(after)[0]} once the parent reads its Eightfold career site: "
+                       f"it follows the parent, before and after, and contributes nothing")
+    on_shared = [{"id": "a-gov", "name": "A Gov",
+                  "ats": {"type": "eightfold", "ref": "https://app.eightfold.ai/careers?domain=agov.example"}},
+                 {"id": "b-gov", "name": "B Gov", "ats": {"type": "html", "ref": "https://app.eightfold.ai/careers"}}]
+    if bb.board_owners(on_shared)[0]:
+        errors += fail("build_board: a page on Eightfold's shared host with no group was taken for a "
+                       "tenant's career site (it is the host's default tenant's)")
+
+    # ---- 12. one tenant under its two spellings is one board ------------------------
+    # (blind review of the identity, 2026-11-27: app.eightfold.ai asked a
+    # group answers as that group, so a board on file at its own host and the
+    # same group found on the shared host - or the other way - is one board,
+    # as a holder, a twin and a refusal)
+    def spelt(g):
+        return f"https://careers.{g}/careers?domain={g}", f"https://app.eightfold.ai/careers?domain={g}"
+    a_own, a_sh = spelt("acmetwo.example")
+    if bp.board_key("eightfold", a_own) != bp.board_key("eightfold", a_sh) \
+            or bp.board_key("eightfold", a_own) == bp.board_key("eightfold", spelt("other.example")[0]):
+        errors += fail("board_key: one Eightfold group under two hosts is two boards, or two groups one")
+    t_own, t_sh = spelt("twingov.example")
+    r_own, r_sh = spelt("refusedgov.example")
+    cos = [_wb_co("acme-two", "Acme Two", ats={"type": "eightfold", "ref": a_own}),
+           _wb_co("acme-two-inc", "Acme Two, Inc."),
+           _wb_co("twin-gov", "Twin Gov"), _wb_co("twin-gov-product", "Twin Gov Product"),
+           _wb_co("refused-gov", "Refused Gov")]
+    boards = {wf.show("eightfold", u): (9, [n]) for u, n in (
+        (a_sh, "Acme Two"), (t_own, "Twin Gov"), (t_sh, "Twin Gov"), (r_sh, "Refused Gov"))}
+    files = {"agent_proposals.json": {"board:refused-gov": {
+        "kind": "board", "id": "refused-gov", "ats_type": "eightfold", "ats_ref": r_own,
+        "status": "rejected", "ruled_by": "agent:proposals-review", "ruled_on": "2026-11-10",
+        "ruled_why": "the board is Somebody Else's (two readers)"}}}
+    with _WiringBox(cos, boards, files=files) as box:
+        code, text, _wl, rows = box.plan(_wb_results({
+            "acme-two-inc": _wb_one("acme-two-inc", "eightfold", a_sh),
+            "twin-gov": _wb_one("twin-gov", "eightfold", t_own, element="script"),
+            "twin-gov-product": _wb_one("twin-gov-product", "eightfold", t_sh),
+            "refused-gov": _wb_one("refused-gov", "eightfold", r_sh)}))
+    rows = rows or {}
+    for cid, words in (("acme-two-inc", "already on file as the board of Acme Two"),
+                       ("twin-gov", "same board was found"), ("twin-gov-product", "same board was found"),
+                       ("refused-gov", "refused earlier")):
+        row = rows.get(cid) or {}
+        # (the refusal of that very board, in its other spelling: skipped as
+        # refused, never held as "an earlier board for this company was refused")
+        if row.get("action") == "WIRE" or words not in _wb_words(row) \
+                or (cid == "refused-gov" and (row.get("action"), row.get("kind")) != ("SKIP", "refused")):
+            errors += fail(f"eightfold door: {cid}'s board under its other spelling was "
+                           f"{row.get('action')} {row.get('kind')}: {_wb_words(row)[:240]}")
+
+    # ---- 13. a tenant of the shared host is not Eightfold AI's acquisition ---------
+    # (blind review of the identity, 2026-11-27: Eightfold AI is a company on
+    # file, and the host its tenants' boards are on is its domain)
+    import acquisitions
+    G3 = "https://app.eightfold.ai/careers?domain=acmethree.example"
+    efc = _wb_co("eightfold-ai", "Eightfold AI", website="https://eightfold.ai/",
+                 ats={"type": "html", "ref": "https://app.eightfold.ai/careers/search"})
+    cos = [efc, _wb_co("acme-three", "Acme Three", ats={"type": "html", "ref": G3}),
+           _wb_co("acme-four", "Acme Four",
+                  ats={"type": "eightfold", "ref": "https://app.eightfold.ai/careers?domain=acmefour.example"})]
+    with _WiringBox(cos, {wf.show("eightfold", G3): (12, ["Acme Three"])}) as box:
+        queue = acquisitions.q_acquisitions(cos, {"organizations": []})
+        code, text, _wl, rows = box.plan(_wb_results({"acme-three": _wb_one("acme-three", "eightfold", G3)}))
+    if [r.get("id") for r in queue if r.get("id") in ("acme-three", "acme-four")]:
+        errors += fail(f"acquisitions: a tenant of Eightfold's shared host is in the queue as Eightfold "
+                       f"AI's: {[(r.get('id'), r.get('says')) for r in queue]}")
+    row = (rows or {}).get("acme-three") or {}
+    if row.get("action") != "WIRE":
+        errors += fail(f"eightfold door: a tenant whose careers page is on the shared host was "
+                       f"{row.get('action')}: {_wb_words(row)[:240]}")
     return errors
 
 
@@ -35926,6 +36185,11 @@ SITE_BOARD_FORMS = [
     ('<a href="https://app.eightfold.ai/careers/job/68764587418?domain=acmegov.example">AE</a>',
      "eightfold", "https://app.eightfold.ai/careers?domain=acmegov.example",
      "https://app.eightfold.ai/careers?domain=acmegov.example"),
+    # (the FIRST domain= of the address, as a server reading its query takes
+    # it, never a later one: blind review of the identity, 2026-11-27)
+    ('<a href="https://app.eightfold.ai/careers?domain=acmegov.example&amp;domain=othergov.example">J</a>',
+     "eightfold", "https://app.eightfold.ai/careers?domain=acmegov.example",
+     "https://app.eightfold.ai/careers?domain=acmegov.example"),
 ]
 
 # Markup that names NO board, and the reason each is here.
@@ -35967,6 +36231,10 @@ SITE_BOARD_NOT_ONE = [
     '<img src="https://www.facebook.com/tr?id=1&ev=PageView&domain=eightfold.ai">',  # a pixel
     '<link rel="stylesheet" href="https://static.vscdn.net/gen/app.css">',  # its assets alone
     '<a href="https://app.eightfold.ai/careers">Jobs</a>',               # the shared host, no group
+    # a group that does not end where the address does names no board, never
+    # the group its first letters read as (blind review, 2026-11-27)
+    '<a href="https://app.eightfold.ai/careers?domain=acme_gov.example">Jobs</a>',
+    '<a href="https://app.eightfold.ai/careers?domain=acme%2Egov.example">Jobs</a>',
     '<a href="https://careers.acme.example/careers?start=0&pid=1443153067206">Jobs</a>',  # a hint only
     "We cut greenhouse gas emissions for cities and jobs.lever.co is a job site.",
     # WHAT A COMPANY TOOK DOWN BY COMMENTING IT OUT IS NOT ON ITS PAGE, and

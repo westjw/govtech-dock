@@ -4031,7 +4031,25 @@ round.
   to an empty search), a giant is never read at all, and a board whose total
   cannot be had is skipped with the giants. Oracle has no way to ask, so every
   Oracle find is skipped. A count from the identity probe skips a board when
-  it is 500 or more and is never read as "small".
+  it is 500 or more and is never read as "small". A reader that reads the
+  whole board but is told its size first is asked that total before the read
+  too (`wire_found.COUNTED_FIRST`, eightfold: `ats.eightfold_total`, the
+  careers page and the list's first page, which the read then takes inside
+  the plan), so a giant is skipped as a giant after two requests and never
+  walked (blind reviews of 2026-11-27: one counting 900 cost 91 requests
+  before it was skipped; one counting 1,200 raised in the read and was filed
+  "unreadable", its words cut before "a giant"). Unlike PARTIAL, a total that
+  could not be had is no reason to skip: the read that follows says why.
+- **A rewire never splits a shared board unasked** (`wire_found.left_alone`,
+  blind review of the identity, 2026-11-27). The board build gives a board
+  two records share to one of them, and the other contributes nothing
+  (`build_board.board_owners`). A company wired away from that board would
+  leave the other record holding it alone, its postings then published under
+  that name as well - a parent's board on a product line's record, which no
+  check of the found board reaches. So the door holds it, naming the record
+  it would leave alone. Records still one board after the rewire
+  (`board_proposals.share_key`: a careers page that IS the Eightfold career
+  site wired) are not split, so UKG's own switch is not held.
 - **`board_key` is loose and `spelling` is exact.** The key only notices
   collisions, and a collision only ever sends a board to a person: case is
   ignored, an address matches with or without scheme, `www.` or a last slash,
@@ -5594,12 +5612,18 @@ the door.
   requests a board: UKG 27 a night, Curriculum Associates 7, Eightfold 6,
   Aventiv 4 (44 in all). Every request through `ats._page` (robots.txt at
   every hop; /careers and /api/pcsx are allowed on every host measured),
-  every hop held to the very address asked. Never /api/apply/v2/jobs (403 on
-  two tenants).
-- **Whole or not at all** (`ats.eightfold_positions`): the union must be
-  exactly data.count and the count must not move between pages. An empty
-  board (count 0) is not measured and raises - Unknown, never "None found" -
-  and so do a page with no pcsx-data, PCSX off, another group or two, a
+  every hop held to the very address asked (`ats._ef_stay`): a redirect is
+  never followed, on its own host either - the list sent to another group's
+  list, or the careers page to another group's page, raises before the
+  other address is asked. Never /api/apply/v2/jobs (403 on two tenants).
+- **Whole or not at all** (`ats.eightfold_positions`, `ats.eightfold_page_of`):
+  the union must be exactly data.count and the count must not move between
+  pages. An empty board (count 0) is not measured and raises - Unknown, never
+  "None found" - whatever the page lists beside it (a count of 0 beside a
+  page of rows read as a board with nothing open, and the probe said n=0:
+  blind review of the reader, 2026-11-27), in the read and in the probe; so
+  does a page listing more rows than its count leaves from its offset; and so
+  do a page with no pcsx-data, PCSX off, another group or two, a
   redirect, a list in another shape (its own status not 200, no positions,
   no count), a row with no id or name or another positionUrl, and a board
   counting more than 1,000 (more than the reader walks; never walked).
@@ -5636,13 +5660,51 @@ the door.
   is on file with UKG's careers address as its own: the finder files that
   page under off_site (its website is a path inside ukg.com), and its board
   names UKG, so the door holds it. Inside the door's plan the probe takes the
-  answer its read had (`ats.eightfold_kept`).
+  answer its read had (`ats.eightfold_kept`), keyed on the ref and never the
+  host (two tenants of the shared host in one plan are two boards).
+- **UKG Telestaff keeps following UKG** (blind review of the identity,
+  2026-11-27). Today `build_board.board_owners` gives UKG's careers page,
+  which both records hold as html, to UKG, and the product line contributes
+  nothing. Once UKG reads its Eightfold board the two refs differ, and keyed
+  apart the product line would hold UKG's page alone and publish its rows
+  as its own. `board_proposals.share_key` is what board_owners groups by:
+  `board_key`, except that a careers page on file (type html, at /careers or
+  under it) on the host of an Eightfold career site on file
+  (`board_proposals.eightfold_sites`: an employer's own host carrying one
+  group) IS that board - never on the shared host, where a page with no
+  ?domain= is its default tenant's. The door holds any other rewire that
+  would leave a record alone on a board it shares today (see "A rewire never
+  splits a shared board unasked" in the door's section).
+- **One tenant, two spellings, one board**: app.eightfold.ai asked a group
+  answers as that group (measured 2026-11-27: domain=ukg.com is 'Careers at
+  UKG', branding UKG, PCSX on), so `board_proposals.board_key` keys an
+  Eightfold board on its group, its own host's address and the shared host's
+  meeting as a holder, a twin and a refusal. Reading still goes by the ref
+  exactly as written.
+- **Eightfold AI's domain is a vendor's**: eightfold.ai is in
+  `admin.ATS_HOSTS`, `refresh._ATS_HOSTS` and `build_board._PROMOTE_ATS_HOSTS`,
+  and 'eightfold' in `acquisitions._ATS_HOSTS`, as each vendor's is: a tenant
+  whose board or careers page is on app.eightfold.ai is not filed in the
+  Acquisitions queue as Eightfold AI's, nor held by the door for it.
+- **Accepting a held board asks it once**: `ats.one_ask_a_board` (the desk's
+  accept and a ruling's) wraps `eightfold_kept`, and `clearcompany_kept`
+  beside it - the careers page and the list's first page, and a ClearCompany
+  site's three answers, were asked twice there.
 - **First seen across the move from html**: UKG's and Eightfold's careers
   pages listed /careers/job/<id> under titles with the place and the
-  department glued on, so no reader row matches one by id.
+  department glued on (on Eightfold's own, 'Posted N days ago' too, so its
+  html ids moved every night), so no reader row matches one by id.
   `build_board.posting_key` names an Eightfold posting address by its host
   and position id (`ats.eightfold_posting_key`, any query) and
-  `carry_first_seen` matches the company's earlier posting on it. posting_id
+  `carry_first_seen` matches the company's posting on the previous board on
+  it; and, as for ClearCompany, it looks the posting up in data/history by
+  the company and the address's hash with no place and with the reader's
+  place (`ats.eightfold_posting_forms`), so a posting the careers page showed
+  on an earlier night but not on the previous board keeps that night (blind
+  review of the reader, 2026-11-27: of 30 sampled open postings, 11 took a
+  later day than the snapshots held). Where an html row glued its place onto
+  its location rather than its title, the snapshot's hash cannot be matched
+  and only the previous board carries the day. posting_id
   still hashes the address as written (no id moves at the merge); an opening
   id is company and title, so an opening whose html title had a place glued
   on takes the corrected title's id.
@@ -5651,7 +5713,12 @@ the door.
   its own board at its own host and group (`find_site_boards.eightfold_own_site`;
   a commented-out script is not on the page); its og:url and canonical echo
   the address it was asked at, never a second board. An app.eightfold.ai/
-  careers address (any page under it) asking ?domain=<group> is a board.
+  careers address (any page under it) asking ?domain=<group> is a board: the
+  FIRST domain= of its query, as a server reading it takes it, and its value
+  whole up to the next &, ;, #, quote, space or tag mark; a value that is no
+  whole group ('acme_gov.example', 'acme%2Egov.example') names no board and
+  is `eightfold-tenant`, a doubt, never the group its first letters read as
+  (blind review of the identity, 2026-11-27).
   /careers?...pid= and /careers/job/<id> are shapes other platforms use too:
   no board alone. <label>.eightfold.ai/careers is `eightfold-tenant`, a tenant
   form and a doubt; every other eightfold.ai address (a Facebook pixel's
@@ -5670,10 +5737,19 @@ the door.
   the probe and its two halves, the plan's one ask, the finder's forms, the
   public link, the rank, the first-seen day across the move from html, and
   the door wiring a board that names them, holding a product line whose page
-  points to a board naming its parent, and skipping a giant), beside a row in
+  points to a board naming its parent, and skipping a giant; and, since the
+  blind reviews of 2026-11-27: a zero beside listed rows, a same-host
+  redirect of the list and of the page, an ad naming another posting, two
+  tenants of the shared host in one plan, the snapshots' earlier nights, a
+  giant by its own count before any read with the real reader, the product
+  line still following its parent after the parent's switch, a split of a
+  shared board held, one group's two spellings as holder, twin and refusal,
+  and a shared-host tenant kept out of the Acquisitions queue), beside a row in
   `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS, the type in
-  `check_a_stated_name_does_not_loosen_the_older_doors`, two forms in
-  SITE_BOARD_FORMS and five in SITE_BOARD_NOT_ONE, the page readers in
+  `check_a_stated_name_does_not_loosen_the_older_doors`, three forms in
+  SITE_BOARD_FORMS and seven in SITE_BOARD_NOT_ONE, the accept-asks-once loop
+  of `check_jobscore_reads_its_feed_and_names_it_once` (eightfold and
+  clearcompany), the page readers in
   `check_the_crawler_honours_robots_txt`, the public link and Eightfold's own
   site as the board's furniture in
   `check_what_the_second_review_of_the_new_readers_found_stays_fixed`, and

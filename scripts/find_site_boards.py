@@ -710,13 +710,27 @@ def _eightfold_shared(m):
     # as a domain is: ref and key the careers page with that group, which
     # the identity probe asks and holds to it (a group the host does not
     # know answers as another tenant's, and is refused there: asked
-    # eightfold.ai, app.eightfold.ai answered as volkscience.com)
-    ref = f"https://{ats.EIGHTFOLD_SHARED_HOST}/careers?domain={m.group(1).lower().rstrip('.-')}"
+    # eightfold.ai, app.eightfold.ai answered as volkscience.com). THE FIRST
+    # domain= OF THE ADDRESS, AND ALL OF IT (blind review of the identity,
+    # 2026-11-27): the pattern stops at the first, as a server reading the
+    # query does, and takes its value up to the next &, ;, #, quote, space or
+    # tag mark; a value that is not a whole group - 'acme_gov.example',
+    # 'acme%2Egov.example', one running into a bracket - names no board
+    # here (the finder files the address as eightfold-tenant, a doubt),
+    # never the group its first letters would read as
+    group = m.group(1).lower()
+    group = group[:-1] if group.endswith(".") else group      # a sentence's full stop
+    if not _EF_SHARED_GROUP.fullmatch(group):
+        return None
+    ref = f"https://{ats.EIGHTFOLD_SHARED_HOST}/careers?domain={group}"
     try:
         ats.eightfold_ref(ref)
     except ats.AtsError:
         return None
     return ref, ref
+
+
+_EF_SHARED_GROUP = re.compile(r"[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?")
 
 
 # A hosted-site address's query asking for one brand (?brand=, &brand=): the
@@ -884,9 +898,11 @@ BOARDS: list[_Pat] = (
         # address names no board (eightfold-other) - never a bare eightfold.ai
         # match: one is a Facebook pixel's address on Eightfold's own site,
         # another its privacy page
+        # (the FIRST domain= of the query, its value whole up to the next &,
+        # ;, #, quote, space or tag mark: _eightfold_shared reads it)
         _here("eightfold", r"(?<![a-z0-9.-])app\.eightfold\.ai/careers(?:/[^\s\"'<>?#]{0,200})?"
-                           r"\?(?:[^\s\"'<>#]{0,800}?[&;])?domain=([a-z0-9][a-z0-9.-]{0,252})"
-                           r"(?![a-z0-9.-])", _eightfold_shared),
+                           r"\?(?:[^\s\"'<>#&;]{0,400}[&;]){0,24}?(?-i:domain)=([^\s\"'<>#&;]{0,300})",
+              _eightfold_shared),
     ])
 
 # A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
@@ -1055,6 +1071,13 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("eightfold-tenant", "eightfold.ai",
          r"(?<![a-z0-9.-])(?!(?:app|www|static|cdn|api)\.eightfold\.ai(?![a-z0-9-]))"
          r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.eightfold\.ai/careers(?![a-z0-9_-])"),
+        # ...and the shared host's careers address asking a domain= that is no
+        # group the board pattern takes ('acme_gov.example', 'acme%2Egov'):
+        # a tenant this cannot name, a doubt, never a board of the group its
+        # first letters read as (blind review of the identity, 2026-11-27).
+        # Where the board pattern took the address, this is that board.
+        ("eightfold-tenant", "eightfold.ai",
+         r"(?<![a-z0-9.-])app\.eightfold\.ai/careers[^\s\"'<>#]{0,1200}?[?&;](?-i:domain)="),
         ("eightfold-other", "eightfold.ai", _B + r"eightfold\.ai"),
         ("eightfold-other", "vscdn.net", r"(?<![a-z0-9.-])static\.vscdn\.net(?![a-z0-9-])"),
         ("phenom", "phenompeople.com", _B + r"phenompeople\.com"),

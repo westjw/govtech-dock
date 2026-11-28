@@ -5318,14 +5318,18 @@ def fetch_jobscore(ref) -> list[dict]:
 
 @contextlib.contextmanager
 def one_ask_a_board():
-    """jobvitefeed_kept, trinethire_kept and jobscore_kept at once: inside
-    it, a board those readers read whole is asked once, however many times it
-    is read and then asked whose it is. For the paths that read a board and
-    then probe it - accepting a held board at the desk (admin.
-    act_board_proposal) and by a ruling (proposal_rulings._accept_board): a
-    Jobvite feed and a JobScore feed name people, and the second ask was the
-    same answer again (blind review of 2026-11-24). Also a decorator."""
-    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept():
+    """jobvitefeed_kept, trinethire_kept, jobscore_kept, clearcompany_kept
+    and eightfold_kept at once: inside it, a board those readers read whole
+    is asked once, however many times it is read and then asked whose it is.
+    For the paths that read a board and then probe it - accepting a held
+    board at the desk (admin.act_board_proposal) and by a ruling
+    (proposal_rulings._accept_board): a Jobvite feed and a JobScore feed name
+    people, and the second ask was the same answer again (blind review of
+    2026-11-24); a ClearCompany site's three answers and an Eightfold career
+    site's page and first list page were asked twice too (blind review of
+    the Eightfold reader, 2026-11-27). Also a decorator."""
+    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept(), clearcompany_kept(), \
+            eightfold_kept():
         yield
 # ---- clearcompany: ClearCompany career sites, apply.clearcompany.com/<slug>
 #
@@ -5870,7 +5874,12 @@ def fetch_clearcompany(ref) -> list[dict]:
 # /api/apply/v2/jobs: it answered 403 on two tenants.
 #
 # A ZERO HAS NOT BEEN SEEN. None of the four was empty, so a count of 0
-# raises - kept Unknown, never "None found" - until an empty board is read.
+# raises - kept Unknown, never "None found" - until an empty board is read,
+# whatever the page lists beside it; and so does any page listing more rows
+# than its count leaves from its offset (7 rows of a board counting 0, or of
+# one counting 3): what it lists is not the board it counts (blind review of
+# the reader, 2026-11-27: a count of 0 beside a page of rows read as a board
+# with nothing open, and the probe said n=0).
 #
 # A ROW: positions[].name; the posting's own page, https://<host>/careers/job/
 # <id> (positionUrl; the bare address loaded on the shared host as on the
@@ -5896,9 +5905,13 @@ def fetch_clearcompany(ref) -> list[dict]:
 # written to the HTTP cache, whatever host serves it (NEVER_CACHED_PATHS: a
 # custom host names no vendor). The list and the page name nobody.
 #
-# ONE PLAN ASKS EACH BOARD ONCE: inside eightfold_kept() - wire_found.plan -
-# a board read whole is kept in memory under its ref, so the door's read and
-# its identity probe (verify_boards) take one answer.
+# ONE PLAN ASKS EACH BOARD ONCE: inside eightfold_kept() - wire_found.plan,
+# and accepting a held board (one_ask_a_board) - the careers page and the
+# list's first page are kept in memory under the ref, and the board's rows
+# once it is read whole, so the door's count (add_company.board_total, asked
+# before the read so a giant is never walked), its read and its identity
+# probe (verify_boards) take one answer. Kept under the ref, never the host:
+# the shared host serves every tenant.
 EIGHTFOLD_SHARED_HOST = "app.eightfold.ai"
 EIGHTFOLD_PAGE_SIZE = 10          # fixed by the server: num=50 still answered 10
 # offsets walked at most: 1,000 postings, twice the owner's giants line. A
@@ -6045,6 +6058,13 @@ def eightfold_page_of(host: str, group: str, start: int) -> tuple[list, int]:
             or isinstance(count, bool) or count < 0 or len(rows) > EIGHTFOLD_PAGE_SIZE):
         raise AtsError(f"{url} is not an Eightfold search answer (status 200, data.positions, "
                        f"data.count), so it is not read")
+    if count == 0:
+        raise AtsError(f"the Eightfold board {host} (group {group}) counts no posting: an empty "
+                       f"Eightfold board has not been measured, so it is kept Unknown and never "
+                       f"read as a zero, whatever its page lists")
+    if len(rows) > max(count - start, 0):
+        raise AtsError(f"{url} lists {len(rows)} posting(s) at start={start} of a board it counts "
+                       f"{count}: what it lists is not the board it counts, so it is not read")
     return rows, count
 
 
@@ -6053,15 +6073,13 @@ def _ef_id(p: dict):
     return pid if isinstance(pid, int) and not isinstance(pid, bool) and pid > 0 else None
 
 
-def eightfold_positions(host: str, group: str) -> list[dict]:
+def eightfold_positions(host: str, group: str, first: list, count: int) -> list[dict]:
     """Every posting of the board, once each, or AtsError: pages of 10 by
     offset through _paged, deduplicated by id, asked no further than the
-    count the first page states, and the union exactly that count."""
-    first, count = eightfold_page_of(host, group, 0)
+    count the first page states (`first` and `count`: that page's answer,
+    eightfold_page_of(host, group, 0), never 0), and the union exactly that
+    count."""
     where = f"the Eightfold board {host} (group {group})"
-    if count == 0 and not first:
-        raise AtsError(f"{where} counts no posting: an empty Eightfold board has not been "
-                       f"measured, so it is kept Unknown and never read as a zero")
     if count > EIGHTFOLD_PAGE_SIZE * EIGHTFOLD_MAX_PAGES:
         raise AtsError(f"{where} counts {count} postings, more than this reader walks "
                        f"({EIGHTFOLD_PAGE_SIZE * EIGHTFOLD_MAX_PAGES:,} at {EIGHTFOLD_PAGE_SIZE} a "
@@ -6151,6 +6169,25 @@ def eightfold_posting_key(url) -> str | None:
     return f"eightfold:{host}/{int(m.group(1))}"
 
 
+def eightfold_posting_forms(url) -> list[str]:
+    """Every address the Eightfold posting `url` names has been written as on
+    this board, or [] for an address that names no posting
+    (eightfold_posting_key): https://<host>/careers/job/<id>, the form this
+    reader writes and the one the careers page's reader (type html) took off
+    the page - every UKG and Eightfold row on the board of 2026-11-27, with
+    no query. A snapshot under data/history keeps a posting's id alone,
+    hashed from that address and the place the html reader glued beside it,
+    so build_board.carry_first_seen looks an earlier night up under this
+    form with no place or with this reader's place (blind review of the
+    reader, 2026-11-27: 11 of 30 sampled postings took a later day than the
+    snapshots held). Keys, never addresses anybody is sent to."""
+    key = eightfold_posting_key(url)
+    if key is None:
+        return []
+    host, pid = key[len("eightfold:"):].split("/", 1)
+    return [f"https://{host}/careers/job/{pid}"]
+
+
 def eightfold_details_url(host: str, group: str, pid: int) -> str:
     return (f"https://{host}/api/pcsx/position_details?position_id={pid}&domain={group}"
             f"&hl=en")
@@ -6185,49 +6222,72 @@ def eightfold_kept():
         _EF_KEPT = outer
 
 
-def _ef_copy(got: dict) -> dict:
-    return dict(got, rows=[dict(r) for r in got["rows"]]) if "rows" in got else dict(got)
+def _ef_front(host: str, group: str, url: str) -> dict:
+    """{page, brand, first, count}: the careers page held to the ref's own
+    group, and the list's first page with the count it states - two
+    requests, none inside eightfold_kept() where this board's were asked
+    already - or AtsError. What the read, the count and the probe all begin
+    with (ONE PLAN ASKS EACH BOARD ONCE above)."""
+    kept = _EF_KEPT
+    if kept is not None and url in kept:
+        if "failed" in kept[url]:
+            # the same failure, not a second ask: the door's count failed, and
+            # its read is that answer again
+            raise kept[url]["failed"]
+        return kept[url]
+    try:
+        page, data = eightfold_careers(host, group)
+        first, count = eightfold_page_of(host, group, 0)
+    except Exception as exc:
+        if kept is not None:
+            kept[url] = {"failed": exc}
+        raise
+    front = {"page": page, "brand": eightfold_brand(data), "first": first, "count": count}
+    if kept is not None:
+        kept[url] = front
+    return front
 
 
 def eightfold_board(ref) -> dict:
     """{url, host, group, page, brand, count, rows}: the careers page, then
     the list whole - 1 + ceil(count/10) requests, none inside eightfold_kept()
-    where the board was read whole already - or AtsError. `page` and `brand`
-    are for verify_boards, which weighs them; nothing here reads a name."""
+    where they were asked already - or AtsError. `page` and `brand` are for
+    verify_boards, which weighs them; nothing here reads a name."""
     host, group = eightfold_ref(ref)
     url = f"https://{host}/careers?domain={group}"
-    kept = _EF_KEPT
-    if kept is not None and "rows" in kept.get(url, {}):
-        return _ef_copy(kept[url])
-    page, data = eightfold_careers(host, group)
-    positions = eightfold_positions(host, group)
-    got = {"url": url, "host": host, "group": group, "page": page,
-           "brand": eightfold_brand(data), "count": len(positions),
-           "rows": eightfold_rows(positions, host, url)}
-    if kept is not None:
-        kept[url] = _ef_copy(got)
-    return got
+    front = _ef_front(host, group, url)
+    if "rows" not in front:
+        positions = eightfold_positions(host, group, front["first"], front["count"])
+        rows = eightfold_rows(positions, host, url)
+        if _EF_KEPT is not None and _EF_KEPT.get(url) is front:
+            front["rows"] = [dict(r) for r in rows]
+    else:
+        rows = [dict(r) for r in front["rows"]]
+    return {"url": url, "host": host, "group": group, "page": front["page"],
+            "brand": front["brand"], "count": len(rows), "rows": rows}
 
 
 def eightfold_identity(ref) -> dict:
     """{url, host, group, page, brand, count} for the identity probe: the
     careers page and the list's first page, whose data.count is the board's
-    own count - two requests, or none inside eightfold_kept() where the
-    board was read whole - or AtsError (an empty board is not measured)."""
+    own count - two requests, or none inside eightfold_kept() where they were
+    asked already - or AtsError (an empty board is not measured)."""
     host, group = eightfold_ref(ref)
     url = f"https://{host}/careers?domain={group}"
-    kept = _EF_KEPT
-    if kept is not None and url in kept:
-        got = _ef_copy(kept[url])
-        got.pop("rows", None)
-        return got
-    page, data = eightfold_careers(host, group)
-    first, count = eightfold_page_of(host, group, 0)
-    if count == 0 and not first:
-        raise AtsError(f"the Eightfold board {host} (group {group}) counts no posting: an empty "
-                       f"Eightfold board has not been measured, so it is never read as a zero")
-    return {"url": url, "host": host, "group": group, "page": page,
-            "brand": eightfold_brand(data), "count": count}
+    front = _ef_front(host, group, url)
+    return {"url": url, "host": host, "group": group, "page": front["page"],
+            "brand": front["brand"], "count": front["count"]}
+
+
+def eightfold_total(ref) -> int:
+    """The number of postings an Eightfold board states it holds - data.count
+    of its list's first page, after its careers page answered as the ref's
+    own group (a shared host answers a group it does not know as another
+    tenant, whose count this would be) - or AtsError. Two requests, which
+    the read then takes inside eightfold_kept(): what the wiring door asks
+    first, so a board past the owner's giants line is never walked
+    (add_company.board_total; blind reviews of 2026-11-27)."""
+    return eightfold_identity(ref)["count"]
 
 
 def fetch_eightfold(ref) -> list[dict]:

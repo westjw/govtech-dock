@@ -110,6 +110,9 @@ _PROMOTE_ATS_HOSTS = (
     "zohorecruit.com",
     "comeet.co",
     "successfactors.eu", "sapsf.com", "sapsf.eu", "sapsf.cn",
+    # (Eightfold's shared host, app.eightfold.ai, serves every tenant's career
+    # site by ?domain=, and Eightfold AI is a company on file: 2026-11-27)
+    "eightfold.ai",
 )
 
 _SLUG_GENERIC = {
@@ -1421,6 +1424,7 @@ def board_owners(companies: list) -> tuple[dict, set]:
     # The board belongs to whoever the slug names. Everyone else sharing it is
     # marked and contributes nothing, rather than silently doubling the total.
     shared: dict[tuple, list] = collections.defaultdict(list)
+    sites = board_proposals.eightfold_sites(companies)
     for c in companies:
         kind = (c.get("ats") or {}).get("type")
         ref = (c.get("ats") or {}).get("ref")
@@ -1428,8 +1432,11 @@ def board_owners(companies: list) -> tuple[dict, set]:
             continue
         # by the door's own LOOSE key: one board under two spellings is one
         # board (Aladtec and TCP Software both read tcpsoftware.com/careers,
-        # one with www.; a Comeet board is one uid in either of its forms)
-        shared[board_proposals.board_key(kind, ref)].append(c)
+        # one with www.; a Comeet board is one uid in either of its forms) -
+        # and a careers page on file that IS an Eightfold career site on file
+        # is that board (board_proposals.share_key: UKG Telestaff on UKG's
+        # careers page keeps following UKG once UKG reads its Eightfold board)
+        shared[board_proposals.share_key(kind, ref, sites)].append(c)
 
     owns: dict[str, str] = {}          # company id -> id of the board's owner
     unowned: set[str] = set()          # holders the slug does not name
@@ -2134,8 +2141,17 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
         # (ats.clearcompany_posting_forms), with no place or its own, by the
         # company and the address's hash: the address names the job, so
         # whatever its title read then (Rehrig retitles), it is the same
-        # posting. Another job, or another company, is another hash.
-        forms = ats.clearcompany_posting_forms(p.get("url")) if nights else []
+        # posting. Another job, or another company, is another hash. So is an
+        # Eightfold posting (ats.eightfold_posting_forms), whose html rows
+        # glued the place and the department to the title, and on Eightfold's
+        # own careers page "Posted N days ago" too, so its html id moved every
+        # night (blind review of the reader, 2026-11-27: of 30 sampled
+        # postings, 11 would have taken a later day than the snapshots held).
+        # Where the html row glued its place onto the location instead, the
+        # snapshot's hash cannot be matched and only the previous board
+        # carries the day (posting_key, above).
+        forms = ((ats.clearcompany_posting_forms(p.get("url"))
+                  or ats.eightfold_posting_forms(p.get("url"))) if nights else [])
         if forms and by_address is None:
             by_address = _nights_by_address(nights)
         for form in forms:

@@ -941,6 +941,9 @@ ATS_HOSTS = (
     "zohorecruit.com",
     "comeet.co",
     "successfactors.eu", "sapsf.com", "sapsf.eu", "sapsf.cn",
+    # (Eightfold's shared host, app.eightfold.ai, serves every tenant's career
+    # site by ?domain=, and Eightfold AI is a company on file: 2026-11-27)
+    "eightfold.ai",
 )
 
 

@@ -31,6 +31,7 @@ import json
 import pathlib
 import re
 import sys
+import urllib.parse
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
@@ -394,6 +395,15 @@ _COMEET = re.compile(r"(?:^|comeet\.com/jobs/[^/?#]+/)([0-9a-f]{2}\.[0-9a-f]{3})
 # a TriNet Hire board is its company number, which alone selects it: one
 # board is found as 5502-fraudscope and as 5502-codoxo (2026-11-23)
 _TRINETHIRE = re.compile(r"(?:app\.trinethire\.com/companies/)?0*([0-9]{1,12})(?=$|[-/?#])")
+# an Eightfold board is its group, whichever host it is asked at: a career
+# site on the employer's own host (https://<host>/careers?domain=<group>) and
+# the shared host asked with the same group answer as one tenant (measured
+# 2026-11-27: app.eightfold.ai/careers?domain=ukg.com is 'Careers at UKG',
+# branding UKG, PCSX on), so keyed on the whole address a holder, a twin, a
+# hold or a refusal written in one spelling missed the other (blind review
+# of the identity, 2026-11-27)
+_EIGHTFOLD = re.compile(r"[^/?#]+/careers\?domain=([a-z0-9][a-z0-9.-]{0,252})")
+EIGHTFOLD_SHARED_HOST = "app.eightfold.ai"
 # the platforms whose board is a whole host: any address on it is the board
 HOST_BOARDS = ("jibe", "oracle", "applicantpro", "teamtailor", "successfactors")
 # the words wire_found.py writes on a wired record's note and a held row's
@@ -422,7 +432,9 @@ def board_key(kind, ref) -> str:
     SuccessFactors board is its host; a Zoho Recruit career site is its host and its page's
     name (a posting's address is under it); a Comeet board is its company
     uid, whether the ref is "<UID>|<TOKEN>" or the hosted board's address;
-    a TriNet Hire board is its company number, whatever slug follows it.
+    a TriNet Hire board is its company number, whatever slug follows it; an
+    Eightfold board is its group, on the employer's own host or the shared
+    one (2026-11-27).
     (The last four were read since 2026-11-19 and keyed on the whole ref, so
     a hold or a refusal written in one spelling missed the other: test
     review of the door, 2026-11-21. Hirebridge's number and Pinpoint's slug
@@ -455,7 +467,52 @@ def board_key(kind, ref) -> str:
     elif kind == "trinethire":
         m = _TRINETHIRE.match(r)
         r = (m.group(1) or "0") if m else r
+    elif kind == "eightfold":
+        m = _EIGHTFOLD.fullmatch(r)
+        r = m.group(1) if m else r
     return f"{kind}:{json.dumps(r)}"
+
+
+def eightfold_sites(companies) -> dict:
+    """{host: board_key} for each Eightfold career site on file on an
+    employer's OWN host - never the shared host, which serves every tenant -
+    where one group is on file at that host (share_key)."""
+    seen: dict = collections.defaultdict(set)
+    for c in companies or []:
+        a = (c.get("ats") or {}) if isinstance(c, dict) else {}
+        if a.get("type") != "eightfold" or not isinstance(a.get("ref"), str):
+            continue
+        r = a["ref"].strip().lower()
+        for lead in ("https://", "http://"):
+            r = r.removeprefix(lead)
+        r = r.removeprefix("www.").rstrip("/")
+        host = r.split("/", 1)[0]
+        if _EIGHTFOLD.fullmatch(r) and host != EIGHTFOLD_SHARED_HOST:
+            seen[host].add(board_key("eightfold", a["ref"]))
+    return {h: next(iter(ks)) for h, ks in seen.items() if len(ks) == 1}
+
+
+def share_key(kind, ref, sites: dict) -> str:
+    """What build_board.board_owners groups a record's board by: board_key,
+    except that a careers page on file (type html) on the host of an
+    Eightfold career site on file (`sites`, eightfold_sites), at /careers or
+    under it, is that board. The career site IS that page: UKG Telestaff is
+    on file with UKG's careers page, https://apply.ukg.com/careers, and once
+    UKG reads its Eightfold board (https://apply.ukg.com/careers?domain=
+    ukg.com) keyed apart the product line would hold UKG's page alone and
+    publish its rows as its own (blind review of the identity, 2026-11-27).
+    Never on the shared host: a page there without ?domain= is its default
+    tenant's."""
+    if kind == "html" and isinstance(ref, str) and sites:
+        try:
+            parts = urllib.parse.urlsplit(ref.strip())
+        except ValueError:
+            parts = None
+        host = ((parts.hostname or "") if parts else "").lower().removeprefix("www.")
+        path = (parts.path or "") if parts else ""
+        if host in sites and (path.rstrip("/") == "/careers" or path.startswith("/careers/")):
+            return sites[host]
+    return board_key(kind, ref)
 
 
 # the tenant's name a Paylocity address ends in, after its /All/ or /List/ id
