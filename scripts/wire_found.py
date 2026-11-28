@@ -136,7 +136,10 @@ GIANT_WHY = "giant - skipped this round on the owner's ruling of 2026-11-18"
 # and unknown is skipped with the giants: "probably small" is not this door's
 # to decide, and a giant in the owner's queue is what his ruling ruled out.
 PARTIAL = {"workday": "the Workday reader asks only two sales searches",
-           "oracle": "the Oracle reader takes one reply and never pages"}
+           "oracle": "the Oracle reader takes one reply and never pages",
+           # (its two keyword searches; the size is the unfiltered search
+           # page's totalHits, ats.phenom_total: 2026-11-27)
+           "phenom": "the Phenom reader walks only two sales searches"}
 SAMPLE = 8                  # titles kept per board: what ownership is judged on
 ACTION = "wire-found"
 MADE = "wire_found.py plan"
@@ -281,7 +284,11 @@ OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-
              # (an address on apply.clearcompany.com naming a slug is a board,
              # so clearcompany-other names none: its scripts, its pictures, a
              # tenant host robots.txt closes; 2026-11-24)
-             "clearcompany": {"clearcompany-other"}}
+             "clearcompany": {"clearcompany-other"},
+             # (a Phenom site is named by its page's phApp object or a link to
+             # its search or postings, so phenom-other - a phenompeople.com
+             # address, its scripts and pictures - names none: 2026-11-27)
+             "phenom": {"phenom-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -2887,6 +2894,14 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append(f"the finder recorded a kind of reference this door does not know "
                       f"({seen['element'] or 'none'!r}), so how their site points at the "
                       f"board is not known")
+    if kind == "phenom" and not ats.phenom_on_site(ref, website):
+        # CHECK 1 FOR A PHENOM SITE IS ALSO ITS HOST (2026-11-27): the site sits
+        # on the employer's own careers host, so one on another domain than the
+        # website on file - a parent's, a group's - is not this company's board,
+        # whichever of their pages linked it
+        doubts.append(f"the Phenom site {short(ref)} is not on their own website's domain "
+                      f"({website or 'none on file'}): a Phenom site sits on its employer's own "
+                      f"host, so one on another domain is not shown to be theirs")
     # the boards the Paylocity postings' pages named (resolved_by_posting),
     # every posting asked: one board is the find; a posting naming more than
     # one, or two postings naming different boards, is a doubt of its own,
@@ -3509,11 +3524,13 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 # plan: the probe takes the answer the read had - ats.jobvitefeed_kept, blind
 # review 12, 2026-11-23; and so is a TriNet Hire list - ats.trinethire_kept,
 # blind review 13, 2026-11-24 - and a JobScore board's feed, ats.jobscore_kept, and a
-# ClearCompany site's three answers - ats.clearcompany_kept, 2026-11-24)
+# ClearCompany site's three answers - ats.clearcompany_kept, 2026-11-24 - and a
+# Phenom site's unfiltered page, asked for its size and its name - ats.phenom_kept)
 @ats.jobvitefeed_kept()
 @ats.trinethire_kept()
 @ats.jobscore_kept()
 @ats.clearcompany_kept()
+@ats.phenom_kept()
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
          pages: dict | None = None, postings: dict | None = None,
