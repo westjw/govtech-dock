@@ -65913,8 +65913,14 @@ def check_a_publisher_entry_never_shares_an_id_with_a_desk_ruling() -> int:
         # A WHOLE CYCLE, the desk ruling while it builds
         rig = _vouch_rig(tmp, "ids")
         desk, bot, origin = rig["desk"], rig["bot"], rig["origin"]
+        # STAMPED BEFORE THE CYCLE, as a ruling the desk made before a cycle
+        # always is. At fixed hours (01:00-03:00) these were later than the
+        # cycle's own clock whenever the suite ran between midnight and 3 am,
+        # and this check failed on main with nothing wrong (2026-11-28 01:50).
+        off = dt.datetime.now().astimezone().strftime("%z")
+        off = f"{off[:3]}:{off[3:]}"
         for i in (1, 2, 3):
-            _vouch_write(desk, "c3", f"{today}#{i}", f"{today}T0{i}:00:00-05:00",
+            _vouch_write(desk, "c3", f"{today}#{i}", f"{today}T00:00:0{i}{off}",
                          website=f"https://desk{i}.example")
         _rig_push(bot, lambda r: _vouch_write(r, "c3", "2026-11-21#m1",
                                               "2026-11-21T10:00:00-05:00",
