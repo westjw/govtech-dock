@@ -676,8 +676,8 @@
     "url": "https://www.aframesolutions.com/news"
    },
    {
-    "chars": 14558,
-    "sha": "d834865fb4502ba4",
+    "chars": 15016,
+    "sha": "9234fef4928a4012",
     "url": "https://www.aframesolutions.com/blog"
    },
    {
@@ -699,6 +699,78 @@
     "chars": 6532,
     "sha": "7c23704481c7fabe",
     "url": "https://www.aframesolutions.com/news/ncma-world-congress-2026"
+   },
+   {
+    "chars": 16420,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "73feaa9ccdc78c52",
+    "url": "https://www.aframesolutions.com/blog/source-selection-protest-lessons-2026"
+   },
+   {
+    "chars": 15544,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "21ec979df9929bb5",
+    "url": "https://www.aframesolutions.com/blog/contract-writing-system"
+   },
+   {
+    "chars": 6243,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "ac6c10a368538b9f",
+    "url": "https://www.aframesolutions.com/blog/grants-management-software"
+   },
+   {
+    "chars": 8090,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "349f74a1e54005cb",
+    "url": "https://www.aframesolutions.com/blog/palt-procurement-administrative-lead-time"
+   },
+   {
+    "chars": 10747,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "0f8362cf6ff9aa80",
+    "url": "https://www.aframesolutions.com/blog/foia-case-management-software"
+   },
+   {
+    "chars": 11122,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "83231eec291d9035",
+    "url": "https://www.aframesolutions.com/blog/pentagon-audit-contract-file"
+   },
+   {
+    "chars": 9638,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "f792ba129ccf439e",
+    "url": "https://www.aframesolutions.com/blog/america-gov-executive-order-agencies"
+   },
+   {
+    "chars": 10045,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "b0d12db90a41d927",
+    "url": "https://www.aframesolutions.com/blog/super-intelligence-federal-contracts"
+   },
+   {
+    "chars": 10134,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "e4e333c990ca442d",
+    "url": "https://www.aframesolutions.com/blog/acceptable-quality-level-examples"
+   },
+   {
+    "chars": 8520,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "f77788633aa6f3ca",
+    "url": "https://www.aframesolutions.com/blog/performance-requirements-summary"
+   },
+   {
+    "chars": 9004,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "3e8824cf3a489d44",
+    "url": "https://www.aframesolutions.com/blog/qasp-surveillance-methods"
+   },
+   {
+    "chars": 12871,
+    "from_index": "https://www.aframesolutions.com/blog",
+    "sha": "dc1350018bbddc2e",
+    "url": "https://www.aframesolutions.com/blog/how-to-write-pws-prs-qasp"
    }
   ],
   "no_news_page": false,
@@ -854,13 +926,11 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 1561,
-    "sha": "b3c75f1dae0c8f19",
+    "unread": null,
     "url": "https://aatral.io/news/"
    },
    {
-    "chars": 1685,
-    "sha": "dd732d5094335741",
+    "unread": null,
     "url": "https://aatral.io/news/aatral-newsroom-launch/"
    }
   ],
@@ -4266,8 +4336,8 @@
     "url": "https://www.alliconnect.com/news/dr-richard-carmona-former-u-s-surgeon-general-joins-alli-connect-board-of-advisors"
    },
    {
-    "chars": 5470,
-    "sha": "5f9acfa48f3bd2ed",
+    "chars": 5497,
+    "sha": "f7934fd18316c7a4",
     "url": "https://www.alliconnect.com/news/alli-connect-expands-lifesaving-mental-health-services-to-texas-illinois-and-alabama"
    },
    {
@@ -4277,7 +4347,7 @@
    },
    {
     "chars": 4797,
-    "from_index": "https://www.alliconnect.com/news/alli-connect-launches-officer-wellness-program-in-collaboration-with-hartselle-police-department",
+    "from_index": "https://www.alliconnect.com/news/alli-connect-expands-lifesaving-mental-health-services-to-texas-illinois-and-alabama",
     "sha": "f3fee70d25ac8131",
     "url": "https://www.alliconnect.com/news/alli-connect-announces-the-formation-of-an-advisory-board-to-bolster-mental-health-initiatives-for-first-responders"
    }
@@ -4358,141 +4428,147 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 1874,
-    "sha": "8dbfbb7ad1cceaaa",
+    "chars": 1845,
+    "sha": "fda99576989bf784",
     "url": "https://www.almaviva.it/it_IT/news"
    },
    {
-    "chars": 12552,
-    "sha": "e1f75b74d7d723f9",
+    "chars": 11618,
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025"
    },
    {
-    "chars": 12552,
-    "sha": "e1f75b74d7d723f9",
+    "chars": 11618,
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it_IT/news/show-news/158c536c-b785-452d-970c-02d072faf206/Valeria-Sandei,-Chief-Global-AI-del-Gruppo-Almaviva-e-CEO-Almawave-su-il-Blog-Alley-Oop-del-Il-Sole-24-Ore"
    },
    {
-    "chars": 12552,
-    "sha": "e1f75b74d7d723f9",
+    "chars": 11618,
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it_IT/news/show-news/1dc03528-759c-4655-9d24-cbf512df2d83/Moova-Mobility-Platform-sbarca-in-Nord-America"
    },
    {
-    "chars": 12552,
-    "sha": "e1f75b74d7d723f9",
+    "chars": 11618,
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it_IT/news/show-news/52b235f3-1ef9-4c2f-ab74-9fc36bdbe081/\u201cCortina-56-26-The-Legacy-Trail\u201d:-Almaviva-con-Fondazione-Cortina"
    },
    {
-    "chars": 12552,
-    "sha": "e1f75b74d7d723f9",
+    "chars": 11618,
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it_IT/news/show-news/35329a13-9fe7-473d-8d24-770256d4e727/\u201cSovranit\u00e0-digitale:-sfida-e-necessit\u00e0-dell\u2019Europa\u201d:-primo-appuntamento-su-Eunews-con-Valeria-Sandei-Chief-Global-AI-di-Almaviva-e-CEO-di-Almawave"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
+    "url": "https://www.almaviva.it/it/chi-siamo/media/news/il-gruppo-almaviva-protagonista-verona-di-anci2026"
+   },
+   {
+    "chars": 11618,
+    "from_index": "https://www.almaviva.it/it_IT/news",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/storie-al-femminile-dal-mondo-tech-e-digitale-1"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/moves-power-women"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/lai-italiana-che-insegna-ai-trasporti-vedere-il-futuro"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/limpegno-almaviva-contro-la-violenza-di-genere"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/lad-tripi-su-leconomia-del-corriere-della-sera"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/promuovere-la-cultura-della-prevenzione-oncologica"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/la-responsabilita-nellera-dellia"
    },
    {
-    "chars": 12552,
-    "from_index": "https://www.almaviva.it/it_IT/news",
-    "sha": "e1f75b74d7d723f9",
-    "url": "https://www.almaviva.it/it/chi-siamo/media/news/il-gruppo-almaviva-firma-i-suoi-auguri-2026-con-casa-don-puglisi"
-   },
-   {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/chi-siamo/media/news/persone-citta-territori-connessioni-di-valore-le-comunita"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
+    "url": "https://www.almaviva.it/it/chi-siamo/media/news/il-gruppo-almaviva-firma-i-suoi-auguri-2026-con-casa-don-puglisi"
+   },
+   {
+    "chars": 11618,
+    "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/mobility-control-room-il-road-traffic-management-control"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/gestione-smart-la-riduzione-delle-perdite-idriche"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/sorveglianza-anti-drone"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/piattaforma-antiriciclaggio"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/fascicolo-sanitario-elettronico-la-digital-health-al-servizio-del"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/vts-controllo-e-sicurezza-del-traffico-marittimo"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/innovazione-negli-incassi-e-nei-pagamenti"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/controllo-integrato-e-sicurezza-della-pesca"
    },
    {
-    "chars": 12552,
+    "chars": 11618,
     "from_index": "https://www.almaviva.it/it_IT/news/show-news/7d38dca5-28c1-44a5-a5dd-e1dc71256496/Il-Gruppo-Almaviva-presenta-il-Bilancio-di-Sostenibilit\u00e0-2025",
-    "sha": "e1f75b74d7d723f9",
+    "sha": "96be63bd18d7b9ac",
     "url": "https://www.almaviva.it/it/cosa-facciamo/insight/stories/energise-growth-and-innovation-sustainable-efficiency"
    }
   ],
@@ -4802,33 +4878,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 6598,
-    "sha": "0fc7bc1b3c6e6837",
+    "unread": null,
     "url": "https://amanomcgann.com/news/"
    },
    {
-    "chars": 8444,
-    "sha": "0aadf0576265774b",
+    "unread": null,
     "url": "https://amanomcgann.com/2026/04/west-palm-beach-upgrades-parking-system-with-amano-one/"
    },
    {
-    "chars": 6705,
-    "sha": "b5d84ffa12fa5008",
+    "unread": null,
     "url": "https://amanomcgann.com/2025/10/amano-ones-expanded-lpr-ecosystem/"
    },
    {
-    "chars": 4381,
-    "sha": "660488c17c4939b7",
+    "unread": null,
     "url": "https://amanomcgann.com/2025/07/all-in-on-amano-new-amano-mcgann-las-vegas-branch-invigorates-the-team/"
    },
    {
-    "chars": 5228,
-    "sha": "24e80a3c9b1dba15",
+    "unread": null,
     "url": "https://amanomcgann.com/2025/07/amano-mcgann-expands-seattle-presence-with-new-office-to-support-growing-demand-for-amano-one/"
    },
    {
-    "chars": 4313,
-    "sha": "9f9d5ae7a47b8799",
+    "unread": null,
     "url": "https://amanomcgann.com/2025/07/laying-down-roots-for-projected-growth-amano-mcgann-moves-into-new-headquarters-and-branch-location/"
    }
   ],
@@ -5325,48 +5395,6 @@
     "chars": 1551,
     "sha": "318535070879bf7e",
     "url": "https://www.ampsortation.com/articles/top-workplace-2026"
-   },
-   {
-    "chars": 1950,
-    "from_index": "https://www.ampsortation.com/resources",
-    "sha": "34b04680ca00d6f0",
-    "url": "https://www.ampsortation.com/articles/webinar-msw-spsa"
-   },
-   {
-    "chars": 6027,
-    "from_index": "https://www.ampsortation.com/resources",
-    "sha": "07e8c5bc3c5dadb6",
-    "url": "https://www.ampsortation.com/articles/galvanize-project-financing"
-   },
-   {
-    "chars": 6187,
-    "from_index": "https://www.ampsortation.com/resources",
-    "sha": "8b9db3b90ebf8ede",
-    "url": "https://www.ampsortation.com/articles/google-biochar-carbon-credits"
-   },
-   {
-    "chars": 6216,
-    "from_index": "https://www.ampsortation.com/resources",
-    "sha": "c3d2eed01dd8a446",
-    "url": "https://www.ampsortation.com/articles/portsmouth-msw-facility-expansion"
-   },
-   {
-    "chars": 3125,
-    "from_index": "https://www.ampsortation.com/resources",
-    "sha": "af66c5c8395aa67f",
-    "url": "https://www.ampsortation.com/articles/advanced-sorting-ets-compliance"
-   },
-   {
-    "chars": 4671,
-    "from_index": "https://www.ampsortation.com/resources",
-    "sha": "19eaa85282479a5a",
-    "url": "https://www.ampsortation.com/articles/global-cleantech-100-2026"
-   },
-   {
-    "chars": 6513,
-    "from_index": "https://www.ampsortation.com/resources",
-    "sha": "1c2a512f4a35aa66",
-    "url": "https://www.ampsortation.com/articles/largest-us-recycling-project-spsa"
    }
   ],
   "no_news_page": false,
@@ -5577,8 +5605,8 @@
     "url": "https://www.anaplan.com/blog/"
    },
    {
-    "chars": 12312,
-    "sha": "3c7038be0ef3d22f",
+    "chars": 12360,
+    "sha": "f95835c7554beb82",
     "url": "https://www.anaplan.com/resources/webinars/powering-next-era-productivity-with-anaplan-intelligence/"
    },
    {
@@ -5587,8 +5615,8 @@
     "url": "https://www.anaplan.com/news/"
    },
    {
-    "chars": 20993,
-    "sha": "e0476e6911ef8ce6",
+    "chars": 20975,
+    "sha": "4b1c2da0321c576b",
     "url": "https://www.anaplan.com/resources/analyst-report/gartner-magic-quadrant-for-sales-performance-management-2026/"
    },
    {
@@ -8129,14 +8157,14 @@
     "url": "https://www.aurigo.com/resources/guides/"
    },
    {
-    "chars": 7706,
-    "sha": "6f427cdbcbfd9f70",
+    "chars": 9896,
+    "sha": "34c5890e33578c85",
     "url": "https://www.aurigo.com/resources/blogs/"
    },
    {
-    "chars": 8273,
+    "chars": 10385,
     "from_index": "https://www.aurigo.com/resources/blogs/",
-    "sha": "f3cd8e3b3f8b5e02",
+    "sha": "5e898c507aba3176",
     "url": "https://www.aurigo.com/resources/leadership-insights/"
    },
    {
@@ -8146,9 +8174,9 @@
     "url": "https://www.aurigo.com/resources/infographics/"
    },
    {
-    "chars": 7706,
+    "chars": 9896,
     "from_index": "https://www.aurigo.com/resources/blogs/",
-    "sha": "6f427cdbcbfd9f70",
+    "sha": "34c5890e33578c85",
     "url": "https://www.aurigo.com/category/resources/blogs/"
    },
    {
@@ -8469,72 +8497,6 @@
     "chars": 6814,
     "sha": "9202d7b503682392",
     "url": "https://www.autura.com/insights/a-few-things-auturans-are-grateful-for-this-thanksgiving"
-   },
-   {
-    "chars": 9529,
-    "from_index": "https://www.autura.com/news/autura-welcomes-new-leadership-team-members-strengthening-its-commitment-to-operational-excellence-customer-success-and-the-towing-and-recovery-community",
-    "sha": "6df504e6b4cd5c97",
-    "url": "https://www.autura.com/insights/what-towing-pros-told-us-about-2026-insurance-drivers-new-rules-ai-and-more"
-   },
-   {
-    "chars": 9921,
-    "from_index": "https://www.autura.com/news/autura-welcomes-new-leadership-team-members-strengthening-its-commitment-to-operational-excellence-customer-success-and-the-towing-and-recovery-community",
-    "sha": "1335849bbf5907c0",
-    "url": "https://www.autura.com/news/autura-publishes-the-2026-state-of-towing-annual-report-a-free-resource-built-on-what-towing-professionals-shared-about-business-this-year"
-   },
-   {
-    "chars": 10201,
-    "from_index": "https://www.autura.com/news/autura-welcomes-new-leadership-team-members-strengthening-its-commitment-to-operational-excellence-customer-success-and-the-towing-and-recovery-community",
-    "sha": "88a591f997c01c6f",
-    "url": "https://www.autura.com/insights/fall-2026-towing-public-safety-and-auto-recycling-events-where-to-find-autura"
-   },
-   {
-    "chars": 5776,
-    "from_index": "https://www.autura.com/news/autura-welcomes-new-leadership-team-members-strengthening-its-commitment-to-operational-excellence-customer-success-and-the-towing-and-recovery-community",
-    "sha": "e3b813af0146da25",
-    "url": "https://www.autura.com/news/autura-pathways-get-to-know-ron-petras"
-   },
-   {
-    "chars": 8723,
-    "from_index": "https://www.autura.com/news/autura-welcomes-new-leadership-team-members-strengthening-its-commitment-to-operational-excellence-customer-success-and-the-towing-and-recovery-community",
-    "sha": "42692c54b661020f",
-    "url": "https://www.autura.com/news/autura-spotlight-get-to-know-calvin-pitman"
-   },
-   {
-    "chars": 8725,
-    "from_index": "https://www.autura.com/news/autura-welcomes-new-leadership-team-members-strengthening-its-commitment-to-operational-excellence-customer-success-and-the-towing-and-recovery-community",
-    "sha": "6a185f426f33b4b4",
-    "url": "https://www.autura.com/news/autura-pathways-get-to-know-benton-barnett"
-   },
-   {
-    "chars": 9734,
-    "from_index": "https://www.autura.com/insights/a-q-and-a-about-m-and-a-in-the-towing-industry",
-    "sha": "488bace92e0377f4",
-    "url": "https://www.autura.com/insights/4-things-top-tow-operators-and-business-owners-do-differently"
-   },
-   {
-    "chars": 9279,
-    "from_index": "https://www.autura.com/insights/a-q-and-a-about-m-and-a-in-the-towing-industry",
-    "sha": "d080d1c3503f5e8c",
-    "url": "https://www.autura.com/insights/towing-business-owners-what-did-paperwork-cost-you-last-month"
-   },
-   {
-    "chars": 13611,
-    "from_index": "https://www.autura.com/insights/a-q-and-a-about-m-and-a-in-the-towing-industry",
-    "sha": "6ba10c68fff35dfa",
-    "url": "https://www.autura.com/insights/how-smart-towing-business-owners-diversify-revenue"
-   },
-   {
-    "chars": 6894,
-    "from_index": "https://www.autura.com/insights/happy-holidays-from-autura-3-unique-ways-team-members-are-celebrating",
-    "sha": "32f10503526b662f",
-    "url": "https://www.autura.com/insights/auturas-new-mission-and-tagline"
-   },
-   {
-    "chars": 5418,
-    "from_index": "https://www.autura.com/insights/a-few-things-auturans-are-grateful-for-this-thanksgiving",
-    "sha": "cfd4c9067d20b2db",
-    "url": "https://autura.com/resources/auturas-new-mission-and-tagline/"
    }
   ],
   "no_news_page": false,
@@ -9171,8 +9133,8 @@
     "url": "https://b2gnow.com/resources/?_sft_content-type=blog"
    },
    {
-    "chars": 10380,
-    "sha": "555284899d2dd375",
+    "chars": 9491,
+    "sha": "8a2909fed5bbc7aa",
     "url": "https://b2gnow.com/resources/events/"
    },
    {
@@ -10091,33 +10053,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 3259,
-    "sha": "869cc6b037d29c85",
+    "unread": null,
     "url": "https://batonroute.com/blog/"
    },
    {
-    "chars": 7998,
-    "sha": "2179effe7153a9b9",
+    "unread": null,
     "url": "https://batonroute.com/blog/reducir-gestion-manual-transporte-automatizarla/"
    },
    {
-    "chars": 5960,
-    "sha": "991ad7991c908bd2",
+    "unread": null,
     "url": "https://batonroute.com/blog/esto-es-lo-que-se-viene-en-batonroute-en-septiembre/"
    },
    {
-    "chars": 8228,
-    "sha": "2245cd8466050743",
+    "unread": null,
     "url": "https://batonroute.com/blog/colegios_de_verano_gestionar_transporte/"
    },
    {
-    "chars": 9119,
-    "sha": "38aefd2952996ffa",
+    "unread": null,
     "url": "https://batonroute.com/blog/gestion_eficiente_transporte_centros_de_dia/"
    },
    {
-    "chars": 8627,
-    "sha": "014f14bdf3e428f9",
+    "unread": null,
     "url": "https://batonroute.com/blog/como-fidelizar-clientes-y-optimizar-tu-gestion-de-transporte-escolar/"
    }
   ],
@@ -10705,7 +10661,7 @@
   "news": [
    {
     "chars": 10696,
-    "sha": "8f82c467e9166241",
+    "sha": "5fd9edd5f43ca5e9",
     "url": "https://www.bvsystems.com/blog/"
    },
    {
@@ -12533,13 +12489,11 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 5348,
-    "sha": "2e3fa6da56f9865c",
+    "unread": null,
     "url": "https://bluevoice.io/blog/"
    },
    {
-    "chars": 3396,
-    "sha": "9fb2135d145a9305",
+    "unread": null,
     "url": "https://bluevoice.io/press/"
    }
   ],
@@ -13320,33 +13274,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 6275,
-    "sha": "b71fe1e903ea428f",
+    "unread": null,
     "url": "https://bostondynamics.com/news/"
    },
    {
-    "chars": 6737,
-    "sha": "4d45621bc7273d6d",
+    "unread": null,
     "url": "https://bostondynamics.com/resources/"
    },
    {
-    "chars": 6337,
-    "sha": "86917b86d4585c8c",
+    "unread": null,
     "url": "https://bostondynamics.com/blog/"
    },
    {
-    "chars": 6368,
-    "sha": "91cc2269ac427dc4",
+    "unread": null,
     "url": "https://bostondynamics.com/resources/webinars/"
    },
    {
-    "chars": 8794,
-    "sha": "bd1690ff6e36c1b8",
+    "unread": null,
     "url": "https://bostondynamics.com/news/boston-dynamics-expands-massachusetts-footprint-with-new-323000-square-foot-facility-in-waltham/"
    },
    {
-    "chars": 9977,
-    "sha": "b4172acc9ab22915",
+    "unread": null,
     "url": "https://bostondynamics.com/blog/aivi-learning-now-powered-google-gemini-robotics/"
    }
   ],
@@ -14541,28 +14489,23 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 12595,
-    "sha": "d5e07393effa8319",
+    "unread": null,
     "url": "https://buspas.com/news/"
    },
    {
-    "chars": 5111,
-    "sha": "df6463c8ce61009f",
+    "unread": null,
     "url": "https://buspas.com/category/press/"
    },
    {
-    "chars": 3267,
-    "sha": "e6bc0bd619c8a2a9",
+    "unread": null,
     "url": "https://buspas.com/category/press/releases/"
    },
    {
-    "chars": 2834,
-    "sha": "c9cbb76b47af513e",
+    "unread": null,
     "url": "https://buspas.com/category/press/feature/"
    },
    {
-    "chars": 3267,
-    "sha": "e6bc0bd619c8a2a9",
+    "unread": null,
     "url": "https://buspas.com/category/press/releases/"
    }
   ],
@@ -16247,12 +16190,6 @@
     "chars": 12774,
     "sha": "02cac66103339e29",
     "url": "https://www.cartegraph.com/resources/ebooks/"
-   },
-   {
-    "chars": 12774,
-    "from_index": "https://www.cartegraph.com/resources/blog/",
-    "sha": "02cac66103339e29",
-    "url": "https://www.cartegraph.com/resources/ai-policies/"
    }
   ],
   "no_news_page": false,
@@ -16845,63 +16782,63 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 15279,
-    "sha": "efa972dc318b5e15",
+    "chars": 15277,
+    "sha": "384cef3a572bd4aa",
     "url": "https://cellebrite.com/resources"
    },
    {
-    "chars": 15279,
-    "sha": "efa972dc318b5e15",
+    "chars": 15277,
+    "sha": "384cef3a572bd4aa",
     "url": "https://cellebrite.com/en/resources/"
    },
    {
-    "chars": 15282,
-    "sha": "dac8d8fd799219e7",
+    "chars": 15281,
+    "sha": "2f403247cdc3b48d",
     "url": "https://cellebrite.com/en/resources/?type=blog"
    },
    {
     "chars": 15279,
-    "sha": "efa972dc318b5e15",
+    "sha": "1131c0d48a61ee2a",
     "url": "https://cellebrite.com/en/resources/?type=whitepapers"
    },
    {
-    "chars": 16608,
-    "sha": "e883dd1436c67a16",
+    "chars": 16607,
+    "sha": "ffc2d8135bde0dd0",
     "url": "https://cellebrite.com/en/resources/customer-stories/"
    },
    {
-    "chars": 15778,
-    "sha": "4b749d5cafa8ca17",
+    "chars": 15782,
+    "sha": "0016fc0ec30a00dc",
     "url": "https://cellebrite.com/en/resources/webinars/"
    },
    {
     "chars": 22217,
     "from_index": "https://cellebrite.com/resources",
-    "sha": "0fda255426eca2dd",
+    "sha": "b1245d4036612976",
     "url": "https://cellebrite.com/en/blog/closing-the-digital-evidence-gap-in-violence-against-women-and-girls-investigations/"
    },
    {
-    "chars": 24405,
+    "chars": 24410,
     "from_index": "https://cellebrite.com/resources",
-    "sha": "d45246b43c1ec771",
+    "sha": "4165ac836703afc7",
     "url": "https://cellebrite.com/en/blog/cloud-and-csam-investigations-compatible-or-ill-considered/"
    },
    {
-    "chars": 15373,
+    "chars": 15374,
     "from_index": "https://cellebrite.com/resources",
-    "sha": "f51076eb88dcd14f",
+    "sha": "790de2e20f527827",
     "url": "https://cellebrite.com/en/blog/cellebrites-mission-is-to-protect-communities-nations-and-businesses/"
    },
    {
-    "chars": 20992,
+    "chars": 20986,
     "from_index": "https://cellebrite.com/resources",
-    "sha": "996ed47c71e18249",
+    "sha": "0a1fb4f94096f303",
     "url": "https://cellebrite.com/en/blog/future-of-mobile-security-testingtools-the-latest-new-corellium-products/"
    },
    {
-    "chars": 11292,
+    "chars": 11293,
     "from_index": "https://cellebrite.com/en/resources/customer-stories/",
-    "sha": "8342c2351645716d",
+    "sha": "ee62ea3db1b759b7",
     "url": "https://cellebrite.com/ja/resources/customer-stories/"
    },
    {
@@ -16911,15 +16848,15 @@
     "url": "https://cellebrite.com/en/resources/press-releases/"
    },
    {
-    "chars": 19040,
+    "chars": 19036,
     "from_index": "https://cellebrite.com/en/resources/customer-stories/",
-    "sha": "f899e7ec42957c6c",
+    "sha": "2640dc24c8a315f5",
     "url": "https://cellebrite.com/en/newsroom/in-the-news/"
    },
    {
-    "chars": 21738,
+    "chars": 21739,
     "from_index": "https://cellebrite.com/en/resources/customer-stories/",
-    "sha": "b77a356ce22aedc2",
+    "sha": "f8a9ef9b7e461fdc",
     "url": "https://cellebrite.com/en/resources/from-a-closet-to-the-crime-scene-how-horry-county-sheriffs-office-built-a-life-saving-digital-forensics-program-with-cellebrite/"
    }
   ],
@@ -18307,41 +18244,6 @@
     "chars": 11238,
     "sha": "d4ba3ba8bb7daf2f",
     "url": "https://www.citydetect.com/blog/back-to-school-means-more-than-school-zones-seasonal-code-enforcement-challenges"
-   },
-   {
-    "chars": 10846,
-    "from_index": "https://www.citydetect.com/blog",
-    "sha": "54e874dde53fb975",
-    "url": "https://www.citydetect.com/blog/how-to-build-an-ai-task-force-at-the-municipal-level"
-   },
-   {
-    "from_index": "https://www.citydetect.com/blog",
-    "unread": "only 0 chars of text",
-    "url": "https://www.citydetect.com/blog/one-survey-five-departments-getting-more-value-from-municipal-data"
-   },
-   {
-    "chars": 11657,
-    "from_index": "https://www.citydetect.com/blog",
-    "sha": "bd1c885f6d5ab58d",
-    "url": "https://www.citydetect.com/blog/measuring-what-matters-7-kpis-every-code-enforcement-director-should-track"
-   },
-   {
-    "chars": 13362,
-    "from_index": "https://www.citydetect.com/blog",
-    "sha": "b46942f671b05953",
-    "url": "https://www.citydetect.com/blog/the-equity-problem-with-complaint-driven-code-enforcement"
-   },
-   {
-    "chars": 12652,
-    "from_index": "https://www.citydetect.com/blog",
-    "sha": "4343a2779ed3463d",
-    "url": "https://www.citydetect.com/blog/how-ai-code-enforcement-is-transforming-municipal-compliance-in-cathedral-city"
-   },
-   {
-    "chars": 12532,
-    "from_index": "https://www.citydetect.com/blog",
-    "sha": "7cd2e756853e74f3",
-    "url": "https://www.citydetect.com/blog/proactive-code-enforcement-roi-building-the-business-case"
    }
   ],
   "no_news_page": false,
@@ -18803,34 +18705,226 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 3368,
-    "sha": "2710635d1bb641fb",
+    "chars": 3392,
+    "sha": "49a83821504ede9f",
     "url": "https://civicmarketplace.com/press"
    },
    {
-    "chars": 4906,
-    "sha": "a5dba3ec6627ac18",
+    "chars": 4949,
+    "sha": "baab62769c962d9b",
     "url": "https://civicmarketplace.com/news"
    },
    {
-    "chars": 12851,
-    "sha": "42494cdea513c8e8",
+    "chars": 12987,
+    "sha": "e48549c5bc15064a",
     "url": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild"
    },
    {
-    "chars": 9921,
-    "sha": "6c1005ad054cee4a",
+    "chars": 9945,
+    "sha": "7d6532b0b7b01a21",
     "url": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot"
    },
    {
-    "chars": 5283,
-    "sha": "fc333e38a4a72a56",
+    "chars": 5307,
+    "sha": "81b3c0e9c79a81f1",
     "url": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101"
    },
    {
-    "chars": 13598,
-    "sha": "082c0dff68f73c61",
+    "chars": 13734,
+    "sha": "c25ba0f66f48d1f0",
     "url": "https://civicmarketplace.com/news/how-kerr-county-and-the-upper-guadalupe-river-authority-responded-to-tragedy-in-record-time"
+   },
+   {
+    "chars": 11078,
+    "from_index": "https://civicmarketplace.com/press",
+    "sha": "00152311bb032a45",
+    "url": "https://civicmarketplace.com/news/how-san-mateo-county-moved-its-finances-to-the-cloud"
+   },
+   {
+    "chars": 20041,
+    "from_index": "https://civicmarketplace.com/press",
+    "sha": "7df2a3dad0395459",
+    "url": "https://civicmarketplace.com/news/how-two-cities-made-their-websites-work-for-every-resident"
+   },
+   {
+    "chars": 8791,
+    "from_index": "https://civicmarketplace.com/press",
+    "sha": "836786d8e924f270",
+    "url": "https://civicmarketplace.com/news/co-op-contract-pages"
+   },
+   {
+    "chars": 12513,
+    "from_index": "https://civicmarketplace.com/press",
+    "sha": "ff6e8c41d01b9914",
+    "url": "https://civicmarketplace.com/news/how-coastal-carolina-university-is-using-word-wizards-to-deliver-accessible-stem-course-materials-before-semester-launch"
+   },
+   {
+    "chars": 12367,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "f5bfc84c586ecffb",
+    "url": "https://civicmarketplace.com/news/what-local-governments-can-take-into-2027-five-lessons-on-ai-adoption"
+   },
+   {
+    "chars": 14361,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "501478e89ca5740a",
+    "url": "https://civicmarketplace.com/news/its-worth-a-look"
+   },
+   {
+    "chars": 10810,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "7f5ece57455af643",
+    "url": "https://civicmarketplace.com/news/technology-foresight-council-ai-and-data-readiness-for-the-public-sector"
+   },
+   {
+    "chars": 7751,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "3e63c49b2e61e9a7",
+    "url": "https://civicmarketplace.com/news/see-quote-requests-without-logging-in"
+   },
+   {
+    "chars": 9321,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "64c069c510d3e4aa",
+    "url": "https://civicmarketplace.com/news/new-for-agencies-7-updates-to-help-you-find-and-buy-what-you-need-faster"
+   },
+   {
+    "chars": 12035,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "5d67827fbb112601",
+    "url": "https://civicmarketplace.com/news/what-ai-means-to-municipal-procurement"
+   },
+   {
+    "chars": 11456,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "459cfe4af7bac77c",
+    "url": "https://civicmarketplace.com/news/public-procurement-functions-are-under-pressure-to-scale-data-suggests-many-of-them-lack-the-structure-to-do-so"
+   },
+   {
+    "chars": 12037,
+    "from_index": "https://civicmarketplace.com/news",
+    "sha": "d71487bbaa07ab96",
+    "url": "https://civicmarketplace.com/news/civic-marketplace-partners-with-the-national-civic-leagues-all-america-city-award"
+   },
+   {
+    "chars": 15836,
+    "from_index": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild",
+    "sha": "e4ab9ff34b457d71",
+    "url": "https://civicmarketplace.com/es-us/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild"
+   },
+   {
+    "chars": 11890,
+    "from_index": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild",
+    "sha": "c7bf19846aa6897b",
+    "url": "https://civicmarketplace.com/news/st-louis-county-library-uses-community-and-employee-feedback-to-guide-planning-with-hicks-carter-hicks"
+   },
+   {
+    "chars": 10473,
+    "from_index": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild",
+    "sha": "4f12cf3fe5dad9be",
+    "url": "https://civicmarketplace.com/news/how-a-k-12-school-turned-its-existing-microsoft-365-licenses-into-an-ai-powered-security-operation-in-10-weeks"
+   },
+   {
+    "chars": 11132,
+    "from_index": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild",
+    "sha": "c4eea51f98828b0a",
+    "url": "https://civicmarketplace.com/news/how-uc-berkeley-is-scaling-accessibility-across-a-decentralized-research-university"
+   },
+   {
+    "chars": 10505,
+    "from_index": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild",
+    "sha": "14b4d0e20ccd4d62",
+    "url": "https://civicmarketplace.com/news/how-prince-william-county-handled-nearly-40-000-resident-conversations-with-ai-in-its-first-year"
+   },
+   {
+    "chars": 11493,
+    "from_index": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild",
+    "sha": "1c0752fcd406b4f5",
+    "url": "https://civicmarketplace.com/news/how-the-city-of-san-antonio-achieved-206-roi-on-utility-assistance-applications-in-year-one"
+   },
+   {
+    "chars": 13337,
+    "from_index": "https://civicmarketplace.com/news/5-500-fire-affected-homeowners-in-la-county-matched-to-pre-approved-plans-in-8-months-with-canibuild",
+    "sha": "a92c0575a8667e0f",
+    "url": "https://civicmarketplace.com/news/nelnet-government-services-brings-a-user-friendly-accessible-mobile-app-to-all-colorado-residents"
+   },
+   {
+    "chars": 11997,
+    "from_index": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot",
+    "sha": "ffc9c6b0bbcea120",
+    "url": "https://civicmarketplace.com/es-us/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot"
+   },
+   {
+    "chars": 8157,
+    "from_index": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot",
+    "sha": "3a128de6c15a69e9",
+    "url": "https://civicmarketplace.com/news/civic-marketplace-joins-civstart-ventures-as-co-design-partner-for-state-of-govtech-2026"
+   },
+   {
+    "chars": 10022,
+    "from_index": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot",
+    "sha": "4682a5d7d19e86d9",
+    "url": "https://civicmarketplace.com/news/brownsville-launches-national-cooperative-contracting-initiative-with-civic-marketplace"
+   },
+   {
+    "chars": 12062,
+    "from_index": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot",
+    "sha": "4c7f77038a94242f",
+    "url": "https://civicmarketplace.com/news/how-quick-quote-speeds-up-procurement-for-local-government"
+   },
+   {
+    "chars": 7972,
+    "from_index": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot",
+    "sha": "3afee080b0ea7f28",
+    "url": "https://civicmarketplace.com/news/civic-marketplace-joins-the-city-innovation-network"
+   },
+   {
+    "chars": 13667,
+    "from_index": "https://civicmarketplace.com/news/civic-marketplace-connectors-bring-local-government-procurement-into-claude-chatgpt-and-copilot",
+    "sha": "ece3101be3b5a8a9",
+    "url": "https://civicmarketplace.com/news/north-central-texas-council-of-governments-and-alliance-for-innovation-sign-historic-cooperative-purchasing-agreement-unlocking-500-contracts-for-local-governments-nationwide"
+   },
+   {
+    "chars": 6279,
+    "from_index": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101",
+    "sha": "e94d424300ff36dc",
+    "url": "https://civicmarketplace.com/es-us/news/txshare-supplier-series-cooperative-purchasing-101"
+   },
+   {
+    "chars": 5994,
+    "from_index": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101",
+    "sha": "536058732631c794",
+    "url": "https://civicmarketplace.com/news/make-it-easy-to-say-yes-takeaways-from-txshare-office-hours-session-3-winning-your-first-cooperative-quote"
+   },
+   {
+    "chars": 8624,
+    "from_index": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101",
+    "sha": "f8b79eab16dd3a12",
+    "url": "https://civicmarketplace.com/news/stand-out-to-government-buyers-takeaways-from-the-txshare-office-hours-session"
+   },
+   {
+    "chars": 3749,
+    "from_index": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101",
+    "sha": "b96c442ea7ba630e",
+    "url": "https://civicmarketplace.com/news/webinar-win-government-contracts-faster-without-the-headache-txshare-civic-marketplace"
+   },
+   {
+    "chars": 6840,
+    "from_index": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101",
+    "sha": "9900380d28aca52a",
+    "url": "https://civicmarketplace.com/news/winning-with-afi-and-civic-marketplace"
+   },
+   {
+    "chars": 6895,
+    "from_index": "https://civicmarketplace.com/news/txshare-supplier-series-cooperative-purchasing-101",
+    "sha": "e58dbeeb09f30d65",
+    "url": "https://civicmarketplace.com/news/winning-with-txshare-and-civic-marketplace"
+   },
+   {
+    "chars": 16582,
+    "from_index": "https://civicmarketplace.com/news/how-kerr-county-and-the-upper-guadalupe-river-authority-responded-to-tragedy-in-record-time",
+    "sha": "503e091092642435",
+    "url": "https://civicmarketplace.com/es-us/news/how-kerr-county-and-the-upper-guadalupe-river-authority-responded-to-tragedy-in-record-time"
    }
   ],
   "no_news_page": false,
@@ -21277,87 +21371,105 @@
   "news": [
    {
     "chars": 7162,
-    "sha": "c98b416098fd79c0",
+    "sha": "907d2d5fa0ff9a44",
     "url": "https://collectivedata.com/about/blog/"
    },
    {
-    "chars": 17794,
-    "sha": "3fbb8f5db1b65c43",
+    "chars": 17160,
+    "sha": "5b048bee43347077",
     "url": "https://collectivedata.com/articles/vehicle-equivalency-analysis/"
    },
    {
-    "chars": 11889,
-    "sha": "f7e8cb1ddf5c2750",
+    "chars": 11258,
+    "sha": "853e0b5b67b9365c",
     "url": "https://collectivedata.com/articles/news-release-collective-data-awarded-statewide-virginia-contract-for-fleet-and-asset-management-solutions/"
    },
    {
-    "chars": 13371,
-    "sha": "a0738fd7c1b4f646",
+    "chars": 12732,
+    "sha": "6b943189149a6da8",
     "url": "https://collectivedata.com/articles/news-release-collective-data-unveils-embedded-ai-capabilities-at-nafa-2026/"
    },
    {
-    "chars": 14458,
-    "sha": "6ad67bab767bf12f",
+    "chars": 13831,
+    "sha": "aad93a383fe37de7",
     "url": "https://collectivedata.com/articles/integration-powers-productivity/"
    },
    {
-    "chars": 16375,
-    "sha": "12fde21fed04ac5f",
+    "chars": 15752,
+    "sha": "1a6d323404ee2acb",
     "url": "https://collectivedata.com/articles/fleet-data-strategies-to-control-costs/"
    },
    {
-    "chars": 13808,
+    "chars": 13170,
     "from_index": "https://collectivedata.com/about/blog/",
-    "sha": "7de2b498b0a29015",
+    "sha": "d3d6bb3b2bd87e32",
     "url": "https://collectivedata.com/news/collective-intelligence-suite/"
    },
    {
-    "chars": 15851,
+    "chars": 15218,
     "from_index": "https://collectivedata.com/about/blog/",
-    "sha": "2cbf7be293da98c0",
+    "sha": "b82d815cd688551d",
     "url": "https://collectivedata.com/articles/why-configurability-matters-real-world-ways-agencies-adapt-collective-data-to-their-needs/"
    },
    {
-    "chars": 14470,
+    "chars": 13837,
     "from_index": "https://collectivedata.com/about/blog/",
-    "sha": "b0c0392e7f34dcad",
+    "sha": "9dc8eed0b34b4381",
     "url": "https://collectivedata.com/articles/from-spreadsheets-to-smart-systems-why-corrections-facilities-are-going-digital/"
    },
    {
-    "chars": 12941,
+    "chars": 12300,
     "from_index": "https://collectivedata.com/about/blog/",
-    "sha": "4b668e3d4b6f6d64",
+    "sha": "6660747d6803f71e",
     "url": "https://collectivedata.com/articles/signs-fleet-management-needs-upgraded/"
    },
    {
-    "chars": 13096,
+    "chars": 12471,
     "from_index": "https://collectivedata.com/about/blog/",
-    "sha": "51792b18bdb1b30e",
+    "sha": "994c42a24e8d5de4",
     "url": "https://collectivedata.com/blog/asset-tracking-accountability/"
    },
    {
-    "chars": 11630,
+    "chars": 11635,
     "from_index": "https://collectivedata.com/about/blog/",
-    "sha": "8eefd44dfcbbcc6a",
+    "sha": "8c806ef38bc3ee4e",
     "url": "https://collectivedata.com/articles/iacp-2025/"
    },
    {
-    "chars": 14567,
+    "chars": 13934,
     "from_index": "https://collectivedata.com/about/blog/",
-    "sha": "953b20c7614da6cf",
+    "sha": "2085d05f90c5afcc",
     "url": "https://collectivedata.com/articles/how-procurement-contracts-simplify-buying-asset-management-software/"
    },
    {
-    "chars": 12280,
+    "chars": 14234,
     "from_index": "https://collectivedata.com/articles/vehicle-equivalency-analysis/",
-    "sha": "a2cc8b4fef7546e3",
-    "url": "https://collectivedata.com/articles/is-your-asset-management-system-falling-behind/"
+    "sha": "f5b077f47e1c198c",
+    "url": "https://collectivedata.com/articles/modernizing-asset-tracking/"
    },
    {
-    "chars": 14238,
+    "chars": 14922,
     "from_index": "https://collectivedata.com/articles/vehicle-equivalency-analysis/",
-    "sha": "d28b0805a1f628b6",
-    "url": "https://collectivedata.com/articles/modernizing-asset-tracking/"
+    "sha": "78267021816505d7",
+    "url": "https://collectivedata.com/articles/request-to-retirement/"
+   },
+   {
+    "chars": 10466,
+    "from_index": "https://collectivedata.com/articles/vehicle-equivalency-analysis/",
+    "sha": "e775dc64fac5f5af",
+    "url": "https://collectivedata.com/news/meet-atlas-collective-datas-new-ai-assistant/"
+   },
+   {
+    "chars": 12679,
+    "from_index": "https://collectivedata.com/articles/vehicle-equivalency-analysis/",
+    "sha": "52c7cc079b08e4b0",
+    "url": "https://collectivedata.com/articles/fire-department-asset-management/"
+   },
+   {
+    "chars": 9828,
+    "from_index": "https://collectivedata.com/articles/vehicle-equivalency-analysis/",
+    "sha": "629b9fbd35a17924",
+    "url": "https://collectivedata.com/articles/protecting-law-enforcement-with-asset-management/"
    }
   ],
   "no_news_page": false,
@@ -22528,8 +22640,7 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 10545,
-    "sha": "e5690ec050155cd4",
+    "unread": null,
     "url": "https://connectpoint.com/news/"
    }
   ],
@@ -22584,23 +22695,19 @@
     "url": "https://www.connixt.com/blog/"
    },
    {
-    "chars": 4793,
-    "sha": "9d1301c222b46394",
+    "unread": null,
     "url": "https://www.connixt.com/press/"
    },
    {
-    "chars": 3977,
-    "sha": "8a14ed19e65a8b16",
+    "unread": null,
     "url": "https://www.connixt.com/category/announcements/awards/"
    },
    {
-    "chars": 9150,
-    "sha": "0400760857efc9e0",
+    "unread": null,
     "url": "https://www.connixt.com/press/progressive-railroading-2026-readers-choice-awards/"
    },
    {
-    "chars": 8996,
-    "sha": "8c37967d285576eb",
+    "unread": null,
     "url": "https://www.connixt.com/press/imarq-revolutionizes-field-operations-with-ai-driven-intelligence-and-real-time-communication-tools/"
    },
    {
@@ -22691,8 +22798,7 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 12294,
-    "sha": "2e1ce7ed2cf9b34b",
+    "unread": null,
     "url": "https://www.consat.com/news/"
    }
   ],
@@ -24426,8 +24532,8 @@
     "url": "https://www.creatio.com/no-code/insights"
    },
    {
-    "chars": 6200,
-    "sha": "8eb396fb490df8e0",
+    "chars": 6138,
+    "sha": "893bf2f537284c44",
     "url": "https://www.creatio.com/company/news"
    },
    {
@@ -24449,6 +24555,54 @@
     "chars": 7816,
     "sha": "18fdafce6faad2a0",
     "url": "https://www.creatio.com/company/news/24841"
+   },
+   {
+    "chars": 9001,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "e39b11cf81172386",
+    "url": "https://www.creatio.com/company/news/25039"
+   },
+   {
+    "chars": 8152,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "142ebaae568d3774",
+    "url": "https://www.creatio.com/company/news/25103"
+   },
+   {
+    "chars": 7578,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "677e1410ff212f9e",
+    "url": "https://www.creatio.com/company/news/25101"
+   },
+   {
+    "chars": 8597,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "1bc5d2deec8c330a",
+    "url": "https://www.creatio.com/company/news/25097"
+   },
+   {
+    "chars": 8469,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "dc356bf88259aef8",
+    "url": "https://www.creatio.com/company/news/25092"
+   },
+   {
+    "chars": 8150,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "0d1608de444aa2ab",
+    "url": "https://www.creatio.com/company/news/25091"
+   },
+   {
+    "chars": 7613,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "836ecd10044a7253",
+    "url": "https://www.creatio.com/company/news/25078"
+   },
+   {
+    "chars": 7638,
+    "from_index": "https://www.creatio.com/company/news",
+    "sha": "23eabcfc6f200cbb",
+    "url": "https://www.creatio.com/company/news/25074"
    }
   ],
   "no_news_page": false,
@@ -25995,14 +26149,38 @@
     "url": "https://www.cylus.com/post/what-nist-transit-cybersecurity-profile-means-for-rail-ot"
    },
    {
-    "chars": 8568,
-    "sha": "2deba224e785f200",
+    "chars": 8604,
+    "sha": "960c76a7f217fb3f",
     "url": "https://www.cylus.com/post/from-shaping-railway-cybersecurity-standard-to-helping-bring-them-to-life"
    },
    {
     "chars": 7025,
     "sha": "72293c422bb77fe6",
     "url": "https://www.cylus.com/post/when-station-digital-signs-are-exploited-to-endanger-passengers"
+   },
+   {
+    "chars": 3980,
+    "from_index": "https://www.cylus.com/post/from-shaping-railway-cybersecurity-standard-to-helping-bring-them-to-life",
+    "sha": "48814461916db2a4",
+    "url": "https://www.cylus.com/resources/the-road-to-iec-63452-standardizing-rail-cybersecurity"
+   },
+   {
+    "chars": 10824,
+    "from_index": "https://www.cylus.com/post/from-shaping-railway-cybersecurity-standard-to-helping-bring-them-to-life",
+    "sha": "9a12f5b4de68a000",
+    "url": "https://www.cylus.com/post/2024-rail-tech-cybersecurity-trends"
+   },
+   {
+    "chars": 12044,
+    "from_index": "https://www.cylus.com/post/from-shaping-railway-cybersecurity-standard-to-helping-bring-them-to-life",
+    "sha": "c15363ed670a4ad6",
+    "url": "https://www.cylus.com/post/navigating-ts-50701-unpacking-the-impact-of-the-cybersecurity-standard-for-rail"
+   },
+   {
+    "chars": 10440,
+    "from_index": "https://www.cylus.com/post/from-shaping-railway-cybersecurity-standard-to-helping-bring-them-to-life",
+    "sha": "8be8efc85f9da354",
+    "url": "https://www.cylus.com/post/rail-live-2022-recap-cylus-thales-case-study-industry-insights-more"
    }
   ],
   "no_news_page": false,
@@ -27128,8 +27306,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 6219,
-    "sha": "9178ddcae9e74ec6",
+    "chars": 6223,
+    "sha": "835692289e944235",
     "url": "https://dataworksplus.com/blog/"
    }
   ],
@@ -29581,42 +29759,6 @@
     "chars": 41278,
     "sha": "92af00b8587c15b9",
     "url": "https://www.droneshield.com/blog/military-installations-demand-persistent-rf-awareness"
-   },
-   {
-    "chars": 30885,
-    "from_index": "https://www.droneshield.com/media",
-    "sha": "cad5118062f08dfe",
-    "url": "https://www.droneshield.com/media/press-releases/droneshield-achieves-initial-operational-capability-for-layered-counter-uas-solution-supporting-jiatf-401"
-   },
-   {
-    "chars": 32906,
-    "from_index": "https://www.droneshield.com/media",
-    "sha": "52b8811e122a14a4",
-    "url": "https://www.droneshield.com/media/press-releases?category=2026"
-   },
-   {
-    "chars": 30665,
-    "from_index": "https://www.droneshield.com/media",
-    "sha": "291b5e6e0add6969",
-    "url": "https://www.droneshield.com/media/press-releases/droneshield-q4-software-release-helps-operators-detect-identify-and-defeat-drone-threats-faster"
-   },
-   {
-    "chars": 31107,
-    "from_index": "https://www.droneshield.com/media",
-    "sha": "35013164ffb3fe69",
-    "url": "https://www.droneshield.com/media/press-releases/droneshield-access-portal-recognised-with-australian-good-design-award"
-   },
-   {
-    "chars": 29092,
-    "from_index": "https://www.droneshield.com/media",
-    "sha": "1fd7358e4be79244",
-    "url": "https://www.droneshield.com/media/press-releases/droneshield-appoints-joint-company-secretary-candice-driver"
-   },
-   {
-    "chars": 32906,
-    "from_index": "https://www.droneshield.com/media",
-    "sha": "52b8811e122a14a4",
-    "url": "https://www.droneshield.com/media/press-releases"
    }
   ],
   "no_news_page": false,
@@ -32261,28 +32403,23 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 3611,
-    "sha": "14c46a291fa5f707",
+    "unread": null,
     "url": "https://edgeaisolutions.com/blog/"
    },
    {
-    "chars": 4526,
-    "sha": "50f4d348b733d7b6",
+    "unread": null,
     "url": "https://edgeaisolutions.com/blog/blogs-becoming-nassco-certified/"
    },
    {
-    "chars": 8931,
-    "sha": "e208a8b86acc5d5d",
+    "unread": null,
     "url": "https://edgeaisolutions.com/blog/blogs-frustrations-and-solutions-for-sewer-inspection-systems/"
    },
    {
-    "chars": 6355,
-    "sha": "3ae4dc30cd8bd83d",
+    "unread": null,
     "url": "https://edgeaisolutions.com/blog/my-experience-entering-the-pipeline-assessment-industry/"
    },
    {
-    "chars": 4209,
-    "sha": "da334f286565cd15",
+    "unread": null,
     "url": "https://edgeaisolutions.com/blog/adventures-in-iowa/"
    }
   ],
@@ -34463,18 +34600,6 @@
     "chars": 9788,
     "sha": "8670691bd38b2d63",
     "url": "https://www.enghousetransportation.com/enghouse-resources/blog/digital-tools-transit-efficiency/"
-   },
-   {
-    "chars": 8647,
-    "from_index": "https://www.enghousetransportation.com/enghouse-resources/blog/",
-    "sha": "5e98f64784b03b50",
-    "url": "https://www.enghousetransportation.com/enghouse-resources/blog/real-world-tms-results-cost-visibility-and-efficiency-gains/"
-   },
-   {
-    "chars": 9845,
-    "from_index": "https://www.enghousetransportation.com/enghouse-resources/blog/",
-    "sha": "c1bb238df7e44507",
-    "url": "https://www.enghousetransportation.com/enghouse-resources/blog/real-time-rider-alerts-transit/"
    }
   ],
   "no_news_page": false,
@@ -34821,88 +34946,106 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 6059,
-    "sha": "d0e18a7cc4af84c3",
+    "chars": 6055,
+    "sha": "52c149c92b8da68e",
     "url": "https://envisio.com/resources/"
    },
    {
-    "chars": 5711,
-    "sha": "ae937cebed17986f",
+    "chars": 5833,
+    "sha": "b406399eaa00933e",
     "url": "https://envisio.com/blog/"
    },
    {
-    "chars": 6022,
-    "sha": "1d160bbdf31572dd",
+    "chars": 6025,
+    "sha": "f83f460fb2291b9f",
     "url": "https://envisio.com/media/"
    },
    {
-    "chars": 5886,
-    "sha": "2c70ea03c016ac9b",
+    "chars": 5890,
+    "sha": "e49557ca5a95f470",
     "url": "https://envisio.com/resources/webinars/"
    },
    {
-    "chars": 3758,
-    "sha": "02779b9aac174389",
+    "chars": 3762,
+    "sha": "8fc1b0a5fee6b87b",
     "url": "https://envisio.com/resources/guides/"
    },
    {
-    "chars": 2621,
-    "sha": "a2620e74facda41a",
+    "chars": 2626,
+    "sha": "d61a8a6980606c9f",
     "url": "https://envisio.com/resources/templates/"
    },
    {
-    "chars": 21442,
+    "chars": 23705,
     "from_index": "https://envisio.com/blog/",
-    "sha": "95a40f35b0cbc56d",
+    "sha": "a919d23edd97879e",
     "url": "https://envisio.com/blog/3-exceptional-examples-of-strategic-planning-in-higher-education/"
    },
    {
-    "chars": 11034,
+    "chars": 14351,
     "from_index": "https://envisio.com/blog/",
-    "sha": "9119c111e4d6129a",
+    "sha": "62f933abcad30afe",
+    "url": "https://envisio.com/blog/examples-of-police-department-performance-measures/"
+   },
+   {
+    "chars": 11483,
+    "from_index": "https://envisio.com/blog/",
+    "sha": "371af5457b8d63b7",
     "url": "https://envisio.com/blog/see-every-active-plan-in-one-place-with-envisios-new-plan-portfolio-features/"
    },
    {
-    "chars": 14579,
+    "chars": 16898,
     "from_index": "https://envisio.com/blog/",
-    "sha": "1c6d671583d63985",
+    "sha": "0a078468e93e291a",
     "url": "https://envisio.com/blog/why-strategic-plans-fail/"
    },
    {
-    "chars": 14429,
+    "chars": 14437,
     "from_index": "https://envisio.com/blog/",
-    "sha": "df0d40c5402ae1d4",
+    "sha": "7402e031734ad17d",
     "url": "https://envisio.com/blog/envisio-guide-to-2026-icma-conference/"
    },
    {
-    "chars": 23526,
+    "chars": 23530,
     "from_index": "https://envisio.com/blog/",
-    "sha": "588ff7e3310a5e7b",
+    "sha": "0534a114b7697862",
     "url": "https://envisio.com/blog/what-is-community-visioning-and-why-should-you-start/"
    },
    {
-    "chars": 16467,
+    "chars": 16471,
     "from_index": "https://envisio.com/blog/",
-    "sha": "60a967a5666c56f4",
+    "sha": "7fe3ecbcd39d8e73",
     "url": "https://envisio.com/blog/school-strategic-plan-benefit-community/"
    },
    {
-    "chars": 18820,
+    "chars": 18819,
     "from_index": "https://envisio.com/blog/",
-    "sha": "3b29731f013f7cde",
+    "sha": "3ceb4354500d2f9c",
     "url": "https://envisio.com/blog/how-to-report-on-infrastructure-projects-to-council-and-the-public/"
    },
    {
-    "chars": 17512,
+    "chars": 17510,
     "from_index": "https://envisio.com/blog/",
-    "sha": "d360b7fe3683bb38",
+    "sha": "47443134cd4d14c8",
     "url": "https://envisio.com/blog/the-5-best-strategic-planning-software-solutions-in-2026/"
    },
    {
-    "chars": 28441,
-    "from_index": "https://envisio.com/blog/",
-    "sha": "9f183accb9391876",
-    "url": "https://envisio.com/blog/9-local-government-performance-analytics-dashboard-examples/"
+    "chars": 2611,
+    "from_index": "https://envisio.com/resources/webinars/",
+    "sha": "607b199d934cf573",
+    "url": "https://envisio.com/resources/webinars/?query-1-page=2"
+   },
+   {
+    "chars": 3653,
+    "from_index": "https://envisio.com/resources/guides/",
+    "sha": "0d36ae7c46943d63",
+    "url": "https://envisio.com/resources/guides/?query-13-page=2"
+   },
+   {
+    "chars": 3295,
+    "from_index": "https://envisio.com/resources/guides/",
+    "sha": "ce194900248807c1",
+    "url": "https://envisio.com/resources/guides/?query-13-page=3"
    }
   ],
   "no_news_page": false,
@@ -35054,13 +35197,11 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 11120,
-    "sha": "9eaef5327ab0be97",
+    "unread": null,
     "url": "https://www.epicio.com/blog/"
    },
    {
-    "chars": 9951,
-    "sha": "88143551ed8c7fdf",
+    "unread": null,
     "url": "https://www.epicio.com/tag/blog/"
    }
   ],
@@ -35868,8 +36009,8 @@
     "url": "https://etatransit.com/resources/blog/"
    },
    {
-    "chars": 16535,
-    "sha": "9d210bc66a37b498",
+    "chars": 11804,
+    "sha": "46aeac793add9229",
     "url": "https://etatransit.com/resources/"
    },
    {
@@ -35911,10 +36052,16 @@
     "url": "https://etatransit.com/resources/press-release/"
    },
    {
-    "chars": 9434,
+    "chars": 5618,
     "from_index": "https://etatransit.com/resources/",
-    "sha": "5e22f312dc1b19de",
-    "url": "https://etatransit.com/resources/blog/are-your-apcs-down-for-the-count/"
+    "sha": "f821cb0b63454f90",
+    "url": "https://etatransit.com/resources/blog/dont-get-buses-bunch/"
+   },
+   {
+    "chars": 8931,
+    "from_index": "https://etatransit.com/resources/",
+    "sha": "077d2a0ba2a7135d",
+    "url": "https://etatransit.com/resources/blog/the-key-to-transit-technology-satisfaction-effective-communication-reliable-hardware/"
    }
   ],
   "no_news_page": false,
@@ -36997,39 +37144,20 @@
     "url": "https://extradutysolutions.com/resources/whitepapers/how-to-find-the-right-extra-duty-service-partner-for-your-agency/"
    },
    {
-    "chars": 6660,
-    "sha": "387191bb145ea359",
+    "unread": null,
     "url": "https://extradutysolutions.com/news/extra-duty-solutions-named-on-2026-inc-5000-list/"
    },
    {
-    "chars": 6555,
-    "sha": "9becaa0534c1ae2e",
+    "unread": null,
     "url": "https://extradutysolutions.com/news/extra-duty-solutions-announces-michael-nark-as-chief-executive-officer/"
    },
    {
-    "chars": 5379,
-    "sha": "64b4300256f68786",
+    "unread": null,
     "url": "https://extradutysolutions.com/insights/what-counts-as-extra-duty/"
    },
    {
     "unread": null,
     "url": "https://extradutysolutions.com/insights/management-vs-administration-extra-duty-programs/"
-   },
-   {
-    "chars": 9748,
-    "from_index": "https://extradutysolutions.com/insights/what-counts-as-extra-duty/",
-    "sha": "ee1c54c22c772d23",
-    "url": "https://extradutysolutions.com/insights/choosing-extra-duty-administration-partner/"
-   },
-   {
-    "from_index": "https://extradutysolutions.com/insights/what-counts-as-extra-duty/",
-    "unread": "HTTP 511 for https://extradutysolutions.com/insights/extra-duty-administration-models-compared/",
-    "url": "https://extradutysolutions.com/insights/extra-duty-administration-models-compared/"
-   },
-   {
-    "from_index": "https://extradutysolutions.com/insights/what-counts-as-extra-duty/",
-    "unread": "HTTP 511 for https://extradutysolutions.com/insights/extra-duty-mobile-app-for-police/",
-    "url": "https://extradutysolutions.com/insights/extra-duty-mobile-app-for-police/"
    }
   ],
   "no_news_page": false,
@@ -40918,23 +41046,19 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 42152,
-    "sha": "09f0b96207140d4a",
+    "unread": null,
     "url": "https://www.gatekeeper-systems.com/investors/press-releases/"
    },
    {
-    "chars": 8559,
-    "sha": "820ada16b50baa25",
+    "unread": null,
     "url": "https://www.gatekeeper-systems.com/press-media/media/"
    },
    {
-    "chars": 10720,
-    "sha": "9a3a7b5fac745e3b",
+    "unread": null,
     "url": "https://www.gatekeeper-systems.com/blog/"
    },
    {
-    "chars": 8731,
-    "sha": "306bfe4b273689da",
+    "unread": null,
     "url": "https://www.gatekeeper-systems.com/category/news/"
    }
   ],
@@ -41750,50 +41874,50 @@
   "news": [
    {
     "chars": 10209,
-    "sha": "e733e0666b5c6a1b",
+    "sha": "641fcccc0035812a",
     "url": "https://www.geotab.com/blog/"
    },
    {
     "chars": 11542,
-    "sha": "29b29acb54c09aa0",
+    "sha": "e1dad96c18c7baed",
     "url": "https://www.geotab.com/blog/geotab-go9-plus/"
    },
    {
     "chars": 19148,
-    "sha": "9bcc1b0cc5b0efb1",
+    "sha": "f0b69868b5ad02b5",
     "url": "https://www.geotab.com/blog/dash-cam-program-guide/"
    },
    {
     "chars": 12884,
-    "sha": "5dc707309b1e0040",
+    "sha": "0895598d489a2fdd",
     "url": "https://www.geotab.com/blog/autonomous-vehicles-leasing/"
    },
    {
     "chars": 13352,
-    "sha": "52ac2cbae171466f",
+    "sha": "3bbc2c032a682f69",
     "url": "https://www.geotab.com/blog/ev-battery-health-leasing-residual/"
    },
    {
     "chars": 31916,
-    "sha": "d6e23d2ada9cc755",
+    "sha": "19dcd4e3b6ba5dad",
     "url": "https://www.geotab.com/blog/best-fleet-management-software/"
    },
    {
     "chars": 22208,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "0d660244646d0269",
+    "sha": "892fcecd39014ec9",
     "url": "https://www.geotab.com/blog/asset-tracking-comparison-gps-vs-bluetooth/"
    },
    {
     "chars": 17931,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "33239110d14e2b6a",
+    "sha": "8ccc47ca631f6f3a",
     "url": "https://www.geotab.com/blog/why-fleet-ai/"
    },
    {
     "chars": 17137,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "e92d4e11ea010d5c",
+    "sha": "7d2d06c35287695e",
     "url": "https://www.geotab.com/blog/predictive-fleet-intelligence/"
    },
    {
@@ -41804,61 +41928,61 @@
    {
     "chars": 30475,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "4b4a5037443e29d6",
+    "sha": "3b1180346a1fd33c",
     "url": "https://www.geotab.com/blog/ev-battery-health/"
    },
    {
     "chars": 20610,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "925fa5a2bc9efdf1",
+    "sha": "601bf2667cf933e6",
     "url": "https://www.geotab.com/blog/what-is-telematics/"
    },
    {
     "chars": 27426,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "4fcb428dacfca58f",
+    "sha": "680254760b742d8c",
     "url": "https://www.geotab.com/blog/what-is-an-eld/"
    },
    {
     "chars": 22578,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "f00e39e32d9d3b7a",
+    "sha": "a03ff0007baa0bc7",
     "url": "https://www.geotab.com/blog/fleet-fuel-monitoring/"
    },
    {
     "chars": 20814,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "adeab0251f8e950a",
+    "sha": "537aca3fc1555635",
     "url": "https://www.geotab.com/blog/fleet-software-comparison/"
    },
    {
     "chars": 23727,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "82e06e09eaefe0f0",
+    "sha": "70342ee40f34d17e",
     "url": "https://www.geotab.com/blog/fleet-accident-prevention-software/"
    },
    {
     "chars": 28150,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "48fa925c53c2b8b6",
+    "sha": "83ca1963baba6fe1",
     "url": "https://www.geotab.com/blog/pre-trip-inspection-cdl/"
    },
    {
     "chars": 25165,
     "from_index": "https://www.geotab.com/blog/",
-    "sha": "af0ebd07d9ef0943",
+    "sha": "ca4bad3e63c9ace3",
     "url": "https://www.geotab.com/blog/otr-trucking/"
    },
    {
     "chars": 10651,
     "from_index": "https://www.geotab.com/blog/geotab-go9-plus/",
-    "sha": "55b4d3d30d90b2b7",
+    "sha": "a5b85d5b6de528e3",
     "url": "https://www.geotab.com/blog/3g-sunset-dates/"
    },
    {
     "chars": 15927,
     "from_index": "https://www.geotab.com/blog/geotab-go9-plus/",
-    "sha": "1a53e8900e3b7190",
+    "sha": "77342f015d0c2347",
     "url": "https://www.geotab.com/blog/1-telematics-provider/"
    },
    {
@@ -41869,61 +41993,61 @@
    {
     "chars": 22885,
     "from_index": "https://www.geotab.com/blog/geotab-go9-plus/",
-    "sha": "f44a4954521438cb",
+    "sha": "418005b7ff279ede",
     "url": "https://www.geotab.com/blog/how-to-start-a-trucking-business/"
    },
    {
     "chars": 16878,
     "from_index": "https://www.geotab.com/blog/geotab-go9-plus/",
-    "sha": "3b3bab2593d48f89",
+    "sha": "9aa8fe603c9a6e3a",
     "url": "https://www.geotab.com/blog/garbage-truck-safety/"
    },
    {
     "chars": 10638,
     "from_index": "https://www.geotab.com/blog/dash-cam-program-guide/",
-    "sha": "a787b173d1e4db8a",
+    "sha": "ec8e79e77cee9944",
     "url": "https://www.geotab.com/blog/php-vulnerability-response-cve-2026-109618-109619/"
    },
    {
     "chars": 18070,
     "from_index": "https://www.geotab.com/blog/autonomous-vehicles-leasing/",
-    "sha": "9bb424e99d67eb5c",
+    "sha": "a8de981881b14da4",
     "url": "https://www.geotab.com/blog/self-driving-car-technology-impacts-safety/"
    },
    {
     "chars": 13753,
     "from_index": "https://www.geotab.com/blog/autonomous-vehicles-leasing/",
-    "sha": "11c5ea2f0c6e608f",
+    "sha": "140022c9a74658bb",
     "url": "https://www.geotab.com/blog/ai-data-control/"
    },
    {
     "chars": 13879,
     "from_index": "https://www.geotab.com/blog/autonomous-vehicles-leasing/",
-    "sha": "697385ff3d93457f",
+    "sha": "1db6af073ab9266d",
     "url": "https://www.geotab.com/blog/oem-fleet-data-harmonisation/"
    },
    {
     "chars": 14732,
     "from_index": "https://www.geotab.com/blog/autonomous-vehicles-leasing/",
-    "sha": "300bfcb5771c73a0",
+    "sha": "183c7af4716e4f78",
     "url": "https://www.geotab.com/blog/supply-chain-in-motion/"
    },
    {
     "chars": 23852,
     "from_index": "https://www.geotab.com/blog/ev-battery-health-leasing-residual/",
-    "sha": "b7b07d8874492dd3",
+    "sha": "71720837b5c139fa",
     "url": "https://www.geotab.com/blog/ev-fleet-transition-plan/"
    },
    {
     "chars": 27139,
     "from_index": "https://www.geotab.com/blog/ev-battery-health-leasing-residual/",
-    "sha": "0e8aaf4d075c1330",
+    "sha": "91f006b1b300308a",
     "url": "https://www.geotab.com/blog/ev-fleet-transition/"
    },
    {
     "chars": 22396,
     "from_index": "https://www.geotab.com/blog/ev-battery-health-leasing-residual/",
-    "sha": "fa2b354213a8c2ae",
+    "sha": "59f620dfef6551ed",
     "url": "https://www.geotab.com/blog/fleet-electrification-roi/"
    },
    {
@@ -41934,55 +42058,55 @@
    {
     "chars": 23010,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "44443ad2c026be8f",
+    "sha": "7a8194aa6af00c61",
     "url": "https://www.geotab.com/blog/what-is-a-fleet-manager/"
    },
    {
     "chars": 27745,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "441543aca7d84e1b",
+    "sha": "f7de5e669ad74796",
     "url": "https://www.geotab.com/blog/fleet-maintenance/"
    },
    {
     "chars": 25719,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "39de4fcdb26859d4",
+    "sha": "94cc4c51419a7b93",
     "url": "https://www.geotab.com/blog/ai-fleet-management/"
    },
    {
     "chars": 19528,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "7d815c0ded83cb2a",
+    "sha": "4c3d535e15793a24",
     "url": "https://www.geotab.com/blog/best-software-for-small-trucking-company/"
    },
    {
     "chars": 28186,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "ae0bb5e0dda9dc46",
+    "sha": "81b8168a521d64d9",
     "url": "https://www.geotab.com/blog/fuel-management-system-tools/"
    },
    {
     "chars": 19466,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "e569a9ce1a8dfdf9",
+    "sha": "7d08055796239fbf",
     "url": "https://www.geotab.com/blog/iot-fleet-management/"
    },
    {
     "chars": 32728,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "ba56ce2bbaa24894",
+    "sha": "245520e06a75168c",
     "url": "https://www.geotab.com/blog/dispatch-and-routing-software-tools/"
    },
    {
     "chars": 23917,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "f6ad223f60f959ee",
+    "sha": "942fd0d68007e4bd",
     "url": "https://www.geotab.com/blog/ifta-reporting-eld-mandate/"
    },
    {
     "chars": 27808,
     "from_index": "https://www.geotab.com/blog/best-fleet-management-software/",
-    "sha": "c676e737d871d868",
+    "sha": "d5e7821c3f689f5e",
     "url": "https://www.geotab.com/blog/best-dash-cam-for-fleet-vehicles/"
    }
   ],
@@ -47916,33 +48040,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 9867,
-    "sha": "518d483db7b03d5c",
+    "unread": null,
     "url": "https://www.hubparking.com/news/"
    },
    {
-    "chars": 9692,
-    "sha": "2affb6b2854abfcc",
+    "unread": null,
     "url": "https://www.hubparking.com/news/tag/digital-services/"
    },
    {
-    "chars": 9728,
-    "sha": "35438b8d9d0c0b0f",
+    "unread": null,
     "url": "https://www.hubparking.com/news/tag/smart-city/"
    },
    {
-    "chars": 9617,
-    "sha": "656ee4a20597d09f",
+    "unread": null,
     "url": "https://www.hubparking.com/news/tag/jms/"
    },
    {
-    "chars": 9635,
-    "sha": "5698c99463fbe935",
+    "unread": null,
     "url": "https://www.hubparking.com/news/tag/ticketless/"
    },
    {
-    "chars": 5625,
-    "sha": "5fb161e0b5d97824",
+    "unread": null,
     "url": "https://www.hubparking.com/news/new-case-study-regulating-access-and-improving-parking-at-oxford-polyclinic-in-cannes-france/"
    }
   ],
@@ -49277,13 +49395,13 @@
    },
    {
     "chars": 8970,
-    "sha": "03755147e2c2c0ad",
+    "sha": "a813818b5c6cf332",
     "url": "https://www.illuminex.ai/post/airfield-intelligence-embracing-ai-on-the-airfield-will-play-a-key-role-in-the-pursuit-of-the-intell"
    },
    {
-    "chars": 8480,
+    "chars": 8476,
     "from_index": "https://www.illuminex.ai/post/airfield-intelligence-embracing-ai-on-the-airfield-will-play-a-key-role-in-the-pursuit-of-the-intell",
-    "sha": "825771bd330ee458",
+    "sha": "a1f7ce938fb8d7eb",
     "url": "https://www.illuminex.ai/post/44-weeds-the-hidden-value-of-non-hazard-data"
    },
    {
@@ -50497,7 +50615,7 @@
   "news": [
    {
     "chars": 6451,
-    "sha": "c77ca26f15987521",
+    "sha": "fc407815779f9e9e",
     "url": "https://www.infor.com/resources"
    },
    {
@@ -50524,6 +50642,60 @@
     "chars": 1608,
     "sha": "c0ca2fbb22574ef6",
     "url": "https://www.infor.com/resources/ai-ambition-to-action"
+   },
+   {
+    "chars": 1519,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "14d568b29848ebbc",
+    "url": "https://www.infor.com/resources/connect-f-b-plant-to-plan"
+   },
+   {
+    "chars": 1761,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "84c6db98bff73614",
+    "url": "https://www.infor.com/resources/build-your-ai-roadmap-with-infor-fdes"
+   },
+   {
+    "chars": 1284,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "c985668cd8acb5e3",
+    "url": "https://www.infor.com/resources/infor-sunsystems-cfo-checklist"
+   },
+   {
+    "chars": 1781,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "366b4372b491e9ad",
+    "url": "https://www.infor.com/resources/manage-complexity-of-public-sector-hr"
+   },
+   {
+    "chars": 1623,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "525a4eb857fe5c32",
+    "url": "https://www.infor.com/resources/use-ai-with-confidence"
+   },
+   {
+    "chars": 2358,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "d9ea485a66859361",
+    "url": "https://www.infor.com/resources/operational-blueprint-ai-hospitality"
+   },
+   {
+    "chars": 1826,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "b98731c7c569ac19",
+    "url": "https://www.infor.com/resources/supply-chains-working-capital-playbook"
+   },
+   {
+    "chars": 2102,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "d07a76bc898412f6",
+    "url": "https://www.infor.com/resources/where-biology-meets-production-line"
+   },
+   {
+    "chars": 1505,
+    "from_index": "https://www.infor.com/resources",
+    "sha": "d107deb53cefe996",
+    "url": "https://www.infor.com/resources/ai-yield-optimization-dairy"
    }
   ],
   "no_news_page": false,
@@ -51652,41 +51824,41 @@
     "url": "https://integratedbiometrics.com/category/press-releases"
    },
    {
-    "chars": 12356,
-    "sha": "d8ce854605b94fc6",
+    "chars": 12352,
+    "sha": "b8b619ebb56c7a15",
     "url": "https://integratedbiometrics.com/articles/empowering-africas-digital-identity-a-decade-of-id4africas-grassroots-movement"
    },
    {
-    "chars": 9550,
-    "sha": "3ca27096f0f965b0",
+    "chars": 9545,
+    "sha": "b548aa0fab5d72fb",
     "url": "https://integratedbiometrics.com/press-releases/integrated-biometrics-technology-supporting-moldovas-biometric-identification-initiative"
    },
    {
     "chars": 9226,
-    "sha": "4ec5c56a397a74e0",
+    "sha": "872a63abc217ef55",
     "url": "https://integratedbiometrics.com/press-releases/danno-desktop-available-now"
    },
    {
-    "chars": 9913,
-    "sha": "fcdd41e9495e9a7d",
+    "chars": 9907,
+    "sha": "c8f22bc5015503bd",
     "url": "https://integratedbiometrics.com/press-releases/integrated-biometrics-powers-next-generation-mission-ready-biometrics-from-sic-biometrics"
    },
    {
     "chars": 8294,
     "from_index": "https://integratedbiometrics.com/articles/empowering-africas-digital-identity-a-decade-of-id4africas-grassroots-movement",
-    "sha": "3928c9eae75e9007",
+    "sha": "e97c7b1decaa9eea",
     "url": "https://integratedbiometrics.com/press-releases/ib-renews-iso-90012015-certification"
    },
    {
-    "chars": 9257,
+    "chars": 9253,
     "from_index": "https://integratedbiometrics.com/articles/empowering-africas-digital-identity-a-decade-of-id4africas-grassroots-movement",
-    "sha": "19fae6aa05e67a58",
+    "sha": "bf2c9a179a028d2d",
     "url": "https://integratedbiometrics.com/press-releases/gripid-releases-the-v10-mannix-a-portable-full-palm-enrollment-station-with-dual-iris-and-facial-capture"
    },
    {
-    "chars": 9146,
+    "chars": 9151,
     "from_index": "https://integratedbiometrics.com/articles/empowering-africas-digital-identity-a-decade-of-id4africas-grassroots-movement",
-    "sha": "2fd25ca7b7c6e404",
+    "sha": "00d6f1d6d697fb26",
     "url": "https://integratedbiometrics.com/press-releases/bioridge-60-from-sic-biometrics-palm-finger-iris-and-face-field-multimodal"
    },
    {
@@ -52353,8 +52525,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 7655,
-    "sha": "664cc0175e9db4b1",
+    "chars": 7661,
+    "sha": "d0c5bf01bf4edbb2",
     "url": "https://www.inveristraining.com/resources/news/"
    },
    {
@@ -52363,23 +52535,23 @@
     "url": "https://www.inveristraining.com/resources/blog/"
    },
    {
-    "chars": 8897,
-    "sha": "7a862079f61f3745",
+    "chars": 8894,
+    "sha": "854532daa53a69f3",
     "url": "https://www.inveristraining.com/resources/faqs/"
    },
    {
-    "chars": 4053,
-    "sha": "e6b000432d1a4d74",
+    "chars": 4057,
+    "sha": "3bde8b59dfdfaf77",
     "url": "https://www.inveristraining.com/resources/policies/cookies/"
    },
    {
-    "chars": 4032,
-    "sha": "578e70ce07192ea7",
+    "chars": 4028,
+    "sha": "71922c2ed873dc0b",
     "url": "https://www.inveristraining.com/resources/policies/privacy-policy/"
    },
    {
-    "chars": 6046,
-    "sha": "35fe44b6856a0895",
+    "chars": 6040,
+    "sha": "16ff1c5c4b6d996e",
     "url": "https://www.inveristraining.com/resources/downloads/"
    }
   ],
@@ -53342,7 +53514,7 @@
    },
    {
     "chars": 21487,
-    "sha": "2b0be7446268b5d9",
+    "sha": "cfc110c1e5b527dc",
     "url": "https://na.itron.com/newsroom"
    }
   ],
@@ -53576,8 +53748,8 @@
     "url": "https://www.jacobs.com/insights"
    },
    {
-    "chars": 13394,
-    "sha": "aa5696d865e9cc8b",
+    "chars": 13364,
+    "sha": "b401c09167f3b167",
     "url": "https://www.jacobs.com/newsroom"
    },
    {
@@ -53599,6 +53771,18 @@
     "chars": 10015,
     "sha": "267d252e43289c82",
     "url": "https://www.jacobs.com/newsroom/news/award-winning-upgrade-strengthens-hawaiian-islands-water-future"
+   },
+   {
+    "chars": 10679,
+    "from_index": "https://www.jacobs.com/newsroom",
+    "sha": "192cbcb963f3cec2",
+    "url": "https://www.jacobs.com/newsroom/news/connecting-communities-through-collaboration-rwanda"
+   },
+   {
+    "chars": 9470,
+    "from_index": "https://www.jacobs.com/newsroom",
+    "sha": "6ef5310da810f423",
+    "url": "https://www.jacobs.com/newsroom/news/supporting-development-new-zealand-flood-map"
    }
   ],
   "no_news_page": false,
@@ -53718,8 +53902,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 9029,
-    "sha": "f62f9295fb5c291d",
+    "chars": 9032,
+    "sha": "6c5b734863bd2757",
     "url": "https://www.jaggaer.com/blog"
    },
    {
@@ -53746,6 +53930,48 @@
     "chars": 7474,
     "sha": "40f5e424522dc0c5",
     "url": "https://www.jaggaer.com/resources/ebooks"
+   },
+   {
+    "chars": 7041,
+    "from_index": "https://www.jaggaer.com/blog",
+    "sha": "0577c2e1b2971d06",
+    "url": "https://www.jaggaer.com/resources/infographics"
+   },
+   {
+    "chars": 5540,
+    "from_index": "https://www.jaggaer.com/blog",
+    "sha": "85f4e5fdcb5ca384",
+    "url": "https://www.jaggaer.com/resources/tools"
+   },
+   {
+    "chars": 7275,
+    "from_index": "https://www.jaggaer.com/blog",
+    "sha": "a9a2ceb763b79d4d",
+    "url": "https://www.jaggaer.com/resources/white-paper"
+   },
+   {
+    "chars": 21575,
+    "from_index": "https://www.jaggaer.com/blog",
+    "sha": "cf58504c2580faff",
+    "url": "https://www.jaggaer.com/blog/supplier-performance-management-solutions"
+   },
+   {
+    "chars": 16375,
+    "from_index": "https://www.jaggaer.com/blog",
+    "sha": "9925f69e7c83cc84",
+    "url": "https://www.jaggaer.com/blog/intake-to-procure-vs-procure-to-pay"
+   },
+   {
+    "chars": 22228,
+    "from_index": "https://www.jaggaer.com/blog",
+    "sha": "607611a1e892127f",
+    "url": "https://www.jaggaer.com/blog/intake-to-procure-explained"
+   },
+   {
+    "chars": 20738,
+    "from_index": "https://www.jaggaer.com/blog",
+    "sha": "f09a38496527d8ef",
+    "url": "https://www.jaggaer.com/blog/what-are-ai-workers"
    }
   ],
   "no_news_page": false,
@@ -54515,18 +54741,18 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 43853,
-    "sha": "61fc6a6e48838ac1",
+    "chars": 43929,
+    "sha": "61a26e0399f642a0",
     "url": "https://www.julota.com/resources/"
    },
    {
-    "chars": 52851,
-    "sha": "3ce567ab88a050e1",
+    "chars": 52927,
+    "sha": "15a341139e720e6b",
     "url": "https://www.julota.com/news/dont-overlook-these-resources-and-crisis-response-partners/"
    },
    {
-    "chars": 51646,
-    "sha": "0a6d0db8885d7f78",
+    "chars": 51722,
+    "sha": "5c5ec9198138e6d7",
     "url": "https://www.julota.com/news/are-mih-cp-conferences-worth-the-trip/"
    },
    {
@@ -54535,14 +54761,116 @@
     "url": "https://www.julota.com/news/starter-guide-first-responder-basic-counseling-skills/"
    },
    {
-    "chars": 53601,
-    "sha": "c76a07c06ffff6bc",
+    "chars": 53677,
+    "sha": "f3c893d65c7593d2",
     "url": "https://www.julota.com/news/police-response-to-mental-health-crisis-navigating-firearms-use/"
    },
    {
     "chars": 50339,
     "sha": "3653e755f751e1fd",
     "url": "https://www.julota.com/news/when-the-shot-window-closes-the-mih-cp-gap-in-injectable-oud-treatment/"
+   },
+   {
+    "chars": 55049,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "c5cb205a5589a0a0",
+    "url": "https://www.julota.com/news/best-ai-tools-for-crisis-intervention-teams/"
+   },
+   {
+    "chars": 53617,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "251951d245fb5734",
+    "url": "https://www.julota.com/news/care-manager-vs-case-manager/"
+   },
+   {
+    "chars": 52977,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "1018cea340766d92",
+    "url": "https://www.julota.com/news/can-community-paramedics-prescribe/"
+   },
+   {
+    "chars": 52621,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "20df67b4173368d0",
+    "url": "https://www.julota.com/news/understanding-chronic-severe-mental-illness-a-guide-for-first-and-co-responders/"
+   },
+   {
+    "chars": 54206,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "948164fee9af8b7e",
+    "url": "https://www.julota.com/news/blood-transfusions-at-home-how-mih-cp-brings-hospital-level-care-to-the-living-room/"
+   },
+   {
+    "chars": 56084,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "893e00813e2047ea",
+    "url": "https://www.julota.com/news/how-ai-is-changing-youth-suicide-crisis-response/"
+   },
+   {
+    "chars": 52151,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "0b4ff3ea656fcc59",
+    "url": "https://www.julota.com/news/interagency-service-coordination/"
+   },
+   {
+    "chars": 54494,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "6dbcd1cf740287f3",
+    "url": "https://www.julota.com/news/6-key-ways-cities-reduce-emergency-department-use/"
+   },
+   {
+    "chars": 44649,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "96345cf93d67b367",
+    "url": "https://www.julota.com/news/the-overlooked-mvp-of-law-enforcement-and-behavioral-health-programs/"
+   },
+   {
+    "chars": 53780,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "8f54b10739dfec0d",
+    "url": "https://www.julota.com/news/how-mobile-integrated-healthcare-supports-population-health/"
+   },
+   {
+    "chars": 52716,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "239db52fee3bfeaa",
+    "url": "https://www.julota.com/news/alternative-response-programs-five-models-how-to-choose/"
+   },
+   {
+    "chars": 53418,
+    "from_index": "https://www.julota.com/resources/",
+    "sha": "ce4e1387a9575c59",
+    "url": "https://www.julota.com/news/what-is-a-tri-agency-co-responder-model-and-why-more-cities-are-adopting-it/"
+   },
+   {
+    "chars": 52667,
+    "from_index": "https://www.julota.com/news/dont-overlook-these-resources-and-crisis-response-partners/",
+    "sha": "352604725b555d57",
+    "url": "https://www.julota.com/news/de-escalation-referral-for-mental-illness-and-addiction/"
+   },
+   {
+    "chars": 52059,
+    "from_index": "https://www.julota.com/news/dont-overlook-these-resources-and-crisis-response-partners/",
+    "sha": "0e7fa080bcb572a7",
+    "url": "https://www.julota.com/news/launch-a-co-response-program-using-existing-resources/"
+   },
+   {
+    "chars": 53518,
+    "from_index": "https://www.julota.com/news/are-mih-cp-conferences-worth-the-trip/",
+    "sha": "e2711c4447022998",
+    "url": "https://www.julota.com/news/how-mobile-integrated-healthcare-combats-social-isolation-and-loneliness/"
+   },
+   {
+    "chars": 52797,
+    "from_index": "https://www.julota.com/news/police-response-to-mental-health-crisis-navigating-firearms-use/",
+    "sha": "63039006b20a2c2d",
+    "url": "https://www.julota.com/news/police-behavioral-health-units-and-hospital-billing-what-they-share/"
+   },
+   {
+    "chars": 44933,
+    "from_index": "https://www.julota.com/news/police-response-to-mental-health-crisis-navigating-firearms-use/",
+    "sha": "763f38104c037dae",
+    "url": "https://www.julota.com/news/mental-health-response-challenges-and-what-to-do-about-it/"
    }
   ],
   "no_news_page": false,
@@ -54902,88 +55230,28 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 10364,
-    "sha": "ae8df3e49d5ff493",
+    "unread": null,
     "url": "https://www.long.com/blog/"
    },
    {
-    "chars": 5344,
-    "sha": "4be4337ab96e3b95",
+    "unread": null,
     "url": "https://www.long.com/resources/"
    },
    {
-    "chars": 12461,
-    "sha": "9558fcf07bd8f3a3",
+    "unread": null,
     "url": "https://www.long.com/blog/how-rauland-nurse-call-systems-help-hospitals-run-better/"
    },
    {
-    "chars": 8780,
-    "sha": "00ba08381f2f4d0a",
+    "unread": null,
     "url": "https://www.long.com/blog/why-commercial-facilities-are-migrating-from-legacy-ddc-to-niagara/"
    },
    {
-    "chars": 4190,
-    "sha": "b271441b7df54722",
+    "unread": null,
     "url": "https://www.long.com/blog/caring-for-the-whole-person-how-long-supports-mental-health/"
    },
    {
-    "chars": 10220,
-    "sha": "3999d7c4f40a2d17",
+    "unread": null,
     "url": "https://www.long.com/blog/choosing-the-right-wall-cladding/"
-   },
-   {
-    "chars": 8984,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "339cee4caa15d47d",
-    "url": "https://www.long.com/blog/industrial-automation-panel-shop-services-alaska/"
-   },
-   {
-    "chars": 10807,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "73d17366aa07aaf8",
-    "url": "https://www.long.com/blog/how-architectural-screens-help-buildings-meet-code/"
-   },
-   {
-    "chars": 9226,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "c98159914513a72c",
-    "url": "https://www.long.com/blog/airfoil-vs-eggcrate-sunshades-which-is-best-for-your-building/"
-   },
-   {
-    "chars": 4759,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "adb1af27319ed5a9",
-    "url": "https://www.long.com/blog/press-release-long-has-acquired-justice-systems/"
-   },
-   {
-    "chars": 7027,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "a15139adb89849ad",
-    "url": "https://www.long.com/blog/preventative-maintenance-in-commercial-buildings/"
-   },
-   {
-    "chars": 3122,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "8ffb1a84bd36287d",
-    "url": "https://www.long.com/blog/long-is-committed-to-openness/"
-   },
-   {
-    "chars": 7445,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "9c0df57b82fda444",
-    "url": "https://www.long.com/blog/boiler-maintenance-ensuring-safe-and-comfortable-learning-environments/"
-   },
-   {
-    "chars": 4093,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "4c3deb73e30113f8",
-    "url": "https://www.long.com/blog/editors-picks"
-   },
-   {
-    "chars": 6257,
-    "from_index": "https://www.long.com/blog/",
-    "sha": "1c6e46ae14b7e00f",
-    "url": "https://www.long.com/blog/procurement-options-for-facility-solutions-in-alaska/"
    }
   ],
   "no_news_page": false,
@@ -56144,29 +56412,173 @@
     "url": "https://www.ketos.co/resources"
    },
    {
-    "chars": 6860,
-    "sha": "6274d500d895dc45",
+    "chars": 6862,
+    "sha": "b8861cfe70c96eb6",
     "url": "https://www.ketos.co/resources?_sft_rtype=case-studies"
    },
    {
     "chars": 8437,
-    "sha": "9b935a834807e503",
+    "sha": "b1070970b99d0044",
     "url": "https://www.ketos.co/resources?_sft_rtype=fact-sheets"
    },
    {
-    "chars": 8013,
-    "sha": "9b393a1de7e14430",
+    "chars": 8008,
+    "sha": "f99d10ac922f69d5",
     "url": "https://www.ketos.co/resources?_sft_rtype=whitepaper"
    },
    {
-    "chars": 7594,
-    "sha": "580528de1592e927",
+    "chars": 7595,
+    "sha": "1584b8bc9cdda74c",
     "url": "https://www.ketos.co/resources?_sft_rtype=solution-overviews"
    },
    {
     "chars": 5114,
-    "sha": "b5690e8ac5d733f2",
+    "sha": "cb39c969bbfab65d",
     "url": "https://ketos.co/resources?_sft_rtype=report"
+   },
+   {
+    "chars": 5112,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "de7785d0b2a82a8a",
+    "url": "https://ketos.co/resources/cincinnati-msd-wastewater-pretreatment-case-study"
+   },
+   {
+    "chars": 5713,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "803b649f9209733a",
+    "url": "https://ketos.co/resources/mining-water-quality-monitoring-case-study-nitrate"
+   },
+   {
+    "chars": 5729,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "a251254d31608c2b",
+    "url": "https://ketos.co/resources/military-base-water-quality-monitoring-case-study"
+   },
+   {
+    "chars": 5238,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "4cb69846df3d6f2e",
+    "url": "https://ketos.co/resources/maha-kumbh-mela-water-quality-case-study"
+   },
+   {
+    "chars": 5433,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "4fdcb7373129fac4",
+    "url": "https://ketos.co/resources/autonomous-water-quality-monitoring-for-aerospace-case-study"
+   },
+   {
+    "chars": 5196,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "0d4d063dd69648e0",
+    "url": "https://ketos.co/resources/case-study-lakes-and-ponds"
+   },
+   {
+    "chars": 4775,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "feb38d88fb392dac",
+    "url": "https://ketos.co/resources/case-study-nuclear-power-plant"
+   },
+   {
+    "chars": 4927,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "dd6293a0cdc76281",
+    "url": "https://ketos.co/resources/recycled-water-and-water-quality"
+   },
+   {
+    "chars": 4923,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "5de47ded0fe599ef",
+    "url": "https://ketos.co/resources/chemical-manufacturing-case-study"
+   },
+   {
+    "chars": 4790,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "d5d1c83ea55be2f0",
+    "url": "https://ketos.co/resources/automotive-case-study"
+   },
+   {
+    "chars": 4883,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "6d47a9b557365421",
+    "url": "https://ketos.co/resources/consumer-goods-case-study"
+   },
+   {
+    "chars": 4930,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=case-studies",
+    "sha": "3f4ae633d643389d",
+    "url": "https://ketos.co/resources/cooling-tower-case-study"
+   },
+   {
+    "chars": 3018,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "796fd7419864c066",
+    "url": "https://ketos.co/resources/aquaculture-fish-farming-fact-sheet"
+   },
+   {
+    "chars": 2957,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "e50d509354c67d68",
+    "url": "https://ketos.co/resources/ketos-prism"
+   },
+   {
+    "chars": 2799,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "5178fe470d3f363b",
+    "url": "https://ketos.co/resources/food-production-industry-fact-sheet"
+   },
+   {
+    "chars": 3159,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "3d6ce9634f0daa65",
+    "url": "https://ketos.co/resources/automotive-manufacturing-industry-fact-sheet"
+   },
+   {
+    "chars": 2845,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "c92d83d52c25eca7",
+    "url": "https://ketos.co/resources/chemical-manufacturing-industry-fact-sheet"
+   },
+   {
+    "chars": 2874,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "db6ff7fcf09b66bf",
+    "url": "https://ketos.co/resources/pulp-and-paper-industry-fact-sheet"
+   },
+   {
+    "chars": 2847,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "c344b0cfbdf45484",
+    "url": "https://ketos.co/resources/consumer-goods-industry-fact-sheet"
+   },
+   {
+    "chars": 3064,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "39aa42520883633d",
+    "url": "https://ketos.co/resources/energy-industry-fact-sheet"
+   },
+   {
+    "chars": 2938,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "0d2d815bc205bc2f",
+    "url": "https://ketos.co/resources/beverage-industry-factsheet"
+   },
+   {
+    "chars": 4262,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "b3e33f6b7ae90438",
+    "url": "https://ketos.co/resources/application-factsheet-surface-water"
+   },
+   {
+    "chars": 4680,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "396f4cd999856146",
+    "url": "https://ketos.co/resources/application-factsheet-produced-water"
+   },
+   {
+    "chars": 4481,
+    "from_index": "https://www.ketos.co/resources?_sft_rtype=fact-sheets",
+    "sha": "0557313f314775b6",
+    "url": "https://ketos.co/resources/application-factsheet-process-water"
    },
    {
     "chars": 5301,
@@ -56175,9 +56587,9 @@
     "url": "https://ketos.co/resources/wastewater-aeration-disinfection-whitepaper"
    },
    {
-    "chars": 5000,
+    "chars": 4995,
     "from_index": "https://www.ketos.co/resources?_sft_rtype=whitepaper",
-    "sha": "46e1844384c75e58",
+    "sha": "60381ee02ad3a7f9",
     "url": "https://ketos.co/resources/data-center-backlash-measured-whitepaper"
    },
    {
@@ -56199,9 +56611,9 @@
     "url": "https://ketos.co/resources/impact-of-real-time-nh3-n-monitoring-in-wastewater-treatment-plants"
    },
    {
-    "chars": 3297,
+    "chars": 3295,
     "from_index": "https://www.ketos.co/resources?_sft_rtype=whitepaper",
-    "sha": "fd12e6c6b7426772",
+    "sha": "2f17f374815ac421",
     "url": "https://ketos.co/resources/water-usage-costs-datacenters"
    },
    {
@@ -56313,9 +56725,9 @@
     "url": "https://ketos.co/resources/us-water-quality-world-environment-day"
    },
    {
-    "chars": 3393,
+    "chars": 3394,
     "from_index": "https://ketos.co/resources?_sft_rtype=report",
-    "sha": "a414d55b71dfd593",
+    "sha": "64b2ba49c196e70c",
     "url": "https://ketos.co/resources/effluent-violations-in-the-us-insights-from-42-years-of-npdes-effluent-violations-data"
    },
    {
@@ -57713,8 +58125,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 9667,
-    "sha": "eafd47dac8fea398",
+    "chars": 9643,
+    "sha": "843bb679bdcc9948",
     "url": "https://www.landapp.com/resources"
    },
    {
@@ -57743,21 +58155,21 @@
     "url": "https://www.landapp.com/post/from-near-selloff-to-debt-free-the-solar-lease-that-saved-a-wyoming-ranch"
    },
    {
-    "chars": 15394,
+    "chars": 15402,
     "from_index": "https://www.landapp.com/resources",
-    "sha": "0f474d6bd303ef17",
+    "sha": "71db050ad8cf6469",
     "url": "https://www.landapp.com/post/u-s-air-force-leasing-unused-land-for-data-centers"
    },
    {
-    "chars": 17059,
+    "chars": 17060,
     "from_index": "https://www.landapp.com/resources",
-    "sha": "195cc1db65d7ebe9",
+    "sha": "fac24898548f046c",
     "url": "https://www.landapp.com/post/data-center-land-leases-what-landowners-need-to-know"
    },
    {
-    "chars": 18595,
+    "chars": 18591,
     "from_index": "https://www.landapp.com/resources",
-    "sha": "3314b1fcfe7d49b6",
+    "sha": "8d1de306b2c9a53a",
     "url": "https://www.landapp.com/post/how-does-land-leasing-work"
    },
    {
@@ -57895,8 +58307,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 18898,
-    "sha": "4e2c3fb80d925359",
+    "chars": 18901,
+    "sha": "043f2a3a0f810f58",
     "url": "https://www.laserfiche.com/resources/events/webinars/"
    },
    {
@@ -57943,9 +58355,9 @@
     "url": "https://www.laserfiche.com/resources/ebooks-guides-more/"
    },
    {
-    "chars": 10668,
+    "chars": 10669,
     "from_index": "https://www.laserfiche.com/resources/events/webinars/",
-    "sha": "aab75fc194d38fe2",
+    "sha": "1cfea138f83b6d2f",
     "url": "https://www.laserfiche.com/resources/ebooks-guides-more/?post_types=videos"
    }
   ],
@@ -58116,18 +58528,18 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 5747,
-    "sha": "585e6cc327cfd446",
+    "chars": 5753,
+    "sha": "b65bf1e339dabf45",
     "url": "https://lcptracker.com/resources/ask-the-expert"
    },
    {
-    "chars": 31634,
-    "sha": "aa3669f95fac8ed5",
+    "chars": 31628,
+    "sha": "3e9239302f40b94a",
     "url": "https://lcptracker.com/resources/state-prevailing-wage-map"
    },
    {
-    "chars": 5562,
-    "sha": "c4d2645b0f5011d5",
+    "chars": 5563,
+    "sha": "999957e7b6f110ad",
     "url": "https://lcptracker.com/resources/videos"
    }
   ],
@@ -58650,8 +59062,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 3243,
-    "sha": "2f3a8422b820809f",
+    "chars": 3242,
+    "sha": "7974169335420584",
     "url": "https://www.lenslock.com/blog"
    },
    {
@@ -58680,9 +59092,9 @@
     "url": "https://www.lenslock.com/post/digital-evidence-management-guide"
    },
    {
-    "chars": 16147,
+    "chars": 16146,
     "from_index": "https://www.lenslock.com/blog",
-    "sha": "f82dfea48bd0254f",
+    "sha": "f02383d91b3e1978",
     "url": "https://www.lenslock.com/post/body-camera-grant-file-november"
    },
    {
@@ -60000,74 +60412,50 @@
     "url": "https://littlepay.com/resource-hub/blog/articles/monterey-salinastransit-teams-up-with-google-wallet-and-littlepay-to-enhance-passenger-experience-across-their-network/"
    },
    {
-    "chars": 5803,
-    "sha": "2a5e51fb9ab7e8bc",
+    "chars": 5812,
+    "sha": "8d0d1ef9f38d6839",
     "url": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/"
    },
    {
-    "chars": 5808,
-    "sha": "3f2999d2d9e99e59",
+    "chars": 5817,
+    "sha": "e032830d6c104934",
     "url": "https://littlepay.com/resource-hub/blog/articles/littlepay-and-modeshift-establish-reusable-model-for-deploying-open-loop-transit-payments-across-europe/"
    },
    {
     "chars": 4744,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/",
+    "from_index": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/",
     "sha": "0787095ef499f169",
     "url": "https://littlepay.com/resource-hub/blog/articles/discovery-days-2026-one-day-to-every-day/"
    },
    {
     "chars": 6634,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/",
+    "from_index": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/",
     "sha": "e7bdbbf95a193abd",
     "url": "https://littlepay.com/resource-hub/blog/articles/what-we-heard-at-transport-ticketing-north-america-2026/"
    },
    {
     "chars": 5309,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/",
+    "from_index": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/",
     "sha": "f172df516e3757a9",
     "url": "https://littlepay.com/resource-hub/blog/articles/littlepays-ecommerce-platform-helps-charlotte-area-transit-system-to-modernize-mobile-ticketing/"
    },
    {
-    "chars": 7154,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/",
-    "sha": "42a6bde780be846b",
+    "chars": 7147,
+    "from_index": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/",
+    "sha": "1f721e35ea759814",
     "url": "https://littlepay.com/resource-hub/blog/articles/awards-for-littlepays-payment-innovations/"
    },
    {
-    "chars": 5870,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/",
-    "sha": "b0ed4310fb5cd7d9",
+    "chars": 5879,
+    "from_index": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/",
+    "sha": "1958eb9b12233f51",
     "url": "https://littlepay.com/resource-hub/blog/articles/stagecoach-selects-littlepay-as-payments-partner/"
    },
    {
     "chars": 10544,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/project-highlights-washington-dcs-record-breaking-upgrade-to-accept-open-loop-payments/",
+    "from_index": "https://littlepay.com/resource-hub/blog/articles/littlepay-begins-city-wide-multi-modal-rollout-of-contactless-payments-in-athens-greece/",
     "sha": "3b19c7a1211c9c2c",
     "url": "https://littlepay.com/resource-hub/blog/articles/tcf-2026-littlepays-project-coral-update-and-the-next-steps-for-connected-travel/"
-   },
-   {
-    "chars": 8706,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/understanding-fare-capping-a-comprehensive-guide/",
-    "sha": "d5e94ce92cf588c1",
-    "url": "https://littlepay.com/resource-hub/blog/articles/what-is-a-psp-the-complete-guide-to-payment-service-providers-in-transit/"
-   },
-   {
-    "chars": 11995,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/understanding-fare-capping-a-comprehensive-guide/",
-    "sha": "30d45c626bc144aa",
-    "url": "https://littlepay.com/resource-hub/blog/articles/how-micro-mobility-is-transforming-transit-agencies/"
-   },
-   {
-    "chars": 12972,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/understanding-fare-capping-a-comprehensive-guide/",
-    "sha": "1c1ea0210bcc1046",
-    "url": "https://littlepay.com/resource-hub/blog/articles/how-plug-and-play-technologies-offer-a-modular-approach-to-fare-collection/"
-   },
-   {
-    "chars": 12345,
-    "from_index": "https://littlepay.com/resource-hub/blog/articles/understanding-fare-capping-a-comprehensive-guide/",
-    "sha": "f44d26099e36ea33",
-    "url": "https://littlepay.com/resource-hub/blog/articles/everything-you-need-to-know-about-multimodal-transportation/"
    }
   ],
   "no_news_page": false,
@@ -60144,72 +60532,6 @@
     "chars": 3202,
     "sha": "e4f83500e8bee57c",
     "url": "https://www.lvt.com/resources/arcadia-police-department-partners-with-lvt"
-   },
-   {
-    "chars": 6271,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "76adb3acc92523c8",
-    "url": "https://www.lvt.com/blog/lvt-earns-tru-tier-1-preferred-security-vendor-status"
-   },
-   {
-    "chars": 14879,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "7c0023f9743c39fb",
-    "url": "https://www.lvt.com/blog/the-enterprise-security-litmus-test-8-features-worth-paying-for"
-   },
-   {
-    "chars": 9486,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "72d0c22a6b1d1563",
-    "url": "https://www.lvt.com/blog/perimeter-analytics-and-evidence-gathering-against-high-value-retail-theft"
-   },
-   {
-    "chars": 8730,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "1ee4a719c6706c90",
-    "url": "https://www.lvt.com/blog/solar-powered-security-camera-benefits"
-   },
-   {
-    "chars": 13087,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "4987bc04f40cd4a4",
-    "url": "https://www.lvt.com/blog/how-much-does-a-security-guard-cost-in-2026-a-guide-to-remote-monitoring"
-   },
-   {
-    "chars": 12907,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "c24302a34b35629c",
-    "url": "https://www.lvt.com/blog/you-can-bank-on-it-a-guide-to-better-bank-security-systems"
-   },
-   {
-    "chars": 11188,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "37c69d16cf2ec318",
-    "url": "https://www.lvt.com/blog/winter-holiday-shutdown-construction-site-security-checklist"
-   },
-   {
-    "chars": 9722,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "b2d4bb65511a8020",
-    "url": "https://www.lvt.com/blog/your-hospital-is-open-24-7-is-your-parking-garage-protected-24-7"
-   },
-   {
-    "chars": 11613,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "096c9af20fab38b3",
-    "url": "https://www.lvt.com/blog/cloud-video-surveillance-vsaas-outdoor-sites"
-   },
-   {
-    "chars": 11982,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "d87d9ba633b8ff08",
-    "url": "https://www.lvt.com/blog/cargo-theft-prevention-checklist-7-steps-to-protect-freight"
-   },
-   {
-    "chars": 3005,
-    "from_index": "https://www.lvt.com/blog",
-    "sha": "4e73481dff38a32d",
-    "url": "https://www.lvt.com/resources/lvt-secure-by-design"
    }
   ],
   "no_news_page": false,
@@ -61336,7 +61658,7 @@
    },
    {
     "chars": 8474,
-    "sha": "17f24f00995664c6",
+    "sha": "3396e5235c72dc06",
     "url": "https://www.magnetforensics.com/resources/category/webinars/"
    },
    {
@@ -61360,22 +61682,10 @@
     "url": "https://www.magnetforensics.com/resources/solutions-brief-smarter-investigations-powered-by-magnet-ai/"
    },
    {
-    "chars": 9328,
-    "from_index": "https://www.magnetforensics.com/resources/%ec%98%81%ec%83%81-%ec%9e%90%eb%a3%8c%ec%97%90%ec%84%9c-%ec%a6%9d%ea%b1%b0%eb%a1%9c-%ec%98%81%ec%83%81-%ed%8f%ac%eb%a0%8c%ec%8b%9d-%eb%b0%8f-%eb%af%b8%eb%94%94%ec%96%b4-%ec%a7%84%ec%9c%84-%ed%99%95/",
-    "sha": "66335a6a7e88eac2",
-    "url": "https://www.magnetforensics.com/resources/ihr-edr-erkennt-eine-bedrohung-und-isoliert-das-betroffene-system-was-passiert-jetzt-von-der-erkennung-zur-forensischen-beweissicherung/"
-   },
-   {
     "chars": 9116,
-    "from_index": "https://www.magnetforensics.com/resources/%ec%98%81%ec%83%81-%ec%9e%90%eb%a3%8c%ec%97%90%ec%84%9c-%ec%a6%9d%ea%b1%b0%eb%a1%9c-%ec%98%81%ec%83%81-%ed%8f%ac%eb%a0%8c%ec%8b%9d-%eb%b0%8f-%eb%af%b8%eb%94%94%ec%96%b4-%ec%a7%84%ec%9c%84-%ed%99%95/",
+    "from_index": "https://www.magnetforensics.com/resources/category/webinars/",
     "sha": "db9257dedad84b90",
     "url": "https://www.magnetforensics.com/resources/cyber-unpacked-are-you-df-ir-or-both-navigating-the-overlap-between-forensics-and-incident-response/"
-   },
-   {
-    "chars": 8971,
-    "from_index": "https://www.magnetforensics.com/resources/%ec%98%81%ec%83%81-%ec%9e%90%eb%a3%8c%ec%97%90%ec%84%9c-%ec%a6%9d%ea%b1%b0%eb%a1%9c-%ec%98%81%ec%83%81-%ed%8f%ac%eb%a0%8c%ec%8b%9d-%eb%b0%8f-%eb%af%b8%eb%94%94%ec%96%b4-%ec%a7%84%ec%9c%84-%ed%99%95/",
-    "sha": "caacb67fab60747b",
-    "url": "https://www.magnetforensics.com/resources/preparing-video-for-review-and-court-with-enhancement-filters-in-magnet-witness-2-0/"
    },
    {
     "chars": 8980,
@@ -61442,60 +61752,6 @@
     "from_index": "https://www.magnetforensics.com/resources/category/webinars/",
     "sha": "b9fb6cb568fd7a5f",
     "url": "https://www.magnetforensics.com/resources/ask-me-anything-accelerating-incident-response-with-digital-forensics-at-scale-2/"
-   },
-   {
-    "chars": 7699,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "c174f4183ae8b637",
-    "url": "https://www.magnetforensics.com/resources/public-sector-digital-investigations-2027-report/"
-   },
-   {
-    "chars": 8373,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "f8e02230e1c74ac0",
-    "url": "https://www.magnetforensics.com/resources/supporting-the-protectors-strengthening-child-exploitation-investigations-through-technology/"
-   },
-   {
-    "chars": 8765,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "200a9effe5ae9cec",
-    "url": "https://www.magnetforensics.com/resources/no-surprises-on-the-stand-pretrial-preparation-framework-for-investigators-and-digital-device-examiners/"
-   },
-   {
-    "chars": 8348,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "a53a36a70ae8ee94",
-    "url": "https://www.magnetforensics.com/resources/todays-investigative-challenges-are-growing-more-complex/"
-   },
-   {
-    "chars": 9178,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "b07221716faef719",
-    "url": "https://www.magnetforensics.com/resources/magnet-griffeye-revolutionizing-the-battle-against-terrorism-extremism-and-organized-crime/"
-   },
-   {
-    "chars": 8397,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "246ef38541f99819",
-    "url": "https://www.magnetforensics.com/resources/forensic-early-case-assessment-why-the-evidence-must-come-first/"
-   },
-   {
-    "chars": 8600,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "5cb1b0acb2b502c7",
-    "url": "https://www.magnetforensics.com/resources/is-the-uk-behind-the-curve-in-dfir-practices/"
-   },
-   {
-    "chars": 8029,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "e8d6634da4591f87",
-    "url": "https://www.magnetforensics.com/resources/closing-the-investigative-gap-in-incident-response-for-security-leaders/"
-   },
-   {
-    "chars": 5067,
-    "from_index": "https://www.magnetforensics.com/resources/category/white-papers/",
-    "sha": "ff6e7b1f6cf9240b",
-    "url": "https://www.magnetforensics.com/resources/state-of-enterprise-dfir-2026-report/"
    }
   ],
   "no_news_page": false,
@@ -61827,8 +62083,8 @@
     "url": "https://www.marchnetworks.com/resources/"
    },
    {
-    "chars": 11154,
-    "sha": "71f06b85fdb81dee",
+    "chars": 11156,
+    "sha": "6d78f6110f7e1133",
     "url": "https://www.marchnetworks.com/blog/"
    },
    {
@@ -61850,6 +62106,60 @@
     "chars": 22816,
     "sha": "d28884fc8df4c1f1",
     "url": "https://www.marchnetworks.com/blog/what-agentic-ai-means-for-the-future-of-video-security/"
+   },
+   {
+    "chars": 15407,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "4720351ee9011558",
+    "url": "https://www.marchnetworks.com/news/march-networks-and-vivotek-bring-connected-video-security-to-canadian-transit-at-cuta-2026/"
+   },
+   {
+    "chars": 15656,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "76a8cdeaf0125faf",
+    "url": "https://www.marchnetworks.com/news/vivotek-and-march-networks-showcase-connected-intelligence-at-isc-east-2026/"
+   },
+   {
+    "chars": 21857,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "3bade5337da46870",
+    "url": "https://www.marchnetworks.com/blog/the-next-era-of-video-intelligence-starts-with-integration/"
+   },
+   {
+    "chars": 20922,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "fe86fba976a063ec",
+    "url": "https://www.marchnetworks.com/blog/from-sight-to-insight-ai-video-intelligence-innovations-from-isc-west-2026/"
+   },
+   {
+    "chars": 15999,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "5b78ef487048d75b",
+    "url": "https://www.marchnetworks.com/blog/a-smarter-way-to-archive-video-on-march-networks-cloud-storage/"
+   },
+   {
+    "chars": 17772,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "8aad7db3ec4e7adb",
+    "url": "https://www.marchnetworks.com/blog/how-ai-powered-people-counting-is-transforming-transit-operations/"
+   },
+   {
+    "chars": 11689,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "fc8314c735b4afa8",
+    "url": "https://www.marchnetworks.com/blog/product-feature-spotlight-cloudsights-share-device/"
+   },
+   {
+    "chars": 11682,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "d632efa08389ee97",
+    "url": "https://www.marchnetworks.com/blog/product-feature-spotlight-ai-smart-search-for-detecting-vagrancy-and-loitering/"
+   },
+   {
+    "chars": 17159,
+    "from_index": "https://www.marchnetworks.com/blog/",
+    "sha": "1d8f336a89f692df",
+    "url": "https://www.marchnetworks.com/blog/tonys-takeaways-5-reasons-to-move-to-the-cloud-for-smarter-video-surveillance/"
    }
   ],
   "no_news_page": false,
@@ -63645,8 +63955,7 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 1280,
-    "sha": "b4c7abb99b6f1c68",
+    "unread": null,
     "url": "https://www.milestonesys.com/resources/events/events/"
    },
    {
@@ -63693,33 +64002,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 430,
-    "sha": "fffcf7ded2412d58",
+    "unread": null,
     "url": "https://www.millermendel.com/news/"
    },
    {
-    "chars": 430,
-    "sha": "fffcf7ded2412d58",
+    "unread": null,
     "url": "https://www.millermendel.com/news/neogov-acquires-esoph-through-acquisition-of-miller-mendel-inc/"
    },
    {
-    "chars": 430,
-    "sha": "fffcf7ded2412d58",
+    "unread": null,
     "url": "https://www.millermendel.com/news/maricopa-county-sheriffs-office-implements-innovative-esoph-background-investigation-software-by-miller-mendel/"
    },
    {
-    "chars": 430,
-    "sha": "fffcf7ded2412d58",
+    "unread": null,
     "url": "https://www.millermendel.com/news/miller-mendel-inc-continues-soc-2-type-ii-compliance/"
    },
    {
-    "chars": 430,
-    "sha": "fffcf7ded2412d58",
+    "unread": null,
     "url": "https://www.millermendel.com/news/miller-mendel-welcomes-san-francisco-police-department-to-the-esoph-background-investigation-network/"
    },
    {
-    "chars": 430,
-    "sha": "fffcf7ded2412d58",
+    "unread": null,
     "url": "https://www.millermendel.com/news/stockton-police-department-implements-category-leading-software-technology-esoph-and-joins-largest-public-safety-background-network-in-the-nation/"
    }
   ],
@@ -67526,8 +67829,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 26099,
-    "sha": "9b871461aadb913a",
+    "chars": 26139,
+    "sha": "e170ea7f90027950",
     "url": "https://www.ntst.com/blog"
    },
    {
@@ -67706,144 +68009,6 @@
     "chars": 2936,
     "sha": "2757c4f544b2a83d",
     "url": "https://neumo.com/resources/?category=demos"
-   },
-   {
-    "chars": 3539,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "1eb07feda2a5d594",
-    "url": "https://neumo.com/resources/what-the-best-governments-do-counties-edition/"
-   },
-   {
-    "chars": 3405,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "7575f339fd09c979",
-    "url": "https://neumo.com/resources/inside-the-driver-experience/"
-   },
-   {
-    "chars": 3459,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "3d00d9694dea472e",
-    "url": "https://neumo.com/resources/boost-revenue-with-simple-short-term-rental-registration-and-tax-collections/"
-   },
-   {
-    "chars": 3312,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "b13cc86834104c3a",
-    "url": "https://neumo.com/resources/what-the-best-governments-do-cities-edition/"
-   },
-   {
-    "chars": 3260,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "1df951e8b4acf71b",
-    "url": "https://neumo.com/resources/property-record-fraud-guide/"
-   },
-   {
-    "chars": 3003,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "c88485fc818d7baf",
-    "url": "https://neumo.com/resources/str-ordinance-workbook/"
-   },
-   {
-    "chars": 3272,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "75303c587fbb83bb",
-    "url": "https://neumo.com/resources/government-guide-how-to-successfully-roll-out-new-services/"
-   },
-   {
-    "chars": 3128,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "39ae25144190f91f",
-    "url": "https://neumo.com/resources/2026-business-owner-experience-survey/"
-   },
-   {
-    "chars": 3342,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "740613d4d51a1d28",
-    "url": "https://neumo.com/resources/embracing-ai-for-civic-enhancement/"
-   },
-   {
-    "chars": 3409,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "1b50a97da6a88048",
-    "url": "https://neumo.com/resources/6-benefits-businesses-will-buy-into-for-compliance/"
-   },
-   {
-    "chars": 3298,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "2a3a7ddc4454b1bf",
-    "url": "https://neumo.com/resources/the-case-for-remote-marriage-licensing/"
-   },
-   {
-    "chars": 3150,
-    "from_index": "https://neumo.com/resources/?category=ebooks",
-    "sha": "9e20baed64456f7a",
-    "url": "https://neumo.com/resources/2025-business-owner-survey/"
-   },
-   {
-    "chars": 3502,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "040784c9a79837b7",
-    "url": "https://neumo.com/resources/finance-strategic-driver-city-revenues/"
-   },
-   {
-    "chars": 3773,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "905fbf7a8d17d112",
-    "url": "https://neumo.com/resources/protecting-the-records-you-cant-replace/"
-   },
-   {
-    "chars": 3972,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "7eb7acd3c5802623",
-    "url": "https://neumo.com/resources/hillsborough-county-kiosk-webinar/"
-   },
-   {
-    "chars": 2989,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "80cf30eedfff3108",
-    "url": "https://neumo.com/resources/modernizing-the-constituent-payment-experience/"
-   },
-   {
-    "chars": 2937,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "7875508c4a61d2e1",
-    "url": "https://neumo.com/resources/modernizing-constituent-payment-experience-webinar/"
-   },
-   {
-    "chars": 3791,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "14402fc47c8259b4",
-    "url": "https://neumo.com/resources/ucla-anderson-economic-forecast/"
-   },
-   {
-    "chars": 2925,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "058c95303da87ab5",
-    "url": "https://neumo.com/resources/floridas-next-chapter-in-government-payments/"
-   },
-   {
-    "chars": 2779,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "acef27cc719079f2",
-    "url": "https://neumo.com/resources/santa-barbara-streaming-uut-case/"
-   },
-   {
-    "chars": 2769,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "336068573f987fe1",
-    "url": "https://neumo.com/resources/neumo-payments-revenue-management-product-tour/"
-   },
-   {
-    "chars": 2807,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "cc97a18e30bd25e0",
-    "url": "https://neumo.com/resources/short-term-rentals-long-term-impacts/"
-   },
-   {
-    "chars": 2727,
-    "from_index": "https://neumo.com/resources/?category=webinars",
-    "sha": "3867a88dd8a07b2d",
-    "url": "https://neumo.com/resources/how-the-city-of-longmont-co-transformed-tax-collection/"
    }
   ],
   "no_news_page": false,
@@ -69476,19 +69641,61 @@
     "url": "https://www.nuvei.com/post-category/blog"
    },
    {
-    "chars": 10884,
-    "sha": "0cc9f9cbe864f5b4",
+    "chars": 10872,
+    "sha": "804e674f70ed9e99",
     "url": "https://www.nuvei.com/posts/nuvei-and-blackline-partner-to-modernize-the-invoice-to-cash-process-through-embedded-payments"
    },
    {
-    "chars": 11617,
-    "sha": "2320d1ecf66b4fd5",
+    "chars": 11605,
+    "sha": "d95e29f918ea2657",
     "url": "https://www.nuvei.com/posts/nuvei-completes-first-party-in-agent-payment-with-visa-unveils-merchant-led-agentic-payments-strategy"
    },
    {
-    "chars": 12308,
-    "sha": "77d341cb203e7546",
+    "chars": 12296,
+    "sha": "8406753a6bd9c18f",
     "url": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint?utm_source=newswire&utm_medium=pr"
+   },
+   {
+    "chars": 22730,
+    "from_index": "https://www.nuvei.com/posts/nuvei-completes-first-party-in-agent-payment-with-visa-unveils-merchant-led-agentic-payments-strategy",
+    "sha": "5383b95e9ce0b0e8",
+    "url": "https://www.nuvei.com/posts/agentic-commerce?utm_source=newswire&utm_medium=pr"
+   },
+   {
+    "chars": 12296,
+    "from_index": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint?utm_source=newswire&utm_medium=pr",
+    "sha": "8406753a6bd9c18f",
+    "url": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint"
+   },
+   {
+    "chars": 14612,
+    "from_index": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint?utm_source=newswire&utm_medium=pr",
+    "sha": "ce02ce3328419c05",
+    "url": "https://www.nuvei.com/posts/know-your-agent-kya-agentic-commerce?utm_source=linkedin&utm_medium=paid"
+   },
+   {
+    "chars": 22730,
+    "from_index": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint?utm_source=newswire&utm_medium=pr",
+    "sha": "5383b95e9ce0b0e8",
+    "url": "https://www.nuvei.com/posts/agentic-commerce"
+   },
+   {
+    "chars": 16340,
+    "from_index": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint?utm_source=newswire&utm_medium=pr",
+    "sha": "651cb9cb5a0b945e",
+    "url": "https://www.nuvei.com/posts/agentic-commerce-holiday-travel-bookings"
+   },
+   {
+    "chars": 15121,
+    "from_index": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint?utm_source=newswire&utm_medium=pr",
+    "sha": "f1dc70ad98a409d2",
+    "url": "https://www.nuvei.com/posts/the-top-up-is-not-a-renewal-what-ai-companies-need-to-get-european-payments-right"
+   },
+   {
+    "chars": 14159,
+    "from_index": "https://www.nuvei.com/posts/agentic-commerce-phil-fayer-nuvei-viewpoint?utm_source=newswire&utm_medium=pr",
+    "sha": "7d912be858174766",
+    "url": "https://www.nuvei.com/posts/ai-has-a-getting-paid-problem"
    }
   ],
   "no_news_page": false,
@@ -69984,8 +70191,7 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 2970,
-    "sha": "0672ded2edf9c89f",
+    "unread": null,
     "url": "https://offeriorfp.com/media/"
    }
   ],
@@ -71617,48 +71823,6 @@
     "chars": 8150,
     "sha": "1e96d13e1e31b73f",
     "url": "https://www.opengov.com/resources/ebooks/"
-   },
-   {
-    "chars": 7415,
-    "from_index": "https://www.opengov.com/resources/blog/",
-    "sha": "e32a8bd18a6bead6",
-    "url": "https://www.opengov.com/resources/ai-policies/"
-   },
-   {
-    "chars": 15366,
-    "from_index": "https://www.opengov.com/resources/blog/",
-    "sha": "521d1401653eb024",
-    "url": "https://opengov.com/resources/blog/government-procurement-turnover/"
-   },
-   {
-    "chars": 12815,
-    "from_index": "https://www.opengov.com/resources/blog/",
-    "sha": "eeef19a52f1dbbc4",
-    "url": "https://opengov.com/resources/blog/government-permitting-software-buyers-guide-2027-evaluation-tips/"
-   },
-   {
-    "chars": 12053,
-    "from_index": "https://www.opengov.com/resources/blog/",
-    "sha": "db26a51b60f3c4de",
-    "url": "https://opengov.com/resources/blog/ab-1621-plan-check/"
-   },
-   {
-    "chars": 13032,
-    "from_index": "https://www.opengov.com/resources/blog/",
-    "sha": "eb7a6486f578564e",
-    "url": "https://opengov.com/resources/blog/parks-maintenance-gaps/"
-   },
-   {
-    "chars": 13913,
-    "from_index": "https://www.opengov.com/resources/blog/",
-    "sha": "13253467e7acfd3a",
-    "url": "https://opengov.com/resources/blog/audit-finding-finance-team/"
-   },
-   {
-    "chars": 10331,
-    "from_index": "https://www.opengov.com/resources/blog/",
-    "sha": "b2ceead6cf0370e6",
-    "url": "https://opengov.com/resources/blog/government-procurement-software-2027/"
    }
   ],
   "no_news_page": false,
@@ -73123,7 +73287,7 @@
    },
    {
     "chars": 10812,
-    "sha": "6d92b34dae55f5b0",
+    "sha": "910541bd88d73b70",
     "url": "https://www.paloaltonetworks.com/resources"
    },
    {
@@ -75097,13 +75261,11 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 4426,
-    "sha": "4f01862fc9c183f3",
+    "unread": null,
     "url": "https://firstresponsemh.com/media/"
    },
    {
-    "chars": 3710,
-    "sha": "fefdd784bce894d5",
+    "unread": null,
     "url": "https://firstresponsemh.com/blog/"
    }
   ],
@@ -78369,8 +78531,8 @@
     "url": "https://www.proofpoint.com/us/blog"
    },
    {
-    "chars": 10091,
-    "sha": "43f9278bf3f41a93",
+    "chars": 10039,
+    "sha": "ef95e7f0d2038141",
     "url": "https://www.proofpoint.com/us/newsroom"
    },
    {
@@ -78389,172 +78551,70 @@
     "url": "https://www.proofpoint.com/us/blog/ai-security"
    },
    {
-    "chars": 7905,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "a0837fbe47ed4ba7",
-    "url": "https://www.proofpoint.com/us/blog/compliance-and-archiving"
+    "chars": 7593,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "dfb8033dd1300324",
+    "url": "https://www.proofpoint.com/us/newsroom/press-releases"
    },
    {
-    "chars": 7867,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "2b3daa5750d8815b",
-    "url": "https://www.proofpoint.com/us/blog/corporate-news"
+    "chars": 7589,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "f9f0db0490879c0e",
+    "url": "https://www.proofpoint.com/us/newsroom/in-the-news"
    },
    {
-    "chars": 7745,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "7970ba0c17e6f990",
-    "url": "https://www.proofpoint.com/us/blog/cyberthreats"
+    "chars": 8584,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "9086d36a07b248e0",
+    "url": "https://www.proofpoint.com/us/newsroom/awards"
    },
    {
-    "chars": 7808,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "d540e04e0a0305f3",
-    "url": "https://www.proofpoint.com/us/blog/data-security"
+    "chars": 8086,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "ae86d6883dbae5d5",
+    "url": "https://www.proofpoint.com/us/newsroom/media-kit"
    },
    {
-    "chars": 7803,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "e9eeb5870f0ef97a",
-    "url": "https://www.proofpoint.com/us/blog/engineering-insights"
+    "chars": 24306,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "3c5564cb4b730fef",
+    "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-acquire-varonis-creating-global-leader-data-and-ai-security"
    },
    {
-    "chars": 7935,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "3ef3901b45521e6c",
-    "url": "https://www.proofpoint.com/us/blog/human-resilience-security-awareness"
+    "chars": 3702,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "6e4b1fdf14b2836c",
+    "url": "https://www.proofpoint.com/us/newsroom/news/proofpoint-ceo-acquiring-varonis-63b-opportunities-dont-come-every-day"
    },
    {
-    "chars": 7753,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "2a364254ba9ef77f",
-    "url": "https://www.proofpoint.com/us/blog/identity-security"
+    "chars": 12529,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "df5d6bc9c2e8bb9c",
+    "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-expands-ai-powered-investigations-microsoft-365-and-deepens"
    },
    {
-    "chars": 7828,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "a0a5171899450502",
-    "url": "https://www.proofpoint.com/us/blog/insider-threat-management"
+    "chars": 10875,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "27b01b7e81e57931",
+    "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-introduces-flex-help-customers-invest-confidence-security-needs"
    },
    {
-    "chars": 7828,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "4a3319c498e5db75",
-    "url": "https://www.proofpoint.com/us/blog/remote-workforce-security"
+    "chars": 11361,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "113da68128814081",
+    "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-joins-microsoft-integrated-cloud-email-security-ices-ecosystem"
    },
    {
-    "chars": 7722,
-    "from_index": "https://www.proofpoint.com/us/blog",
-    "sha": "24bf38d7fb6ad9ef",
-    "url": "https://www.proofpoint.com/us/blog/thought-leadership"
+    "chars": 13143,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "f1b395593f134daa",
+    "url": "https://www.proofpoint.com/us/newsroom/press-releases/cyber-insecurity-in-healthcare-report-2026"
    },
    {
-    "chars": 7575,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "20a648b3ba752d4b",
-    "url": "https://www.proofpoint.com/uk/blog/threat-insight"
-   },
-   {
-    "chars": 7571,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "1453c1a38f66ac3a",
-    "url": "https://www.proofpoint.com/au/blog/threat-insight"
-   },
-   {
-    "chars": 9412,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "a616839b87388752",
-    "url": "https://www.proofpoint.com/es/blog/threat-insight"
-   },
-   {
-    "chars": 9235,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "dd02a85cddf31257",
-    "url": "https://www.proofpoint.com/de/blog/threat-insight"
-   },
-   {
-    "chars": 9622,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "ab4816e4c261efee",
-    "url": "https://www.proofpoint.com/fr/blog/threat-insight"
-   },
-   {
-    "chars": 8940,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "578aba93f706639f",
-    "url": "https://www.proofpoint.com/it/blog/threat-insight"
-   },
-   {
-    "chars": 8423,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "c5491fe46d16ac26",
-    "url": "https://www.proofpoint.com/br/blog/threat-insight"
-   },
-   {
-    "chars": 5097,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "bc47b57cbfa2d4cc",
-    "url": "https://www.proofpoint.com/jp/blog/threat-insight"
-   },
-   {
-    "chars": 4555,
-    "from_index": "https://www.proofpoint.com/us/blog/threat-insight",
-    "sha": "1365c6e75b9e990f",
-    "url": "https://www.proofpoint.com/kr/blog/threat-insight"
-   },
-   {
-    "chars": 7246,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "bfb5a950cf276092",
-    "url": "https://www.proofpoint.com/uk/blog/ai-security"
-   },
-   {
-    "chars": 7242,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "dbf11ed155523e8c",
-    "url": "https://www.proofpoint.com/au/blog/ai-security"
-   },
-   {
-    "chars": 8829,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "c14054176110e447",
-    "url": "https://www.proofpoint.com/es/blog/ai-security"
-   },
-   {
-    "chars": 8699,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "f2f27576b49d864d",
-    "url": "https://www.proofpoint.com/de/blog/ai-security"
-   },
-   {
-    "chars": 9118,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "a613a217932c872d",
-    "url": "https://www.proofpoint.com/fr/blog/ai-security"
-   },
-   {
-    "chars": 8617,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "981e8d512508b718",
-    "url": "https://www.proofpoint.com/it/blog/ai-security"
-   },
-   {
-    "chars": 8186,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "ecde1e658127cc3a",
-    "url": "https://www.proofpoint.com/br/blog/ai-security"
-   },
-   {
-    "chars": 4625,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "92b638d42833ff4c",
-    "url": "https://www.proofpoint.com/jp/blog/ai-security"
-   },
-   {
-    "chars": 4185,
-    "from_index": "https://www.proofpoint.com/us/blog/ai-security",
-    "sha": "701c9d4df5c1f2e4",
-    "url": "https://www.proofpoint.com/kr/blog/ai-security"
+    "chars": 14209,
+    "from_index": "https://www.proofpoint.com/us/newsroom",
+    "sha": "44e9354775e97bdd",
+    "url": "https://www.proofpoint.com/us/newsroom/press-releases/proofpoint-stops-attacks-traditional-defenses-miss-ai-era"
    }
   ],
   "no_news_page": false,
@@ -81012,7 +81072,8 @@
     "url": "https://www.rapidsos.com/blog"
    },
    {
-    "unread": null,
+    "chars": 13764,
+    "sha": "396fddc9fcd262f6",
     "url": "https://rapidsos.com/blog/meet-the-safety-network/"
    },
    {
@@ -81026,6 +81087,16 @@
    {
     "unread": null,
     "url": "https://rapidsos.com/blog/how-to-choose-an-alyssas-law-compliant-silent-panic-alarm-system/"
+   },
+   {
+    "from_index": "https://rapidsos.com/blog/meet-the-safety-network/",
+    "unread": "only 51 chars of text",
+    "url": "https://rapidsos.com/blog/how-to-evaluate-ai-vendors-for-911-five-tests-before-you-buy/"
+   },
+   {
+    "from_index": "https://rapidsos.com/blog/meet-the-safety-network/",
+    "unread": "only 51 chars of text",
+    "url": "https://rapidsos.com/blog/rapidsos-and-siento-partner-to-provide-first-responders-anonymous-one-click-access-to-peer-support/"
    }
   ],
   "no_news_page": false,
@@ -81811,18 +81882,18 @@
     "url": "https://www.rts.com/blog/"
    },
    {
-    "chars": 30508,
-    "sha": "00e9268fa874c257",
+    "chars": 30513,
+    "sha": "d2f7c0d6e124279c",
     "url": "https://www.rts.com/resources/guides/circular-economy/"
    },
    {
-    "chars": 13134,
-    "sha": "b8e74b87f9d14261",
+    "chars": 13132,
+    "sha": "d8c245a4c3b9f135",
     "url": "https://www.rts.com/resources/guides/earth-day-activities/"
    },
    {
-    "chars": 15715,
-    "sha": "1d07dc5d6b1ad90f",
+    "chars": 15712,
+    "sha": "e309c612d6b2543f",
     "url": "https://www.rts.com/resources/guides/guide-to-true-zero-waste-certification/"
    },
    {
@@ -81843,9 +81914,9 @@
     "url": "https://www.rts.com/blog/microplastics-a-macro-level-problem-rts/"
    },
    {
-    "chars": 7904,
+    "chars": 7902,
     "from_index": "https://www.rts.com/resources/guides/earth-day-activities/",
-    "sha": "d5b009637f946bf9",
+    "sha": "e69162dbd03da762",
     "url": "https://www.rts.com/blog/the-life-cycle-of-a-plastic-water-bottle/"
    },
    {
@@ -87332,33 +87403,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 6728,
-    "sha": "5b02d0eebfb4e130",
+    "unread": null,
     "url": "https://sentrycs.com/news/ondas-completes-acquisition-of-sentrycs-a-global-leader-in-counter-uas-cyber-technology/"
    },
    {
-    "chars": 8232,
-    "sha": "6e40f930a9b70957",
+    "unread": null,
     "url": "https://sentrycs.com/fr/news/ondas-completes-acquisition-of-sentrycs-a-global-leader-in-counter-uas-cyber-technology/"
    },
    {
-    "chars": 7750,
-    "sha": "28fba9458b37379a",
+    "unread": null,
     "url": "https://sentrycs.com/es/news/ondas-completes-acquisition-of-sentrycs-a-global-leader-in-counter-uas-cyber-technology/"
    },
    {
-    "chars": 7880,
-    "sha": "f5b377aef7a4fc54",
+    "unread": null,
     "url": "https://sentrycs.com/de/news/ondas-completes-acquisition-of-sentrycs-a-global-leader-in-counter-uas-cyber-technology/"
    },
    {
-    "chars": 7732,
-    "sha": "78ca6898f5494dbc",
+    "unread": null,
     "url": "https://sentrycs.com/it/news/ondas-completes-acquisition-of-sentrycs-a-global-leader-in-counter-uas-cyber-technology/"
    },
    {
-    "chars": 7346,
-    "sha": "01ebee1509fceaed",
+    "unread": null,
     "url": "https://sentrycs.com/uk/news/ondas-completes-acquisition-of-sentrycs-a-global-leader-in-counter-uas-cyber-technology/"
    }
   ],
@@ -88262,8 +88327,7 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 4088,
-    "sha": "caed35599915a70c",
+    "unread": null,
     "url": "https://silverride.com/newsroom"
    }
   ],
@@ -88798,7 +88862,7 @@
    },
    {
     "chars": 6970,
-    "sha": "819f7789a68a84eb",
+    "sha": "b30dca3c1d6ddbd7",
     "url": "https://www.sita.aero/insights/"
    },
    {
@@ -90030,34 +90094,124 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 14145,
-    "sha": "032a1aee86b9b5c6",
+    "chars": 14195,
+    "sha": "6f814fbc1a38b931",
     "url": "https://www.socialexplorer.com/home/blog"
    },
    {
-    "chars": 9235,
-    "sha": "f8b482671a1e35c6",
+    "chars": 9285,
+    "sha": "d1a19902d2e14d08",
     "url": "https://www.socialexplorer.com/home/post/nearly-one-third-of-americans-are-too-young-to-remember-sept-11"
    },
    {
-    "chars": 8374,
-    "sha": "0bd65b1426ba44f0",
+    "chars": 8424,
+    "sha": "63df4358df564cae",
     "url": "https://www.socialexplorer.com/home/post/back-to-school-by-the-numbers"
    },
    {
-    "chars": 9800,
-    "sha": "e9914384e2364a97",
+    "chars": 9850,
+    "sha": "7e4fe8fc12401aea",
     "url": "https://www.socialexplorer.com/home/post/power-outages-and-community-impacts-an-in-depth-look-at-gary-indiana"
    },
    {
-    "chars": 10203,
-    "sha": "c30fc2cfeb90c930",
+    "chars": 10253,
+    "sha": "3ce5d18c98cac5ad",
     "url": "https://www.socialexplorer.com/home/post/analysis-bls-data-reinforces-recovery-of-tourism-and-travel-destinations"
    },
    {
-    "chars": 10147,
-    "sha": "118ad5a97a90a7e5",
+    "chars": 10197,
+    "sha": "c6fbf35997c246ba",
     "url": "https://www.socialexplorer.com/home/post/who-lives-near-big-bend-national-park"
+   },
+   {
+    "chars": 26188,
+    "from_index": "https://www.socialexplorer.com/home/blog",
+    "sha": "ba28e5544b8a1100",
+    "url": "https://www.socialexplorer.com/home/post/rss.xml"
+   },
+   {
+    "chars": 10391,
+    "from_index": "https://www.socialexplorer.com/home/blog",
+    "sha": "101f704c0450402a",
+    "url": "https://www.socialexplorer.com/home/post/navigating-zip-codes-and-zctas-in-neighborhood-analysis-with-social-explorer"
+   },
+   {
+    "chars": 12878,
+    "from_index": "https://www.socialexplorer.com/home/blog",
+    "sha": "02b6103da1329daf",
+    "url": "https://www.socialexplorer.com/home/post/southern-new-england-american-planning-association-conference-preview"
+   },
+   {
+    "chars": 10203,
+    "from_index": "https://www.socialexplorer.com/home/blog",
+    "sha": "ef351fde2c794e9f",
+    "url": "https://www.socialexplorer.com/home/post/neighborhood-by-neighborhood-understanding-and-using-census-tract-data-with-social-explorer"
+   },
+   {
+    "chars": 10948,
+    "from_index": "https://www.socialexplorer.com/home/blog",
+    "sha": "4cd43d86b1fe82d8",
+    "url": "https://www.socialexplorer.com/home/post/new-school-year-old-salary-story-post-covid-teacher-pay-badly-lagged-inflation"
+   },
+   {
+    "chars": 11507,
+    "from_index": "https://www.socialexplorer.com/home/blog",
+    "sha": "d31d07f9ef6c32ae",
+    "url": "https://www.socialexplorer.com/home/post/homeowners-insurance-and-climate-risk"
+   },
+   {
+    "chars": 11173,
+    "from_index": "https://www.socialexplorer.com/home/blog",
+    "sha": "416c9f141a0595f2",
+    "url": "https://www.socialexplorer.com/home/post/business-formation-figures-show-smaller-than-expected-improvement-since-2020"
+   },
+   {
+    "chars": 11702,
+    "from_index": "https://www.socialexplorer.com/home/post/back-to-school-by-the-numbers",
+    "sha": "2332a41005c37683",
+    "url": "https://www.socialexplorer.com/home/post/us-states-gdp-ranking-americas-economic-center-of-gravity-keeps-moving-west"
+   },
+   {
+    "chars": 11105,
+    "from_index": "https://www.socialexplorer.com/home/post/back-to-school-by-the-numbers",
+    "sha": "3ed0c69fc3474e70",
+    "url": "https://www.socialexplorer.com/home/post/even-as-housing-prices-rise-average-household-size-in-the-us-continues-to-fall"
+   },
+   {
+    "chars": 11043,
+    "from_index": "https://www.socialexplorer.com/home/post/back-to-school-by-the-numbers",
+    "sha": "86821bd9c92704ef",
+    "url": "https://www.socialexplorer.com/home/post/where-the-littlest-alphas-live-analyzing-the-under-5-year-old-population-trends"
+   },
+   {
+    "chars": 14902,
+    "from_index": "https://www.socialexplorer.com/home/post/back-to-school-by-the-numbers",
+    "sha": "e67eec2bbbc24bbf",
+    "url": "https://www.socialexplorer.com/home/post/the-data-behind-why-your-monthly-electricity-bill-keeps-getting-higher"
+   },
+   {
+    "chars": 5026,
+    "from_index": "https://www.socialexplorer.com/home/post/back-to-school-by-the-numbers",
+    "sha": "61c2d85852ef00b1",
+    "url": "https://www.socialexplorer.com/home/post/toilet-paper-flour-and-internet-access-in-short-supply"
+   },
+   {
+    "chars": 10541,
+    "from_index": "https://www.socialexplorer.com/home/post/power-outages-and-community-impacts-an-in-depth-look-at-gary-indiana",
+    "sha": "c25f766c6310755a",
+    "url": "https://www.socialexplorer.com/home/post/social-explorers-updated-ejscreen-tools-empower-environmental-justice-analysis"
+   },
+   {
+    "chars": 9744,
+    "from_index": "https://www.socialexplorer.com/home/post/power-outages-and-community-impacts-an-in-depth-look-at-gary-indiana",
+    "sha": "ccdb375cca35149c",
+    "url": "https://www.socialexplorer.com/home/post/the-youngest-among-us-and-housing-priorities"
+   },
+   {
+    "chars": 9615,
+    "from_index": "https://www.socialexplorer.com/home/post/power-outages-and-community-impacts-an-in-depth-look-at-gary-indiana",
+    "sha": "1fd45ec7f44c0b21",
+    "url": "https://www.socialexplorer.com/home/post/heat-wave-data-and-analysis-with-social-explorer"
    }
   ],
   "no_news_page": false,
@@ -91608,8 +91762,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 6495,
-    "sha": "ee94c340d867b6f9",
+    "chars": 6360,
+    "sha": "a73ce420794d3614",
     "url": "https://www.sportsengine.com/resources/blog/"
    },
    {
@@ -95059,13 +95213,11 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 75160,
-    "sha": "7ed8e9e89c706e1c",
+    "unread": null,
     "url": "https://www.t2systems.com/resources/"
    },
    {
-    "chars": 47089,
-    "sha": "2282f485908594d5",
+    "unread": null,
     "url": "https://www.t2systems.com/blog/"
    }
   ],
@@ -96673,8 +96825,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 6495,
-    "sha": "85d458829b19c0ba",
+    "chars": 6496,
+    "sha": "5a6ae02961748c59",
     "url": "https://tenzingone.com/news/"
    }
   ],
@@ -98517,12 +98669,12 @@
    },
    {
     "chars": 8315,
-    "sha": "ab2108767146fae7",
+    "sha": "71c9cbbc2525ed34",
     "url": "https://tractionrec.com/resources"
    },
    {
     "chars": 11212,
-    "sha": "5a2e6d9cef6fc65b",
+    "sha": "eb5e16d293be860f",
     "url": "https://tractionrec.com/resources/blog-posts/support-ai-registration-experience"
    },
    {
@@ -99252,33 +99404,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 4099,
-    "sha": "5770bb0ec32e62e5",
+    "unread": null,
     "url": "https://www.transoftsolutions.com/news/"
    },
    {
-    "chars": 3426,
-    "sha": "e65e99a276cae4f0",
+    "unread": null,
     "url": "https://www.transoftsolutions.com/blog/"
    },
    {
-    "chars": 2566,
-    "sha": "13b779df009ae71d",
+    "unread": null,
     "url": "https://www.transoftsolutions.com/aviation/resources/"
    },
    {
-    "chars": 5111,
-    "sha": "8e125b38c41684bd",
+    "unread": null,
     "url": "https://www.transoftsolutions.com/news/aqcessramp-2026-latest-version-out-now/"
    },
    {
-    "chars": 4306,
-    "sha": "bf4b784359c2acec",
+    "unread": null,
     "url": "https://www.transoftsolutions.com/news/transoft-acquires-cadaptor-solutions-expands-temporary-traffic-management-portfolio/"
    },
    {
-    "chars": 5771,
-    "sha": "69583836f5560f1b",
+    "unread": null,
     "url": "https://www.transoftsolutions.com/news/torus-2026-latest-version-out-now/"
    }
   ],
@@ -101758,7 +101904,7 @@
    },
    {
     "chars": 7781,
-    "sha": "4ec2f8c56df53a0f",
+    "sha": "34afdfc941a6fd48",
     "url": "https://upperhand.com/resources/chatgpt-playbook/"
    },
    {
@@ -101768,13 +101914,25 @@
    },
    {
     "chars": 7610,
-    "sha": "4065ce945de0767c",
+    "sha": "d9341e32093803f2",
     "url": "https://upperhand.com/resources/mrr-member-retention-calculator/"
    },
    {
     "chars": 8372,
-    "sha": "3524f359a3218a31",
+    "sha": "98d617034ce98818",
     "url": "https://upperhand.com/resources/athlete-evaluation-template/"
+   },
+   {
+    "chars": 15438,
+    "from_index": "https://upperhand.com/resources/mrr-member-retention-calculator/",
+    "sha": "a06e7e008115b876",
+    "url": "https://upperhand.com/resources/sports-budget-template/"
+   },
+   {
+    "chars": 10759,
+    "from_index": "https://upperhand.com/resources/mrr-member-retention-calculator/",
+    "sha": "cad0215f050ac9f5",
+    "url": "https://upperhand.com/resources/athlete-registration-form-template/"
    }
   ],
   "no_news_page": false,
@@ -103734,8 +103892,8 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 93308,
-    "sha": "0ff6755ecd877b4d",
+    "chars": 93304,
+    "sha": "0325199c47f613e1",
     "url": "https://www.verramobility.com/news/"
    }
   ],
@@ -106831,33 +106989,27 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 11437,
-    "sha": "d50dc11d0adbd749",
+    "unread": null,
     "url": "https://www.whiparound.com/blog/"
    },
    {
-    "chars": 20329,
-    "sha": "fb323456a5620376",
+    "unread": null,
     "url": "https://whiparound.com/blog/fleet-work-order-management-101/"
    },
    {
-    "chars": 17811,
-    "sha": "13f9034a8bb02a43",
+    "unread": null,
     "url": "https://whiparound.com/blog/truck-inspection-checklist/"
    },
    {
-    "chars": 14800,
-    "sha": "da3427a00878471d",
+    "unread": null,
     "url": "https://whiparound.com/blog/inspections-maintenance-gap-fleet-accidents/"
    },
    {
-    "chars": 11210,
-    "sha": "f7a546f51a8e1819",
+    "unread": null,
     "url": "https://whiparound.com/blog/ai-inspections-pro-update-inspection-history/"
    },
    {
-    "chars": 20776,
-    "sha": "1ff2308a2c978857",
+    "unread": null,
     "url": "https://whiparound.com/blog/construction-equipment-inspection-checklist/"
    }
   ],
@@ -106968,18 +107120,15 @@
   "fetched_on": "2026-11-27",
   "news": [
    {
-    "chars": 8682,
-    "sha": "34af96a7a7949139",
+    "unread": null,
     "url": "https://whooster.com/resources/"
    },
    {
-    "chars": 4786,
-    "sha": "36995cca81d6c933",
+    "unread": null,
     "url": "https://whooster.com/resources/case-studies/"
    },
    {
-    "chars": 4786,
-    "sha": "36995cca81d6c933",
+    "unread": null,
     "url": "https://whooster.com/resources/case-studies/"
    }
   ],
