@@ -3395,8 +3395,9 @@ and never said where in a page a reference sat.
   board on their own page is asked where its redirect lands (see
   "ClearCompany: the reader" below). A page whose own script carries
   Phenom's `var phApp = phApp || {...}` is a `phenom` board at its baseUrl,
-  and a link to <baseUrl>search-results, job/ or c/ on a host of the
-  company's own domain is one too; the page's rows (their apply addresses,
+  and a link to <baseUrl>search-results, job/<jobId> or c/<slug>-jobs, each
+  in the shape measured, on a host of the company's own domain is one too;
+  the page's rows (their apply addresses,
   the system behind the site) are cut out before anything is tallied (see
   "Phenom: the reader" below).
 - **What the door must still do, because this file cannot:** make the
@@ -5584,14 +5585,25 @@ session runs the door.
   language, the last slash). One locale is one board, its count that locale's.
 - **Rows are keyword walks only**: fetch_workday's two searches,
   `<baseUrl>search-results?keywords=<term>` then `&from=10, 20, ...`
-  (`ats.phenom_walk`, through `ats._paged` and `ats._page`, every page
-  answered in place, no redirect followed). NEVER `s=1` (it silently drops
-  the keyword: Qualtrics answered its whole board) and NEVER the unfiltered
-  list for rows (its offset paging reorders between requests). Each page must
-  echo the keyword asked, state the walk's one totalHits, carry `hits` rows and
-  name this baseUrl in its phApp; nothing is asked past the total; a search
-  whose distinct rows (by jobId) are not its own totalHits raises - a short
-  walk is never published as read. The two searches are deduplicated by jobId.
+  (`ats.phenom_walk`, through `ats._paged`; every page read by `ats._ph_read`:
+  robots.txt at every hop through `ats.follow`, one request a hop by `ats._one`,
+  as a stream refused past `PHENOM_PAGE_MAX` bytes as it arrives, answered in
+  place, no redirect followed, a hop to itself included). NEVER `s=1` (it
+  silently drops the keyword: Qualtrics answered its whole board) and NEVER the
+  unfiltered list for rows (its offset paging reorders between requests). Each
+  page must echo the keyword asked, state the walk's one totalHits, carry `hits`
+  rows and name this baseUrl in its one phApp, in its one ddo; nothing is asked
+  past the total; a search whose distinct rows (by jobId) are not its own
+  totalHits raises - a walk that comes up short is never published as read. The
+  two searches are deduplicated by jobId. **What the count cannot see** (blind
+  review of 2026-11-27): a posting that closes while another opens in the
+  seconds a search is walked leaves totalHits the same on every page while the
+  offsets shift, so one open posting can be missed and the closed one kept for
+  that night, and the walk still counts whole; the next night reads them right.
+  It is the residual risk of every offset walk, the Workday reader's included -
+  a matched count is not proof of a whole walk, and nothing here claims more.
+  A search of 591 to 600 reads whole without the paginator's 'TRUNCATED' line
+  (one page past the ceiling, never asked).
 - **Part of the board by design**, as the Workday reader: its rows say nothing
   of the board's size. `ats.phenom_total` is the unfiltered page's totalHits
   (the whole locale board), and the door asks it first
@@ -5610,11 +5622,22 @@ session runs the door.
   address, Ashby's, ?gh_jid=), which is never read or followed; posted =
   dateCreated, or the earlier of it and postedDate - never postedDate alone (a
   mass refresh: every Qualtrics row read 2026-11-20T18:08:59) and never a
-  posting's JSON-LD datePosted (rewritten daily); the place the row's
-  location (else cityStateCountry) and each of its multi_location[] once, the
-  office hint its city, state and country with a part that names no place
-  ('Not Applicable', 'Remote', 'United States (Remote)') left out and never a
-  country it does not state (`ats.phenom_place`).
+  posting's JSON-LD datePosted (rewritten daily); the place the one the site's
+  own card shows (`ats.phenom_place`, blind review of 2026-11-27): WEX's every
+  row reads location 'Remote, Maine, United States of America', city 'Remote',
+  state 'Maine', address 'Remote Address, Remote, ME 99999' - a placeholder
+  under roles it places in Portland, ME - and its own places are in
+  locationName ('US - Remote', 'Portland, ME | Boston, MA'), the field its
+  page's `jobwidgetsettings` names for its cards (`ats._ph_shows`). So where a
+  page's cards show locationName, or a page naming no card fields carries one
+  on the row, the place is locationName's ' | ' parts, each once, and nothing
+  else; otherwise the row's location (else cityStateCountry) and each of its
+  multi_location[] once (Fiserv's cards name location and multi_location; the
+  other four name none). The office hint is the row's city, state and country
+  with a part that names no place ('Not Applicable', 'Remote', 'United States
+  (Remote)') left out, a state beside a city naming no place or in a
+  placeholder address ('Remote Address', 99999) left out too, and never a
+  country it does not state.
 - **The teaser is never the ad.** descriptionTeaser is ML-written: a row's jd
   is "" (nothing for the pay parser or the classifier to take as the
   employer's words) until FETCH_DETAILS reads the posting's own
@@ -5623,29 +5646,45 @@ session runs the door.
   `salary.parse` read none from either (2026-11-27): the parser's to weigh.
 - **People**: Snowflake's rows carry hiringManagerName, Qualtrics' postings
   recruiterNames, coordinatorDetails and sourcerDetails. None is read, and
-  no Phenom page is written to the HTTP cache (`ats._get(..., store=False)`:
-  the hosts are each employer's own, which NEVER_CACHED cannot list).
+  no Phenom page is written to the HTTP cache (`ats._ph_read` asks by
+  `ats._one`, which keeps nothing: the hosts are each employer's own, which
+  NEVER_CACHED cannot list).
 - **The employer** (`verify_boards._phenom`): one read of the UNFILTERED search
   page - its og:site_name, agreeing with its <title> where that is in a shape
   measured (`_PHENOM_TITLES`: Phenom's 'Search results | Find available job
   openings at X', Fiserv's 'Jobs at X', Qualtrics' 'Job Openings at X',
   WEX's 'X Job Openings: Search Results', Snowflake's 'Job Search | Explore
-  Careers at X'); with no og:site_name, a title in a measured shape alone
-  (Snowflake's); with neither, or where the two disagree, nothing. Never a
+  Careers at X'), a <head>'s scripts, styles and comments left out; with no
+  og:site_name, a title in a measured shape alone (Snowflake's); with neither,
+  or where the two disagree, nothing. Its `hosts` is empty (blind review of
+  2026-11-27): `judge()` reads hosts as where apply links point, and the
+  site's own host - which a name holding theirs also holds - turned a site
+  naming nobody into 'matches'; the host is the door's to hold. Never a
   row's or posting's `client` (Conduent's name end clients), a posting's
   companyName (a subsidiary's legal name), refNum, the host or twitter:site
   (WEX's reads '@Lychee shadow'). `n` is the page's totalHits, the whole
   board, never partial. Inside the door's plan the size gate's answer is the
   probe's (`ats.phenom_kept`): one request a board for both.
-- **Check 1 is also the host** (`ats.phenom_on_site`, in the door): the
-  baseUrl's host is the company's website's domain or a host under it
-  (careers.conduent.com under conduent.com; www.qualtrics.com), held to the
-  website on file; a Phenom site on another domain, or a website on file that
-  is a page inside a larger site, is a doubt for the owner.
+- **Check 1 is also the host** (`ats.phenom_on_site`, in the door's plan
+  and again in its apply, `wire_found.wire_problem`, against the record as it
+  reads then): the baseUrl's host is the company's website's domain or a host
+  under it (careers.conduent.com under conduent.com; www.qualtrics.com), held
+  to the website on file; a Phenom site on another domain, or a website on
+  file that is a page inside a larger site (a locale's path included: the
+  owner looks), is a doubt for the owner, in words that say which half failed
+  (`ats.phenom_off_site`: 'it is on X, which is neither their website's host
+  nor a host under it', or 'their website on file is a page inside a larger
+  site'). A website edited between plan and write - given a path, or moved to
+  a sibling host - leaves the row alone as moved.
 - **The finder** (`find_site_boards.phenom_sites`): a page whose own script
   carries the phApp object is the board at its baseUrl; failing that, a link,
-  frame or redirect to <baseUrl>search-results, job/ or c/ on a host of the
-  company's own registrable domain. The page's rows are cut out before
+  frame or redirect to <baseUrl>search-results (ending its path segment),
+  job/<jobId> (a jobId with a digit, as every one measured has) or
+  c/<slug>-jobs (as all six sites name their categories) on a host of the
+  company's own registrable domain - no looser (blind review of 2026-11-27: a
+  store's /us/en/c/radios, a support article's /us/en/job/how-to-reset and a
+  site search's search-results.html were each filed as a Phenom board, and
+  held a real board beside them as 'more than one board'). The page's rows are cut out before
   anything is tallied (`find_site_boards.phenom_unrowed`): without the cut,
   WEX's and Fiserv's pages name a Workday board and Snowflake's an Ashby one
   from their rows' apply addresses. Every phenompeople.com address is
@@ -5653,13 +5692,20 @@ session runs the door.
   read naming no board. discover_js and discover_ats name no Phenom board: its
   address names no vendor.
 - **A company moving from html keeps its postings' days and opening ids**:
-  the html rows on file are the site's own posting addresses with no place,
-  the reader's the same addresses with one, so `build_board.posting_key`
-  matches a posting on `ats.phenom_posting_key` (its baseUrl and jobId, the
-  slug left out), and an earlier night's snapshot is looked up under the
-  address with no place (`ats.phenom_posting_forms`). The opening id moves only
-  where the html reader cut a title (Adobe's 'Sr. Full Stack Engineer' with
-  '(Back-end), Agentic Governance' as its place): the reader's title is the
+  the html rows on file are the site's own posting addresses, most with no
+  place and some with the tail of a title the html reader cut as their place
+  (Adobe's 'Sr. Full Stack Engineer' in '(Back-end), Agentic Governance', three
+  on the board of 2026-11-27; Conduent's 'Medical Services Specialist with
+  Czech and English Language (100%' in 'Remote)', in the snapshots since
+  2026-08-26), the reader's the same addresses with the posting's own place.
+  So `build_board.posting_key` matches a posting on `ats.phenom_posting_key`
+  (its baseUrl and jobId, the slug left out); an earlier night's snapshot is
+  looked up under the address with no place or the reader's own
+  (`ats.phenom_posting_forms`), and under each cut of the reader's own title at
+  a space as that night's exact id - the head as the title, the tail as the
+  place (`ats.phenom_title_cuts`; blind review of 2026-11-27: Conduent's 24898,
+  open still, would have been dated the night of the switch). The opening id
+  moves only where the html reader cut a title: the reader's title is the
   posting's own.
 - **THE REQUESTS A NIGHT** are the pages of the two walks, ten rows a page, 95
   to 240 KB each, no ETag: ceil(account-executive hits / 10) + ceil(sales hits
@@ -5676,15 +5722,20 @@ session runs the door.
   pages (seven requests in all, robots.txt included, through `ats._page`).
 - Ranks 'none' (`build_board.ats_tier`): Job Hunter's parsers do not list it.
 - Guard: `check_phenom_reads_two_searches_and_states_its_name_once` (the read
-  and its requests, the rows, the dates, the place, the teaser, the people,
-  the cache, every way a walk is not whole, the zero, the ad behind
-  FETCH_DETAILS, the probe and its shapes, the finder's forms and the row
-  cut, the public link, the rank, the host rule, the first-seen carry from
-  the previous board and an earlier night, and the door: WIRE, HOLD on
-  another name or another domain, SKIP a giant unread), beside a row in
+  and its requests, the rows, the dates, the place each site's card shows and
+  the placeholder office, the teaser, the people, the cache, the stream and its
+  cap, every way a walk is not whole each in its own words, a 600-row search
+  read whole and not logged as cut, the zero, the ad behind FETCH_DETAILS and
+  only that posting's on this site, the probe and its shapes, its empty hosts
+  and judge()'s 'unknown' for a site naming nobody, the finder's forms in the
+  shapes measured and the row cut, the public link, the rank, the host rule
+  clause by clause and its words, the first-seen carry from the previous
+  board, an earlier night and a cut title's night, and the door: WIRE, HOLD on
+  another name or each host shape, SKIP a giant unread, and apply leaving a row
+  alone when the website moved since the plan), beside a row in
   `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS, the type in
   `check_a_stated_name_does_not_loosen_the_older_doors`, `ats._ph_read` among
-  the page readers of `check_the_crawler_honours_robots_txt`, the public link
+  the streamed readers of `check_the_crawler_honours_robots_txt`, the public link
   in `check_what_the_second_review_of_the_new_readers_found_stays_fixed`, and
   the desk card's link in `check_the_boards_found_card_opens_what_it_names`.
 

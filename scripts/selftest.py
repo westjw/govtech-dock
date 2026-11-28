@@ -6775,13 +6775,16 @@ def _ph_job(n, title, **over):
 
 def _ph_page(jobs=(), total=None, keywords="", base=_ID_PH, site="Acme Gov Systems",
              title="Search results  | Find available job openings at Acme Gov Systems",
-             hits=None, status=200, app=None, ddo=None, head=""):
+             hits=None, status=200, app=None, ddo=None, head="", cards=None):
     app = {"baseUrl": base, "refNum": "ACMEUS", "locale": "en_us", "country": "us",
            "cdnUrl": "https://cdn.phenompeople.com/CareerConnectResources"} if app is None else app
     block = {"status": status, "hits": len(jobs) if hits is None else hits,
              "totalHits": len(jobs) if total is None else total, "eid": {"banditId": "TEST_0"},
              "data": {"jobs": list(jobs), "keywords": keywords, "aggregations": []}}
     ddo = {"eagerLoadRefineSearch": block, "siteConfig": {}} if ddo is None else ddo
+    if cards is not None:            # the fields the site's own job cards show (jobwidgetsettings)
+        ddo = dict(ddo, jobwidgetsettings={"status": "success", "data": {
+            "fields": [{"name": f, "checked": True} for f in cards]}})
     og = f'<meta property="og:site_name" content="{site}" />' if site is not None else ""
     return (f'<!DOCTYPE html><html><head><title>{title}</title>{og}'
             f'<meta name="twitter:site" content="@SomebodyElse" />{head}</head><body>'
@@ -16176,15 +16179,17 @@ def check_the_crawler_honours_robots_txt() -> int:
     # the page readers go through _page; a raw _get in one reads past robots.txt
     for name in ("_schema_posting", "fetch_paylocity", "_page_text", "fetch_rippling",
                  "_rippling_detail", "fetch_jazzhr", "fetch_icims", "fetch_html_titles",
-                 "fetch_gusto", "_trinet_read", "_cc_hosted", "_cc_api", "_ph_read"):
+                 "fetch_gusto", "_trinet_read", "_cc_hosted", "_cc_api"):
         src = inspect.getsource(getattr(ats, name))
         if re.search(r"(?<![\w.])_get\(", src) or "_page(" not in src:
             errors += fail(f"ats.{name} reads a page without asking robots.txt")
     # ...and the feeds read as a stream, capped as they arrive (_get takes a
     # body whole to fix its charset), walk every hop through follow(), which
     # asks robots.txt at each, one request a hop by _one (a JobScore feed:
-    # blind review of 2026-11-24; a Jobvite account's feed)
-    for name in ("_jobscore_read", "_jvx_body"):
+    # blind review of 2026-11-24; a Jobvite account's feed) - and so does a
+    # Phenom site's page, 95 to 240 KB, capped as it arrives (blind review of
+    # 2026-11-27)
+    for name in ("_jobscore_read", "_jvx_body", "_ph_read"):
         src = inspect.getsource(getattr(ats, name))
         if re.search(r"(?<![\w.])_(?:get|page)\(", src) or not re.search(
                 r"(?<![\w.])follow\(url, lambda u: _one\(u, stream=True\)", src):
@@ -25149,6 +25154,19 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
     THE DOOR: wired on two checks, the unfiltered page asked once for the size
     and the name; held when the site names somebody else, or sits on another
     domain than their website; a giant skipped unread.
+    THE BLIND REVIEW OF 2026-11-27, each finding pinned so it fails without its
+    fix: the place a site's own card shows (WEX's locationName over its
+    placeholder location), no office from a state beside a city naming no
+    place or in a placeholder address; a cut title's earlier night; every
+    reader rule in its own words (two phApp objects, two ddo blocks, a
+    totalHits of True, more rows than the total, an empty page inside it, a
+    keyword that is no text, a jobId with a '/', a page past the cap - read as
+    a stream and refused as it arrives - a redirect to itself, the ad of
+    another posting or another site, a name in a <head>'s script or comment);
+    600 rows read whole and not logged as cut; the host rule clause by clause
+    and in words that say which half failed, at the plan and again at the
+    write; the finder's link forms in the shapes measured only; and a site
+    naming nobody judged 'unknown', its hosts empty.
     """
     sys.path.insert(0, str(ROOT / "scripts"))
     import ats
@@ -25172,15 +25190,25 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
     MAIN = {AE: _ph_page(AE_JOBS, 11, "account executive"),
             AE + "&from=10": _ph_page(AE2, 11, "account executive"),
             SA: _ph_page(SA_JOBS, 3, "sales")}
-    sent, asked, gated, web = [], [], [], {}
+    sent, asked, gated, web, drained, sipped = [], [], [], {}, [], []
 
     class Resp:
         def __init__(self, code, text="", headers=None, url=""):
             self.status_code, self.headers, self.url = code, dict(headers or {}), url
-            self.text, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
+            self._body, self.content, self.encoding = text, text.encode("utf-8"), "utf-8"
+
+        @property
+        def text(self):                  # a page taken whole, not read as a stream
+            drained.append(self.url)
+            return self._body
+
+        def iter_content(self, chunk_size=1):
+            for i in range(0, len(self.content), chunk_size):
+                sipped.append(len(self.content[i:i + chunk_size]))
+                yield self.content[i:i + chunk_size]
 
         def json(self):
-            return json.loads(self.text)
+            return json.loads(self._body)
 
         def close(self):
             pass
@@ -25195,7 +25223,7 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
             200, v, {"content-type": "text/html; charset=UTF-8", "ETag": '"e1"'}, url)
 
     def serve(routes):
-        sent.clear(), asked.clear(), gated.clear(), web.clear()
+        sent.clear(), asked.clear(), gated.clear(), web.clear(), drained.clear(), sipped.clear()
         web.update(routes)
 
     def read(routes, ref=B):
@@ -25207,10 +25235,11 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
 
     held = (ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS,
             dict(ats._HOST_NOT_BEFORE))
+    pause = ats.DETAIL_PAUSE
     cache = pathlib.Path(tempfile.mkdtemp(prefix="phenom-cache-"))
     try:
         ats.requests.get, ats.ask_robots, ats._host_gate = get, asked.append, gated.append
-        ats.HTTP_CACHE, ats.FETCH_DETAILS = cache, False
+        ats.HTTP_CACHE, ats.FETCH_DETAILS, ats.DETAIL_PAUSE = cache, False, 0
 
         # ---- the read: two keyword walks, deduplicated, through the helpers ----------
         rows, exc = read(MAIN)
@@ -25229,11 +25258,12 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
                                "mass refresh is never the date, and postedDate alone is none")
             gov = by["Account Executive - State & Local (Gov't)"]
             if gov["location"] != "Remote, Maine, United States; Austin, Texas, United States" \
-                    or gov["office_hint"] != {"city": None, "state": "ME", "country": "United States"} \
+                    or gov["office_hint"] != {"city": None, "state": None, "country": "United States"} \
                     or by["Sales Manager"]["location"] != "United States (Remote)" \
                     or by["Sales Manager"]["office_hint"] is not None:
                 errors += fail(f"phenom: the place is not the row's own (each of several once), or the "
-                               f"office took 'Remote' for a city or a country the row never states: "
+                               f"office took 'Remote' for a city, the state beside it for an office's, or a "
+                               f"country the row never states: "
                                f"{gov['location']!r} {gov['office_hint']} / {by['Sales Manager']['office_hint']}")
             if any(r["jd"] or r["comp"] for r in rows):
                 errors += fail("phenom: the ML-written teaser was read as the ad, or parsed for pay")
@@ -25252,7 +25282,7 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
         # ---- whole or not at all ----------------------------------------------------------
         for routes, words, why in (
                 ({**MAIN, AE + "&from=10": _ph_page(AE_JOBS[:1], 11, "account executive")},
-                 "a short walk", "a search whose pages give fewer rows than its totalHits"),
+                 "comes up short", "a search whose pages give fewer rows than its totalHits"),
                 ({**MAIN, AE + "&from=10": _ph_page(AE2, 12, "account executive")},
                  "counted 11 and then 12", "a total that moves between two pages"),
                 ({**MAIN, SA: _ph_page(SA_JOBS, 3, "")}, "dropped its keyword", "a keyword dropped (s=1)"),
@@ -25270,13 +25300,46 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
                  "a redirect"),
                 ({k: v for k, v in MAIN.items() if k != SA}, "HTTP 404", "a gone search"),
                 ({**MAIN, AE: _ph_page(AE_JOBS, 601, "account executive")}, "never read in part",
-                 "a search past the ceiling")):
+                 "a search past the ceiling"),
+                # EACH RULE IN ITS OWN WORDS (blind review of 2026-11-27: these
+                # passed with the rule removed, some backed by another rule's
+                # words and some by nothing)
+                ({**MAIN, SA: _ph_page(SA_JOBS, 3, "sales", head=(
+                    f'<script>var phApp = phApp || {json.dumps({"baseUrl": B})};</script>'))},
+                 "not this Phenom site", "a page carrying two phApp objects"),
+                ({**MAIN, SA: _ph_page(SA_JOBS, 3, "sales", head=(
+                    "<script>phApp.ddo = " + json.dumps({"eagerLoadRefineSearch": {
+                        "status": 200, "hits": 3, "totalHits": 3,
+                        "data": {"jobs": SA_JOBS, "keywords": "sales"}}}) + ";</script>"))},
+                 "block(s), not one", "a page carrying two phApp.ddo blocks"),
+                ({**MAIN, SA: _ph_page(SA_JOBS[:1], True, "sales")}, "shape measured",
+                 "a totalHits of True"),
+                ({**MAIN, SA: _ph_page(SA_JOBS, 2, "sales")}, "shape measured",
+                 "a page carrying more rows than its own totalHits"),
+                ({**MAIN, AE + "&from=10": _ph_page([], 11, "account executive")}, "carried no row",
+                 "an empty page inside the search's own total"),
+                ({**MAIN, SA: _ph_page(SA_JOBS, 3, None)}, "shape measured", "a keyword that is no text"),
+                ({**MAIN, SA: _ph_page(SA_JOBS + [_ph_job(14, "Sales Rep", jobId="AG/0014")], 4, "sales")},
+                 "no jobId in the site's own form", "a jobId with a '/' in it"),
+                ({**MAIN, SA: _ph_page(SA_JOBS, 3, "sales") + " " * ats.PHENOM_PAGE_MAX},
+                 "this reader's cap", "a page past PHENOM_PAGE_MAX bytes")):
             rows, exc = read(routes)
             if not isinstance(exc, ats.AtsError) or words not in str(exc):
                 errors += fail(f"phenom: {why} did not raise saying {words!r}: {exc or len(rows or [])}")
+        # ...the cap as the page arrives, never the page pulled down whole first
+        rows, exc = read({**MAIN, SA: _ph_page(SA_JOBS, 3, "sales") + " " * ats.PHENOM_PAGE_MAX})
+        if sum(sipped) > ats.PHENOM_PAGE_MAX + 2 * 65536 or drained:
+            errors += fail(f"phenom: a page past the cap was read whole before it was refused "
+                           f"({sum(sipped):,} bytes taken, {len(drained)} page(s) taken whole)")
         rows, exc = read({**MAIN, SA: Resp(302, headers={"Location": B + "search-results"})})
         if B + "search-results" in [u for u, _ in sent]:
             errors += fail("phenom: a redirect's target was asked")
+        # ...nor a hop back to the very page (follow() asks up to ten of those)
+        rows, exc = read({**MAIN, SA: Resp(302, headers={"Location": SA})})
+        if not isinstance(exc, ats.AtsError) or "leads off" not in str(exc) \
+                or [u for u, _ in sent].count(SA) != 1:
+            errors += fail(f"phenom: a page redirecting to itself was asked "
+                           f"{[u for u, _ in sent].count(SA)} times ({exc})")
         rows, exc = read({**MAIN, AE: _ph_page(AE_JOBS, 601, "account executive")})
         if [u for u, _ in sent] != [AE]:
             errors += fail(f"phenom: a search past the ceiling was walked: {[u for u, _ in sent]}")
@@ -25286,6 +25349,81 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
                            f"nothing open in it: {exc or rows}")
         if ats.PHENOM_TERMS != ("account executive", "sales"):
             errors += fail("phenom: the searches are not fetch_workday's two")
+        if drained:
+            errors += fail(f"phenom: {len(drained)} page(s) were taken whole, not read as a stream "
+                           f"capped as it arrives: {drained[:2]}")
+        # A SEARCH OF 600 READS WHOLE AND SAYS SO (blind review of 2026-11-27: 591 to
+        # 600 rows were read whole and logged 'this result is TRUNCATED')
+        big = [_ph_job(100 + i, f"Sales Rep {i}") for i in range(600)]
+        routes = {AE: _ph_page([], 0, "account executive")}
+        for k in range(60):
+            routes[SA + (f"&from={10 * k}" if k else "")] = _ph_page(big[10 * k:10 * k + 10], 600, "sales")
+        said_err = io.StringIO()
+        with contextlib.redirect_stderr(said_err):
+            rows, exc = read(routes)
+        if exc or len(rows or []) != 600 or len(sent) != 61 or "TRUNCATED" in said_err.getvalue():
+            errors += fail(f"phenom: a search of 600 did not read whole in its 60 pages, or was logged as "
+                           f"cut: {exc or len(rows or [])} rows, {len(sent)} requests, "
+                           f"{said_err.getvalue().strip()[:160]!r}")
+
+        # ---- the place the site's own card shows (blind review of 2026-11-27) --------------
+        # WEX's every row: a placeholder location, city 'Remote', state 'Maine' and a
+        # 'Remote Address ... 99999' address, its own places in locationName, which its
+        # page's cards show. Fiserv's cards show location; a page naming no card fields
+        # shows what a row carries. A state beside a city naming no place, or in a
+        # placeholder address, is no office's.
+        import roles
+
+        def office(r):                     # build_board's reading: the place's, else the hint's
+            g = roles.geography(r["location"], r["title"])
+            h = r["office_hint"] or {}
+            return g["work_mode"], g["office"] or (
+                {"city": h.get("city"), "state": h.get("state")} if h.get("city") or h.get("state") else None)
+
+        def placed(jobs, cards):
+            got, why_not = read({AE: _ph_page(jobs, len(jobs), "account executive", cards=cards),
+                                 SA: _ph_page([], 0, "sales")})
+            return {r["title"]: r for r in got or []}, why_not
+        stand_in = dict(location="Remote, Maine, United States of America", city="Remote", state="Maine",
+                        country="United States of America",
+                        address="Remote Address, Remote, ME 99999, United States of America",
+                        cityStateCountry="Remote, Maine, United States of America",
+                        multi_location=["Remote, Maine, United States of America"])
+        by, exc = placed([_ph_job(21, "Program Director", locationName="Portland, ME", **stand_in),
+                          _ph_job(22, "Account Executive", locationName="US - Remote", **stand_in),
+                          _ph_job(23, "Sales Engineer", locationName="Portland, ME | Boston, MA | Portland, ME",
+                                  **stand_in),
+                          _ph_job(24, "Sales Analyst", locationName="", **stand_in)],
+                         ["locationName", "category", "type", "jobId", "descriptionTeaser"])
+        if exc or [by.get(t, {}).get("location") for t in
+                   ("Program Director", "Account Executive", "Sales Engineer", "Sales Analyst")] != [
+                "Portland, ME", "US - Remote", "Portland, ME; Boston, MA", ""] \
+                or office(by["Program Director"]) != ("not stated", {"city": "Portland", "state": "ME"}) \
+                or office(by["Account Executive"]) != ("remote", None):
+            errors += fail(f"phenom: on a site whose cards show locationName the place is not its own "
+                           f"(each part once, nothing where it names none), or a placeholder made an "
+                           f"office or a remote role: {exc or {t: (r['location'], office(r)) for t, r in by.items()}}")
+        by, exc = placed([_ph_job(25, "Sales Director", locationName="Elsewhere, ZZ")],
+                         ["location", "multi_location", "category"])
+        if exc or by.get("Sales Director", {}).get("location") != "Austin, Texas, United States":
+            errors += fail(f"phenom: on a site whose cards show location a row's locationName was the "
+                           f"place: {exc or by.get('Sales Director', {}).get('location')!r}")
+        by, exc = placed([_ph_job(26, "Sales Lead", locationName="Portland, ME"),
+                          _ph_job(27, "Sales Rep", city="Remote", state="Maine", country="United States",
+                                  address=""),
+                          _ph_job(28, "Sales Agent", city="", state="Maine", country="United States",
+                                  address="Remote Address, Remote, ME 99999, United States"),
+                          _ph_job(29, "Sales Clerk", city="Not Applicable", state="", country="United States"),
+                          _ph_job(30, "Sales Aide", city="Portland", state="Maine", country="United States",
+                                  address="1 Main Street, Portland, ME 04101, United States")], None)
+        hints = {t: (by.get(t, {}).get("office_hint") or {}) for t in
+                 ("Sales Rep", "Sales Agent", "Sales Clerk", "Sales Aide")}
+        if exc or by.get("Sales Lead", {}).get("location") != "Portland, ME" \
+                or [hints[t].get("state") for t in ("Sales Rep", "Sales Agent", "Sales Aide")] != [None, None, "ME"] \
+                or hints["Sales Clerk"].get("city") is not None:
+            errors += fail(f"phenom: on a site naming no card fields a row's locationName is not the place, or "
+                           f"a state beside a city naming no place (or in a placeholder address) made an "
+                           f"office, or 'Not Applicable' was a city: {exc or hints}")
 
         # ---- the ad, only behind FETCH_DETAILS, one request a posting -------------------------
         post = {"jobDetail": {"status": 200, "data": {"job": {
@@ -25302,6 +25440,27 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
             errors += fail(f"phenom: under FETCH_DETAILS the posting's own description is not the ad, its "
                            f"pay not read by the text parser, or more than one request a posting was made: "
                            f"{exc or sm} ({len(sent)} requests)")
+        # ...and only that posting's, on this site (blind review of 2026-11-27): a page
+        # answering as another posting, or naming another site, gives no ad
+        another = {"jobDetail": {"status": 200, "data": {"job": dict(
+            post["jobDetail"]["data"]["job"], jobId="AG0099", description="<p>Sell to counties.</p>")}}}
+        for page, why in ((_ph_page(ddo=another), "a posting page answering as another posting"),
+                          (_ph_page(ddo=post, base="https://careers.other.example/us/en/"),
+                           "a posting page whose phApp names another site")):
+            ats.FETCH_DETAILS = True
+            rows, exc = read({**MAIN, f"{B}job/AG0012/Sales-Manager": page})
+            ats.FETCH_DETAILS = False
+            sm = next((r for r in rows or [] if r["title"] == "Sales Manager"), {})
+            if exc or not sm or sm.get("jd") or sm.get("comp"):
+                errors += fail(f"phenom: {why} gave the row an ad: {exc or sm.get('jd')!r}")
+        serve({})
+        try:
+            ats.phenom_ad("https://careers.other.example/us/en/job/AG0012/Sales-Manager", B)
+            exc = None
+        except ats.AtsError as e:
+            exc = e
+        if exc is None or sent:
+            errors += fail(f"phenom: another site's posting was asked as this site's: {exc} {sent[:1]}")
 
         # ---- the probe: one unfiltered page, its own name, its whole count -------------------
         def says(page):
@@ -25324,6 +25483,21 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
                             title="Job Openings at Beta Gov"))
         if got["names"] != ["Beta Gov"]:
             errors += fail(f"phenom probe: a row's client or companyName was read as a name: {got['names']}")
+        # a name in a script or a comment of the <head> is not what the page states
+        got = says(_ph_page([], 0, site=None, head=(
+            "<script>var t = '<meta property=\"og:site_name\" content=\"Beta Gov\">';</script>"
+            "<!-- <title>Job Openings at Beta Gov</title> -->"
+            '<meta property="og:site_name" content="Acme Gov Systems" />')))
+        if got["names"] != ["Acme Gov Systems"]:
+            errors += fail(f"phenom probe: a name in a script or a comment of the page's <head> was read: "
+                           f"{got['names']} ({got['how']!r})")
+        # A SITE THAT NAMES NOBODY IS NO MATCH FOR ANYBODY (blind review of
+        # 2026-11-27): its own host is no apply link, and judge() reads `hosts` as one
+        got = says(_ph_page([], 0, site=None, title="Careers Home"))
+        verdict = vb.judge({"name": "Acme Gov", "website": "https://www.acmegov.example"}, got)
+        if got["hosts"] != set() or verdict["verdict"] != "unknown":
+            errors += fail(f"phenom probe: a site that names nobody gave hosts {got['hosts']} and was judged "
+                           f"{verdict['verdict']!r} ({verdict['why']!r})")
 
         # ---- the finder: the forms a company's own page names the site in --------------------
         here, home = "https://www.acmegov.example/careers", "https://www.acmegov.example"
@@ -25337,6 +25511,17 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
                  [("phenom", "https://careers.acmegov.example/careers/fr/fr/")], [], "a posting under a prefix"),
                 ('<a href="https://careers.otherco.example/us/en/search-results">Jobs</a>', [], [],
                  "the same shape on somebody else's domain"),
+                # each form in the shape measured, and no looser (blind review of 2026-11-27)
+                ('<a href="https://careers.acmegov.example/us/en/c/sales-jobs">Sales jobs</a>',
+                 [("phenom", B)], [], "a category of the site's ('<slug>-jobs')"),
+                ('<a href="https://careers.acmegov.example/us/en/search-results/careers">Jobs</a>',
+                 [("phenom", B)], [], "the site's search with a path after it"),
+                ('<a href="https://www.acmegov.example/us/en/c/radios">Radios</a>', [], [],
+                 "a store's category on their own domain"),
+                ('<a href="https://support.acmegov.example/us/en/job/how-to-reset">How to</a>', [], [],
+                 "a support article on their own domain"),
+                ('<a href="https://www.acmegov.example/content/site/us/en/search-results.html">Find</a>', [], [],
+                 "their own site search's page"),
                 ('<script src="https://cdn.phenompeople.com/CareerConnectResources/x.js"></script>', [],
                  ["phenom-other"], "Phenom's assets alone")):
             found, rest = fsb.sightings(markup, here, home)
@@ -25358,11 +25543,26 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
                                 ("https://www.acmegov.example/careers/us/en/", "https://www.acmegov.example/", True),
                                 (B, "https://www.otherco.example", False),
                                 (B, "https://www.parent.example/acmegov/", False),
-                                (B, "https://notacmegov.example", False), ("acme", "https://acme.example", False)):
+                                (B, "https://notacmegov.example", False), ("acme", "https://acme.example", False),
+                                # each clause on its own (blind review of 2026-11-27): a host
+                                # that only ends in their domain; a website on their very host
+                                # that names a page; a host merely holding their name
+                                ("https://careers.notacmegov.example/us/en/", "https://acmegov.example", False),
+                                (B, "https://www.acmegov.example/products/", False),
+                                ("https://careers.acmegovholdings.example/us/en/", "https://www.acmegov.example",
+                                 False)):
             if ats.phenom_on_site(ref_, site_) != ok:
                 errors += fail(f"phenom: {ref_} on {site_} is {'not ' if ok else ''}their own site's domain")
+        for ref_, site_, words in (
+                ("https://careers.notacmegov.example/us/en/", "https://acmegov.example", "neither their website's host"),
+                (B, "https://www.acmegov.example/products/", "a page inside a larger site"),
+                (B, "", "no website is on file")):
+            if words not in (ats.phenom_off_site(ref_, site_) or ""):
+                errors += fail(f"phenom: {ref_} on {site_!r} is held without saying {words!r}: "
+                               f"{ats.phenom_off_site(ref_, site_)!r}")
     finally:
         ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE, ats.FETCH_DETAILS = held[:5]
+        ats.DETAIL_PAUSE = pause
         ats._HOST_NOT_BEFORE.clear()
         ats._HOST_NOT_BEFORE.update(held[5])
         shutil.rmtree(cache, ignore_errors=True)
@@ -25391,15 +25591,38 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
         errors += fail(f"phenom: a posting known by its jobId under another slug, or only by an earlier "
                        f"night's snapshot of the html row, was re-dated ({retitled['first_seen']}, "
                        f"{snapped['first_seen']})")
+    # ...AND ONE WHOSE TITLE THE HTML READER CUT, its tail written as the place, known
+    # only by an earlier night's snapshot (blind review of 2026-11-27)
+    whole = "Account Executive, State and Local (100% Remote)"
+    at = f"{B}job/AG0005/Account-Executive-State-and-Local-100-Remote"
+    cut_night = {bb.posting_id("acme-gov", "Account Executive, State and Local (100%", at, "Remote)"):
+                 "2026-09-15"}
+
+    def whole_row(cid):
+        return {"id": bb.posting_id(cid, whole, at, "Austin, Texas, United States"),
+                "opening_id": bb.opening_id(cid, whole), "company_id": cid, "title": whole, "url": at,
+                "location": "Austin, Texas, United States", "first_seen": "2026-11-27", "source": "ats"}
+    mine, theirs = whole_row("acme-gov"), whole_row("beta-gov")
+    bb.carry_first_seen([mine, theirs], [], cut_night)
+    if mine["first_seen"] != "2026-09-15" or theirs["first_seen"] != "2026-11-27":
+        errors += fail(f"phenom: a posting the html reader wrote with a cut title (its tail as the place), "
+                       f"known only by an earlier night, was dated {mine['first_seen']}, or another "
+                       f"company's took its day ({theirs['first_seen']})")
 
     # ---- the door: two checks, one ask of the unfiltered page, the giants -------------------
     import admin
     import wire_found as wf
     A_B, B_B, G_B, O_B = (f"https://careers.{c}.test/us/en/" for c in ("acmegov", "betagov", "gammagov", "acmegov"))
     O_B = "https://careers.otherco.test/us/en/"
+    # one company on each shape the host rule holds (blind review of 2026-11-27): a
+    # host that only ends in their domain, a website on file naming a page on their
+    # own host, a host that merely holds their name
+    E_B, T_B, I_B = ("https://careers.notetagov.test/us/en/", "https://careers.thetagov.test/us/en/",
+                     "https://careers.iotagovholdings.test/us/en/")
     routes = {}
     for base, name, total in ((A_B, "Acme Gov Systems", 3), (B_B, "Gamma Holdings LLC", 3),
-                              (G_B, "Gamma Gov", 900), (O_B, "Delta Gov", 3)):
+                              (G_B, "Gamma Gov", 900), (O_B, "Delta Gov", 3), (E_B, "Eta Gov", 3),
+                              (T_B, "Theta Gov", 3), (I_B, "Iota Gov", 3)):
         routes[base + "search-results"] = _ph_page([_ph_job(1, "x")], total, base=base, site=name,
                                                    title=f"Job Openings at {name}")
         routes[base + "search-results?keywords=account%20executive"] = _ph_page(
@@ -25413,15 +25636,26 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
         ats.requests.get, ats.ask_robots, ats._host_gate, ats.HTTP_CACHE = get, asked.append, gated.append, None
         serve(routes)
         with _WiringBox([_wb_co("acme-gov", "Acme Gov Systems"), _wb_co("beta-gov", "Beta Gov"),
-                         _wb_co("gamma-gov", "Gamma Gov"), _wb_co("delta-gov", "Delta Gov")], {}) as box, \
+                         _wb_co("gamma-gov", "Gamma Gov"), _wb_co("delta-gov", "Delta Gov"),
+                         _wb_co("eta-gov", "Eta Gov"),
+                         _wb_co("theta-gov", "Theta Gov", website="https://www.thetagov.test/products/"),
+                         _wb_co("iota-gov", "Iota Gov")], {}) as box, \
                 contextlib.redirect_stderr(io.StringIO()):
             (add_company.read_board, add_company.board_total, vb.board_says, vb.proven, ats.follow,
              ats._one, ats.fetch, ats._get, ats._page) = real
             _code, _text, _wl, rows_ = box.plan(_wb_results({
                 "acme-gov": _wb_one("acme-gov", "phenom", A_B), "beta-gov": _wb_one("beta-gov", "phenom", B_B),
                 "gamma-gov": _wb_one("gamma-gov", "phenom", G_B),
-                "delta-gov": _wb_one("delta-gov", "phenom", O_B)}))
+                "delta-gov": _wb_one("delta-gov", "phenom", O_B),
+                "eta-gov": _wb_one("eta-gov", "phenom", E_B), "theta-gov": _wb_one("theta-gov", "phenom", T_B),
+                "iota-gov": _wb_one("iota-gov", "phenom", I_B)}))
         a, b, g, d = ((rows_ or {}).get(c) or {} for c in ("acme-gov", "beta-gov", "gamma-gov", "delta-gov"))
+        for cid, words in (("eta-gov", "neither their website's host"), ("theta-gov", "a page inside a larger site"),
+                           ("iota-gov", "neither their website's host")):
+            r = (rows_ or {}).get(cid) or {}
+            if r.get("action") != "HOLD" or words not in _wb_words(r):
+                errors += fail(f"phenom door: {cid}'s site, on a host the rule holds, was not held saying "
+                               f"{words!r}: {r.get('action')} ({_wb_words(r)[:240]!r})")
         if a.get("action") != "WIRE" or (a.get("type"), a.get("ref")) != ("phenom", A_B):
             errors += fail(f"phenom door: a site their own page links, on their domain, naming them, was not "
                            f"wired: {a.get('action')} ({_wb_words(a)[:240]!r})")
@@ -25432,13 +25666,37 @@ def check_phenom_reads_two_searches_and_states_its_name_once() -> int:
                 or any(u.startswith(G_B) and "keywords=" in u for u, _ in sent):
             errors += fail(f"phenom door: a site over the giants line was not skipped unread: "
                            f"{g.get('action')} {g.get('kind')} ({_wb_words(g)[:200]!r})")
-        if d.get("action") != "HOLD" or "not on their own website's domain" not in _wb_words(d):
+        if d.get("action") != "HOLD" or "neither their website's host" not in _wb_words(d):
             errors += fail(f"phenom door: a site on another domain than their website was not held: "
                            f"{d.get('action')} ({_wb_words(d)[:240]!r})")
         once = [u for u, _ in sent if u.endswith("search-results")]
         if sorted(once) != sorted({u for u in once}) or A_B + "search-results" not in once:
             errors += fail(f"phenom door: a site's unfiltered page was asked {once}, not once for the size "
                            f"and the name together")
+        # APPLY ASKS THE HOST RULE AGAIN, of the record as it reads now (blind review
+        # of 2026-11-27): a website edited between the plan and the write - given a
+        # path, or moved to a sibling host - is no domain to hold the site to
+        for moved_to in ("https://www.acmegov.test/gov/", "https://shop.acmegov.test"):
+            serve(routes)
+            with _WiringBox([_wb_co("acme-gov", "Acme Gov Systems")], {}) as box, \
+                    contextlib.redirect_stderr(io.StringIO()):
+                (add_company.read_board, add_company.board_total, vb.board_says, vb.proven, ats.follow,
+                 ats._one, ats.fetch, ats._get, ats._page) = real
+                _code, _text, wl, rows_ = box.plan(_wb_results({"acme-gov": _wb_one("acme-gov", "phenom", A_B)}))
+                planned = ((rows_ or {}).get("acme-gov") or {}).get("action")
+
+                def edit(by_id, _cs, to=moved_to):
+                    by_id["acme-gov"]["website"] = to
+                box.by_hand(edit, why="selftest: the website on file was corrected")
+                _code, said, code = box.look(wl)
+                if code:
+                    box.write(wl, code)
+                now = box.record("acme-gov").get("ats") or {}
+            if planned != "WIRE" or now.get("type") == "phenom" \
+                    or "not shown to be on their own domain as the record reads now" not in said:
+                errors += fail(f"phenom door: a Phenom site planned to wire ({planned}) was wired, or left "
+                               f"alone without saying why, after the website moved to {moved_to}: "
+                               f"{now} {said[-300:]!r}")
     finally:
         (add_company.read_board, add_company.board_total, vb.board_says, vb.proven, ats.follow, ats._one,
          ats.fetch, ats._get, ats._page) = real

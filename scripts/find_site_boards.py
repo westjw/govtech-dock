@@ -1852,11 +1852,19 @@ def successfactors_origin(page_url: str) -> str:
 #   THE PAGE IS ONE: its own script carries `var phApp = phApp || {...}`, whose
 #     baseUrl (and refNum) name the site - read with raw_decode
 #     (ats.phenom_app), never a pattern over the JSON.
-#   A LINK to <baseUrl>search-results, <baseUrl>job/... or <baseUrl>c/... on a
-#     host of the company's own (the registrable domain of its website, as a
-#     CSB link is held), in a link, a frame or a redirect: the fallback where
-#     the page is not the site itself (their main site linking its careers
-#     site). That shape on anybody else's host proves nothing.
+#   A LINK to <baseUrl>search-results, <baseUrl>job/<jobId> or
+#     <baseUrl>c/<category>-jobs on a host of the company's own (the
+#     registrable domain of its website, as a CSB link is held), in a link, a
+#     frame or a redirect: the fallback where the page is not the site itself
+#     (their main site linking its careers site). That shape on anybody else's
+#     host proves nothing. EACH IN THE SHAPE MEASURED, AND NO LOOSER (blind
+#     review of 2026-11-27: any /<cc>/<lang>/(search-results|job/|c/) on their
+#     domain was filed as a Phenom board - a store's /us/en/c/radios, a support
+#     article's /us/en/job/how-to-reset, a site search's search-results.html -
+#     and held a real board beside it as "more than one board"):
+#     'search-results' ends its path segment; a posting's jobId carries a digit
+#     (every one measured does: 24898, R173423, 8301319, a UUID); a category is
+#     '<slug>-jobs', as all six sites name theirs (c/sales-jobs).
 #
 # cdn.phenompeople.com's CareerConnectResources scripts are a supporting mark
 # only (phenom-other, which names no board). A row's applyUrl is never the
@@ -1866,7 +1874,9 @@ def successfactors_origin(page_url: str) -> str:
 # (ats.phenom_on_site).
 _PH_LINK = re.compile(r"(?<![a-z0-9.-])https://([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9]"
                       r"(?:[a-z0-9-]{0,61}[a-z0-9])?)+)((?:/[a-z0-9-]{1,80}){0,4}?)/([a-z]{2})/"
-                      r"([a-z]{2})/(?:search-results|job/|c/)", re.I)
+                      r"([a-z]{2})/(?:search-results(?![a-z0-9._-])"
+                      r"|job/(?=[a-z0-9_-]*[0-9])[a-z0-9][a-z0-9_-]{0,127}(?![a-z0-9._-])"
+                      r"|c/[a-z0-9][a-z0-9-]{0,79}-jobs(?![a-z0-9._-]))", re.I)
 _PH_LINKED = frozenset({"href", "iframe", "frame", "redirect", "request"})
 
 

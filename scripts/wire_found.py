@@ -2894,14 +2894,16 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
         doubts.append(f"the finder recorded a kind of reference this door does not know "
                       f"({seen['element'] or 'none'!r}), so how their site points at the "
                       f"board is not known")
-    if kind == "phenom" and not ats.phenom_on_site(ref, website):
+    off = ats.phenom_off_site(ref, website) if kind == "phenom" else None
+    if off:
         # CHECK 1 FOR A PHENOM SITE IS ALSO ITS HOST (2026-11-27): the site sits
         # on the employer's own careers host, so one on another domain than the
         # website on file - a parent's, a group's - is not this company's board,
-        # whichever of their pages linked it
-        doubts.append(f"the Phenom site {short(ref)} is not on their own website's domain "
-                      f"({website or 'none on file'}): a Phenom site sits on its employer's own "
-                      f"host, so one on another domain is not shown to be theirs")
+        # whichever of their pages linked it. The words say which half failed:
+        # another domain, or a website on file that names no domain to hold
+        # the host to (blind review of 2026-11-27); apply asks it again
+        # (wire_problem)
+        doubts.append(f"the Phenom site {short(ref)} is not shown to be on their own domain: {off}")
     # the boards the Paylocity postings' pages named (resolved_by_posting),
     # every posting asked: one board is the find; a posting naming more than
     # one, or two postings naming different boards, is a doubt of its own,
@@ -4725,6 +4727,14 @@ def wire_problem(row: dict, by_id: dict, holders: dict, ruled: dict,
     if not page_belt._same_site(c1["page"], c.get("website") or ""):
         return "moved", (f"the page that pointed at the board, {c1['page']}, is not on the "
                          f"website now on file ({c.get('website') or 'none'}) - plan again")
+    # ...AND A PHENOM SITE'S HOST, held to the website as it reads now (blind
+    # review of 2026-11-27): the plan holds a site off their domain, and a
+    # website edited between the plan and the write - given a path, or moved
+    # to a sibling host - passed the page's test above and was wired past it
+    off = ats.phenom_off_site(ref, c.get("website")) if kind == "phenom" else None
+    if off:
+        return "moved", (f"the Phenom site {short(ref)} is not shown to be on their own domain as "
+                         f"the record reads now: {off} - plan again")
     owned = ownership_on_file(c)
     if owned:
         return "moved", f"since the plan, {owned[0]}"

@@ -1480,10 +1480,16 @@ def _phenom(ref, out: dict) -> None:
     # 'Conduent Commercial Solutions, LLC'), never refNum, the host, or
     # twitter:site (WEX's reads '@Lychee shadow'). `n` is the page's
     # totalHits: the whole locale board, which the giants gate reads (the
-    # reader's own rows are two searches, wire_found.PARTIAL).
+    # reader's own rows are two searches, wire_found.PARTIAL). NO HOSTS (blind
+    # review of 2026-11-27): judge() reads `hosts` as where apply links point,
+    # and a host holding the company's first label as its own domain, so the
+    # site's own host there - the employer's careers host, which a name that
+    # merely contains theirs also holds (careers.acmegovholdings.example) -
+    # turned a site that names nobody into 'matches'. The host is held to the
+    # website on file by the door (ats.phenom_on_site), never by judge().
     s = ats.phenom_site(ref)
     out["n"] = s["total"]
-    out["hosts"] = {host_of(s["base"])}
+    out["hosts"] = set()
     site = _clean(s["site_name"])
     titled = list(dict.fromkeys(
         _clean(m.group(1)) for t in s["titles"] for rx in _PHENOM_TITLES
