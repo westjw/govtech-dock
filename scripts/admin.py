@@ -941,6 +941,9 @@ ATS_HOSTS = (
     "zohorecruit.com",
     "comeet.co",
     "successfactors.eu", "sapsf.com", "sapsf.eu", "sapsf.cn",
+    # (Eightfold's shared host, app.eightfold.ai, serves every tenant's career
+    # site by ?domain=, and Eightfold AI is a company on file: 2026-11-27)
+    "eightfold.ai",
 )
 
 
@@ -5867,7 +5870,7 @@ def sweep_gaps(c: dict, board_org: dict | None, news: dict,
 STRUCTURED_ATS = {"ashby", "greenhouse", "lever", "workable", "recruitee",
                   "breezy", "smartrecruiters", "bamboohr", "workday",
                   "rippling", "jazzhr", "icims", "paylocity", "oracle",
-                  "jibe", "adp", "gusto", "gem", "hirebridge", "applicantpro", "teamtailor", "pinpoint", "zohorecruit", "comeet", "jobvite", "jobvitefeed", "trinethire", "jobscore", "clearcompany", "phenom", "successfactors"}
+                  "jibe", "adp", "gusto", "gem", "hirebridge", "applicantpro", "teamtailor", "pinpoint", "zohorecruit", "comeet", "jobvite", "jobvitefeed", "trinethire", "jobscore", "clearcompany", "phenom", "eightfold", "successfactors"}
 
 
 def q_sweep(companies, board, category: str | None = None,

@@ -53,6 +53,9 @@ Where the description lives, per board (measured, 2026-08-23):
                     (a Unify site's costs nothing more: its row is read from that page)
     phenom       the posting page      -> ddo.jobDetail.data.job.description (a row's
                  descriptionTeaser is ML-written, never the ad: 2026-11-27)
+    eightfold    /api/pcsx/position_details -> data.jobDescription, and nothing
+                 else of that answer (it can name the people a candidate would
+                 work with); never written to the HTTP cache (2026-11-27)
 
   nothing published
     oracle       no company on file uses it; unverified either way
@@ -423,11 +426,22 @@ HTTP_CACHE = pathlib.Path(__file__).resolve().parent.parent / "data" / "http_cac
 # same host serves each posting's hiring team, names and photos.
 NEVER_CACHED = frozenset({"hirebridge.com", "app.jobvite.com", "jobscore.com",
                           "careers-api.clearcompany.com"})
+# ...and PATHS whose answers are never written to the cache, on whatever host
+# serves them, for a vendor whose boards sit on the employers' own hosts and
+# name no vendor: an Eightfold posting's position_details carries "people you
+# may work with" (positionExtraDetails.pymww: employees' names and pictures,
+# where the tenant turns it on) beside the ad (fetch_eightfold), on
+# apply.ukg.com and careers.aventiv.com as on app.eightfold.ai. Compared
+# lower-cased, the path whole or as the start of a longer one.
+NEVER_CACHED_PATHS = ("/api/pcsx/position_details",)
 
 
 def never_cached(url: str) -> bool:
-    host = (urllib.parse.urlsplit(url).hostname or "").lower()
-    return any(host == d or host.endswith("." + d) for d in NEVER_CACHED)
+    parts = urllib.parse.urlsplit(url)
+    host = (parts.hostname or "").lower()
+    path = (parts.path or "").lower()
+    return (any(host == d or host.endswith("." + d) for d in NEVER_CACHED)
+            or any(path == p or path.startswith(p + "/") for p in NEVER_CACHED_PATHS))
 
 
 class _Cached:
@@ -5306,16 +5320,20 @@ def fetch_jobscore(ref) -> list[dict]:
 
 @contextlib.contextmanager
 def one_ask_a_board():
-    """jobvitefeed_kept, trinethire_kept and jobscore_kept at once: inside
-    it, a board those readers read whole is asked once, however many times it
-    is read and then asked whose it is. For the paths that read a board and
-    then probe it - accepting a held board at the desk (admin.
-    act_board_proposal) and by a ruling (proposal_rulings._accept_board): a
-    Jobvite feed and a JobScore feed name people, and the second ask was the
-    same answer again (blind review of 2026-11-24). And phenom_kept, defined
-    below: a Phenom site's unfiltered page, asked for its size and its name.
-    Also a decorator."""
-    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept(), phenom_kept():
+    """jobvitefeed_kept, trinethire_kept, jobscore_kept, clearcompany_kept,
+    eightfold_kept and phenom_kept at once: inside it, a board those readers
+    read whole is asked once, however many times it is read and then asked
+    whose it is. For the paths that read a board and then probe it -
+    accepting a held board at the desk (admin.act_board_proposal) and by a
+    ruling (proposal_rulings._accept_board): a Jobvite feed and a JobScore
+    feed name people, and the second ask was the same answer again (blind
+    review of 2026-11-24); a ClearCompany site's three answers and an
+    Eightfold career site's page and first list page were asked twice too
+    (blind review of the Eightfold reader, 2026-11-27). And phenom_kept,
+    defined below: a Phenom site's unfiltered page, asked for its size and
+    its name. Also a decorator."""
+    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept(), clearcompany_kept(), \
+            eightfold_kept(), phenom_kept():
         yield
 # ---- clearcompany: ClearCompany career sites, apply.clearcompany.com/<slug>
 #
@@ -6383,6 +6401,530 @@ def phenom_total(ref) -> int:
     """How many postings the WHOLE locale board holds, by its own count: the
     unfiltered search page's totalHits (see THE READER READS PART above)."""
     return phenom_site(ref)["total"]
+# ---- eightfold: Eightfold career sites, https://<host>/careers?domain=<group>
+#
+# Four companies on file hire through Eightfold (research of 2026-11-23): UKG
+# (apply.ukg.com, 251 open), Curriculum Associates (careers.curriculumassociates
+# .com, 59), Aventiv (careers.aventiv.com, 20) and Eightfold itself (the shared
+# host app.eightfold.ai, 43). All four were type html and read 17, 0, 0 and 15
+# rows: the careers page is a JavaScript shell, and the list is the PCSX
+# search feed its own script asks for.
+#
+# THE REF IS THE CAREERS PAGE WITH ITS GROUP, https://<host>/careers?domain=
+# <group>: one string a person can open. The group is lifted from the page
+# itself - window._EF_GROUP_ID, confirmed by the page's <code id="pcsx-data">
+# (HTML-escaped JSON: configs.pcsxConfig.enabled true, and its domain the
+# same group) - and NEVER derived from a website: asked ?domain=eightfold.ai,
+# app.eightfold.ai answered as group volkscience.com. The shared host serves
+# every tenant by ?domain=, so the ref carries the group, and every request
+# of a read - the page, the list, an ad - asks with that one group.
+#
+# EVERY READ ASKS THE CAREERS PAGE FIRST, and it must still answer as the
+# ref's own group with PCSX on: the shared host answers a group it does not
+# know as its default tenant (eightfold.ai came back as volkscience.com), so
+# a tenant that left would otherwise read as Eightfold's own postings. A page
+# without pcsx-data, with PCSX off, or answering as another group raises:
+# unreadable, never a zero. Then the list, through _page (robots.txt asked at
+# every hop - robots.txt allows /careers and /api/pcsx on every host measured -
+# the crawler's own name, the host gate), every hop held to the very address
+# asked:
+#   GET https://<host>/api/pcsx/search?domain=<group>&query=&location=
+#       &start=<offset>&sort_by=timestamp
+# {status: 200, data: {positions: [10 rows], count: <total>}}. The page size
+# is fixed at 10 (num= is ignored), so the board is walked by offset through
+# _paged, deduplicated on id, and the walk stops at the count it states (no
+# request past the end; past the end the feed answers positions [] with the
+# count unchanged, measured on Aventiv at start=20). The union must be
+# exactly data.count, and the count must not move between pages: anything
+# else is a board that did not read whole, never published as whole. NEVER
+# /api/apply/v2/jobs: it answered 403 on two tenants.
+#
+# A ZERO HAS NOT BEEN SEEN. None of the four was empty, so a count of 0
+# raises - kept Unknown, never "None found" - until an empty board is read,
+# whatever the page lists beside it; and so does any page listing more rows
+# than its count leaves from its offset (7 rows of a board counting 0, or of
+# one counting 3): what it lists is not the board it counts (blind review of
+# the reader, 2026-11-27: a count of 0 beside a page of rows read as a board
+# with nothing open, and the probe said n=0).
+#
+# A ROW: positions[].name; the posting's own page, https://<host>/careers/job/
+# <id> (positionUrl; the bare address loaded on the shared host as on the
+# custom ones); the place from locations[] as the tenant writes it ('Sydney,
+# NSW,Australia', 'KY,United States', or nothing at all - never a country the
+# row does not name); the office hint from standardizedLocations[] ('Pune, MH,
+# IN', 'NY,US', 'US'), never written into the place, where roles.geography
+# would read 'IN' as Indiana; workLocationOption as the mode (remote_local and
+# remote_global are remote, which work_mode does not read). THE POSTED DAY IS
+# postedTs, the board's own publish date (the posting page's JSON-LD
+# datePosted is the same second). It moves when the employer posts the job
+# again, which is the employer publishing it again; creationTs is when the
+# requisition was made, which no board shows as a posting date, and it is
+# never read (ONLY THE PUBLISH DATE, NEVER THE UPDATE DATE, above).
+#
+# THE AD ONLY BEHIND FETCH_DETAILS: one request a posting, /api/pcsx/
+# position_details?position_id=<id>&domain=<group>&hl=en, of which ONLY
+# data.jobDescription is read; pay comes from that text alone, through
+# plain_rows (no measured tenant states pay in a field). That answer also
+# carries positionExtraDetails.pymww, "people you may work with" - employees'
+# names and pictures where a tenant turns it on (all four measured have it
+# off) - so nothing else in it is read, and no answer from that path is ever
+# written to the HTTP cache, whatever host serves it (NEVER_CACHED_PATHS: a
+# custom host names no vendor). The list and the page name nobody.
+#
+# ONE PLAN ASKS EACH BOARD ONCE: inside eightfold_kept() - wire_found.plan,
+# and accepting a held board (one_ask_a_board) - the careers page and the
+# list's first page are kept in memory under the ref, and the board's rows
+# once it is read whole, so the door's count (add_company.board_total, asked
+# before the read so a giant is never walked), its read and its identity
+# probe (verify_boards) take one answer. Kept under the ref, never the host:
+# the shared host serves every tenant.
+EIGHTFOLD_SHARED_HOST = "app.eightfold.ai"
+EIGHTFOLD_PAGE_SIZE = 10          # fixed by the server: num=50 still answered 10
+# offsets walked at most: 1,000 postings, twice the owner's giants line. A
+# board that counts more is not walked at all (it raises, saying its count)
+EIGHTFOLD_MAX_PAGES = 100
+EIGHTFOLD_PAGE_MAX = 4_000_000    # characters of a careers page read (UKG's: 243 KB)
+_EF_GROUP = re.compile(r"[a-z0-9][a-z0-9.-]{0,252}")
+_EF_GROUP_ID = re.compile(r'window\._EF_GROUP_ID\s{0,8}=\s{0,8}"([a-z0-9][a-z0-9.-]{0,252})"')
+_EF_PCSX_OPEN = '<code id="pcsx-data"'
+_EF_POSTING = re.compile(r"/careers/job/([0-9]{1,20})")
+_EF_MODES = {"onsite": "onsite", "hybrid": "hybrid",
+             "remote_local": "remote", "remote_global": "remote"}
+# the word a careers page's card prints for a way of working (eightfold_card):
+# measured on UKG's for hybrid and remote_local, and nothing for onsite;
+# remote_global is not measured and taken as remote_local's word
+_EF_CARD_MODES = {"hybrid": "Hybrid", "remote_local": "Remote", "remote_global": "Remote"}
+# the most words render_fetch.split_location takes off a card's end as its
+# place: it scans the last 8, and has since the render fallback landed
+# (2026-08-18), before the first snapshot of an Eightfold board was kept
+_EF_HTML_TAIL = 8
+_EF_COUNTRY = re.compile(r"[A-Z]{2}")
+_WORKDAY_HOST = re.compile(r"(^|\.)(myworkdayjobs|myworkdaysite)\.com$")
+
+
+def eightfold_ref(ref) -> tuple[str, str]:
+    """(host, group) for an eightfold ref - https://<host>/careers?domain=
+    <group> and nothing else: no port, no user part, no other query, no
+    fragment - or AtsError. The group is lower-cased, as a domain is."""
+    s = ref.strip() if isinstance(ref, str) else ""
+    try:
+        parts = urllib.parse.urlsplit(s)
+        query = urllib.parse.parse_qs(parts.query, keep_blank_values=True, strict_parsing=True)
+    except ValueError:
+        parts, query = None, {}
+    host = (parts.hostname or "") if parts else ""
+    group = (query.get("domain") or [""])[0].strip().lower() if list(query) == ["domain"] else ""
+    if (not parts or parts.scheme != "https" or parts.netloc.lower() != host
+            or not _HOSTNAME.fullmatch(host) or _WORKDAY_HOST.search(host)
+            or parts.path != "/careers" or parts.fragment or len(query.get("domain") or ()) != 1
+            or not _EF_GROUP.fullmatch(group)):
+        raise AtsError(f"not an eightfold board: {str(ref)[:160]!r} (an Eightfold board is its "
+                       f"careers page with its group, https://<host>/careers?domain=<group>, the "
+                       f"group as the page's own window._EF_GROUP_ID names it)")
+    return host, group
+
+
+def eightfold_url(ref) -> str:
+    """The careers page a ref names, written one way: what every read asks
+    first, and what a person is sent to (build_board.board_url)."""
+    host, group = eightfold_ref(ref)
+    return f"https://{host}/careers?domain={group}"
+
+
+def eightfold_pcsx(page: str, url: str = "the careers page") -> dict:
+    """The page's <code id="pcsx-data"> as JSON, or AtsError: exactly one such
+    block, its text HTML-unescaped and read whole as one object. Found by
+    looking for its close once (never a lazy pattern over the page)."""
+    page = page if isinstance(page, str) else ""
+    at = page.find(_EF_PCSX_OPEN)
+    if at < 0 or page.find(_EF_PCSX_OPEN, at + 1) >= 0:
+        raise AtsError(f"{url} carries {'no' if at < 0 else 'more than one'} <code id=\"pcsx-data\">: "
+                       f"not an Eightfold career site this reader knows, so it is not read as a "
+                       f"board with nothing open")
+    start = page.find(">", at)
+    end = page.find("</code>", start + 1) if start >= 0 else -1
+    if start < 0 or end < 0 or "<" in page[at + 1:start]:
+        raise AtsError(f"{url}: its pcsx-data block does not close, so it is not read")
+    try:
+        got = json.loads(html_lib.unescape(page[start + 1:end]))
+    except ValueError as exc:
+        raise AtsError(f"{url}: its pcsx-data block is not JSON, so it is not read") from exc
+    if not isinstance(got, dict):
+        raise AtsError(f"{url}: its pcsx-data block is not an object, so it is not read")
+    return got
+
+
+def eightfold_group(page: str, url: str = "the careers page") -> str:
+    """The group a careers page answers as, or AtsError: its window.
+    _EF_GROUP_ID (one value, however often written), confirmed by its
+    pcsx-data - PCSX switched on (configs.pcsxConfig.enabled true) and the
+    block's domain the same group. A page without PCSX has no list this
+    reader can read: it raises, never a zero."""
+    ids = set(_EF_GROUP_ID.findall(page if isinstance(page, str) else ""))
+    if len(ids) != 1:
+        raise AtsError(f"{url} names {'no' if not ids else 'more than one'} window._EF_GROUP_ID: "
+                       f"not one Eightfold career site, so it is not read")
+    group = ids.pop()
+    data = eightfold_pcsx(page, url)
+    cfg = data.get("configs") if isinstance(data.get("configs"), dict) else {}
+    pcsx = cfg.get("pcsxConfig") if isinstance(cfg.get("pcsxConfig"), dict) else {}
+    if pcsx.get("enabled") is not True:
+        raise AtsError(f"{url}: its PCSX career site is not switched on (pcsxConfig.enabled), so "
+                       f"it has no list this reader can read; never read as a board with nothing open")
+    said = data.get("domain")
+    if not isinstance(said, str) or said.strip().lower() != group:
+        raise AtsError(f"{url}: its window._EF_GROUP_ID ({group}) and its pcsx-data domain "
+                       f"({str(said)[:80]!r}) do not agree, so it is not read")
+    return group
+
+
+def eightfold_brand(data: dict) -> str:
+    """branding.companyName in a page's pcsx-data, or "": what verify_boards
+    weighs against the page's title. Nothing here reads a name for anything
+    else."""
+    cfg = data.get("configs") if isinstance(data, dict) else None
+    pcsx = cfg.get("pcsxConfig") if isinstance(cfg, dict) else None
+    brand = pcsx.get("branding") if isinstance(pcsx, dict) else None
+    name = brand.get("companyName") if isinstance(brand, dict) else None
+    return _text(name) if isinstance(name, str) else ""
+
+
+def _ef_stay(url: str):
+    def stay(u: str):
+        if u != url:
+            raise AtsError(f"{url} leads off to {str(u)[:160]}: an Eightfold career site answers "
+                           f"where it is asked, so a redirect is never followed, and it is not read "
+                           f"as a board with nothing open")
+    return stay
+
+
+def eightfold_careers(host: str, group: str) -> tuple[str, dict]:
+    """(the careers page, its pcsx-data), the page asked with the ref's own
+    group and held to it: one request, read in place, or AtsError."""
+    url = f"https://{host}/careers?domain={group}"
+    page = _page(url, same_host=True, may=_ef_stay(url)).text or ""
+    if len(page) > EIGHTFOLD_PAGE_MAX:
+        raise AtsError(f"{url} is more than {EIGHTFOLD_PAGE_MAX:,} characters: not read, and never "
+                       f"read in part")
+    said = eightfold_group(page, url)
+    if said != group:
+        raise AtsError(f"{url} answers as group {said}, not {group}: the ref is not that board's "
+                       f"own group (a shared host answers a group it does not know as another "
+                       f"tenant), so it is not read")
+    return page, eightfold_pcsx(page, url)
+
+
+def eightfold_search_url(host: str, group: str, start: int) -> str:
+    return (f"https://{host}/api/pcsx/search?domain={group}&query=&location="
+            f"&start={start}&sort_by=timestamp")
+
+
+def eightfold_page_of(host: str, group: str, start: int) -> tuple[list, int]:
+    """(the positions at `start`, the count the feed states), one request
+    read in place, or AtsError for an answer in any other shape."""
+    url = eightfold_search_url(host, group, start)
+    d = _json(_page(url, same_host=True, may=_ef_stay(url)))
+    data = d.get("data") if isinstance(d, dict) else None
+    rows = data.get("positions") if isinstance(data, dict) else None
+    count = data.get("count") if isinstance(data, dict) else None
+    if (not isinstance(d, dict) or d.get("status") != 200 or not isinstance(rows, list)
+            or not all(isinstance(p, dict) for p in rows) or not isinstance(count, int)
+            or isinstance(count, bool) or count < 0 or len(rows) > EIGHTFOLD_PAGE_SIZE):
+        raise AtsError(f"{url} is not an Eightfold search answer (status 200, data.positions, "
+                       f"data.count), so it is not read")
+    if count == 0:
+        raise AtsError(f"the Eightfold board {host} (group {group}) counts no posting: an empty "
+                       f"Eightfold board has not been measured, so it is kept Unknown and never "
+                       f"read as a zero, whatever its page lists")
+    if len(rows) > max(count - start, 0):
+        raise AtsError(f"{url} lists {len(rows)} posting(s) at start={start} of a board it counts "
+                       f"{count}: what it lists is not the board it counts, so it is not read")
+    return rows, count
+
+
+def _ef_id(p: dict):
+    pid = p.get("id")
+    return pid if isinstance(pid, int) and not isinstance(pid, bool) and pid > 0 else None
+
+
+def eightfold_positions(host: str, group: str, first: list, count: int) -> list[dict]:
+    """Every posting of the board, once each, or AtsError: pages of 10 by
+    offset through _paged, deduplicated by id, asked no further than the
+    count the first page states (`first` and `count`: that page's answer,
+    eightfold_page_of(host, group, 0), never 0), and the union exactly that
+    count."""
+    where = f"the Eightfold board {host} (group {group})"
+    if count > EIGHTFOLD_PAGE_SIZE * EIGHTFOLD_MAX_PAGES:
+        raise AtsError(f"{where} counts {count} postings, more than this reader walks "
+                       f"({EIGHTFOLD_PAGE_SIZE * EIGHTFOLD_MAX_PAGES:,} at {EIGHTFOLD_PAGE_SIZE} a "
+                       f"page): a giant, not read in part")
+
+    def page(offset: int) -> list:
+        if offset >= count:
+            return []                     # the count is the end: nothing is asked past it
+        rows, again = (first, count) if offset == 0 else eightfold_page_of(host, group, offset)
+        if again != count:
+            raise AtsError(f"{where} counted {count} and then {again} between two pages, so it "
+                           f"is not read in part")
+        if any(_ef_id(p) is None for p in rows):
+            raise AtsError(f"{where}: a row at start={offset} has no position id, so the board "
+                           f"is not read in part")
+        return rows
+    got = _paged(page, _ef_id, page=EIGHTFOLD_PAGE_SIZE, max_pages=EIGHTFOLD_MAX_PAGES + 1,
+                 label=where)
+    if len(got) != count:
+        raise AtsError(f"{where} counts {count} postings and its pages gave {len(got)} distinct "
+                       f"ones, so what it lists is not the board it counts; a partial board is "
+                       f"never published as whole")
+    return got
+
+
+def eightfold_place(raw) -> tuple | None:
+    """(city, subdivision, country) one of standardizedLocations[] names -
+    'Pune, MH, IN', 'NY,US', 'US' - or None ('Remote', anything else). The
+    country an ISO-2 code; read for the office hint, never for the place."""
+    parts = [p.strip() for p in raw.split(",")] if isinstance(raw, str) else []
+    if not parts or not all(parts) or not _EF_COUNTRY.fullmatch(parts[-1]) or len(parts) > 3:
+        return None
+    return ((parts[0] if len(parts) == 3 else None),
+            (parts[-2] if len(parts) >= 2 else None), parts[-1])
+
+
+def eightfold_mode(raw) -> str | None:
+    """workLocationOption as a way of working: onsite, hybrid, and both
+    remote forms (remote_local, remote_global) remote; anything else None."""
+    return _EF_MODES.get(raw.strip().lower()) if isinstance(raw, str) else None
+
+
+def eightfold_rows(positions: list[dict], host: str, url: str = "the board") -> list[dict]:
+    """One row a posting, or AtsError for a row that does not read as one of
+    this board's (no id, no name, a positionUrl that is not its own /careers/
+    job/<id>): the list is the board, so a row it cannot read is never left
+    out of a board published as whole."""
+    rows = []
+    for p in positions:
+        pid, name = _ef_id(p), p.get("name")
+        path = p.get("positionUrl")
+        if (pid is None or not isinstance(name, str) or not _text(name)
+                or (path is not None and path != f"/careers/job/{pid}")):
+            raise AtsError(f"{url}: a row does not read as one of its postings (its id, its name "
+                           f"or its own address), so the board is not read in part")
+        said = p.get("locations") if isinstance(p.get("locations"), list) else []
+        places = [_text(s) for s in said if isinstance(s, str) and _text(s)]
+        named = [w for w in (eightfold_place(s) for s in p.get("standardizedLocations") or []
+                             if isinstance(s, str)) if w]
+        office = next((w for w in named if w[0] or w[1]), None) or next(iter(named), None)
+        ts = p.get("postedTs")
+        rows.append({"title": _text(name),
+                     "location": "; ".join(dict.fromkeys(places)),
+                     "url": f"https://{host}/careers/job/{pid}",
+                     "posted": (posted_date(ts) if isinstance(ts, int) and not isinstance(ts, bool)
+                                and ts > 0 else None),
+                     "mode": eightfold_mode(p.get("workLocationOption")),
+                     "office_hint": office_hint(*office) if office else None,
+                     "_ef_id": pid, "_ef_card": eightfold_card(p)})
+    return rows
+
+
+def eightfold_card(p: dict) -> str:
+    """The text the careers page's card for the feed's posting `p` reads, as
+    the careers page's reader (type html: render_fetch, a link's innerText,
+    whitespace collapsed) took it off the drawn page: its name, its first
+    place with ' + N more' for the others, its department, and the word for
+    its way of working ('Hybrid'; 'Remote' for remote_local; nothing on site),
+    each that it has, a space apart. Measured on UKG's careers page: of the 93
+    open postings its feed listed on 2026-11-23 and 11-27, 57 have html rows
+    on the boards of 08-18 to 11-27, 82 rows; 79 wrote a place
+    eightfold_html_places gives for this card (73 split to exactly their
+    title and place), and the other 3 were written from a card that has
+    changed since (a place added, two titles edited). remote_global's word
+    is not measured. Eightfold's own page draws another card ('Bengaluru, KA,
+    IN', 'Posted N days ago'), whose html rows all wrote no place. A key
+    build_board.carry_first_seen looks an earlier night up by, never shown
+    to anybody."""
+    said = p.get("locations") if isinstance(p.get("locations"), list) else []
+    places = [_text(s) for s in said if isinstance(s, str) and _text(s)]
+    where = (places[0] + (f" + {len(places) - 1} more" if len(places) > 1 else "")
+             if places else "")
+    mode = p.get("workLocationOption")
+    parts = (p.get("name"), where, p.get("department"),
+             _EF_CARD_MODES.get(mode.strip().lower()) if isinstance(mode, str) else None)
+    return _text(" ".join(x for x in parts if isinstance(x, str) and _text(x)))
+
+
+def eightfold_posting_key(url) -> str | None:
+    """The posting an Eightfold address names - https://<host>/careers/job/
+    <id>, any query - as 'eightfold:<host>/<id>', or None for any other
+    address: build_board.carry_first_seen matches a posting on it when its
+    company moves from its careers page (type html, whose rows are these same
+    addresses under other titles and places) to this reader."""
+    try:
+        parts = urllib.parse.urlsplit(url if isinstance(url, str) else "")
+    except ValueError:
+        return None
+    m = _EF_POSTING.fullmatch(parts.path or "")
+    host = (parts.hostname or "").lower()
+    if parts.scheme not in ("http", "https") or not m or not _HOSTNAME.fullmatch(host):
+        return None
+    return f"eightfold:{host}/{int(m.group(1))}"
+
+
+def eightfold_posting_forms(url) -> list[str]:
+    """Every address the Eightfold posting `url` names has been written as on
+    this board, or [] for an address that names no posting
+    (eightfold_posting_key): https://<host>/careers/job/<id>, the form this
+    reader writes and the one the careers page's reader (type html) took off
+    the page - every UKG and Eightfold row on every board from 2026-08-18 to
+    11-27, with no query. A snapshot under data/history keeps a posting's id
+    alone, hashed from that address and the place written beside it, so
+    build_board.carry_first_seen looks an earlier night up under this form
+    with each place eightfold_html_places gives (blind review of the reader,
+    2026-11-27: 11 of 30 sampled postings took a later day than the
+    snapshots held). Keys, never addresses anybody is sent to."""
+    key = eightfold_posting_key(url)
+    if key is None:
+        return []
+    host, pid = key[len("eightfold:"):].split("/", 1)
+    return [f"https://{host}/careers/job/{pid}"]
+
+
+def eightfold_html_places(card) -> list[str]:
+    """Every place the careers page's reader (type html) can have written
+    beside an Eightfold posting whose card reads `card` (eightfold_card, or
+    None where the row had none): no place; 'Remote'; and each run of the
+    card's last 1 to 8 words, as plain() leaves it - render_fetch.
+    split_location takes a card's place off its end, at most 8 words of it
+    (_EF_HTML_TAIL), at the first split whose tail starts with Remote or reads
+    as a capitalised place with a comma, and no job word. So UKG's html rows
+    wrote no place (no tail read as one: no comma, a lower-case word like
+    'more', a job word like 'Success'), 'Remote' (a remote card), or the
+    place, department and way of working glued ('Paris,NA,France Legal
+    Hybrid'), sometimes from inside the title on ('II Pune City,India
+    Customer Delivery/Implementation Services'): 157, 147 and 172 of its 476
+    html rows on the boards of 2026-08-18 to 11-27 (second blind review of
+    the reader, 2026-11-27: with no place and the reader's own tried alone,
+    11 of 30 sampled open postings took a later day than a board or
+    snapshot held). 'Remote' is tried with no card too, and whatever the card
+    says: a remote card split there whatever its title read.
+    build_board.carry_first_seen hashes each with the posting's address
+    (eightfold_posting_forms) under its company, as a snapshot does; keys,
+    never a place anybody is shown."""
+    words = card.split() if isinstance(card, str) else []
+    tails = (" ".join(words[i:]) for i in range(max(1, len(words) - _EF_HTML_TAIL), len(words)))
+    return list(dict.fromkeys(["", "Remote", *(plain(t) for t in tails)]))
+
+
+def eightfold_details_url(host: str, group: str, pid: int) -> str:
+    return (f"https://{host}/api/pcsx/position_details?position_id={pid}&domain={group}"
+            f"&hl=en")
+
+
+def _ef_ad(host: str, group: str, pid: int) -> tuple[str, None]:
+    """One posting's ad: data.jobDescription of its position_details, and
+    nothing else of that answer (it can name the people a candidate would
+    work with: see THE AD ONLY BEHIND FETCH_DETAILS above)."""
+    url = eightfold_details_url(host, group, pid)
+    d = _json(_page(url, same_host=True, may=_ef_stay(url)))
+    data = d.get("data") if isinstance(d, dict) else None
+    if not isinstance(data, dict) or _ef_id(data) != pid:
+        raise AtsError(f"{url} is not this posting's details")
+    jd = data.get("jobDescription")
+    return (plain_html(jd) if isinstance(jd, str) else ""), None
+
+
+_EF_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def eightfold_kept():
+    """Each board read whole is the answer to every later ask of it in the
+    block (see ONE PLAN ASKS EACH BOARD ONCE above). Also a decorator."""
+    global _EF_KEPT
+    outer = _EF_KEPT
+    _EF_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _EF_KEPT = outer
+
+
+def _ef_front(host: str, group: str, url: str) -> dict:
+    """{page, brand, first, count}: the careers page held to the ref's own
+    group, and the list's first page with the count it states - two
+    requests, none inside eightfold_kept() where this board's were asked
+    already - or AtsError. What the read, the count and the probe all begin
+    with (ONE PLAN ASKS EACH BOARD ONCE above)."""
+    kept = _EF_KEPT
+    if kept is not None and url in kept:
+        if "failed" in kept[url]:
+            # the same failure, not a second ask: the door's count failed, and
+            # its read is that answer again
+            raise kept[url]["failed"]
+        return kept[url]
+    try:
+        page, data = eightfold_careers(host, group)
+        first, count = eightfold_page_of(host, group, 0)
+    except Exception as exc:
+        if kept is not None:
+            kept[url] = {"failed": exc}
+        raise
+    front = {"page": page, "brand": eightfold_brand(data), "first": first, "count": count}
+    if kept is not None:
+        kept[url] = front
+    return front
+
+
+def eightfold_board(ref) -> dict:
+    """{url, host, group, page, brand, count, rows}: the careers page, then
+    the list whole - 1 + ceil(count/10) requests, none inside eightfold_kept()
+    where they were asked already - or AtsError. `page` and `brand` are for
+    verify_boards, which weighs them; nothing here reads a name."""
+    host, group = eightfold_ref(ref)
+    url = f"https://{host}/careers?domain={group}"
+    front = _ef_front(host, group, url)
+    if "rows" not in front:
+        positions = eightfold_positions(host, group, front["first"], front["count"])
+        rows = eightfold_rows(positions, host, url)
+        if _EF_KEPT is not None and _EF_KEPT.get(url) is front:
+            front["rows"] = [dict(r) for r in rows]
+    else:
+        rows = [dict(r) for r in front["rows"]]
+    return {"url": url, "host": host, "group": group, "page": front["page"],
+            "brand": front["brand"], "count": len(rows), "rows": rows}
+
+
+def eightfold_identity(ref) -> dict:
+    """{url, host, group, page, brand, count} for the identity probe: the
+    careers page and the list's first page, whose data.count is the board's
+    own count - two requests, or none inside eightfold_kept() where they were
+    asked already - or AtsError (an empty board is not measured)."""
+    host, group = eightfold_ref(ref)
+    url = f"https://{host}/careers?domain={group}"
+    front = _ef_front(host, group, url)
+    return {"url": url, "host": host, "group": group, "page": front["page"],
+            "brand": front["brand"], "count": front["count"]}
+
+
+def eightfold_total(ref) -> int:
+    """The number of postings an Eightfold board states it holds - data.count
+    of its list's first page, after its careers page answered as the ref's
+    own group (a shared host answers a group it does not know as another
+    tenant, whose count this would be) - or AtsError. Two requests, which
+    the read then takes inside eightfold_kept(): what the wiring door asks
+    first, so a board past the owner's giants line is never walked
+    (add_company.board_total; blind reviews of 2026-11-27)."""
+    return eightfold_identity(ref)["count"]
+
+
+def fetch_eightfold(ref) -> list[dict]:
+    b = eightfold_board(ref)
+    rows = b["rows"]
+    if FETCH_DETAILS:
+        _details(rows, lambda r: _ef_ad(b["host"], b["group"], r["_ef_id"]))
+    for r in rows:
+        r.pop("_ef_id", None)
+    return rows
+
 
 # ---- successfactors: SAP SuccessFactors' Career Site Builder (CSB), a career
 # site on the employer's own careers host (jobs.gainwelltechnologies.com,
@@ -7807,6 +8349,7 @@ FETCHERS = {
     "jobscore": fetch_jobscore,
     "clearcompany": fetch_clearcompany,
     "phenom": fetch_phenom,
+    "eightfold": fetch_eightfold,
     "successfactors": fetch_successfactors,
 }
 

@@ -457,6 +457,7 @@ HINTS = {
     "trinethire": ("trinethire.com",),
     "jobscore": ("jobscore.com",),
     "clearcompany": ("clearcompany.com",),
+    "eightfold": ("eightfold.ai",),
 }
 # Jibe (iCIMS Talent Cloud) lives on the company's own careers host and its
 # address names nobody. What gives it away is the script host its pages load.
@@ -704,6 +705,34 @@ def _clearcompany_site(m):
     return slug, slug.lower()
 
 
+def _eightfold_shared(m):
+    # the group an address on the shared host names (?domain=), lower-cased
+    # as a domain is: ref and key the careers page with that group, which
+    # the identity probe asks and holds to it (a group the host does not
+    # know answers as another tenant's, and is refused there: asked
+    # eightfold.ai, app.eightfold.ai answered as volkscience.com). THE FIRST
+    # domain= OF THE ADDRESS, AND ALL OF IT (blind review of the identity,
+    # 2026-11-27): the pattern stops at the first, as a server reading the
+    # query does, and takes its value up to the next &, ;, #, quote, space or
+    # tag mark; a value that is not a whole group - 'acme_gov.example',
+    # 'acme%2Egov.example', one running into a bracket - names no board
+    # here (the finder files the address as eightfold-tenant, a doubt),
+    # never the group its first letters would read as
+    group = m.group(1).lower()
+    group = group[:-1] if group.endswith(".") else group      # a sentence's full stop
+    if not _EF_SHARED_GROUP.fullmatch(group):
+        return None
+    ref = f"https://{ats.EIGHTFOLD_SHARED_HOST}/careers?domain={group}"
+    try:
+        ats.eightfold_ref(ref)
+    except ats.AtsError:
+        return None
+    return ref, ref
+
+
+_EF_SHARED_GROUP = re.compile(r"[a-z0-9](?:[a-z0-9.-]{0,251}[a-z0-9])?")
+
+
 # A hosted-site address's query asking for one brand (?brand=, &brand=): the
 # site's own widget turns every key of FilterTypeEnum in the page's query into
 # a filter on the list it draws, brand among them, whether or not the site
@@ -859,6 +888,21 @@ BOARDS: list[_Pat] = (
         # asked where ClearCompany sends it (clearcompany_legacy)
         _here("clearcompany", r"(?<![a-z0-9.-])apply\.clearcompany\.com/([a-z0-9](?:[a-z0-9-]{0,80}))"
                               r"(?![a-z0-9_.%~-])", _clearcompany_site),
+        # AN EIGHTFOLD BOARD ON ITS SHARED HOST, by the group the address
+        # names: app.eightfold.ai/careers, any page under it, asking
+        # ?domain=<group> (2026-11-27). The board on an employer's OWN host
+        # (apply.ukg.com, careers.aventiv.com) is never named by its address -
+        # it is the page itself, read off what the page carries
+        # (eightfold_own_site); <label>.eightfold.ai/careers names a tenant
+        # and no group (eightfold-tenant, a doubt), and any other eightfold.ai
+        # address names no board (eightfold-other) - never a bare eightfold.ai
+        # match: one is a Facebook pixel's address on Eightfold's own site,
+        # another its privacy page
+        # (the FIRST domain= of the query, its value whole up to the next &,
+        # ;, #, quote, space or tag mark: _eightfold_shared reads it)
+        _here("eightfold", r"(?<![a-z0-9.-])app\.eightfold\.ai/careers(?:/[^\s\"'<>?#]{0,200})?"
+                           r"\?(?:[^\s\"'<>#&;]{0,400}[&;]){0,24}?(?-i:domain)=([^\s\"'<>#&;]{0,300})",
+              _eightfold_shared),
     ])
 
 # A POSTING, AND NOT A BOARD (owner, 2026-11-23: "their site links a posting,
@@ -1017,7 +1061,25 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
         ("comeet-tenant", "comeet.",
          r"comeet\.(?:co|com)/jobs/(?:[A-Za-z0-9_-]{1,80}/)?[0-9A-F]{2}\.[0-9A-F]{3}(?![0-9A-F])"),
         ("comeet-other", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
-        ("eightfold", "eightfold.ai", _B + r"eightfold\.ai"),
+        # EIGHTFOLD (2026-11-27), beside its board's shared-host address
+        # (BOARDS) and its own-host career site (eightfold_own_site): a
+        # tenant's own label on eightfold.ai, whose group the address does not
+        # name - a tenant form, a doubt - and every other address of
+        # Eightfold's (its marketing site, a privacy page, a pixel's address
+        # naming domain=eightfold.ai, the assets its career sites load from
+        # static.vscdn.net): a platform we read, naming no board
+        ("eightfold-tenant", "eightfold.ai",
+         r"(?<![a-z0-9.-])(?!(?:app|www|static|cdn|api)\.eightfold\.ai(?![a-z0-9-]))"
+         r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.eightfold\.ai/careers(?![a-z0-9_-])"),
+        # ...and the shared host's careers address asking a domain= that is no
+        # group the board pattern takes ('acme_gov.example', 'acme%2Egov'):
+        # a tenant this cannot name, a doubt, never a board of the group its
+        # first letters read as (blind review of the identity, 2026-11-27).
+        # Where the board pattern took the address, this is that board.
+        ("eightfold-tenant", "eightfold.ai",
+         r"(?<![a-z0-9.-])app\.eightfold\.ai/careers[^\s\"'<>#]{0,1200}?[?&;](?-i:domain)="),
+        ("eightfold-other", "eightfold.ai", _B + r"eightfold\.ai"),
+        ("eightfold-other", "vscdn.net", r"(?<![a-z0-9.-])static\.vscdn\.net(?![a-z0-9-])"),
         # (every phenompeople.com address - its CareerConnectResources scripts,
         # its pictures: a Phenom site's own furniture, a supporting mark only.
         # The board is the site's baseUrl, which its page's phApp object or a
@@ -1162,7 +1224,9 @@ TENANT_FORMS = {"zohorecruit-tenant": "zohorecruit", "comeet-tenant": "comeet",
                 # Direct board its own redirect has not named a slug for, one
                 # brand's view of a site, an account's own host: 2026-11-24)
                 "clearcompany-site": "clearcompany", "clearcompany-legacy": "clearcompany",
-                "clearcompany-brand": "clearcompany", "clearcompany-tenant": "clearcompany"}
+                "clearcompany-brand": "clearcompany", "clearcompany-tenant": "clearcompany",
+                # (a tenant's label on eightfold.ai, naming no group: 2026-11-27)
+                "eightfold-tenant": "eightfold"}
 _TENANT_UID = re.compile(r"(?<![0-9A-F])([0-9A-F]{2}\.[0-9A-F]{3})(?![0-9A-F])", re.I)
 
 
@@ -1221,7 +1285,7 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
                    "jobvite-other": "jobvite", "successfactors-other": "successfactors",
                    "trinethire-other": "trinethire", "jobscore-other": "jobscore",
-                   "clearcompany-other": "clearcompany", "phenom-other": "phenom"}
+                   "clearcompany-other": "clearcompany", "phenom-other": "phenom", "eightfold-other": "eightfold"}
 # A platform's form that is somewhere else to hire through on any other page
 # and the board's own furniture on the board's own pages: a Career Site
 # Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
@@ -1941,6 +2005,40 @@ def phenom_sites(pieces, website: str) -> list[tuple[str, str, str]]:
     return out
 
 
+# AN EIGHTFOLD CAREER SITE ON THE EMPLOYER'S OWN HOST (apply.ukg.com,
+# careers.curriculumassociates.com, careers.aventiv.com, measured 2026-11-23)
+# names no vendor in its address: careers.curriculumassociates.com/careers?
+# start=0&pid=1443153067206 reads like any careers page, and /careers?pid=
+# and /careers/job/<id> are shapes other platforms use too - hints at most,
+# never a board. THE PAGE ITSELF says it: a script of its own assigns
+# window._EF_GROUP_ID = "<group>", and its <code id="pcsx-data"> - PCSX on,
+# its domain the same group - confirms it (ats.eightfold_group, the reader's
+# own test). The board is that page's host with that group, never a group
+# made up from the company's website (app.eightfold.ai answers eightfold.ai
+# as volkscience.com). Assets on static.vscdn.net are a supporting mark only
+# (eightfold-other): never a board alone.
+def eightfold_own_site(page: str, page_url: str = "") -> list[tuple[str, str]]:
+    """[(ref, what showed it)] for an Eightfold career site that IS this page:
+    the group one of the page's own scripts names (a comment is not on the
+    page), confirmed by its pcsx-data, at the page's own host."""
+    if "_EF_GROUP_ID" not in (page or "") or "pcsx-data" not in (page or ""):
+        return []
+    body, scripts = _apart(page or "")
+    js = "\n".join(scripts)
+    found = set(ats._EF_GROUP_ID.findall(js))
+    try:
+        host = (urllib.parse.urlsplit(page_url or "").hostname or "").lower()
+        group = ats.eightfold_group(body + "\n" + js, page_url or "the page")
+        ref = f"https://{host}/careers?domain={group}"
+        ats.eightfold_ref(ref)
+    except (ats.AtsError, ValueError):
+        return []
+    if found != {group}:
+        return []
+    m = ats._EF_GROUP_ID.search(js)
+    return [(ref, _saw(js, m.start(), m.end()))]
+
+
 def sightings(page: str, page_url: str, website: str, *,
               requests_seen: typing.Iterable[str] = (),
               frames_seen: typing.Iterable[str] = ()) -> tuple[list[dict], list[dict]]:
@@ -2021,6 +2119,20 @@ def sightings(page: str, page_url: str, website: str, *,
             return (_ON_ITS_OWN_BOARD.get(k[0]) == "successfactors" and len(k) > 2
                     and (k[2] == "" or k[2] in own))
         others = {k: v for k, v in others.items() if not its_own(k)}
+    # AN EIGHTFOLD CAREER SITE IS ITS OWN BOARD, at its own host and group
+    # (eightfold_own_site); whose page it is, absorb says, as of any board
+    for ref, saw in eightfold_own_site(page or "", page_url):
+        row = boards.setdefault(("eightfold", ref, "script"), _board_row("eightfold", "script", saw))
+        row["times"] += 1
+        row["_spelt"][json.dumps(ref)] += 1
+        # ...and its og:url and canonical link are the address it was ASKED at,
+        # echoed: on the shared host, asked ?domain=eightfold.ai, the page that
+        # answered as volkscience.com wrote eightfold.ai in both (2026-11-23).
+        # Another group on the page's own host is that echo, never a second board
+        here = urllib.parse.urlsplit(ref).hostname
+        for k in [k for k in boards if k[0] == "eightfold" and k[1] != ref
+                  and urllib.parse.urlsplit(k[1]).hostname == here]:
+            del boards[k]
     boards, others = jobvite_account_forms(boards, others)
     # an address of a platform we read that names no board says nothing once
     # the page HAS named that platform's board (Paylocity's own scripts, 23

@@ -3400,6 +3400,11 @@ and never said where in a page a reference sat.
   the page's rows (their apply addresses,
   the system behind the site) are cut out before anything is tallied (see
   "Phenom: the reader" below).
+  An Eightfold career site on their own
+  host is read off the page itself - a script of its own assigning
+  window._EF_GROUP_ID, confirmed by its pcsx-data - and an
+  app.eightfold.ai/careers address asking ?domain=<group> is an `eightfold`
+  board; never a bare eightfold.ai match (see "Eightfold: the reader" below).
 - **What the door must still do, because this file cannot:** make the
   second check (ask the board whose it is); refuse a (type, ref) another
   record already holds, or that two records' candidates share (two brands
@@ -3437,7 +3442,7 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Twenty-eight types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Thirteen more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below), jobscore (2026-11-24: the feed's own <subtitle>, agreeing with its <title> 'Careers at ...'; see "JobScore: the reader" below), clearcompany (2026-11-24: brandFullName, where the hosted page's <title> agrees; see "ClearCompany: the reader" below), and phenom (2026-11-27: the unfiltered search page's og:site_name, agreeing with its <title> in a shape measured, or that title alone where it has no og:site_name; see "Phenom: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-nine types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Fourteen more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below), jobscore (2026-11-24: the feed's own <subtitle>, agreeing with its <title> 'Careers at ...'; see "JobScore: the reader" below), clearcompany (2026-11-24: brandFullName, where the hosted page's <title> agrees; see "ClearCompany: the reader" below), phenom (2026-11-27: the unfiltered search page's og:site_name, agreeing with its <title> in a shape measured, or that title alone where it has no og:site_name; see "Phenom: the reader" below), and eightfold (2026-11-27: the careers page's branding.companyName, where its <title> 'Careers at ...' agrees; see "Eightfold: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
 - `site`: the employer's website where the board gives one (ashby, jazzhr, clearcompany).
@@ -4037,6 +4042,25 @@ round.
   (`ats.phenom_total`, one request, which the identity probe then takes
   without asking again: `ats.phenom_kept`). A count from the identity probe
   skips a board when it is 500 or more and is never read as "small".
+  A reader that reads the
+  whole board but is told its size first is asked that total before the read
+  too (`wire_found.COUNTED_FIRST`, eightfold: `ats.eightfold_total`, the
+  careers page and the list's first page, which the read then takes inside
+  the plan), so a giant is skipped as a giant after two requests and never
+  walked (blind reviews of 2026-11-27: one counting 900 cost 91 requests
+  before it was skipped; one counting 1,200 raised in the read and was filed
+  "unreadable", its words cut before "a giant"). Unlike PARTIAL, a total that
+  could not be had is no reason to skip: the read that follows says why.
+- **A rewire never splits a shared board unasked** (`wire_found.left_alone`,
+  blind review of the identity, 2026-11-27). The board build gives a board
+  two records share to one of them, and the other contributes nothing
+  (`build_board.board_owners`). A company wired away from that board would
+  leave the other record holding it alone, its postings then published under
+  that name as well - a parent's board on a product line's record, which no
+  check of the found board reaches. So the door holds it, naming the record
+  it would leave alone. Records still one board after the rewire
+  (`board_proposals.share_key`: a careers page that IS the Eightfold career
+  site wired) are not split, so UKG's own switch is not held.
 - **`board_key` is loose and `spelling` is exact.** The key only notices
   collisions, and a collision only ever sends a board to a person: case is
   ignored, an address matches with or without scheme, `www.` or a last slash,
@@ -5738,6 +5762,196 @@ session runs the door.
   the streamed readers of `check_the_crawler_honours_robots_txt`, the public link
   in `check_what_the_second_review_of_the_new_readers_found_stays_fixed`, and
   the desk card's link in `check_the_boards_found_card_opens_what_it_names`.
+
+## Eightfold: the reader (2026-11-27)
+
+Four companies on file hire through Eightfold (research of 2026-11-23): UKG
+(apply.ukg.com, 251 open, many public-sector-adjacent sales roles),
+Curriculum Associates (careers.curriculumassociates.com, 59), Eightfold AI
+(the shared host app.eightfold.ai, 43) and Aventiv Technologies
+(careers.aventiv.com, 20; 22 on 2026-11-27). All were type html and read 17,
+0, 15 and 0 rows: the careers page is a JavaScript shell. `ats.fetch_eightfold`
+reads the type `eightfold`. No record is rewired by this; the session runs
+the door.
+
+- **The ref is the careers page with its group**,
+  https://<host>/careers?domain=<group>, one string a person can open, and
+  nothing else (`ats.eightfold_ref`: https, no port, the path /careers, the
+  one query domain=). The group is the page's own window._EF_GROUP_ID,
+  confirmed by its <code id="pcsx-data"> (HTML-escaped JSON:
+  configs.pcsxConfig.enabled true, its domain the same group;
+  `ats.eightfold_group`) - NEVER derived from a website: asked
+  ?domain=eightfold.ai, app.eightfold.ai answered as volkscience.com. The
+  shared host serves every tenant by ?domain=, so the ref carries the group
+  and every request of a read uses it.
+- **Every read asks the careers page first** and holds it to the ref's group
+  with PCSX on (`ats.eightfold_careers`): the shared host answers a group it
+  does not know as another tenant, so a tenant that left would otherwise read
+  as Eightfold's own postings. Then the PCSX search feed,
+  /api/pcsx/search?domain=<group>&query=&location=&start=<offset>&sort_by=timestamp,
+  ten a page (num= is ignored), by offset through `ats._paged`, deduplicated
+  on id, never asked past the count the first page states. 1 + ceil(count/10)
+  requests a board: UKG 27 a night, Curriculum Associates 7, Eightfold 6,
+  Aventiv 4 (44 in all). Every request through `ats._page` (robots.txt at
+  every hop; /careers and /api/pcsx are allowed on every host measured),
+  every hop held to the very address asked (`ats._ef_stay`): a redirect is
+  never followed, on its own host either - the list sent to another group's
+  list, or the careers page to another group's page, raises before the
+  other address is asked. Never /api/apply/v2/jobs (403 on two tenants).
+- **Whole or not at all** (`ats.eightfold_positions`, `ats.eightfold_page_of`):
+  the union must be exactly data.count and the count must not move between
+  pages. An empty board (count 0) is not measured and raises - Unknown, never
+  "None found" - whatever the page lists beside it (a count of 0 beside a
+  page of rows read as a board with nothing open, and the probe said n=0:
+  blind review of the reader, 2026-11-27), in the read and in the probe; so
+  does a page listing more rows than its count leaves from its offset; and so
+  do a page with no pcsx-data, PCSX off, another group or two, a
+  redirect, a list in another shape (its own status not 200, no positions,
+  no count), a row with no id or name or another positionUrl, and a board
+  counting more than 1,000 (more than the reader walks; never walked).
+- **A row** (`ats.eightfold_rows`): positions[].name;
+  https://<host>/careers/job/<id> (the bare address loaded on the shared host
+  as on the custom ones); the place as locations[] writes it ('Sydney,NSW,
+  Australia', 'KY,United States'), or nothing - never a country it does not
+  name; the office hint from standardizedLocations[] ('Pune, MH, IN', 'NY,US',
+  'US'), never written into the place (roles.geography reads IN as Indiana);
+  workLocationOption onsite, hybrid, and remote_local and remote_global as
+  remote (`ats.eightfold_mode`; ats.work_mode reads neither). **Posted is
+  postedTs**, the board's own publish date (the posting page's JSON-LD
+  datePosted is the same second). It moves when the employer posts the job
+  again, which is the employer publishing it again; creationTs is when the
+  requisition was made, which no board shows as a posting date, and is never
+  read.
+- **The ad only behind FETCH_DETAILS**: one request a posting,
+  /api/pcsx/position_details?position_id=<id>&domain=<group>&hl=en, of which
+  only data.jobDescription is read; pay from that text alone through
+  plain_rows (no tenant measured states pay in a field). That answer also
+  carries positionExtraDetails.pymww, "people you may work with" -
+  employees' names and pictures where a tenant turns it on (all four
+  measured have it off) - so nothing else of it is read, and the path is in
+  `ats.NEVER_CACHED_PATHS` on every host (a custom host names no vendor).
+- **The employer, twice** (`verify_boards._eightfold`): the careers page's
+  <title> (or og:title), 'Careers at X', and its pcsx-data
+  branding.companyName, X, believed only where they agree; n is data.count
+  from the list's first page (the giants gate). Never the group, the host,
+  the JSON-LD's sameAs, a posting's title (the shared host titles every
+  posting 'Careers at Eightfold') or a person. UKG and Curriculum Associates
+  pass strict() as they stand; 'Aventiv' and 'Eightfold' are not 'Aventiv
+  Technologies' and 'Eightfold AI', so the door holds those two for the owner
+  until he rules on an also_known_as. strict() is not loosened. UKG Telestaff
+  is on file with UKG's careers address as its own: the finder files that
+  page under off_site (its website is a path inside ukg.com), and its board
+  names UKG, so the door holds it. Inside the door's plan the probe takes the
+  answer its read had (`ats.eightfold_kept`), keyed on the ref and never the
+  host (two tenants of the shared host in one plan are two boards).
+- **UKG Telestaff keeps following UKG** (blind review of the identity,
+  2026-11-27). Today `build_board.board_owners` gives UKG's careers page,
+  which both records hold as html, to UKG, and the product line contributes
+  nothing. Once UKG reads its Eightfold board the two refs differ, and keyed
+  apart the product line would hold UKG's page alone and publish its rows
+  as its own. `board_proposals.share_key` is what board_owners groups by:
+  `board_key`, except that a careers page on file (type html, at /careers or
+  under it) on the host of an Eightfold career site on file
+  (`board_proposals.eightfold_sites`: an employer's own host carrying one
+  group) IS that board - never on the shared host, where a page with no
+  ?domain= is its default tenant's. The door holds any other rewire that
+  would leave a record alone on a board it shares today (see "A rewire never
+  splits a shared board unasked" in the door's section).
+- **One tenant, two spellings, one board**: app.eightfold.ai asked a group
+  answers as that group (measured 2026-11-27: domain=ukg.com is 'Careers at
+  UKG', branding UKG, PCSX on), so `board_proposals.board_key` keys an
+  Eightfold board on its group, its own host's address and the shared host's
+  meeting as a holder, a twin and a refusal. Reading still goes by the ref
+  exactly as written.
+- **Eightfold AI's domain is a vendor's**: eightfold.ai is in
+  `admin.ATS_HOSTS`, `refresh._ATS_HOSTS` and `build_board._PROMOTE_ATS_HOSTS`,
+  and 'eightfold' in `acquisitions._ATS_HOSTS`, as each vendor's is: a tenant
+  whose board or careers page is on app.eightfold.ai is not filed in the
+  Acquisitions queue as Eightfold AI's, nor held by the door for it.
+- **Accepting a held board asks it once**: `ats.one_ask_a_board` (the desk's
+  accept and a ruling's) wraps `eightfold_kept`, and `clearcompany_kept`
+  beside it - the careers page and the list's first page, and a ClearCompany
+  site's three answers, were asked twice there.
+- **First seen across the move from html**: UKG's and Eightfold's careers
+  pages listed /careers/job/<id> under titles with the place and the
+  department glued on (on Eightfold's own, 'Posted N days ago' too, so its
+  html ids moved every night), so no reader row matches one by id.
+  `build_board.posting_key` names an Eightfold posting address by its host
+  and position id (`ats.eightfold_posting_key`, any query) and
+  `carry_first_seen` matches the company's posting on the previous board on
+  it; and, as for ClearCompany, it looks the posting up in data/history by
+  the company and the address's hash (`ats.eightfold_posting_forms`) under
+  every place its html row can have written. The html reader split the card
+  it read off the drawn page (`render_fetch.split_location`, unchanged since
+  2026-08-18) into a title and a place: no place, 'Remote', or the place,
+  department and way of working glued, sometimes from inside the title on
+  (UKG's 476 html rows: 157, 147, 172). So each row carries the card the
+  careers page drew, rebuilt from the feed (`ats.eightfold_card`: name, first
+  place and ' + N more', department, 'Hybrid'/'Remote'; the row's _ef_card,
+  which main() hands carry_first_seen as `cards`), and the places tried are
+  none, the reader's, 'Remote' (with no card too) and every tail of the
+  card's last 8 words, through plain() (`ats.eightfold_html_places`); never
+  a longer tail, never another company's snapshot. With no place and the
+  reader's alone, 11 of 30 sampled open postings were still re-dated (second
+  blind review of the reader, 2026-11-27; 22 with no snapshot lookup). Of
+  103 open UKG and Eightfold postings read 11-23 and 11-27, 63 held earlier by a
+  board or snapshot, 57 now keep the earliest night held (the committed
+  lookup kept 19, 'Remote' alone 39) and none an earlier one; 3 whose card
+  changed since (a place added, a title edited) keep a later night (the
+  earliest whose place still matches, if any), and 3 first seen on 08-18 to
+  08-22, whose snapshots predate ids that carry an address, keep a later
+  night - only the boards in git history hold those, and the build never
+  reads git history.
+  posting_id still hashes the address as written (no id moves at the
+  merge); an opening id is company and title, so an opening whose html
+  title had a place glued on takes the corrected title's id.
+- **The finder**: a page a careers link leads to, on their own site, whose
+  own script assigns window._EF_GROUP_ID and whose pcsx-data confirms it, is
+  its own board at its own host and group (`find_site_boards.eightfold_own_site`;
+  a commented-out script is not on the page); its og:url and canonical echo
+  the address it was asked at, never a second board. An app.eightfold.ai/
+  careers address (any page under it) asking ?domain=<group> is a board: the
+  FIRST domain= of its query, as a server reading it takes it, and its value
+  whole up to the next &, ;, #, quote, space or tag mark; a value that is no
+  whole group ('acme_gov.example', 'acme%2Egov.example') names no board and
+  is `eightfold-tenant`, a doubt, never the group its first letters read as
+  (blind review of the identity, 2026-11-27).
+  /careers?...pid= and /careers/job/<id> are shapes other platforms use too:
+  no board alone. <label>.eightfold.ai/careers is `eightfold-tenant`, a tenant
+  form and a doubt; every other eightfold.ai address (a Facebook pixel's
+  domain=eightfold.ai, a privacy page) and static.vscdn.net (its assets, a
+  supporting mark only) are `eightfold-other`, naming no board, the door's
+  own-form note beside one. Never a bare eightfold.ai board pattern.
+  discover_js prints the group a rendered page's /api/pcsx/ request asks with.
+- **Read**: the build read the research's saved answers, and seven requests
+  of its own through the repo's helpers: Aventiv's board whole (its page and
+  three list pages, 22 postings) and UKG's careers page asked with its group
+  (answered in place as ukg.com), each with its robots.txt.
+- Ranks 'none' (`build_board.ats_tier`): Job Hunter's parsers do not list it.
+- Guard: `check_eightfold_reads_its_list_whole_and_names_it_twice` (the read
+  and its manners, the rows, the pages made whole and every way they are
+  not, the page held to its group, the ref, the ad and its pay, the cache,
+  the probe and its two halves, the plan's one ask, the finder's forms, the
+  public link, the rank, the first-seen day across the move from html, and
+  the door wiring a board that names them, holding a product line whose page
+  points to a board naming its parent, and skipping a giant; and, since the
+  blind reviews of 2026-11-27: a zero beside listed rows, a same-host
+  redirect of the list and of the page, an ad naming another posting, two
+  tenants of the shared host in one plan, the snapshots' earlier nights, a
+  giant by its own count before any read with the real reader, the product
+  line still following its parent after the parent's switch, a split of a
+  shared board held, one group's two spellings as holder, twin and refusal,
+  and a shared-host tenant kept out of the Acquisitions queue), beside a row in
+  `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS, the type in
+  `check_a_stated_name_does_not_loosen_the_older_doors`, three forms in
+  SITE_BOARD_FORMS and seven in SITE_BOARD_NOT_ONE, the accept-asks-once loop
+  of `check_jobscore_reads_its_feed_and_names_it_once` (eightfold and
+  clearcompany), the page readers in
+  `check_the_crawler_honours_robots_txt`, the public link and Eightfold's own
+  site as the board's furniture in
+  `check_what_the_second_review_of_the_new_readers_found_stays_fixed`, and
+  the desk card's link in `check_the_boards_found_card_opens_what_it_names`.
+  28 one-rule breakages at the build, each red.
 
 ## Build order (owner, 2026-08-23)
 

@@ -140,6 +140,15 @@ PARTIAL = {"workday": "the Workday reader asks only two sales searches",
            # (its two keyword searches; the size is the unfiltered search
            # page's totalHits, ats.phenom_total: 2026-11-27)
            "phenom": "the Phenom reader walks only two sales searches"}
+# A READER THAT READS THE WHOLE BOARD BUT IS TOLD ITS SIZE FIRST is asked that
+# total before the read too, so a giant is skipped as a giant without being
+# walked: an Eightfold board's list states its count on its first page, ten
+# postings a page after it (blind reviews of 2026-11-27: one counting 900
+# cost 91 requests before it was skipped, and one counting 1,200 raised in
+# the read and was filed as "unreadable", the words cut before "a giant").
+# Unlike PARTIAL, a total that could not be had is no reason to skip: the read
+# that follows reads the whole board, and says why when it cannot.
+COUNTED_FIRST = {"eightfold"}
 SAMPLE = 8                  # titles kept per board: what ownership is judged on
 ACTION = "wire-found"
 MADE = "wire_found.py plan"
@@ -288,7 +297,13 @@ OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-
              # (a Phenom site is named by its page's phApp object or a link to
              # its search or postings, so phenom-other - a phenompeople.com
              # address, its scripts and pictures - names none: 2026-11-27)
-             "phenom": {"phenom-other"}}
+             "phenom": {"phenom-other"},
+             # (every app.eightfold.ai/careers address asking ?domain= is a
+             # board, and a career site on an employer's own host is read off
+             # the page itself, so eightfold-other - Eightfold's own site, a
+             # privacy page, its assets on static.vscdn.net - names none;
+             # 2026-11-27)
+             "eightfold": {"eightfold-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -1360,9 +1375,63 @@ def standing(companies: list, board: dict, stores: dict | None = None) -> dict:
             # every record on a Paylocity board, with every address its board
             # is known by (board_proposals.paylocity_records)
             "paylocity_records": board_proposals.paylocity_records(companies, s["found"]),
+            # which records share a board as the board build groups them
+            # (left_alone)
+            "shares": share_groups(companies),
             "shown": shown_now(board),
             "crawled": str((board or {}).get("generated") or "")[:10],
             "total": {}, "read": {}, "said": {}}
+
+
+def share_groups(companies: list) -> dict:
+    """{"sites": the Eightfold career sites on file, "groups": {key: [ids]}}:
+    the records on file that share one board, as build_board.board_owners
+    groups them (board_proposals.share_key)."""
+    sites = board_proposals.eightfold_sites(companies)
+    groups = collections.defaultdict(list)
+    for c in companies:
+        a = c.get("ats") or {}
+        if a.get("type") in (None, "unknown") or a.get("ref") is None:
+            continue
+        groups[board_proposals.share_key(a["type"], a["ref"], sites)].append(c["id"])
+    return {"sites": sites, "groups": groups}
+
+
+def left_alone(c: dict, kind: str, ref, ctx: dict) -> list:
+    """The records on file that share this company's board today and would
+    not share the one it is wired to - [] for none.
+
+    A REWIRE NEVER SPLITS A SHARED BOARD UNASKED (blind review of the
+    identity, 2026-11-27). The board build gives a board two records share to
+    one of them, and the other contributes nothing (build_board.board_owners):
+    UKG Telestaff is on file with UKG's careers page and publishes nothing.
+    Wired away from that page, a company leaves the other record holding it
+    alone, its postings then published under that name as well - a parent's
+    board on a product line's record, which no check of the found board
+    reaches. Whichever record holds it today: a follower wired away to a board
+    that is the same postings as the page its holder publishes puts them on
+    the board twice, under two names (Aventiv Technologies follows Securus
+    Technologies on www.aventiv.com/careers, 2026-11-27). A careers page that
+    IS the Eightfold career site the company is wired to stays one board with
+    it (board_proposals.share_key), so UKG's own switch splits nothing; any
+    other split is held for a person, saying who."""
+    was = c.get("ats") or {}
+    if was.get("type") in (None, "unknown") or was.get("ref") is None:
+        return []
+    shares = ctx.get("shares") or share_groups(ctx["companies"])
+    now = board_proposals.share_key(was["type"], was["ref"], shares["sites"])
+    by_id = ctx["by_id"]
+    others = [i for i in dict.fromkeys(shares["groups"].get(now) or [])
+              if i != c["id"] and i in by_id]
+    if not others:
+        return []
+    after = [dict(o, ats={"type": kind, "ref": ref}) if o.get("id") == c["id"] else o
+             for o in ctx["companies"]]
+    sites = board_proposals.eightfold_sites(after)
+    mine = board_proposals.share_key(kind, ref, sites)
+    return [by_id[i] for i in others
+            if board_proposals.share_key((by_id[i].get("ats") or {}).get("type"),
+                                         (by_id[i].get("ats") or {}).get("ref"), sites) != mine]
 
 
 def reach_of(cid: str, ctx: dict) -> tuple[str, str]:
@@ -3083,6 +3152,19 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
                          if account else "")
                       + (f" (its own page states its address is {page_ref})"
                          if page_ref else ""))
+    alone = left_alone(c, kind, ref, ctx)
+    if alone:
+        # (left_alone: a rewire never splits a shared board unasked)
+        names = " and ".join(o.get("name") or o["id"] for o in alone[:4]) \
+            + (f" and {len(alone) - 4} more" if len(alone) > 4 else "")
+        today = show(was.get("type"), was.get("ref"))
+        doubts.append(f"{names} {'is' if len(alone) == 1 else 'are'} on file with this "
+                      f"company's board today ({today}), which the board build gives to one of "
+                      f"the records sharing it, the others contributing nothing; wired to "
+                      f"{show(kind, ref)}, this company would leave {names} holding {today} "
+                      f"without it, that board's postings published under {names} beside this "
+                      f"company's own: a parent's board on another record, or one board's "
+                      f"postings under two names")
     if pl:
         # A RECORD WHOSE BOARD MAY BE THIS ONE holds it for a person: one of the
         # same tenant's name under another id, one nothing on the two
@@ -3346,20 +3428,21 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
     # HOW BIG, BEFORE ANYTHING ELSE, where the read cannot say. One request
     # instead of the hundred and twenty a full Workday read of a giant took
     # before it was skipped anyway.
-    if kind in PARTIAL:
+    if kind in PARTIAL or kind in COUNTED_FIRST:
         if exact not in ctx["total"]:
             ctx["total"][exact] = add_company.board_total(block)
         total, how = ctx["total"][exact]
         total = _count(total)
-        if total is None:
+        if total is None and kind in PARTIAL:
             return _skip(base, "size-unknown",
                          f"size unknown - {PARTIAL[kind]}, and the board's own total could "
                          f"not be had ({how}). A board nobody can show to hold fewer than "
                          f"{GIANT} postings is skipped with the giants", **_carry(doubts))
-        base["board_total"] = total
-        if total >= GIANT:
-            return _skip(base, "giant", f"{GIANT_WHY} (the board holds {total} postings)",
-                         **_carry(doubts))
+        if total is not None:
+            base["board_total"] = total
+            if total >= GIANT:
+                return _skip(base, "giant", f"{GIANT_WHY} (the board holds {total} postings)",
+                             **_carry(doubts))
 
     # The live read. Two companies whose sites name one board are both held,
     # and neither needs the board asked twice to say so.
@@ -3526,13 +3609,15 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 # plan: the probe takes the answer the read had - ats.jobvitefeed_kept, blind
 # review 12, 2026-11-23; and so is a TriNet Hire list - ats.trinethire_kept,
 # blind review 13, 2026-11-24 - and a JobScore board's feed, ats.jobscore_kept, and a
-# ClearCompany site's three answers - ats.clearcompany_kept, 2026-11-24 - and a
-# Phenom site's unfiltered page, asked for its size and its name - ats.phenom_kept)
+# ClearCompany site's three answers - ats.clearcompany_kept, 2026-11-24 - a
+# Phenom site's unfiltered page, asked for its size and its name - ats.phenom_kept -
+# and an Eightfold career site's page and list - ats.eightfold_kept, 2026-11-27)
 @ats.jobvitefeed_kept()
 @ats.trinethire_kept()
 @ats.jobscore_kept()
 @ats.clearcompany_kept()
 @ats.phenom_kept()
+@ats.eightfold_kept()
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
          pages: dict | None = None, postings: dict | None = None,

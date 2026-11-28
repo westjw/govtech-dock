@@ -5174,6 +5174,13 @@ function boardUrlFor(f, c){
   if (f.type === 'phenom')
     return (typeof r === 'string' && /^https:\/\/[a-z0-9.-]+(?:\/[a-z0-9-]{1,80}){0,4}\/[a-z]{2}\/[a-z]{2}\/$/.test(r))
       ? r + 'search-results' : '#';
+  // an Eightfold board is its careers page with its group, an address a
+  // person opens as it is (build_board.board_url): https only, the path
+  // /careers and the one query domain=<group>
+  if (f.type === 'eightfold')
+    return (typeof r === 'string'
+            && /^https:\/\/[a-z0-9.-]+\/careers\?domain=[a-z0-9][a-z0-9.-]{0,252}$/i.test(r.trim()))
+      ? r.trim() : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
     // the list [tenant, pod, site], or [pod, tenant, site] on Workday's other

@@ -457,6 +457,13 @@ def proven(company: dict, said: dict) -> dict:
 #                                                (one request; `n` the page's
 #                                                totalHits, the whole locale
 #                                                board; 2026-11-27)
+#     eightfold        pcsx-data branding.companyName, agreeing with
+#                                                the careers page's <title> (or
+#                                                og:title) 'Careers at X'; the
+#                                                page asked with the ref's own
+#                                                group and held to it (`n` is
+#                                                the list's own count;
+#                                                2026-11-27)
 #   (lever's page is read as far as the end of its <head> and no further;
 #   ashby, jazzhr and clearcompany also state the employer's website, which
 #   proven() holds to the one on file)
@@ -1513,6 +1520,45 @@ def _phenom(ref, out: dict) -> None:
         out["how"] = "phenom site names its employer in no form a person could read"
 
 
+_EIGHTFOLD_NAME = re.compile(r"Careers at (\S.*)")
+
+
+def _eightfold(ref, out: dict) -> None:
+    # The careers page the ref names - asked with the ref's own group, and
+    # read only where it still answers as that group with PCSX on
+    # (ats.eightfold_careers: a shared host answers a group it does not know
+    # as another tenant) - states its employer in two places of its own, and
+    # the name is believed only where they agree: its <title>, 'Careers at X'
+    # (or its og:title, the same words), and its pcsx-data's
+    # branding.companyName, X ('UKG', 'Curriculum Associates', 'Aventiv',
+    # 'Eightfold', measured 2026-11-23). Nothing else is a name: not the group
+    # (volkscience.com is Eightfold's), not the host, not the JSON-LD's sameAs,
+    # not a posting's title (the shared host titles every posting 'Careers at
+    # Eightfold'), never a person. `n` is data.count from the list's first
+    # page, the board's own count (an empty board is not measured: it raises).
+    # Two requests; inside the door's plan this is the answer its read had
+    # (ats.eightfold_kept).
+    b = ats.eightfold_identity(ref)
+    out["n"] = b["count"]
+    out["hosts"] = {b["host"]}
+    page = b["page"][:PAGE_MAX]
+    titled = [html_lib.unescape(_clean(t)) for t in _inside(page, _TITLE)]
+    shown = [m.group(1) for m in (_EIGHTFOLD_NAME.fullmatch(_clean(s))
+                                  for s in titled + [_meta(page, "og:title")] if s) if m]
+    brand = _clean(b["brand"])
+    if not brand or not shown:
+        out["how"] = ("eightfold careers page names nobody: no branding.companyName in its "
+                      "pcsx-data, or neither its <title> nor its og:title is 'Careers at ...'")
+        return
+    if any(_clean(s) != brand for s in shown):
+        out["how"] = ("eightfold careers page's title ('Careers at ...') and its pcsx-data "
+                      "branding.companyName do not agree on a name")
+        return
+    if not _state(out, [brand], "eightfold careers page's own <title> ('Careers at ...') and its "
+                                "pcsx-data branding.companyName, stated by the career site"):
+        out["how"] = "eightfold careers page states its employer in no form a person could read"
+
+
 def _jvx_said(jobs: list, field: str) -> tuple:
     """(every distinct name a feed's rows give `field`, how many rows give it
     one): a value that is blank is none."""
@@ -1957,7 +2003,7 @@ _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite,
            "jobvitefeed": _jobvitefeed, "trinethire": _trinethire,
            "jobscore": _jobscore, "clearcompany": _clearcompany,
-           "phenom": _phenom, "successfactors": _successfactors}
+           "phenom": _phenom, "eightfold": _eightfold, "successfactors": _successfactors}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.
