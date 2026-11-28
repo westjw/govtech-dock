@@ -25770,6 +25770,19 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
     if row.get("action") != "WIRE":
         errors += fail(f"eightfold door: a tenant whose careers page is on the shared host was "
                        f"{row.get('action')}: {_wb_words(row)[:240]}")
+    # ...nor, to the refresh, somebody else's careers page; and a role it
+    # stored at its own tenant label is theirs to the build, as on any
+    # vendor's host whose slug names them
+    import refresh
+    if refresh._someone_elses_site("https://www.acmethree.test", G3):
+        errors += fail("refresh: a careers page on Eightfold's shared host was read as another "
+                       "company's site (eightfold.ai is a vendor's host)")
+    stored = {"id": "acmegov", "name": "Acmegov", "website": "https://www.acmegov.test",
+              "hiring": {"status": "Yes", "roles": [{"title": "Account Executive", "location": "Remote",
+                                                     "url": "https://acmegov.eightfold.ai/careers/job/1"}]}}
+    if [j["url"] for j in bb._stored_roles_as_jobs(stored)] != ["https://acmegov.eightfold.ai/careers/job/1"]:
+        errors += fail("build_board: a role stored at the company's own Eightfold tenant label was "
+                       "dropped as somebody else's domain")
     return errors
 
 
