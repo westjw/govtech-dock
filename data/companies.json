@@ -94237,8 +94237,8 @@
     "category": "Terminal & Passenger Experience",
     "description": "Airport IT platforms including common-use passenger processing, self-service kiosks/bag drop, biometric boarding and airport management systems sold to airport operators. - exhibited at AAAE 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.sita.aero/careers"
+      "type": "jibe",
+      "ref": "careers.sita.aero"
     },
     "hiring": {
       "status": "Yes",
@@ -94390,7 +94390,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "SITA Switzerland Sarl"
   },
   {
     "id": "tadera",
@@ -101280,8 +101281,8 @@
     "category": "Youth Sports & Leagues",
     "description": "Club and league operations platform for youth sports organizations",
     "ats": {
-      "type": "html",
-      "ref": "https://home.playmetrics.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/32242378-d809-4dc8-a287-c9a383d397dc/PlayMetrics"
     },
     "hiring": {
       "status": "Sales (non-AE)",
@@ -109942,8 +109943,8 @@
     "category": "Citizen Services",
     "description": "Public records request intake and fulfillment portal for agencies - exhibited at ASBO School Business 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.justfoia.com/careers/"
+      "type": "rippling",
+      "ref": "justfoia"
     },
     "hiring": {
       "status": "Unknown",
@@ -111952,8 +111953,8 @@
     "category": "HR & Workforce",
     "description": "Municipal ERP with payroll, HR and time entry for small local governments - exhibited at GFOA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "applicantpro",
+      "ref": "springbrooksoftware.isolvedhire.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -112061,7 +112062,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "Springbrook Holding Company LLC",
+    "also_known_as": [
+      "Springbrook Holding Company LLC"
+    ]
   },
   {
     "id": "edmunds-govtech",
@@ -130191,8 +130196,8 @@
     "category": "Parking & Ground Transport",
     "description": "Airport parking reservations and demand channel for airport operators",
     "ats": {
-      "type": "html",
-      "ref": "https://spothero.com/careers"
+      "type": "greenhouse",
+      "ref": "spothero"
     },
     "hiring": {
       "status": "Yes",
@@ -187954,8 +187959,8 @@
     "category": "Finance & ERP",
     "description": "Loan origination, grants management, and fraud prevention platform for federal agencies - exhibited at GFOA 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "jazzhr",
+      "ref": "summittechnologygroup"
     },
     "hiring": {
       "status": "Unknown",
@@ -237318,8 +237323,8 @@
     "category": "Finance & ERP",
     "description": "IntelliGrants IGX grants management software plus crime victim compensation (Core CVC) and Randolph-Sheppard vendor (BEPro) systems for state, county, city and tribal agencies",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "lever",
+      "ref": "agatesoftware"
     },
     "hiring": {
       "status": "Unknown",
