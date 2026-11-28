@@ -10,7 +10,7 @@ How a platform is met. find_site_boards.py reads a company's own website: an add
 
 measured_on lists the days the code or the research records a live measurement; a window (day..day) is a day within it that the research does not narrow down; unknown is none recorded. A form is a finder vendor id that belongs to the platform and names no board the wiring door can use.
 
-50 platforms: 31 read, 1 build, 3 skip, 15 seen.
+50 platforms: 32 read, 1 build, 3 skip, 14 seen.
 
 | Status | Means |
 |---|---|
@@ -32,6 +32,7 @@ measured_on lists the days the code or the research records a live measurement; 
 | [Breezy HR](#breezy-hr) | `breezy` | read | `fetch_breezy` | `_breezy` | 2026-08-23 |
 | [ClearCompany](#clearcompany) | `clearcompany` | read | `fetch_clearcompany` | `_clearcompany` | 2026-11-23 |
 | [Comeet (Spark Hire Recruit)](#comeet-spark-hire-recruit) | `comeet` | read | `fetch_comeet` | `_comeet` | 2026-11-19, 2026-11-21 |
+| [Eightfold](#eightfold) | `eightfold` | read | `fetch_eightfold` | `_eightfold` | 2026-11-23 |
 | [Gem](#gem) | `gem` | read | `fetch_gem` | `_gem` | unknown |
 | [Greenhouse](#greenhouse) | `greenhouse` | read | `fetch_greenhouse` | `board_says` | 2026-08-23 |
 | [Gusto](#gusto) | `gusto` | read | `fetch_gusto` | `_gusto` | unknown |
@@ -63,7 +64,6 @@ measured_on lists the days the code or the research records a live measurement; 
 | [CareerPlug](#careerplug) | `careerplug` | seen | - | - | unknown |
 | [Cornerstone OnDemand](#cornerstone-ondemand) | `csod` | seen | - | - | unknown |
 | [Dayforce](#dayforce) | `dayforce` | seen | - | - | unknown |
-| [Eightfold](#eightfold) | `eightfold` | seen | - | - | unknown |
 | [HiBob](#hibob) | `hibob` | seen | - | - | unknown |
 | [Hireology](#hireology) | `hireology` | seen | - | - | unknown |
 | [HRM Direct](#hrm-direct) | `hrmdirect` | seen | - | - | unknown |
@@ -79,21 +79,21 @@ measured_on lists the days the code or the research records a live measurement; 
 
 <!-- live -->
 
-From data/companies.json as last refreshed 2026-11-24. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
+From data/companies.json as last refreshed 2026-11-27. **On file** is how many companies have that `ats.type`; **with roles** is how many of them have roles on file (`hiring.roles` is not empty: the AE-type roles the last refresh found).
 
 | Type | On file | With roles |
 |---|---:|---:|
-| [`html`](#a-careers-page-html) | 955 | 128 |
+| [`html`](#a-careers-page-html) | 952 | 128 |
 | `unknown` (no board on file) | 932 | 0 |
 | [`greenhouse`](#greenhouse) | 116 | 65 |
-| [`ashby`](#ashby) | 91 | 50 |
+| [`ashby`](#ashby) | 91 | 49 |
 | [`bamboohr`](#bamboohr) | 53 | 19 |
 | [`paylocity`](#paylocity) | 45 | 11 |
-| [`lever`](#lever) | 42 | 21 |
+| [`lever`](#lever) | 42 | 22 |
 | [`workday`](#workday) | 42 | 32 |
 | [`rippling`](#rippling) | 38 | 17 |
 | [`workable`](#workable) | 31 | 13 |
-| [`jazzhr`](#jazzhr) | 21 | 4 |
+| [`jazzhr`](#jazzhr) | 21 | 3 |
 | [`breezy`](#breezy-hr) | 13 | 2 |
 | [`icims`](#icims) | 12 | 5 |
 | [`adp`](#adp-workforce-now) | 7 | 0 |
@@ -101,14 +101,16 @@ From data/companies.json as last refreshed 2026-11-24. **On file** is how many c
 | [`teamtailor`](#teamtailor) | 6 | 5 |
 | [`comeet`](#comeet-spark-hire-recruit) | 5 | 3 |
 | [`recruitee`](#recruitee) | 5 | 4 |
-| [`pinpoint`](#pinpoint) | 4 | 2 |
+| [`pinpoint`](#pinpoint) | 4 | 3 |
 | [`smartrecruiters`](#smartrecruiters) | 4 | 1 |
-| [`successfactors`](#sap-successfactors-career-site-builder) | 4 | 4 |
+| [`successfactors`](#sap-successfactors-career-site-builder) | 4 | 3 |
 | [`gem`](#gem) | 3 | 1 |
 | [`hirebridge`](#hirebridge) | 3 | 3 |
 | [`jobvite`](#jobvite) | 3 | 2 |
 | [`zohorecruit`](#zoho-recruit) | 3 | 0 |
 | [`applicantpro`](#applicantpro-isolved) | 2 | 2 |
+| [`jobscore`](#jobscore) | 2 | 1 |
+| [`clearcompany`](#clearcompany) | 1 | 1 |
 | [`jobvitefeed`](#jobvite-an-accounts-xml-feed) | 1 | 1 |
 | [`trinethire`](#trinet-hire) | 1 | 0 |
 
@@ -147,7 +149,7 @@ From data/companies.json as last refreshed 2026-11-24. **On file** is how many c
 
 <!-- live -->
 
-On file today: 955 companies, 128 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 952 companies, 128 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -238,7 +240,7 @@ On file today: 2 companies (Caselle, LYT), 2 of them with roles. The last sweep 
 
 <!-- live -->
 
-On file today: 91 companies, 50 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 91 companies, 49 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -328,7 +330,7 @@ On file today: 13 companies, 2 of them with roles. The last sweep (2026-11-22): 
 
 <!-- live -->
 
-On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 1 company (Rehrig Pacific), 1 with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -367,6 +369,43 @@ On file today: no company. The last sweep (2026-11-22): 0 companies' own sites p
 <!-- live -->
 
 On file today: 5 companies (Bond Sports, Claroty, Cognyte, Penlink, SuperCom), 3 of them with roles. The last sweep (2026-11-22): 9 companies' own sites pointed to a board on it; 3 sites named it as `comeet-other`.
+
+<!-- /live -->
+
+### Eightfold
+
+`eightfold` · **read** · researched as build · reader `ats.fetch_eightfold` · identity probe `verify_boards._eightfold` · measured 2026-11-23
+
+**How to spot it.** On an employer's own host (apply.ukg.com, careers.curriculumassociates.com, careers.aventiv.com) the address names no vendor, so the page a careers link leads to is read for itself: one of its own scripts assigns window.\_EF_GROUP_ID = "\<group>" and its \<code id="pcsx-data"> (HTML-escaped JSON: configs.pcsxConfig.enabled true, its domain the same group) confirms it, and the board is that page's host with that group (find_site_boards.eightfold_own_site). On the shared host, an address app.eightfold.ai/careers... asking ?domain=\<group> names the board outright; the page it was found on echoes the address it was asked at in og:url and canonical, which is never a second board. /careers?...pid= and /careers/job/\<id> are shapes other platforms use too: hints at most, never a board. Assets on static.vscdn.net are a supporting mark only. Never a bare eightfold.ai match: one is a Facebook pixel's address naming domain=eightfold.ai on Eightfold's own site, another its privacy page. Hint: eightfold.ai.
+
+**Forms the finder tallies apart** (`find_site_boards.ELSEWHERE`):
+
+- `eightfold-other`: Any other eightfold.ai address (its marketing site, a privacy page, a pixel's address naming domain=eightfold.ai) and static.vscdn.net, which serves its career sites' assets: a platform we read, naming no board.
+- `eightfold-tenant`: A tenant's own label on eightfold.ai, \<label>.eightfold.ai/careers (not app, www, static, cdn or api), whose group the address does not name: a tenant form, and a doubt.
+
+**How it publishes.** 1 + ceil(count/10) requests a board, every one through ats.\_page (robots.txt asked at every hop) and held to the very address asked, no redirect followed. (1) The careers page, https://\<host>/careers?domain=\<group>, a JavaScript shell with no posting in it: it must still answer as the ref's own group with PCSX on (window.\_EF_GROUP_ID and pcsx-data agreeing), because the shared host answers a group it does not know as another tenant (asked eightfold.ai, app.eightfold.ai answered as volkscience.com); otherwise the read raises. (2) GET https://\<host>/api/pcsx/search?domain=\<group>&query=&location=&start=\<offset>&sort_by=timestamp: {status: 200, data: {positions, count}}, 10 rows a page whatever num= says, walked by offset through ats.\_paged, deduplicated on id, never asked past the count the first page states; the union must be exactly data.count and the count must not move between pages, or the read raises. A row: positions[].name; https://\<host>/careers/job/\<id> (positionUrl, which must be that very path); the place from locations[] as the tenant writes it ('Sydney,NSW,Australia', 'KY,United States'), or nothing when it names none; the office hint from standardizedLocations[] ('Pune, MH, IN', 'NY,US', 'US'), never written into the place, where roles.geography would read IN as Indiana; workLocationOption onsite, hybrid, and remote_local and remote_global as remote; posted from postedTs, the board's own publish date (its JSON-LD datePosted), never creationTs. The ad only behind FETCH_DETAILS: one request a posting, /api/pcsx/position_details?position_id=\<id>&domain=\<group>&hl=en, of which only data.jobDescription is read; pay from that text alone through the board's one text parser (no measured tenant states pay in a field). Never /api/apply/v2/jobs: it answered 403 on two tenants.
+
+**Public link** (`build_board.board_url`). The careers page with its group, https://\<host>/careers?domain=\<group> (build_board.board_url and the desk's card): every opening, each linking its own page. A ref that is no board links the company's website.
+
+**robots.txt.** Asked at every hop (ats.\_page). Measured 2026-11-23 on all four hosts: the same platform file, User-agent: \* Disallow: / with Allow: /$, /careers, /api/apply, /api/pcsx and a few other paths, so /careers, /careers/job/\<id>, /api/pcsx/search and /api/pcsx/position_details are allowed and everything else is closed. /api/pcsx/position_details is in ats.NEVER_CACHED_PATHS on every host: its answer carries positionExtraDetails.pymww, 'people you may work with' (employees' names and pictures where a tenant turns it on; all four measured have it off).
+
+**Where it names its employer.** Stated twice on the careers page and believed only where the two agree (verify_boards.\_eightfold): its \<title> (or og:title), 'Careers at X', and its pcsx-data's configs.pcsxConfig.branding.companyName, X (measured 'UKG', 'Curriculum Associates', 'Aventiv', 'Eightfold', 2026-11-23); the page asked with the ref's own group and held to it. Never the group (volkscience.com is Eightfold's), the host, the JSON-LD's sameAs, a posting's title (the shared host titles every posting 'Careers at Eightfold') or a person. n is data.count from the list's first page. The brand is the tenant's configured name, not a legal name: 'Aventiv' and 'Eightfold' are not the 'Aventiv Technologies' and 'Eightfold AI' on file, so the door holds those two for the owner.
+
+**Quirks.**
+
+- No empty board has been measured, so a count of 0 raises (Unknown, never 'None found'). So do a page without pcsx-data, with PCSX off or answering as another group, a list in another shape, a count the pages do not make up or that moves between pages, a row with no id or name or with another positionUrl, and a board counting more than 1,000 postings (more than the reader walks, at 10 a page).
+- postedTs moves when the employer posts a job again (UKG's ten newest were all dated 2026-11-23, created between 2026-08-04 and 2026-11-23): it is the employer publishing it again, so it is the posted day; creationTs is when the requisition was made, which no board shows as a posting date, and it is never read.
+- Moved from type html, a board's postings keep their first-seen days: UKG's and Eightfold's careers pages listed /careers/job/\<id> under titles with the place and the department glued on, and build_board keys an Eightfold posting address on its host and position id (ats.eightfold_posting_key), so carry_first_seen matches the company's earlier posting on that key. Their opening ids are company and title, and a title the html scan glued a place onto is corrected, so those openings take the corrected title's id.
+- The four tenants measured ask for no token, cookie or CSRF value, and no bot wall met the crawler's own user agent.
+
+**Notes.**
+
+- Research of 2026-11-23: four companies on file use Eightfold, all type html and read as a JavaScript shell: UKG 251 open (many public-sector-adjacent sales roles), Curriculum Associates 59, Eightfold AI 43, Aventiv Technologies 20 (22 on 2026-11-27).
+- The feed is the career site's own backend: unauthenticated, robots-allowed, and not documented as public; Eightfold's terms of use were not read.
+
+<!-- live -->
+
+On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -539,7 +578,7 @@ On file today: 12 companies (BigBear.ai (Pangiam), Bruker Detection, Cotiviti, E
 
 <!-- live -->
 
-On file today: 21 companies, 4 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 21 companies, 3 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -601,7 +640,7 @@ On file today: no company. The last sweep (2026-11-22): 0 companies' own sites p
 
 <!-- live -->
 
-On file today: no company. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 2 companies (Finalsite, ImageTrend), 1 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -709,7 +748,7 @@ On file today: 1 company (Tyler Technologies), 1 with roles. The last sweep (202
 
 <!-- live -->
 
-On file today: 42 companies, 21 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
+On file today: 42 companies, 22 of them with roles. The last sweep (2026-11-22): 0 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -804,7 +843,7 @@ On file today: 45 companies, 11 of them with roles. The last sweep (2026-11-22):
 
 <!-- live -->
 
-On file today: 4 companies (CARTO, Clearview AI, Eptura, Pathify), 2 of them with roles. The last sweep (2026-11-22): 6 companies' own sites pointed to a board on it.
+On file today: 4 companies (CARTO, Clearview AI, Eptura, Pathify), 3 of them with roles. The last sweep (2026-11-22): 6 companies' own sites pointed to a board on it.
 
 <!-- /live -->
 
@@ -896,7 +935,7 @@ On file today: 38 companies, 17 of them with roles. The last sweep (2026-11-22):
 
 <!-- live -->
 
-On file today: 4 companies (Aurigo Software, Esri Canada, Gainwell Technologies, Octave), 4 of them with roles. The last sweep (2026-11-22): did not meet it.
+On file today: 4 companies (Aurigo Software, Esri Canada, Gainwell Technologies, Octave), 3 of them with roles. The last sweep (2026-11-22): did not meet it.
 
 <!-- /live -->
 
@@ -1271,24 +1310,6 @@ On file today: no company. The last sweep (2026-11-22): did not meet it.
 `dayforce` · **seen** · no reader · no identity probe · measured unknown
 
 **How to spot it.** Any dayforcehcm.com address: find_site_boards tallies it as 'dayforce'. discover_ats.MARKERS files \<label>.dayforcehcm.com as type html.
-
-**How it publishes.** Unknown: not researched.
-
-**robots.txt.** Unknown: not measured.
-
-**Where it names its employer.** Unknown: not researched. verify_boards has no probe for it, so no board on it can be proven.
-
-<!-- live -->
-
-On file today: no company. The last sweep (2026-11-22): did not meet it.
-
-<!-- /live -->
-
-### Eightfold
-
-`eightfold` · **seen** · no reader · no identity probe · measured unknown
-
-**How to spot it.** Any eightfold.ai address: find_site_boards tallies it as 'eightfold'. Nothing else in the code names it.
 
 **How it publishes.** Unknown: not researched.
 

@@ -281,7 +281,13 @@ OWN_FORMS = {"applicantpro": {"applicantpro-other"}, "teamtailor": {"teamtailor-
              # (an address on apply.clearcompany.com naming a slug is a board,
              # so clearcompany-other names none: its scripts, its pictures, a
              # tenant host robots.txt closes; 2026-11-24)
-             "clearcompany": {"clearcompany-other"}}
+             "clearcompany": {"clearcompany-other"},
+             # (every app.eightfold.ai/careers address asking ?domain= is a
+             # board, and a career site on an employer's own host is read off
+             # the page itself, so eightfold-other - Eightfold's own site, a
+             # privacy page, its assets on static.vscdn.net - names none;
+             # 2026-11-27)
+             "eightfold": {"eightfold-other"}}
 SKIP_WORDS = (("giant", "giants"), ("unreadable", "unreadable"),
               ("size-unknown", "size unknown"),
               ("no-candidate", "no board seen on their site"),
@@ -3509,11 +3515,13 @@ def consider(cid: str, entry: dict, boards: list, unusable: list,
 # plan: the probe takes the answer the read had - ats.jobvitefeed_kept, blind
 # review 12, 2026-11-23; and so is a TriNet Hire list - ats.trinethire_kept,
 # blind review 13, 2026-11-24 - and a JobScore board's feed, ats.jobscore_kept, and a
-# ClearCompany site's three answers - ats.clearcompany_kept, 2026-11-24)
+# ClearCompany site's three answers - ats.clearcompany_kept, 2026-11-24 - and an
+# Eightfold career site's page and list - ats.eightfold_kept, 2026-11-27)
 @ats.jobvitefeed_kept()
 @ats.trinethire_kept()
 @ats.jobscore_kept()
 @ats.clearcompany_kept()
+@ats.eightfold_kept()
 def plan(results: dict, companies: list, board: dict, say=print, reviewed=None,
          stores: dict | None = None, numbers: dict | None = None, fresh=(),
          pages: dict | None = None, postings: dict | None = None,

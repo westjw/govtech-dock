@@ -455,6 +455,14 @@ def board_url(c: dict) -> str | None:
             return ats.clearcompany_url(ref)
         except ats.AtsError:
             return c.get("website")
+    if kind == "eightfold":
+        # the careers page with its group, https://<host>/careers?domain=<group>:
+        # every opening, each linking its own page; a ref that is no board:
+        # their website
+        try:
+            return ats.eightfold_url(ref)
+        except ats.AtsError:
+            return c.get("website")
     if kind == "html" and ats.trinethire_career(ref) is not None:
         # a careers page on file that is TriNet's career page links the same
         # board's list, its embed: that page says there are no openings
@@ -572,11 +580,16 @@ def opening_id(company_id: str, title: str) -> str:
 def posting_key(url) -> str | None:
     """What a posting's address NAMES, for the platforms whose one posting is
     written more than one way - a TriNet Hire posting by its company number
-    and job id, a ClearCompany posting by its slug and job id - or None for
+    and job id, a ClearCompany posting by its slug and job id, an Eightfold
+    posting by its host and position id (2026-11-27: UKG's and Eightfold's
+    careers pages, type html, listed /careers/job/<id> under titles with the
+    place and the department glued on, so the reader's rows match none of
+    them by id) - or None for
     any other address. carry_first_seen matches a posting on it when the
     reader or the place written beside it changed. posting_id hashes only
     TriNet's (see there)."""
-    return ats.trinethire_posting_key(url) or ats.clearcompany_posting_key(url)
+    return (ats.trinethire_posting_key(url) or ats.clearcompany_posting_key(url)
+            or ats.eightfold_posting_key(url))
 
 
 def posting_id(company_id: str, title: str, url: str | None, location: str) -> str:

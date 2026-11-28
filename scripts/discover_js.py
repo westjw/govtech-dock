@@ -66,6 +66,12 @@ ATS_URL_PATS = [
                  r"document\s*,\s*['\"]script['\"]\s*,\s*['\"](?!jobscore['\"])"
                  r"([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)['\"]\s*\)"),
     ("polymer", r"([a-z0-9-]+)\.polymer\.co"),
+    # (an Eightfold career site's list, which its page asks for on the
+    # employer's own host or the shared app.eightfold.ai: the group it asks
+    # with - the ref is https://<that host>/careers?domain=<group>, the group
+    # held to the page's own window._EF_GROUP_ID; never a bare eightfold.ai)
+    ("eightfold", r"/api/pcsx/(?:search|position_details)\?(?:[^\s\"'<>#]{0,800}?&)?"
+                  r"domain=([a-z0-9][a-z0-9.-]{0,252})"),
 ]
 
 # third-party junk that matches "job|career" but isn't a board
