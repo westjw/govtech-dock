@@ -545,8 +545,8 @@
     "category": "Fire",
     "description": "Cloud fire department suite: pre-incident planning, RMS, scheduling, and response - exhibited at IAFC FRI 2026, FDIC International 2026, FDIC International 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.firstdue.com/careers"
+      "type": "greenhouse",
+      "ref": "localitymediallcdbafirstdue"
     },
     "hiring": {
       "status": "Unknown",
@@ -2716,8 +2716,8 @@
     "category": "Police",
     "description": "Acoustic gunshot detection and policing analytics",
     "ats": {
-      "type": "html",
-      "ref": "https://app.trinethire.com/companies/32876-soundthinking-inc/jobs"
+      "type": "trinethire",
+      "ref": "32876-soundthinking-inc"
     },
     "hiring": {
       "status": "Unknown",
@@ -2849,7 +2849,11 @@
       "by": "agent:profile-police-2026-09-03",
       "ruled_by": "agent:review-police-2026-09-03",
       "ruled_on": "2026-09-03"
-    }
+    },
+    "board_owner": "SoundThinking, Inc.",
+    "also_known_as": [
+      "SoundThinking, Inc."
+    ]
   },
   {
     "id": "liveview-technologies",
@@ -2861,8 +2865,8 @@
     "category": "Police",
     "description": "Solar-powered mobile surveillance units for cities, retail, and infrastructure - exhibited at APTA 2026, DISTRIBUTECH 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.lvt.com/careers"
+      "type": "ashby",
+      "ref": "liveview-technologies"
     },
     "hiring": {
       "status": "Unknown",
@@ -2875,7 +2879,8 @@
     "source": "IACP 2026; APTA 2026; DISTRIBUTECH 2026",
     "researched": true,
     "also_known_as": [
-      "LVT"
+      "LVT",
+      "LiveView Technologies"
     ],
     "also": [
       {
@@ -2995,7 +3000,8 @@
       "by": "agent:profile-police-2026-09-03",
       "ruled_by": "agent:review-police-2026-09-03",
       "ruled_on": "2026-09-03"
-    }
+    },
+    "board_owner": "LiveView Technologies"
   },
   {
     "id": "truleo",
@@ -8260,8 +8266,8 @@
     "category": "Streets",
     "description": "Tolling and intelligent transportation systems (owns IRD, ETC); acquiring Conduent's tolling unit - exhibited at TRB 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://careers.quarterhill.com/Quarterhill/jobs/categories"
+      "type": "jibe",
+      "ref": "careers.quarterhill.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -23563,8 +23569,8 @@
     "category": "Finance & ERP",
     "description": "Local government ERP: financials, property tax, assessing, utility billing - Michigan standard going national - exhibited at GFOA 2026, ICMA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.bsasoftware.com/careers"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/96c79f09-e201-48b6-927d-6e8d5c69b443/BSA-Software-LLC"
     },
     "hiring": {
       "status": "Sales (non-AE)",
@@ -23723,7 +23729,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "BS&A Software LLC"
   },
   {
     "id": "caselle",
@@ -25599,8 +25606,8 @@
     "category": "Permitting & Licensing",
     "description": "Rentalscape: AI parcel data for short-term rental compliance and tax recovery in 400+ jurisdictions - exhibited at NLC City Summit 2026, ICC 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://deckard.bamboohr.com"
+      "type": "bamboohr",
+      "ref": "deckard"
     },
     "hiring": {
       "status": "Unknown",
@@ -25721,7 +25728,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "Deckard",
+    "also_known_as": [
+      "Deckard"
+    ]
   },
   {
     "id": "hera-property-registry",
@@ -25885,8 +25896,8 @@
     "category": "Citizen Services",
     "description": "AI resident feedback: surveys, sentiment analytics, and engagement for cities and police - exhibited at 3CMA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://zencity.io/careers"
+      "type": "comeet",
+      "ref": "56.00B|65B262265B1FC7131126220CB62622196C"
     },
     "hiring": {
       "status": "None found",
@@ -25921,7 +25932,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-27: zencity.io/careers embeds the board; the board names \"Zencity\"; 2 postings read"
   },
   {
     "id": "citibot",
@@ -29927,8 +29939,8 @@
     "category": "Police",
     "description": "Off-duty police detail management: scheduling, payments, insurance, oversight (Vista-backed)",
     "ats": {
-      "type": "html",
-      "ref": "https://rollkall.com/careers"
+      "type": "rippling",
+      "ref": "rollkall-technologies-llc"
     },
     "hiring": {
       "status": "Unknown",
@@ -30054,7 +30066,11 @@
       "by": "agent:profile-police-2026-09-03",
       "ruled_by": "agent:review-police-2026-09-03",
       "ruled_on": "2026-09-03"
-    }
+    },
+    "board_owner": "RollKall Technologies, LLC",
+    "also_known_as": [
+      "RollKall Technologies, LLC"
+    ]
   },
   {
     "id": "goodsam",
@@ -30635,8 +30651,8 @@
     "category": "Finance & ERP",
     "description": "Aerial imagery and property data analytics for county assessors, GIS, and insurers - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026, DISTRIBUTECH 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://careers.eagleview.com"
+      "type": "jibe",
+      "ref": "careers.eagleview.com"
     },
     "hiring": {
       "status": "Yes",
@@ -41256,8 +41272,8 @@
     "category": "Police",
     "description": "Mobile forensics and investigative intelligence (UFED, Pathfinder) - Nasdaq: CLBT",
     "ats": {
-      "type": "html",
-      "ref": "https://cellebrite.com/en/about/careers/positions/"
+      "type": "comeet",
+      "ref": "C3.00F|3CF130BF3C0B6D16DA1AA9B6D130B16DA"
     },
     "hiring": {
       "status": "Yes",
@@ -68903,8 +68919,8 @@
     "category": "Demand-Response & AV",
     "description": "HD-mapless vision-based autonomous driving software for buses and shuttles (Israel's first AV buses) - exhibited at APTA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://imagry.co/careers"
+      "type": "comeet",
+      "ref": "B7.00F|7BF2E7A1EFC1EFCF7E7BF36393DF826BB2E7A"
     },
     "hiring": {
       "status": "Unknown",
@@ -69022,7 +69038,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-27: imagry.co/jobs-at-imagry-autonomous-driving-software-company embeds the board; the board names \"Imagry\"; 8 postings read"
   },
   {
     "id": "silverride",
@@ -76963,8 +76980,8 @@
     "category": "Suppliers & Services",
     "description": "Secure ID and mobile driver's license issuance - exhibited at IACP 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "getgroupna"
     },
     "hiring": {
       "status": "Unknown",
@@ -77082,7 +77099,11 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "board_owner": "Global Enterprise Technologies",
+    "also_known_as": [
+      "Global Enterprise Technologies"
+    ]
   },
   {
     "id": "gamechanger",
@@ -89167,8 +89188,8 @@
     "category": "Strategy & Performance",
     "description": "Satellite earth-observation imagery and change-detection analytics for agencies, insurance, and ag - exhibited at NLC City Summit 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://earthdaily.com/careers"
+      "type": "jazzhr",
+      "ref": "earthdaily"
     },
     "hiring": {
       "status": "Unknown",
@@ -89308,7 +89329,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "EarthDaily Analytics",
+    "also_known_as": [
+      "EarthDaily Analytics"
+    ]
   },
   {
     "id": "engage-by-cell",
@@ -97083,8 +97108,8 @@
     "category": "Police",
     "description": "OSINT, translation and identity intelligence for law enforcement agencies",
     "ats": {
-      "type": "html",
-      "ref": "https://www.babelstreet.com/careers"
+      "type": "greenhouse",
+      "ref": "babelstreet"
     },
     "hiring": {
       "status": "Unknown",
@@ -106478,8 +106503,8 @@
     "category": "Street Lighting & Poles",
     "description": "Grid network and streetlight control solutions for utilities and cities - exhibited at DISTRIBUTECH 2026, DISTRIBUTECH 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.landisgyr.com/careers"
+      "type": "successfactors",
+      "ref": "https://careers.landisgyr.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -114870,8 +114895,8 @@
     "category": "Elections",
     "description": "Campaign finance disclosure and compliance systems for election agencies",
     "ats": {
-      "type": "html",
-      "ref": "https://www.aristotle.com/careers"
+      "type": "workable",
+      "ref": "aristotle"
     },
     "hiring": {
       "status": "Unknown",
@@ -114999,7 +115024,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "Aristotle",
+    "also_known_as": [
+      "Aristotle"
+    ]
   },
   {
     "id": "netfile",
@@ -117710,8 +117739,8 @@
     "category": "Streets",
     "description": "Video-based traffic survey and analytics software for road authorities - exhibited at TRB 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://goodvisionlive.com/careers"
+      "type": "workable",
+      "ref": "goodvision"
     },
     "hiring": {
       "status": "Unknown",
@@ -117804,7 +117833,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "GoodVision s.r.o.",
+    "also_known_as": [
+      "GoodVision s.r.o."
+    ]
   },
   {
     "id": "nexar",
@@ -128877,8 +128910,8 @@
     "category": "EMS",
     "description": "Fire/EMS station alerting and dispatch integration for municipalities - exhibited at IAFC FRI 2026, APCO 2026, FDIC International 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.purvis.com/careers/"
+      "type": "lever",
+      "ref": "purvis"
     },
     "hiring": {
       "status": "Unknown",
@@ -129005,8 +129038,10 @@
     "competitors_checked_on": "2026-10-22",
     "competitors_none_found": false,
     "also_known_as": [
-      "Purvis Systems Incorporated"
-    ]
+      "Purvis Systems Incorporated",
+      "PURVIS"
+    ],
+    "board_owner": "PURVIS"
   },
   {
     "id": "zetron",
@@ -129094,8 +129129,8 @@
     "category": "EMS",
     "description": "911 call routing, Viper call handling and NG911 for PSAPs - exhibited at APCO 2026, Illinois Chapter of APCO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://careers.intrado.com"
+      "type": "jibe",
+      "ref": "careers.intrado.com"
     },
     "hiring": {
       "status": "Yes",
@@ -129233,7 +129268,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "Intrado Life & Safety, Inc."
   },
   {
     "id": "geocomm",
@@ -143900,8 +143936,8 @@
     "category": "Security & Screening",
     "description": "Automated vehicle inspection portals for airports, borders and government",
     "ats": {
-      "type": "html",
-      "ref": "https://uveye.com/careers"
+      "type": "comeet",
+      "ref": "92.00F|29FA7C17971797FBA179753E53E0A7C"
     },
     "hiring": {
       "status": "Yes",
@@ -148392,8 +148428,8 @@
     "category": "Fire",
     "description": "SCBA, thermal imagers and turnout gear for fire departments - exhibited at WEFTEC 2026, IAFC FRI 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.msasafety.com/careers"
+      "type": "jibe",
+      "ref": "careers.msasafety.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -148416,7 +148452,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "MSA, The Safety Company"
   },
   {
     "id": "bullard",
@@ -173424,8 +173461,8 @@
     "category": "Strategy & Performance",
     "description": "High-frequency aerial imagery and location content for government departments - exhibited at IAAO 2026, URISA GIS-Pro 2026, NSGIC 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.nearmap.com/careers"
+      "type": "smartrecruiters",
+      "ref": "nearmap"
     },
     "hiring": {
       "status": "Unknown",
@@ -175606,8 +175643,8 @@
     "category": "Courts & Case Management",
     "description": "Criminal justice data collection and public dashboards for counties and states",
     "ats": {
-      "type": "html",
-      "ref": "https://measuresforjustice.org/careers"
+      "type": "trinethire",
+      "ref": "32198-measures-for-justice"
     },
     "hiring": {
       "status": "Yes",
@@ -175703,7 +175740,8 @@
       "by": "agent:write-profiles",
       "ruled_by": "agent:writeup-review",
       "ruled_on": "2026-11-10"
-    }
+    },
+    "ats_note": "wired 2026-11-27: measuresforjustice.org/who-we-are/careers links to the board; the board names \"Measures for Justice\"; 1 posting read"
   },
   {
     "id": "legalserver",
@@ -176845,8 +176883,8 @@
     "category": "Airfield & Operations",
     "description": "Airport weather observation systems and runway condition sensors for airports - exhibited at NACE 2026, TRB 2027",
     "ats": {
-      "type": "html",
-      "ref": "https://www.vaisala.com/careers"
+      "type": "successfactors",
+      "ref": "https://careers.vaisala.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -176865,7 +176903,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "vaisalaoyj",
+    "also_known_as": [
+      "vaisalaoyj"
+    ]
   },
   {
     "id": "atac-corporation",
@@ -179900,8 +179942,8 @@
     "category": "Broadband & Connectivity",
     "description": "Fiber management and connectivity products for municipal and community broadband",
     "ats": {
-      "type": "html",
-      "ref": "https://www.seeclearfield.com/jobs"
+      "type": "clearcompany",
+      "ref": "clearfield"
     },
     "hiring": {
       "status": "Unknown",
@@ -180004,7 +180046,8 @@
     },
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "board_owner": "Clearfield, Inc"
   },
   {
     "id": "cambium-networks",
@@ -180973,8 +181016,8 @@
     "category": "Broadband & Connectivity",
     "description": "Construction management platform for fiber and municipal infrastructure builds",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "bamboohr",
+      "ref": "fresnelsoftware"
     },
     "hiring": {
       "status": "Unknown",
@@ -180997,7 +181040,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "vitruvi",
+    "also_known_as": [
+      "vitruvi"
+    ]
   },
   {
     "id": "ospinsight",
@@ -187552,8 +187599,8 @@
     "category": "IT & Administration",
     "description": "Student information, finance, and HCM systems for colleges and universities - exhibited at NACUBO 2026, NASFAA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://careers.ellucian.com/careers-home"
+      "type": "jibe",
+      "ref": "careers.ellucian.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -191111,8 +191158,8 @@
     "category": "Libraries",
     "description": "Digital ebook, audiobook, and video lending platform for public libraries, K-12 schools, and academic institutions - exhibited at PLA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://company.overdrive.com/careers/"
+      "type": "jobvite",
+      "ref": "overdrive"
     },
     "hiring": {
       "status": "Unknown",
@@ -191216,7 +191263,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-27: company.overdrive.com/careers embeds the board; the board names \"OverDrive\"; 6 postings read"
   },
   {
     "id": "the-library-corporation",
@@ -227018,8 +227066,8 @@
     "category": "IT & AI Platforms",
     "description": "Electronic signature, agreement management and contract lifecycle software sold to federal, state and local government agencies - exhibited at NACUBO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://careers.docusign.com/careers-home"
+      "type": "jibe",
+      "ref": "careers.docusign.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -228574,8 +228622,8 @@
     "category": "IT & Administration",
     "description": "Kahoot! sells game-based quiz, polling and lesson software to teachers, schools, colleges and universities, and to businesses for training - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://kahoot.com/jobs/"
+      "type": "workable",
+      "ref": "kahoot"
     },
     "hiring": {
       "status": "Unknown",
@@ -229614,8 +229662,8 @@
     "category": "IT & AI Platforms",
     "description": "Pantheon sells a managed hosting and WebOps platform for Drupal and WordPress websites to government agencies and schools - exhibited at 3CMA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://pantheon.io/about/careers"
+      "type": "greenhouse",
+      "ref": "pantheon"
     },
     "hiring": {
       "status": "Unknown",
@@ -229629,7 +229677,11 @@
     "researched": true,
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "board_owner": "Pantheon Systems, Inc",
+    "also_known_as": [
+      "Pantheon Systems, Inc"
+    ]
   },
   {
     "id": "paymentvision",
@@ -229859,8 +229911,8 @@
     "category": "IT & AI Platforms",
     "description": "Data integration, data quality, data governance and address and location data software sold to federal, state and local agencies and other enterprises - exhibited at NASCIO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.precisely.com/careers-and-culture/"
+      "type": "greenhouse",
+      "ref": "preciselyusjobs"
     },
     "hiring": {
       "status": "Unknown",
@@ -229887,7 +229939,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "Precisely US Jobs",
+    "also_known_as": [
+      "Precisely US Jobs"
+    ]
   },
   {
     "id": "pulpstream",
@@ -230878,8 +230934,8 @@
     "category": "IT & AI Platforms",
     "description": "IT service management and help desk software with AI agents for government agencies, higher education, healthcare and businesses - exhibited at GMIS International 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "comeet",
+      "ref": "https://www.comeet.com/jobs/sysaid/43.00A"
     },
     "hiring": {
       "status": "Unknown",
@@ -230898,7 +230954,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "SysAid Technologies",
+    "also_known_as": [
+      "SysAid Technologies"
+    ]
   },
   {
     "id": "syscloud",
@@ -231540,8 +231600,8 @@
     "category": "IT & AI Platforms",
     "description": "Sells endpoint security, device tracking and secure remote access software to federal, state and local government agencies and schools - exhibited at APCO 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://jobs.jobvite.com/absolute"
+      "type": "jobvite",
+      "ref": "absolute"
     },
     "hiring": {
       "status": "Yes",
@@ -231567,7 +231627,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "Absolute Security",
+    "also_known_as": [
+      "Absolute Security"
+    ]
   },
   {
     "id": "alpharoute",
@@ -237517,8 +237581,8 @@
     "category": "Housing & Assistance",
     "description": "Open Path open-source HMIS, coordinated entry, data warehouse and analytics platform for homeless services, provided as SaaS to cities, counties and CoCs",
     "ats": {
-      "type": "html",
-      "ref": "https://app.trinethire.com/companies/33617-green-river-analytics/jobs"
+      "type": "trinethire",
+      "ref": "33617-green-river-analytics"
     },
     "hiring": {
       "status": "Unknown",
@@ -237532,7 +237596,11 @@
     "researched": true,
     "competitors": [],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": true
+    "competitors_none_found": true,
+    "board_owner": "Green River Data Group Inc.",
+    "also_known_as": [
+      "Green River Data Group Inc."
+    ]
   },
   {
     "id": "adsystech",
@@ -237664,8 +237732,8 @@
     "category": "Planning & Economic Development",
     "description": "Economic impact modeling software and data used by governments, economic development organizations and other industries",
     "ats": {
-      "type": "html",
-      "ref": "https://implan.com/careers/"
+      "type": "paylocity",
+      "ref": "https://recruiting.paylocity.com/recruiting/jobs/All/65558f1a-1e09-498a-a824-375fa57dd268/IMPLAN-Group-LLC"
     },
     "hiring": {
       "status": "Yes",
@@ -237691,7 +237759,11 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "board_owner": "IMPLAN Group LLC",
+    "also_known_as": [
+      "IMPLAN Group LLC"
+    ]
   },
   {
     "id": "smartsimple",
@@ -239309,8 +239381,8 @@
     "category": "Streets",
     "description": "AI utility-mapping platform that compiles public utility records into one map for state DOTs, engineering firms and contractors - exhibited at DISTRIBUTECH 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://www.4manalytics.com/careers"
+      "type": "ashby",
+      "ref": "4M"
     },
     "hiring": {
       "status": "Yes",
@@ -239328,7 +239400,11 @@
     "govtech": true,
     "vendor_type": "GovTech Product",
     "source": "conference sweep: DISTRIBUTECH 2026",
-    "researched": true
+    "researched": true,
+    "board_owner": "4M",
+    "also_known_as": [
+      "4M"
+    ]
   },
   {
     "id": "buzz-solutions",
@@ -239833,8 +239909,8 @@
     "category": "IT & AI Platforms",
     "description": "Boomi Enterprise Platform for integration, API management and automation, sold to government agencies, cities, universities and businesses - exhibited at EDUCAUSE 2026",
     "ats": {
-      "type": "unknown",
-      "ref": null
+      "type": "greenhouse",
+      "ref": "boomilp"
     },
     "hiring": {
       "status": "Unknown",
@@ -239927,8 +240003,8 @@
     "category": "Benefits & Medicaid Systems",
     "description": "Background check and income, employment and asset verification platform, sold to employers, lenders and state agencies verifying Medicaid and SNAP eligibility - exhibited at APHSA 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://checkr.com/company/careers"
+      "type": "greenhouse",
+      "ref": "checkr"
     },
     "hiring": {
       "status": "Unknown",

@@ -5019,5 +5019,238 @@
    "read_at": "2026-11-25T10:28:08-05:00",
    "page": "https://www.seeclearfield.com:443/about/careers.html"
   }
+ },
+ {
+  "id": "cellebrite",
+  "name": "Cellebrite",
+  "was": "html",
+  "found": {
+   "type": "comeet",
+   "ref": "C3.00F|3CF130BF3C0B6D16DA1AA9B6D130B16DA"
+  },
+  "saw": "https://www.comeet.co/jobs/C3.00F/social?token=3CF130BF3C0B6D16DA1AA9B6D130B16DA&company-uid=C3.00F&candidate-source-storage=false&color=278fe6&background-color",
+  "times": 1,
+  "verified": "31 posting(s) readable",
+  "board_calls_itself": "Cellebrite",
+  "identity": "unknown",
+  "identity_why": "the board names \"Cellebrite\", which is this company, but their own site also loads comeet in a form that names no board (comeet-other): a widget or a link of another account names none either, so which board they hire through today is not settled; https://cellebrite.com/en/about/careers/positions/ embeds the board",
+  "postings": 31,
+  "titles": [
+   "Account Executive, SLG",
+   "Accountant-Singapore",
+   "AI Engineer",
+   "Android Security Researcher",
+   "Android Vulnerability Researcher",
+   "Assistant Corporate Controller",
+   "Associate Account Executive",
+   "Channel Manager"
+  ],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:17:22-05:00",
+   "page": "https://cellebrite.com/en/about/careers/positions/"
+  }
+ },
+ {
+  "id": "cloudlabs-by-spektra-systems",
+  "name": "CloudLabs by Spektra Systems",
+  "was": "unknown",
+  "found": {
+   "type": "zohorecruit",
+   "ref": "https://spektrasystems.zohorecruit.com/jobs/Careers"
+  },
+  "saw": "https://spektrasystems.zohorecruit.com/jobs/Careers/rss",
+  "times": 1,
+  "verified": "13 posting(s) readable",
+  "board_calls_itself": "Spektra Systems LLC",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Spektra Systems LLC\", which is not \"CloudLabs by Spektra Systems\": one name only contains the other, and a name inside another name is never taken for the same company; the board gives its website as spektrasystems.com, which is the one on file; their site names this board only in plain text - no link, embed, script or redirect - and a slug left in a sentence can be an old board; https://careers.spektrasystems.com/jobs/Careers names the board",
+  "postings": 13,
+  "titles": [
+   "Customer Success Specialist Trainee \u2013 L1 Support (AI-Enabled)",
+   "Technical Program Manager \u2013 Cloud Platform",
+   "AI-Native Software Engineer \u2013 Trainee",
+   "Software Development Engineer I (Full stack - .NET, Angular, AI-Assisted Development)",
+   "Sales Trainee \u2013 CloudLabs",
+   "Inside Sales Specialist Trainee",
+   "AI-Native Full-Stack Developer",
+   "Marketing Associate - Ops, Content & Outbound"
+  ],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:17:28-05:00",
+   "page": "https://careers.spektrasystems.com/jobs/Careers"
+  }
+ },
+ {
+  "id": "copenhagen-optimization",
+  "name": "Copenhagen Optimization",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://copenhagenoptimization.teamtailor.com"
+  },
+  "saw": "https://copenhagenoptimization.teamtailor.com/",
+  "times": 1,
+  "verified": "2 posting(s) readable; 1 opening among them (the rest are not openings: a logo's file name, a talent pool, a template)",
+  "board_calls_itself": "Copenhagen Optimization",
+  "identity": "unknown",
+  "identity_why": "the board names \"Copenhagen Optimization\", which is this company, but their own site also names other:copopt.com, a job platform the crawl cannot read, so which board they hire through today is not settled; https://copenhagenoptimization.com/company/careers links to the board",
+  "postings": 1,
+  "titles": [
+   "Consultant at Copenhagen Optimization (Cambridge, MA)"
+  ],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:17:31-05:00",
+   "page": "https://copenhagenoptimization.com/company/careers"
+  }
+ },
+ {
+  "id": "democracy-works",
+  "name": "Democracy Works",
+  "was": "html",
+  "found": {
+   "type": "pinpoint",
+   "ref": "democracy-works"
+  },
+  "saw": "https://democracy-works.pinpointhq.com/postings.json",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "Democracy Works",
+  "identity": "unknown",
+  "identity_why": "the board names \"Democracy Works\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.democracy.works/careers loads its jobs from the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:17:42-05:00",
+   "page": "https://www.democracy.works/careers"
+  }
+ },
+ {
+  "id": "greehill",
+  "name": "greehill",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://career.greehill.com"
+  },
+  "saw": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Jobs\" href=\"https://career.greehill.com/jobs.rss\">",
+  "times": 1,
+  "verified": "8 posting(s) readable",
+  "board_calls_itself": "greehill",
+  "identity": "unknown",
+  "identity_why": "the board names \"greehill\", which is this company, but their own site also loads teamtailor in a form that names no board (teamtailor-other): a widget or a link of another account names none either, so which board they hire through today is not settled; the public board already shows 13 postings for this company (crawl of 2026-11-27) and this board read 8 postings; wiring it would take roles off the board; https://career.greehill.com/jobs/3614329-head-of-people?utm_campaign=jobs-widget&utm_source=career.greehill.com&utm_content=jobs&utm_medium=web links to the board",
+  "postings": 8,
+  "titles": [
+   "Navigator & Fleet Manager \u2013 Budapest",
+   "QC Team Lead \u2013 Budapest",
+   "Senior Machine Learning Engineer",
+   "Senior Fullstack Engineer",
+   "Mobile Mapping Specialist (Driver) \u2013 San Francisco",
+   "Data Engineer \u2014 Data Platform",
+   "Head of People",
+   "Urban Tree Scan Driver for North America region"
+  ],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:18:11-05:00",
+   "page": "https://career.greehill.com/jobs/3614329-head-of-people?utm_campaign=jobs-widget&utm_source=career.greehill.com&utm_content=jobs&utm_medium=web"
+  }
+ },
+ {
+  "id": "heliocampus",
+  "name": "HelioCampus",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://heliocampus.teamtailor.com"
+  },
+  "saw": "https://heliocampus.teamtailor.com/jobs",
+  "times": 1,
+  "verified": "0 posting(s) readable",
+  "board_calls_itself": "HelioCampus",
+  "identity": "unknown",
+  "identity_why": "the board names \"HelioCampus\", which is this company, but the board read no postings, so nothing shows it is the board they hire through today; https://www.heliocampus.com/company/careers links to the board",
+  "postings": 0,
+  "titles": [],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:18:16-05:00",
+   "page": "https://www.heliocampus.com/company/careers"
+  }
+ },
+ {
+  "id": "mprest",
+  "name": "Mprest",
+  "was": "html",
+  "found": {
+   "type": "comeet",
+   "ref": "38.005|835313E290939730106A313E0189F2909"
+  },
+  "saw": "https://www.comeet.co/jobs/38.005/social?token=835313E290939730106A313E0189F2909&company-uid=38.005&candidate-source-storage=true&color=278fe6&background-color=",
+  "times": 1,
+  "verified": "11 posting(s) readable",
+  "board_calls_itself": "mPrest",
+  "identity": "unknown",
+  "identity_why": "the board names \"mPrest\", which is this company, but it is in the Acquisitions queue: their own website ends up on https://mprest-landing.pages.dev/; https://mprest.com/mprest_careers/ embeds the board",
+  "postings": 11,
+  "titles": [
+   "C# Developer",
+   "Configuration Management Specialist",
+   "Full Stack Team Leader",
+   "Information Security and Cyber Specialist",
+   "International Sales Manager",
+   "Product Maker",
+   "Project Manager",
+   "QC Engineer"
+  ],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:19:10-05:00",
+   "page": "https://mprest.com/mprest_careers/"
+  }
+ },
+ {
+  "id": "nira-dynamics",
+  "name": "NIRA Dynamics",
+  "was": "html",
+  "found": {
+   "type": "teamtailor",
+   "ref": "https://niradynamics.teamtailor.com"
+  },
+  "saw": "https://niradynamics.teamtailor.com/jobs/8711629-spend-your-summer-engineering-the-future-of-mobility-with-nira-dynamics?utm_campaign=jobs-widget&utm_source=nir",
+  "times": 4,
+  "verified": "2 posting(s) readable",
+  "board_calls_itself": "NIRA Dynamics",
+  "identity": "unknown",
+  "identity_why": "the board names \"NIRA Dynamics\", which is this company, but their own site also names other:niradynamics.jp, a job platform the crawl cannot read, so which board they hire through today is not settled; https://www.niradynamics.com/careers links to the board (seen 4 times)",
+  "postings": 2,
+  "titles": [
+   "Spend Your Summer Engineering the Future of Mobility with NIRA Dynamics!",
+   "People & Business-oriented Team manager"
+  ],
+  "filed": {
+   "by": "agent:coverage-b27-2026-11-27",
+   "on": "2026-11-27",
+   "at": "2026-11-27T19:31:22-05:00",
+   "read_at": "2026-11-27T19:19:17-05:00",
+   "page": "https://www.niradynamics.com/careers"
+  }
  }
 ]
