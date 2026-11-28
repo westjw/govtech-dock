@@ -1965,8 +1965,9 @@ def history_first_seen(history: pathlib.Path | None = None) -> tuple[dict, dict]
     snapshots since 08-24 (launch audit 2, 2026-10-09). Exact ids only: the id
     holds the title, url and place, so a match is the same posting. A title
     that merely recurs is not. (carry_first_seen also matches a posting whose
-    address names it - a ClearCompany posting's job id - on the address and
-    place alone, under each way it has been written: see there.)
+    address names it - a ClearCompany posting's job id, an Eightfold
+    posting's position id - on the address and place alone, under each way
+    they have been written: see there.)
 
     `history` defaults to HISTORY as it stands when CALLED: a default bound at
     import kept reading the real data/history inside the suite's sandbox.
@@ -2068,9 +2069,12 @@ def mark_read_since(orgs: list[dict], postings: list[dict], by_co: dict) -> None
 
 
 def carry_first_seen(postings: list[dict], prev_postings: list[dict],
-                     nights: dict | None = None) -> None:
+                     nights: dict | None = None, cards: dict | None = None) -> None:
     """Give every posting the earliest first_seen the previous board, or any
     snapshot in `nights` ({id: night}, from history_first_seen), held for it.
+    `cards` ({posting id: card}, main() fills it from the rows) is the text
+    a careers page's card read for an Eightfold posting (ats.eightfold_card),
+    from which the places its html rows were written with are tried.
 
     A JOBSCORE POSTING IS ALSO KNOWN BY ITS 22-CHARACTER JOB ID, within its
     company: its id hashes its whole address (posting_id), the account's
@@ -2147,15 +2151,31 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
         # own careers page "Posted N days ago" too, so its html id moved every
         # night (blind review of the reader, 2026-11-27: of 30 sampled
         # postings, 11 would have taken a later day than the snapshots held).
-        # Where the html row glued its place onto the location instead, the
-        # snapshot's hash cannot be matched and only the previous board
-        # carries the day (posting_key, above).
-        forms = ((ats.clearcompany_posting_forms(p.get("url"))
-                  or ats.eightfold_posting_forms(p.get("url"))) if nights else [])
+        # AND UNDER EVERY PLACE THE HTML ROW CAN HAVE WRITTEN (second blind
+        # review, 2026-11-27): UKG's html rows wrote 'Remote' (147 of its 476)
+        # or the place, department and way of working glued (172: 'Noida,UP,
+        # India Accounting/Finance Hybrid'), which no place tried here matched,
+        # so 11 of 30 sampled open postings were still re-dated. The card the
+        # careers page drew is rebuilt from the feed (`cards`), and the place
+        # is looked up as each way the html reader could have split it off
+        # (ats.eightfold_html_places): of the 63 open UKG and Eightfold
+        # postings read on 11-23 and 11-27 that a board or snapshot held
+        # earlier, 57 keep the earliest night held, none an earlier one. A
+        # card that read otherwise on a night (a place added, a title edited)
+        # matches that night only where its place still does (3 keep a later
+        # night), and the snapshots of 08-18 to 08-22, written before ids
+        # carried an address, hold none to match (3 first seen on one of those
+        # nights keep a later one).
+        cc = ats.clearcompany_posting_forms(p.get("url")) if nights else []
+        ef = [] if cc or not nights else ats.eightfold_posting_forms(p.get("url"))
+        forms = cc or ef
+        places = ["", p.get("location") or ""]
+        if ef:
+            places += ats.eightfold_html_places((cards or {}).get(p.get("id")))
         if forms and by_address is None:
             by_address = _nights_by_address(nights)
         for form in forms:
-            for loc in dict.fromkeys(("", p.get("location") or "")):
+            for loc in dict.fromkeys(places):
                 n = by_address.get((p.get("company_id"), posting_disc(form, loc)))
                 if n and (not night or n < night):
                     night = n
@@ -2478,6 +2498,9 @@ def main() -> int:
 
     today = dt.date.today().isoformat()
     postings, orgs, unreadable, rendered = [], [], 0, 0
+    # {posting id: the careers page card a reader row says it reads}: what
+    # carry_first_seen looks an earlier night up by (ats.eightfold_card)
+    cards: dict = {}
     render_skipped = 0
     promoted = 0
     promoted_names: list[str] = []
@@ -2803,6 +2826,8 @@ def main() -> int:
                 "also": c.get("also") or None,
                 "first_seen": today, "source": "ats",
             })
+            if isinstance(j.get("_ef_card"), str):
+                cards[rid] = j["_ef_card"]
 
         # THE ORGANIZATION, built by org_record() - the one builder a redraw
         # shares. Only `crawl` comes from this run's fetch; see CRAWL_FIELDS.
@@ -2832,7 +2857,7 @@ def main() -> int:
     nights, read_from = history_first_seen()
     carry_first_seen(postings,
                      json.loads(prev_path.read_text()).get("postings", [])
-                     if prev_path.exists() else [], nights)
+                     if prev_path.exists() else [], nights, cards)
 
     fill_geography(postings)
 

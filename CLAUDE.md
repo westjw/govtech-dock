@@ -5698,16 +5698,31 @@ the door.
   and position id (`ats.eightfold_posting_key`, any query) and
   `carry_first_seen` matches the company's posting on the previous board on
   it; and, as for ClearCompany, it looks the posting up in data/history by
-  the company and the address's hash with no place and with the reader's
-  place (`ats.eightfold_posting_forms`), so a posting the careers page showed
-  on an earlier night but not on the previous board keeps that night (blind
-  review of the reader, 2026-11-27: of 30 sampled open postings, 11 took a
-  later day than the snapshots held). Where an html row glued its place onto
-  its location rather than its title, the snapshot's hash cannot be matched
-  and only the previous board carries the day. posting_id
-  still hashes the address as written (no id moves at the merge); an opening
-  id is company and title, so an opening whose html title had a place glued
-  on takes the corrected title's id.
+  the company and the address's hash (`ats.eightfold_posting_forms`) under
+  every place its html row can have written. The html reader split the card
+  it read off the drawn page (`render_fetch.split_location`, unchanged since
+  2026-08-18) into a title and a place: no place, 'Remote', or the place,
+  department and way of working glued, sometimes from inside the title on
+  (UKG's 476 html rows: 157, 147, 172). So each row carries the card the
+  careers page drew, rebuilt from the feed (`ats.eightfold_card`: name, first
+  place and ' + N more', department, 'Hybrid'/'Remote'; the row's _ef_card,
+  which main() hands carry_first_seen as `cards`), and the places tried are
+  none, the reader's, 'Remote' (with no card too) and every tail of the
+  card's last 8 words, through plain() (`ats.eightfold_html_places`); never
+  a longer tail, never another company's snapshot. With no place and the
+  reader's alone, 11 of 30 sampled open postings were still re-dated (second
+  blind review of the reader, 2026-11-27; 22 with no snapshot lookup). Of
+  103 open UKG and Eightfold postings read 11-23 and 11-27, 63 held earlier by a
+  board or snapshot, 57 now keep the earliest night held (the committed
+  lookup kept 19, 'Remote' alone 39) and none an earlier one; 3 whose card
+  changed since (a place added, a title edited) keep a later night (the
+  earliest whose place still matches, if any), and 3 first seen on 08-18 to
+  08-22, whose snapshots predate ids that carry an address, keep a later
+  night - only the boards in git history hold those, and the build never
+  reads git history.
+  posting_id still hashes the address as written (no id moves at the
+  merge); an opening id is company and title, so an opening whose html
+  title had a place glued on takes the corrected title's id.
 - **The finder**: a page a careers link leads to, on their own site, whose
   own script assigns window._EF_GROUP_ID and whose pcsx-data confirms it, is
   its own board at its own host and group (`find_site_boards.eightfold_own_site`;

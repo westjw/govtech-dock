@@ -5924,6 +5924,14 @@ _EF_PCSX_OPEN = '<code id="pcsx-data"'
 _EF_POSTING = re.compile(r"/careers/job/([0-9]{1,20})")
 _EF_MODES = {"onsite": "onsite", "hybrid": "hybrid",
              "remote_local": "remote", "remote_global": "remote"}
+# the word a careers page's card prints for a way of working (eightfold_card):
+# measured on UKG's for hybrid and remote_local, and nothing for onsite;
+# remote_global is not measured and taken as remote_local's word
+_EF_CARD_MODES = {"hybrid": "Hybrid", "remote_local": "Remote", "remote_global": "Remote"}
+# the most words render_fetch.split_location takes off a card's end as its
+# place: it scans the last 8, and has since the render fallback landed
+# (2026-08-18), before the first snapshot of an Eightfold board was kept
+_EF_HTML_TAIL = 8
 _EF_COUNTRY = re.compile(r"[A-Z]{2}")
 _WORKDAY_HOST = re.compile(r"(^|\.)(myworkdayjobs|myworkdaysite)\.com$")
 
@@ -6148,8 +6156,34 @@ def eightfold_rows(positions: list[dict], host: str, url: str = "the board") -> 
                                 and ts > 0 else None),
                      "mode": eightfold_mode(p.get("workLocationOption")),
                      "office_hint": office_hint(*office) if office else None,
-                     "_ef_id": pid})
+                     "_ef_id": pid, "_ef_card": eightfold_card(p)})
     return rows
+
+
+def eightfold_card(p: dict) -> str:
+    """The text the careers page's card for the feed's posting `p` reads, as
+    the careers page's reader (type html: render_fetch, a link's innerText,
+    whitespace collapsed) took it off the drawn page: its name, its first
+    place with ' + N more' for the others, its department, and the word for
+    its way of working ('Hybrid'; 'Remote' for remote_local; nothing on site),
+    each that it has, a space apart. Measured on UKG's careers page: of the 93
+    open postings its feed listed on 2026-11-23 and 11-27, 57 have html rows
+    on the boards of 08-18 to 11-27, 82 rows; 79 wrote a place
+    eightfold_html_places gives for this card (73 split to exactly their
+    title and place), and the other 3 were written from a card that has
+    changed since (a place added, two titles edited). remote_global's word
+    is not measured. Eightfold's own page draws another card ('Bengaluru, KA,
+    IN', 'Posted N days ago'), whose html rows all wrote no place. A key
+    build_board.carry_first_seen looks an earlier night up by, never shown
+    to anybody."""
+    said = p.get("locations") if isinstance(p.get("locations"), list) else []
+    places = [_text(s) for s in said if isinstance(s, str) and _text(s)]
+    where = (places[0] + (f" + {len(places) - 1} more" if len(places) > 1 else "")
+             if places else "")
+    mode = p.get("workLocationOption")
+    parts = (p.get("name"), where, p.get("department"),
+             _EF_CARD_MODES.get(mode.strip().lower()) if isinstance(mode, str) else None)
+    return _text(" ".join(x for x in parts if isinstance(x, str) and _text(x)))
 
 
 def eightfold_posting_key(url) -> str | None:
@@ -6174,18 +6208,44 @@ def eightfold_posting_forms(url) -> list[str]:
     this board, or [] for an address that names no posting
     (eightfold_posting_key): https://<host>/careers/job/<id>, the form this
     reader writes and the one the careers page's reader (type html) took off
-    the page - every UKG and Eightfold row on the board of 2026-11-27, with
-    no query. A snapshot under data/history keeps a posting's id alone,
-    hashed from that address and the place the html reader glued beside it,
-    so build_board.carry_first_seen looks an earlier night up under this
-    form with no place or with this reader's place (blind review of the
-    reader, 2026-11-27: 11 of 30 sampled postings took a later day than the
+    the page - every UKG and Eightfold row on every board from 2026-08-18 to
+    11-27, with no query. A snapshot under data/history keeps a posting's id
+    alone, hashed from that address and the place written beside it, so
+    build_board.carry_first_seen looks an earlier night up under this form
+    with each place eightfold_html_places gives (blind review of the reader,
+    2026-11-27: 11 of 30 sampled postings took a later day than the
     snapshots held). Keys, never addresses anybody is sent to."""
     key = eightfold_posting_key(url)
     if key is None:
         return []
     host, pid = key[len("eightfold:"):].split("/", 1)
     return [f"https://{host}/careers/job/{pid}"]
+
+
+def eightfold_html_places(card) -> list[str]:
+    """Every place the careers page's reader (type html) can have written
+    beside an Eightfold posting whose card reads `card` (eightfold_card, or
+    None where the row had none): no place; 'Remote'; and each run of the
+    card's last 1 to 8 words, as plain() leaves it - render_fetch.
+    split_location takes a card's place off its end, at most 8 words of it
+    (_EF_HTML_TAIL), at the first split whose tail starts with Remote or reads
+    as a capitalised place with a comma, and no job word. So UKG's html rows
+    wrote no place (no tail read as one: no comma, a lower-case word like
+    'more', a job word like 'Success'), 'Remote' (a remote card), or the
+    place, department and way of working glued ('Paris,NA,France Legal
+    Hybrid'), sometimes from inside the title on ('II Pune City,India
+    Customer Delivery/Implementation Services'): 157, 147 and 172 of its 476
+    html rows on the boards of 2026-08-18 to 11-27 (second blind review of
+    the reader, 2026-11-27: with no place and the reader's own tried alone,
+    11 of 30 sampled open postings took a later day than a board or
+    snapshot held). 'Remote' is tried with no card too, and whatever the card
+    says: a remote card split there whatever its title read.
+    build_board.carry_first_seen hashes each with the posting's address
+    (eightfold_posting_forms) under its company, as a snapshot does; keys,
+    never a place anybody is shown."""
+    words = card.split() if isinstance(card, str) else []
+    tails = (" ".join(words[i:]) for i in range(max(1, len(words) - _EF_HTML_TAIL), len(words)))
+    return list(dict.fromkeys(["", "Remote", *(plain(t) for t in tails)]))
 
 
 def eightfold_details_url(host: str, group: str, pid: int) -> str:

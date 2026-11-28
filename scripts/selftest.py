@@ -25281,6 +25281,18 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
                                f"office from standardizedLocations ({hint})")
         if any("_ef_id" in r or r.get("jd") or r.get("comp") for r in rows or []):
             errors += fail("eightfold: a row kept the reader's own id, or an ad with no detail read")
+        # the card the careers page drew, which the build looks an earlier
+        # night up by (ats.eightfold_card): name, first place, department and
+        # the word for its way of working - none on site, none for a mode it
+        # does not know, and no place where it names none
+        drawn = [(got.get(t) or {}).get("_ef_card") for t in (
+            "Account Executive, State and Local", "Solutions Engineer", "Field Specialist",
+            "Data Analyst", "Program Manager")]
+        if drawn != ["Account Executive, State and Local United States Sales Remote",
+                     "Solutions Engineer Pune City,India Sales Hybrid",
+                     "Field Specialist KY,United States Sales", "Data Analyst Sales Remote",
+                     "Program Manager Remote, Arizona, United States of America Sales"]:
+            errors += fail(f"eightfold: the rows carry the careers page's cards as {drawn}")
 
         # ---- 2. whole or not at all -----------------------------------------
         def refused(what, words=None):
@@ -25596,6 +25608,90 @@ def check_eightfold_reads_its_list_whole_and_names_it_twice() -> int:
                        f"(2026-11-19 off the board, 2026-11-21 before the board's 11-24), never "
                        f"another company's (2026-11-28), and a place written as the reader writes it "
                        f"(2026-11-20)")
+    # ...AND UNDER EVERY PLACE ITS HTML ROW CAN HAVE WRITTEN (second blind
+    # review of the reader, 2026-11-27: UKG's html rows wrote 'Remote', 147 of
+    # 476, or the place, the department and the way of working glued, 172,
+    # and only no place was tried, so 11 of 30 sampled open postings were
+    # re-dated). The careers page's reader split the card it drew
+    # (render_fetch.split_location), so the card is rebuilt from the feed
+    # (ats.eightfold_card, carried to the build as the row's _ef_card) and the
+    # place looked up as each tail of its last 8 words, and 'Remote' even with
+    # no card; never a longer tail (split_location never wrote one), and never
+    # another company's snapshot of the same address and place. (Shapes as
+    # measured; names, places and departments made up.)
+    import render_fetch
+    cases = ((31, "Senior Manager, Public Sector Marketing", ("United States",), "Marketing",
+              "remote_local", "Remote", "2026-09-11"),
+             (32, "Payroll Specialist", ("Anytown,KY,United States",), "Payroll Services", "hybrid",
+              "Anytown,KY,United States Payroll Services Hybrid", "2026-10-02"),
+             (33, "Data Services Consultant II", ("Anytown,KY,United States",), "Customer Delivery",
+              "onsite", "II Anytown,KY,United States Customer Delivery", "2026-10-14"),
+             (34, "Lead Account Executive, State and Local Government", ("Anytown,KY,United States",),
+              "Sales", "hybrid", None, "2026-09-30"))
+    rows_ = ats.plain_rows(ats.eightfold_rows(
+        [_ef_pos(n, name, locs=locs, mode=mode, department=dept)
+         for n, name, locs, dept, mode, _place, _night in cases], HOST))
+    nights_, cards_, now_ = {}, {}, []
+    for (n, _name, _locs, _dept, _mode, place, night), r in zip(cases, rows_):
+        card = r.get("_ef_card") or ""
+        head, cut = render_fetch.split_location(card)
+        if not render_fetch.TITLEISH.search(head):
+            head, cut = card, ""
+        if place is not None and (cut != place or place not in ats.eightfold_html_places(card)):
+            errors += fail(f"eightfold: the card {card!r} splits to the place {cut!r} (wanted "
+                           f"{place!r}) as the careers page's reader splits it, or that place is not "
+                           f"among the places tried (ats.eightfold_html_places)")
+        if place is None:
+            # nine words: more than split_location ever took off a card
+            head, place = card.split(" Executive, ")[0], " ".join(card.split()[-9:])
+        nights_[bb.posting_id("acme-gov", head, r["url"], place)] = night
+        p = {"company_id": "acme-gov", "title": r["title"], "url": r["url"],
+             "location": r["location"], "first_seen": "2026-11-28"}
+        p["id"] = bb.posting_id("acme-gov", p["title"], p["url"], p["location"])
+        p["opening_id"] = bb.opening_id("acme-gov", p["title"])
+        cards_[p["id"]] = card
+        now_.append(p)
+    # another company's snapshot of 32's address and place, on an earlier night
+    nights_[bb.posting_id("someone-else", "Payroll Specialist", rows_[1]["url"],
+                          cases[1][5])] = "2026-08-30"
+    if ats.eightfold_card(_ef_pos(35, " Tax  Analyst ", locs=("Anytown,KY,United States", "Othertown,OH"),
+                                  mode="remote_global", department="Payroll Services")) \
+            != "Tax Analyst Anytown,KY,United States + 1 more Payroll Services Remote" \
+            or ats.eightfold_card(_ef_pos(36, "Tax Analyst", locs=(), mode="onsite", department=None)) \
+            != "Tax Analyst":
+        errors += fail("eightfold: the careers page's card is not its name, its first place with "
+                       "' + N more', its department and its way of working's word")
+    if "Payroll & Tax Hybrid" not in ats.eightfold_html_places("Tax Analyst Payroll &amp; Tax Hybrid"):
+        errors += fail("eightfold: a place cut off a card is not tried as plain() leaves it, as the "
+                       "careers page's reader's rows were")
+    bare = [dict(p) for p in now_]
+    bb.carry_first_seen(now_, [], nights_, cards_)
+    if [p["first_seen"] for p in now_] != ["2026-09-11", "2026-10-02", "2026-10-14", "2026-11-28"]:
+        errors += fail(f"build_board: postings whose html rows wrote 'Remote', a glued place, and a "
+                       f"place cut from inside the title kept {[p['first_seen'] for p in now_]}: "
+                       f"wanted 2026-09-11, 2026-10-02 (never another company's 08-30), 2026-10-14, "
+                       f"and 2026-11-28 for a place longer than the careers page's reader ever wrote")
+    bb.carry_first_seen(bare, [], nights_)
+    if [p["first_seen"] for p in bare] != ["2026-09-11", "2026-11-28", "2026-11-28", "2026-11-28"]:
+        errors += fail(f"build_board: with no card, a posting kept {[p['first_seen'] for p in bare]}: "
+                       f"'Remote' is tried without one (2026-09-11), and a glued place only from the "
+                       f"card")
+    # main() hands the build's carry the cards its rows carry
+    import ast
+    main_ = next(n for n in ast.parse((ROOT / "scripts" / "build_board.py").read_text()).body
+                 if isinstance(n, ast.FunctionDef) and n.name == "main")
+    calls = [n for n in ast.walk(main_) if isinstance(n, ast.Call)
+             and getattr(n.func, "id", None) == "carry_first_seen"]
+    fills = [n for n in ast.walk(main_) if isinstance(n, ast.Assign)
+             and any(isinstance(t, ast.Subscript) and getattr(t.value, "id", None) == "cards"
+                     for t in n.targets) and "_ef_card" in ast.unparse(n.value)]
+    if not calls or not fills or not all(
+            (len(c.args) >= 4 and getattr(c.args[3], "id", None) == "cards")
+            or any(k.arg == "cards" and getattr(k.value, "id", None) == "cards" for k in c.keywords)
+            for c in calls):
+        errors += fail("build_board.main() does not hand carry_first_seen the careers page cards its "
+                       "Eightfold rows carry (cards[<id>] = the row's _ef_card), so a posting moved "
+                       "from html is looked up under no glued place")
 
     # ---- 9. the door: two checks, a parent's board held, a giant skipped -------
     import wire_found as wf
