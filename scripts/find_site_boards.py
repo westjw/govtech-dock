@@ -1018,7 +1018,11 @@ ELSEWHERE: list[tuple[str, str, "re.Pattern"]] = [
          r"comeet\.(?:co|com)/jobs/(?:[A-Za-z0-9_-]{1,80}/)?[0-9A-F]{2}\.[0-9A-F]{3}(?![0-9A-F])"),
         ("comeet-other", "comeet.", _B + r"comeet\.(?:co|com)(?![a-z0-9-])"),
         ("eightfold", "eightfold.ai", _B + r"eightfold\.ai"),
-        ("phenom", "phenompeople.com", _B + r"phenompeople\.com"),
+        # (every phenompeople.com address - its CareerConnectResources scripts,
+        # its pictures: a Phenom site's own furniture, a supporting mark only.
+        # The board is the site's baseUrl, which its page's phApp object or a
+        # link to its search or postings names: phenom_sites; 2026-11-27)
+        ("phenom-other", "phenompeople.com", _B + r"phenompeople\.com"),
         # SAP SUCCESSFACTORS' LEGACY PORTALS, career<N>.successfactors.(com|eu)
         # and career<N>.sapsf.(com|eu|cn) (?company=...): robots.txt says
         # Disallow: /, so one is never a board, and the CSB site of the same
@@ -1217,7 +1221,7 @@ _NO_BOARD_IN_IT = {"workday-no-site": "workday", "gusto-posting": "gusto",
                    "zohorecruit-other": "zohorecruit", "comeet-other": "comeet",
                    "jobvite-other": "jobvite", "successfactors-other": "successfactors",
                    "trinethire-other": "trinethire", "jobscore-other": "jobscore",
-                   "clearcompany-other": "clearcompany"}
+                   "clearcompany-other": "clearcompany", "phenom-other": "phenom"}
 # A platform's form that is somewhere else to hire through on any other page
 # and the board's own furniture on the board's own pages: a Career Site
 # Builder page names its tenant's legacy portal in its j2w.init ssoUrl, and
@@ -1840,6 +1844,103 @@ def successfactors_origin(page_url: str) -> str:
         return ""
 
 
+# A PHENOM CAREER SITE (2026-11-27) is drawn from JSON its page carries, on the
+# employer's own careers host (careers.conduent.com, www.qualtrics.com/
+# careers/), and its address names no vendor. The board is its baseUrl,
+# https://<host>[/<prefix>]/<cc>/<lang>/ (ats.phenom_base), learnt two ways:
+#
+#   THE PAGE IS ONE: its own script carries `var phApp = phApp || {...}`, whose
+#     baseUrl (and refNum) name the site - read with raw_decode
+#     (ats.phenom_app), never a pattern over the JSON.
+#   A LINK to <baseUrl>search-results, <baseUrl>job/<jobId> or
+#     <baseUrl>c/<category>-jobs on a host of the company's own (the
+#     registrable domain of its website, as a CSB link is held), in a link, a
+#     frame or a redirect: the fallback where the page is not the site itself
+#     (their main site linking its careers site). That shape on anybody else's
+#     host proves nothing. EACH IN THE SHAPE MEASURED, AND NO LOOSER (blind
+#     review of 2026-11-27: any /<cc>/<lang>/(search-results|job/|c/) on their
+#     domain was filed as a Phenom board - a store's /us/en/c/radios, a support
+#     article's /us/en/job/how-to-reset, a site search's search-results.html -
+#     and held a real board beside it as "more than one board"):
+#     'search-results' ends its path segment; a posting's jobId carries a digit
+#     (every one measured does: 24898, R173423, 8301319, a UUID); a category is
+#     '<slug>-jobs', as all six sites name theirs (c/sales-jobs).
+#
+# cdn.phenompeople.com's CareerConnectResources scripts are a supporting mark
+# only (phenom-other, which names no board). A row's applyUrl is never the
+# board: it is the system behind the site (Workday, Greenhouse, Ashby), and
+# the rows are cut out of the page before anything is tallied
+# (phenom_unrowed). The door holds the board's host to the website on file
+# (ats.phenom_on_site).
+_PH_LINK = re.compile(r"(?<![a-z0-9.-])https://([a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9]"
+                      r"(?:[a-z0-9-]{0,61}[a-z0-9])?)+)((?:/[a-z0-9-]{1,80}){0,4}?)/([a-z]{2})/"
+                      r"([a-z]{2})/(?:search-results(?![a-z0-9._-])"
+                      r"|job/(?=[a-z0-9_-]*[0-9])[a-z0-9][a-z0-9_-]{0,127}(?![a-z0-9._-])"
+                      r"|c/[a-z0-9][a-z0-9-]{0,79}-jobs(?![a-z0-9._-]))", re.I)
+_PH_LINKED = frozenset({"href", "iframe", "frame", "redirect", "request"})
+
+
+def phenom_unrowed(text: str) -> str:
+    """A script piece with each phApp.ddo object cut out where the piece is a
+    Phenom page's (it carries the phApp object): the ddo holds the page's
+    rows, whose applyUrls are the system behind the site and whose fields can
+    name a person, and nothing in it is where the page points."""
+    if "phApp" not in text or ats.phenom_app(text) is None:
+        return text
+    out, at = [], 0
+    for m in ats._PH_DDO.finditer(text):
+        if m.start() < at:
+            continue
+        try:
+            end = json.JSONDecoder().raw_decode(text, m.end())[1]
+        except ValueError:
+            continue
+        out += [text[at:m.end()], "{}"]
+        at = end
+    return "".join(out) + text[at:]
+
+
+def _phenom_ref(base) -> str:
+    """A baseUrl as the board's ref (its host lower-cased), or ""."""
+    if not isinstance(base, str):
+        return ""
+    try:
+        parts = urllib.parse.urlsplit(base.strip())
+        host = (parts.hostname or "").lower()
+        if parts.scheme != "https" or parts.query or parts.fragment \
+                or (parts.netloc or "").lower() != host:
+            return ""                          # (a port, a name before the host)
+        return ats.phenom_base(f"https://{host}{parts.path}")
+    except (ats.AtsError, ValueError):
+        return ""
+
+
+def phenom_sites(pieces, website: str) -> list[tuple[str, str, str]]:
+    """[(element, the board's ref, what showed it)] for the Phenom sites one
+    page's own markup names (see A PHENOM CAREER SITE above)."""
+    out = []
+    for element, text in pieces:
+        if element == "script" and "phApp" in text:
+            app = ats.phenom_app(text)
+            ref = _phenom_ref(app.get("baseUrl")) if isinstance(app, dict) else ""
+            if ref:
+                out.append((element, ref, _short(f"var phApp = phApp || {{baseUrl: {ref}}}")))
+    site = _site_of(_host(website)) if website else ""
+    for element, text in pieces if site else ():
+        low = text.lower()
+        if element not in _PH_LINKED or not any(k in low for k in ("/search-results", "/job/", "/c/")):
+            continue
+        text = soften(text)
+        for m in _PH_LINK.finditer(text):
+            host = m.group(1).lower()
+            if _site_of(host) != site:
+                continue
+            ref = _phenom_ref(f"https://{host}{m.group(2)}/{m.group(3)}/{m.group(4)}/".lower())
+            if ref:
+                out.append((element, ref, _saw(text, m.start(), m.end())))
+    return out
+
+
 def sightings(page: str, page_url: str, website: str, *,
               requests_seen: typing.Iterable[str] = (),
               frames_seen: typing.Iterable[str] = ()) -> tuple[list[dict], list[dict]]:
@@ -1850,7 +1951,9 @@ def sightings(page: str, page_url: str, website: str, *,
     boards: dict = {}
     others: dict = {}
     maybe: dict = {}
-    pieces = zones(page or "")
+    # (a Phenom page's rows - their applyUrls, the system behind the site - are
+    # its data, never where the page points: phenom_unrowed)
+    pieces = [(el, phenom_unrowed(t) if el == "script" else t) for el, t in zones(page or "")]
     for element, text in pieces:
         _tally(text, element, page_url, website, boards, others, maybe)
     for element, urls in (("request", requests_seen), ("frame", frames_seen)):
@@ -1891,6 +1994,12 @@ def sightings(page: str, page_url: str, website: str, *,
         row = boards.setdefault(("teamtailor", host, "href"), _board_row("teamtailor", "href", saw))
         row["times"] += 1
         row["_spelt"][json.dumps(f"https://{host}")] += 1
+    # A PHENOM SITE, at the baseUrl its own page's phApp object states, or a
+    # link to its search or postings on a host of the company's own
+    for element, ref, saw in phenom_sites(pieces, website):
+        row = boards.setdefault(("phenom", ref, element), _board_row("phenom", element, saw))
+        row["times"] += 1
+        row["_spelt"][json.dumps(ref)] += 1
     # A CAREER SITE BUILDER PAGE IS ITS OWN BOARD, at its own origin; what it
     # says of SAP's hosts is its own furniture, its tenant's legacy portal
     # included (_ON_ITS_OWN_BOARD)

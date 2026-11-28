@@ -5169,6 +5169,11 @@ function boardUrlFor(f, c){
     return (typeof r === 'string' && /^[A-Za-z0-9][A-Za-z0-9-]{0,80}$/.test(r.trim())
             && r.trim().toLowerCase() !== 'internal')
       ? 'https://apply.clearcompany.com/' + r.trim() : '#';
+  // a Phenom board is its site's baseUrl; a person opens its search page (as
+  // build_board.board_url links it), never a row's apply address
+  if (f.type === 'phenom')
+    return (typeof r === 'string' && /^https:\/\/[a-z0-9.-]+(?:\/[a-z0-9-]{1,80}){0,4}\/[a-z]{2}\/[a-z]{2}\/$/.test(r))
+      ? r + 'search-results' : '#';
   if (typeof r === 'string' && /^https?:\/\//i.test(r)) return r;   // paylocity; a jibe, icims or oracle address
   if (f.type === 'workday') {
     // the list [tenant, pod, site], or [pod, tenant, site] on Workday's other

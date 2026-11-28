@@ -455,6 +455,15 @@ def board_url(c: dict) -> str | None:
             return ats.clearcompany_url(ref)
         except ats.AtsError:
             return c.get("website")
+    if kind == "phenom":
+        # the site's own search page, every opening on its locale board, on
+        # the employer's own careers host - never a row's applyUrl, which is
+        # the system behind the site (a Workday, Greenhouse or Ashby address);
+        # a ref that is no site: their website
+        try:
+            return ats.phenom_search_url(ats.phenom_base(ref))
+        except ats.AtsError:
+            return c.get("website")
     if kind == "html" and ats.trinethire_career(ref) is not None:
         # a careers page on file that is TriNet's career page links the same
         # board's list, its embed: that page says there are no openings
@@ -572,11 +581,15 @@ def opening_id(company_id: str, title: str) -> str:
 def posting_key(url) -> str | None:
     """What a posting's address NAMES, for the platforms whose one posting is
     written more than one way - a TriNet Hire posting by its company number
-    and job id, a ClearCompany posting by its slug and job id - or None for
-    any other address. carry_first_seen matches a posting on it when the
-    reader or the place written beside it changed. posting_id hashes only
-    TriNet's (see there)."""
-    return ats.trinethire_posting_key(url) or ats.clearcompany_posting_key(url)
+    and job id, a ClearCompany posting by its slug and job id, a Phenom
+    posting by its site's baseUrl and jobId - or None for any other address.
+    carry_first_seen matches a posting on it when the reader or the place
+    written beside it changed. posting_id hashes only TriNet's (see there).
+    (A Phenom posting's address is the same under the html reader and its
+    own, and the place is not: the html rows on file carry none, or the tail
+    of a title the html reader cut - carry_first_seen.)"""
+    return (ats.trinethire_posting_key(url) or ats.clearcompany_posting_key(url)
+            or ats.phenom_posting_key(url))
 
 
 def posting_id(company_id: str, title: str, url: str | None, location: str) -> str:
@@ -2122,7 +2135,10 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
         # company and the address's hash: the address names the job, so
         # whatever its title read then (Rehrig retitles), it is the same
         # posting. Another job, or another company, is another hash.
-        forms = ats.clearcompany_posting_forms(p.get("url")) if nights else []
+        # (and a Phenom posting under the address both readers write it as,
+        # with no place - the html reader's - or its own: 2026-11-27)
+        forms = (ats.clearcompany_posting_forms(p.get("url"))
+                 or ats.phenom_posting_forms(p.get("url"))) if nights else []
         if forms and by_address is None:
             by_address = _nights_by_address(nights)
         for form in forms:
@@ -2130,6 +2146,21 @@ def carry_first_seen(postings: list[dict], prev_postings: list[dict],
                 n = by_address.get((p.get("company_id"), posting_disc(form, loc)))
                 if n and (not night or n < night):
                     night = n
+        # ...AND A PHENOM POSTING WHOSE TITLE THE HTML READER CUT (blind review
+        # of 2026-11-27): it wrote the tail of a long title as the place -
+        # Conduent's 'Medical Services Specialist with Czech and English
+        # Language (100%' in 'Remote)', on the snapshots since 2026-08-26 and
+        # open still - so its snapshot id is neither place above. Each cut of
+        # the reader's own title at a space is looked up as that night's exact
+        # id: the company, the head as the title, the address and the tail as
+        # its place (ats.phenom_title_cuts). The address names the job, so
+        # another job or company is another id.
+        if forms and ats.phenom_posting_key(p.get("url")) and p.get("company_id"):
+            for head, tail in ats.phenom_title_cuts(p.get("title")):
+                for form in forms:
+                    n = nights.get(posting_id(p["company_id"], head, form, tail))
+                    if n and (not night or n < night):
+                        night = n
         if night and (not was or night < was) and night < (p.get("first_seen") or "9999"):
             was = night
         # A CAPTURE KEEPS ITS OWN DATE when that is earlier: the role page

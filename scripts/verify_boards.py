@@ -450,6 +450,13 @@ def proven(company: dict, said: dict) -> dict:
 #                                                page's <title> 'X - Careers'
 #                                                (and its brand filter's brands,
 #                                                each stated; 2026-11-24)
+#     phenom           the unfiltered search page's og:site_name, agreeing
+#                                                with its <title> where that is
+#                                                in a shape measured; with no
+#                                                og:site_name, the <title> alone
+#                                                (one request; `n` the page's
+#                                                totalHits, the whole locale
+#                                                board; 2026-11-27)
 #   (lever's page is read as far as the end of its <head> and no further;
 #   ashby, jazzhr and clearcompany also state the employer's website, which
 #   proven() holds to the one on file)
@@ -1447,6 +1454,65 @@ def _clearcompany(ref, out: dict) -> None:
         out["how"] = "clearcompany site names its employer in no form a person could read"
 
 
+# A Phenom search page's <title>, in the shapes measured on the six sites'
+# unfiltered search pages (2026-11-23): Phenom's own (Conduent, Adobe, Fiserv's
+# second title), Fiserv's first, Qualtrics', WEX's and Snowflake's.
+_PHENOM_TITLES = (
+    re.compile(r"Search results \| Find available job openings at (.+)"),
+    re.compile(r"Jobs at (.+)"),
+    re.compile(r"Job Openings at (.+)"),
+    re.compile(r"(.+?) Job Openings: Search Results"),
+    re.compile(r"Job Search \| Explore Careers at (.+)"),
+)
+
+
+def _phenom(ref, out: dict) -> None:
+    # ONE READ OF THE SITE'S UNFILTERED SEARCH PAGE (ats.phenom_site; inside
+    # the door's plan the answer its size gate had, ats.phenom_kept). The site
+    # is on the employer's own host and states its name in its <head>: its
+    # og:site_name ('Conduent', 'Qualtrics', 'WEX', 'Fiserv', 'Adobe'), and
+    # its <title> in one of the shapes measured (_PHENOM_TITLES). Where both
+    # speak they must agree; with no og:site_name the title alone states it
+    # (Snowflake's 'Job Search | Explore Careers at Snowflake'); a page with
+    # neither in a shape measured states nothing, never a guess. NEVER a row's
+    # or a posting's `client` (Conduent's rows name the end clients it serves),
+    # never a posting's companyName (it can be a subsidiary's legal name,
+    # 'Conduent Commercial Solutions, LLC'), never refNum, the host, or
+    # twitter:site (WEX's reads '@Lychee shadow'). `n` is the page's
+    # totalHits: the whole locale board, which the giants gate reads (the
+    # reader's own rows are two searches, wire_found.PARTIAL). NO HOSTS (blind
+    # review of 2026-11-27): judge() reads `hosts` as where apply links point,
+    # and a host holding the company's first label as its own domain, so the
+    # site's own host there - the employer's careers host, which a name that
+    # merely contains theirs also holds (careers.acmegovholdings.example) -
+    # turned a site that names nobody into 'matches'. The host is held to the
+    # website on file by the door (ats.phenom_on_site), never by judge().
+    s = ats.phenom_site(ref)
+    out["n"] = s["total"]
+    out["hosts"] = set()
+    site = _clean(s["site_name"])
+    titled = list(dict.fromkeys(
+        _clean(m.group(1)) for t in s["titles"] for rx in _PHENOM_TITLES
+        for m in [rx.fullmatch(_clean(t))] if m and _clean(m.group(1))))
+    if site and any(t != site for t in titled):
+        other = next(t for t in titled if t != site)
+        out["how"] = (f"phenom search page's og:site_name \"{site}\" and its <title> "
+                      f"(\"{other}\") do not agree on a name")
+        return
+    if len(titled) > 1:
+        out["how"] = "phenom search page has no og:site_name, and its <title>s name more than one"
+        return
+    if not site and not titled:
+        out["how"] = ("phenom search page states no og:site_name and no <title> in a shape "
+                      "measured, so it names nobody")
+        return
+    how = ("phenom og:site_name of the site's search page" + (", agreeing with its <title>" if titled
+                                                              else "")
+           if site else "phenom search page's <title>, in a shape measured (no og:site_name)")
+    if not _state(out, [site or titled[0]], how + ", stated by the career site"):
+        out["how"] = "phenom site names its employer in no form a person could read"
+
+
 def _jvx_said(jobs: list, field: str) -> tuple:
     """(every distinct name a feed's rows give `field`, how many rows give it
     one): a value that is blank is none."""
@@ -1891,7 +1957,7 @@ _PROBES = {"breezy": _breezy, "recruitee": _recruitee,
            "zohorecruit": _zohorecruit, "comeet": _comeet, "jobvite": _jobvite,
            "jobvitefeed": _jobvitefeed, "trinethire": _trinethire,
            "jobscore": _jobscore, "clearcompany": _clearcompany,
-           "successfactors": _successfactors}
+           "phenom": _phenom, "successfactors": _successfactors}
 # Every type whose board can state its employer at all - the only types a
 # found board can be proven on. For a caller that wants to say "no probe for
 # this ATS" without making a request to find out.

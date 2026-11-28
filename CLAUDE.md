@@ -3393,7 +3393,13 @@ and never said where in a page a reference sat.
   the reader" below). A ClearCompany hosted site's slug on
   apply.clearcompany.com is a `clearcompany` board, and a legacy HRM Direct
   board on their own page is asked where its redirect lands (see
-  "ClearCompany: the reader" below).
+  "ClearCompany: the reader" below). A page whose own script carries
+  Phenom's `var phApp = phApp || {...}` is a `phenom` board at its baseUrl,
+  and a link to <baseUrl>search-results, job/<jobId> or c/<slug>-jobs, each
+  in the shape measured, on a host of the company's own domain is one too;
+  the page's rows (their apply addresses,
+  the system behind the site) are cut out before anything is tallied (see
+  "Phenom: the reader" below).
 - **What the door must still do, because this file cannot:** make the
   second check (ask the board whose it is); refuse a (type, ref) another
   record already holds, or that two records' candidates share (two brands
@@ -3431,7 +3437,7 @@ and never said where in a page a reference sat.
 
 The owner's rule for wiring a found board without him has two checks, and both must agree: the company's own website points to the board, and the board itself names that company as the employer. `scripts/verify_boards.py` is the second check and only the second. It wires nothing and writes nothing. (Its `main()` is the older audit and still writes `data/board_identity.json`; never run it for this.)
 
-**`board_says(kind, ref)` asks the board whose it is.** Twenty-seven types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Twelve more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below), jobscore (2026-11-24: the feed's own <subtitle>, agreeing with its <title> 'Careers at ...'; see "JobScore: the reader" below), and clearcompany (2026-11-24: brandFullName, where the hosted page's <title> agrees; see "ClearCompany: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
+**`board_says(kind, ref)` asks the board whose it is.** Twenty-eight types state their employer (`NAMES_ITS_EMPLOYER`). Fifteen from 2026-11-18: greenhouse, workable, jibe, breezy, recruitee, smartrecruiters and gem in the feed the reader already reads; ashby, lever, bamboohr, rippling, jazzhr, gusto, paylocity and icims on the board's own hosted page. Thirteen more since: hirebridge, applicantpro, teamtailor, pinpoint, zohorecruit, comeet and jobvite (2026-11-21), successfactors (2026-11-22: the site's own title and description, and its postings' hiringOrganization; on a Unify site, since 2026-11-23, its postings' own titles; see "SAP SuccessFactors career sites" below), jobvitefeed (2026-11-23: a name the account's feed states on every row; see "A Jobvite account's XML feed" below), trinethire (2026-11-24: the list's own <title>, 'Open Jobs | {Company}'; see "TriNet Hire: the reader" below), jobscore (2026-11-24: the feed's own <subtitle>, agreeing with its <title> 'Careers at ...'; see "JobScore: the reader" below), clearcompany (2026-11-24: brandFullName, where the hosted page's <title> agrees; see "ClearCompany: the reader" below), and phenom (2026-11-27: the unfiltered search page's og:site_name, agreeing with its <title> in a shape measured, or that title alone where it has no og:site_name; see "Phenom: the reader" below). adp, workday, oracle and html have no probe, answer "no identity probe written for <kind>", and can never pass. It never raises. Beside `name`, `hosts`, `n` and `how` it returns:
 
 - `names`: every distinct employer name the board states. `stated`: True only when the employer said it through the board itself AND over the whole board. A jibe site longer than the one page read keeps its names and is not `stated`.
 - `site`: the employer's website where the board gives one (ashby, jazzhr, clearcompany).
@@ -4026,8 +4032,11 @@ round.
   asked FIRST, in one request (`ats.workday_total`: `total` on the first reply
   to an empty search), a giant is never read at all, and a board whose total
   cannot be had is skipped with the giants. Oracle has no way to ask, so every
-  Oracle find is skipped. A count from the identity probe skips a board when
-  it is 500 or more and is never read as "small".
+  Oracle find is skipped. The Phenom reader walks the same two searches, and
+  its board's total is the unfiltered search page's totalHits
+  (`ats.phenom_total`, one request, which the identity probe then takes
+  without asking again: `ats.phenom_kept`). A count from the identity probe
+  skips a board when it is 500 or more and is never read as "small".
 - **`board_key` is loose and `spelling` is exact.** The key only notices
   collisions, and a collision only ever sends a board to a person: case is
   ignored, an address matches with or without scheme, `www.` or a last slash,
@@ -5558,6 +5567,177 @@ type `clearcompany`. No record is rewired by this; the session runs the door.
   ask's key, the brand and tenant forms, each on-the-day rule, the notes, the
   door's words and skips, the home link's forms, the count's words, the
   posting id), each caught; tenant and brand rows also in SITE_BOARD_NOT_ONE.
+
+## Phenom: the reader (2026-11-27)
+
+Six companies on file have a Phenom career site on their own domain
+(research of 2026-11-23): Conduent (430 open by its own count), Fiserv
+(411), Snowflake (381), Adobe (256), Qualtrics (177) and WEX (86). All six
+were type html and read 0 to 10 rows: a Phenom page draws its rows from JSON
+it carries, and none of a page's ten titles is in its markup.
+`ats.fetch_phenom` reads the type `phenom`. No record is rewired by this; the
+session runs the door.
+
+- **The ref is the site's own baseUrl**, `https://<host>[/<prefix>]/<cc>/<lang>/`
+  (`https://careers.conduent.com/us/en/`, `https://www.qualtrics.com/careers/us/en/`),
+  as the page's inline `var phApp = phApp || {...}` states it (`ats.phenom_app`,
+  raw_decode; `ats.phenom_base`: a lower-case host, a two-letter country and
+  language, the last slash). One locale is one board, its count that locale's.
+- **Rows are keyword walks only**: fetch_workday's two searches,
+  `<baseUrl>search-results?keywords=<term>` then `&from=10, 20, ...`
+  (`ats.phenom_walk`, through `ats._paged`; every page read by `ats._ph_read`:
+  robots.txt at every hop through `ats.follow`, one request a hop by `ats._one`,
+  as a stream refused past `PHENOM_PAGE_MAX` bytes as it arrives, answered in
+  place, no redirect followed, a hop to itself included). NEVER `s=1` (it
+  silently drops the keyword: Qualtrics answered its whole board) and NEVER the
+  unfiltered list for rows (its offset paging reorders between requests). Each
+  page must echo the keyword asked, state the walk's one totalHits, carry `hits`
+  rows and name this baseUrl in its one phApp, in its one ddo; nothing is asked
+  past the total; a search whose distinct rows (by jobId) are not its own
+  totalHits raises - a walk that comes up short is never published as read. The
+  two searches are deduplicated by jobId. **What the count cannot see** (blind
+  review of 2026-11-27): a posting that closes while another opens in the
+  seconds a search is walked leaves totalHits the same on every page while the
+  offsets shift, so one open posting can be missed and the closed one kept for
+  that night, and the walk still counts whole; the next night reads them right.
+  It is the residual risk of every offset walk, the Workday reader's included -
+  a matched count is not proof of a whole walk, and nothing here claims more.
+  A search of 591 to 600 reads whole without the paginator's 'TRUNCATED' line
+  (one page past the ceiling, never asked).
+- **Part of the board by design**, as the Workday reader: its rows say nothing
+  of the board's size. `ats.phenom_total` is the unfiltered page's totalHits
+  (the whole locale board), and the door asks it first
+  (`wire_found.PARTIAL`; `add_company.board_total`).
+- **The one zero** is the measured shape of a search with nothing in it
+  (WEX, 2026-11-27): status 200, hits 0, totalHits 0, jobs [], the keyword
+  echoed. Anything else - no phApp, a phApp naming another site, no
+  eagerLoadRefineSearch, another status, rows that do not make up hits, a
+  challenge page, a redirect, a 404 - raises, kept Unknown.
+- **A row**: the title; url `baseUrl + 'job/' + jobId + '/' + the title with
+  every run of non-alphanumerics a '-'` (`ats.phenom_posting_url`: each of 60
+  Conduent rows read is an address its sitemap lists, and it is the canonical
+  and og:url on Conduent's and Qualtrics' postings; Snowflake's canonical
+  writes its jobSeqNo where this writes the jobId, and the jobId address
+  answers the same posting) - never the row's applyUrl (a myworkdayjobs.com
+  address, Ashby's, ?gh_jid=), which is never read or followed; posted =
+  dateCreated, or the earlier of it and postedDate - never postedDate alone (a
+  mass refresh: every Qualtrics row read 2026-11-20T18:08:59) and never a
+  posting's JSON-LD datePosted (rewritten daily); the place the one the site's
+  own card shows (`ats.phenom_place`, blind review of 2026-11-27): WEX's every
+  row reads location 'Remote, Maine, United States of America', city 'Remote',
+  state 'Maine', address 'Remote Address, Remote, ME 99999' - a placeholder
+  under roles it places in Portland, ME - and its own places are in
+  locationName ('US - Remote', 'Portland, ME | Boston, MA'), the field its
+  page's `jobwidgetsettings` names for its cards (`ats._ph_shows`). So where a
+  page's cards show locationName, or a page naming no card fields carries one
+  on the row, the place is locationName's ' | ' parts, each once, and nothing
+  else; otherwise the row's location (else cityStateCountry) and each of its
+  multi_location[] once (Fiserv's cards name location and multi_location; the
+  other four name none). The office hint is the row's city, state and country
+  with a part that names no place ('Not Applicable', 'Remote', 'United States
+  (Remote)') left out, a state beside a city naming no place or in a
+  placeholder address ('Remote Address', 99999) left out too, and never a
+  country it does not state.
+- **The teaser is never the ad.** descriptionTeaser is ML-written: a row's jd
+  is "" (nothing for the pay parser or the classifier to take as the
+  employer's words) until FETCH_DETAILS reads the posting's own
+  `ddo.jobDetail.data.job.description`, one request a posting
+  (`ats.phenom_ad`). The two ads measured state their pay as text, and
+  `salary.parse` read none from either (2026-11-27): the parser's to weigh.
+- **People**: Snowflake's rows carry hiringManagerName, Qualtrics' postings
+  recruiterNames, coordinatorDetails and sourcerDetails. None is read, and
+  no Phenom page is written to the HTTP cache (`ats._ph_read` asks by
+  `ats._one`, which keeps nothing: the hosts are each employer's own, which
+  NEVER_CACHED cannot list).
+- **The employer** (`verify_boards._phenom`): one read of the UNFILTERED search
+  page - its og:site_name, agreeing with its <title> where that is in a shape
+  measured (`_PHENOM_TITLES`: Phenom's 'Search results | Find available job
+  openings at X', Fiserv's 'Jobs at X', Qualtrics' 'Job Openings at X',
+  WEX's 'X Job Openings: Search Results', Snowflake's 'Job Search | Explore
+  Careers at X'), a <head>'s scripts, styles and comments left out; with no
+  og:site_name, a title in a measured shape alone (Snowflake's); with neither,
+  or where the two disagree, nothing. Its `hosts` is empty (blind review of
+  2026-11-27): `judge()` reads hosts as where apply links point, and the
+  site's own host - which a name holding theirs also holds - turned a site
+  naming nobody into 'matches'; the host is the door's to hold. Never a
+  row's or posting's `client` (Conduent's name end clients), a posting's
+  companyName (a subsidiary's legal name), refNum, the host or twitter:site
+  (WEX's reads '@Lychee shadow'). `n` is the page's totalHits, the whole
+  board, never partial. Inside the door's plan the size gate's answer is the
+  probe's (`ats.phenom_kept`): one request a board for both.
+- **Check 1 is also the host** (`ats.phenom_on_site`, in the door's plan
+  and again in its apply, `wire_found.wire_problem`, against the record as it
+  reads then): the baseUrl's host is the company's website's domain or a host
+  under it (careers.conduent.com under conduent.com; www.qualtrics.com), held
+  to the website on file; a Phenom site on another domain, or a website on
+  file that is a page inside a larger site (a locale's path included: the
+  owner looks), is a doubt for the owner, in words that say which half failed
+  (`ats.phenom_off_site`: 'it is on X, which is neither their website's host
+  nor a host under it', or 'their website on file is a page inside a larger
+  site'). A website edited between plan and write - given a path, or moved to
+  a sibling host - leaves the row alone as moved.
+- **The finder** (`find_site_boards.phenom_sites`): a page whose own script
+  carries the phApp object is the board at its baseUrl; failing that, a link,
+  frame or redirect to <baseUrl>search-results (ending its path segment),
+  job/<jobId> (a jobId with a digit, as every one measured has) or
+  c/<slug>-jobs (as all six sites name their categories) on a host of the
+  company's own registrable domain - no looser (blind review of 2026-11-27: a
+  store's /us/en/c/radios, a support article's /us/en/job/how-to-reset and a
+  site search's search-results.html were each filed as a Phenom board, and
+  held a real board beside them as 'more than one board'). The page's rows are cut out before
+  anything is tallied (`find_site_boards.phenom_unrowed`): without the cut,
+  WEX's and Fiserv's pages name a Workday board and Snowflake's an Ashby one
+  from their rows' apply addresses. Every phenompeople.com address is
+  `phenom-other` (its CareerConnectResources scripts), a form of a platform we
+  read naming no board. discover_js and discover_ats name no Phenom board: its
+  address names no vendor.
+- **A company moving from html keeps its postings' days and opening ids**:
+  the html rows on file are the site's own posting addresses, most with no
+  place and some with the tail of a title the html reader cut as their place
+  (Adobe's 'Sr. Full Stack Engineer' in '(Back-end), Agentic Governance', three
+  on the board of 2026-11-27; Conduent's 'Medical Services Specialist with
+  Czech and English Language (100%' in 'Remote)', in the snapshots since
+  2026-08-26), the reader's the same addresses with the posting's own place.
+  So `build_board.posting_key` matches a posting on `ats.phenom_posting_key`
+  (its baseUrl and jobId, the slug left out); an earlier night's snapshot is
+  looked up under the address with no place or the reader's own
+  (`ats.phenom_posting_forms`), and under each cut of the reader's own title at
+  a space as that night's exact id - the head as the title, the tail as the
+  place (`ats.phenom_title_cuts`; blind review of 2026-11-27: Conduent's 24898,
+  open still, would have been dated the night of the switch). The opening id
+  moves only where the html reader cut a title: the reader's title is the
+  posting's own.
+- **THE REQUESTS A NIGHT** are the pages of the two walks, ten rows a page, 95
+  to 240 KB each, no ETag: ceil(account-executive hits / 10) + ceil(sales hits
+  / 10), and one more a posting under FETCH_DETAILS. Measured 2026-11-27:
+  WEX 7 + 2 to 9 (65 'account executive' hits; 'sales' not measured, at most 9
+  pages of 86), Qualtrics 15 + 11 = 26 (149 and 102), Conduent ? + 4 (33
+  'sales'; 'account executive' not measured, at most 43 pages of 430). Fiserv,
+  Adobe and Snowflake not measured: at most 2 x ceil(board / 10) - 84, 52 and
+  78 pages. 'account executive' is no phrase search (WEX answered 65 of 86 to
+  it). Fiserv's robots.txt closes 22 named aggregator agents and leaves the *
+  group, which this crawler falls under; that it does not want aggregators is
+  the owner's call.
+- **Read**: the build read the research's saved pages and four more search
+  pages (seven requests in all, robots.txt included, through `ats._page`).
+- Ranks 'none' (`build_board.ats_tier`): Job Hunter's parsers do not list it.
+- Guard: `check_phenom_reads_two_searches_and_states_its_name_once` (the read
+  and its requests, the rows, the dates, the place each site's card shows and
+  the placeholder office, the teaser, the people, the cache, the stream and its
+  cap, every way a walk is not whole each in its own words, a 600-row search
+  read whole and not logged as cut, the zero, the ad behind FETCH_DETAILS and
+  only that posting's on this site, the probe and its shapes, its empty hosts
+  and judge()'s 'unknown' for a site naming nobody, the finder's forms in the
+  shapes measured and the row cut, the public link, the rank, the host rule
+  clause by clause and its words, the first-seen carry from the previous
+  board, an earlier night and a cut title's night, and the door: WIRE, HOLD on
+  another name or each host shape, SKIP a giant unread, and apply leaving a row
+  alone when the website moved since the plan), beside a row in
+  `check_a_board_is_proven_only_by_its_own_stated_name`'s BOARDS, the type in
+  `check_a_stated_name_does_not_loosen_the_older_doors`, `ats._ph_read` among
+  the streamed readers of `check_the_crawler_honours_robots_txt`, the public link
+  in `check_what_the_second_review_of_the_new_readers_found_stays_fixed`, and
+  the desk card's link in `check_the_boards_found_card_opens_what_it_names`.
 
 ## Build order (owner, 2026-08-23)
 

@@ -330,6 +330,13 @@ def board_total(ats_block: dict) -> tuple[int | None, str]:
     zero, and never leave to treat the board as small.
     """
     kind, ref = ats_block.get("type"), ats_block.get("ref")
+    if kind == "phenom":
+        # (the reader walks two keyword searches; the unfiltered search page
+        # states the whole locale board's count: 2026-11-27)
+        try:
+            return ats.phenom_total(ref), "the Phenom site's own totalHits for its unfiltered search"
+        except Exception as exc:
+            return None, str(exc)[:70]
     if kind != "workday":
         return None, f"nothing here asks a {kind} board how many postings it holds"
     try:

@@ -51,6 +51,8 @@ Where the description lives, per board (measured, 2026-08-23):
     rippling     the posting page      -> __NEXT_DATA__ apiData.jobPost
     successfactors  the posting page   -> its itemprop="description" element
                     (a Unify site's costs nothing more: its row is read from that page)
+    phenom       the posting page      -> ddo.jobDetail.data.job.description (a row's
+                 descriptionTeaser is ML-written, never the ad: 2026-11-27)
 
   nothing published
     oracle       no company on file uses it; unverified either way
@@ -5310,8 +5312,10 @@ def one_ask_a_board():
     then probe it - accepting a held board at the desk (admin.
     act_board_proposal) and by a ruling (proposal_rulings._accept_board): a
     Jobvite feed and a JobScore feed name people, and the second ask was the
-    same answer again (blind review of 2026-11-24). Also a decorator."""
-    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept():
+    same answer again (blind review of 2026-11-24). And phenom_kept, defined
+    below: a Phenom site's unfiltered page, asked for its size and its name.
+    Also a decorator."""
+    with jobvitefeed_kept(), trinethire_kept(), jobscore_kept(), phenom_kept():
         yield
 # ---- clearcompany: ClearCompany career sites, apply.clearcompany.com/<slug>
 #
@@ -5816,6 +5820,569 @@ def clearcompany_board(ref) -> dict:
 
 def fetch_clearcompany(ref) -> list[dict]:
     return clearcompany_board(ref)["rows"]
+
+# ---- phenom: Phenom career sites, on the employer's own careers host
+#
+# Six companies on file have one (research of 2026-11-23; four more pages read
+# 2026-11-27): Conduent (430 open by its own count), Fiserv (411), Snowflake
+# (381), Adobe (256), Qualtrics (177) and WEX (86). All six were type html and
+# read 0 to 10 rows: a Phenom page draws its rows in the browser from JSON the
+# page itself carries, and none of a page's ten titles is in its markup.
+#
+# THE REF IS THE SITE'S OWN baseUrl, https://<host>[/<prefix>]/<cc>/<lang>/
+# (https://careers.conduent.com/us/en/, https://www.qualtrics.com/careers/us/
+# en/), as the page's inline `var phApp = phApp || {...}` object states it
+# (phenom_app, read with json's raw_decode as verify_boards._embedded reads
+# inline JSON; phenom_base: a lower-case host, a two-letter country and
+# language, the last slash). One /<cc>/<lang>/ is one locale's board, and its
+# count is that locale's. Phenom fronts another system - Oracle HCM
+# (Conduent), Workday (WEX, Fiserv, Adobe), Greenhouse (Qualtrics), Ashby
+# (Snowflake) - and a row's applyUrl is that system's address (a
+# myworkdayjobs.com one, Ashby's, ?gh_jid=): never read, never a row's url,
+# never followed.
+#
+# THE ROWS ARE KEYWORD WALKS, fetch_workday's two searches (PHENOM_TERMS):
+# <baseUrl>search-results?keywords=<term>, then &from=10, 20, ... (ats._paged,
+# PHENOM_PAGE a page), every page read by _ph_read (robots.txt at every hop, as
+# a stream capped at PHENOM_PAGE_MAX bytes), answered in place (a redirect is
+# not followed) and its phApp naming this very baseUrl. A page's
+# phApp.ddo.eagerLoadRefineSearch is {status 200, hits: the rows on THIS page,
+# totalHits: the search's, data: {jobs[], keywords: the search, echoed}}. NEVER
+# s=1, which silently drops the keyword (Qualtrics ?keywords=sales&from=10&s=1
+# answered keywords '' and its whole board), and NEVER the unfiltered list for
+# rows: its offset paging reorders between requests (Conduent's ?from=10
+# shared 7 of 10 rows with page 1). A page whose echoed keyword is not the
+# term, whose totalHits is not the walk's first page's, or that is short
+# inside the total raises, and nothing is asked past the total; a search whose
+# distinct rows (by jobId) are not its own totalHits raises: a walk that
+# comes up short is never published as read. Rows are deduplicated by jobId
+# across the terms. WHAT THE COUNT CANNOT SEE (blind review of 2026-11-27): a
+# posting that closes while another opens in the seconds a search is walked
+# leaves totalHits the same on every page while the offsets shift under it,
+# so one open posting can be missed and the closed one kept for that night,
+# and the walk still counts whole. The next night's walk reads them right.
+# It is the residual risk every offset walk carries, the Workday reader's
+# included; nothing here claims more than a walk that matched its own count.
+# 'account executive' is no phrase search: WEX answered 65 of its 86 postings
+# and Qualtrics 149 of 177 to it (2026-11-27), so a walk is most of a page
+# count - see THE REQUESTS A NIGHT in CLAUDE.md.
+#
+# THE READER READS PART OF THE BOARD BY DESIGN, as fetch_workday does: its rows
+# say nothing about the board's size, which phenom_total asks (totalHits on
+# the UNFILTERED search page, the whole locale board, one request), and the
+# wiring door asks it first (wire_found.PARTIAL).
+#
+# A SEARCH WITH NOTHING IN IT IS ONE MEASURED SHAPE (2026-11-27, WEX, a term
+# nothing matches): status 200, hits 0, totalHits 0, jobs [], the keyword
+# echoed. Anything else - no phApp, a phApp naming another site, no
+# eagerLoadRefineSearch, another status, a count the rows do not make up, a
+# challenge page, a redirect - raises, never a zero.
+#
+# A ROW: the title; url = baseUrl + 'job/' + jobId + '/' + the title with every
+# run of non-alphanumerics a '-' (phenom_posting_url: each of the 60 Conduent
+# rows read is an address its sitemap lists, and the address is the posting's
+# canonical and og:url on Conduent's and Qualtrics' postings; Snowflake's
+# canonical writes its jobSeqNo where this writes the jobId, and the jobId
+# address answers the same posting); the place (phenom_place); posted =
+# dateCreated, or the earlier of it and postedDate where both are read - never
+# postedDate alone (a mass refresh: all 50 Qualtrics rows read
+# 2026-11-20T18:08:59) and never a posting's JSON-LD datePosted (rewritten
+# daily). descriptionTeaser is an ML-written summary and never the ad, so a
+# row's jd is "" - nothing for the pay parser or the classifier to read as the
+# employer's words - until FETCH_DETAILS reads the posting's own
+# ddo.jobDetail.data.job.description, one request a posting (phenom_ad).
+#
+# THE PLACE IS THE ONE THE SITE'S OWN CARD SHOWS (blind review of 2026-11-27).
+# WEX's every row reads location 'Remote, Maine, United States of America',
+# city 'Remote', state 'Maine' and address 'Remote Address, Remote, ME 99999':
+# a placeholder, under roles WEX places in Portland, ME and anywhere in the
+# US. Its own places are in locationName ('US - Remote', 'Portland, ME |
+# Boston, MA'), the field its page's jobwidgetsettings names for its cards;
+# Fiserv's names location and multi_location, and the other four sites name
+# no card fields (and fill no locationName). So the place is locationName,
+# each of its ' | ' parts once, where the page's cards show it - or, on a page
+# naming no card fields, where the row carries one - and else location (or
+# cityStateCountry) and each multi_location[] once (phenom_place). And a
+# state beside a city that names no place, or in a placeholder address, is
+# no office's state: the office hint leaves it out.
+#
+# PEOPLE: Snowflake's rows carry hiringManagerName, and Qualtrics' postings
+# recruiterNames, coordinatorDetails and sourcerDetails. None is read, and no
+# Phenom page is written to the HTTP cache (_ph_read asks by _one, which keeps
+# nothing: the hosts are each employer's own, which NEVER_CACHED cannot list).
+# The pages send no ETag or Last-Modified anyway (95 to 240 KB a page, every
+# night in full).
+#
+# ONE PLAN ASKS THE UNFILTERED PAGE ONCE: inside phenom_kept() - wire_found.plan
+# and one_ask_a_board - what phenom_site read is kept in memory (its count and
+# the two names its <head> states, never the page), so the door's size gate
+# (add_company.board_total) and its probe (verify_boards) take one answer.
+PHENOM_TERMS = ("account executive", "sales")    # fetch_workday's two searches
+PHENOM_PAGE = 10                                 # rows a page; hits=10 on every site
+PHENOM_MAX_PAGES = 60                            # 600 rows a search; more is not read
+PHENOM_PAGE_MAX = 3_000_000                      # bytes of a page read; more is refused as it arrives
+_PH_BASE = re.compile(r"https://((?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63})"
+                      r"((?:/[a-z0-9-]{1,80}){0,4}?)/([a-z]{2})/([a-z]{2})/")
+_PH_APP = re.compile(r"\bvar\s+phApp\s*=\s*phApp\s*\|\|\s*")
+_PH_DDO = re.compile(r"\bphApp\.ddo\s*=\s*")
+_PH_JOB_ID = re.compile(r"[A-Za-z0-9](?:[A-Za-z0-9_-]{0,127})")
+_PH_POSTING = re.compile(r"(https://[a-z0-9.-]+(?:/[a-z0-9-]{1,80}){0,4}?/[a-z]{2}/[a-z]{2}/)job/"
+                         r"([A-Za-z0-9](?:[A-Za-z0-9_-]{0,127}))(?:/[^/?#]*)?/?", re.I)
+_PH_RUN = re.compile(r"[^A-Za-z0-9]+")
+_PH_META = re.compile(r"<meta\b[^<>]{0,4000}>", re.I)
+_PH_ATTR = re.compile(r"""([\w:-]{1,60})\s{0,8}=\s{0,8}(?:"([^"]*)"|'([^']*)')""")
+_PH_TITLE = re.compile(r"<title\b[^<>]{0,400}>([^<]{0,400})</title\s*>", re.I)
+# a place part that names no place: Snowflake's state 'Not Applicable', and a
+# way of working written where a city or state goes (WEX's city 'Remote',
+# Conduent's state 'Remote US', Qualtrics' city 'United States (Remote)')
+_PH_NO_PLACE = frozenset({"not applicable", "n/a", "na", "none", "null", "-"})
+# an address that is a placeholder, not a place: WEX's 'Remote Address,
+# Remote, ME 99999, United States of America' on every row
+_PH_NO_ADDRESS = re.compile(r"\bremote address\b|\b99999\b", re.I)
+
+
+def phenom_base(ref) -> str:
+    """The site's baseUrl a ref names, exactly as phApp states it, or
+    AtsError: https, a lower-case host, at most four lower-case path segments
+    before a two-letter country and language, the last slash, nothing else."""
+    s = ref if isinstance(ref, str) else ""
+    m = _PH_BASE.fullmatch(s)
+    if not m or not _HOSTNAME.fullmatch(m.group(1)):
+        raise AtsError(f"not a phenom board: {ref!r} (a Phenom board is its site's baseUrl, "
+                       f"https://<host>[/<prefix>]/<cc>/<lang>/, lower-case, with its last slash)")
+    return s
+
+
+def phenom_off_site(ref, website) -> str | None:
+    """None where the Phenom site `ref` is on the company's own website's
+    domain - its host the website's host (a leading www. aside) or a host
+    under it (careers.conduent.com under conduent.com; www.qualtrics.com) -
+    and else WHICH HALF FAILED, in words (blind review of 2026-11-27: one
+    sentence for every failure said a site on a domain of theirs was not).
+    Check 1's half for this type (wire_found, at the plan and again at the
+    write): a Phenom site sits on its employer's own host, so one on another
+    company's domain is not this company's board. A website on file that is
+    a page inside a larger site (it has a path, a locale's included) names no
+    domain of its own, so nothing is held to it: the owner looks."""
+    try:
+        host = urllib.parse.urlsplit(phenom_base(ref)).hostname or ""
+    except AtsError:
+        return f"{str(ref)[:120]!r} is not a Phenom site's baseUrl"
+    w = website.strip() if isinstance(website, str) else ""
+    if not w:
+        return "no website is on file for them, so no domain of theirs is named to hold its host to"
+    try:
+        parts = urllib.parse.urlsplit(w if "//" in w else "https://" + w)
+        site = (parts.hostname or "").lower().rstrip(".")
+    except ValueError:
+        site, parts = "", None
+    if parts is None or not _HOSTNAME.fullmatch(site):
+        return f"their website on file ({w[:120]}) names no host to hold its host to"
+    if parts.path.strip("/") or parts.query:
+        return (f"their website on file ({w[:120]}) is a page inside a larger site, not a domain, "
+                f"so no domain of theirs is named to hold its host to")
+    bare = site.removeprefix("www.")
+    if host == bare or host.endswith("." + bare):
+        return None
+    return (f"it is on {host}, which is neither their website's host ({site}) nor a host under "
+            f"it: a Phenom site sits on its employer's own host, so one on another domain is not "
+            f"shown to be theirs")
+
+
+def phenom_on_site(ref, website) -> bool:
+    """Is the Phenom site `ref` on the company's own website's domain
+    (phenom_off_site says no reason against it)?"""
+    return phenom_off_site(ref, website) is None
+
+
+def phenom_search_url(base: str, term: str | None = None, offset: int = 0) -> str:
+    """The site's search page: unfiltered (term None) or one keyword search
+    from its `offset`th row - never with s=1, which drops the keyword."""
+    url = f"{base}search-results"
+    if term is None:
+        return url
+    url += "?keywords=" + urllib.parse.quote(term, safe="")
+    return url + (f"&from={offset}" if offset else "")
+
+
+def phenom_posting_url(base: str, job_id: str, title: str) -> str:
+    """A posting's own address on the site: baseUrl + job/<jobId>/<the title,
+    every run of non-alphanumerics a '-'>. Never the row's applyUrl."""
+    slug = _PH_RUN.sub("-", title or "").strip("-")
+    return f"{base}job/{job_id}/{slug}" if slug else f"{base}job/{job_id}"
+
+
+def phenom_posting_key(url) -> str | None:
+    """The posting a Phenom posting address names - its site's baseUrl and
+    jobId, lower-cased, the title's slug left out (it moves with a retitle) -
+    or None for any other address. The html reader that read these sites
+    before wrote the same posting with no place; build_board matches the
+    posting on this, so it keeps its first-seen day when its company moves to
+    this reader. A key, never an address anybody is sent to."""
+    m = _PH_POSTING.fullmatch(url.strip()) if isinstance(url, str) else None
+    if not m:
+        return None
+    try:
+        phenom_base(m.group(1).lower())
+    except AtsError:
+        return None
+    return f"{m.group(1).lower()}job/{m.group(2).lower()}"
+
+
+def phenom_posting_forms(url) -> list[str]:
+    """The addresses a Phenom posting `url` has been written as on this board:
+    the address itself, which the html reader and this one both write as the
+    site's own link does (every html row on file for Conduent and Adobe is in
+    the form phenom_posting_url builds) - or [] for an address that names no
+    posting (phenom_posting_key). build_board.carry_first_seen looks an
+    earlier night up under it. Keys, never addresses anybody is sent to."""
+    return [url.strip()] if phenom_posting_key(url) else []
+
+
+def phenom_title_cuts(title) -> list[tuple[str, str]]:
+    """Every (head, tail) a Phenom posting's own title splits into at a space:
+    the html reader that read these sites before often cut a title at a line
+    of its card and wrote the rest as the place (Conduent's 'Medical Services
+    Specialist with Czech and English Language (100%' in 'Remote)', Adobe's
+    'Sr. Full Stack Engineer' in '(Back-end), Agentic Governance'), so the
+    snapshot id of such a night is the head as the title and the tail as the
+    place (blind review of 2026-11-27). build_board.carry_first_seen looks an
+    earlier night up under each, by its exact id - the company, that head
+    and the address with that tail. Keys, never a title anybody reads."""
+    t = title if isinstance(title, str) else ""
+    return [(t[:i], t[i + 1:]) for i, ch in enumerate(t) if ch == " " and t[:i].strip()
+            and t[i + 1:].strip()][:40]
+
+
+def phenom_app(page: str) -> dict | None:
+    """The page's own `var phApp = phApp || {...}` object - where the page
+    carries exactly one - or None."""
+    marks = list(_PH_APP.finditer(page or "")) if isinstance(page, str) else []
+    if len(marks) != 1:
+        return None
+    try:
+        got = json.JSONDecoder().raw_decode(page, marks[0].end())[0]
+    except ValueError:
+        return None
+    return got if isinstance(got, dict) else None
+
+
+def _ph_read(url: str) -> str:
+    """One page of the site, read in place and as a stream: robots.txt asked
+    at every hop (follow), the crawler's own name and the host gate (_one),
+    any redirect refused before anything is asked of where it points - a site
+    answers its own search and posting pages where they are asked, so a hop
+    to itself is refused too - and the page refused past PHENOM_PAGE_MAX
+    bytes as they arrive, never pulled down whole to be refused (as a Jobvite
+    or a JobScore feed is read: blind review of 2026-11-27). Decoded by the
+    one charset rule (best_charset). A 429 is honoured at the gate and raised;
+    any other answer but a 200 is an error; the network failing on the way,
+    mid-body included, is a network error. Never the HTTP cache: _one keeps
+    nothing (PEOPLE above)."""
+    hops: list[str] = []
+
+    def stay(u: str):
+        hops.append(u)
+        if u != url or len(hops) > 1:
+            raise AtsError(f"{url} leads off to {str(u)[:160]}: a Phenom page answers where it is "
+                           f"asked, so a redirect is not followed, and it is not read as a board "
+                           f"with nothing open")
+    resp = follow(url, lambda u: _one(u, stream=True), may=stay)
+    try:
+        status = getattr(resp, "status_code", None)
+        if status == 429:
+            _back_off(url, resp)
+        if status != 200:
+            raise AtsError(f"HTTP {status} for {url}")
+        raw = bytearray()
+        try:
+            for chunk in resp.iter_content(chunk_size=65536):
+                raw += chunk
+                if len(raw) > PHENOM_PAGE_MAX:
+                    raise AtsError(f"{url} is more than {PHENOM_PAGE_MAX:,} bytes, this reader's "
+                                   f"cap: it is not read, and never read in part")
+        except requests.RequestException as exc:
+            raise AtsError(f"network error: {exc}") from exc
+        ctype = str((getattr(resp, "headers", None) or {}).get("content-type") or "")
+        charset = best_charset(bytes(raw), ctype, getattr(resp, "encoding", None))
+    finally:
+        try:
+            resp.close()
+        except Exception:                          # noqa: BLE001
+            pass
+    try:
+        return bytes(raw).decode(charset or "utf-8", errors="replace")
+    except LookupError:                            # a charset Python does not know
+        return bytes(raw).decode("utf-8", errors="replace")
+
+
+def _ph_ddo(page: str, url: str) -> dict:
+    """The page's own phApp.ddo object, where it carries exactly one, or AtsError."""
+    marks = list(_PH_DDO.finditer(page))
+    if len(marks) != 1:
+        raise AtsError(f"{url} carries {len(marks) or 'no'} phApp.ddo block(s), not one: not a "
+                       f"Phenom page in the shape measured, so it is not read")
+    try:
+        got = json.JSONDecoder().raw_decode(page, marks[0].end())[0]
+    except ValueError as exc:
+        raise AtsError(f"{url}: its phApp.ddo block is not JSON ({exc})") from exc
+    if not isinstance(got, dict):
+        raise AtsError(f"{url}: its phApp.ddo block is not an object")
+    return got
+
+
+def _ph_count(n) -> bool:
+    return type(n) is int and n >= 0
+
+
+def _ph_shows(ddo: dict) -> str | None:
+    """Which place a site's own job cards show, as its page's
+    jobwidgetsettings names their fields: 'locationName' (WEX's), 'location'
+    for a page naming card fields without it (Fiserv's: location and
+    multi_location), or None for a page that names none (the other four)."""
+    said = ddo.get("jobwidgetsettings")
+    data = said.get("data") if isinstance(said, dict) else None
+    fields = data.get("fields") if isinstance(data, dict) else None
+    names = {f.get("name") for f in fields if isinstance(f, dict)} if isinstance(fields, list) else set()
+    names.discard(None)
+    if not names:
+        return None
+    return "locationName" if "locationName" in names else "location"
+
+
+def phenom_search(page: str, url: str, base: str,
+                  term: str | None) -> tuple[list[dict], int, str | None]:
+    """(the rows on one search page, the search's totalHits, which place its
+    cards show - _ph_shows), or AtsError for a page that is not this site's
+    answer to this search in the shape measured: its phApp naming this
+    baseUrl, one ddo, eagerLoadRefineSearch with status 200, hits the rows on
+    the page, totalHits, and the keyword it answered echoed as the one asked
+    ('' unfiltered). A search with nothing in it is its one measured shape:
+    hits 0, totalHits 0, jobs []."""
+    app = phenom_app(page)
+    if app is None or app.get("baseUrl") != base:
+        raise AtsError(f"{url} is not this Phenom site's page: its phApp object is missing or names "
+                       f"{str((app or {}).get('baseUrl'))[:120]!r}, not {base}")
+    ddo = _ph_ddo(page, url)
+    block = ddo.get("eagerLoadRefineSearch")
+    data = block.get("data") if isinstance(block, dict) else None
+    jobs = data.get("jobs") if isinstance(data, dict) else None
+    hits = block.get("hits") if isinstance(block, dict) else None
+    total = block.get("totalHits") if isinstance(block, dict) else None
+    said = data.get("keywords") if isinstance(data, dict) else None
+    if (not isinstance(block, dict) or type(block.get("status")) is not int
+            or block.get("status") != 200 or not _ph_count(hits) or not _ph_count(total)
+            or not isinstance(jobs, list) or not all(isinstance(j, dict) for j in jobs)
+            or len(jobs) != hits or len(jobs) > total or not isinstance(said, str)):
+        raise AtsError(f"{url} is not a Phenom search answer in the shape measured (status 200, "
+                       f"hits the rows it carries, totalHits, jobs, keywords), so it is not read")
+    if _text(said).casefold() != _text(term or "").casefold():
+        raise AtsError(f"{url} answered the search {said[:80]!r}, not {term or ''!r}: a search that "
+                       f"dropped its keyword (as s=1 does) is not read as that search")
+    return jobs, total, _ph_shows(ddo)
+
+
+def _ph_id(j: dict, url: str) -> str:
+    jid = j.get("jobId")
+    if not isinstance(jid, str) or not _PH_JOB_ID.fullmatch(jid):
+        raise AtsError(f"{url}: a row has no jobId in the site's own form, so the search is not "
+                       f"read in part")
+    return jid
+
+
+def phenom_walk(base: str, term: str) -> tuple[list[dict], str | None]:
+    """(every row of one keyword search, once each by jobId, which place its
+    cards show), or AtsError: paged by PHENOM_PAGE through ats._paged from
+    the first page's totalHits, nothing asked past it, every page stating
+    that same total and the same keyword, and the distinct rows exactly the
+    total."""
+    first = phenom_search_url(base, term)
+    jobs, total, shows = phenom_search(_ph_read(first), first, base, term)
+    if total > PHENOM_PAGE * PHENOM_MAX_PAGES:
+        raise AtsError(f"{first} counts {total} postings, more than the {PHENOM_MAX_PAGES} pages "
+                       f"of {PHENOM_PAGE} a search is read to: not read, and never read in part")
+
+    def one(offset: int) -> list[dict]:
+        if offset == 0:
+            return jobs
+        if offset >= total:
+            return []                          # (past the total nothing is asked)
+        url = phenom_search_url(base, term, offset)
+        got, again, _shows = phenom_search(_ph_read(url), url, base, term)
+        if again != total:
+            raise AtsError(f"the Phenom search {term!r} on {base} counted {total} and then {again} "
+                           f"between two pages, so it is not read in part")
+        if not got:
+            raise AtsError(f"{url} carried no row inside the search's own {total}: read in part, "
+                           f"so not read")
+        return got
+    # (one page past the ceiling, which is never asked - one() answers it []
+    # at the total - so a whole read of 591 to 600 rows ends on that empty
+    # page and is not logged as cut: blind review of 2026-11-27)
+    rows = _paged(one, lambda j: _ph_id(j, first), page=PHENOM_PAGE,
+                  max_pages=PHENOM_MAX_PAGES + 1, label=f"{base} {term}")
+    if len(rows) != total:
+        raise AtsError(f"the Phenom search {term!r} on {base} counts {total} postings and its pages "
+                       f"gave {len(rows)} distinct ones: the order is not stable between requests, "
+                       f"and a walk that comes up short is never published as read")
+    return rows, shows
+
+
+def _ph_part(raw) -> str:
+    t = _text(raw) if isinstance(raw, str) else ""
+    return "" if t.lower() in _PH_NO_PLACE or "remote" in t.lower() else t
+
+
+def phenom_place(j: dict, shows: str | None = None) -> tuple[str, dict | None]:
+    """(the place as the site's own card shows it, an office_hint), `shows`
+    being what the page's cards show (_ph_shows; see THE PLACE above). Where
+    they show locationName - or, on a page naming no card fields, where the
+    row carries one - the place is its ' | ' parts, each once (WEX's 'US -
+    Remote', 'Portland, ME; Boston, MA'), and nothing else: the row's
+    location there is a placeholder. Else it is the row's location (or
+    cityStateCountry) and each multi_location[] once, '; ' between. The hint
+    is the row's own city, state and country, a part that names no place
+    (_PH_NO_PLACE, a way of working) left out, a state beside a city that
+    names no place or in a placeholder address (_PH_NO_ADDRESS) left out too,
+    and never a country the row does not state (Qualtrics' 'United States
+    (Remote)' is a city with no country)."""
+    named = _text(j.get("locationName")) if isinstance(j.get("locationName"), str) else ""
+    if shows == "locationName" or (shows is None and named):
+        place = "; ".join(dict.fromkeys(_text(p) for p in named.split("|") if _text(p)))
+    else:
+        primary = _text(j.get("location")) if isinstance(j.get("location"), str) else ""
+        if not primary and isinstance(j.get("cityStateCountry"), str):
+            primary = _text(j.get("cityStateCountry"))
+        multi = j.get("multi_location")
+        more = [_text(x) for x in multi if isinstance(x, str) and _text(x)] \
+            if isinstance(multi, list) else []
+        place = "; ".join(dict.fromkeys(([primary] if primary else []) + more))
+    city_said = _text(j.get("city")) if isinstance(j.get("city"), str) else ""
+    city = _ph_part(city_said)
+    address = _text(j.get("address")) if isinstance(j.get("address"), str) else ""
+    placeholder = bool(city_said and not city) or bool(_PH_NO_ADDRESS.search(address))
+    return place, office_hint(city, "" if placeholder else _ph_part(j.get("state")),
+                              _ph_part(j.get("country")))
+
+
+def phenom_posted(j: dict) -> str | None:
+    """dateCreated, or the earlier of it and postedDate where both read -
+    never postedDate alone (a mass refresh moves it: see the note above)."""
+    made = posted_date(j.get("dateCreated")) if isinstance(j.get("dateCreated"), str) else None
+    if not made:
+        return None
+    said = posted_date(j.get("postedDate")) if isinstance(j.get("postedDate"), str) else None
+    return min(made, said) if said else made
+
+
+def phenom_row(j: dict, base: str, url: str = "the search", shows: str | None = None) -> dict:
+    """One row, or AtsError for one that does not read as a posting (no
+    jobId in the site's form, no title): a search is never read in part. No
+    teaser, no applyUrl, no person: see the notes above."""
+    jid, title = _ph_id(j, url), _text(j.get("title")) if isinstance(j.get("title"), str) else ""
+    if not title:
+        raise AtsError(f"{url}: a row has no title, so the search is not read in part")
+    place, hint = phenom_place(j, shows)
+    address = phenom_posting_url(base, jid, title)
+    return {"title": title, "location": place, "url": address, "posted": phenom_posted(j),
+            "office_hint": hint, "jd": "", "_detail_url": address}
+
+
+def phenom_ad(url: str, base: str) -> str:
+    """The employer's own ad, one posting's ddo.jobDetail.data.job.description,
+    read only under FETCH_DETAILS - "" where the page gives none - or AtsError
+    for a page that is not this posting on this site (_details then keeps the
+    row as it is). Nothing else on the page is read: not its companyName, its
+    client, its people or its JSON-LD."""
+    m = _PH_POSTING.fullmatch(url)
+    if not m or m.group(1) != base:
+        raise AtsError(f"{url} is not a posting of {base}")
+    page = _ph_read(url)
+    app = phenom_app(page)
+    job = _ph_ddo(page, url).get("jobDetail") if app and app.get("baseUrl") == base else None
+    job = ((job.get("data") if isinstance(job, dict) else None) or {}).get("job")
+    if not isinstance(job, dict) or job.get("jobId") != m.group(2):
+        raise AtsError(f"{url} does not answer as that posting on {base}")
+    desc = job.get("description")
+    return plain_html(desc) if isinstance(desc, str) else ""
+
+
+def fetch_phenom(ref) -> list[dict]:
+    base = phenom_base(ref)
+    rows, seen = [], set()
+    for term in PHENOM_TERMS:
+        got, shows = phenom_walk(base, term)
+        for j in got:
+            jid = _ph_id(j, base)
+            if jid in seen:                    # the two searches overlap heavily
+                continue
+            seen.add(jid)
+            rows.append(phenom_row(j, base, phenom_search_url(base, term), shows))
+    if FETCH_DETAILS:
+        _details(rows, lambda r: (phenom_ad(r["_detail_url"], base), None))
+    return rows
+
+
+def phenom_said(page: str) -> tuple[str, list[str]]:
+    """(its og:site_name, its <title>s) as the page's <head> states them, its
+    scripts, styles and comments left out - "" and [] where it states none.
+    Read for verify_boards, which weighs them; nothing here reads a name for
+    anything else."""
+    low = lower_same(page or "")
+    end = low.find("</head")
+    head = (page or "")[:end] if end >= 0 else (page or "")
+    head = _TAG.sub(" ", _COMMENT.sub(" ", head))
+    site = ""
+    for tag in _PH_META.findall(head):
+        if "og:site_name" not in tag.lower():
+            continue
+        attrs = {k.lower(): (a or b) for k, a, b in _PH_ATTR.findall(tag)}
+        if (attrs.get("property") or attrs.get("name") or "").lower() == "og:site_name":
+            site = _text(html_lib.unescape(attrs.get("content") or ""))
+            break
+    titles = [_text(html_lib.unescape(t)) for t in _PH_TITLE.findall(head)][:4]
+    return site, [t for t in titles if t]
+
+
+_PH_KEPT: dict | None = None
+
+
+@contextlib.contextmanager
+def phenom_kept():
+    """Each unfiltered page read is the answer to every later ask of it in the
+    block (see ONE PLAN ASKS THE UNFILTERED PAGE ONCE above). Also a decorator."""
+    global _PH_KEPT
+    outer = _PH_KEPT
+    _PH_KEPT = {} if outer is None else outer
+    try:
+        yield
+    finally:
+        _PH_KEPT = outer
+
+
+def phenom_site(ref) -> dict:
+    """{base, url, total, site_name, titles}: the site's UNFILTERED search
+    page, one request - none inside phenom_kept() where it was read already -
+    or AtsError. `total` is its totalHits, the whole locale board's count;
+    `site_name` and `titles` what its <head> states (phenom_said)."""
+    base = phenom_base(ref)
+    url = phenom_search_url(base)
+    kept = _PH_KEPT
+    if kept is not None and url in kept:
+        return dict(kept[url], titles=list(kept[url]["titles"]))
+    page = _ph_read(url)
+    _rows, total, _shows = phenom_search(page, url, base, None)
+    site, titles = phenom_said(page)
+    got = {"base": base, "url": url, "total": total, "site_name": site, "titles": titles}
+    if kept is not None:
+        kept[url] = dict(got, titles=list(titles))
+    return got
+
+
+def phenom_total(ref) -> int:
+    """How many postings the WHOLE locale board holds, by its own count: the
+    unfiltered search page's totalHits (see THE READER READS PART above)."""
+    return phenom_site(ref)["total"]
 
 # ---- successfactors: SAP SuccessFactors' Career Site Builder (CSB), a career
 # site on the employer's own careers host (jobs.gainwelltechnologies.com,
@@ -7239,6 +7806,7 @@ FETCHERS = {
     "trinethire": fetch_trinethire,
     "jobscore": fetch_jobscore,
     "clearcompany": fetch_clearcompany,
+    "phenom": fetch_phenom,
     "successfactors": fetch_successfactors,
 }
 
