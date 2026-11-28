@@ -8392,8 +8392,8 @@
     "category": "Streets",
     "description": "Government services giant (Xerox spinoff): transit fare, payments, DMV; selling tolling to Quarterhill - exhibited at NASWA 2025, NCSEA 2026, Healthcare IT Connect 2026, NCSEA Policy Forum 2027, NACCHO 360 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://careers.conduent.com/us/en/search-results"
+      "type": "phenom",
+      "ref": "https://careers.conduent.com/us/en/"
     },
     "hiring": {
       "status": "Unknown",
@@ -8527,7 +8527,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-20",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-28: careers.conduent.com/us/en/search-results loads the board; the board names \"Conduent\"; 62 postings read"
   },
   {
     "id": "cyvl",
@@ -14064,8 +14065,8 @@
     "category": "HR & Workforce",
     "description": "Workforce management giant (Kronos + Ultimate merger) with large gov base - exhibited at GFOA 2026, APTA 2026, NLC City Summit 2026, ACA Congress 2026",
     "ats": {
-      "type": "html",
-      "ref": "https://apply.ukg.com/careers"
+      "type": "eightfold",
+      "ref": "https://apply.ukg.com/careers?domain=ukg.com"
     },
     "hiring": {
       "status": "Unknown",
@@ -14092,7 +14093,8 @@
       }
     ],
     "competitors_checked_on": "2026-10-22",
-    "competitors_none_found": false
+    "competitors_none_found": false,
+    "ats_note": "wired 2026-11-28: apply.ukg.com/careers loads the board; the board names \"UKG\"; 243 postings read"
   },
   {
     "id": "govinvest",

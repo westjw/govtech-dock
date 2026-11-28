@@ -5252,5 +5252,104 @@
    "read_at": "2026-11-27T19:19:17-05:00",
    "page": "https://www.niradynamics.com/careers"
   }
+ },
+ {
+  "id": "aventiv-technologies",
+  "name": "Aventiv Technologies",
+  "was": "html",
+  "found": {
+   "type": "eightfold",
+   "ref": "https://careers.aventiv.com/careers?domain=aventiv.com"
+  },
+  "saw": "window._EF_GROUP_ID = \"aventiv.com\";",
+  "times": 1,
+  "verified": "22 posting(s) readable",
+  "board_calls_itself": "Aventiv",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Aventiv\", which is not \"Aventiv Technologies\": one name only contains the other, and a name inside another name is never taken for the same company; Securus Technologies is on file with this company's board today (html/https://www.aventiv.com/careers), which the board build gives to one of the records sharing it, the others contributing nothing; wired to eightfold/https://careers.aventiv.com/careers?domain=aventiv.com, this company would leave Securus Technologies holding html/https://www.aventiv.com/careers without it, that board's postings published under Securus Technologies beside this company's own: a parent's board on another record, or one board's postings under two names; https://careers.aventiv.com/careers?start=0&pid=1133901649610&sort_by=hot loads the board",
+  "postings": 22,
+  "titles": [
+   "Account Executive Sr",
+   "Project Architect",
+   "Lead Field Service Specialist",
+   "Forensic Lab Analyst/Admin",
+   "Field Service Technician II NY",
+   "Field Service Technician II",
+   "Field Service Technician II",
+   "Field Service Technician I"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-28",
+   "on": "2026-11-28",
+   "at": "2026-11-28T02:26:56-05:00",
+   "read_at": "2026-11-28T02:23:52-05:00",
+   "page": "https://careers.aventiv.com/careers?start=0&pid=1133901649610&sort_by=hot"
+  }
+ },
+ {
+  "id": "curriculum-associates-llc",
+  "name": "Curriculum Associates, LLC",
+  "was": "html",
+  "found": {
+   "type": "eightfold",
+   "ref": "https://careers.curriculumassociates.com/careers?domain=curriculumassociates.com"
+  },
+  "saw": "window._EF_GROUP_ID = \"curriculumassociates.com\";",
+  "times": 1,
+  "verified": "61 posting(s) readable",
+  "board_calls_itself": "Curriculum Associates",
+  "identity": "unknown",
+  "identity_why": "the board names \"Curriculum Associates\", which is this company, but a reader checking this plan doubted it: the board carries a second brand: its 3 Australian postings (Melbourne) are jobs at Stile, an Australian science-curriculum company that is part of Curriculum Associates, with its own office and team of about 75; the other 58 are Curriculum Associates' own roles in the US and India; https://careers.curriculumassociates.com/careers loads the board",
+  "postings": 61,
+  "titles": [
+   "Sr. Business Analyst",
+   "Cash Applications Specialist (IN)",
+   "Educational Consultant - Per Diem - (Math K-6) - NYC, NY",
+   "Professional Learning Specialist (K-8 Math) New York, NY",
+   "Educational Consultant-Per Diem- ( Literacy ) - New York City, NY",
+   "Temp-Project Manager, Product Operations",
+   "Educational Consultant -Per Diem- (K-8 Math) - Queens, NY",
+   "Educational Consultant - Per Diem- ( K-8 Math ) - Manhattan, NY"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-28",
+   "on": "2026-11-28",
+   "at": "2026-11-28T02:26:56-05:00",
+   "read_at": "2026-11-28T02:24:10-05:00",
+   "page": "https://careers.curriculumassociates.com/careers"
+  }
+ },
+ {
+  "id": "eightfold-ai",
+  "name": "Eightfold AI",
+  "was": "html",
+  "found": {
+   "type": "eightfold",
+   "ref": "https://app.eightfold.ai/careers?domain=volkscience.com"
+  },
+  "saw": "window._EF_GROUP_ID = \"volkscience.com\";",
+  "times": 1,
+  "verified": "41 posting(s) readable",
+  "board_calls_itself": "Eightfold",
+  "identity": "MISMATCH",
+  "identity_why": "the board calls itself \"Eightfold\", which is not \"Eightfold AI\": one name only contains the other, and a name inside another name is never taken for the same company; their own site also loads eightfold in a form that names no board (eightfold-other): a widget or a link of another account names none either, so which board they hire through today is not settled; https://app.eightfold.ai/careers/search loads the board",
+  "postings": 41,
+  "titles": [
+   "Senior Secuirty Engineer",
+   "People Business Partner Director",
+   "Staff, Engineering Operations",
+   "Senior Engineer",
+   "Sr. UX Designer",
+   "VP, Product, AI & Platform",
+   "Lead Data Engineer",
+   "Principal Customer Value Partner (Principal Customer Success Manager)"
+  ],
+  "filed": {
+   "by": "agent:coverage-readers-2026-11-28",
+   "on": "2026-11-28",
+   "at": "2026-11-28T02:26:56-05:00",
+   "read_at": "2026-11-28T02:24:13-05:00",
+   "page": "https://app.eightfold.ai/careers/search"
+  }
  }
 ]
